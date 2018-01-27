@@ -11,11 +11,12 @@ class UsersController < ApplicationController
   end
 
   def update
+    byebug
     if @user.update(user_params)
       flash[:notice]="更新成功"
-			redirect_to tweets_user_path(@user)
-		else
-			render :action => :edit
+      redirect_to tweets_user_path(@user)
+    else
+      render :action => :edit
     end
   end
 
@@ -26,6 +27,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:avatar, :description)
+    params.require(:user).permit(:avatar, :introduction)
   end
 end

@@ -1,6 +1,6 @@
 
 <% @tweets.each do |tweet| %>
-<%= tweet.user.avatar %>
+<%= image_tag tweet.user.avatar.url %>
 <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
 <%= tweet.created_at.strftime("%Y-%m-%d, %T") %>
 <%= tweet.description %>
