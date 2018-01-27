@@ -1,3 +1,5 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/c70bf93044275ed422b9/maintainability)](https://codeclimate.com/github/ALPHACamp/simple-twitter/maintainability)
+
 # README
 
 This README would normally document whatever steps are necessary to get the
