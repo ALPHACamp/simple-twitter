@@ -18,4 +18,10 @@ class TweetsController < ApplicationController
       render action: :index
     end
   end
+
+  private
+
+  def tweet_params
+    params.require(:tweet).permit(:description)
+  end
 end
