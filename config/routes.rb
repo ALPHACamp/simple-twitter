@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :tweets
+  resources :tweets do
+    resources :replies
+  end
 
   resources :users, only: [:edit, :update] do
     member do
