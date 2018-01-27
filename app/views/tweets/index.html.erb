@@ -1,6 +1,6 @@
 <%= form_for @tweet do |f| %>
   <div class="form-group">
-    <%= f.text_field :description, placeholder: "What's on your mind?",  class: "form-control" %>
+    <%= f.text_area :description, placeholder: "What's on your mind?",  class: "form-control" %>
   </div>
   <%= f.submit 'Tweet', class: "btn btn-primary" %>
   <% if @tweet.errors.any? %>
