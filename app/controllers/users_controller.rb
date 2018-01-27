@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :setup_user, only: [:edit, :update]
+  before_action :setup_user, except: :tweets
 
   def tweets
     @user = User.includes(:tweets).find(params[:id])
@@ -18,6 +18,14 @@ class UsersController < ApplicationController
     else
       render :action => :edit
     end
+  end
+
+  def followings
+    @followings = @user.followings
+  end
+
+  def followers
+    @followers = @user.followers
   end
 
   private

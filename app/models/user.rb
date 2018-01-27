@@ -24,4 +24,8 @@ class User < ApplicationRecord
   def liked_tweet?(tweet)
     self.liked_tweets.include?(tweet)
   end
+
+  def following?(user)
+    self.followings.include?(user)
+  end
 end

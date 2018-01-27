@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180127113637) do
+ActiveRecord::Schema.define(version: 20180127114307) do
 
   create_table "followships", force: :cascade do |t|
     t.integer "user_id"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20180127113637) do
     t.string "name", default: "", null: false
     t.string "avatar"
     t.text "introduction"
+    t.integer "likes_count", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
