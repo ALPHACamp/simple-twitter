@@ -1,0 +1,10 @@
+<% users.each do |user| %>
+  <%= image_tag user.avatar, size: '150x150' %>
+  <%= user.name %>
+  <%= simple_format user.introduction %>
+  <% if current_user.following?(user) %>
+    <%= link_to 'Unfollow', followship_path(user), method: :delete, class: "btn btn-link" %>
+  <% else %>
+    <%= link_to 'Follow', followships_path(following_id: user), method: :post, class: "btn btn-default" %>
+  <% end %>
+<% end %>

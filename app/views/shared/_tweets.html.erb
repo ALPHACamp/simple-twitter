@@ -1,0 +1,12 @@
+<% @tweets.each do |tweet| %>
+  <%= image_tag tweet.user.avatar.url %>
+  <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
+  <%= tweet.created_at.strftime("%Y-%m-%d, %T") %>
+  <%= tweet.description %>
+  <%= link_to "Reply(#{tweet.replies.size})", tweet_replies_path(tweet) %>
+  <% if current_user.liked_tweet?(tweet) %>
+    <%= link_to "unlike(#{tweet.likes_count}", unlike_tweet_path(tweet), method: :post %>
+  <% else %>
+    <%= link_to "like(#{tweet.likes_count})", like_tweet_path(tweet), method: :post %>
+  <% end %>
+<% end %>

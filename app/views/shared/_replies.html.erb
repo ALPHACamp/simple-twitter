@@ -1,0 +1,6 @@
+<% @replies.each do |reply| %>
+  <%= image_tag reply.user.avatar.url %>
+  <%= link_to reply.user.name, tweets_user_path(reply.user) %>
+  <%= reply.created_at.strftime("%Y-%m-%d, %T") %>
+  <%= reply.comment %>
+<% end %>

@@ -1,0 +1,15 @@
+<h1>TESTTTTTT</h1>
+
+<%= form_for @tweet do |f| %>
+  <div class="form-group">
+    <%= f.text_area :description, placeholder: "What's on your mind?",  class: "form-control" %>
+  </div>
+  <%= f.submit 'Tweet', class: "btn btn-primary" %>
+  <% if @tweet.errors.any? %>
+    <%= @tweet.errors.full_messages.to_sentence %>
+  <% end %>
+<% end %>
+
+<%= render partial: "shared/popular", locals: { users: @users } %>
+
+<%= render partial: "shared/tweets" %>

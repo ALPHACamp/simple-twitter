@@ -1,0 +1,16 @@
+<%= image_tag @tweet.user.avatar.url %>
+<%= link_to @tweet.user.name, tweets_user_path(@tweet.user) %>
+<%= @tweet.created_at.strftime("%Y-%m-%d, %T") %>
+<%= @tweet.description %>
+
+<%= render partial: "shared/replies" %>
+
+<%= form_for [ @tweet, @reply ] do |f| %>
+<div class="form-group">
+  <%= f.text_area :comment, class: "form-control" %>
+</div>
+  <% if @reply.errors.any? %>
+    <%= @reply.errors.full_messages.to_sentence %>
+  <% end %>
+  <%= f.submit 'Reply', class: "btn btn-primary" %>
+<% end %>
