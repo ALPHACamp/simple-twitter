@@ -6,5 +6,9 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
+  validates_presence_of :name
+  validates_uniqueness_of :name
+
   has_many :tweets
+  has_many :replies
 end
