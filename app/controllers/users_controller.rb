@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :setup_user, only: [:edit, :update]
 
   def tweets
-    @user = User.find(params[:id])
+    @user = User.includes(:tweets).find(params[:id])
     @tweets = @user.tweets
   end
 
