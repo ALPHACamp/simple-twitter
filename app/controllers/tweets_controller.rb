@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
   def index
-    @tweets = Tweet.includes(:user).all
+    @tweets = Tweet.includes(:user, :likes).all
 
     @tweet = Tweet.new
   end
@@ -12,9 +12,21 @@ class TweetsController < ApplicationController
       flash[:notice] = '新增成功'
       redirect_to tweets_path
     else
-      @tweets = Tweet.all
+      @tweets = Tweet.includes(:user, :likes).all
       render action: :index
     end
+  end
+
+  def like
+    @tweet = Tweet.find(params[:id])
+    current_user.liked_tweets << @tweet
+    redirect_to tweets_path
+  end
+
+  def unlike
+    @tweet = Tweet.find(params[:id])
+    current_user.liked_tweets.delete(@tweet)
+    redirect_to tweets_path
   end
 
   private
