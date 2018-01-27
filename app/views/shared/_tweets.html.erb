@@ -1,0 +1,7 @@
+
+<% @tweets.each do |tweet| %>
+<%= tweet.user.avatar %>
+<%= tweet.user.name %>
+<%= tweet.created_at.strftime("%Y-%m-%d, %T") %>
+<%= tweet.description %>
+<% end %>
