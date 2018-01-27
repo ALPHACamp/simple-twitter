@@ -9,6 +9,9 @@ class User < ApplicationRecord
   validates_presence_of :name
   validates_uniqueness_of :name
 
-  has_many :tweets
-  has_many :replies
+  has_many :tweets, dependent: :destroy
+  has_many :replies, dependent: :destroy
+
+  has_many :likes, dependent: :destroy
+  has_many :like_tweets, through: :likes, source: :tweet
 end
