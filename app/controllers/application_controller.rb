@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   private
 
+  # 後台身份驗證
   def authenticate_admin
     unless current_user.admin?
       flash[:alert] = "Not allow!"
