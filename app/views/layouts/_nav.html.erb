@@ -31,6 +31,11 @@
 
     <% if current_user %>
       <li>
+        <%= link_to "#", padding: "0px" do %>
+          <img src="http://via.placeholder.com/20x20" class="img-circle">
+        <% end %>
+      </li>
+      <li>
         <%= link_to destroy_user_session_path, method: :delete do %>
           <span class="glyphicon glyphicon-log-out"></span>
         <% end %>

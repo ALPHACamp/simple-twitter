@@ -1,1 +1,22 @@
 <h1>這是前台</h1>
+
+<%= form_for @tweet do |f| %>
+  <%= f.text_area :description %>
+  <%= f.submit %>
+<% end %>
+
+<% @tweets.each do |tweet| %>
+  <div class="row">
+    <%= tweet.user.name %>
+    <%= tweet.created_at.strftime("%Y-%m-%d, %I:%M %p") %>
+    <%= link_to "#" do %>
+
+      <img src="http://via.placeholder.com/50x50" class="img-circle">
+    <% end %>
+
+    <%= tweet.description %>
+    <%= link_to "Reply", "#" %>
+    <%= link_to "Like", "#" %>
+
+  </div>
+<% end %>
