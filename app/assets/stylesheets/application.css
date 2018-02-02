@@ -13,3 +13,95 @@
  *= require_tree .
  *= require_self
  */
+
+/*
+ *= require font-awesome
+ */
+
+/* reset css */
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0px;
+  padding: 0px;
+}
+
+ul, ol {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+a, a:hover, a:focus {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* common */
+
+:root {
+  --blue: #31A1F0;
+}
+
+header {
+  background: var(--blue);
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+nav {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-flow: column;
+  padding: 5px;
+  align-items: center;
+}
+
+.fa-twitter {
+  color: white;
+}
+
+#menu {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.avatar-xs {
+  width: 40px;
+  height: 40px;
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+.logout-btn {
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+

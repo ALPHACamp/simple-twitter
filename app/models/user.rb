@@ -11,4 +11,20 @@ class User < ApplicationRecord
   validates_presence_of :name
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
 
+  has_many :tweets, dependent: :destroy
+  has_many :replies, through: :tweets
+
+  has_many :likes, dependent: :destroy
+  has_many :liked_tweets, through: :likes, source: :tweet
+  
+  has_many :followships, dependent: :destroy
+  has_many :followings, through: :followships
+
+  has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id", dependent: :destroy
+  has_many :followers, through: :inverse_followships, source: :user
+
+  def admin?
+    self.role == "admin"
+  end 
+
 end
