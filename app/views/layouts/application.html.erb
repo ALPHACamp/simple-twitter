@@ -21,8 +21,17 @@
       <li><%= link_to('註冊', new_user_registration_path) %></li>
       <li><%= link_to('登入', new_user_session_path) %></li>
     <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if notice %>
+      <div class="alert remind fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <p><%= notice %></p>
+      </div>
+    <% elsif alert %>
+      <div class="alert remind fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <p><%= alert %></p>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
