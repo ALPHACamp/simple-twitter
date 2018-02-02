@@ -15,6 +15,7 @@ class Admin::TweetsController < Admin::BaseController
 
   def create
     tweet = @tweet = Tweet.new(tweet_params)
+    tweet.user_id = current_user.id
     tweet.save
     flash[:notice] = "Add a new tweet"
     redirect_to admin_tweets_path

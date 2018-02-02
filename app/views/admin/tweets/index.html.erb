@@ -1,11 +1,24 @@
 <h1>後台</h1>
-<ul>
+
+<table class= "table table-striped">
+  <thead>
+  <tr>
+    <th>User</th>
+    <th>description></th>
+    <th>action</th>
+  </tr>
+
+  <tbody>
   <% @tweets.each do |tweet| %>
-    <li>
-      <%= tweet.description %>
-      <%= link_to "delete", admin_tweet_path(tweet), method: :delete, data: {confirm: "Are you sure??"} %>
-    </li>
+    <tr>
+      <td><%= tweet.user.name %></td>
+      <td><%= tweet.description %></td>
+      <td><%= link_to "delete", admin_tweet_path(tweet), method: :delete, data: {confirm: "Are you sure??"} %></td>
+    </tr>
+    
   <% end %>
-</ul>
+</tbody>
+</table>>
+
 
 <%= link_to "new tweet", new_admin_tweet_path %>
