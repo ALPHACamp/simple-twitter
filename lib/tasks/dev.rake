@@ -18,6 +18,12 @@ namespace :dev do
       user.save!
       puts user.name
     end
+    user = User.last
+    user.name = "root"
+    user.email = "root@example.co"
+    user.role = "admin"
+    user.save                      # 沒存都不算啊！注意
+    puts user.name
   end
 
 end
