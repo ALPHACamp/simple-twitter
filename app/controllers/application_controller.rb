@@ -4,4 +4,11 @@ class ApplicationController < ActionController::Base
   # 請參考 Devise 文件自訂表單後通過 Strong Parameters 的方法
   # https://github.com/plataformatec/devise#strong-parameters
   # 注意有 sign_up 和 account_update 兩種參數要處理
+
+  def authenticate_admin
+  	unless current_user.admin?
+  		flash[:alert] = "You are not allowed to access Admin page"
+  		redirect_to root_path
+  	end
+  end
 end
