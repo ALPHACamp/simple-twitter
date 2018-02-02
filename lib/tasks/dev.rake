@@ -19,11 +19,64 @@ namespace :dev do
       puts user.name
     end
     user = User.last
-    user.name = "root"
-    user.email = "root@example.co"
+    user.name = "Root"
+    user.email = "Root@example.co"
     user.role = "admin"
     user.save                      # 沒存都不算啊！注意
     puts user.name
+    puts "now you have #{User.count} users data"
+  end
+
+  # Tweet Model 設定 description 140 字限制
+  task fake_tweet: :environment do
+    Tweet.destroy_all
+    100.times do |i|
+      tweet = Tweet.new(
+        description: FFaker::Lorem::characters(character_count = 140),
+        user: User.all.sample,                     # 用 user 給外鍵 user_id 資訊
+      )
+      tweet.save!
+    end
+    puts "now you have #{Tweet.count} tweets data"
+  end
+
+  task fake_reply: :environment do
+    Reply.destroy_all
+    Tweet.all.each do |tweet|
+      2.times do
+        tweet.replies.create!(
+          tweet: Tweet.all.sample,
+          user: User.all.sample,
+          comment: FFaker::Lorem::words(num = 15),
+        )
+      end
+    end
+    puts "have created fake replies"
+    puts "now you have #{Reply.count} replies data"
+  end
+
+  task fake_like: :environment do
+    Like.destroy_all
+    Tweet.all.each do |tweet|
+      3.times do
+        tweet.likes.create!(
+          user: User.all.sample,
+          tweet: Tweet.all.sample,
+        )
+      end
+    end
+    puts "have created fake likes"
+    puts "now you have #{Like.count} likes data"
+
   end
 
 end
+
+
+
+
+
+
+
+
+

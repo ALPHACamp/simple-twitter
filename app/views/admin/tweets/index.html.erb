@@ -13,7 +13,7 @@
 <ul>
   <h3>Users</h3>
   <% @users.each do |user| %>
-    <%= user.name %><!-- 使用者依推文數排序 -->
+    <%= user.name %><!-- 使用者依推文數排序，在 controller 處理 -->
     <%= user.introduction %>
     <h5>Tweets:</h5><!-- 待關聯設定 -->
     <h5>Following:</h5><!-- 待自關聯設定 -->
