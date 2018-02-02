@@ -24,3 +24,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+2/2/2018 clone AC file for midterm exam.
