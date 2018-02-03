@@ -1,1 +1,20 @@
-admin::tweets#index
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Auther</th>
+      <th>Description</th>
+      <th>#</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tweets.each do |tweet| %>
+      <tr>
+        <td><%= tweet.id %></td>
+        <td><%= tweet.user.name %></td>
+        <td><%= tweet.description %></td>
+        <td><%= link_to "Delete", admin_tweet_path(tweet), method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
