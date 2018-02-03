@@ -1,0 +1,32 @@
+<div class="form form-box">
+  <!--表單-->
+  <%= form_for @user do |f| %>
+    <div class="form-group">
+      <%= f.label :name, "Name" %>
+      <%= f.text_field :name, class: "form-control" %>
+      <% if @user.errors.present? %>
+        <ul>
+          <% @user.errors.each do |error,message|%>
+            <% if error == :name %>
+              <li><%= "Name #{message}" %></li>
+            <% end %>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :introduction, "Introduction" %>
+      <%= f.text_area :introduction, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :avatar, "Photo" %>
+      <%= image_tag @user.avatar, width: '300px' if @user.avatar? %>
+      <%= f.file_field :avatar %>
+    </div>
+
+    <%= link_to 'Back', root_path, class: "btn btn-default" %>
+    <%= f.submit class: "btn btn-default"%>
+  <% end %>
+</div>
