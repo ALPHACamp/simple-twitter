@@ -23,5 +23,6 @@ class User < ApplicationRecord
   #先自建一個inverse followships，指定followship model的following_id (對USER來說 USER是PK，指去followship的FK是following_id)
 
   has_many :tweets, dependent: :destroy
+  has_many :replies, dependent: :destroy
 
 end
