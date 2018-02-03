@@ -3,4 +3,5 @@ class Tweet < ApplicationRecord
   validates_presence_of :description
   belongs_to :user
   has_many :replies, dependent: :delete_all
+  has_many :likes, dependent: :delete_all
 end
