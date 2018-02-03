@@ -26,7 +26,7 @@ namespace :dev do
       response = RestClient.get(url)
       data = JSON.parse(response.body)
 
-      user = User.create!(
+      user = User.create(
         name: data["name"],
         email: data["email"],
         password: "password",
@@ -77,6 +77,16 @@ namespace :dev do
         )
     end
     puts "create random 100 fake follows"
+  end
+
+  task fake_all: :environment do
+    Rake::Task["dev:uniname_user_20"].execute
+    Rake::Task["dev:fake_tweets_200"].execute
+    Rake::Task["dev:fake_replies_200"].execute
+    Rake::Task["dev:fake_likes_100"].execute
+    Rake::Task["dev:fake_follows_100"].execute
+    
+    puts "finish"
   end
 
 end
