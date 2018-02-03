@@ -7,6 +7,13 @@
   <div class="tweet-info">
     <h4><%= link_to "@#{tweet.user.name}", tweets_user_path(tweet.user)%><%= tweet.created_at.strftime(" ,%Y-%m-%d %I:%M") %></h4>
     <p><%= tweet.description %></p>
-    <h4><%= link_to 'Reply', tweet_replies_path(tweet) %> <%= link_to 'like', like_tweet_path(tweet) %></h4>
+    <h4>
+      <%= link_to 'Reply', tweet_replies_path(tweet) %>(<%= tweet.replies_count %>) 
+      <% if tweet.is_liked?(current_user) %>
+        <%= link_to 'Unlike', unlike_tweet_path(tweet), method: :post %>(<%= tweet.likes_count %>)
+      <% else %>
+        <%= link_to 'like', like_tweet_path(tweet), method: :post %>(<%= tweet.likes_count %>)
+      <% end %>
+    </h4>
   </div>
 </div>

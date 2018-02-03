@@ -119,7 +119,7 @@ nav {
   grid-template-columns: 1fr;
 }
 
-.tweet-item, .user-item-sm {
+.tweet-item, .user-item-sm, .reply-item {
   display: grid;
   grid-gap: 20px;
   grid-template-columns: 90px 1fr;
@@ -152,7 +152,7 @@ nav {
 
 /* index */
 
-.index {
+.index, #reply-index  {
   margin-top: 20px;
   display: grid;
   grid-gap: 30px;
@@ -174,7 +174,7 @@ nav {
 
 
 
-/* edit */
+/* edit user profile */
 
 #edit-form {
   display: grid;
@@ -197,12 +197,12 @@ nav {
 }
 
 
-@media(max-width: 700px) {
-  #root-index {
-    grid-template-columns: 1fr;
-  }
+/* reply*/
 
-  .index  {
+
+@media(max-width: 700px) {
+  
+  #root-index, .index, #reply-index, #edit-form {
     grid-template-columns: 1fr;
   }
 
@@ -210,7 +210,5 @@ nav {
     flex-direction: row;
   }
 
-  #edit-form {
-    grid-template-columns: 1fr;
-  }
+  
 }
