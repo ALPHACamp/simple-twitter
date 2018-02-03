@@ -1,1 +1,14 @@
 User Edit Page
+
+<%= form_for current_user do |f| %>
+  <%= image_tag current_user.avatar %>
+  <%= f.file_field :avatar %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :introduction %>
+  <%= f.text_area :introduction %>
+
+  <%= f.submit "Update"%>
+<% end %>
