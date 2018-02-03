@@ -22,13 +22,11 @@
               <% end %>
             <% end %>
             <li class="nav-item"><%= link_to('登出', destroy_user_session_path, method: :delete, :class => 'nav-link') %></li>
-            <li class="nav-item"><%= link_to('修改個人資料', edit_user_password_path(current_user), :class => 'nav-link') %></li>
+            <li class="nav-item"><%= link_to('修改個人資料', edit_user_path(current_user), :class => 'nav-link') %></li>
             <li class="nav-item"><%= link_to('修改密碼', edit_user_registration_path, :class => 'nav-link') %></li>
           <% else %>
-            <ul class="nav justify-content-center">
-              <li class="nav-item"><%= link_to('註冊', new_user_registration_path, :class => 'nav-link') %></li>
-              <li class="nav-item"><%= link_to('登入', new_user_session_path, :class => 'nav-link') %></li>
-            </ul> 
+            <li class="nav-item"><%= link_to('註冊', new_user_registration_path, :class => 'nav-link') %></li>
+            <li class="nav-item"><%= link_to('登入', new_user_session_path, :class => 'nav-link') %></li>
           <% end %>
         </ul>
       </div>
