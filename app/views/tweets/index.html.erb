@@ -1,9 +1,17 @@
 <h1>推特前台</h1>
 
+<%= form_for @tweet do |f| %>
+
+  <%= f.label :description, "Description" %>
+  <%= f.text_area :description %>
+  
+  <%= f.submit %>
+<% end %>
+
 <ul>
   <% @tweets.each do |tweet| %>
   <li>
-    <%= tweet.name %>
+    <%= tweet.description %>
   </li>
   <% end %>
 </ul>
