@@ -107,3 +107,8 @@ $dropDown       : false;
   .dropdown-item.active {
     color: $colHighlight;
     background-color: $bgHighlight; }}
+
+.tweet-content{
+  word-break: break-all;
+}
+
