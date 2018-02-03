@@ -1,20 +1,31 @@
-<h1>twitter首頁</h1>
-<% @tweets.each do |tweet| %>
-  <div class="left">
-    <h4><%= tweet.user.name %></h4><br>
-    <p><%= simple_format tweet.description %></p><br>
-    <p class="text-muted"><em><%= time_ago_in_words(tweet.created_at) %></em></p>
-    <hr>
-  </div>
-<% end %>
-<div class="row">
-  <%= form_for @tweet do |f| %>
-    <div class="form-group">
-      <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control" %>
-      <% if @tweet.errors.present? %>
-        <%= @tweet.errors.full_messages.to_sentence %>
+<div class="container">
+  <div class="tweet-index">
+    <div class="tweet-box clearfix">
+      <%= form_for @tweet do |f| %>
+        <div class="form-group">
+          <%= f.text_area :description, placeholder: "What's on your mind?", size: "1x6", class: "form-control" %>
+          <% if @tweet.errors.present? %>
+            <%= @tweet.errors.full_messages.to_sentence %>
+          <% end %>
+        </div>
+        <%= f.submit 'tweet', class: "btn btn-default btn-left" %>
       <% end %>
     </div>
-    <%= f.submit 'tweet' %>
-  <% end %>
+  
+    <% @tweets.each do |tweet| %>
+      <div class="index-user">
+        <% for img_id in 0..26 %>
+          <% if image_path(tweet.user.avatar).include?('/user'+img_id.to_s+'.jpg') %>
+            <%= image_tag('/avatar/user'+img_id.to_s+'.jpg', class: "user-avatar") %>
+          <% end %>
+        <% end %>
+        <div class="user-text">
+          <h4><%= tweet.user.name %></h4>
+          <p class="text-muted"><em><%= time_ago_in_words(tweet.created_at) %></em></p>
+          <p><%= simple_format tweet.description %></p><br>
+        </div>
+        <hr>
+      </div>
+    <% end %>
+  </div>
 </div>
