@@ -9,23 +9,27 @@
   </head>
 
   <body>
-    <nav class="nav nav-pills">
+    <nav class="navbar navbar-toggleable-md navbar-light">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <% if current_user %>
-        <% if current_user&.admin? %>
-          <li class="nav-item"><%= link_to 'Admin Panel', admin_tweets_path %></li>
-        <% end %>
-        <li><p class="navbar-text">Hi, <%= current_user.name %></p></li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu">
-            <%= link_to('登出', destroy_user_session_path, method: :delete, :class => 'dropdown-item') %>
-            <%= link_to('修改個人資料', edit_user_password_path(current_user), :class => 'dropdown-item') %>
-            <%= link_to('修改密碼', edit_user_registration_path, :class => 'dropdown-item') %>
+        <a class="navbar-brand">Hi, <%= current_user.name %></a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="navbar-nav mr-auto">
+            <% if current_user&.admin?%>
+              <% if current_page?(tweets_path)%>
+                <li class="nav-item"><%= link_to '管理後台', admin_tweets_path, :class => 'nav-link'%></li>
+              <% elsif current_page?(admin_tweets_path) %>
+                <li class="nav-item"><%= link_to '管理前台', tweets_path, :class => 'nav-link'%></li>
+              <% end %>
+            <% end %>
+            <li class="nav-item"><%= link_to('登出', destroy_user_session_path, method: :delete, :class => 'nav-link') %></li>
+            <li class="nav-item"><%= link_to('修改個人資料', edit_user_password_path(current_user), :class => 'nav-link') %></li>
+            <li class="nav-item"><%= link_to('修改密碼', edit_user_registration_path, :class => 'nav-link') %></li>
+              
           </div>
-        </li>
-        <li></li>
-        <li></li>
-        <li></li>
+        </div>
       <% else %>
         <li><%= link_to('註冊', new_user_registration_path) %></li>
         <li><%= link_to('登入', new_user_session_path) %></li>
