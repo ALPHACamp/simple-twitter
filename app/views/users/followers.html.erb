@@ -1,6 +1,19 @@
-<%= render partial: "shared/profile", locals: { user: @user } %>
-<h2>Followers</h2>
-<% @followers.each do |follower| %>
-  <%= render partial: "shared/follow-item", locals: { user: follower } %>
-  <%= render partial: "shared/follow", locals: { user: follower } %>
-<% end %>
+<div class="row">
+  <div class="col-md-3">
+    <%= render partial: "shared/profile", locals: { user: @user } %>
+  </div>
+  <div class="col-md-8 col-md-offset-1">
+    <div class="tweets row">
+      <h2>Followers</h2>
+      <% @followers.each_with_index do |follower, index| %>
+        <div class="col-md-6 follow-item">
+          <%= render partial: "shared/follow-item", locals: { user: follower } %>
+          <%= render partial: "shared/follow", locals: { user: follower } %>
+        </div>
+        <% if index % 2 == 1 %>
+          <div class="clearfix"></div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
