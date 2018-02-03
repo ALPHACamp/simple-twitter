@@ -1,0 +1,20 @@
+<p>
+<%= @tweet.description %>
+<%= @tweet.created_at %>
+</p>
+<p>
+  <h4>Reply</h4>
+    <ul>
+      <% @replies.each do |r| %>
+        <li>
+          <%= r.comment %>
+          <%= r.created_at%>
+        </li>
+      <%end%>
+    </ul> 
+</p>
+
+<%= form_for [:tweet,@reply] do |r|%>
+  <%= r.text_area :comment%>
+  <%= r.submit %>
+<% end %>
