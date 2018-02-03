@@ -13,7 +13,7 @@ class User < ApplicationRecord
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
 
   # tweet 
-  has_many :tweets, dependent: :restrict_with_error
+  has_many :tweets, dependent: :destroy
 
   def admin?
     self.role == "admin"
