@@ -20,4 +20,10 @@ namespace :dev do
     end
   end
 
+  task test: :environment do
+    @users = User.all
+    @users.each do |user|
+      puts user.name
+    end
+  end
 end
