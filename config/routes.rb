@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   end
 
   resources :tweets, only: [:index, :destroy]
-
+  resources :users, only: [:edit, :update]
   root "tweets#index"
 end
