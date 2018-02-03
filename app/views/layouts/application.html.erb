@@ -10,6 +10,7 @@
 
   <body>
     <% if current_user %>
+      <%= link_to "LOGO", root_path %>
       <% if current_user.admin? %>
         <li><%= link_to 'Admin Panel', admin_root_path %></li>
       <% end %>
