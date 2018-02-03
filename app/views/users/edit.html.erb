@@ -1,0 +1,22 @@
+
+
+
+      <%= form_for @user, url: {action: "update"} do |f| %>
+        <div class="form-group">
+          <%= f.label :avatar, "大頭照上傳" %>
+          <%= image_tag @user.avatar if @user.avatar? %>
+          <%= f.file_field :avatar %>
+        </div>
+        <div class="form-group">
+          <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.text_area :introduction, placeholder: "Type anything about you here....", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Update", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+
+
+
