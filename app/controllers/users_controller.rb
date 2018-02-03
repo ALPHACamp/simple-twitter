@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+      @candidate = User.find_by(id: params[:id])
   end
 
   def update
