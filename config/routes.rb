@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:edit] do
+  resources :users, only: [:edit,:update] do
     member do 
       get :tweets
       get :followings
