@@ -1,3 +1,21 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-box {
+  border: 1px solid #ddd;
+  margin: 5px;
+} 
+
+.intro {
+  word-wrap: break-word;
+  margin-right: 2px;
+}
+
+img {
+
+  max-height: 100%;
+  width: 100%;
+  margin-left: 5%;
+
+}

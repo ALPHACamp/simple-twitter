@@ -1,3 +1,22 @@
 // Place all the styles related to the tweets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// 文字在box內
+.descrip {
+  word-wrap: break-word;
+}
+// tweet-box相關
+.tweet-box {
+  border: 1px solid #ddd;
+  margin: 5px;
+}
+
+
+
+
+
+.tweet-button {
+  margin: 5px;
+  float: right;
+}

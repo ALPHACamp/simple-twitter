@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to "Alpha-blog", root_path, class: "navbar-brand", id: "logo" %>
+      <%= link_to "Twitter", root_path, class: "navbar-brand", id: "logo" %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -31,7 +31,7 @@
 
     <% if current_user %>
       <li>
-        <%= link_to "#", padding: "0px" do %>
+        <%= link_to user_path(current_user), padding: "0px" do %>
           <img src="http://via.placeholder.com/20x20" class="img-circle">
         <% end %>
       </li>
