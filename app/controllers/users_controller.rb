@@ -3,6 +3,10 @@ class UsersController < ApplicationController
   def tweets
   end
 
+  def show
+    @user = current_user
+  end
+
   def edit
   end
 

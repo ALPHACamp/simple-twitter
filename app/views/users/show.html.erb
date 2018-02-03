@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-4">
+        <%= image_tag @user.avatar, class: "img-responsive center-block" %>
+
+        <h1><%= @user.name %></h1>
+        <h3><%= @user.email %></h3>
+        <hr>
+
+        <% if @user.introduction == nil %>
+          <h3>未新增自我介紹</h3>
+        <% else %>
+          <h3><%= @user.introduction %></h3>   
+        <% end %>
+        <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
+
+      </div>
+
+      <div class="col-md-8">
+      </div>
+  </div>
+</div>
