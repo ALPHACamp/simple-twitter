@@ -1,9 +1,12 @@
 class UsersController < ApplicationController
-
+  before_action :set_user, only: [:show, :edit, :update]
   def tweets
   end
 
   def edit
+    unless @user == current_user
+      redirect_to user_path(@user)
+    end
   end
 
   def update
