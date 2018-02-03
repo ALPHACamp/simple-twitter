@@ -1,1 +1,47 @@
-Twitter Front-End index page
+<div class="container">
+  <div class="row">
+    <h1>Twitter Front-End index page</h1>
+    
+    <div class="col-md-8">
+      <%= form_for Tweet.new do |f| %>
+        <div class="form-group">
+          <%= f.text_field :description, placeholder: "Tweet something!", :size=>"50", class: "form-control" %>
+          <%= f.hidden_field :user_id, :value => @user %>
+        </div>
+        <%= f.submit class: "btn btn-primary" %>
+      <% end %>
+      <!-- 推文區加按鈕 -->
+      <br>
+      <div class="clearfix">
+        <% @tweets.each do |tweet| %>
+          <div class="float-left">
+            <%= image_tag tweet.user.avatar, height: 85, width: 85 %>  
+          </div>
+          <%= tweet.user.name %>
+          <%= tweet.description %>
+          <h5>Reply 連結:(<%= tweet.replies.count %>) Like 連結:(<%= tweet.likes.count %>)</h5><!-- reply index 待設定 -->
+          <hr>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <h1>Popular</h1>
+
+      <div>
+        <% @users.each do |user| %>
+          <div class="float-left">
+            <%= image_tag user.avatar, height: 85, width: 85 %>
+          </div>
+          <%= user.name %>
+          <%= user.introduction %>
+          <hr>
+        <% end %>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
