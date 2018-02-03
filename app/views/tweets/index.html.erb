@@ -1,1 +1,20 @@
-<h1>tweet index</h1>
+<div class="container">
+  <div class="col-sm-8">
+    <div class="tweet-input">
+      <%=simple_form_for @tweet do |f|%>
+        <%= f.input :description ,placeholder:"whats on yout mind"%>
+        <%= f.button :submit, 'Tweet',class:"btn btn-primary"%>
+      <%end%>
+    </div>
+    <div class="tweet-item">
+      
+    </div>
+  </div>
+
+  <div class="col-sm-4">
+    <%= @tweets.each do |tweet| %>
+      <p></p>
+    <%end%>
+  </div>
+
+</div>
