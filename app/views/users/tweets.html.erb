@@ -3,9 +3,10 @@
     <%= render partial: "shared/profile", locals: { user: @user} %>
   </div>
   <div class="col-md-8 col-md-offset-1">
-    <h2>Tweets</h2>
-    <% @tweets.each do |tweet| %>
-      <%= render partial: "shared/tweet", locals: {tweet: tweet} %>
-    <% end %>
+    <div class="tweets col-md-12">
+      <% @tweets.each do |tweet| %>
+        <%= render partial: "shared/tweet", locals: {tweet: tweet} %>
+      <% end %>
+    </div>
   </div>
 </div>
