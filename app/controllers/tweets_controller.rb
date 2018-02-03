@@ -7,12 +7,24 @@ class TweetsController < ApplicationController
   end
 
   def create
+    @tweet = current_user.tweets.build(tweet_params)
+    if @tweet.save
+      redirect_to root_path
+    else
+      render :index
+    end
+
   end
 
   def like
   end
 
   def unlike
+  end
+
+  private 
+  def tweet_params
+    params.require(:tweet).permit(:description)
   end
 
 end

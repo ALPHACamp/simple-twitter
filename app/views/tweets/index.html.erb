@@ -7,14 +7,15 @@
       <%end%>
     </div>
     <div class="tweet-item">
-      
+      <% @tweets.each do |tweet| %>
+      <p><%=tweet.user.name%></p>
+      <p><%=tweet.description%></p>
+      <%end%>
     </div>
   </div>
 
   <div class="col-sm-4">
-    <%= @tweets.each do |tweet| %>
-      <p></p>
-    <%end%>
+
   </div>
 
 </div>
