@@ -2,6 +2,22 @@
   <!-- 使用者只能進入自己的profile編輯頁面 -->
   <% if current_user == @user %>
     <h2>修改個人資料</h2>
+
+    <!-- errors msg /start-->
+    <% if @user.errors.present? %>
+      <br /><hr>
+
+      <ul class="container-fluid">
+        <% @user.errors.each do |error, message| %>
+          <div class="alert alert-danger" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <li><strong>WARNING</strong> : <%= "#{error.capitalize} #{message}" %></li>
+          </div>
+        <% end %>
+      </ul>
+    <% end %>
+    <!-- errors msg /end -->
+
     <hr>
     
     <!-- form /start -->
@@ -30,12 +46,15 @@
           </div>
 
           <div class="actions">
-            <%= f.submit "更新個人資料", class: "btn btn-primary" %>
+            <%= f.submit "更新個人資料", class: "btn btn-primary" %> | 
+            <%= f.button "取消變更", type: :reset, class: "btn btn-default" %>
           </div>
         </form>
       <% end %>
     </div>
     <!-- form /end -->
-
+  <% else %>
+    <h2>非使用者本人，無法更變該使用者資料</h2>
+    <%= link_to "回上一頁", :back %>
   <% end %>
 </div>
