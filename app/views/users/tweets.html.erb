@@ -1,3 +1,9 @@
+<% if @user == current_user %>
+  Edit Profile
+<% else %>
+  Follow
+<% end %>
+
 <% @tweets.each do |tweet| %>
   <hr>
   <div class="col-sm-6 col-md-4">
