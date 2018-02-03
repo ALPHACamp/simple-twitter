@@ -1,0 +1,15 @@
+<h1>Tweets index</h1>
+
+<%= form_for @tweet  do |f|%>
+<%= f.text_field :description  %>
+<%=f.submit %>
+<%end%>
+
+<ul>
+  <%= @tweets.each do |t| %>
+    <li>
+      <%=t.description%>
+      <%=t.created_at%>
+    </li>
+  <%end%>
+</ul>
