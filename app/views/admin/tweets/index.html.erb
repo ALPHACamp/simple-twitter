@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+      
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Tweets No.</th>
+            <th>User_name</th>
+            <th>Description</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tweets.each do |tweet| %>
+          <tr>
+            <th scope="row"><%= tweet.id %></th>
+            <td><%= tweet.user.name %></td>
+            <td><%= tweet.description %></td>
+            <td>
+              
+              
+              <%= link_to '<i class = "glyphicon glyphicon-trash" aria-hidden="true"></i>Delete'.html_safe, admin_tweet_path(tweet), method: :delete, data:{confirm:"Are you sure>"} %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    
+  </div>
+</div>
