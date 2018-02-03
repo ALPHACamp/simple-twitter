@@ -1,1 +1,12 @@
 <h1>twitter首頁</h1>
+<div class="row">
+  <%= form_for @tweet do |f| %>
+    <div class="form-group">
+      <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control" %>
+      <% if @tweet.errors.present? %>
+        <%= @tweet.errors.full_messages.to_sentence %>
+      <% end %>
+    </div>
+    <%= f.submit 'tweet' %>
+  <% end %>
+</div>
