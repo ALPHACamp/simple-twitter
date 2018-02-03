@@ -1,0 +1,22 @@
+<%= params %>
+<%= @tweet.description %>
+<%= @tweet.user.name %>
+<%= @tweet.user.introduction %>
+<%= @tweet.user.tweets.count %>
+
+
+
+<ul>
+<% @replies.each do |reply| %>
+  <li>
+    <%= reply.comment %>
+    <%= reply.user.name %>
+    <%= reply.created_at.strftime("%Y-%m-%d, %I:%M %p") %>  
+    </li>
+<% end %>
+</ul>
+
+<%= form_for [:tweet,@reply] do |f| %>
+  <%= f.text_area :comment %>
+  <%= f.submit %>
+<% end %>

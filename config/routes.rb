@@ -11,6 +11,11 @@ Rails.application.routes.draw do
     end
    
   end
+
+   resources :tweets  do
+    resources :replies,only: [:index, :create]
+   
+  end
   
 
   namespace :admin do
