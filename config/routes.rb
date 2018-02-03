@@ -10,6 +10,12 @@ Rails.application.routes.draw do
   resources :tweets, only: [:index, :create] 
 
 
+  #admin routes
+  namespace :admin do
+    root "tweets#index"
+    resources :tweets, only: [:index, :destroy]     
+  end
+
 
   # 請依照專案指定規格來設定路由
 
