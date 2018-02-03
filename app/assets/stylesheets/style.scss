@@ -51,19 +51,7 @@ img {
   padding-right: 15px;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #00CACA;
-  border-color: #00CACA;
-  padding: 10px 25px;
-  border-radius: 8px;
-}
 
-.btn-primary:hover {
-  color: #333;
-  background-color: #00CACA;
-  border-color: #00CACA;
-}
 
 
 
@@ -78,17 +66,26 @@ img {
 }
 
 .container-fluid {
-  background-color: #00CACA  ;
+  background-color: #204d74  ;
 }
 
 .navbar-default .navbar-brand {
-  color: #ffffff;
+  color: #fff;
 }
 
 .navbar-default .navbar-nav > li > a {
-  color: #ffffff;
+  color: #fff;
 }
 
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+  color: #A6FFFF;
+  background-color: transparent;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  color: #A6FFFF;
+  background-color: transparent;
+}
 
 /* ------- user sign-up ------- */
 
