@@ -1,16 +1,14 @@
 <div class="profile">
-  <div class="avatar">
-    <%= image_tag user.avatar, size: "200" if user.avatar? %>
-  </div>
+  <%= render partial: "shared/avatar", locals: {avatar: user.avatar} if user.avatar? %>
   <p></p>
   <div class="intro">
     <%= user.introduction %>
   </div>
   <div class="items">
-    <p>Tweets</p>
+    <%= link_to "Tweets #{user.tweets.size}", tweets_user_path(user) %>
     <p>Following</p>
     <p>Follower</p>
-    <p>Likes</p>
+    <%= link_to "like #{user.likes_count}", likes_user_path(user) %>
   </div>
   <div class="button">
     <% if user == current_user %>
