@@ -1,5 +1,7 @@
-<%= render partial: "shared/avatar", locals: {avatar: reply.user.avatar} if reply.user.avatar? %>
-<div>
+<div class="col-md-3">
+  <%= render partial: "shared/avatar", locals: {avatar: reply.user.avatar} if reply.user.avatar? %>
+</div>
+<div class="col-md-9">
   <p>
     <%= reply.user.name %>
     <%= reply.created_at.strftime("%Y-%m-%d, %H:%M") %>
