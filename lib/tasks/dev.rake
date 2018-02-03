@@ -19,7 +19,7 @@ namespace :dev do
       puts user.name
     end
     user = User.last
-    user.name = "root"
+    user.name = "admin"
     user.email = "admin@example.co"
     user.role = "admin"
     user.save                      
