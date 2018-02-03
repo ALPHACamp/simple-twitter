@@ -19,4 +19,16 @@ namespace :dev do
     end
   end
 
+  task fake_tweet: :environment do
+    105.times do |i|
+      tweet = Tweet.new(
+        description: FFaker::Lorem.sentence,
+        user: User.all.sample
+      )
+      tweet.save!
+    end
+    puts "have created fake tweets"
+    puts "now you have #{Tweet.count} tweet data"
+  end
+
 end

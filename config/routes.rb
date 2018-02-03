@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
   root "tweets#index"
 
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:tweets, :edit, :update]
+
+
+  resources :tweets, only: [:create]
 
 
 

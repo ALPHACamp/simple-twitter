@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:tweets, :edit, :update]
 
   def tweets
+    @tweets = Tweet.all
   end
 
   def edit
@@ -11,6 +12,8 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user.update(user_params)
+    redirect_to user_path(@user)
   end
 
   def followings
