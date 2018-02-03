@@ -1,13 +1,18 @@
 class UsersController < ApplicationController
 
   def tweets
+          @user  = User.all
   end
 
   def edit
-      @candidate = User.find_by(id: params[:id])
+
+  @user = User.find(params[:id])
   end
 
   def update
+@user = User.find(params[:id])
+@user.update_attributes(user_params)
+redirect_to tweets_user_path(current_user)
   end
 
   def followings
@@ -20,6 +25,12 @@ class UsersController < ApplicationController
 
   def likes
     @likes # 基於測試規格，必須講定變數名稱
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :introduction, :avatar)
   end
 
 end

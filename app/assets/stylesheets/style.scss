@@ -2,55 +2,65 @@ ul.nopoint{ /* 取消ul預設的內縮及樣式 */
   margin: 0;
   padding: 0;
   list-style: none;
-    }
+}
 
-    ul.drop-down-menu {
+ul.drop-down-menu {
+border: 0.1px solid ;
+margin:11px;
+display: inline-block;
+font-family: 'Open Sans', Arial, sans-serif;
+font-size: 13px;
+}
 
-margin-top:5.5px;
-        display: inline-block;
-        font-family: 'Open Sans', Arial, sans-serif;
-        font-size: 13px;
-    }
+ul.drop-down-menu li {
+position: relative;
+white-space: nowrap;
+border: 0.1px solid ;
+}
 
-    ul.drop-down-menu li {
-        position: relative;
-        white-space: nowrap;
-        border-right: #ccc 1px solid;
-    }
+ul.drop-down-menu > li:last-child {
+border-right: none;
+}
 
-    ul.drop-down-menu > li:last-child {
-        border-right: none;
-    }
+ul.drop-down-menu > li {
+float: left; /* 只有第一層是靠左對齊*/
+}
 
-    ul.drop-down-menu > li {
-        float: left; /* 只有第一層是靠左對齊*/
-    }
+ul.drop-down-menu a {
+color: #333;
+display: block;
+padding: 0 30px;
+text-decoration: none;
+line-height: 30px;
+}
 
-     ul.drop-down-menu a {
+ul.drop-down-menu a:hover { /* 滑鼠滑入按鈕變色*/
+background-color: #ef5c28;
+color: #fff;
+}
 
-        color: #333;
-        display: block;
-        padding: 0 30px;
-        text-decoration: none;
-        line-height: 40px;
+ul.drop-down-menu li:hover > a { /* 滑鼠移入次選單上層按鈕保持變色*/
+background-color: #ef5c28;
+color: #fff;
+}
 
-    }
-    ul.drop-down-menu a:hover { /* 滑鼠滑入按鈕變色*/
-        background-color: #ef5c28;
-        color: #fff;
-    }
-    ul.drop-down-menu li:hover > a { /* 滑鼠移入次選單上層按鈕保持變色*/
-        background-color: #ef5c28;
-        color: #fff;
-    }
-    ul.drop-down-menu ul { /*隱藏次選單*/
-      display: none;
-  }
-  ul.drop-down-menu li:hover > ul { /* 滑鼠滑入展開次選單*/
-    margin: 0;
-    padding: 0;
-    list-style: none;
-       display: block;
-         position: absolute;
+ul.drop-down-menu ul { /*隱藏次選單*/
+display: none;
+}
+
+ul.drop-down-menu li:hover > ul { /* 滑鼠滑入展開次選單*/
+margin: 0;
+padding: 0;
+list-style: none;
+display: block;
+position: absolute;
 text-align:left;
-   }
+}
+// 以上為logout選單樣式
+
+.proedit{
+margin: -290px 0px 0px 400px;
+width:700px;
+height:530px;
+text-align:right;
+}
