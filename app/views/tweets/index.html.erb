@@ -1,4 +1,12 @@
 <h1>twitter首頁</h1>
+<% @tweets.each do |tweet| %>
+  <div class="left">
+    <h4><%= tweet.user.name %></h4><br>
+    <p><%= simple_format tweet.description %></p><br>
+    <p class="text-muted"><em><%= time_ago_in_words(tweet.created_at) %></em></p>
+    <hr>
+  </div>
+<% end %>
 <div class="row">
   <%= form_for @tweet do |f| %>
     <div class="form-group">
