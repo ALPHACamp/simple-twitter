@@ -5,7 +5,7 @@
         <div class="form-group">
           <%= f.text_area :description, placeholder: "What's on your mind?", size: "1x6", class: "form-control" %>
           <% if @tweet.errors.present? %>
-            <%= @tweet.errors.full_messages.to_sentence %>
+            <p class="error"><%= @tweet.errors.full_messages.to_sentence %></p>
           <% end %>
         </div>
         <%= f.submit 'tweet', class: "btn btn-default btn-left" %>
@@ -21,8 +21,8 @@
         <% end %>
         <div class="user-text">
           <h4><%= tweet.user.name %></h4>
-          <p class="text-muted"><em><%= time_ago_in_words(tweet.created_at) %></em></p>
-          <p><%= simple_format tweet.description %></p><br>
+          <p class="text-muted"><em><%= tweet.created_at.to_s(:db) %></em></p>
+          <p><%= simple_format tweet.description %></p>
         </div>
         <hr>
       </div>

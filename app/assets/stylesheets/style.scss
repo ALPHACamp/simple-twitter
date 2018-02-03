@@ -94,6 +94,10 @@ div.notice{
   float: right;
 }
 
+.error{
+  color: #FF5151;
+}
+
 .user-avatar{
   display: inline-block;
   width: 15%;
@@ -102,9 +106,18 @@ div.notice{
 
 .user-text{
   display: inline-block;
-  width: 20%;
+  width: 50%;
 }
 
 .user-text h4, .user-text p:nth-child(2){
   display: inline-block;
+}
+
+.user-edit{
+  width: 60%;
+  margin: 50px auto;
+}
+
+.btn-next{
+  margin-right: 10px;
 }
