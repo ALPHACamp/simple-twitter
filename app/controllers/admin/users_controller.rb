@@ -28,8 +28,8 @@ class Admin::UsersController < Admin::BaseController
 
   private
     def user_params
-      params.require(:user).permit(:name, :username, :password,
-                                   :about, :location, :website, :avatar, :cover)
+      params.require(:user).permit(:name, :username, :password, :about, :avatar)
+
     end
 
     def check_user

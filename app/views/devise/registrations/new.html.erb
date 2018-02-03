@@ -28,6 +28,13 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+
+  <div class="field">
+  <%= f.label :avatar, "Avatar" %>
+   <%= image_tag @user.avatar, width: '300px' if @user.avatar? %>
+   <%= f.file_field :avatar %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
