@@ -1,7 +1,20 @@
-<h1>餐廳前台</h1>
+<div class="container">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="col-md-8">
+      <% @tweets.each do |tweet| %>
+        <h4><%= tweet.user.name %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></h4>
+        <p><%= tweet.description %></p>
+        <br>
+      <% end %>
+    </div>
 
-<% @tweets.each do |tweet| %>
-  <h3>@<%= tweet.user.name %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></h3>
-  <p><%= tweet.description %></p>
-  <br>
-<% end %>
+    <div class="col-md-4">
+      <h2>Popular</h2><br>
+      <% @users.each do |user| %>
+        <h4><%= user.name %></h4>
+        <p><%= user.introduction %></p>
+        <br>
+      <% end %>
+    </div>
+  </div>
+</div>
