@@ -19,7 +19,12 @@
           </div>
           <%= tweet.user.name %>
           <%= tweet.description %>
-          <h5>Reply 連結:(<%= tweet.replies.count %>) Like 連結:(<%= tweet.likes.count %>)</h5><!-- reply index 待設定 -->
+          <h5>
+            <%= link_to Reply, replies_user_path(tweet) %>
+            <small>(<%= tweet.replies.count %>)</small>
+            Like 連結 <!-- 待 like -->
+            (<%= tweet.likes.count %>)
+          </h5>
           <hr>
         <% end %>
       </div>

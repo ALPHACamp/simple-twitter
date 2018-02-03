@@ -14,7 +14,8 @@ Rails.application.routes.draw do
 
   # Reply
   get '/tweets/:id/replies' => 'replies#index', :as => "replies_user"
-  post '/tweets/:id/replies' => 'replies#create', :as => "reply"
+  post '/tweets/:id/replies' => 'replies#create', :as => "replies"
+  # create action path_helper 慣例用複數，規則可用 resources 先跑一遍
 
   # Following
   get '/users/:id/followings' => 'users#followings', :as => "following_user"
