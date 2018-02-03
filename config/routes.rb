@@ -3,12 +3,19 @@ Rails.application.routes.draw do
   devise_for :users
 
   # 請依照專案指定規格來設定路由
-  resources :tweets, only: [:index, :create]
+  resources :tweets, only: [:index, :create] 
 
   resources :tweets, only: [:show] do
     resources :replies, only:[:index, :create]
   end
+
+
+  resources :users, only: [:edit]
   
+  
+  
+  get '/users/:id/tweets' => 'users#tweets', :as => "users_tweets"
+
   root "tweets#index"
 
   namespace :admin do 

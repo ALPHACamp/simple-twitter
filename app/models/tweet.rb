@@ -3,4 +3,6 @@ class Tweet < ApplicationRecord
 
   has_many :replies
 
+  belongs_to :user, optional: :ture
+
 end
