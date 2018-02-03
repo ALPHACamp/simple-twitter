@@ -54,7 +54,8 @@
     </div>
     <!-- form /end -->
   <% else %>
-    <h2>非使用者本人，無法更變該使用者資料</h2>
-    <%= link_to "回上一頁", :back %>
+    <h2>非使用者本人，無法修改此使用者的個人資料</h2><br />
+    <hr>
+    <%= link_to "回上一頁", :back, class: "btn btn-primary"  %>
   <% end %>
 </div>
