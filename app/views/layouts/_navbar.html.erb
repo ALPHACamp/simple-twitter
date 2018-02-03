@@ -8,22 +8,29 @@
       <ul class="navbar-nav  ml-auto">
         <% if current_user %>
           <% if current_user&.admin? %>
-            <li class="nav-item"><%= link_to 'Admin Panel', admin_restaurants_path %></li>
+            <li class="nav-item">
+              <%= link_to 'Admin Panel', admin_restaurants_path %>
+            </li>
           <% end %>
-          <li class="nav-item"><span class="navbar-text">Hi, <%= current_user.email %></span></li>
-          <li class="nav-item"><%= link_to('登出', destroy_user_session_path, method: :delete, class: "nav-link") %></li>
-          <li class="nav-item"><%= link_to('修改個人資料', edit_user_path(current_user), class: "nav-link") %></li>
-          <li class="nav-item"><%= link_to('修改密碼', edit_user_registration_path, class: "nav-link") %></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi, <%= current_user.email %></a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to('修改個人資料', edit_user_path(current_user), class: "dropdown-item") %>
+              <%= link_to('修改密碼', edit_user_registration_path, class: "dropdown-item") %>
+            </div>
+          </li>
+          <li class="nav-item">
+            <%= link_to('登出', destroy_user_session_path, method: :delete, class: "nav-link") %>
+          </li>
         <% else %>
-          <li class="nav-item"><%= link_to('註冊', new_user_registration_path, class: "nav-link") %></li>
-          <li class="nav-item"><%= link_to('登入', new_user_session_path, class: "nav-link") %></li>
+          <li class="nav-item">
+            <%= link_to('註冊', new_user_registration_path, class: "nav-link") %>
+          </li>
+          <li class="nav-item">
+            <%= link_to('登入', new_user_session_path, class: "nav-link") %>
+          </li>
         <% end %>
       </ul>
     </div>
   </div>
 </nav>
-
-
-
-
-
