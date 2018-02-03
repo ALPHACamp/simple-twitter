@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-xs-4 user-block">
+    <div class="center">
+      <img src="http://via.placeholder.com/50x50" class="img-circle big-img">
+    </div>
+    <br>
+    <div class="center">
+      <%= @user.name %>
+    </div>
+    <div class="center">
+      <%= @user.introduction %>
+    </div>
+    <hr>
+    <div class="center">
+      <%= link_to "Tweets", tweets_user_path(@user) %>
+    </div>
+    <div class="center">
+      <%= link_to "Followings", "#" %>
+    </div>
+    <div class="center">
+      <%= link_to "Followers", "#" %>
+    </div>
+    <div class="center">
+      <%= link_to "Like", "#" %>
+    </div>
+    <div class="center">
+      <%= link_to "Edit profile", edit_user_path(@user) %>
+    </div>
+  </div>
+  <div class="col-xs-8">
+    <%= render partial: "share/tweet", locals: {tweet: @tweet} %>
+  </div>
+</div>
+

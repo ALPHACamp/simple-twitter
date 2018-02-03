@@ -22,7 +22,7 @@
           <li><%= link_to 'Admin users Panel', admin_users_path %></li>
         <% end %>
         
-      </ul>
+      </ul>s
       <form class="navbar-form navbar-left">
     
        
@@ -31,8 +31,8 @@
 
     <% if current_user %>
       <li>
-        <%= link_to user_path(current_user), padding: "0px" do %>
-          <img src="http://via.placeholder.com/20x20" class="img-circle">
+        <%= link_to tweets_user_path(current_user), padding: "0px" do %>
+          <img src="http://via.placeholder.com/20x20" class="img-circle nav-img">
         <% end %>
       </li>
       <li>
@@ -41,13 +41,8 @@
         <% end %>
       </li>
       <li>
-        <%= link_to edit_user_path(current_user) do %>
-          <span class="glyphicon glyphicon-edit"></span>
-        <% end %>
-      </li>
-      <li>
         <%= link_to edit_user_registration_path do %>
-          <span class="glyphicon glyphicon-eye-open"></span>
+          <span class="glyphicon glyphicon-edit"></span>
         <% end %>
         </li>
     <% else %>
