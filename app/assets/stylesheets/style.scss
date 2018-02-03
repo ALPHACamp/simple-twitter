@@ -70,11 +70,15 @@ img {
 }
 
 .navbar-default .navbar-brand {
-  color: #fff;
+  color: #FFF;
 }
 
 .navbar-default .navbar-nav > li > a {
-  color: #fff;
+  color: #FFF;
+}
+
+.navbar-default .navbar-text {
+  color: #FFF;
 }
 
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
@@ -107,4 +111,19 @@ img {
   -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+
+
+
+
+/* ------- viewport ------- */
+
+@media screen and (min-width: 768px) {
+
+}
+
+
+@media screen and (max-width: 767px) {
+  
 }
