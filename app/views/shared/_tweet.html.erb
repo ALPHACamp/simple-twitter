@@ -3,7 +3,7 @@
     <%= render partial: "shared/tweet-item", locals: {tweet: tweet} %>
   </div>
   <div class="col-md-9 col-md-offset-3">
-    <%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet) %>
+    <%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet), class: "links" %>
     <%= render partial: "shared/like", locals: {tweet: tweet} %>
   </div>
 </div>
