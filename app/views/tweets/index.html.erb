@@ -1,1 +1,9 @@
-推特前台
+<h1>推特前台</h1>
+
+<ul>
+  <% @tweets.each do |tweet| %>
+  <li>
+    <%= tweet.name %>
+  </li>
+  <% end %>
+</ul>

@@ -1,1 +1,10 @@
-推特後台
+<h1>推特後台</h1>
+
+<ul>
+  <% @tweets.each do |tweet| %>
+  <li>
+    <%= tweet.name %>
+    <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %>
+  </li>
+  <% end %>
+</ul>
