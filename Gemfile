@@ -5,6 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# FrontEnd Framework
+gem 'bootstrap', '~> 4.0.0'
+gem 'jquery-rails'
 # user authentication
 gem 'devise'
 # file uploader
