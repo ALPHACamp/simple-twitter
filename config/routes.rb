@@ -2,12 +2,21 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users
 
-
   # 設定root
   root "tweets#index"
 
-  #tweet routes
+  #tweets routes
   resources :tweets, only: [:index, :create] 
+
+  #users routes
+  resources :users, only: [:edit, :update] do
+
+    member do
+      get :tweets
+    end
+
+  end
+
 
 
   #admin routes
