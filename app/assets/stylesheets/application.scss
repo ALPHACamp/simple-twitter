@@ -37,3 +37,21 @@ nav.navbar {
     }
   }
 }
+
+.tweet-item {
+  border: 2px solid lightgray;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.user-item {
+  border: 2px solid lightgray;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+.user-name {
+  text-align: center;
+  font-size: 2.5em;
+  color:lightblue;
+}

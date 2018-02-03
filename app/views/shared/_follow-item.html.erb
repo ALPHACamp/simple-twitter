@@ -1,3 +1,10 @@
-<%= render partial: "shared/avatar", locals: {avatar: user.avatar} if user.avatar? %>
-<%= link_to user.name, tweets_user_path(user) %>
-<%= user.introduction %>
+<div class="row">
+  <div class="col-md-5">
+    <%= render partial: "shared/avatar", locals: {avatar: user.avatar} if user.avatar? %>
+  </div>
+  <div class="col-md-7">
+    <%= link_to user.name, tweets_user_path(user) %><br/>
+    <%= user.introduction %>
+  </div>
+</div>
+

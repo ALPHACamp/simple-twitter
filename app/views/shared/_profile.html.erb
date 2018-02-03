@@ -1,13 +1,13 @@
 <div class="profile">
   <%= render partial: "shared/avatar", locals: {avatar: user.avatar} if user.avatar? %>
-  <p></p>
+  <p class="user-name"><%= user.name %></p>
   <div class="intro">
     <%= user.introduction %>
   </div>
   <div class="items">
-    <%= link_to "Tweets #{user.tweets.size}", tweets_user_path(user) %>
-    <%= link_to "Following #{user.followings.count}", followings_user_path(user) %>
-    <%= link_to "Follower #{user.followers.count}", followers_user_path(user) %>
+    <%= link_to "Tweets #{user.tweets.size}", tweets_user_path(user) %><br/>
+    <%= link_to "Following #{user.followings.count}", followings_user_path(user) %><br/>
+    <%= link_to "Follower #{user.followers.count}", followers_user_path(user) %><br/>
     <%= link_to "like #{user.likes_count}", likes_user_path(user) %>
   </div>
   <div class="button">

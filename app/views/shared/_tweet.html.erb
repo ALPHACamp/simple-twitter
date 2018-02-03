@@ -1,8 +1,8 @@
-<div class="tweet-item">
-  <div>
+<div class="tweet-item row">
+  <div class="col-md-12">
     <%= render partial: "shared/tweet-item", locals: {tweet: tweet} %>
   </div>
-  <div>
+  <div class="col-md-9 col-md-offset-3">
     <%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet) %>
     <%= render partial: "shared/like", locals: {tweet: tweet} %>
   </div>

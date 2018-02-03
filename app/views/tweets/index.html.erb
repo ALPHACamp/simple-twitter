@@ -1,22 +1,30 @@
-<%= form_for(@tweet) do |f| %>
-  <div class="form-group">
-    <%= f.text_area :description, placeholder: "What's on your mind?" %>
+<div class="row">
+  <div class="col-md-7">
+    <div class="col-md-12">
+      <%= form_for(@tweet) do |f| %>
+        <div class="form-group">
+          <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Tweet", :disable_with => 'Tweeting...', class: "pull-right btn btn-default" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="tweets col-md-12">
+      <% @tweets.each do |tweet| %>
+        <%= render partial: "shared/tweet", locals: {tweet: tweet} %>
+      <% end %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= f.submit "Tweet", :disable_with => 'Tweeting...' %>
+  <div class="col-md-5">
+    <div class="popular col-md-12">
+      <h2>Popular</h2>
+      <% @users.each do |user| %>
+        <div class="user-item row">
+          <%= render partial: "shared/follow-item", locals: { user: user } %>
+          <%= render partial: "shared/follow", locals: { user: user } %>
+        </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
-
-<div class="tweets">
-  <% @tweets.each do |tweet| %>
-    <%= render partial: "shared/tweet", locals: {tweet: tweet} %>
-  <% end %>
-</div>
-
-<div class="popular">
-  <h2>Popular</h2>
-  <% @users.each do |user| %>
-    <%= render partial: "shared/follow-item", locals: { user: user } %>
-    <%= render partial: "shared/follow", locals: { user: user } %>
-  <% end %>
 </div>
