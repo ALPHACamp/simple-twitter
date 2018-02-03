@@ -4,6 +4,7 @@
       <th>ID</th>
       <th>Auther</th>
       <th>Description</th>
+      <th>replies</th>
       <th>#</th>
     </tr>
   </thead>
@@ -13,6 +14,11 @@
         <td><%= tweet.id %></td>
         <td><%= tweet.user.name %></td>
         <td><%= tweet.description %></td>
+        <td>
+          <% tweet.replies.each do |reply| %>
+            <li><%= reply.comment %></li>
+          <% end %>
+        </td>
         <td><%= link_to "Delete", admin_tweet_path(tweet), method: :delete %></td>
       </tr>
     <% end %>
