@@ -41,11 +41,11 @@ namespace :dev do
   task fake_tweets_200: :environment do
     200.times do |i|
         Tweet.create(
-          description: FFaker::Lorem.sentence(100),
+          description: FFaker::Tweet::body,
           user: User.all.sample
         )
     end
-    puts "create random 50 fake tweets"
+    puts "create random 200 fake tweets"
   end
 
   task fake_replies_200: :environment do
