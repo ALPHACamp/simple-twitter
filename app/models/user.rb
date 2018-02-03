@@ -27,4 +27,12 @@ class User < ApplicationRecord
     self.role == "admin"
   end 
 
+  def is_following?(user)
+    self.followings.include?(user)
+  end
+
+  def count_followers 
+    self.followers_count = self.followers.uniq.size
+    self.save
+  end
 end

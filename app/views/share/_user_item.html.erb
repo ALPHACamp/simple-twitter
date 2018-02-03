@@ -6,11 +6,11 @@
     <h2><%= user.name %></h2>
     <h4><%= user.introduction %></h4>
   </div>
-  <div class="user-dashboard">
-    <h3>Tweet <%= user.tweets.count %></h3>
-    <h3>Following <%= user.followings.count %></h3>
-    <h3>Follower <%= user.followers_count %></h3>
-    <h3>Likes <%= user.likes_count %></h3>
+  <div class="user-dashboard"> 
+    <h3><%= link_to "Tweet #{user.tweets.count}", tweets_user_path(user) %></h3>
+    <h3><%= link_to "Following #{user.followings.count}", followings_user_path(user)%></h3>
+    <h3><%= link_to "Follower #{user.followings.count}", followers_user_path(user)%></h3>
+    <h3><%= link_to "Likes #{user.likes_count}", likes_user_path(user) %></h3>
     <% if user == current_user %>
       <div>
         <%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-primary" %>
