@@ -4,9 +4,20 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
+    @user = User.find(params[:id])
+    if current_user == @user
+      if @user.update_attributes(user_params)
+        redirect_to root_url, :notice => "個人資料更新成功"
+      else
+        render :action => :edit
+      end
+    else
+      redirect_to root_url, :alert => "您非該使用者，無法更變該使用者資料"
+    end
   end
 
   def followings
@@ -20,5 +31,12 @@ class UsersController < ApplicationController
   def likes
     @likes # 基於測試規格，必須講定變數名稱
   end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email, :name, :introduction, :avatar)
+  end
+
 
 end
