@@ -9,18 +9,29 @@
   </head>
 
   <body>
-    <% if current_user %>
-      <% if current_user&.admin? %>
-        <li><%= link_to 'Admin Panel', admin_tweets_path %></li>
+    <nav class="nav nav-pills">
+      <% if current_user %>
+        <% if current_user&.admin? %>
+          <li class="nav-item"><%= link_to 'Admin Panel', admin_tweets_path %></li>
+        <% end %>
+        <li><p class="navbar-text">Hi, <%= current_user.name %></p></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+          <div class="dropdown-menu">
+            <%= link_to('登出', destroy_user_session_path, method: :delete, :class => 'dropdown-item') %>
+            <%= link_to('修改個人資料', edit_user_password_path(current_user), :class => 'dropdown-item') %>
+            <%= link_to('修改密碼', edit_user_registration_path, :class => 'dropdown-item') %>
+          </div>
+        </li>
+        <li></li>
+        <li></li>
+        <li></li>
+      <% else %>
+        <li><%= link_to('註冊', new_user_registration_path) %></li>
+        <li><%= link_to('登入', new_user_session_path) %></li>
       <% end %>
-      <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
-      <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
-      <li><%= link_to('修改個人資料', edit_user_password_path(current_user)) %></li>
-      <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
-    <% else %>
-      <li><%= link_to('註冊', new_user_registration_path) %></li>
-      <li><%= link_to('登入', new_user_session_path) %></li>
-    <% end %>
+    </nav>
+    
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
