@@ -2,8 +2,8 @@
 <html>
   <head>
     <title>SimpleTwitter</title>
+    <!-- viewport -->
     <meta name= 'viewport' content= 'width=devise-width, initial-scale=1.0'>
-    
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -11,18 +11,48 @@
   </head>
 
   <body>
-    <% if current_user %>
-      <% if current_user&.admin? %>
-        <li><%= link_to 'Admin Panel', admin_restaurants_path %></li>
-      <% end %>
-      <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
-      <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
-      <li><%= link_to('修改個人資料', edit_user_path(current_user)) %></li>
-      <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
-    <% else %>
-      <li><%= link_to('註冊', new_user_registration_path) %></li>
-      <li><%= link_to('登入', new_user_session_path) %></li>
-    <% end %>
+    
+    <!-- tweets header -->
+    <header id="header clearfix">
+      <!-- navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <!-- navbar Brand and toggle //start -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <%= link_to "Tweets", root_path, class: "navbar-brand" %>
+          </div>
+          <!-- navbar Brand and toggle //end -->
+
+          <!-- 以下插入 -->
+          <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <% if current_user %>
+                <% if current_user&.admin? %>
+                  <li><%= link_to 'Admin Panel', admin_restaurants_path %></li>
+                <% end %>
+                <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
+                <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
+                <li><%= link_to('修改個人資料', edit_user_path(current_user)) %></li>
+                <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
+              <% else %>
+                <li><%= link_to('註冊', new_user_registration_path) %></li>
+                <li><%= link_to('登入', new_user_session_path) %></li>
+              <% end %>
+            </ul>
+          </div>
+          <!-- 以上插入 -->
+
+        </div> <!-- /. container-fluid-->
+      </nav> 
+    </header>
+
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
