@@ -13,6 +13,10 @@
     <p>Likes</p>
   </div>
   <div class="button">
-    <%= link_to "Edit Profile", user_path(user) %>
+    <% if user == current_user %>
+      <%= link_to "Edit Profile", user_path(user) %>
+    <% else %>
+      <%= link_to "Follow", "#" %>
+    <% end %>
   </div>
 </div>

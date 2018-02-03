@@ -1,0 +1,4 @@
+<%= render partial: "shared/profile", locals: { user: @user} %>
+<% @tweets.each do |tweet| %>
+  <%= render partial: "shared/tweet", locals: {tweet: tweet} %>
+<% end %>
