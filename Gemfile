@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 # FrontEnd Framework
-gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap-sass'
 gem 'jquery-rails'
 # user authentication
 gem 'devise'

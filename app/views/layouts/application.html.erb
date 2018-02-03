@@ -9,35 +9,30 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-toggleable-md navbar-light">
-     
-      <% if current_user %>
-       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand">Hi, <%= current_user.name %></a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <div class="navbar-nav mr-auto">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-right">
+          <% if current_user %>
+            <li class="navbar-brand">Hi, <%= current_user.name %></li>
             <% if current_user&.admin?%>
-              <% if current_page?(tweets_path)%>
+              <% if current_page?(root_path)%>
                 <li class="nav-item"><%= link_to '管理後台', admin_tweets_path, :class => 'nav-link'%></li>
               <% elsif current_page?(admin_tweets_path) %>
-                <li class="nav-item"><%= link_to '管理前台', tweets_path, :class => 'nav-link'%></li>
+                <li class="nav-item"><%= link_to '管理前台', root_path, :class => 'nav-link'%></li>
               <% end %>
             <% end %>
             <li class="nav-item"><%= link_to('登出', destroy_user_session_path, method: :delete, :class => 'nav-link') %></li>
             <li class="nav-item"><%= link_to('修改個人資料', edit_user_password_path(current_user), :class => 'nav-link') %></li>
             <li class="nav-item"><%= link_to('修改密碼', edit_user_registration_path, :class => 'nav-link') %></li>
-              
-          </div>
-        </div>
-      <% else %>
-        <ul class="nav justify-content-center">
-          <li class="nav-item"><%= link_to('註冊', new_user_registration_path, :class => 'nav-link') %></li>
-          <li class="nav-item"><%= link_to('登入', new_user_session_path, :class => 'nav-link') %></li>
+          <% else %>
+            <ul class="nav justify-content-center">
+              <li class="nav-item"><%= link_to('註冊', new_user_registration_path, :class => 'nav-link') %></li>
+              <li class="nav-item"><%= link_to('登入', new_user_session_path, :class => 'nav-link') %></li>
+            </ul> 
+          <% end %>
         </ul>
-        
-      <% end %>
+      </div>
+      
     </nav>
     
     <p class="notice"><%= notice %></p>
