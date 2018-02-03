@@ -1,23 +1,21 @@
-<h1>Tweet Back-End</h1>
+<div class="container">
+  <h1>Tweet Back-End</h1>
+  <br>
+  <div>
+    <%= link_to 'Tweets', admin_tweets_path %> |
+    <%= link_to 'Users', admin_users_path %>
+  </div>
 
-<ul>
-  <h3>Tweets</h3>
-  <% @tweets.each do |tweet| %>
-    <%= tweet.description %>
-    <h5>Reply 連結:(回文數) Like 連結:(讚數)</h5><!-- 待關聯設定 -->
-    <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %><!-- 待設定刪推文連帶刪回文 -->
-  <% end %>
-</ul>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Tweets</h3>
+      <% @tweets.each do |tweet| %>
+        <%= tweet.description %>
+        <h5>Reply 連結:(<%= tweet.replies.count %>) Like 連結:(<%= tweet.likes.count %>)</h5><!-- reply index 待設定 -->
+        <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %>
+        <hr>
+      <% end %>
+    </div>
+  </div>
 
-
-<ul>
-  <h3>Users</h3>
-  <% @users.each do |user| %>
-    <%= user.name %><!-- 使用者依推文數排序，在 controller 處理 -->
-    <%= user.introduction %>
-    <h5>Tweets:</h5><!-- 待關聯設定 -->
-    <h5>Following:</h5><!-- 待自關聯設定 -->
-    <h5>Follower:</h5><%= user.followers_count %>
-    <h5>Like:</h5><%= user.likes_count %>
-  <% end %>
-</ul>
+</div>
