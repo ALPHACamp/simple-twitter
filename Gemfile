@@ -15,6 +15,8 @@ gem 'carrierwave'
 gem 'ffaker'
 # bootstrap
 gem 'bootstrap-sass', '~> 3.3.7'
+# jquery
+gem 'jquery-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
