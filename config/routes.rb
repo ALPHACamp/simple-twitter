@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   root "tweets#index"
 
-  resources :tweets, only: [:index, :create]
+  resources :tweets, only: [:index, :create] do
+    resources :replies, only: [:index, :create]
+  end
 
   namespace :admin do
     resources :tweets, only: [:index, :destroy]
