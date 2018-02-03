@@ -1,4 +1,5 @@
 class Tweet < ApplicationRecord
-  validates_length_of :description, maximum: 140
+  validates :description, presence: true, length: { maximum: 140 }
+  belongs_to :user
 
 end

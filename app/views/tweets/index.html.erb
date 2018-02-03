@@ -1,1 +1,13 @@
 <h1>tweets 前台</h1>
+
+<%= form_for @tweet do |t| %>
+  <%= t.text_area :description %>
+
+  <%= t.submit "Tweet" %>
+<% end %>
+
+<%= @tweets.each do |t| %>
+  <%= t.user.name %>
+  <%= t.created_at %>
+  <%= simple_format t.description %>
+<% end %>
