@@ -6,8 +6,8 @@
   </div>
   <div class="items">
     <%= link_to "Tweets #{user.tweets.size}", tweets_user_path(user) %>
-    <%= link_to "Following #{user.followings.size}", followings_user_path(user) %>
-    <p>Follower</p>
+    <%= link_to "Following #{user.followings.count}", followings_user_path(user) %>
+    <%= link_to "Follower #{user.followers.count}", followers_user_path(user) %>
     <%= link_to "like #{user.likes_count}", likes_user_path(user) %>
   </div>
   <div class="button">

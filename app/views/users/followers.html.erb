@@ -1,0 +1,6 @@
+<%= render partial: "shared/profile", locals: { user: @user } %>
+<h2>Followers</h2>
+<% @followers.each do |follower| %>
+  <%= render partial: "shared/follow-item", locals: { user: follower } %>
+  <%= render partial: "shared/follow", locals: { user: follower } %>
+<% end %>

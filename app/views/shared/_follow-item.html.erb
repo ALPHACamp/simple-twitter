@@ -1,2 +1,3 @@
 <%= render partial: "shared/avatar", locals: {avatar: user.avatar} if user.avatar? %>
+<%= link_to user.name, tweets_user_path(user) %>
 <%= user.introduction %>
