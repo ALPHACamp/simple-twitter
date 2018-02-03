@@ -1,17 +1,24 @@
 <h1>推特前台</h1>
 
-<%= form_for @tweet do |f| %>
 
-  <%= f.label :description, "Description" %>
-  <%= f.text_area :description %>
-  
-  <%= f.submit %>
-<% end %>
+<%= link_to 'New Tweet', new_tweet_path, class: "btn btn-primary" %>
 
 <ul>
   <% @tweets.each do |tweet| %>
-  <li>
-    <%= tweet.description %>
-  </li>
+    <li>
+      <%= tweet.user.name %>
+      <%= tweet.description %>
+      <%= tweet.created_at %>
+    </li>
+  <% end %>
+</ul>
+
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <%= user.name %>
+      <%= user.introduction %>
+      <%= user.avatar %>
+    </li>
   <% end %>
 </ul>
