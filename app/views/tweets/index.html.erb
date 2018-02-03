@@ -10,6 +10,26 @@
           <%= f.submit "Tweet", class: "btn btn-primary" %>
         </div>
       <% end %>
+
+      <% @tweets.each do |tweet| %>
+        <div class="col-md-12 border">
+          <%= tweet.user.name %>
+          <%= tweet.created_at %>
+          <br>
+          <%= tweet.description %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-4">
+      <h1>Popular</h1>
+      <% @users.each do |user| %>
+        <div class="col-md-12 border">
+          <%= user.name %>
+          <br>
+          <%= user.introduction %>
+        </div>
+      <%end%>
     </div>
   </div>
 </div>
