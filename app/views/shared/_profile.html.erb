@@ -12,7 +12,7 @@
   </div>
   <div class="button">
     <% if user == current_user %>
-      <%= link_to "Edit Profile", user_path(user) %>
+      <%= link_to "Edit Profile", edit_user_path(current_user) %>
     <% else %>
       <%= render partial: "shared/follow", locals: {user: user} %>
     <% end %>
