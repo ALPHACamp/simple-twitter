@@ -1,0 +1,37 @@
+/* -----navbar----- */
+
+.my-nav {
+  background: #00BFFF;
+  height: 60px;
+}
+
+.navbar-header {
+  margin-top: 9px;
+}
+
+#logo > img {
+  height: 30px;
+  width: 30px;
+  margin-top: -9px;
+  margin-left: 5px;
+}
+
+#nav-title {
+  color: #FFFFFF;
+  font-size: 27px;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: bold;
+}
+
+#nav-link > li > p{
+  color: #FFFFFF;
+  font-size: 19px;
+  font-family: 'Alegreya', serif;
+}
+
+#nav-link > li > a {
+  color: #FFFFFF;
+  font-size: 19px;
+  font-family: 'Alegreya', serif;
+  margin-top: 3.5px;
+}
