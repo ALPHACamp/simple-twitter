@@ -1,0 +1,12 @@
+<h1>tweets後台index</h1>
+<ul>
+  <% @tweets.each do |tweet| %>
+  <li>
+    <%= user_name %>
+    <%= description %>
+    <%= link_to 'Show', admin_tweets_path(tweet) %>
+    <%= link_to 'Delete', admin_tweets_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %>
+  </li>
+  <% end %>
+</ul>
+<%= link_to 'User List', admin_users_path %>

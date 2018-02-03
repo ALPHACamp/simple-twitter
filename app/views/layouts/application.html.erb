@@ -10,8 +10,8 @@
 
   <body>
     <% if current_user %>
-      <% if current_user&.admin? %>
-        <li><%= link_to 'Admin Panel', admin_restaurants_path %></li>
+      <% if current_user.admin? %>
+        <li><%= link_to 'Admin Panel', admin_root_path %></li>
       <% end %>
       <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
       <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
@@ -21,8 +21,36 @@
       <li><%= link_to('註冊', new_user_registration_path) %></li>
       <li><%= link_to('登入', new_user_session_path) %></li>
     <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <!-- <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p> -->
+
+
+         <% if flash[:notice] %>
+              <div class="container">
+                <div class="row">
+
+                   <div class="alert alert-success alert-dismissible" role="alert">
+                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <%= notice %>
+               </div>
+                 </div>
+               </div>
+               <% end %>
+
+               <% if flash[:alert] %>
+               <div class="container">
+                 <div class="row">
+
+                   <div class="alert alert-danger alert-dismissible" role="alert">
+                   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                   <%= alert %>
+                  </div>
+                 </div>
+               </div>
+            <% end %>
+
+
+
     <%= yield %>
   </body>
 </html>
