@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   # https://github.com/plataformatec/devise#strong-parameters
   # 注意有 sign_up 和 account_update 兩種參數要處理
 
-  # UsersController, TweetsController, RepliesController, FollowshipsController
+  # 確認使用者登入
   before_action :authenticate_user!
 
 

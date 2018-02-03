@@ -5,4 +5,8 @@ Rails.application.routes.draw do
   # 設置tweets index作為網站首頁
   resources :tweets, only: [:index]
   root 'tweets#index'
+
+  # user頁面
+  resources :users, only: [:edit, :update]
+
 end
