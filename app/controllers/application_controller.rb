@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
   # 請參考 Devise 文件自訂表單後通過 Strong Parameters 的方法
-  # https://github.com/plataformatec/devise#strong-parameters
+  # https://github.com/plataformatec/devise#astrong-parameters
   # 注意有 sign_up 和 account_update 兩種參數要處理
 
   protected

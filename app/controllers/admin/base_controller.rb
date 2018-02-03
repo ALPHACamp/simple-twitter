@@ -1,5 +1,6 @@
 class Admin::BaseController < ApplicationController
   before_action :authenticate_admin
+  #確認是admin才可以進後台
 
   private 
     def authenticate_admin
