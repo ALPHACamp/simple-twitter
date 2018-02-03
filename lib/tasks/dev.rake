@@ -20,4 +20,63 @@ namespace :dev do
     end
   end
 
+  task uniname_user_20: :environment do
+    url = "https://uinames.com/api/?ext&region=england"
+    20.times do
+      response = RestClient.get(url)
+      data = JSON.parse(response.body)
+
+      user = User.create!(
+        name: data["name"],
+        email: data["email"],
+        password: "password",
+        avatar: data["photo"],
+        introduction: FFaker::Lorem::sentence(30) 
+      )
+      puts "created user #{user.name}"
+    end
+    puts "now you have #{User.count} users data"
+  end
+
+  task fake_tweets_200: :environment do
+    200.times do |i|
+        Tweet.create(
+          description: FFaker::Lorem.sentence(100),
+          user: User.all.sample
+        )
+    end
+    puts "create random 50 fake tweets"
+  end
+
+  task fake_replies_200: :environment do
+    200.times do |i|
+        Reply.create(
+          comment: FFaker::Lorem.sentence(50),
+          tweet: Tweet.all.sample,
+          user: User.all.sample
+        )
+    end
+    puts "create random 200 fake replies"
+  end
+
+  task fake_likes_100: :environment do
+    100.times do |i|
+        Like.create(
+          user: User.all.sample,
+          tweet: Tweet.all.sample
+        )
+    end
+    puts "create random 100 fake likes"
+  end
+
+  task fake_follows_100: :environment do
+    100.times do |i|
+      Followship.create(
+        user: User.all.sample,
+        following: User.all.sample
+        )
+    end
+    puts "create random 100 fake follows"
+  end
+
 end
