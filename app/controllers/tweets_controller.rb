@@ -10,14 +10,14 @@ class TweetsController < ApplicationController
 
   def create
     
-    @tweet = Tweet.new(tweeet_params)
+    @tweet = Tweet.new(tweet_params)
     @tweet.user = current_user
 
     if @tweet.save
       flash[:notice] = "tweet was successfully created"
       redirect_to root_path
     else
-      flash.now[:alert] = "tweet was failed to create"
+      flash[:alert] = "tweet was failed to create"
       render root_path
     end
   end
@@ -30,7 +30,7 @@ class TweetsController < ApplicationController
 
   private 
 
-  def tweeet_params
+  def tweet_params
     params.require(:tweet).permit(:description)
   end
 

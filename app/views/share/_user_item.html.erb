@@ -1,0 +1,20 @@
+<div id="user-item">
+  <div class="avatar-md">
+    <%= image_tag(user.avatar, class: "") %>
+  </div>
+  <div class="user-info">
+    <h2><%= user.name %></h2>
+    <h4><%= user.introduction %></h4>
+  </div>
+  <div class="user-dashboard">
+    <h3>Tweet <%= user.tweets.count %></h3>
+    <h3>Following <%= user.followings.count %></h3>
+    <h3>Follower <%= user.followers_count %></h3>
+    <h3>Likes <%= user.likes_count %></h3>
+    <% if user == current_user %>
+      <div>
+        <%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
