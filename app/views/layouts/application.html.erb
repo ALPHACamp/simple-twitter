@@ -10,10 +10,11 @@
 
   <body>
     <nav class="navbar navbar-toggleable-md navbar-light">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+     
       <% if current_user %>
+       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
         <a class="navbar-brand">Hi, <%= current_user.name %></a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <div class="navbar-nav mr-auto">
@@ -31,8 +32,11 @@
           </div>
         </div>
       <% else %>
-        <li><%= link_to('註冊', new_user_registration_path) %></li>
-        <li><%= link_to('登入', new_user_session_path) %></li>
+        <ul class="nav justify-content-center">
+          <li class="nav-item"><%= link_to('註冊', new_user_registration_path, :class => 'nav-link') %></li>
+          <li class="nav-item"><%= link_to('登入', new_user_session_path, :class => 'nav-link') %></li>
+        </ul>
+        
       <% end %>
     </nav>
     
