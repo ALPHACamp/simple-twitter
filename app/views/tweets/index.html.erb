@@ -10,6 +10,7 @@
     <li>
       <%=t.description%>
       <%=t.created_at%>
+      <%=link_to "reply", tweet_path(t)%>
     </li>
   <%end%>
 </ul>
