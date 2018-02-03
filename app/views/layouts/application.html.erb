@@ -21,9 +21,9 @@
             <% if current_user&.admin? %>
               <li><%= link_to 'Admin Panel', admin_tweets_path %></li>
             <% elsif current_user %>
-              <li class="avatar-sm">
+              <li class="avatar-xs">
                 <%= link_to tweets_user_path(current_user) do %>
-                  <%= image_tag(current_user.avatar, class: "avatar-xs img-circle") %>
+                  <%= image_tag(current_user.avatar, class: "img-circle") %>
                 <% end %>
               </li>
               <li>
@@ -37,8 +37,21 @@
         </nav>
       </div>
     </header>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="alert-row">
+      <% if flash[:notice] %>
+        <div class="notice alert alert-success" role="alert">
+          <div class="container">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">&times;</button>
+            <%= flash[:notice] %>
+          </div>
+      <% elsif flash[:alert] %> 
+        <div class="alert alert-danger" role="alert">
+          <div class="container">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">&times;</button>
+            <%= flash[:alert] %>
+          </div>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>

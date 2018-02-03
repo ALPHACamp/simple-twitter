@@ -1,0 +1,21 @@
+<div class="container">
+  <%= form_for @user do |f| %>
+    <div id="edit-form">
+      <div id="edit-avatar" class="form-group">
+        <div class="avatar-lg">
+          <%= image_tag (@user.avatar)%>
+        </div>
+        <%= f.file_field :avatar %>
+      </div>
+      <div id="edit-info">
+        <div class="form-group">
+          <%= f.text_field :name, placeholder: "#{@user.name}", class: "form-control" %> 
+        </div>
+        <div class="form-group">
+          <%= f.text_area :introduction, placeholder: "#{@user.introduction}", class: "form-control" %> 
+        </div>
+        <%= f.submit 'Update', class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>

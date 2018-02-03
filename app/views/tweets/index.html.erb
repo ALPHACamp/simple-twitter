@@ -1,1 +1,43 @@
-<h1>前台</h1>
+<div class="container">
+  <div id="root-index">
+    <div id="tweet-wall">
+      <%= form_for @tweet do |f| %>
+       <div class="tweet-form form-group">
+        <div>
+          <%= f.text_area :description, placeholder: "What's on your mind?", class: "tweet-form-textarea form-control" %>
+        </div>
+        <%= f.submit 'Tweet', class: "tweet-btn btn btn-primary" %> 
+       </div> 
+      <% end %>
+      <% @tweets.each do |tweet| %>
+        <div class="tweet-item">
+          <div class="avatar-sm">
+            <%= link_to tweets_user_path(tweet.user) do %>
+              <%= image_tag(tweet.user.avatar, class: "") %>
+            <% end %>
+          </div>
+          <div class="tweet-info">
+            <h4><%=link_to "@#{tweet.user.name}", tweets_user_path(tweet.user)%><%= tweet.created_at.strftime(" ,%Y-%m-%d %I:%M") %></h4>
+            <p><%= tweet.description %></p>
+          </div>
+        </div>
+      <% end %> 
+    </div>
+    <div id="popular-wall">
+      <h2>Popular</h2>
+      <% @users.each do |user| %>
+       <div class="user-item-sm">
+         <div class="avatar-sm">
+           <%= link_to tweets_user_path(user) do %>
+            <%= image_tag(user.avatar, class: "") %>
+           <% end %>
+         </div>
+         <div class="user-info-sm">
+           <h3><%= link_to "@#{user.name}", tweets_user_path(user) %></h3>
+           <p><%= user.introduction %></p>
+         </div>
+       </div> 
+      <% end %>
+    </div>
+  </div>
+</div>
