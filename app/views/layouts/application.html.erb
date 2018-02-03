@@ -55,7 +55,6 @@
               <li><%= link_to current_user.email %></li>
               
               <li ><%= link_to('登出', destroy_user_session_path, method: :delete) %> <span class="sr-only">(current)</span></li>
-              <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
             <% else %>
               <li><%= link_to('註冊', new_user_registration_path) %><span class="sr-only">(current)</span></li>
               <li><%= link_to('登入', new_user_session_path) %></li>
