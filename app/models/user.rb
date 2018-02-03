@@ -11,8 +11,8 @@ class User < ApplicationRecord
   validates_presence_of :name
   validates_uniqueness_of :name
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
-  has_many :tweets
-  has_many :replies
+  has_many :tweets, dependent: :delete_all
+  has_many :replies, dependent: :delete_all
 
   def admin?
     self.role == "admin"
