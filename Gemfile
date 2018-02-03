@@ -13,6 +13,9 @@ gem 'carrierwave'
 # gem 'mini_magick'
 
 gem 'ffaker'
+gem 'bootstrap-sass', '~> 3.3.7'
+gem 'jquery-rails'
+gem "font-awesome-rails"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
@@ -51,6 +54,11 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'rails-controller-testing'
+end
+
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 group :development do
