@@ -6,8 +6,12 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update]
 
+
+
   namespace :admin do
-    root "admin/tweets#index"
+    resources :tweets
+    resources :users
+    root "tweets#index"
   end
   # 請依照專案指定規格來設定路由
 

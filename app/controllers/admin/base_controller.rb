@@ -1,5 +1,5 @@
 class Admin::BaseController < ApplicationController
-
+  before_action :authenticate_admin
 
   private
   
@@ -9,5 +9,4 @@ class Admin::BaseController < ApplicationController
       redirect_to root_path
     end
   end
-
 end

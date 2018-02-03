@@ -11,11 +11,11 @@
   <body>
     <nav class="navbar navbar-default">
       <div "collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <%= link_to 'SimpleTwitter',class: "navbar-brand"%>
+        <%= link_to 'SimpleTwitter',root_path,class: "navbar-brand"%>
         <ul class="pull-right text-right nav navbar-nav">
           <% if current_user %>
             <% if current_user&.admin? %>
-              <li><%= link_to 'Admin Panel', admin_restaurants_path %></li>
+              <li><%= link_to 'Admin Panel', admin_root_path %></li>
             <% end %>
             <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
             <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>

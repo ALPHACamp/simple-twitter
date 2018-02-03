@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-12">
+      <div class="page-header">
+        <h1>Simple-twitter用戶</h1>
+        <div>
+          <%= link_to 'Tweet', admin_tweets_path %> |
+          <%= link_to 'Users', admin_users_path %>
+        </div>
+      </div>
+    </div>
+    <% @users.each do |user| %>
+      <div class="col-md-3 col-sm-4 col-xs-6 text-center user-item">
+
+        <%= link_to user_path(user) do %>
+          <% if user.avatar? %>
+            <%= image_tag(user.avatar, class: "img-rounded") %>
+          <% else %>
+            <%= image_tag "fallback/avatar.png",
+              class: "img-rounded" %>
+          <% end %>
+            <h4><%= user.name %></h4>
+        <% end %>
+
+      </div>
+    <% end %>
+
+  </div>
+</div>
