@@ -12,3 +12,11 @@
     <%= render partial: "shared/tweet", locals: {tweet: tweet} %>
   <% end %>
 </div>
+
+<div class="popular">
+  <h2>Popular</h2>
+  <% @users.each do |user| %>
+    <%= render partial: "shared/follow-item", locals: { user: user } %>
+    <%= render partial: "shared/follow", locals: { user: user } %>
+  <% end %>
+</div>
