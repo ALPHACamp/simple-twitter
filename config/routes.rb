@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 
   # 請依照專案指定規格來設定路由
 
+  resources :users
 end
