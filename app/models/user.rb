@@ -17,7 +17,7 @@ class User < ApplicationRecord
   has_many :replies
   has_many :tweets, through: :replies
 
-  has_many :likies 
+  has_many :likes
   has_many :liked_tweets, through: :likes, source: :tweet
 
 

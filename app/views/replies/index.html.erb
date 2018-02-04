@@ -4,7 +4,6 @@
 <%= render partial: "shared/like", locals:{tweet: @tweet}%>
 <%= @tweet.replies_count%>
 <%= @tweet.likes_count%>
-
 </p>
 <p>Profile
 <p>avatar</p>
@@ -13,7 +12,7 @@
 <p> tweetscount</p>
 <p> Followcount</p>
 <p> Followercount</p>
-<p>likecount</p>
+<%= link_to "Like Count",likes_user_path(@user)%>
 <%= link_to "Edit Profile", edit_user_path(@user) %>
 <p>
   <h4>Reply Index</h4>
