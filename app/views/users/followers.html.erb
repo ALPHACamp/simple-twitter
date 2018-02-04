@@ -1,0 +1,24 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+      <%= render partial: "shared/userProfile", locals: {user: @user} %>  
+    </div>
+    <div class="col-md-8 row">
+      <% @followers.each do |follower| %>                        
+         <div class="col-md-5 col-md-offset-1 well row" style="height: 100%"> 
+          <div class="col-md-4">
+            <%= image_tag(follower.user.avatar, :class => 'img-resposive', :width => '100%') %>                
+          </div>                    
+          <div class="col-md-8">
+            <p><%= follower.user.name %></p>
+            <p>
+              <%= truncate(follower.user.introduction, length: 30) %>
+            </p>              
+          </div>
+           <%= render partial: "shared/follow", locals: {user: follower.user} %>   
+        </div>   
+      <% end %>  
+    </div>
+    
+  </div>
+</div>
