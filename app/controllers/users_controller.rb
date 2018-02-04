@@ -4,6 +4,8 @@ class UsersController < ApplicationController
 
   def tweets
     @tweeted = @user.tweets.order("created_at DESC").uniq
+    @followings = @user.followings
+    @followers = @user.followers
   end
 
   def edit

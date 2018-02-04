@@ -7,8 +7,13 @@ Rails.application.routes.draw do
   resources :users, only: [:show,:edit,:update] do
     member do
       get :tweets
+
+      get :followings
+      get :followers
     end
   end
+
+  resources :followships, only: [:create, :destroy]
 
 
   resources :tweets, only: [:index,:create] do

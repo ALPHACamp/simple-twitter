@@ -1,8 +1,8 @@
 class RepliesController < ApplicationController
 
   def index
-    @tweet = Tweet.find(params[:tweet_id])
     @reply = Reply.new
+    @tweet = Tweet.find(params[:tweet_id])
   end
 
   def create

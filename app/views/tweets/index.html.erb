@@ -16,7 +16,7 @@
         <p><%= simple_format tweet.description %></p>
         <p class="text-muted">
           <em><%= time_ago_in_words(tweet.created_at) %> ago -</em>
-          <%= link_to "Reply" ,tweet_replies_path(@tweets) %>
+          <%= link_to "Reply" ,tweet_replies_path(tweet) %>
         </p>
       </div>
       <hr>

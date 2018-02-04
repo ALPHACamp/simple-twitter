@@ -1,6 +1,5 @@
 class TweetsController < ApplicationController
   before_action :authenticate_user!
-
   def index
     @tweet = Tweet.new
     @tweets = Tweet.all.order("created_at DESC")
@@ -22,6 +21,7 @@ class TweetsController < ApplicationController
 
   private
 
+  
   def tweet_params
     params.require(:tweet).permit(:description)
   end
