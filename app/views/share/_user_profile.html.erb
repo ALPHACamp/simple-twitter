@@ -1,0 +1,28 @@
+<div class="col-xs-4 user-block">
+    <div class="center">
+      <img src="http://via.placeholder.com/50x50" class="img-circle big-img">
+    </div>
+    <br>
+    <div class="center">
+      <%= obj.name %>
+    </div>
+    <div class="center">
+      <%= obj.introduction %>
+    </div>
+    <hr>
+    <div class="center">
+      <%= link_to "Tweets", tweets_user_path(obj) %>
+    </div>
+    <div class="center">
+      <%= link_to "Followings", "#" %>
+    </div>
+    <div class="center">
+      <%= link_to "Followers", "#" %>
+    </div>
+    <div class="center">
+      <%= link_to "Like", "#" %>
+    </div>
+    <div class="center">
+      <%= link_to "Edit profile", edit_user_path(obj) %>
+    </div>
+  </div>

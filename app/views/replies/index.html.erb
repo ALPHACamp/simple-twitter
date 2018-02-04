@@ -1,22 +1,57 @@
-<%= params %>
-<%= @tweet.description %>
-<%= @tweet.user.name %>
-<%= @tweet.user.introduction %>
-<%= @tweet.user.tweets.count %>
+<div class="container">
+  <div class="row">
+    <%= render partial: "share/user_profile", locals: {obj: @tweet.user} %>
+    <div class= "col-xs-8">
+      <h1>Tweet</h1>
+      <div class="row tweet-box">
+        <div class="col-xs-3 center">
+          <%= link_to "#" do %>
+            <img src="http://via.placeholder.com/50x50" class="img-circle tweet-img">
+          <% end %>
+        </div>
+        <div class="col-xs-8">
+          <div class="row">
+            <%= link_to @tweet.user.name, tweets_user_path(@tweet.user) %>
+            <%= @tweet.created_at.strftime("%Y-%m-%d, %I:%M %p") %>
+          </div>
+          <div class="row descrip">
+            <%= @tweet.description %>
+          </div>
+          <div class="row">
+            <%= link_to "Reply", tweet_replies_path(@tweet.id) %>
+            <%= link_to "Like", "#" %>
+          </div>
+        </div>
+      </div>
 
-
-
-<ul>
-<% @replies.each do |reply| %>
-  <li>
-    <%= reply.comment %>
-    <%= reply.user.name %>
-    <%= reply.created_at.strftime("%Y-%m-%d, %I:%M %p") %>  
-    </li>
-<% end %>
-</ul>
-
-<%= form_for [:tweet,@reply] do |f| %>
-  <%= f.text_area :comment %>
-  <%= f.submit %>
-<% end %>
+      <h1>Replies</h1>
+      <% @replies.each do |reply| %>
+        <div class="row tweet-box">
+          <div class="col-xs-3 center">
+            <%= link_to "#" do %>
+              <img src="http://via.placeholder.com/50x50" class="img-circle tweet-img">
+            <% end %>
+          </div>
+          <div class="col-xs-8">
+            <div class="row">
+              <%= link_to reply.user.name, tweets_user_path(reply.user) %>
+              <%= reply.created_at.strftime("%Y-%m-%d, %I:%M %p") %>
+            </div>
+            <div class="row descrip">
+              <%= reply.comment %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+        
+      <hr>
+      <%= form_for [:tweet,@reply] do |f| %>
+        <%= f.text_area :comment, class: "form-control" %>
+        <br>
+        <%= f.submit class: "btn btn-primary" %>
+        <br>
+        <br>
+      <% end %>
+    </div>
+  </div>
+</div>
