@@ -15,7 +15,11 @@
     <h4>追蹤人數 <%= @tweet.user.followings.count%></h4>
     <h4>粉絲 <%= @tweet.user.followers_count%></h4>
     <h4>Like <%= @tweet.user.likes_count%></h4>
-    <%= link_to "Follow",followship_path(@tweet.user) ,class: "btn btn-success"%>
+    <% if @tweet.user ==current_user %>
+      <%= link_to "Edit", edit_user_path(@user), class: "btn btn-success" %>
+    <% else %>
+      <%= link_to "Follow",followship_path(@user) ,method: :post ,class: "btn btn-success"%>
+    <% end %>
 
   </div>
   
