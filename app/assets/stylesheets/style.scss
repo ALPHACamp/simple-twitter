@@ -168,11 +168,12 @@ header .container-fluid {
 /* ------- tweet List ------- */
 
 .tweetlist .container {
-  width: 85%;
+  width: 100%;
   margin: 0 auto;
   position: relative;
-  padding: 15px;
+  padding: 5px 0;
   word-break: break-all;
+  border-bottom: 0.1px inset;
 }
 
 .replylink {
@@ -227,7 +228,31 @@ header .container-fluid {
   border-radius: 7px;
 }
 
+.username {
+  font-size: 16px;
+}
 
+.tweetheader {
+  margin-bottom: 2px;
+}
+
+.tweettime {
+  font-size: 14px;
+  color: #ADADAD;  
+}
+
+.tweetavatar {
+  width: 100%;
+  margin: auto;  
+}
+
+.tweetlist .col-xs-1 {
+  
+}
+
+.tweetlist .col-xs-1, .tweetlist .col-xs-11 {
+  padding: 10px 6px;
+}
 
 
 

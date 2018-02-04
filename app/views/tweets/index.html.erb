@@ -32,26 +32,36 @@
           <div class="container"><!-- 包住每一條tweet /start -->
 
             <!-- Left: user avatar / start-->
-            <div class="col-xs-2">
-              <% if tweet.find_user.avatar? %>
-                <%= image_tag(tweet.find_user.avatar, width: '60', height: '65') %>
-              <% else %>
-                <%= image_tag("http://via.placeholder.com/60x65") %>
-              <% end %>
+            <div class="col-xs-1">
+              <div class="tweetavatar">
+                <% if tweet.find_user.avatar? %>
+                  <%= image_tag(tweet.find_user.avatar, width: '60', height: '65') %>
+                <% else %>
+                  <%= image_tag("http://via.placeholder.com/60x65") %>
+                <% end %>
+              </div>
             </div>
             <!-- Left: user avatar / end-->
             
             <!-- Right: user description / start -->
-            <div class="col-xs-10">
+            <div class="col-xs-11">
               
-              <!-- base info of user and tweet time -->
-              <%= link_to '#info' do  %>
-                @<%= content_tag :span, tweet.find_user.name %>
-              <% end %>
-              <span><%= tweet.created_at.localtime.to_s(:db) %></span><br />
+              <!-- base info of user and tweet time / start -->
+              <div class="tweetheader">
+                <%= link_to '#info' do  %>
+                  @<strong class="username"><%= content_tag :span, tweet.find_user.name %></strong>
+                <% end %>
+                
+                <!-- 判斷tweet時間是否大於24小時，依據結果分別顯示不同表示方式 -->
+                <% if (Time.now - tweet.created_at) > 86400  %>
+                  <span class="tweettime"><%= tweet.created_at.localtime.to_s(:db) %></span><br />
+                <% else %>
+                  <span class="tweettime"><%= time_ago_in_words(tweet.created_at).gsub('about','・') %></span><br />
+                <% end %>
+              </div><!-- base info of user and tweet time / end -->
 
               <!-- tweet description -->
-              <%= tweet.description %>
+              <div><%= tweet.description %></div>
 
               <!-- reply & like link -->
               <div>
