@@ -25,7 +25,10 @@ class UsersController < ApplicationController
   end
 
   def likes
-    @likes # 基於測試規格，必須講定變數名稱
+    # 基於測試規格，必須講定變數名稱
+    @user = User.find(params[:id])
+    @likes = Like.where(:user_id => params[:id])
+
   end
 
   private 
