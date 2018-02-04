@@ -9,10 +9,12 @@
       <%= link_to tweet.user.name, tweets_user_path(tweet.user), class: "btn btn-primary" %>
       <%= tweet.description %>
       <%= tweet.created_at %>
+      <%= link_to 'Reply', tweet_replies_path(tweet.id), class: "btn btn-primary" %>
     </li>
   <% end %>
 </ul>
 
+<h1>user</h1>
 <ul>
   <% @users.each do |user| %>
     <li>

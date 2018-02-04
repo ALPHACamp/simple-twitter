@@ -1,0 +1,32 @@
+
+<%= @tweet.description %>
+<%= @tweet.created_at %>
+
+<h1>reply</h1>
+
+
+<% @tweet.replies.each do |reply| %>
+  <div>
+    <h4><%= reply.user.name %></h4>
+    <p><%= simple_format reply.comment %></p>
+    <p class="text-muted">
+      <em><%= time_ago_in_words(reply.created_at) %> ago </em>
+    </p>
+  </div>
+  <hr>
+<% end %>
+
+
+<div class="container">
+  <div class="row">
+    <%= form_for [@tweet, @reply] do |f| %>
+      <div class="form-group">
+        <%= f.text_area :comment, placeholder: "留個言吧", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary" %>
+        <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+      </div>
+    <% end %>
+  </div>
+</div>
