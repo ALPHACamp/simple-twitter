@@ -1,0 +1,34 @@
+<h1>Tweet Reply</h1>
+
+<!-- user profile -->
+
+<!-- tweets -->
+<h3>Tweets</h3>
+<ul>
+  <%= image_tag @tweet.user.avatar, width:"100px" %>
+  <%= link_to @tweet.user.name, tweets_user_path(@tweet.user) %>
+  <li><%= @tweet.created_at %></li>
+  <li><%= @tweet.description %></li>
+  <li><%= link_to "Delete", admin_tweet_path(@tweet), method: :delete,
+  data: { confirm: "Are you sure?" } if current_user.admin? %></li>
+  <li><%= link_to "Reply", tweet_replies_path(@tweet) %></li>
+  <li><%= render partial: "shared/like", locals: { tweet: @tweet } %></li>
+</ul>
+
+<!-- created replies -->
+<h3>Replies</h3>
+<ul>
+  <% @replies.each do |reply| %>
+    <li><%= image_tag reply.user.avatar, width:"100px" %></li>
+    <li><%= link_to reply.user.name, tweets_user_path(reply.user) %></li>
+    <li><%= reply.created_at %></li>
+    <li><%= reply.comment %></li>
+  <% end %>
+</ul>
+
+
+<!-- replies form -->
+<%= form_for [@tweet, @reply] do |f| %>
+  <%= f.text_area :comment %>
+  <%= f.submit "Reply" %>
+<% end %>

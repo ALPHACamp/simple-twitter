@@ -1,10 +1,12 @@
 <% tweets.each do |tweet| %>
   <ul>
+    <%= image_tag tweet.user.avatar, width:"100px" %>
     <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
     <li><%= tweet.created_at %></li>
     <li><%= tweet.description %></li>
     <li><%= link_to "Delete", admin_tweet_path(tweet), method: :delete,
     data: { confirm: "Are you sure?" } if current_user.admin? %></li>
+    <li><%= link_to "Reply", tweet_replies_path(tweet) %></li>
     <li><%= render partial: "shared/like", locals: { tweet: tweet } %></li>
   </ul>
 <% end %>
