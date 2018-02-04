@@ -3,9 +3,11 @@ class UsersController < ApplicationController
   before_action :set_user
 
   def tweets
+    @tweets = @user.tweets.all
   end
 
   def edit
+    redirect_to tweets_user_path(current_user) if @user != current_user
   end
 
   def update

@@ -1,0 +1,11 @@
+<div id="tweets-list">
+  <% @tweets.each do |tweet| %>
+    <div class="card mt-3">
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to "@" + tweet.user.name, tweets_user_path(tweet.user.id) %></h5>
+        <p class="card-text"><%= tweet.description %></p>
+        <%= link_to "Reply", tweet_replies_path(tweet) %> (<%= tweet.replies.count %>)
+      </div>
+    </div>
+  <% end %>
+</div>
