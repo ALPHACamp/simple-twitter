@@ -19,16 +19,15 @@
           </div>
           <ul id="menu">
             <% if current_user&.admin? %>
-              <li><%= link_to 'Admin Panel', admin_tweets_path %></li>
-            <% elsif current_user %>
+              <li><%= link_to 'Admin Panel', admin_tweets_path, class: "logout-btn" %></li>
+            <% end %>
+            <% if current_user %>
               <li class="avatar-xs">
                 <%= link_to tweets_user_path(current_user) do %>
                   <%= image_tag(current_user.avatar, class: "img-circle") %>
                 <% end %>
               </li>
-              <li>
-                <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "logout-btn" %>
-              </li>
+              <li><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "logout-btn" %></li>
             <% else %>
               <li><%= link_to('Sign up', new_user_registration_path) %></li>
               <li><%= link_to('Sign in', new_user_session_path) %></li>

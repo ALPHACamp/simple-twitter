@@ -9,12 +9,22 @@
   <div class="user-dashboard"> 
     <h3><%= link_to "Tweet #{user.tweets.count}", tweets_user_path(user) %></h3>
     <h3><%= link_to "Following #{user.followings.count}", followings_user_path(user)%></h3>
-    <h3><%= link_to "Follower #{user.followings.count}", followers_user_path(user)%></h3>
+    <h3><%= link_to "Follower #{user.followers.count}", followers_user_path(user)%></h3>
     <h3><%= link_to "Likes #{user.likes_count}", likes_user_path(user) %></h3>
-    <% if user == current_user %>
-      <div>
-        <%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-primary" %>
-      </div>
-    <% end %>
+    <div class="follow-btn">
+      <% if user == current_user %>
+        <%= link_to  edit_user_path(current_user) do  %>
+          <button class="btn btn-primary">Edit Profile</button>
+        <% end %>
+      <% elsif current_user.is_following?(user) %>
+        <%= link_to followship_path(user), method: :delete do %>
+          <button class="btn btn-primary">Unfollow</button>
+        <% end %>
+      <% else %>
+        <%= link_to followships_path(following_id: user), method: :post do %>
+        <button class="btn btn-primary">Follow</button>
+        <% end %>
+      <% end %>
+    </div> 
   </div>
 </div>

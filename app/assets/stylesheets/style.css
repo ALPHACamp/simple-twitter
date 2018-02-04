@@ -68,7 +68,9 @@ nav {
 
 #menu {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  grid-template-columns: 1fr;
+  grid-auto-flow: column;
   align-items: center;
 }
 
@@ -77,6 +79,14 @@ nav {
   height: 40px;
   background-size: cover;
   background-position:center;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.avatar-xs a {
+  display: block;
+  width: 40px;
+  height: 40px;
 }
 
 .img-circle {
@@ -145,11 +155,11 @@ nav {
   width: 90px;
   background-size: cover;
   background-position:center;
-  align-self: center;
+  align-self: start;
 }
 
-#popular-wall .avatar-sm {
-  align-self: start;
+#tweet-wall .avatar-sm {
+  align-self: center;
 }
 
 .follow-btn {
@@ -205,6 +215,38 @@ nav {
 
 
 /* reply*/
+
+
+
+/* admin */
+
+.pagination {
+  font-size: 16px;
+}
+
+.pagination span {
+  padding: 10px;
+}
+
+.pagination a {
+  display: inline-block;
+  width: 20px;
+}
+
+.admin-wall, .admin-wall table {
+  margin-top: 20px;
+}
+
+.tweets-table> tbody tr td:nth-child(n+4), 
+.tweets-table th:nth-child(n+4) {
+  text-align: center;
+}
+
+.users-table> tbody tr td:nth-child(n+3), 
+.users-table th:nth-child(n+3) {
+  text-align: center;
+}
+
 
 
 @media(max-width: 700px) {
