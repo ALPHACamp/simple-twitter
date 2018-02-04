@@ -1,6 +1,9 @@
 <p>
 <%= @tweet.description %>
 <%= @tweet.created_at %>
+<%= render partial: "shared/like", locals:{tweet: @tweet}%>
+<%= @tweet.replies_count%>
+<%= @tweet.likes_count%>
 
 </p>
 <p>Profile
