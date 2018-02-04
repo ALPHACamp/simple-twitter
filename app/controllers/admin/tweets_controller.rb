@@ -5,7 +5,7 @@ before_action :set_tweet, only: [:show, :destroy]
   end
 
   def show
-
+    @replies = @tweet.replies.all
   end
 
   def destroy

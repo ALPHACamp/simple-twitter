@@ -26,7 +26,7 @@
             <td><%= tweet.created_at %></td>
             <td><%= tweet.description %></td>
             <td><%= tweet.user.name %></td>
-            <td>0</td>
+            <td><% tweet.count_replies %><%= tweet.replies_count %></td>
             <td>
               <%= link_to 'Show', admin_tweet_path(tweet) %>
               <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %>
