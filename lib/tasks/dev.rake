@@ -25,7 +25,7 @@ namespace :dev do
     User.all.each do |user|
       3.times do |i|
         user.tweets.create!(
-          description: FFaker::Lorem::sentence(10)
+          description: FFaker::Lorem::sentence(12)
           )
         puts "#{user.name} says '#{Tweet.count}' "
       end
