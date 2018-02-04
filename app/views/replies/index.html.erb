@@ -16,6 +16,7 @@
             <%= link_to @tweet.user.name , tweets_user_path(@tweet.user_id) %>
             <p><%= @tweet.description %></p>
             <%= link_to "Reply(#{@tweet.replies_count})",  replies_tweet_path(@tweet.id) %>
+            <%= render partial: "shared/like", locals: {tweet: @tweet} %>
           </div>
         </div>
       </div>

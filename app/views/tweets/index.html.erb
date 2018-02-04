@@ -28,11 +28,7 @@
                     <%= link_to "Reply(#{tweet.replies_count})", replies_tweet_path(tweet.id) %>    
                   </div>                  
                   <div class="col-md-6">
-                    <% if tweet.is_liked?(current_user) %>
-                      <%= link_to "Unlike(#{tweet.likes_count})", unlike_tweet_path(tweet.id), method: :post %>                      
-                    <% else %>
-                      <%= link_to "Like(#{tweet.likes_count})", like_tweet_path(tweet.id), method: :post %>    
-                    <% end %>    
+                    <%= render partial: "shared/like", locals: {tweet: tweet} %>
                   </div>
                 </div>
                 
