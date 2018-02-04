@@ -1,1 +1,8 @@
 <h1>前台</h1>
+<%= form_for  @tweet do |f| %>
+<div class="field">
+  <% f.label :description%>
+  <%= f.text_area :description %>
+</div>
+<%= f.submit "tweet" %>
+<% end %>
