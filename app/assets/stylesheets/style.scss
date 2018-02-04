@@ -1,4 +1,10 @@
-/* -----navbar----- */
+.clearfix::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/* ----- navbar ----- */
 
 .my-nav {
   background: #00BFFF;
@@ -35,3 +41,47 @@
   font-family: 'Alegreya', serif;
   margin-top: 3.5px;
 }
+
+/* ----- index ----- */
+
+#tweet-new {
+  border: 2px solid #8ab7dc;
+  border-radius: 12px;
+  height: 150px;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.tweet-button {
+  float: right;
+  font-size: 15px;
+}
+
+.tweet-item {
+  border: 1.5px solid #d9edf7; /* gray: #ddddddbd */
+  padding: 10px;
+}
+
+.tweet-item img {
+  border-radius: 5px;
+  float: left;
+  margin-right: 15px;
+}
+
+#index-popular {
+  color: #006666;
+  font-weight: bold;
+}
+
+.user-item {
+  border: 1.5px solid #d9edf7; /* gray: #ddddddbd */
+  padding: 10px 10px 15px 10px;
+}
+
+.user-item img {
+  border-radius: 5px;
+  float: left;
+  margin-right: 15px;
+  margin-top: 8px;
+}
+
