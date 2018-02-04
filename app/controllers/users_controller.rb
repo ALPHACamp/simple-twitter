@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def tweets
     @user = User.find(params[:id])
+    @tweets = Tweet.where(user_id: @user.id).order(created_at: :desc) # 回傳 array
   end
 
   def edit

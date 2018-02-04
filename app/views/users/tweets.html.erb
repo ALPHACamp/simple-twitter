@@ -15,12 +15,12 @@
 
     <div class="col-md-8">
       <!-- Tweets -->
-      <% @user.tweets.each do |tweet| %>
+      <% @tweets.each do |tweet| %>
 
         <div class="tweets">
           <%= image_tag tweet.user.avatar, height: 75, width: 75 %>
           <p>@<%= tweet.user.name %>, <%= tweet.created_at %></p>
-          <%= tweet.user.introduction %>
+          <%= tweet.description %>
           <h5>Reply(<%= tweet.replies.count %>) Like(<%= tweet.likes_count %>)</h5>
           <hr>
         </div>
