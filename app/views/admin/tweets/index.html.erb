@@ -1,12 +1,5 @@
 <h1>Admin tweets index</h1>
+<%= link_to "User", admin_users_path %>
 
 <h3>Tweets</h3>
-<% @tweets.each do |tweet| %>
-  <ul>
-    <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
-    <li><%= tweet.created_at %></li>
-    <li><%= tweet.description %></li>
-    <li><%= link_to "Delete", admin_tweet_path(tweet), method: :delete,
-    data: { confirm: "Are you sure?" } %></li>
-  </ul>
-<% end %>
+<%= render partial: "shared/tweets", locals: { tweets: @tweets } %>

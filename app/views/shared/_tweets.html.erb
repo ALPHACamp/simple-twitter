@@ -1,0 +1,9 @@
+<% tweets.each do |tweet| %>
+  <ul>
+    <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
+    <li><%= tweet.created_at %></li>
+    <li><%= tweet.description %></li>
+    <li><%= link_to "Delete", admin_tweet_path(tweet), method: :delete,
+    data: { confirm: "Are you sure?" } if current_user.admin? %></li>
+  </ul>
+<% end %>

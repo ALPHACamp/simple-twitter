@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
     member do
       get :tweets
+      get :likes
     end
 
   end
