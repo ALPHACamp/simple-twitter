@@ -1,0 +1,18 @@
+<ul>
+  <% @tweeted.each do |tweet| %>
+    <li>
+      <%= link_to tweet.user.name, tweets_user_path(tweet.user), class: "btn btn-primary" %>
+      <%= tweet.description %>
+      <%= tweet.created_at %>
+    </li>
+  <% end %>
+</ul>
+
+<ul>
+  <li>
+    <%= @user.name %>
+    <%= @user.introduction %>
+    <img class="img-circle" src="http://via.placeholder.com/60x60">
+    推文數<%= @user.tweets.count %>
+  </li>
+</ul>

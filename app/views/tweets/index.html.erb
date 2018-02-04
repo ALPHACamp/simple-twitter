@@ -6,7 +6,7 @@
 <ul>
   <% @tweets.each do |tweet| %>
     <li>
-      <%= tweet.user.name %>
+      <%= link_to tweet.user.name, tweets_user_path(tweet.user), class: "btn btn-primary" %>
       <%= tweet.description %>
       <%= tweet.created_at %>
     </li>
@@ -18,7 +18,7 @@
     <li>
       <%= user.name %>
       <%= user.introduction %>
-      <%= user.avatar %>
+      <img class="img-circle" src="http://via.placeholder.com/60x60">
     </li>
   <% end %>
 </ul>

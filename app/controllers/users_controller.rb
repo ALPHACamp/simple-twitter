@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 
   def tweets
+    @user = User.find(params[:id])
+    @tweeted = Tweet.where(user: @user).order(created_at: :desc)
   end
 
   def edit

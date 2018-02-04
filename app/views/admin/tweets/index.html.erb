@@ -3,8 +3,20 @@
 <ul>
   <% @tweets.each do |tweet| %>
   <li>
+    <%= link_to tweet.user.name, tweets_user_path(tweet.user), class: "btn btn-primary" %>
     <%= tweet.description %>
     <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %>
   </li>
+  <% end %>
+</ul>
+
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <%= user.name %>
+      <%= user.introduction %>
+      <img class="img-circle" src="http://via.placeholder.com/60x60">
+      <%= user.tweets.count %>
+    </li>
   <% end %>
 </ul>
