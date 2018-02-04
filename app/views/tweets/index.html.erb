@@ -1,1 +1,40 @@
-<h1>tweets home page ; status: 未開始撰寫</h1>
+<div class="container">
+  <div class="row">
+
+    <!-- form & tweets list /start -->
+    <div class="col-xs-12 col-md-8">
+      <h3>開工中</h3>
+      <!-- form for creating tweet / start -->
+      <div>
+        <div class="form-group">
+
+          <%= form_for @tweet do |f| %>
+            <div class="field">
+              <%= f.text_area :description, class: "form-control", placeholder: "有什麼新鮮事想推播呢？(輸入上限140字)", rows: "5", maxlength: "140" %>
+            </div>
+
+            <!-- tweet -->
+            <div class="action text-right">
+              <%= f.submit "推播(tweet)", class: "btn btn-primary" %>            
+            </div>
+
+          <% end %> <!-- form_for -->
+
+        </div> <!-- /.form-group -->
+      </div>
+      <!-- form for creating tweet / end -->
+      
+      <!-- tweets list /start-->
+      <!-- tweets list /end-->
+
+    </div>
+    <!-- form & tweets list /end -->
+
+    <!-- top 10 users list rank by number of followers /start -->
+    <div class="col-xs-6 col-md-4 ">
+      <h3>未開工</h3>
+    </div>
+    <!-- top 10 users list rank by number of followers /end -->
+
+  </div> <!-- /.row -->
+</div> <!-- /.container -->

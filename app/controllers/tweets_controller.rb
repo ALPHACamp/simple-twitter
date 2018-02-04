@@ -7,8 +7,8 @@ class TweetsController < ApplicationController
   end
 
   def create
-    @tweet = Tweet.build(tweet_params)
-    @tweet.user = current_user
+    @tweet = Tweet.new(tweet_params)
+    @tweet.user_id = current_user.id
     @tweet.save!
     redirect_to root_url, :notice => "Create Notice: 推播(tweet)成功!"
   end
