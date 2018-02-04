@@ -8,6 +8,15 @@
 .u-margin-top-40px{
   margin-top: 40px;
 }
+
+.u-inline-block{
+  display:inline-block;
+}
+
+.u-showborder{
+  border: 1px solid #eeeeee
+}
+
 .inset {
   width: 40px;
   height: 40px;
@@ -54,4 +63,27 @@
 
 .index-tweet-content{
   position: relative;
+}
+
+
+
+/* dashboard */
+.dashboard{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.dashboardProfile-userfield{
+  color: #337ab7;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.dashboardProfile-username{
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.dashboardProfile-userintro{
+  font-size: 16px;
 }
