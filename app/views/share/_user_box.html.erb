@@ -2,14 +2,20 @@
   <div class="row">
     <div class="col-xs-5 center">
       
-        <%= link_to "#" do %>
-          <img src="http://via.placeholder.com/100x100" class="img-circle user-img">
+     <%= link_to tweets_user_path(user) do %>
+        <% if user.avatar.present? %>
+          <%= image_tag user.avatar, class: "user-img" %>
+        <% else %>
+          <%= image_tag "default.jpg", class: "user-img" %>
         <% end %>
+      <% end %>
       
     </div>
     <div class="col-xs-7">
       <div class="row">
-        <%= user.name %>
+        <%= link_to tweets_user_path(user) do %>
+          <%= user.name %>
+        <% end %>
       </div>
       <div class="row intro">
         <%= user.introduction %>

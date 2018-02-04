@@ -32,7 +32,11 @@
     <% if current_user %>
       <li>
         <%= link_to tweets_user_path(current_user), padding: "0px" do %>
-          <img src="http://via.placeholder.com/20x20" class="img-circle nav-img">
+          <% if current_user.avatar.present? %>
+            <%= image_tag current_user.avatar, class: "nav-img" %>
+          <% else %>
+            <%= image_tag "default.jpg", class: "nav-img" %>
+          <% end %>
         <% end %>
       </li>
       <li>

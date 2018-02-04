@@ -1,8 +1,12 @@
 <% tweets.each do |tweet| %>
   <div class="row tweet-box">
     <div class="col-xs-3 center">
-      <%= link_to "#" do %>
-        <img src="http://via.placeholder.com/50x50" class="img-circle tweet-img">
+      <%= link_to tweets_user_path(tweet.user) do %>
+        <% if tweet.user.avatar.present? %>
+          <%= image_tag tweet.user.avatar, class: "tweet-img" %>
+        <% else %>
+          <%= image_tag "default.jpg", class: "tweet-img" %>
+        <% end %>
       <% end %>
     </div>
     <div class="col-xs-8">
