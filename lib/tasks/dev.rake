@@ -20,10 +20,30 @@ namespace :dev do
     end
   end
 
+  task fake_tweets: :environment do
+    Tweet.destroy_all
+    @users = User.all
+    @users.each do |user|
+      (rand(20)+1).times do |variable|
+        user.tweets.create!(description: FFaker::Tweet.body)
+      end
+    end
+    puts "now you have #{Tweet.count} tweets!"
+  end
+
   task test: :environment do
     @users = User.all
     @users.each do |user|
-      puts user.name
+      puts "#{user.name} has #{user.tweets.count} tweets!"
     end
+  end
+
+  #fake all data
+  task fake_all: :environment do
+    Rake::Task['db:drop'].execute
+    Rake::Task['db:migrate'].execute
+    Rake::Task['db:seed'].execute
+    Rake::Task['dev:fake_user'].execute
+    Rake::Task['dev:fake_tweets'].execute
   end
 end
