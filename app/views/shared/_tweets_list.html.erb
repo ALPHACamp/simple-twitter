@@ -2,9 +2,15 @@
   <% @tweets.each do |tweet| %>
     <div class="card mt-3">
       <div class="card-body">
-        <h5 class="card-title"><%= link_to "@" + tweet.user.name, tweets_user_path(tweet.user.id) %></h5>
+        <h5 class="card-title">
+          <%= link_to tweets_user_path(tweet.user.id) do%>
+            @<%= tweet.user.name %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %>
+          <% end %>
+        </h5>
         <p class="card-text"><%= tweet.description %></p>
-        <%= link_to "Reply", tweet_replies_path(tweet) %> (<%= tweet.replies.count %>)
+        <%= link_to tweet_replies_path(tweet) do %>
+          Reply (<%= tweet.replies.count %>)
+        <% end %>
       </div>
     </div>
   <% end %>
