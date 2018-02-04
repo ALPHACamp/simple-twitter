@@ -5,9 +5,9 @@
     <div class="col-xs-12 col-md-8">
       <h3>開工中</h3>
       <!-- form for creating tweet / start -->
-      <div>
+      <div class="tweetform" >
         <div class="form-group">
-
+          <br />
           <%= form_for @tweet do |f| %>
             <div class="field">
               <%= f.text_area :description, class: "form-control", placeholder: "有什麼新鮮事想推播呢？(輸入上限140字)", rows: "5", maxlength: "140" %>
@@ -21,7 +21,7 @@
           <% end %> <!-- form_for -->
 
         </div> <!-- /.form-group -->
-      </div>
+      </div> <!-- /.tweetform -->
       <!-- form for creating tweet / end -->
       
       <!-- tweets list /start-->

@@ -60,6 +60,9 @@ img {
   padding-top: 65px;
 }
 
+.btn {
+  letter-spacing: 1.2px;
+}
 
 
 
@@ -134,6 +137,21 @@ header .container-fluid {
 }
 
 
+/* ------- tweet form ------- */
+
+.tweetform {
+  background-color: #ECF5FF;
+  border-radius: 15px;
+}
+
+.tweetform .form-group {
+  margin: 15px 15px;
+}
+
+.tweetform .form-group .text-right {
+  text-align: right;
+  padding: 10px;
+}
 
 
 
