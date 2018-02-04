@@ -21,30 +21,14 @@
     </div>
     <div class="col-md-9">
       <h2>Tweets</h2>
-      <div class="col-md-12 border">
-        <%= link_to @tweet.user.name, tweets_user_path(@tweet.user.id) %>
-        <br>
-        <%= @tweet.description %>
-      </div>
-      
-      <h2>Replies</h2>
-      <% @replies.each do |reply| %>
-        <div class="col-md-12 border">
-          <%= reply.user.name %>,
-          <%= reply.created_at %>
-          <br>
-          <%= reply.comment %>
-        </div>
-      <% end %>
-      <%= form_for [@tweet, @reply] do |f| %>
-        <div class="form-group">
-          <%= f.text_area :comment, class: 'form-control' %>
-        </div>
-
-        <div class="form-group">
-          <%= f.submit "Reply", class: "btn btn-primary" %>
-        </div>
-      <% end %>
+        <% @tweets.each do |tweet| %>
+          <div class="col-md-12 border">
+            <% debugger %>
+            <%= link_to tweet.user.name, tweets_user_path(tweet.user.id) %>
+            <br>
+            <%= tweet.description %>
+          </div>
+        <% end %>
     </div>
   </div>
 </div>
