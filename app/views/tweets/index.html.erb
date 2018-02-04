@@ -1,12 +1,12 @@
 <div class="row justify-content-md-center">
   <div class="col-md-7">
     <div id="tweet-form" class="mb-5">
-      <%= form_for(@tweet) do |tweet| %>
+      <%= form_for(@tweet) do |f| %>
         <div class="form-group">
-          <%= tweet.text_area :description, class: "form-control", rows: 5 %>
+          <%= f.text_area :description, class: "form-control", rows: 5 %>
         </div>
         <div class="text-right">
-          <%= tweet.submit "Tweet", class: "btn btn-primary" %>
+          <%= f.submit "Tweet", class: "btn btn-primary" %>
         </div>
       <% end %>
     </div>
@@ -16,6 +16,7 @@
       <div class="card-body">
         <h5 class="card-title">@<%= tweet.user.name %></h5>
         <p class="card-text"><%= tweet.description %></p>
+        <%= link_to "Reply", tweet_replies_path(tweet) %> (<%= tweet.replies.count %>)
       </div>
     </div>
     <% end %>
