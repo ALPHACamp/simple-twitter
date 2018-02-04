@@ -12,7 +12,7 @@
         <% end %>
         <div class="clearfix"></div>
         <% @tweets.each do |tweet| %>
-        <div class="tweet-item">
+        <div class="tweet">
           <div class="caption">
             <div class="avatar">
               <%= image_tag tweet.user.avatar, size: "100" if tweet.user.avatar? %>
