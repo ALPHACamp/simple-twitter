@@ -23,9 +23,12 @@ class User < ApplicationRecord
   has_many :followers, through: :inverse_followships, source: :user
 
   has_many :likes, dependent: :destroy
-  has_many :replies, through: :tweets , dependent: :restrict_with_error
+  has_many :replies,  dependent: :restrict_with_error
   
+  has_many :liked_tweets,through: :likes ,source: :tweet
+
   def is_following?(user)
     self.followings.include?(user)
   end
+
 end

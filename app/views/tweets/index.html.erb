@@ -34,7 +34,19 @@
           </h4>
           
           <p><%= truncate(tweet.description, length: 200)%></p>
-          <%= link_to "Reply(#{tweet.replies.size})" ,tweet_replies_path(tweet) %>
+          <%= link_to "Reply(#{tweet.replies_count})" ,tweet_replies_path(tweet) %>
+          <% if tweet.is_like?(current_user)%>
+            <%= link_to unlike_tweet_path(tweet) ,method: :post do%>
+            <%= '<i class = "glyphicon glyphicon-heart" aria-hidden="true"></i> '.html_safe%>
+            <%= "Like(#{tweet.likes_count})"%>
+            <% end %>   
+          <% else %>
+            <%= link_to like_tweet_path(tweet) ,method: :post do%>
+            <%= '<i class = "glyphicon glyphicon-heart-empty" aria-hidden="true"></i> '.html_safe%>
+            <%= "Like(#{tweet.likes_count})"%>
+            <% end %>  
+          <% end %>
+          
         </div>
         <div class="clearfix"></div>
       </div>
