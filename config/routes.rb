@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     post :unlike, :on => :member
   end
 
-  resources :users, only: [:edit] do
+  resources :users, only: [:edit, :update] do
     get :tweets, :on => :member
     get :followings, :on => :member
     get :followers, :on => :member
