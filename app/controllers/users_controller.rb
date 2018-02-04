@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @tweets = current_user.tweets
+    @tweets = current_user.tweets.order(created_at: :desc)
   end
 
   def edit
