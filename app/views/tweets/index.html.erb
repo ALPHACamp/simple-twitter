@@ -1,1 +1,36 @@
-這裡事前台
+
+<div class="tweetcommit">
+<%=  form_for @tweets do |f| %>
+  <textarea class="form-control" rows="4" autofocus="autofocus" type="text" placeholder="what's on your mind" name="tweet[description]" id="tweet_description"></textarea>
+  <br>
+<input type="submit" name="commit" value="Create Tweet" data-disable-with="Create Tweet" class ="btn btn-primary">
+<% end %>
+  </div>
+  <br>
+<div class="tweetdynamic">
+
+<% @tweet_order.each do |tweeto| %>
+<div class="media">
+  <div class="media-left media-middle">
+    <a href="#">
+<%= image_tag tweeto.user.avatar,class:"media-object" ,style:"width:120px;height:120px"  %>
+    </a>
+  </div>
+  <div class="media-body">
+<%=tweeto.user.name + "，"  %>
+    <%=tweeto.created_at%>
+      <br><br>
+    <p>    <%=tweeto.description%></p>
+      <br>
+    <%= link_to 'Reply',replies_path(tweeto.user.id)%>
+  </div>
+</div>
+    <hr size=4>
+
+    <br>
+  <% end %>
+
+</div>
+  <div class="tweetpopular">
+<h2>popular</h2>
+</div>

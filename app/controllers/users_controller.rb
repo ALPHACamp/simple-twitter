@@ -1,18 +1,18 @@
 class UsersController < ApplicationController
 
   def tweets
-          @user  = User.all
+  @user  = User.all
+    @user = User.find(params[:id])
   end
 
   def edit
-
   @user = User.find(params[:id])
   end
 
   def update
-@user = User.find(params[:id])
-@user.update_attributes(user_params)
-redirect_to tweets_user_path(current_user)
+  @user = User.find(params[:id])
+  @user.update_attributes(user_params)
+  redirect_to tweets_user_path(current_user)
   end
 
   def followings
