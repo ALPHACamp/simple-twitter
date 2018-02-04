@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   root "tweets#index"
 
+  resources :users, only: [:index, :show, :edit, :update]
+
   namespace :admin do
     resources :tweets
     root "tweets#index"
