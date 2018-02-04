@@ -1,6 +1,8 @@
 <div class="row">
   <!-- your tweets -->
   <div class="col-xs-8">
+
+    <!-- tweets form -->
     <div class="tweet-form">
       <%= form_for @tweet do |f| -%>
         <div class="form-group">
@@ -12,8 +14,12 @@
       <% end -%>
     </div>
 
-  <!-- show tweets -->
-  <%= render partial: "shared/tweet_list" %>
+    <!-- show tweets -->
+    <% @tweets.each do |tweet| %>
+      <%= render partial: "shared/tweet", locals: {tweet: tweet} %>
+    <% end %>
+    <div class="text-center"><%= paginate @tweets %></div>
+
   </div>
 
   <!-- popular -->
