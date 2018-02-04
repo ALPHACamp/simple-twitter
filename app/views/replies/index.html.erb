@@ -6,7 +6,7 @@
     <h3>Tweet</h3>
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">@<%= @tweet.user.name %></h5>
+        <h5 class="card-title"><%= link_to "@" + @tweet.user.name, tweets_user_path(@tweet.user.id) %></h5>
         <p class="card-text"><%= @tweet.description %></p>
         <p class="card-text">Reply(<%= @replies.count %>)</p>
       </div>
@@ -19,7 +19,7 @@
       <% @replies.each do |reply| %>
         <div class="card mt-3">
           <div class="card-body">
-            <h5 class="card-title">@<%= reply.user.name %></h5>
+            <h5 class="card-title"><%= link_to "@" + reply.user.name, tweets_user_path(reply.user.id) %></h5>
             <p class="card-text"><%= reply.comment %></p>
           </div>
         </div>
