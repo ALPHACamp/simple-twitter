@@ -1,4 +1,21 @@
-<h1>front</h1>
+<div class="row">
+  <!-- your tweets -->
+  <div class="col-xs-8">
+    <%= form_for @tweet do |f| -%>
+      <div class="form-group">
+        <%= f.text_area :description, class: "form-control", placeholder: "What's on your mind?" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit 'Tweet', class: "btn btn-primary" %>
+      </div>
+    <% end -%>
+  </div>
+
+  <!-- popular -->
+  <div class="col-xs-4">
+    
+  </div>
+</div>
 <ul>
   <% @tweets.each do |tweet| %>
     <li><%= "#{tweet.id}, #{tweet.description}" %></li>
