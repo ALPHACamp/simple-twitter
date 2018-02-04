@@ -32,8 +32,8 @@ ul, ol {
 
 
 img {
-  /* width: 100%; */
-  /* height: auto; */
+  max-width: 100%;
+  height: auto;
   display: block;
 }
 
@@ -55,7 +55,7 @@ img {
 
 
 
-/* ------- header ------- */
+/* ------- header & Navbar------- */
 
 #header {
   position: fixed;
@@ -90,6 +90,18 @@ header .container-fluid {
   color: #A6FFFF;
   background-color: transparent;
 }
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #fff;
+}
+
+.navbar-text {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 0 15px;
+}
+
+
 
 /* ------- user sign-up ------- */
 
