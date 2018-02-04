@@ -89,4 +89,11 @@ namespace :dev do
     puts "finish"
   end
 
+  task update_followers_count: :environment do
+    User.all.each do |u|
+      u.followers_count!
+    end
+    puts "update all users followers_count"
+  end
+
 end
