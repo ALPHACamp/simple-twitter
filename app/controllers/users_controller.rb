@@ -10,8 +10,13 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    flash[:notice] = "User profile was successfully update!"
+    if @user.update(user_params)
+      flash[:notice] = "User profile was successfully update!"
+      redirect_to tweets_user_path(@user)
+    else
+      flash[:alert] = @user.errors.full_messages.to_sentence
+      render :edit
+    end
   end
 
   def followings
