@@ -1,0 +1,11 @@
+<ul>
+  <% @users.each do |user| %>
+  <li>
+    <!-- 推播數量=OK、關注人數=OK、跟隨者人數、推播被 like=OK 的數量 -->
+    <%= user.name %>
+    <%= user.tweets.count %>
+    <%= user.followers_count %>
+    <%#= user.tweets.likes_count %>
+  </li>
+  <% end %>
+</ul>
