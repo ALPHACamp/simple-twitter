@@ -1,0 +1,13 @@
+<% @tweets.each do |tweet| %>
+  <div class="row tweet-box">
+    <div class="col-xs-3">
+      <div class="tweet-avatar">
+        <%= image_tag(tweet.user.avatar, class: "img-responsive center-block") %>
+      </div>
+    </div>
+    <div class="col-xs-9">
+      <p><%= "@#{tweet.user.name}" %></p>
+      <p><%= tweet.description %></p>
+    </div>
+  </div>
+<% end %>
