@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   # resources :followships, only: [:create, :destroy]
 
   # 後台
-  # namespace :admin do
-  #   resources :tweets
-  #   root "tweets#index"
-  # end  
+  namespace :admin do
+    resources :tweets
+    root "tweets#index"
+  end  
 end
