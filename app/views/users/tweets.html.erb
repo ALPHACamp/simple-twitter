@@ -4,8 +4,6 @@
   </div>
   
   <div class="col-md-8">
-       
-    
     <% @tweets.each do |tweet|%>
       <div class="tweet-item">
         <div class="col-md-3">
@@ -18,7 +16,6 @@
           <% end %>
         </div>
         
-
         <div class="col-md-9">
           <h4>
             <%= link_to tweets_user_path(tweet.user) do%>
