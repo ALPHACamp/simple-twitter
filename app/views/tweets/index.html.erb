@@ -1,1 +1,8 @@
-user tweets index
+<h1>user tweets index</h1>
+
+<%= form_for @tweet do |f| %>
+  <%= f.label :description, "Tweet Content" %>
+  <%= f.text_area :description %>
+
+  <%= f.submit %>
+<% end %>
