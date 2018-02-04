@@ -1,0 +1,14 @@
+<div class="tweet-item clearfix">
+    <div class="col-xs-2">
+      <%=image_tag tweet.user.avatar, class:"img-responsive" %>
+    </div>
+    <div class="col-xs-10"><p class="item-info">
+      <%="@"+tweet.user.name + ", "%><%=tweet.updated_at.strftime("%Y-%m-%d,%H:%M")%></p>
+        <p><%=tweet.description%></p>
+        <%= link_to tweet_replies_path(tweet) do %>
+          <div>
+            Reply(<%=tweet.replies.size%>)
+          </div>
+        <%end%>
+    </div>
+  </div>
