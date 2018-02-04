@@ -17,10 +17,15 @@ class User < ApplicationRecord
   has_many :tweets, dependent: :destroy
 
   has_many :likes, dependent: :destroy
+  has_many :liked_tweets, through: :likes, source: :like
 
 
   def admin?
     self.role == "admin"
+  end
+
+  def like?(tweet)
+    tweet.liked_users.include?(self)
   end
 
 end
