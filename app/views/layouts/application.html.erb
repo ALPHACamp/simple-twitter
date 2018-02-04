@@ -38,7 +38,7 @@
                   <%if !current_user.avatar?%>
                     <%= image_tag "https://openclipart.org/download/247319/abstract-user-flat-3.svg",height: 30,width: 30 , class:"img-responsive img-rounded " %>
                   <% else%>
-                    <%= image_tag current_user.avatar, class:"img-responsive img-rounded" %>
+                    <%= image_tag current_user.avatar, height: 30,width: 30 ,class:"img-responsive img-rounded" %>
                   <% end %>
                 <% end %>
               </li>

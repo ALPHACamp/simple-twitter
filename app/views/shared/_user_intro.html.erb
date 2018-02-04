@@ -10,7 +10,7 @@
 <p><%= truncate(user.introduction, length: 200)%></p>
 
 <h4>Tweets <%= user.tweets.count%></h4>
-<h4><%= link_to "追蹤人數 #{user.followings.count}" , followings_user_path(user)%></h4>
+<h4><%= link_to "追蹤名單 #{user.followings.count}" , followings_user_path(user)%></h4>
 <h4><%= link_to "粉絲 #{user.followers_count}" , followers_user_path(user)%></h4>
 <h4>Like <%= user.likes_count%></h4>
 
