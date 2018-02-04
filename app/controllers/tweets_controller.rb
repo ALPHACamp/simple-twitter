@@ -9,8 +9,13 @@ class TweetsController < ApplicationController
   def create
     @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
-    @tweet.save!
-    redirect_to root_url, :notice => "Create Notice: 推播(tweet)成功!"
+    if @tweet.save
+      flash[:notice] = "成功推播(tweet)"
+      redirect_back(fallback_location: root_path)
+    else
+      flash[:alert] = @tweet.errors.full_messages.to_sentence
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def like
