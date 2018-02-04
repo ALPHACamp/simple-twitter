@@ -74,3 +74,35 @@ p {
     text-decoration: none;
   }
 }
+
+/* tweets */
+.action {
+  text-align: right;
+}
+
+.tweet-info {
+  border: 1px solid #767676;
+  margin: 20px 0;
+  padding: 20px 30px; 
+}
+
+/* popular */
+.popular-item {
+  border: 1px solid #767676;
+  margin: 10px 20px;
+  padding: 20px 10px;
+}
+
+.popular-item h3{
+  margin-top: 0;
+  font-size: 20px;
+  line-height: 10px;
+  letter-spacing: 2px; 
+}
+
+.popular-item p{
+  color: #767676;
+  line-height: 24px;
+}
+
+

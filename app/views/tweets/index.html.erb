@@ -1,13 +1,58 @@
 <h1>tweets 前台</h1>
-
-<%= form_for @tweet do |t| %>
-  <%= t.text_area :description %>
-
-  <%= t.submit "Tweet" %>
-<% end %>
-
-<%= @tweets.each do |t| %>
-  <%= t.user.name %>
-  <%= t.created_at %>
-  <%= simple_format t.description %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div id="tweet-form">
+        <%= form_for @tweet do |t| %>
+        <div class="form-group">
+          <%= t.text_area :description, placeholder: "What's on your mind?", class: "form-control", size: "140x10", resize: "none" %>
+        </div>
+        <div class="action">
+          <%= t.submit "Tweet", class: "btn btn-default" %>
+        </div>
+        <% end %>
+      </div>
+      <div id="tweets">
+        <% @tweets.each do |t| %>
+        <div class="tweet-info clearfix">
+          <div class="col-sm-6 col-md-4">
+            <%= image_tag t.user.avatar, class: "img-responsive center-block", size: "130x120" %>
+          </div>
+          <div class="col-sm-6 col-md-8">
+            <div class="info-item">
+              <h3><%= t.user.name %></h3>
+              <p><%= t.created_at %></p>
+              <p><%= truncate(t.description, length: 40){ link_to "continue", "#" } %></p>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="popular">
+        <h3>Popular</h3>
+        <% @users.each do |user| %>
+        <div class="popular-item clearfix">
+          <div class="col-md-5">
+            <%= image_tag user.avatar,class: "img-responsive center-block", size: "130x120" %>
+          </div>
+          <div class="col-md-7">
+            <h3><%= user.name %></h3>
+            <p><%= truncate(user.introduction, length: 50) %></p>
+          </div>
+          <div class="action">
+            <% if current_user != user %>
+              <% if current_user.following?(user) %>
+                <%= link_to "Unfollow", followship_path(user), method: :delete, class: "btn btn-primary" %>
+              <% else %>
+                <%= link_to "Follow", followships_path(following_id: user), method: :post, class: "btn btn-primary" %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
