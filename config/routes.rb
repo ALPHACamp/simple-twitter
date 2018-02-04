@@ -6,14 +6,22 @@ Rails.application.routes.draw do
   resources :users, only: [:edit] do
     member do 
       get :tweets
+      get :likes
     end
   end
 
   # 請依照專案指定規格來設定路由
   resources :tweets, only: [:index, :create] 
+    
+
+ 
 
   resources :tweets, only: [:show] do
     resources :replies, only:[:index, :create]
+    member do 
+      post :like
+      post :unlike
+    end
   end
 
   
