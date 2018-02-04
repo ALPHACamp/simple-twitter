@@ -64,6 +64,16 @@ img {
   letter-spacing: 1.2px;
 }
 
+a {
+  text-decoration: none;
+  padding-right: 10px;
+}
+
+a:hover, a:focus {
+  color: #66B3FF;
+  text-decoration: none;
+}
+
 
 
 /* ------- header & Navbar------- */
@@ -152,6 +162,74 @@ header .container-fluid {
   text-align: right;
   padding: 10px;
 }
+
+
+
+/* ------- tweet List ------- */
+
+.tweetlist .container {
+  width: 85%;
+  margin: 0 auto;
+  position: relative;
+  padding: 15px;
+  word-break: break-all;
+}
+
+.replylink {
+  text-decoration: none;
+  padding-right: 10px;
+}
+
+.replylink:hover, .replylink:focus {
+  color: #66B3FF;
+  text-decoration: none;
+}
+
+.tweetlist .replylink .badge {
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #66B3FF;
+  line-height: 1;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-align: center;
+  background-color: #ECF5FF;
+  border-radius: 7px;
+}
+
+
+.likelink {
+  color: #AE0000;
+  text-decoration: none;
+  padding-right: 10px;
+}
+
+.likelink:hover, .likelink:focus {
+  color: #CF9E9E;
+  text-decoration: none;
+}
+
+.tweetlist .likelink .badge {
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #CF9E9E;
+  line-height: 1;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-align: center;
+  background-color: #F2E6E6;
+  border-radius: 7px;
+}
+
+
+
+
 
 
 

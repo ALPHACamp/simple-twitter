@@ -3,14 +3,14 @@
 
     <!-- form & tweets list /start -->
     <div class="col-xs-12 col-md-8">
-      <h3>開工中</h3>
+      <h3>開工中: tweet發推完成，list施工中</h3>
       <!-- form for creating tweet / start -->
       <div class="tweetform" >
         <div class="form-group">
           <br />
           <%= form_for @tweet do |f| %>
             <div class="field">
-              <%= f.text_area :description, class: "form-control", placeholder: "有什麼新鮮事想推播呢？(輸入上限140字)", rows: "5", maxlength: "140" %>
+              <%= f.text_area :description, class: "form-control", placeholder: "有什麼新鮮事想推播呢？(Description輸入上限140字元)", rows: "5", maxlength: "140" %>
             </div>
 
             <!-- tweet -->
@@ -25,6 +25,45 @@
       <!-- form for creating tweet / end -->
       
       <!-- tweets list /start-->
+      <div class="tweetlist">
+        
+        <% @tweets.each do |tweet| %>
+          
+          <div class="container"><!-- 包住每一條tweet /start -->
+
+            <!-- Left: user avatar / start-->
+            <div class="col-xs-2">
+              <% if tweet.find_user.avatar? %>
+                <%= image_tag(tweet.find_user.avatar, width: '60', height: '65') %>
+              <% else %>
+                <%= image_tag("http://via.placeholder.com/60x65") %>
+              <% end %>
+            </div>
+            <!-- Left: user avatar / end-->
+            
+            <!-- Right: user description / start -->
+            <div class="col-xs-10">
+              <%= tweet.description %>
+
+              <!-- reply & like link -->
+              <div>
+                <%= link_to '#counts', class: "replylink" do %>
+                  Reply <%= content_tag :span, tweet.replies_count, class: "badge" %>
+                <% end %>
+             
+                <%= link_to '#counts', class: "likelink" do  %>
+                  Like <%= content_tag :span, tweet.likes_count, class: "badge" %>
+                <% end %>
+              </div>
+
+            </div>
+            <!-- Right: user description / end -->
+
+          </div><!-- 包住每一條tweet /end -->
+
+        <% end %> <!-- tweets.each -->
+
+      </div>
       <!-- tweets list /end-->
 
     </div>
