@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:tweets, :edit, :update]
+  before_action :set_user, only: [:tweets, :edit, :update, 
+    :followings, :followers, :likes]
 
   def tweets    
   end
@@ -17,16 +18,17 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings # 基於測試規格，必須講定變數名稱
+    # 基於測試規格，必須講定變數名稱    
+    @followings = Followship.where(:user_id => params[:id])
   end
 
   def followers
-    @followers # 基於測試規格，必須講定變數名稱
+    # 基於測試規格，必須講定變數名稱
+    @followers = Followship.where(:following_id => params[:id])
   end
 
   def likes
-    # 基於測試規格，必須講定變數名稱
-    @user = User.find(params[:id])
+    # 基於測試規格，必須講定變數名稱    
     @likes = Like.where(:user_id => params[:id])
 
   end
