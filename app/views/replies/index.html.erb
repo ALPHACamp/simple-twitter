@@ -11,15 +11,17 @@
       <div class="container-fluid">
         <h2>Replies</h2>        
         <% @replies.each do |reply| %>
-          <div class="well row">
-            <div class="col-md-4">    
-                <%= image_tag(reply.user.avatar, :class => 'img-responsive') %>
-            </div>
-            <div class="col-md-8">
-              <p> <%= reply.user.name %>, <%= reply.created_at.strftime('%F') %>, <%= reply.created_at.strftime('%R') %> </p>
-              <p><%= reply.comment %></p>            
-            </div>
-          </div>             
+          <div class="container-fluid">
+            <div class="well row">
+              <div class="col-md-4">    
+                  <%= image_tag(reply.user.avatar, :class => 'img-responsive') %>
+              </div>
+              <div class="col-md-8">
+                <p> <%= reply.user.name %>, <%= reply.created_at.strftime('%F') %>, <%= reply.created_at.strftime('%R') %> </p>
+                <p><%= reply.comment %></p>            
+              </div>
+            </div>  
+          </div>           
         <% end %>    
         <%= form_for :reply , :url => {:controller=>'replies', :action => 'create' } do |f| %>
           <div class="form-group">
