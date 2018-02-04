@@ -9,11 +9,14 @@ Rails.application.routes.draw do
     member do
       get :tweets
       get :likes
+      get :followings
+      get :followers
+      get :likes
     end
 
   end
 
-  resources :tweets, only: :create do
+  resources :tweets, only: [:index, :create] do
     resources :replies, only: [:index, :create]
 
     member do
@@ -23,10 +26,12 @@ Rails.application.routes.draw do
 
   end
 
+  resources :followships, only: [:create, :destroy]
+
   namespace :admin do
     root "tweets#index"
 
-    resources :tweets, only: :destroy
+    resources :tweets, only: [:index, :destroy]
 
     resources :users, only: :index
   end
