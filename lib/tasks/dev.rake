@@ -9,8 +9,8 @@ namespace :dev do
 
       user = User.new(
         name: name,
-        email: "#{name}@example.co",
-        password: "12345678",
+        email: "#{name}@mail.co",
+        password: "000000",
         introduction: FFaker::Lorem::sentence(30),
         avatar: file
       )
@@ -27,15 +27,12 @@ namespace :dev do
       (rand(20)+1).times do |variable|
         user.tweets.create!(description: FFaker::Tweet.body)
       end
+      puts "#{user.name} has #{user.tweets.count} tweets!"
     end
     puts "now you have #{Tweet.count} tweets!"
   end
 
   task test: :environment do
-    @users = User.all
-    @users.each do |user|
-      puts "#{user.name} has #{user.tweets.count} tweets!"
-    end
   end
 
   #fake all data

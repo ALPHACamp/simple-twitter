@@ -1,1 +1,6 @@
 <h1>front</h1>
+<ul>
+  <% @tweets.each do |tweet| %>
+    <li><%= "#{tweet.id}, #{tweet.description}" %></li>
+  <% end %>
+</ul>
