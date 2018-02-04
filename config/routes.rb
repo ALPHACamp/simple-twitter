@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     member do 
       get :replies , :controller => 'replies', :action => 'index'
       post :replies, :controller => 'replies', :action => 'create'
+      post :like
+      post :unlike
     end
 
   end
