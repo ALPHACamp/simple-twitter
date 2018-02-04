@@ -6,7 +6,7 @@
     <%= link_to tweet.user.name, tweets_user_path(tweet.user), class: "btn btn-primary" %>
     <%= tweet.description %>
     <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %>
-    <%= link_to 'Reply', tweet_replies_path(tweet), class: "btn btn-primary" %>
+    <%= link_to "Reply(#{tweet.replies.count})" , tweet_replies_path(tweet), class: "btn btn-primary" %> 
   </li>
   <% end %>
 </ul>
