@@ -16,6 +16,7 @@
           <div class="caption">
             <h4>@<%= tweet.user.name %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></h4>
             <p><%= tweet.description %></p>
+            <%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet) %>
             <br>
           </div>
         </div>
