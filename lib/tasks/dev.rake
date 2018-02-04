@@ -9,7 +9,8 @@ namespace :dev do
 
       user = User.new(
         name: name,
-        email: "#{name}@mail.co",
+        email: "user#{i}@mail.co",
+        # email: "#{name}@mail.co",
         password: "000000",
         introduction: FFaker::Lorem::sentence(30),
         avatar: file
@@ -29,7 +30,7 @@ namespace :dev do
       end
       puts "#{user.name} has #{user.tweets.count} tweets!"
     end
-    puts "now you have #{Tweet.count} tweets!"
+    puts "Now you have #{Tweet.count} tweets!"
   end
 
   task test: :environment do
@@ -39,7 +40,7 @@ namespace :dev do
   task fake_all: :environment do
     Rake::Task['db:drop'].execute
     Rake::Task['db:migrate'].execute
-    Rake::Task['db:seed'].execute
+    # Rake::Task['db:seed'].execute
     Rake::Task['dev:fake_user'].execute
     Rake::Task['dev:fake_tweets'].execute
   end
