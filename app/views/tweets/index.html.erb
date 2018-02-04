@@ -1,5 +1,27 @@
-<ul>
-  <% @tweets.each do |tweet| %>
-  <li><%= tweet.description %></li>
-  <% end %>
-</ul>
+<div class="row justify-content-md-center">
+  <div class="col-md-7">
+    <div id="tweet-form" class="mb-5">
+      <%= form_for(@tweet) do |tweet| %>
+        <div class="form-group">
+          <%= tweet.text_area :description, class: "form-control", rows: 5 %>
+        </div>
+        <div class="text-right">
+          <%= tweet.submit "Tweet", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+   <div id="tweets-list">
+    <% @tweets.each do |tweet| %>
+    <div class="card mt-3">
+      <div class="card-body">
+        <h5 class="card-title">@<%= tweet.user.name %></h5>
+        <p class="card-text"><%= tweet.description %></p>
+      </div>
+    </div>
+    <% end %>
+   </div>
+  </div>
+  <div class="col-md-5">
+   popular twttes
+  </div>
+</div>
