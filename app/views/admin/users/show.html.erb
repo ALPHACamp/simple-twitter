@@ -12,6 +12,9 @@
         <% else %>
           <p><%= @user.introduction %></p>   
         <% end %>
+        <br>
+        <h4 style="color:grey;">Tweet <%= @user.tweets.length %></h4>
+        <br>
         <% if @user==current_user %>
           <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
         <% end %>
@@ -32,6 +35,7 @@
                 <h4><%= @user.name %></h4>
                 <h5><small><%= tweet.created_at %></small></h5>
                 <p><%= tweet.description %></p>
+                <h5 style="color:blue;"><% tweet.count_replies %><%= link_to "回覆數(#{tweet.replies_count})", admin_tweet_path(tweet) %></h5>
               </div>
             </div>
         <% end %>

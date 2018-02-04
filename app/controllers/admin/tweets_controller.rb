@@ -15,6 +15,7 @@ before_action :set_tweet, only: [:show, :destroy]
   end
 
   def set_tweet
-    @tweet = Tweet.find(params[:id])
+      @tweet = Tweet.find(params[:id])
   end
+
 end

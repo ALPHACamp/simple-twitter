@@ -1,19 +1,17 @@
 class UsersController < ApplicationController
+  before_action :set_user
 
   def tweets
   end
 
   def show
-    @user = current_user
-    @tweets = current_user.tweets.order(created_at: :desc)
+    @tweets = @user.tweets.order(created_at: :desc)
   end
 
   def edit
-    @user = current_user
   end
 
   def update
-    @user = current_user
     @user.update_attributes(user_params)
     redirect_to user_path(@user)
     flash[:notice] = "Your user profile was successfully updated!"    
@@ -33,6 +31,14 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :introduction, :avatar)
+  end
+
+  def set_user
+    if  params[:id]
+      @user = User.find(params[:id])
+    else
+      @user = current_user
+    end
   end
 
 end
