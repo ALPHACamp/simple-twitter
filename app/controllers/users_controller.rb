@@ -28,7 +28,8 @@ class UsersController < ApplicationController
   end
 
   def likes
-    @likes # 基於測試規格，必須講定變數名稱
+    @likes = @user.liked_tweets.all # 基於測試規格，必須講定變數名稱
+    @tweets = @likes
   end
 
   private
