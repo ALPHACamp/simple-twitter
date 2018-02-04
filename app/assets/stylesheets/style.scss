@@ -11,11 +11,16 @@
 .usertweet-avatar{
   margin: 5px;
   width: 70px;
+  height: 70px;
   float: left;
 }
 
 .twpanel{
   min-height: 80px;
+}
+
+.ppanel{
+  min-height: 250px;
 }
 
 h2{
@@ -24,6 +29,10 @@ h2{
 
 h5{
   color:#4682B4;
+}
+
+h3{
+  color:#4682B4; 
 }
 
 .movebtn{
