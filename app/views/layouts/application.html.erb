@@ -30,7 +30,8 @@
                 <% if current_user&.admin? %>
                   <li><%= link_to 'Admin Panel', admin_tweets_path %></li>
                 <% end %>
-                <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
+                <li><p class="navbar-text">Hi, <%= current_user.name %></p></li>
+                <!-- 使用者能創建帳號、登入、登出 -->
                 <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
                 <li><%= link_to('修改個人資料', edit_user_path(current_user)) %></li>
                 <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
