@@ -25,4 +25,10 @@ class User < ApplicationRecord
   has_many :tweets, dependent: :destroy
   has_many :replies, dependent: :destroy
 
+  def folowers_count!
+    count=self.favorites.size
+    self.followers_count=count
+    self.save
+  end
+
 end
