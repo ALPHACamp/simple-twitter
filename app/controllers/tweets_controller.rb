@@ -6,12 +6,19 @@ class TweetsController < ApplicationController
   end
 
   def create
+    @user = User.find(params[:id])
+    @tweet = @user.tweets.create(params[:tweet])
   end
 
   def like
   end
 
   def unlike
+  end
+
+  private
+  def tweet_params
+    params.require(:tweet).permit(:description)
   end
 
 end
