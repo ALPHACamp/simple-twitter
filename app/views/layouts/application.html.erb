@@ -8,10 +8,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <%= link_to "tweets 前台", root_path %>
+
   <body>
     <% if current_user %>
       <% if current_user&.admin? %>
-        <li><%= link_to 'Admin Panel', admin_restaurants_path %></li>
+        <li><%= link_to 'Admin Panel', admin_tweets_path %></li>
       <% end %>
       <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
       <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
