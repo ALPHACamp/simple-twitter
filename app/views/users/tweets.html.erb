@@ -9,7 +9,8 @@
   <div class="col-sm-6 col-md-4">
     <div class="tweet-item">
       <div class="caption">
-        <%= tweet.user_id %> <%= time_ago_in_words(tweet.created_at) %> ago
+        <%= link_to @user.name, tweets_user_path(tweet.user) %>
+        <%= time_ago_in_words(tweet.created_at) %> ago
         <p><%= truncate(tweet.description, length: 80) %></p>
       </div>
     </div>

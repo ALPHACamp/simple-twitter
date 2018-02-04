@@ -40,7 +40,7 @@ namespace :dev do
     30.times do |i|
       Tweet.create!(
         description: FFaker::Tweet.body,
-        user_id: rand(1..User.count)
+        user: User.all.sample
       )
     end
     puts "have created fake tweets!"
