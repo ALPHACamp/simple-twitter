@@ -6,7 +6,14 @@ Rails.application.routes.draw do
   root "tweets#index"
 
   #tweets routes
-  resources :tweets, only: [:index, :create] 
+  resources :tweets, only: [:index, :create] do
+
+    member do 
+      get :replies , :controller => 'replies', :action => 'index'
+      post :replies, :controller => 'replies', :action => 'create'
+    end
+
+  end
 
   #users routes
   resources :users, only: [:edit, :update] do
