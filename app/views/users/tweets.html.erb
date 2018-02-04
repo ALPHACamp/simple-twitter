@@ -1,0 +1,11 @@
+<h1>User's own tweets</h1>
+
+
+<!-- User can see tweets of other(or own) users -->
+<% @tweets.each do |tweet| %>
+  <ul>
+    <li><%= tweet.description %></li>
+    <li><%= tweet.created_at %></li>
+  </ul>
+
+<% end %>
