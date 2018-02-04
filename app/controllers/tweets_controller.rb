@@ -1,7 +1,8 @@
 class TweetsController < ApplicationController
 
   def index
-    @tweets = Tweet.page(params[:page]).per(20)
+    @tweets = Tweet.order(updated_at: :desc).page(params[:page]).per(15)
+    # 15則換頁，照時間排序
     @tweet = Tweet.new
     # @users 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
   end
