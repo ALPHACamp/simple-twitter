@@ -23,6 +23,7 @@
                   <%= tweet.user.name %>, <%= tweet.created_at.strftime('%F') %>, <%= tweet.created_at.strftime('%R') %> 
                 </p>
                 <p><%= tweet.description %></p>
+                <%= link_to "Reply(#{tweet.replies_count})", replies_tweet_path(tweet.id) %>
               </div>
             </div>
           </div>
