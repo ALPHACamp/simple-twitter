@@ -29,7 +29,7 @@
                 <li><%= link_to 'Admin Panel', admin_tweets_path %></li>
               <% end %>
               <li><%= link_to (image_tag (current_user.avatar)), tweets_user_path(current_user) %></li>
-              <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+              <li><%= link_to('Logout', destroy_user_session_path, method: :delete, style: "color:#008B8B") %></li>
             <% else %>
               <li><%= link_to('註冊', new_user_registration_path) %></li>
               <li><%= link_to('登入', new_user_session_path) %></li>
