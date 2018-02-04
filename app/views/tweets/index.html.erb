@@ -43,6 +43,14 @@
             
             <!-- Right: user description / start -->
             <div class="col-xs-10">
+              
+              <!-- base info of user and tweet time -->
+              <%= link_to '#info' do  %>
+                @<%= content_tag :span, tweet.find_user.name %>
+              <% end %>
+              <span><%= tweet.created_at.localtime.to_s(:db) %></span><br />
+
+              <!-- tweet description -->
               <%= tweet.description %>
 
               <!-- reply & like link -->
