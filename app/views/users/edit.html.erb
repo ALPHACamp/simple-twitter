@@ -20,39 +20,64 @@
 
     <hr>
     
-    <!-- form /start -->
-    <div>
+    <!-- avatar & form 設置 -->
+    <div class="row">
+      <!-- form /start -->
       <%= form_for @user do |f| %>
-        
-        <form class="form-group" role="form">
-          <div class="field">
-            <%= f.label :email %>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Enter Email" %>
-          </div>
-
-          <div class="field">
-            <%= f.label :name %>
-            <%= f.text_field :name, class: "form-control", placeholder: "Enter Name" %>
-          </div>
-
-          <div class="field">
-            <%= f.label :introduction %>
-            <%= f.text_area :introduction, class: "form-control", placeholder: "Enter Introduction", rows: "8" %>
-          </div>
-
+        <!-- avatar form-left/start -->
+        <div class="col-md-4">
+          <!-- 判別@user.avatar是否為nil -->
+          <% if @user.avatar? %>
+            <%= image_tag(@user.avatar, width: '360px', height: '350px') %>
+          <% else %>
+            <%= image_tag("http://via.placeholder.com/300x350") %>
+          <% end %>
+          
+          <!-- update avatar -->
           <div class="field">
             <%= f.label :avatar %>
             <%= f.file_field :avatar, class: "form-control" %>
           </div>
 
-          <div class="actions">
-            <%= f.submit "更新個人資料", class: "btn btn-primary" %> | 
-            <%= f.button "取消變更", type: :reset, class: "btn btn-default" %>
-          </div>
-        </form>
-      <% end %>
-    </div>
-    <!-- form /end -->
+        </div><!-- avatar form-left/end -->
+
+        <!-- form-right/start -->
+        <div class="col-md-8">
+          <%= form_for @user do |f| %>
+            
+            <form class="form-group" role="form">
+              <div class="field">
+                <%= f.label :email %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Enter Email" %>
+              </div>
+
+              <div class="field">
+                <%= f.label :name %>
+                <%= f.text_field :name, class: "form-control", placeholder: "Enter Name" %>
+              </div>
+
+              <div class="field">
+                <%= f.label :introduction %>
+                <%= f.text_area :introduction, class: "form-control", placeholder: "Enter Introduction", rows: "15" %>
+              </div>
+
+              <!-- submit -->
+              <br />
+              <div class="actions">
+                <%= f.submit "更新個人資料", class: "btn btn-primary" %> | 
+                <%= f.button "取消變更", type: :reset, class: "btn btn-default" %>
+              </div>
+
+            </form>
+          <% end %>
+        </div> <!-- form-right/end -->
+
+      <% end %><!-- form /end -->
+      
+    </div> <!-- /.row -->
+
+
+    
   <% else %>
     <h2>非使用者本人，無法修改此使用者的個人資料</h2><br />
   <% end %>
