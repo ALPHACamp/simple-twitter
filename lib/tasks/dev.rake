@@ -6,7 +6,8 @@ namespace :dev do
     Tweet.destroy_all
     50.times do |i|
       Tweet.create!(
-        description: FFaker::Lorem::sentence(10)
+        description: FFaker::Lorem::sentence(10),
+        user: User.all.sample
       )
     end
     puts "have created fake tweets"

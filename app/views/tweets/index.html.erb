@@ -1,1 +1,13 @@
-<h1>前台</h1>
+<div class="container">
+  <h1>前台</h1>
+  
+  
+  <% @tweets.each do |tweet| %>
+      <div>
+        <h4><%= tweet.user.name %></h4>
+        
+        <p><%= truncate(tweet.description, length: 80) %></p>
+      </div>
+  <% end %>
+</div>
+
