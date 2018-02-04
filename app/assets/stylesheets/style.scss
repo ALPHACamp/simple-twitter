@@ -4,7 +4,7 @@
   clear: both;
 }
 
-/* ----- navbar ----- */
+/* --------------- navbar --------------- */
 
 .my-nav {
   background: #00BFFF;
@@ -42,7 +42,9 @@
   margin-top: 3.5px;
 }
 
-/* ----- index ----- */
+
+/* --------------- index tweet --------------- */
+
 
 #tweet-new {
   border: 2px solid #8ab7dc;
@@ -62,11 +64,54 @@
   padding: 10px;
 }
 
-.tweet-item img {
-  border-radius: 5px;
+.tweet-item .tweet-image {
   float: left;
-  margin-right: 15px;
+  width: 20%;
+  padding-right: 15px;
 }
+
+.tweet-item .tweet-image img {
+  border-radius: 5px;
+}
+
+.tweet-item .tweet-content {
+  float: right;
+  width: 80%;
+  font-size: 16px;
+}
+
+.tweet-info {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #3084cc;
+}
+
+.tweet-item .tweet-content p {
+  color: gray;
+}
+
+.tweet-item .tweet-content link {
+  font-weight: bold;
+}
+
+.reply-btn {
+  font-weight: bold;
+  color: #69b2f1;
+}
+
+.like-btn {
+  margin-left: 10px;
+  font-weight: bold;
+  color: #AAAAAA;
+}
+
+.unlike-btn {
+  margin-left: 10px;
+  font-weight: bold;
+  color: #FA8072;
+}
+
+/* --------------- index popular --------------- */
 
 #index-popular {
   color: #006666;
@@ -75,13 +120,29 @@
 
 .user-item {
   border: 1.5px solid #d9edf7; /* gray: #ddddddbd */
-  padding: 10px 10px 15px 10px;
+  padding: 10px;
 }
 
-.user-item img {
-  border-radius: 5px;
+.user-item .user-image {
   float: left;
-  margin-right: 15px;
+  width: 33%;
+  padding-right: 15px;
   margin-top: 8px;
 }
 
+.user-item .user-image img {
+  border-radius: 5px;
+}
+
+.user-item .user-content {
+  float: right;
+  width: 67%;
+}
+
+.user-content h4 {
+  color: #3084cc;
+}
+
+.user-content p {
+  color: gray;
+}
