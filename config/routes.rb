@@ -6,5 +6,9 @@ Rails.application.routes.draw do
   root 'tweets#index'
 
   resources :tweets
-  resources :users
+  resources :users, only: [:edit, :update] do
+    member do
+     get :tweets
+   end
+  end
 end
