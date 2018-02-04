@@ -3,18 +3,18 @@ class UsersController < ApplicationController
 
 
   def tweets
-    @tweeted = @user.tweets.uniq
+    @tweeted = @user.tweets.order("created_at DESC").uniq
   end
 
   def edit
     unless @user == current_user
-      redirect_to user_path(@user)
+      redirect_to tweets_user_path(current_user)
     end
   end
 
   def update
     @user.update(user_params)
-    redirect_to user_path(@user)
+    redirect_to tweets_user_path(current_user)
   end
 
   def followings
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :intro, :avatar)
+    params.require(:user).permit(:name, :introduction, :avatar)
   end
 
 end

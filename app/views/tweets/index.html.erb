@@ -1,23 +1,28 @@
 <div class="container">
   <div class="row">
-    <%= form_for [@tweet] do |f| %>
-      <div class="form-group">
-        <%= f.text_area :description, placeholder: "留個言吧", class: "form-control" %>
+    <div class="col-md-7">
+      <%= form_for [@tweet] do |f| %>
+        <div class="form-group">
+          <%= f.text_area :description, placeholder: "留個言吧", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit class: "btn btn-primary" %>
+          <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+        </div>
+      <% end %>
+      <% @tweets.each do |tweet| %>
+      <div class="tweets">
+          <h4><%= link_to tweet.user.name ,tweets_user_path(tweet.user) %></h4>
+        <p><%= simple_format tweet.description %></p>
+        <p class="text-muted">
+          <em><%= time_ago_in_words(tweet.created_at) %> ago -</em>
+        </p>
       </div>
-      <div class="form-group">
-        <%= f.submit class: "btn btn-primary" %>
-        <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
-      </div>
-    <% end %>
-    <% @tweets.each do |tweet| %>
-    <div>
-        <h4><%= link_to tweet.user.name ,tweets_user_path(tweet.user) %></h4>
-      <p><%= simple_format tweet.description %></p>
-      <p class="text-muted">
-        <em><%= time_ago_in_words(tweet.created_at) %> ago -</em>
-      </p>
+      <hr>
+      <% end %>
     </div>
-    <hr>
-    <% end %>
+    <div class="col-md-5">
+      
+    </div>
   </div>
 </div>

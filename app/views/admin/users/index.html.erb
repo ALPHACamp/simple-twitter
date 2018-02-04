@@ -13,7 +13,7 @@
     <% @users.each do |user| %>
       <div class="col-md-3 col-sm-4 col-xs-6 text-center user-item">
 
-        <%= link_to user_path(user) do %>
+        <%= link_to tweets_user_path(user) do %>
           <% if user.avatar? %>
             <%= image_tag(user.avatar, class: "img-rounded") %>
           <% else %>

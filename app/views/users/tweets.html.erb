@@ -1,1 +1,34 @@
-<h1>使用者推播</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="col-md-12 col-sm-12">
+        <div class="text-center user-tweet-item">
+          <%= image_tag @user.avatar, class: "img-responsive img-rounded"  if @user.avatar? %>
+          <%= image_tag "fallback/avatar.png",
+            class: " img-rounded" if !@user.avatar?%>
+        </div>
+      </div>
+      <div class="col-md-12 col-sm-12">
+        <h2><%= @user.name %></h2>
+        <p><strong><%= @user.introduction %></strong></p>
+      </div>
+      <% if @user == current_user %>
+        <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
+      <% end %>      
+    </div>
+
+
+    <div class="col-md-8">
+      <% @tweeted.each do |tweet| %>
+      <div class="tweets">
+          <h4>
+            <%= link_to tweet.user.name,tweets_user_path(tweet.user)%>
+            <%= tweet.created_at %> 
+          </h4>
+        <p><%= simple_format tweet.description %></p>
+      </div>
+      <hr>
+      <% end %>      
+    </div>
+  </div>
+</div>
