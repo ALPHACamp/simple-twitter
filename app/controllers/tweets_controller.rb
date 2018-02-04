@@ -11,6 +11,7 @@ class TweetsController < ApplicationController
     if @tweet.save
       redirect_to root_path
     else
+      @tweets = Tweet.page(params[:page]).per(20)
       render :index
     end
 
