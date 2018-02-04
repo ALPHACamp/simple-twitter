@@ -4,6 +4,46 @@
     <%= link_to '推文總覽', admin_root_path %> | <%= link_to '使用者總覽', admin_users_path %>
   </div>  
 
+  <div class="row">
 
+    <div class="col-md-12">
+
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>發佈時間</th>
+            <th>推播內容</th>
+            <th>發布者</th>
+            <th>回覆數</th>
+            <th>#</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tweets.each do |tweet| %>
+          <tr>
+            <th scope="row"><%= tweet.id %></th>
+            <td><%= tweet.created_at %></td>
+            <td><%= tweet.description %></td>
+            <td><%= tweet.user.name %></td>
+            <td>0</td>
+            <td>
+              <%= link_to 'Show', admin_restaurant_path(restaurant) %>
+              <%= link_to 'Edit', edit_admin_restaurant_path(restaurant) %>
+              <%= link_to 'Delete', admin_restaurant_path(restaurant), method: :delete, data: {confirm:"Are you sure?"} %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      
+      <div class="text-center">
+        <%= paginate @tweets %>
+      </div>
+
+    </div>
+
+  </div>
 
 </div>
