@@ -24,7 +24,7 @@ namespace :dev do
     Tweet.destroy_all
     puts " create fake tweet data ..."
 
-    10.times do |i|
+    100.times do |i|
       Tweet.create!(description: FFaker::Lorem.paragraph[1..140],
         user_id: User.all.sample
       )
