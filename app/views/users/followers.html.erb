@@ -2,9 +2,9 @@
   <div class="row">
     <%= render partial: "share/user_profile", locals: {obj: @user} %>
     <div class="col-xs-8">
-      <% @followings.each do |following| %>
+      <% @followers.each do |follower| %>
         <div class="col-xs-6">
-          <%= render partial: "share/user_box", locals: {user: following} %>
+          <%= render partial: "share/user_box", locals: {user: follower} %>
         </div>
       <% end %>  
     </div>
