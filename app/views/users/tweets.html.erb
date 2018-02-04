@@ -1,8 +1,26 @@
-          
-          <div><%= image_tag (@user.avatar if @user.avatar?), class: "user-avatar" %><div>
-          <h2><%= @user.name %></h2>
-          <p><strong><%= @user.email %></strong></p>
-          <div><%= simple_format @user.introduction %></div>
-          <% if @user.email == current_user.email %>
-            <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
-          <% end %>
+<div class="container">
+  <div class="row">
+
+  <div class="col-md-4">
+    <div><%= image_tag (@user.avatar if @user.avatar?), class: "user-avatar" %></div>
+    <h2><%= @user.name %></h2>
+    <%= simple_format @user.introduction, style: "color:#4682B4" %>
+    <% if @user.email == current_user.email %>
+      <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary btn-lg" %>
+    <% end %>
+  </div>
+
+  <div class="col-md-8">
+    <% @user.tweets.each do |tweet| %>
+      <div class="panel panel-default twpanel">
+          <%= image_tag (tweet.user.avatar if tweet.user.avatar?), class: "usertweet-avatar" %>
+          <h5>@<%= tweet.user.name %>,<%= tweet.created_at.to_date %>,<%= tweet.created_at.strftime("%k:%M") %></h5>
+          <%= simple_format tweet.description, style: "color:#808080" %>     
+      </div>
+    <% end %>
+  </div>
+
+
+
+  </div>
+</div>
