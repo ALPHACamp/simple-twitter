@@ -5,7 +5,7 @@
     <!-- 管理者可以瀏覽所有的推播與推播回覆內容
           管理者可以刪除使用者的推播 -->
     <%= link_to 'Tweets', admin_tweets_path %><!-- restaurant -->
-    <!-- 管理者可以瀏覽站內所有的使用者清單 -->
+    |<!-- 管理者可以瀏覽站內所有的使用者清單 -->
     <%= link_to 'Users', admin_users_path %><!-- catogory -->
   </div>
 
@@ -40,9 +40,9 @@
         </tbody>
       </table>
 
-      <!-- <div class="text-center">
-        <%#= paginate @tweets %>
-      </div> -->
+      <div class="text-center">
+        <%= paginate @tweets %>
+      </div>
 
     </div>
 
