@@ -1,20 +1,28 @@
 <div class="container">
-  <div class="col-sm-8">
+  <div class="col-sm-7">
     <div class="tweet-input">
       <%=simple_form_for @tweet do |f|%>
-        <%= f.input :description ,placeholder:"whats on yout mind"%>
+        <%= f.input :description,label: false ,placeholder:"whats on yout mind"%>
         <%= f.button :submit, 'Tweet',class:"btn btn-primary"%>
       <%end%>
     </div>
-    <div class="tweet-item">
-      <% @tweets.each do |tweet| %>
-      <p><%=tweet.user.name%></p>
-      <p><%=tweet.description%></p>
-      <%end%>
+    <hr>
+    <div class="index-tweet-content">
+    <%@tweets.each do |tweet| %>
+      <div class="tweet-item clearfix">
+        <div class="col-xs-2">
+          <%=image_tag tweet.user.avatar, class:"img-responsive" %>
+        </div>
+        <div class="col-xs-10"><p class="item-info"><%="@"+tweet.user.name + ", "%><%=tweet.updated_at.strftime("%Y-%m-%d,%H:%M")%></p>
+          <p></p>
+          <p><%=tweet.description%></p>
+        </div>
+      </div>
+    <%end%>
     </div>
   </div>
 
-  <div class="col-sm-4">
+  <div class="col-sm-5">
 
   </div>
 

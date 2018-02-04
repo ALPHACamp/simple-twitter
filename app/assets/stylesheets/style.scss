@@ -27,3 +27,31 @@
   position: relative;
 
 }
+
+
+#tweet_description{
+  height: 100px;
+  font-size: 20px;
+  resize: none;
+
+}
+
+/* tweet-item */
+.tweet-item{
+  border: 1px solid #e7e7e7;
+  margin-top: 5px;
+  padding: 10px;
+  word-wrap:break-word;
+  position: relative;
+  width: 100%;
+}
+.item-info{
+  font-size: 14px;
+  font-weight: bold;
+  color: #337ab7
+}
+
+
+.index-tweet-content{
+  position: relative;
+}
