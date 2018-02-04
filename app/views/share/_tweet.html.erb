@@ -19,7 +19,8 @@
       </div>
       <div class="row">
         <%= link_to "Reply", tweet_replies_path(tweet.id) %>
-        <%= link_to "Like", "#" %>
+        <%= link_to "Like", like_tweet_path(tweet.id), method: :post %>
+        <%= link_to "UnLike", unlike_tweet_path(tweet.id),method: :post %>
       </div>
     </div>
   </div>

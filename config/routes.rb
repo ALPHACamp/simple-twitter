@@ -8,11 +8,18 @@ Rails.application.routes.draw do
   resources :users ,only: [:show] do
     member do
       get :tweets
+      get :likes
     end
    
   end
 
-   resources :tweets  do
+  resources :tweets do
+
+    member do
+      post :like
+      post :unlike
+    end
+
     resources :replies,only: [:index, :create]
    
   end
