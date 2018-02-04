@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   end
 
 
+  #followship routes
+  resources :followships, only: [:create, :destroy]
 
   #admin routes
   namespace :admin do
