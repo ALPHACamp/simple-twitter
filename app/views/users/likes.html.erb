@@ -5,28 +5,7 @@
     </div>
     <div class="col-md-8">
       <% @likes.each do |like| %>
-         <div class="container-fluid">
-            <div class="row well">
-              <div class="col-md-4">    
-                  <%= image_tag(like.user.avatar, :class => 'img-responsive') %>
-              </div>
-              <div class="col-md-7 tweet-content">
-                <p>
-                  <%= like.user.name %>, <%= like.tweet.created_at.strftime('%F') %>, <%= like.tweet.created_at.strftime('%R') %> 
-                </p>
-                <p><%= like.tweet.description %></p>
-                <div class="row">
-                  <div class="col-md-6">
-                    <%= link_to "Reply(#{like.tweet.replies_count})", replies_tweet_path(like.tweet.id) %>    
-                  </div>                  
-                  <div class="col-md-6">
-                    <%= render partial: "shared/like", locals: {tweet: like.tweet} %>
-                  </div>
-                </div>
-                
-              </div>
-            </div>
-          </div>
+         <%= render partial: "shared/tweetRecord", locals: {tweet: like.tweet} %>
       <% end %>
     </div>
   </div>

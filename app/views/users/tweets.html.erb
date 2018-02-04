@@ -4,7 +4,9 @@
      <%= render partial: "shared/userProfile", locals: {user: @user} %>
     </div>
     <div class="col-md-8">
-      
+      <% @tweets.each do |tweet| %>
+       <%= render partial: "shared/tweetRecord", locals: {tweet: tweet} %>
+      <% end %>
     </div>
   </div>
 </div>

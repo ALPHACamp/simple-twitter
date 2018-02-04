@@ -6,17 +6,7 @@
     <div class="col-md-8">
       <div class="container-fluid">
         <h2>Tweet</h2>
-        <div class="well row">
-          <div class="col-md-4">    
-                  <%= image_tag(@tweet.user.avatar, :class => 'img-responsive') %>
-          </div>
-          <div class="col-md-7 tweet-content">
-            <%= link_to @tweet.user.name , tweets_user_path(@tweet.user_id) %>
-            <p><%= @tweet.description %></p>
-            <%= link_to "Reply(#{@tweet.replies_count})",  replies_tweet_path(@tweet.id) %>
-            <%= render partial: "shared/like", locals: {tweet: @tweet} %>
-          </div>
-        </div>
+        <%= render partial: "shared/tweetRecord", locals: {tweet: @tweet} %>
       </div>
       <div class="container-fluid">
         <h2>Replies</h2>        

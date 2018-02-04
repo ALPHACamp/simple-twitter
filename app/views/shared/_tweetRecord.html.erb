@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="row well">
+    <div class="col-md-4">    
+        <%= image_tag(tweet.user.avatar, :class => 'img-responsive') %>
+    </div>
+    <div class="col-md-7 tweet-content">
+      <p>
+        <%= tweet.user.name %>, <%= tweet.created_at.strftime('%F') %>, <%= tweet.created_at.strftime('%R') %> 
+      </p>
+      <p><%= tweet.description %></p>
+      <div class="row">
+        <div class="col-md-6">
+          <%= link_to "Reply(#{tweet.replies_count})", replies_tweet_path(tweet.id) %>    
+        </div>                  
+        <div class="col-md-6">
+          <%= render partial: "shared/like", locals: {tweet: tweet} %>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
