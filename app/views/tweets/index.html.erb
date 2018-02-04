@@ -8,17 +8,7 @@
     </div>
     <hr>
     <div class="index-tweet-content">
-    <%@tweets.each do |tweet| %>
-      <div class="tweet-item clearfix">
-        <div class="col-xs-2">
-          <%=image_tag tweet.user.avatar, class:"img-responsive" %>
-        </div>
-        <div class="col-xs-10"><p class="item-info"><%="@"+tweet.user.name + ", "%><%=tweet.updated_at.strftime("%Y-%m-%d,%H:%M")%></p>
-          <p></p>
-          <p><%=tweet.description%></p>
-        </div>
-      </div>
-    <%end%>
+      <%= render partial:"common/tweetswall", locals:{tweets:@tweets} %>
     </div>
   </div>
 
