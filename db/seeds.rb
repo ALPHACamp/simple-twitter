@@ -10,6 +10,6 @@ User.create(
   email: "admin@admin.com",
   name: "=BOSS=",
   password: "000000",
-  introductsion: "Who's your daddy!",
+  introduction: "Who's your daddy!",
   role: "admin"
 )

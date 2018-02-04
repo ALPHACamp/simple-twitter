@@ -6,8 +6,9 @@
       </div>
     </div>
     <div class="col-xs-9">
-      <p><%= "@#{tweet.user.name}" %></p>
+      <p><%= "@#{tweet.user.name}, #{tweet.created_at}" %></p>
       <p><%= tweet.description %></p>
     </div>
   </div>
 <% end %>
+<div class="text-center"><%= paginate @tweets %></div>
