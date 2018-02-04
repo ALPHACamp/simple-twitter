@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-4">
+      <%= image_tag @user.avatar, height: 100, width: 100 %>
+      <h3><%= @user.name %></h3>
+      <p><%= @user.introduction %></p>    
+      <h5>Tweets : <%= @user.tweets.count %></h5>
+      <h5>Following : <%= @user.followings.count %></h5>
+      <h5>Follower : <%= @user.followers_count %></h5>
+      <h5>Like : <%= @user.likes_count %></h5> <!-- 待 like -->
+      <!-- edit Profile / Follow button 切換判斷 -->
+    </div>
+
+
+    <div class="col-md-8">
+      <!-- Tweets -->
+      <% @user.tweets.each do |tweet| %>
+
+        <div class="tweets">
+          <%= image_tag tweet.user.avatar, height: 75, width: 75 %>
+          <p>@<%= tweet.user.name %>, <%= tweet.created_at %></p>
+          <%= tweet.user.introduction %>
+          <h5>Reply(<%= tweet.replies.count %>) Like(<%= tweet.likes_count %>)</h5>
+          <hr>
+        </div>
+
+      <% end %>
+    </div>
+
+  </div>
+</div>

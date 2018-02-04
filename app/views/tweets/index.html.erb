@@ -17,8 +17,8 @@
           <div class="float-left">
             <%= image_tag tweet.user.avatar, height: 85, width: 85 %>  
           </div>
-          <%= tweet.user.name %>
-          <%= tweet.description %>
+          <h5><%= tweet.user.name %></h5>
+          <p><%= tweet.description %></p>
           <h5>
             <%= link_to Reply, replies_user_path(tweet) %>
             <small>(<%= tweet.replies.count %>)</small>
@@ -38,8 +38,10 @@
           <div class="float-left">
             <%= image_tag user.avatar, height: 85, width: 85 %>
           </div>
-          <%= user.name %>
-          <%= user.introduction %>
+          <h5>
+            <%= link_to user.name, user_tweets_path(user) %> <!-- edit -->
+          </h5>
+          <p><%= user.introduction %></p>
           <hr>
         <% end %>
       </div>
