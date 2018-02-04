@@ -27,9 +27,17 @@
       <h1>Popular</h1>
       <% @users.each do |user| %>
         <div class="col-md-12 border">
-          <%= user.name %>
+          <%= link_to user.name, tweets_user_path(user) %>
           <br>
           <%= user.introduction %>
+
+          <br>
+          <% if current_user.following?(user) %>
+            <%= link_to 'Unfollow', followship_path(user), method: :delete, class: "btn btn-primary" %>
+          <% else %>
+            <%= link_to 'Follow', followships_path(following_id: user), method: :post, class: "btn btn-primary" %>
+          <% end %>
+          
         </div>
       <%end%>
     </div>

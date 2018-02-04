@@ -11,7 +11,17 @@ class User < ApplicationRecord
   validates_presence_of :name, uniqueness: true
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
   has_many :tweets, dependent: :destroy
+
+  has_many :followships, dependent: :destroy#外鍵預設為user_id
+  has_many :followings, through: :followships#有很多自己追蹤的user
+
+  has_many :inverse_followships, class_name: "Followship", foreign_key: :following_id
+  has_many :followers, through: :inverse_followships, source: :user#從inverse_followships表裡面的user欄位去找
   def admin?
     self.role == 'admin'
+  end
+
+  def following?(other_user)
+    self.followings.include?(other_user)
   end
 end

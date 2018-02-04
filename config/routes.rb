@@ -18,4 +18,6 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :followships, only: [:create, :destroy]
+
 end
