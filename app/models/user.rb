@@ -15,6 +15,8 @@ class User < ApplicationRecord
   has_many :replies, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_tweets, through: :likes, source: :tweet
+  has_many :followships, dependent: :destroy
+  has_many :followings, through: :followships
 
   
   def admin?

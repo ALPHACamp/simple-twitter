@@ -4,4 +4,5 @@ class Tweet < ApplicationRecord
   belongs_to :user, optional: true
   has_many :replies, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :followships, dependent: :destroy
 end
