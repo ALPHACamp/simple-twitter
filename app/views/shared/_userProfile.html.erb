@@ -2,6 +2,8 @@
 <p><%= user.name %></p>
 <p><%= user.introduction %> </p>
 <p><%= link_to "Tweets: #{user.tweets.count}", tweets_user_path(user.id)%></p>
+<p><%= link_to "Followings: #{user.followings.count}", followings_user_path(user.id)%></p>
+<p><%= link_to "Followers: #{user.followers.count}", followers_user_path(user.id)%></p>
 <p><%= link_to "Likes: #{user.likes.count}", likes_user_path(user.id) %></p>
 <% if current_user.id == user.id %>
   <%= link_to 'Edit Profile', edit_user_path(current_user), :class => "btn btn-default "%>
