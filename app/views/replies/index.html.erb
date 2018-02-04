@@ -15,6 +15,7 @@
         <p><%= @tweet.user.introduction %></p>   
       <% end %>
       <br>
+      <h4 style="color:grey;">Tweet <%= @tweet.user.tweets.length %></h4>
     </div>
 
     <div class="col-md-1">
@@ -34,7 +35,18 @@
         </div>
       </div>
     <hr>
-        
+        <%= form_for [@tweet, @reply] do |f| %>
+          <div class="form-group">
+            <%= f.text_area :comment, placeholder: "你想說什麼？",  class: "form-control" %>
+          </div>
+          <%= f.submit class: "btn btn-primary pull-right" %>
+          <br>
+          <br>
+          <% if @reply.errors.any? %>
+            <%= @reply.errors.full_messages.to_sentence %>
+          <% end %>
+        <% end %> 
+
         <br>
 
         <div>         
@@ -47,6 +59,9 @@
             <div class="col-md-9 col-sm-9 col-lg-9">
               <h4><%= link_to reply.user.name, user_path(reply.user) %> <small><%= reply.created_at %></small></h4>
               <p><%= simple_format reply.comment %></p>
+              <% if current_user.admin? || current_user==reply.user%>
+                ---<%= link_to "Delete", tweet_reply_path(@tweet, reply), method: :delete %>         
+              <% end %>
             </div>
           </div>
         <% end %>
