@@ -186,6 +186,8 @@ header .container-fluid {
 }
 
 .tweettext {
+  padding-bottom: 10px;
+  padding-top: 5px;
   word-break: break-all;
   white-space: pre-wrap;
   word-wrap: break-word;
@@ -258,6 +260,7 @@ header .container-fluid {
 
 .tweetavatar {
   width: 100%;
+  height: auto;
   margin: auto;  
 }
 
