@@ -10,9 +10,9 @@
       <%= link_to @user.name,tweets_user_path(@user) %>
     </h2>
     <p><%= truncate(@user.introduction, length: 200)%></p>
-
+    
     <h4>Tweets <%= @user.tweets.count%></h4>
-    <h4>追蹤人數 <%= @user.followings.count%></h4>
+    <h4><%= link_to "追蹤人數 #{@user.followings.count}" , followings_user_path%></h4>
     <h4>粉絲 <%= @user.followers_count%></h4>
     <h4>Like <%= @user.likes_count%></h4>
     
