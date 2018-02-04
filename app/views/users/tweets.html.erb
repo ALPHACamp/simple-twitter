@@ -2,18 +2,25 @@
   <div class="row">
 
   <div class="col-md-4">
-    <div><%= image_tag (@user.avatar if @user.avatar?), class: "user-avatar" %></div>
+    <div><%= image_tag (@user.avatar), class: "user-avatar" %></div>
     <h2><%= @user.name %></h2>
     <%= simple_format @user.introduction, style: "color:#4682B4" %>
     <% if @user.email == current_user.email %>
       <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary btn-lg" %>
-    <% end %>
+    <% else %>
+        <% if current_user.following?(@user)%>
+          <%= link_to 'Unfollow', followship_path(@user), method: :delete, class: "btn btn-primary btn-lg" %>
+        <% else %>
+          <%= link_to 'Follow', followships_path(following_id: @user), method: :post, class: "btn btn-primary btn-lg btn-block"%>
+        <% end %>
+      <% end %>    
+  
   </div>
 
   <div class="col-md-8">
     <% @user.tweets.each do |tweet| %>
       <div class="panel panel-default twpanel">
-          <%= image_tag (tweet.user.avatar if tweet.user.avatar?), class: "usertweet-avatar" %>
+          <%= image_tag (tweet.user.avatar), class: "usertweet-avatar" %>
           <h5>@<%= tweet.user.name %>,<%= tweet.created_at.to_date %>,<%= tweet.created_at.strftime("%k:%M") %></h5>
           <%= simple_format tweet.description, style: "color:#808080" %>     
       </div>
