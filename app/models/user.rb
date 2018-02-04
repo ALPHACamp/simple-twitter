@@ -12,6 +12,9 @@ class User < ApplicationRecord
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
   has_many :tweets, dependent: :destroy
 
+  has_many :likes, dependent: :destroy
+  has_many :liked_tweets, through: :likes, source: :tweet
+
   has_many :followships, dependent: :destroy#外鍵預設為user_id
   has_many :followings, through: :followships#有很多自己追蹤的user
 
@@ -23,5 +26,9 @@ class User < ApplicationRecord
 
   def following?(other_user)
     self.followings.include?(other_user)
+  end
+
+  def like?(tweet)
+    self.liked_tweets.include?(tweet)
   end
 end

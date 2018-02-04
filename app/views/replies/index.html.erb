@@ -2,21 +2,7 @@
   <div class="row">
     <div class="col-md-3">
       <div class="col-md-12">
-        <%= image_tag @user.avatar, class: "img-responsive center-block"%>
-        <br>
-        <h4><%= @user.name %></h4>
-        <p><%= @user.introduction %></p>
-        <br>
-        <p><%= link_to "Tweets", "#" %></p>
-        <p><%= link_to "following", "#" %></p>
-        <p><%= link_to "Follower", "#" %></p>
-        <p><%= link_to "Like", "#" %></p>
-
-        <% if @user == current_user %>
-          <%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-primary" %>
-        <% else %>
-          <%= link_to "Follow", "#", class: "btn btn-primary" %>
-        <% end %>
+        <%= render 'shared/user_profile', user: @user %>
       </div>
     </div>
     <div class="col-md-9">
@@ -25,12 +11,14 @@
         <%= link_to @tweet.user.name, tweets_user_path(@tweet.user.id) %>
         <br>
         <%= @tweet.description %>
+        <br>
+        <%= render 'shared/reply_like', tweet: @tweet %>
       </div>
       
       <h2>Replies</h2>
       <% @replies.each do |reply| %>
         <div class="col-md-12 border">
-          <%= reply.user.name %>,
+          <%= link_to reply.user.name, tweets_user_path(reply.user) %>,
           <%= reply.created_at %>
           <br>
           <%= reply.comment %>
