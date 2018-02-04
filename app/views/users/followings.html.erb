@@ -1,28 +1,6 @@
 <div class="container">
   <div class="col-md-4 ">
-    <%if !@user.avatar?%>
-      <%= image_tag "https://openclipart.org/download/247319/abstract-user-flat-3.svg", class:"img-responsive img-rounded " %>
-    <% else%>
-      <%= image_tag @user.avatar, class:"img-responsive img-rounded" %>
-    <% end %>
-
-    <h2>
-      <%= link_to @user.name,tweets_user_path(@user) %>
-    </h2>
-    <p><%= truncate(@user.introduction, length: 200)%></p>
-    
-    <h4>Tweets <%= @user.tweets.count%></h4>
-    <h4><%= link_to "追蹤人數 #{@user.followings.count}" , followings_user_path%></h4>
-    <h4>粉絲 <%= @user.followers_count%></h4>
-    <h4>Like <%= @user.likes_count%></h4>
-    
-    <% if @user ==current_user %>
-      <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-success" %>
-    <% else %>
-      <%= render partial: "shared/follow", locals: {user: @user}%>
-    <% end %>
-    <hr>
-    
+    <%= render partial: "shared/user_intro", locals: {user: @user}%>
   </div>
   
   <div class="col-md-8">
