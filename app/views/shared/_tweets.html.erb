@@ -5,5 +5,6 @@
     <li><%= tweet.description %></li>
     <li><%= link_to "Delete", admin_tweet_path(tweet), method: :delete,
     data: { confirm: "Are you sure?" } if current_user.admin? %></li>
+    <li><%= render partial: "shared/like", locals: { tweet: tweet } %></li>
   </ul>
 <% end %>
