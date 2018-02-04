@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
 
     <!-- form & tweets list /start -->
@@ -32,19 +32,19 @@
           <div class="container"><!-- 包住每一條tweet /start -->
 
             <!-- Left: user avatar / start-->
-            <div class="col-xs-1">
+            <div class="col-xs-2">
               <div class="tweetavatar">
                 <% if tweet.find_user.avatar? %>
-                  <%= image_tag(tweet.find_user.avatar, width: '60', height: '65') %>
+                  <%= image_tag(tweet.find_user.avatar, width: '60', height: '65',class: 'center-block') %>
                 <% else %>
-                  <%= image_tag("http://via.placeholder.com/60x65") %>
+                  <%= image_tag("http://via.placeholder.com/60x65",class: 'center-block') %>
                 <% end %>
               </div>
             </div>
             <!-- Left: user avatar / end-->
             
             <!-- Right: user description / start -->
-            <div class="col-xs-11">
+            <div class="col-xs-10">
               
               <!-- base info of user and tweet time / start -->
               <div class="tweetheader">
@@ -61,7 +61,7 @@
               </div><!-- base info of user and tweet time / end -->
 
               <!-- tweet description -->
-              <div><%= tweet.description %></div>
+              <div class="tweettext"><%= tweet.description %></div>
 
               <!-- reply & like link -->
               <div>

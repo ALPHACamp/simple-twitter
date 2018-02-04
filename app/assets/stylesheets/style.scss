@@ -50,6 +50,7 @@ img {
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
+  padding-top: 75px;
 }
 
 .alert {
@@ -87,7 +88,8 @@ a:hover, a:focus {
 }
 
 header .container-fluid {
-  background-color: #204d74  ;
+  background-color: #204d74;
+  padding-top: unset;
 }
 
 .navbar-default .navbar-brand {
@@ -180,8 +182,13 @@ header .container-fluid {
   margin: 0 auto;
   position: relative;
   padding: 5px 0;
-  word-break: break-all;
   border-bottom: 0.1px inset;
+}
+
+.tweettext {
+  word-break: break-all;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .replylink {
@@ -254,12 +261,12 @@ header .container-fluid {
   margin: auto;  
 }
 
-.tweetlist .col-xs-1 {
+.tweetlist .col-xs-2 {
   
 }
 
-.tweetlist .col-xs-1, .tweetlist .col-xs-11 {
-  padding: 10px 6px;
+.tweetlist .col-xs-2, .tweetlist .col-xs-10 {
+  padding: 10px 5px;
 }
 
 
