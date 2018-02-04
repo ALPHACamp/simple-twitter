@@ -2,21 +2,34 @@
   <div class="row">
 
       <div class="col-md-8">
-        <% @tweets.each do |tweet| %>
-            
-            <div class="row rank-item">
-              <div class="col-md-3 col-sm-3 col-lg-3">
-                <%= image_tag tweet.user.avatar, class: "img-responsive center-block" %>
+        <%= form_for @tweet do |f| %>
+          <div class="form-group">
+            <%= f.text_area :description, placeholder: "你想說什麼？",  class: "form-control" %>
+          </div>
+          <%= f.submit class: "btn btn-primary pull-right" %>
+          <br>
+          <br>
+          <% if @tweet.errors.any? %>
+            <%= @tweet.errors.full_messages.to_sentence %>
+          <% end %>
+        <% end %>    
+        <div>
+        <br>
+          <% @tweets.each do |tweet| %>
+              
+              <div class="row rank-item">
+                <div class="col-md-3 col-sm-3 col-lg-3">
+                  <%= image_tag tweet.user.avatar, class: "img-responsive center-block" %>
+                </div>
+                <div class="col-md-9 col-sm-9 col-lg-9">
+                  <h4><%= tweet.user.name %></h4>
+                  <h5><small><%= tweet.created_at %></small></h5>
+                  <p><%= tweet.description %></p>
+                  <h5 style="color:blue;">回覆數(<% tweet.count_replies %><%= tweet.replies_count %>)</h5>
+                </div>
               </div>
-              <div class="col-md-9 col-sm-9 col-lg-9">
-                <h4><%= tweet.user.name %></h4>
-                <h5><small><%= tweet.created_at %></small></h5>
-                <p><%= tweet.description %></p>
-                <h5 style="color:blue;">回覆數(<% tweet.count_replies %><%= tweet.replies_count %>)</h5>
-              </div>
-            </div>
-        <% end %>
-
+          <% end %>
+        </div>
 
       </div>
 
