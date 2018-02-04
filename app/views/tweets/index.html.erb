@@ -25,7 +25,7 @@
                   <h4><%= tweet.user.name %></h4>
                   <h5><small><%= tweet.created_at %></small></h5>
                   <p><%= tweet.description %></p>
-                  <h5 style="color:blue;">回覆數(<% tweet.count_replies %><%= tweet.replies_count %>)</h5>
+                  <h5 style="color:blue;"><% tweet.count_replies %><%= link_to "回覆數#{tweet.replies_count}", tweet_path(tweet) %></h5>
                 </div>
               </div>
           <% end %>

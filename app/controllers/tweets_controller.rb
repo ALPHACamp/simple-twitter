@@ -19,6 +19,11 @@ class TweetsController < ApplicationController
 
   end
 
+  def show
+    @tweet = Tweet.find(params[:id])
+    @replies = @tweet.replies.order(created_at: :desc)
+  end
+
   def like
   end
 
