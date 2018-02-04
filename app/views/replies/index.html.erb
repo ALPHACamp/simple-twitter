@@ -1,1 +1,42 @@
-<%= render 'shared/user_profile' %>
+<div class="row justify-content-center mt-5">
+  <div class="col-sm-3 col-12">
+    <%= render 'shared/user_profile' %>
+  </div>
+  <div class="col-sm-9 col-12">
+    <h3>Tweet</h3>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">@<%= @tweet.user.name %></h5>
+        <p class="card-text"><%= @tweet.description %></p>
+        <p class="card-text">Reply(<%= @replies.count %>)</p>
+      </div>
+    </div>
+
+    <div class="mt-5"></div>
+
+    <h3>Replies</h3>
+    <div id="replies-list">
+      <% @replies.each do |reply| %>
+        <div class="card mt-3">
+          <div class="card-body">
+            <h5 class="card-title">@<%= reply.user.name %></h5>
+            <p class="card-text"><%= reply.comment %></p>
+          </div>
+        </div>
+      <% end %>
+   </div>
+
+  <div class="mt-5"></div>
+
+   <div id="reply-form">
+      <%= form_for [@tweet, @reply] do |f| %>
+        <div class="form-group">
+          <%= f.text_area :comment, class: "form-control", rows: 5 %>
+        </div>
+        <div class="text-right">
+          <%= f.submit "Reply", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
