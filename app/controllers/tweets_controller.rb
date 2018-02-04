@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
-  @@like=0
+ 
   def index
     @tweet = Tweet.new
     @tweets = Tweet.all
@@ -17,10 +17,16 @@ class TweetsController < ApplicationController
 
 
   def like
-    @@like+=1
+    @tweet = Tweet.find(params[:id])
+    @tweet.likes.create!(user: current_user)
+    redirect_back(fallback_location: tweets_path)
   end
 
   def unlike
+    @tweet = Tweet.find(params[:id])
+    like=@tweet.likes.where(user: current_user)
+    like.destroy_all
+    redirect_back(fallback_location: tweets_path)
   end
 
 
