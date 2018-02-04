@@ -3,11 +3,13 @@ class RepliesController < ApplicationController
   def index
     @tweet = Tweet.find(params[:tweet_id])
     @reply = Reply.new
-    @replies = Reply.all
+    @replies = Reply.where(tweet_id: @tweet)
   end
 
   def create
-    @reply = Reply.new(reply_params)
+    @tweet = Tweet.find(params[:tweet_id])
+    @reply = @tweet.replies.new(reply_params)
+    @reply.user = current_user
     @reply.save
     redirect_to tweet_replies_path
    

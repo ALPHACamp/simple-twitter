@@ -3,7 +3,7 @@
 <%= @tweet.created_at %>
 </p>
 <p>
-  <h4>Reply</h4>
+  <h4>Reply Index</h4>
     <ul>
       <% @replies.each do |r| %>
         <li>
@@ -18,3 +18,5 @@
   <%= r.text_area :comment%>
   <%= r.submit %>
 <% end %>
+
+<%= link_to "index",tweets_path%>

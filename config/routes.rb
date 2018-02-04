@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users
-
+  resources :users, only: [:edit]
+  get 'users/:id' => 'users#tweets',:as => "users/tweets"
   # 請依照專案指定規格來設定路由
   resources :tweets, only: [:index, :create] 
 
@@ -10,11 +12,11 @@ Rails.application.routes.draw do
   end
 
 
-  resources :users, only: [:edit]
   
   
   
-  get '/users/:id/tweets' => 'users#tweets', :as => "users_tweets"
+  
+  
 
   root "tweets#index"
 

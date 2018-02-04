@@ -1,13 +1,16 @@
 <h1>Tweets index</h1>
 
 <%=form_for @tweet  do |f|%>
-<%= f.text_field :description  %>
-<%=f.submit %>
+  <%= f.text_field :description  %>
+  <%=f.submit %>
+  
 <%end%>
+
 
 <ul>
   <% @tweets.each do |t| %>
     <li>
+      <%= link_to t.user.try(:name),users_tweets_path(t)%>
       <%=t.description%>
       <%=t.created_at%>
       <%=link_to "reply", tweet_replies_path(t)%>

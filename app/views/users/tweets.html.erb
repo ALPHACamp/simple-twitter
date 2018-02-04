@@ -1,0 +1,8 @@
+<h1>This is users#tweet</h1>
+<%= @tweets.each do |t| %>
+  <%= t.description %>
+  <%= t.created_at%>
+  <%= t.replies.each do |r| %>
+  <%= r.comment %>
+  <%end%>
+<% end %>
