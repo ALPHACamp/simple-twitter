@@ -17,6 +17,21 @@
       </div>
 
       <div class="col-md-8">
+        <% @tweet.each do |tweet| %>
+            
+            <div class="row rank-item">
+              <div class="col-md-3 col-sm-3 col-lg-3">
+                <%= image_tag @user.avatar, class: "img-responsive center-block" %>
+              </div>
+              <div class="col-md-9 col-sm-9 col-lg-9">
+                <h4><%= @user.name %></h4>
+                <h5><small><%= tweet.created_at %></small></h5>
+                <p><%= tweet.description %></p>
+              </div>
+            </div>
+        <% end %>
+
+
       </div>
   </div>
 </div>

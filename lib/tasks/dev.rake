@@ -23,7 +23,7 @@ namespace :dev do
   task fake_tweets: :environment do
     Tweet.destroy_all
       User.all.each do |user|
-        n = rand(9)
+        n = rand(2..9)
         n.times do |i|
           user.tweets.create!(
             description: FFaker::Lorem.sentence,
