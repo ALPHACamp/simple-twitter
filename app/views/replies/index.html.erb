@@ -38,12 +38,14 @@
           <h4>
             <%= link_to tweets_user_path(@tweet.user) do%>
             <%= @tweet.user.name %>
-            <em><%= @tweet.created_at %> </em>
             <% end %>
           </h4>
           
           <p><%= truncate(@tweet.description, length: 200)%></p>
-          
+         
+          <%= link_to "Reply(#{@tweet.replies_count})","#reply" %>
+          <%= link_to "Like(#{@tweet.likes_count})", like_tweet_path(@tweet)%>
+         
         </div>
         <div class="clearfix"></div>
     </div> 
@@ -79,7 +81,7 @@
     <% end %>
     
     <%= form_for [@tweet,@reply] do |f| %>
-    <div class="form-group">
+    <div class="form-group" id="reply">
       <%= f.text_area :comment, placeholder: "What's on your mind?", rows: "5",class: "form-control" %>
     </div>
     <div class="form-group ">
