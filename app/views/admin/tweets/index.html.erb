@@ -1,16 +1,5 @@
 <h1>後台</h1>
 
-<ul>
-  <% @tweets.each do |tweet| %>
-  <li>
-    <%= tweet.name %>
-    <%= link_to 'Show', admin_tweet_path(tweet) %>
-    <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %>
-  </li>
-  <% end %>
-</ul>
-<%= link_to 'New Tweet', new_admin_tweet_path %>
-
   <table class="table table-hover">
     <thead>
       <tr>
@@ -24,13 +13,15 @@
     <% @tweets.each do |tweet| %>
     <tr>
       <th scope="row"><%= tweet.id %></th>
-      <td><%= tweet.name %></td>
+      <td><%= tweet.description %></td>
 
-      <td><%= link_to 'Show', admin_tweet_path(restaurant) %></td>
+      <td><%= link_to 'Show', admin_tweet_path(tweet) %></td>
 
-      <td><%= link_to 'Delete', admin_tweet_path(restaurant), method: :delete, data: {confirm:"Are you sure?"} %></td>
+      <td><%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %></td>
     </tr>
     <% end %>
     
   </table>
+
+
     
