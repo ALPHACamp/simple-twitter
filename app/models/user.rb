@@ -7,7 +7,6 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   has_many :tweets
-
   has_many :replies
 
   def admin?

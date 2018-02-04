@@ -1,0 +1,14 @@
+<h1>Tweet回覆頁測試成功</h1>
+<div class="container">
+  <div class="row">
+   <%= form_for [@tweet, @reply] do |f| %>
+    <div class="form-group">
+      <%= f.text_area :content, placeholder: "留個言吧", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit class: "btn btn-primary" %>
+      <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+    </div>
+  <% end %>
+  </div>
+</div>
