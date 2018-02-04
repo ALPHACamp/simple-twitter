@@ -6,11 +6,10 @@
   
 <%end%>
 
-
 <ul>
   <% @tweets.each do |t| %>
     <li>
-      <%= link_to t.user.try(:name),users_tweets_path(t)%>
+      <%= link_to t.user.try(:name),tweets_user_path(t.user_id)%>
       <%=t.description%>
       <%=t.created_at%>
       <%=link_to "reply", tweet_replies_path(t)%>

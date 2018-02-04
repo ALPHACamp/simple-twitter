@@ -4,6 +4,7 @@ class RepliesController < ApplicationController
     @tweet = Tweet.find(params[:tweet_id])
     @reply = Reply.new
     @replies = Reply.where(tweet_id: @tweet)
+    @user = current_user
   end
 
   def create

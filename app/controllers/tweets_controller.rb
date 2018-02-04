@@ -1,10 +1,11 @@
 class TweetsController < ApplicationController
-
+  @@like=0
   def index
     @tweet = Tweet.new
     @tweets = Tweet.all
-    @users = User.all
-    # 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
+    @users = User.all#Top 10
+
+    # 基於測試u規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
   end
 
   def create
@@ -16,6 +17,7 @@ class TweetsController < ApplicationController
 
 
   def like
+    @@like+=1
   end
 
   def unlike
@@ -25,7 +27,7 @@ class TweetsController < ApplicationController
 
   private
   def tweet_params
-    params.require(:tweet).permit(:description)
+    params.require(:tweet).permit(:description,:user_id)
   end
   
 

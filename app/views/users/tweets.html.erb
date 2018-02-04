@@ -1,8 +1,22 @@
 <h1>This is users#tweet</h1>
-<%= @tweets.each do |t| %>
+
+
+<p>Profile</p>
+<p>avatar</p>
+<%= @user.name %>
+<p> @user.introduction</p>
+<p> tweetscount</p>
+<p> Followcount</p>
+<p> Followercount</p>
+<p>likecount</p>
+<p>Follow</p>
+
+<ul>
+<% @tweets.each do |t| %>
+  <li>
   <%= t.description %>
   <%= t.created_at%>
-  <%= t.replies.each do |r| %>
-  <%= r.comment %>
-  <%end%>
+  <%=link_to "reply", tweet_replies_path(t)%>
+  </li>
 <% end %>
+</ul>
