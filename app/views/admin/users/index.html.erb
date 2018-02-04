@@ -16,6 +16,7 @@
             <th>關注人數</th>
             <th>跟隨者人數</th>
             <th>推播like數</th>
+            <th>#</th>
           </tr>
         </thead>
         <tbody>
@@ -27,6 +28,7 @@
             <td><%= user.followings.ids.length %></td>
             <td><%= user.followers.ids.length %></td>
             <td><%= user.likes_count %></td>
+            <td><%= link_to 'Show', admin_user_path(user) %></td>
           </tr>
           <% end %>
         </tbody>

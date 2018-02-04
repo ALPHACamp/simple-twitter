@@ -28,9 +28,8 @@
             <td><%= tweet.user.name %></td>
             <td>0</td>
             <td>
-              <%= link_to 'Show', admin_restaurant_path(restaurant) %>
-              <%= link_to 'Edit', edit_admin_restaurant_path(restaurant) %>
-              <%= link_to 'Delete', admin_restaurant_path(restaurant), method: :delete, data: {confirm:"Are you sure?"} %>
+              <%= link_to 'Show', admin_tweet_path(tweet) %>
+              <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %>
             </td>
           </tr>
           <% end %>

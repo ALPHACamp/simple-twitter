@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @tweet = current_user.tweets
+    @tweets = current_user.tweets
   end
 
   def edit
