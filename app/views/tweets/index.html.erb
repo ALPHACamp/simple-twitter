@@ -11,7 +11,7 @@
     <% end %>
     <% @tweets.each do |tweet| %>
     <div>
-        <h4><%= link_to tweet.user.name ,user_path(tweet.user) %></h4>
+        <h4><%= link_to tweet.user.name ,tweets_user_path(tweet.user) %></h4>
       <p><%= simple_format tweet.description %></p>
       <p class="text-muted">
         <em><%= time_ago_in_words(tweet.created_at) %> ago -</em>

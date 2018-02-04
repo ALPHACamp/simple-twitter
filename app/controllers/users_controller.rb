@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:tweets, :edit, :update]
 
+
   def tweets
-    @tweets = Tweet.all
+    @tweeted = @user.tweets.uniq
   end
 
   def edit
