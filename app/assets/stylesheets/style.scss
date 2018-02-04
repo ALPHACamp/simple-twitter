@@ -1,0 +1,98 @@
+.restaurant-item {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 4px;
+  margin-bottom: 20px;
+}
+
+.restaurant-item img {
+  max-height: 180px;
+  width: 100%;
+}
+
+.restaurant-item .caption {
+  padding: 10px;
+}
+
+.nav-pills-center{
+  text-align: center;
+}
+
+.nav-pills-center > li{
+  float: none;
+  display:  inline-block;
+}
+
+.intro{
+  padding: 80px;
+  min-height: 360px;
+  display: block;
+}
+
+.avatar {
+  height: 180px;
+  width: 180px;
+  float: left;
+  margin: 0px 40px 10px 0px;
+  display: block;
+}
+
+.avatar .avatar-list img{
+  height: 100%;
+  width: 100%;
+  margin: auto;
+}
+
+.my-restaurant{
+  float:left;
+  padding:10px;
+  opacity: 1;
+}
+
+.my-restaurant img{
+  max-height: 120px;
+  border-radius: 20px;
+  padding:10px;
+}
+
+.my-restaurant:hover{
+  opacity: 0.2;
+}
+
+.center {
+  text-align:center
+}
+
+.float-left{
+  float: left;
+  margin-right: 20px;
+}
+
+.float-right{
+  float:right;
+  margin: 0px; 
+}
+
+.small-box{
+  overflow: inline;
+  margin: 40px;
+  opacity: 1;
+}
+
+.small-box:hover{
+  opacity: 0.5;
+}
+
+.avatar-list {
+  height: 80px;
+  width: 80px;
+  margin: 0px,40px,20px,0px;
+  display: block;
+}
+
+.avatar-index {
+  height: 120px;
+  width: 120px;
+  margin: auto;
+  display: block;
+}
