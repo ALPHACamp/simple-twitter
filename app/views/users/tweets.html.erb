@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-md-4">
+    <div class = "small-box">
+      <%= image_tag @user.avatar, class: "img-responsive" %>
+      <h1><%= @user.name %></h1>
+      <h2><%= @user.introduction %></h2>
+      <br />
+      <h4> <%= "Tweets #{@user.tweets.count}" %></h4>
+      <h4> <%= "Following" %></h4>
+      <h4> <%= "Follower" %></h4>
+      <h4> <%= "like" %></h4>
+      <br>
+      <% if @user == current_user %>
+        <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-primary" %>
+      <% else %>
+        <%= link_to "Follow", tweet_replies_path(@user), class: "btn btn-primary" %>
+      <% end %>
+      <%#= render partial: "shared/favorite", locals: {@tweet: @tweet} %>
+      <%#= render partial: "shared/like", locals: {@tweet: @tweet} %>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <% @tweets.each do |tweet| %>
+        <div>
+          <div class="avatar">
+            <%= image_tag tweet.user.avatar, class: "img-responsive" %>
+            <%# image_tag @user.avatar, class: "img-responsive img-circle"%>
+          </div>
+          <h4><%= link_to "@#{tweet.user.name}, #{tweet.created_at}", tweets_path(tweet) %></h4>
+          <h4><%= tweet.description %></h4>
+          <!-- notice!!!!!!!!!!!!! -->
+          <%= link_to "Reply(#{})", tweet_replies_path(tweet), class: "btn btn-primary" %>
+          <%= link_to "Like(#{})",root_path, class: "btn btn-danger" %>
+          <%#= render partial: "shared/favorite", locals: {tweet: tweet} %>
+          <%#= render partial: "shared/like", locals: {tweet: tweet} %>
+          
+        </div>
+        <div class="clearfix"></div>
+        <hr>
+        <% end %>
+      </div> 
+  </div>
+</div>
+
+
