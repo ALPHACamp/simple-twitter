@@ -6,7 +6,13 @@ Rails.application.routes.draw do
   resources :tweets, only: [:index, :create]
   root "tweets#index"
 
-  resources :users, only: [:edit, :update]
+  resources :users, only: [:edit, :update] do
+    member do
+      get :tweets
+      get :followings
+      get :followers
+    end
+  end
 
   resources :followships, only: [:create, :destroy]
 

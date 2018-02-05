@@ -20,7 +20,9 @@
           </div>
           <div class="col-sm-6 col-md-8">
             <div class="info-item">
-              <h3><%= t.user.name %></h3>
+              <%= link_to tweets_user_path(t.user) do %>
+                <h3><%= t.user.name %></h3>
+              <% end %>
               <p><%= t.created_at %></p>
               <p><%= truncate(t.description, length: 40){ link_to "continue", "#" } %></p>
             </div>
@@ -38,7 +40,9 @@
             <%= image_tag user.avatar,class: "img-responsive center-block", size: "130x120" %>
           </div>
           <div class="col-md-7">
-            <h3><%= user.name %></h3>
+            <%= link_to tweets_user_path(user) do %>
+              <h3><%= user.name %></h3>
+            <% end %>
             <p><%= truncate(user.introduction, length: 50) %></p>
           </div>
           <div class="action">

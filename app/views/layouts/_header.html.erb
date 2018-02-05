@@ -8,7 +8,11 @@
             <li><%= link_to 'Admin Panel', admin_restaurants_path %></li>
           <% end %>
 
-          <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
+          <li>
+            <%= link_to tweets_user_path(current_user) do %>
+             <p class="navbar-text">Hi, <%= current_user.email %></p>
+            <% end %>
+          </li>
           <li class="dropdown">
             <a href="#" class="dorpdown-toggle" data-toggle="dropdown">
               Account <b class="caret"></b>

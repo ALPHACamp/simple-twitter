@@ -1,0 +1,18 @@
+<div class="user-item">
+  <div class="user-img">
+    <%= image_tag user.avatar, class: "img-responsive center-block" %>
+  </div>
+  <div class="user-info">
+    <h2><%= user.name %></h2>
+    <p><%= simple_format user.introduction %></p>
+    <%= link_to tweets_user_path(user) do %>
+      <p>Tweets：<%= user.tweets.size %></p>
+    <% end %>
+    <%= link_to followers_user_path(user) do %>
+      <p>Follower：<%= user.followers_count %></p>
+    <% end %>
+    <%= link_to followings_user_path(user) do %>
+      <p>Following：<%= user.followings.size %></p>
+    <% end %>
+  </div>
+</div>
