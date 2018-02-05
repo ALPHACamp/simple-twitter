@@ -14,6 +14,8 @@ class User < ApplicationRecord
 
   has_many :tweets, dependent: :restrict_with_error
   has_many :replies, dependent: :restrict_with_error
+  has_many :followships, dependent: :destroy
+  has_many :followings, through: :followships
 
   def admin?
     self.role == "admin"
