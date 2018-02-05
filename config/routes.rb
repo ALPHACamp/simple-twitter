@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   # 後台
   namespace :admin do
     resources :tweets
+    resources :users
     root "tweets#index"
   end  
 end
