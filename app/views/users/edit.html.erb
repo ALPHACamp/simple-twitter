@@ -1,1 +1,28 @@
 <!-- 使用者能編輯自己的名稱、介紹和大頭照 -->
+<div class="row">
+  <%= form_for @user, :url => edit_user_path do |f| %>
+  <div class="col-md-4">
+    <div class = "small-box">
+      <%= image_tag @user.avatar, class: "img-responsive" %>
+      <%= f.file_field :avatar %>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+
+  <div class="col-md-8">
+    <form>
+      <div class="form-group">
+        <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.text_area :introduction, placeholder: "Type anything about you here...", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary" %>
+      </div>
+    </form>
+  </div>
+  <% end %>
+</div>
+
+
