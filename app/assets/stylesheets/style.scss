@@ -29,6 +29,13 @@
   display: block;
 }
 
+.box{
+  min-height: 120px;
+  overflow: inline;
+  /*margin: 40px;*/
+  display: block;
+}
+
 .avatar {
   height: 120px;
   width: 120px;
@@ -73,10 +80,7 @@
   margin: 0px; 
 }
 
-.box{
-  overflow: inline;
-  margin: 40px;
-}
+
 
 .small-box{
   overflow: inline;
