@@ -1,0 +1,10 @@
+<h2>likes</h2>
+<ul>
+  <% @likes.each do |tweet| %>
+    <li>
+      <%= tweet.user.name %>
+      <%= tweet.description %>
+      <%= tweet.created_at %>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,15 @@
+<h1>推特後台</h1>
+
+<ul>
+  <% @tweets.each do |tweet| %>
+  <li>
+    <%= link_to tweet.user.name, tweets_user_path(tweet.user), class: "btn btn-primary" %>
+    <%= tweet.description %>
+    <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %>
+    <%= link_to "Reply(#{tweet.replies.count})" , tweet_replies_path(tweet), class: "btn btn-primary" %> 
+  </li>
+  <% end %>
+</ul>
+
+
+<%= link_to 'User List', admin_users_path, class: "btn btn-primary" %>

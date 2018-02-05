@@ -1,0 +1,11 @@
+<h2>followings</h2>
+
+<ul>
+  <% @followings.each do |following| %>
+    <li>
+      <%= following.name %>
+      <%= following.avatar %>
+      <%= following.created_at %>
+    </li>
+  <% end %>
+</ul>
