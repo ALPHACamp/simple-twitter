@@ -24,16 +24,16 @@
   font-weight: bold;
 }
 
-.navbar-right > li:nth-child(1) > a {
+#avatar {
   padding: 6px;
 }
 
-.navbar-right > li:nth-child(1) > a:hover {
+#avatar:hover {
   background-color: #F5F5F5;
   opacity: 0.6;
 }
 
-.navbar-right > li:nth-child(1) img {
+#avatar img {
   height: 42px;
 }
 
