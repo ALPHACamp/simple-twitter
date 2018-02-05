@@ -20,5 +20,4 @@ class User < ApplicationRecord
   has_many :likes
   has_many :liked_tweets, through: :likes, source: :tweet
 
-
 end
