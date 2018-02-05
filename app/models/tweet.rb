@@ -12,7 +12,7 @@ class Tweet < ApplicationRecord
 
 
 
-  def is_like?(user)
+  def is_liked?(user)
     self.liked_users.include?(user)
   end
 end
