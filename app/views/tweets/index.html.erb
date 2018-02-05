@@ -1,25 +1,41 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-md-8">
-      <div class="panel panel-default">          
-        <div class="panel-body">
-          <% @tweets.each do |tweet| %>
-            <div>
-              <h4><%= link_to tweet.user.name, tweet_path(tweet) %> Tweet</h4>
-              <p><%= truncate(tweet.description, length: 140) %></p>
-              <% if current_user.admin? %>
-                <%= link_to 'Destory', admin_tweet_path(tweet), method: :delete, data: {confirm: "Are you sure?"} %>
-              <% end %>
-            </div>
-            <hr>
-          <%end%>  
-        </div>    
+    <div class="col-xs-8">
+
+      <div class="tweets-area col-xs-12">
+        <%= form_for @tweet do |t|%>
+          <div class="form-group">
+            <%= t.text_area :description, placeholder: "What's on your mind?",  class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= t.submit "Tweet", class: "pull-right btn btn-primary" %>
+          </div>
+        <% end %>  
       </div>
+
+      <div class="tweets-list col-xs-12">
+        <div class="panel panel-default">          
+          <div class="panel-body">
+            <% @tweets.each do |tweet| %>
+              <div>
+                <h4><%= link_to tweet.user.name, tweet_path(tweet) %> Tweet</h4>
+                <p><%= truncate(tweet.description, length: 140) %></p>
+                <% if current_user.admin? %>
+                  <%= link_to 'Destory', admin_tweet_path(tweet), method: :delete, data: {confirm: "Are you sure?"} %>
+                <% end %>
+              </div>
+              <hr>
+            <%end%>  
+          </div>    
+        </div>
+      </div>
+
     </div>
   
  
-    <div class="col-md-4">
+    <div class="col-xs-4">
+      <div class="popular-user col-xs-12">
       <h2>Popular</h2>
       <div class="panel panel-default">
         <div class="panel-body">
@@ -32,6 +48,7 @@
           <% end %>
         </div>
       </div>
+    </div>
     </div>
       
 
