@@ -11,6 +11,9 @@ class User < ApplicationRecord
   validates_presence_of :name
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
 
+  # 當 user 被刪除時，順便刪除依賴的 tweets
+  has_many :tweets, dependent: :destroy
+
 
   def admin?
     self.role == "admin"
