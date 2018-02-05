@@ -29,14 +29,6 @@ ul, ol {
   padding: 0px;
 }
 
-
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
 .container {
   width: 85%;
   max-width: 1170px;
@@ -88,8 +80,15 @@ a:hover, a:focus {
 }
 
 header .container-fluid {
+  height: 50px;
   background-color: #204d74;
   padding-top: unset;
+}
+
+.navbar {
+  position: relative;
+  max-height: 50px;
+  margin-bottom: unset;
 }
 
 .navbar-default .navbar-brand {
@@ -118,11 +117,27 @@ header .container-fluid {
   background-color: #fff;
 }
 
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: #e7e7e7;
+    background-color: #204d74;
+}
+
 .navbar-text {
   margin-top: 15px;
   margin-bottom: 15px;
   padding: 0 15px;
 }
+
+.navbar-nav > .nav-avatar > a {
+  width:50px;
+  height:50px;
+  display:  flex;
+  align-items: center;
+  justify-content:  center;
+}
+
+
+
 
 
 
@@ -264,6 +279,12 @@ header .container-fluid {
   margin: auto;  
 }
 
+.tweetavatar img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 .tweetlist .col-xs-2 {
   
 }
@@ -271,6 +292,8 @@ header .container-fluid {
 .tweetlist .col-xs-2, .tweetlist .col-xs-10 {
   padding: 10px 5px;
 }
+
+
 
 
 /* ------- tweet user card ------- */
@@ -297,6 +320,12 @@ header .container-fluid {
 
 .follow-button {
   margin: 15px 0;
+}
+
+.usercard > .tweetavatar > img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 .usercard .col-xs-2, .tweetlist .col-xs-10 {
