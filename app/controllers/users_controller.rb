@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def tweets
+    #@tweet = Tweet.new
   end
 
   def edit
