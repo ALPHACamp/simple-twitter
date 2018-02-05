@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   has_many :replies, dependent: :destroy
   #刪掉user 就會刪掉relies
-  has_mamy :likes, dependent: :destroy
+  has_many :likes, dependent: :destroy
   #刪掉user 就會刪掉likes
 
   # 需要 app/views/devise 裡找到樣板，加上 name 屬性
