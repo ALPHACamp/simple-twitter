@@ -2,8 +2,7 @@
 <ul>
   <% @tweets.each do |tweet| %>
   <li>
-    <%= tweet.comment %>
-    <%= link_to 'Show', admin_tweet_path(tweet) %>
+    <%= tweet.description %>
     <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %>
   </li>
   <% end %>

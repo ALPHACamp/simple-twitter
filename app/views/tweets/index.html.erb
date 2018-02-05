@@ -9,11 +9,26 @@
       </div>
       <div class="following-tweets">
         <p>這邊顯示追蹤的人，所發出的推特</p>
+        <p>目前先顯示假資料</p>
+        <ul>
+          <% @tweets.each do |tweet| %>
+            <li><%= tweet.description %></li>
+          <% end %>
+        </ul>
       </div>
     </div>
     <div class="col-xs-12 col-md-8" id="right-col">
       <div class="popular">
         <p>顯示追蹤者前十多的使用者</p>
+        <p>目前先顯示所有的使用者</p>
+          <% @users.each do |user| %>
+          <div class="user-item">
+            <%= image_tag user.avatar, class: "img-responsive center-block" %>
+            <div class="caption">
+              <h2><%= user.name %></h2>
+            </div>            
+          </div>
+          <% end %>
       </div>
     </div>
   </div>
