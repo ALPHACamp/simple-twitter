@@ -1,3 +1,12 @@
 div.container:not(#nav-container){
   margin-top: 60px;
 }
+
+img.nav-avatar{
+  height: 56px;
+  width: auto;
+}
+
+.navbar-nav > li > a.nav-avatar-link{
+  padding: 0;
+}
