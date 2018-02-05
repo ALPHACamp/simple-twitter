@@ -20,4 +20,17 @@ namespace :dev do
     end
   end
 
+  task fake_tweet: :environment do
+    Tweet.destroy_all
+
+    User.all.each do |u|
+      5.times do
+        u.tweets.create!(
+          description: FFaker::Lorem::phrase(10)
+        )
+      end
+    end
+  end
+
+  puts "have created fake tweets"
 end
