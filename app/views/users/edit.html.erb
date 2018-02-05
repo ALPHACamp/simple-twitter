@@ -4,7 +4,7 @@
   <%= puts "#{@user}" %>
   <%= puts "current_user" %>
   <%= form_for @user, :url => edit_user_path do |f| %>
-  <div class="col-md-4">
+  <div class="col-md-3">
     <div class = "box">
       <%= image_tag @user.avatar, class: "img-responsive img-circle" %>
       <br />
@@ -13,7 +13,7 @@
     <div class="clearfix"></div>
   </div>
 
-  <div class="col-md-8">
+  <div class="col-md-9">
     <div class="box">
       <div class="form-group">
         <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
