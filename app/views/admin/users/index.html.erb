@@ -32,7 +32,7 @@
             <th scope="row"><%= user.id %></th>
             <td>[<%= user.name %>]</td>
             <td><%= user.tweets.count %></td>
-            <td>關注人數 following</td>
+            <td><%= user.followings.count%></td>
             <td><%= user.followers_count %></td>
             <td><%= user.likes.count %></td>
           </tr>

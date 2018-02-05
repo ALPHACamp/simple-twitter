@@ -4,22 +4,12 @@
   <h2><%= @user.introduction %></h2>
   <br />
 
-  <% if @user == current_user %>
-    <h4> <%= link_to "Tweets #{@user.tweets.count}"%></h4>
-    <h4> <%= link_to "Following", followings_user_path  %></h4>
-    <h4> <%= link_to "Follower",followers_user_path %></h4>
-    <h4> <%= link_to "like #{@user.likes.count}",likes_user_path %></h4>
-    <br>
-    <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-primary" %>
-  <% else %>
-    <h4> <%= "Tweets #{@user.tweets.count}" %></h4>
-    <h4> <%= "Following" %></h4>
-    <h4> <%= "Follower" %></h4>
-    <h4> <%= "like" %></h4>
-    <br>
-    <%= link_to "Follow", tweets_user_path(@user), class: "btn btn-primary" %>
-  <% end %>
-  <%#= render partial: "shared/favorite", locals: {@tweet: @tweet} %>
-  <%#= render partial: "shared/like", locals: {@tweet: @tweet} %>
+  <h4> <%= link_to "Tweets #{@user.tweets.count}"%></h4>
+  <h4> <%= link_to "Following #{@user.followings.count}", followings_user_path  %></h4>
+  <h4> <%= link_to "Follower",followers_user_path %></h4>
+  <h4> <%= link_to "like #{@user.likes.count}",likes_user_path %></h4>
+  <br>
+  <%= render partial: "shared/follow", locals: {user: @user} %>
+
 </div>
 <div class="clearfix"></div>

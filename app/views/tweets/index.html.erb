@@ -39,7 +39,7 @@
             <h3><%= link_to "@#{user.name}", tweets_user_path(user) %></h3>
             <h4><%= user.introduction %></h4>
             <div class="float-right">
-              <%= link_to "Follow", root_path , class: "btn btn-primary" %>
+              <%= render partial: "shared/follow", locals: {user: user} %>
             </div>
           </div>
         </div>
