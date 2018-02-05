@@ -12,7 +12,7 @@
       <% end %>
     </div>
   
-    <% @tweets.each do |tweet| %>
+    <% @tweets.reverse.each do |tweet| %>
       <div class="tweet-block">
         <% for img_id in 0..26 %>
           <% if image_path(tweet.user.avatar).include?('/user'+img_id.to_s+'.jpg') %>
