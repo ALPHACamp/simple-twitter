@@ -9,7 +9,12 @@
 <p> Followcount</p>
 <p> Followercount</p>
 <p><%= link_to "Like Count : #{@user.likes.count}",likes_user_path(@user)%></p>
-<p>Follow</p>
+<% if @user != current_user %>
+  <h4>follow</h4>
+<%else%>
+  <%=link_to"Edit Profile", edit_user_path(@user)%>
+<% end%>
+
 
 <ul>
 <% @tweets.each do |t| %>
