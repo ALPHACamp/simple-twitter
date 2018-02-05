@@ -1,11 +1,11 @@
 <div class="tweets row">
   <h2><%= user_title %></h2>
   <% users.each_with_index do |user, index| %>
-    <div class="col-md-6 follow-item">
-      <div class="col-md-4">
+    <div class="col-xs-6 follow-item">
+      <div class="col-xs-4">
         <%= render partial: "shared/avatar", locals: {avatar: user.avatar} if user.avatar? %>
       </div>
-      <div class="col-md-8">
+      <div class="col-xs-8">
         <%= link_to user.name, tweets_user_path(user) %><br/>
         <%= truncate user.introduction, length: 200 %>
       </div>
