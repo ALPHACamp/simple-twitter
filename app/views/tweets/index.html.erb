@@ -1,22 +1,27 @@
-<h1>user tweets index</h1>
-
 <!-- User can create tweet here -->
-<h3>Create New Tweet</h3>
-<%= form_for @tweet do |f| %>
-  <%= f.label :description, "Tweet Content" %>
-  <%= f.text_area :description %>
-
-  <%= f.submit %>
-<% end %>
+<div id="tweets-index">
+  <div class="form-group" id="new-tweet">
+    <%= form_for @tweet do |f| %>
+      <%= f.text_area :description, class: "form-control", placeholder: "What's on your mind?" %>
+      <%= f.submit "Tweet", class: "btn btn-default" %>
+    <% end %>
+  </div>
 
 
 <!-- User can see recent created tweets here -->
 <!-- But now still use sample!!!!!!!! Fix it after follow function finished -->
-<h3>Recnet Tweets</h3>
-<% @tweets.each do |tweet| %>
-  <%= render partial: "shared/tweets", locals: { tweet: tweet } %>
-<% end %>
+  <div id="recent-tweets">
+    <% @tweets.each do |tweet| %>
+      <div>
+        <%= render partial: "shared/tweets", locals: { tweet: tweet } %>
+      </div>
+    <% end %>
+  </div>
 
-
-<h3>Popular</h3>
-<%= render partial: "shared/users", locals: { users: @users } %>
+  <div id="popular">
+    <h3>Popular</h3>
+    <div>
+      <%= render partial: "shared/users", locals: { users: @users } %>
+    </div>
+  </div>
+</div>
