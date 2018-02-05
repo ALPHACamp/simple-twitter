@@ -1,1 +1,14 @@
-<h1>Twitter 前台</h1>
+<%= form_for(@tweet) do |f| %>
+   <div class="form-group">
+     <%= f.text_area :description, placeholder: "What's on your mind?" %>
+   </div>
+   <div class="form-group">
+     <%= f.submit "Tweet", :disable_with => 'Tweeting...' %>
+   </div>
+ <% end %>
+
+ <nav aria-label> <!--回到首頁-->
+    <ul class="pager">
+      <li><%= link_to 'Back to index', tweets_path %></li>
+    </ul>
+  </nav>
