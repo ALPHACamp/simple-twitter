@@ -1,1 +1,8 @@
-<h1>後台</h1>
+<ul class="nav nav-tabs">
+  <li class='active'><%= link_to '所有推播', admin_tweets_path %></li>
+  <li ><%= link_to '所有使用者', admin_users_path %></li>
+</ul>
+<div class="container">
+  <h1 class="text-center">Tweets</h1>
+  <%= render "shared/tweets", tweets: @tweets %>
+</div>

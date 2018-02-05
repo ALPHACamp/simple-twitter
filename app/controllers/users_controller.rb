@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       flash[:notice] = "成功更新個人資料！"
       redirect_to tweets_user_path(@user)
     else
-      flash[:danger] = "資料更新失敗！"
+      flash[:alert] = "資料更新失敗！"
       render :edit
     end
   end

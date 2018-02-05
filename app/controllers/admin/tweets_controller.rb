@@ -6,5 +6,9 @@ class Admin::TweetsController < Admin::BaseController
   end
 
   def destroy
+    @tweet = Tweet.find(params[:id])
+    @tweet.destroy
+    flash[:alert] = "成功刪除推播！"
+    redirect_back(fallback_location: root_path)
   end
 end

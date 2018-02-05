@@ -1,10 +1,16 @@
 <% tweets.each do |tweet| %>
   <div class="col-md-12 border">
-    <%= tweet.user.name %>
+    <div class="col-md-3">
+      <%= image_tag tweet.user.avatar, class: "img-responsive center-block show-img" %>
+    </div>
+    <%= link_to tweet.user.name, tweets_user_path(tweet.user.id) %>
     <%= tweet.created_at %>
     <br>
     <%= tweet.description %>
     <br>
     <%= render 'shared/reply_like', tweet: tweet %>
+    <% if current_user.admin? %>
+      <%= link_to "delete", admin_tweet_path(tweet), method: :delete %>
+    <% end %>
   </div>
 <% end %>
