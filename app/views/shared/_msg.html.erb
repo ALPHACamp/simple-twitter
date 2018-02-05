@@ -1,0 +1,18 @@
+<div class="tweet-item row">
+  <div class="col-md-3">
+    <%= render partial: "shared/avatar", locals: {avatar: msg.user.avatar} if msg.user.avatar? %>
+  </div>
+  <div class="col-md-9">
+    <p>
+      <%= link_to msg.user.name, tweets_user_path(msg.user) %>
+      <%= msg.created_at.strftime("%Y-%m-%d, %H:%M") %>
+    </p>
+    <p><%= msg_content %></p>
+  </div>
+  <% if msg_btn %>
+    <div class="col-md-9 col-md-offset-3">
+      <%= link_to "Reply(#{msg.replies_count})", tweet_replies_path(msg), class: "links" %>
+      <%= render partial: "shared/like", locals: {tweet: msg} %>
+    </div>
+  <% end %>
+</div>

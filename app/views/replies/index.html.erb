@@ -5,14 +5,12 @@
   <div class="col-md-8 col-md-offset-1">
     <div class="tweets col-md-12">
       <h2>Tweets</h2>
-      <%= render partial: "shared/tweet", locals: { tweet: @tweet } %>
+      <%= render partial: "shared/msg", locals: { msg: @tweet, msg_content: @tweet.description, msg_btn: true } %>
     </div>
     <div class="col-md-12">
       <h2>Replies</h2>
       <% @replies.each do |reply| %>
-        <div class="tweet-item row">
-          <%= render partial: "shared/reply", locals: { reply: reply } %>
-        </div>
+        <%= render partial: "shared/msg", locals: { msg: reply, msg_content: reply.comment, msg_btn: false } %>
       <% end %>
     </div>
     <%= form_for [@tweet, @reply] do |f| %>

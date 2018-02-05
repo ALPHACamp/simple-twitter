@@ -3,17 +3,6 @@
     <%= render partial: "shared/profile", locals: { user: @user} %>
   </div>
   <div class="col-md-8 col-md-offset-1">
-    <div class="tweets row">
-      <h2>Followings</h2>
-      <% @followings.each_with_index do |following,index| %>
-        <div class="col-md-6 follow-item">
-          <%= render partial: "shared/follow-item", locals: {user: following} %>
-          <%= render partial: "shared/follow", locals: {user: following} %>
-        </div>
-        <% if index % 2 == 1 %>
-          <div class="clearfix"></div>
-        <% end %>
-      <% end %>
-    </div>
+    <%= render partial: "shared/user_group", locals: { users: @followings, user_title: "Following"} %>
   </div>
 </div>

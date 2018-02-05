@@ -14,7 +14,7 @@
     <% if user == current_user %>
       <%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-lg btn-default my-btn" %>
     <% else %>
-      <%= render partial: "shared/follow", locals: {user: user} %>
+      <%= render partial: "shared/follow_btn", locals: {user: user} %>
     <% end %>
   </div>
 </div>
