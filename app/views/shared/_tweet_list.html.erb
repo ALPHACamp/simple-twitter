@@ -7,7 +7,8 @@
     <div class="tweet-content">
       <div class="tweet-info"><%= tweet.user.name %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></div>
       <p><%= tweet.description %></p>
-      <%= link_to 'Reply', "#", class: "reply-btn" %>
+
+      <%= link_to "Reply(#{tweet.replies_count})", replies_path(tweet), class: "reply-btn" %>
       <%= render partial: "shared/like", locals: {object: tweet} %>
 
       <% if current_user.admin? && flag %>

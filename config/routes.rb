@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :tweets, only: [:index, :create] do
 
     member do
+      resources :replies, only: [:index, :create]
+
       post :like
       post :unlike
     end
