@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:notice] = "User profile has been updated"
-      redirect_to root_path
+      redirect_to tweets_user_path(@user)
     else
       flash[:alert] = "Fail to update"
       render :edit
