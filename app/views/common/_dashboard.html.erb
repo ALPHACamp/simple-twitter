@@ -39,7 +39,8 @@
         <div class="dashboardContorl-edit"><%= link_to "edit profile", edit_user_path(user), class: "btn btn-primary"%></div> 
         <%else%>
           <div class="dashboardContorl-follow">
-            <div class="btn btn-primary">follow</div>
+            <!-- follow partial -->
+            <%= render partial:"common/follow", locals:{user: user} %>
           </div>
         <%end%>
       </div>
