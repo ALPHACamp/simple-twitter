@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # 請依照專案指定規格來設定路由
   root "tweets#index"
-  resources :tweets, only: [:index, :create, :new] do
+  resources :tweets, only: [:index, :create] do
     resources :replies, only: [:index, :create]
     member do
       post :like

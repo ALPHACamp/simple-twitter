@@ -1,25 +1,24 @@
 <div class="row">
   <div class="col-md-8">
 
-    <%= link_to "new", new_tweet_path %>
-    <form class="form-horizontal">
-      <%#= form_for @tweet do |f| %>
-      <%= form_for @tweet, :url => tweets_path, :method => :post do |f| %>
+    <div class="form-horizontal">
+      <%= form_for @tweet do |f| %>
+      <%#= form_for @tweet, :url => tweets_path, :method => :post do |f| %>
       <%#= form_for @tweet, url: {action: "create"} do |f| %>
       <div class="form-group">
         <%= f.text_area :description, size: "60x12", placeholder: "What's on your mind?", class: "form-control" %>
       </div>
-        <!-- <div class="col-sm-offset-10"> -->
-          <%= puts "Before submit!" %>
-          <%= f.submit %>
-          <%#= f.submit "create", class: "btn btn-primary" %>
-          <%= puts "After submit!" %>
-        <!-- </div> -->
+      <div class="col-sm-6">
+        <% if @tweet.errors.any? %>
+          <%= @tweet.errors.full_messages.to_sentence %>
+        <% end %>
+      </div>
+        <div class="col-sm-offset-10">
+          <%= f.submit "create", class: "btn btn-primary" %>
+        </div>
       <% end %>
-      <%# if @tweet.errors.any? %>
-          <%#= @tweet.errors.full_messages.to_sentence %>
-        <%# end %>
-    </form>
+    </div>
+    <br />
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Newest Tweet</h3>
@@ -28,7 +27,7 @@
         <% @tweets.each do |tweet| %>
         <div>
           <div class="avatar">
-            <%= image_tag tweet.user.avatar, class: "img-responsive" %>
+            <%= image_tag tweet.user.avatar, class: "img-responsive img-circle" %>
             <%# image_tag @user.avatar, class: "img-responsive img-circle"%>
           </div>
           <h4><%= link_to "@#{tweet.user.name}, #{tweet.created_at}", tweets_path(tweet) %></h4>
@@ -56,7 +55,7 @@
         <% @users.each do |user| %>
         <div>
           <div class="avatar-list float-left">
-            <%= image_tag user.avatar, class: "img-responsive" %>
+            <%= image_tag user.avatar, class: "img-responsive img-circle" %>
             <% #image_tag @user.avatar, class: "img-responsive img-circle"%>
           </div>
           <div class="small-box">
