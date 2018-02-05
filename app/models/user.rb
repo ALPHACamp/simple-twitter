@@ -12,6 +12,18 @@ class User < ApplicationRecord
   validates :name, uniqueness:{scope: :name}
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
 
+  has_many :tweets, dependent: :restrict_with_error
+
+  has_many :likes, dependent: :destroy
+  has_many :liked_tweet, through: :likes, source: :tweet
+
+
+  has_many :replies, dependent: :restrict_with_error
+  has_many :replied_tweet, through: :replies, source: :tweet
+
+  has_many :followships, dependent: :destroy
+  has_many :followings, through: :followships, source: :user
+
   def admin?
     self.role == "admin"
   end
