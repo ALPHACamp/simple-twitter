@@ -13,6 +13,7 @@ class User < ApplicationRecord
   #刪掉user 就會刪掉relies
   has_many :likes, dependent: :destroy
   #刪掉user 就會刪掉likes
+  has_many :liked_tweets, through: :likes, source: :tweet
 
   # 需要 app/views/devise 裡找到樣板，加上 name 屬性
   # 並參考 Devise 文件自訂表單後通過 Strong Parameters 的方法
