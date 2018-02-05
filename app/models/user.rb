@@ -23,6 +23,10 @@ class User < ApplicationRecord
     self.role == "admin"
   end
 
+  def update_follower_count
+    self.update(followers_count: self.followers.count)
+  end
+
   def is_following?(user)
     self.followings.include?(user)
   end
