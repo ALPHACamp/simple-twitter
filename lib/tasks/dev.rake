@@ -10,8 +10,9 @@ namespace :dev do
       user = User.new(
         name: name,
         email: "user#{i}@mail.co",
-        # email: "#{name}@mail.co",
         password: "000000",
+        # email: "#{name}@mail.co",
+        # password: "123456",
         introduction: FFaker::Lorem::sentence(30),
         avatar: file
       )
@@ -59,7 +60,26 @@ namespace :dev do
     puts "now you have #{Followship.count} followship"
   end
 
+  #fake like
+  task fake_like: :environment do
+    Like.destroy_all
+    puts "creating fake likes..." 
+    User.all.each do |u|
+     5.times do
+       u.likes.create!(
+        tweet: Tweet.all.sample,
+       )      
+     end     
+    end
+    puts "now you have #{Like.count} liked tweets"
+  end
+
   task test: :environment do
+    @user = User.first
+    @user.followings.each do |following|
+      # puts "#{followship.user.name}, #{followship.following.name}"
+      puts "#{following.name}"
+    end
   end
 
   #fake all data
@@ -71,5 +91,6 @@ namespace :dev do
     Rake::Task['dev:fake_tweets'].execute
     Rake::Task['dev:fake_reply'].execute
     Rake::Task['dev:fake_followship'].execute
+    Rake::Task['dev:fake_like'].execute
   end
 end
