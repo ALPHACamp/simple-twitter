@@ -1,17 +1,57 @@
-<%= form_for @tweet do |f| %>
-  <%= f.text_area :description, placeholder: "What's on your mind?" %>
-  <%= f.submit "Tweet" %>
-<% end %>
 
-<% @tweets.each do |tweet| %>
-  <hr>
-  <div class="col-sm-6 col-md-4">
-    <div class="tweet-item">
-      <div class="caption">
-        <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
-        <%= time_ago_in_words(tweet.created_at) %> ago
-        <p><%= truncate(tweet.description, length: 80) %></p>
+
+<div class="container">
+  <div class="row">
+    
+    <div class="col-md-10">
+
+      
+      <div class="col-md-8">
+        <div class="blank-tweet">
+          <%= form_for @tweet do |f| %>
+            <%= f.text_area :description, placeholder: "What's on your mind?" %>
+            <%= f.submit "Tweet" %>
+          <% end %>
+        </div>
+
+        <% @tweets.each do |tweet| %>
+          <div class="media tweet-item">
+            <div class="media-left media-middle">
+              <%= image_tag tweet.user.avatar, class: "media-object" %>
+            </div>
+            <div class="media-body">
+              <h5 class="media-heading">
+                <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
+                <%= time_ago_in_words(tweet.created_at) %> ago
+              </h5>
+              <!--<p><%= truncate(tweet.description, length: 80) %></p>-->
+              <p><%= tweet.description %></p>
+            </div>
+          </div>
+        <% end %>
       </div>
+
+
+      <div class="col-md-4">
+        <h2>Popular</h2>
+        <% @users.each do |user| %>
+          <div class="media user-item user-media">
+            <div class="media-left media-top">
+              <%= image_tag user.avatar, class: "media-object" %>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">
+                <%= link_to user.name, tweets_user_path(user) %>
+              </h4>
+              <!--<p><%= truncate(user.introduction, length: 80) %></p>-->
+              <p><%= user.introduction %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+
     </div>
+
   </div>
-<% end %>
+</div>
