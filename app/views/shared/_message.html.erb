@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="col-xs-9">
-    <p><%= "@#{message.user.name}, #{message.created_at}" %></p>
+    <p><%= link_to "@#{message.user.name}", tweets_user_path(message.user) %><%= ", #{message.created_at}" %></p>
     <% if is_tweet %>
       <p><%= message.description %></p>
       <p><%= link_to "Reply", tweet_replies_path(message.id) %></p>
