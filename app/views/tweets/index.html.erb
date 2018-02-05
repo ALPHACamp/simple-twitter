@@ -9,12 +9,15 @@
           <%= f.submit 'Tweet', class: "btn btn-primary tweet-button" %>
         </div>
       <% end %>
-
-      <%= render partial: "shared/tweet_list", locals: {object: @tweets, flag: false} %>
+      
+      <% @tweets.each do |tweet| %>
+        <%= render partial: "shared/tweet_list", locals: {object: tweet, flag: false} %>
+        <br>
+      <% end %>
     </div>
 
     <div class="col-md-5">
-      <h2 id="index-popular">Popular</h2><br>
+      <h2 class="sub-title" id="popular">Popular</h2><br>
       <% @users.each do |user| %>
         <div class="user-item clearfix">
           <div class="user-image">

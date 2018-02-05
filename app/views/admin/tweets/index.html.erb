@@ -16,7 +16,10 @@
 
     <div class="col-md-8 col-md-offset-2"> 
       <div class="col-md-12">   
-        <%= render partial: "shared/tweet_list", locals: {object: @tweets, flag: true} %>   
+        <% @tweets.each do |tweet| %>
+          <%= render partial: "shared/tweet_list", locals: {object: tweet, flag: true} %>
+          <br>
+        <% end %> 
       </div>   
     </div>
 

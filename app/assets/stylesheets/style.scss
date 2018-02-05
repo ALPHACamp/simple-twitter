@@ -4,6 +4,10 @@
   clear: both;
 }
 
+.sub-title {
+  color: #006666;
+}
+
 /* --------------- navbar --------------- */
 
 .my-nav {
@@ -120,7 +124,7 @@
 
 /* --------------- index popular --------------- */
 
-#index-popular {
+.sub-title#popular {
   color: #006666;
   font-weight: bold;
 }
@@ -165,4 +169,24 @@
 
 #admin_index_nav {
   font-size: 16px;
+}
+
+
+/* --------------- reply index --------------- */
+
+
+#reply-new {
+  border: 2px solid #8ab7dc;
+  border-radius: 12px;
+  height: 100px;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.tweet-reply {
+  padding-left: 50px;
+}
+
+.personal-info {
+  margin-top: 30px;
 }

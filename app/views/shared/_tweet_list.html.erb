@@ -1,20 +1,18 @@
-<% object.each do |tweet| %>
-  <div class="tweet-item clearfix">
-    <div class="tweet-image">
-      <img src="http://via.placeholder.com/80x80">
-    </div>
-          
-    <div class="tweet-content">
-      <div class="tweet-info"><%= tweet.user.name %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></div>
-      <p><%= tweet.description %></p>
-
-      <%= link_to "Reply(#{tweet.replies_count})", replies_path(tweet), class: "reply-btn" %>
-      <%= render partial: "shared/like", locals: {object: tweet} %>
-
-      <% if current_user.admin? && flag %>
-        <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-sm delete-btn" %>
-      <% end %>
-    </div>
+<div class="tweet-item clearfix">
+  <div class="tweet-image">
+    <img src="http://via.placeholder.com/80x80">
   </div>
-  <br>
-<% end %>
+          
+  <div class="tweet-content">
+    <div class="tweet-info"><%= object.user.name %>, <%= object.created_at.strftime("%Y-%m-%d, %H:%M") %></div>
+    <p><%= object.description %></p>
+
+    <%= link_to "Reply(#{object.replies_count})", replies_path(object), class: "reply-btn" %>
+    <%= render partial: "shared/like", locals: {object: object} %>
+
+    <% if current_user.admin? && flag %>
+      <%= link_to 'Delete', admin_tweet_path(object), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-sm delete-btn" %>
+    <% end %>
+  </div>
+</div>
+  

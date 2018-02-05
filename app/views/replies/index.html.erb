@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="col-md-10 col-md-offset-1">
+
+    <div class="col-md-4 personal-info">
+      <div class="text-center"><img src="http://via.placeholder.com/200x200"></div>
+      <h2 class="sub-title text-center"><%= @tweet.user.name %></h2>
+      <p><%= @tweet.user.introduction %></p>
+      
+      <div><%= link_to "Tweet", "#" %></div>
+      <div><%= link_to "Following", "#" %></div>
+      <div><%= link_to "Follower", "#" %></div>
+      <div><%= link_to "Like", "#" %></div>
+      <div><%= link_to "Edit Profile", "#", class: "" %></div>     
+    </div>
+
+    <div class="col-md-8 tweet-reply">
+      <h2 class="sub-title">Tweets</h2>
+      <%= render partial: "shared/tweet_list", locals: {object: @tweet, flag: false} %>
+    
+      <br>
+
+      <h2 class="sub-title">Replies</h2>
+      <% @tweet.replies.each do |reply| %>
+        <div class="tweet-item clearfix">
+          <div class="tweet-image">
+            <img src="http://via.placeholder.com/80x80">
+          </div>
+                  
+          <div class="tweet-content">
+            <div class="tweet-info"><%= reply.user.name %>, <%= reply.created_at.strftime("%Y-%m-%d, %H:%M") %></div>
+            <p><%= reply.comment %></p>
+          </div>
+        </div>
+        <br>
+      <% end %>
+
+      <%= form_for @reply do |f| %>
+        <div class="form-group">
+          <%= f.text_area :comment, placeholder: "Write some comment!", class: "form-control", id: "reply-new" %>
+        </div>
+        <div class="form-group clearfix">
+          <%= f.submit 'Reply', class: "btn btn-primary tweet-button" %>
+        </div>
+      <% end %>
+    </div>
+  
+  </div>
+</div>
