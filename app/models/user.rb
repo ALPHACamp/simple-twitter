@@ -41,4 +41,12 @@ class User < ApplicationRecord
     self.followings.include?(user)
   end
 
+  def liked_count
+    count = 0
+    self.tweets.each do |tweet|
+      count += tweet.likes_count
+    end
+    return count
+  end
+
 end

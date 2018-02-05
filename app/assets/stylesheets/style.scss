@@ -1,1 +1,56 @@
+/*navbar*////////////////////////////////////////////
+.navbar-style {
+  background-color: #90CEFA;
+  height: 56px;
+}
 
+.navbar-brand span {
+  color: #FFEFD5;
+  font-size: 32px;
+}
+
+.navbar-brand ~ a {
+  display: inline-block;
+  margin-top: 15px;
+}
+
+.navbar-brand ~ a button {
+  background-color: #FFF8DC;
+  color: #4682B4;
+  font-weight: bold;
+}
+
+.navbar-right > li:nth-child(1) > a {
+  padding: 6px;
+}
+
+.navbar-right > li:nth-child(1) > a:hover {
+  background-color: #F5F5F5;
+  opacity: 0.6;
+}
+
+.navbar-right > li:nth-child(1) img {
+  height: 42px;
+}
+
+.navbar-collapse .navbar-nav .navbar-text {
+  font-size: 20px;
+  padding: 13px 0px 17px 0px;
+  margin-right: 0;
+  margin-left: 2;
+  color: #FFEFD5;
+  font-weight: 400;
+}
+
+.navbar-header .navbar-toggle {
+  border: none;
+  margin: 14px 15px 2px 0;
+}
+
+.navbar-header .navbar-toggle .icon-bar {
+  background-color: #FFEFD5;
+}
+
+.navbar-right {
+  text-align: right;
+}

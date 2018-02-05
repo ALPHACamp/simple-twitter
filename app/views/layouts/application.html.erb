@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default navbar-style">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -19,21 +19,29 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">Brand</a>
+          <a class="navbar-brand" href="/">
+            <span class="glyphicon glyphicon-home"></span>
+          </a>
+          <% if current_user %>
+            <% if current_user.admin? %>
+              <%= link_to admin_root_path do %>
+                <button class="btn btn-default">Admin Panel</button>
+              <% end %>
+            <% end %>
+          <% end %>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <% if current_user %>
-              <li><%= link_to 'Admin Panel', admin_root_path if current_user.admin? %></li>
-              <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
-              <li><%= link_to 'User-Tweets', tweets_user_path(current_user)%></li>
-              <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
-              <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
+              <li><%= link_to tweets_user_path(current_user) do %>
+                <%= image_tag current_user.avatar %><% end %>
+              </li>
+              <li><%= link_to('Log out', destroy_user_session_path, method: :delete, class: "navbar-text") %></li>
             <% else %>
-              <li><%= link_to('註冊', new_user_registration_path) %></li>
-              <li><%= link_to('登入', new_user_session_path) %></li>
+              <li><%= link_to('Sign up', new_user_registration_path, class: "navbar-text") %></li>
+              <li><%= link_to('Log in', new_user_session_path, class: "navbar-text") %></li>
             <% end %>
           </ul>
         </div><!-- /.navbar-collapse -->
