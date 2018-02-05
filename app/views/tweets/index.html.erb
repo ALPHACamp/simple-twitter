@@ -11,10 +11,7 @@
     </div>
     <% end %>
     
-    <%= render partial: "shared/tweet_list", locals: {tweets: @tweets}%>
-    
-  
-  
+    <%= render partial: "shared/tweet_list", locals: {tweets: @tweets}%>  
   </div>
     
 
@@ -47,8 +44,7 @@
                 <% if user != current_user %>
                   <%= render partial: "shared/follow", locals: {user: user}%>
                 <% end %>
-              </div>
-              
+              </div>            
               
               <hr>
             </div>

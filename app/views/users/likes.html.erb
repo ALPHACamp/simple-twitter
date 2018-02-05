@@ -1,0 +1,14 @@
+<div class="container">
+  
+  <div class="col-md-4 ">
+    <%= render partial: "shared/user_intro", locals: {user: @user}%>
+  </div>
+  
+  <div class="col-md-8">
+       
+    <h2>Like</h2>
+    <hr>
+    <%= render partial: "shared/tweet_list", locals: {tweets: @likes}%>  
+  </div>
+  
+</div>
