@@ -12,6 +12,10 @@ gem 'carrierwave'
 # resize image size
 # gem 'mini_magick'
 
+gem 'bootstrap-sass'
+# Use jquery for rails
+gem 'jquery-rails'
+
 gem 'ffaker'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
