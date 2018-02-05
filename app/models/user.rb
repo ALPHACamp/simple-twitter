@@ -12,6 +12,17 @@ class User < ApplicationRecord
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
 
   has_many :tweets, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_tweets, through: :likes, source: :tweet
+  has_many :replies, dependent: :destroy
+
+  # 「使用者可以追蹤很多其他使用者」的自關聯
+  has_many :followships, dependent: :destroy
+  has_many :followings, through: :followships
+
+  # 自關聯的逆向方法:@user可以逆向追蹤follower(設定@user為following的users)
+  has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
+  has_many :followers, through: :inverse_followships, source: :user, counter_cache: true
 
 # admin? 判斷單個user是否有 admin 角色，列如：current_user.admin?
   def admin?
