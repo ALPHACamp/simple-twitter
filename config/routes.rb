@@ -3,6 +3,20 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:edit, :update] do
 
+    member do
+
+      # user page
+      get :tweets
+
+      # following and follower pages
+      get :followings
+      get :followers
+
+      # likes page
+      get :likes
+      
+    end
+
   end
 
   # 請依照專案指定規格來設定路由
