@@ -1,0 +1,27 @@
+<div id="user-edit" class="container">
+  <div class="row">
+    <%= form_for @user do |f| %>
+    <div class="col-md-3">
+      <div class="form-group">
+        <%= image_tag @user.avatar, width: "300px" if @user.avatar? %>
+        <%= f.label :avatar, "Browse files...", class: "file-upload"%>
+        <%= f.file_field :avatar %>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="form-group">
+        <%= f.text_field :name, class: "form-control", placeholder: "Name"%>
+      </div>
+
+      <div class="form-group">
+        <%= f.text_area :introduction, class: "form-control", placeholder: "Type anything about you here......" %>
+      </div>
+      <div class="button-group">
+        <%= f.submit "Update", class: "btn"%>
+        <%= f.button "Cancel", type: :reset, class: "btn" %>
+      </div>
+    </div>
+
+    <% end %>
+  </div>
+</div>
