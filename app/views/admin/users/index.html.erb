@@ -27,13 +27,13 @@
         <tbody>
           <% @users.each do |user| %>
           <tr>
-            <!-- 推播數量=OK、關注人數、跟隨者人數=OK、推播被 like=OK 的數量 -->
+            <!-- 推播數量、關注人數、跟隨者人數、推播被like的數量 -->
             <!-- 管理者可以瀏覽站內所有的使用者清單，該清單按推播文數排序 -->
             <th scope="row"><%= user.id %></th>
             <td>[<%= user.name %>]</td>
             <td><%= user.tweets.count %></td>
             <td><%= user.followings.count%></td>
-            <td><%= user.followers_count %></td>
+            <td><%= user.followers.count %></td>
             <td><%= user.likes.count %></td>
           </tr>
           <% end %>
