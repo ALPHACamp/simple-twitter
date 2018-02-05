@@ -35,9 +35,9 @@
             <div class="col-xs-2">
               <div class="tweetavatar">
                 <% if tweet.find_user.avatar? %>
-                  <%= image_tag(tweet.find_user.avatar, width: '100', height: '115',class: 'center-block') %>
+                  <%= image_tag(tweet.find_user.avatar, width: '100', height: '100',class: 'center-block') %>
                 <% else %>
-                  <%= image_tag("http://via.placeholder.com/100x115",class: 'center-block') %>
+                  <%= image_tag("http://via.placeholder.com/100x100",class: 'center-block') %>
                 <% end %>
               </div>
             </div>
@@ -95,11 +95,11 @@
             <div class="container">
               <!-- Left: user avartar /start -->
               <div class="col-xs-2">
-                <div class="tweetavatar">
+                <div class="usercard-avatar">
                   <% if user.avatar? %>
-                    <%= image_tag(user.avatar, width: '100', height: '115',class: 'center-block') %>
+                    <%= image_tag(user.avatar, width: '60', height: '60',class: 'center-block') %>
                   <% else %>
-                    <%= image_tag("http://via.placeholder.com/100x115",class: 'center-block') %>
+                    <%= image_tag("http://via.placeholder.com/60x60",class: 'center-block') %>
                   <% end %>
                 </div>
               </div>

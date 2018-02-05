@@ -284,7 +284,7 @@ header .container-fluid {
 
 .tweetavatar img {
   max-width: 100%;
-  height: auto;
+  /* height: auto; */
   display: block;
 }
 
@@ -325,15 +325,26 @@ header .container-fluid {
   margin: 15px 0;
 }
 
-.usercard > .tweetavatar > img {
+.usercard-avatar {
+  max-width: 60px;
+  max-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+}
+
+.usercard-avatar img {
   max-width: 100%;
-  height: auto;
+  /* height: auto; */
   display: block;
 }
 
-.usercard .col-xs-2, .tweetlist .col-xs-10 {
-  padding: 5px 0;
+.usercard .col-xs-2, .usercard .col-xs-10 {
+  padding: 5px 5px;
 }
+
+
+
 
 
 /* ------- viewport ------- */
@@ -344,5 +355,23 @@ header .container-fluid {
 
 
 @media screen and (max-width: 767px) {
+
+.tweetavatar img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.usercard-avatar {
+  width: 100%;
+  height: auto;
+  margin: auto;  
+}
+
+.usercard-avatar img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
   
 }
