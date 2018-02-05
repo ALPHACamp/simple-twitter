@@ -1,7 +1,7 @@
 class TweetsController < ApplicationController
 
   def index
-    @tweets = Tweet.order(updated_at: :desc).page(params[:page]).per(15)
+    @tweets = Tweet.all
     # 15則換頁，照時間排序
     @tweet = Tweet.new
     # @users 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
@@ -10,9 +10,9 @@ class TweetsController < ApplicationController
   def create
     @tweet = current_user.tweets.build(tweet_params)
     if @tweet.save
-      redirect_to root_path
+      redirect_to :tweets
     else
-      @tweets = Tweet.page(params[:page]).per(20)
+      @tweets = Tweet.all
       render :index
     end
 
@@ -21,14 +21,14 @@ class TweetsController < ApplicationController
   def like
     tweet = Tweet.find(params[:id])
     tweet.likes.create!(user:current_user)
-    redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: tweets_path)
   end
 
   def unlike
     tweet = Tweet.find(params[:id])
     like = Like.where(tweet: tweet, user:current_user)
     like.destroy_all
-    redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: tweets_path)
   end
 
   private 

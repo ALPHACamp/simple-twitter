@@ -1,5 +1,6 @@
 class Tweet < ApplicationRecord
-  validates_length_of :description, maximum: 140,:message => "超過140個字"
+  validates_length_of :description, maximum: 140
+  default_scope { order(created_at: :desc) }
   belongs_to :user
   #tweet只能有一個作者
 

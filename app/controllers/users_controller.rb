@@ -5,6 +5,9 @@ class UsersController < ApplicationController
   end
 
   def edit
+    if current_user != @user
+      redirect_to tweets_user_path(@user)
+    end
   end
 
   def update
@@ -20,12 +23,14 @@ class UsersController < ApplicationController
 
   def followings
     @user = User.find(params[:id])
-    @followings = @user.followings
+    # 不確定
+    @followings = @user.followings.order('followships.updated_at DESC')
   end
 
   def followers
     @user = User.find(params[:id])
-    @followers = @user.followers
+    # 不確定
+    @followers = @user.followers.order('followships.updated_at DESC')
   end
 
   def likes
