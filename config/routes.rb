@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :followships, only: [:create, :destroy]
+
   namespace :admin do
     resources :users, only: [:index]
     resources :tweets, only: [:index, :destroy]
