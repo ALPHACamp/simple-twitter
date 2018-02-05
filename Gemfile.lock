@@ -307,7 +307,7 @@ PLATFORMS
   x86-mswin32
 
 DEPENDENCIES
-  bootstrap (~> 4.0.0)
+  bootstrap (~> 4.0.0.beta2.1)
   bootstrap4-kaminari-views
   byebug
   capybara (~> 2.13)
