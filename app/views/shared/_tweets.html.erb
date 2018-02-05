@@ -1,0 +1,17 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <% @tweets.each do |tweet| %>
+    <div>
+      <div class="avatar">
+        <%= image_tag tweet.user.avatar, class: "img-responsive img-circle" %>
+      </div>
+      <h4><%= link_to "@#{tweet.user.name}, #{tweet.created_at}", tweets_user_path(tweet.user) %></h4>
+      <h4><%= tweet.description %></h4>
+      <%= link_to "Reply(#{})", tweet_replies_path(tweet), class: "btn btn-primary" %>
+      <%= link_to "Like(#{})",root_path, class: "btn btn-danger" %>
+    </div>
+    <div class="clearfix"></div>
+    <hr>
+    <% end %>
+  </div> 
+</div>

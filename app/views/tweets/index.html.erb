@@ -18,34 +18,15 @@
         </div>
       <% end %>
     </div>
-    <br />
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Newest Tweet</h3>
-      </div>
-      <div class="panel-body">
-        <% @tweets.each do |tweet| %>
-        <div>
-          <div class="avatar">
-            <%= image_tag tweet.user.avatar, class: "img-responsive img-circle" %>
-            <%# image_tag @user.avatar, class: "img-responsive img-circle"%>
-          </div>
-          <h4><%= link_to "@#{tweet.user.name}, #{tweet.created_at}", tweets_path(tweet) %></h4>
-          <h4><%= tweet.description %></h4>
-          <!-- notice!!!!!!!!!!!!! -->
-          <%= link_to "Reply(#{})", tweet_replies_path(tweet), class: "btn btn-primary" %>
-          <%= link_to "Like(#{})",root_path, class: "btn btn-danger" %>
-          <%#= render partial: "shared/favorite", locals: {tweet: tweet} %>
-          <%#= render partial: "shared/like", locals: {tweet: tweet} %>
-          
-        </div>
-        <div class="clearfix"></div>
-        <hr>
-        <% end %>
-      </div>
-    </div>
-  </div>
 
+    <br />
+
+    <!-- 使用者能瀏覽所有的推播 (tweet) -->
+    <h2>Newesr Tweet</h2>
+    <%= render partial: "shared/tweets" %>
+  </div>
+  
+  <!-- 使用者能在首頁看見跟隨者 (followers) 數量排列前 10 的使用者推薦名單 -->
   <div class="col-md-4">
     <div class="panel panel-default">
       <div class="panel-heading">
