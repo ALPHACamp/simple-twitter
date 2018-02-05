@@ -60,4 +60,16 @@ namespace :dev do
     
   end
 
+  task fake_likes: :environment do
+    Like.destroy_all
+
+    User.all.each do |user|
+      20.times do 
+        user.likes.create(tweet_id: Tweet.all.sample.id)
+      end
+    end
+    puts "have created 400 fake follow"
+    
+  end
+
 end
