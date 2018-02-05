@@ -15,7 +15,7 @@
       <div class="clearfix">
         <% @tweets.each do |tweet| %>
           <div class="float-left">
-            <%= image_tag tweet.user.avatar, height: 85, width: 85 %>  
+            <%= image_tag tweet.user.avatar, height: 85, width: 85 %>
           </div>
           <h5><%= tweet.user.name %></h5>
           <p><%= tweet.description %></p>
@@ -51,5 +51,3 @@
 
   </div>
 </div>
-
-

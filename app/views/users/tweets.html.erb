@@ -12,6 +12,7 @@
       <!-- edit Profile / Follow button 切換判斷 -->
       <%= link_to 'Follow', followships_path(following_id: @user.id), method: :post %>
       <!-- user 可以不用加 .id，Rails 會自動抓取主鍵 -->
+      <%= link_to 'Unfollow', followship_path(following_id: @user.id), method: :delete %>
       <hr>
     </div>
 
