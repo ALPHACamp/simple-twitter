@@ -8,7 +8,10 @@
     <p><%= link_to "@#{message.user.name}", tweets_user_path(message.user) %><%= ", #{message.created_at}" %></p>
     <% if is_tweet %>
       <p><%= message.description %></p>
-      <p><%= link_to "Reply(#{message.replies.count})", tweet_replies_path(message.id) %></p>
+      <div>
+        <%= link_to "Reply(#{message.replies.count})", tweet_replies_path(message.id) %>
+        <%= render partial: "shared/like", locals: {tweet: message} %>
+      </div>
     <% else %>
       <p><%= message.comment %></p>
     <% end %>
