@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       post :unlike
     end
   end
-
+  resources :followships, only: [:create, :destroy]
   resources :users, only: [:edit, :show] do
     member do
       # get :followings

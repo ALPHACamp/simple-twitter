@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def tweets
   end
-
+  
   def update
 		if @user.update(user_params)
       redirect_to user_path(@user)
@@ -33,6 +33,6 @@ class UsersController < ApplicationController
   end
 
   def fetch_user
-		@user = current_user
+		@user = User.find(params[:id])
 	end
 end
