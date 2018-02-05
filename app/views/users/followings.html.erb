@@ -1,0 +1,19 @@
+<div class="container">
+
+  <!-- user info panel -->
+  <div class="col-sm-4">
+    <%=render partial: "/common/dashboard", locals:{user: @user}%>
+  </div>
+
+
+<!-- user's tweets -->
+  <div class="col-sm-8">
+    <!-- userlist wall-->
+    <h2>Following</h2>
+    <%@followings.each do |following| %>
+      <%= following.name %>
+    <%end%>
+    <%= render partial: "common/userlistwall", locals:{users: @followings} %>
+  </div>
+
+</div>

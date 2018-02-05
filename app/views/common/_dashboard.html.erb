@@ -20,7 +20,11 @@
             <%end%>
           
             <!-- following count -->
+            <%= link_to followings_user_path(user) do %>
+              <h2>Following <%= user.followings.size %></h2>
+            <%end%>
             <!-- follower count -->
+
             <!-- like count -->
             <%= link_to likes_user_path(user) do %>
               <h2>Likes <%=user.likes.size %></h2>
