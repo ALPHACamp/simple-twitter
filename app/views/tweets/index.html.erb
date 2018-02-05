@@ -5,28 +5,37 @@
         <div class="card card-updates">
           <div class="card-block">
             <div class="card-tittle"><h4>What's new?</h4></div>
-                <textarea class="form-control" style="padding: 0 0; height: 100px;" placeholder="Update your status"></textarea>
-                <button class="btn btn-success pull-right" type="button">Post</button>
+            <%= form_for @tweet, {class: "my-form"} do |f| %>
+                <%= f.text_area :description, :class => "form-control", :style => "padding: 0 0; height: 100px;", :placeholder=> "Update your status" %>
+                <%= f.submit "Create", :class => "btn btn-success pull-right" %>
+            <% end %>
           </div>
         </div>
 
+        <% @tweets.each do |t| %>
         <div class="card card-tweet">
           <div class="card-block">
-            <div class="card-tittle"><p href="#" class="time-log pull-right">20 seconds ago</p><h5>Stackoverflow</h5>
+            <div class="card-tittle"><p href="#" class="time-log pull-right"><%=time_ago_in_words t.updated_at %> ago</p><h5><%= t.user.name %></h5>
             </div>
             <div class="card-text">
-              <p>If you're looking for help with Bootstrap code, the <code>twitter-bootstrap</code> tag at <a href="http://stackoverflow.com/questions/tagged/twitter-bootstrap">Stackoverflow</a> is a good place to find answers.</p>
+              <p><%= t.description %></p>
               <hr>
             </div>
             <form>
               <div class="input-group">
-                <button class="btn btn-secondary"><i class="far fa-thumbs-up"></i>(5)</button>
+                <a title="按讚"><button class="btn btn-secondary" ><i class="far fa-thumbs-up"></i>(5)</button></a>
                 <button class="btn btn-secondary"><i class="far fa-comment-alt"></i>(5)</button>
                 <button class="btn btn-secondary"><i class="far fa-share-square"></i></button>
               </div>
             </form>
          </div>
         </div>
+        <%end%>
+
+        <div class="text-center margin-10-10">
+          <%= paginate @tweets, theme: 'twitter-bootstrap-4', window: 2 %>
+        </div>
+
       </div>
 
       <div class="col-md-4 col-sm-12">
