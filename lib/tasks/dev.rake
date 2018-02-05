@@ -21,14 +21,14 @@ namespace :dev do
   end
 
     task fake_tweet: :environment do
-      Description.destroy_all
+      Tweet.destroy_all
       20.times do |i|
         Tweet.create!(
         user: User.all.sample,
         description: FFaker::Lorem.sentence
         )
     end
-    puts "Have created fake tweet"
+    puts "Have created #{Tweet.count} fake tweet"
   end
 
 end

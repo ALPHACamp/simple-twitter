@@ -9,8 +9,10 @@
     <br>
     <div class="tweets">
       <% @tweets.each do |tweet| %>
-      <%= tweet.description %>
+      <li><%= link_to tweet.user.name, user_path(tweet.user) %></li>
+      <li><%= tweet.description %></li>
       <% end %>
+      <br>
     </div>
 
   </div>
