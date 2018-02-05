@@ -1,0 +1,10 @@
+<% if user == current_user %>
+  <button class= "btn btn-success" disabled > It's Me </button>
+<% else %>
+  <% if not current_user.is_following?(user) %>
+    <%= link_to "Follow", followships_path(following_id: user.id), method: :post, class: "btn btn-primary"  %>
+  <% else %>
+    <%= link_to "Unfollow", followship_path(user), method: :delete, class: "btn btn-danger"  %>
+  <% end %>
+<% end %>
+
