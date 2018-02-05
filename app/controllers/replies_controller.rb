@@ -9,7 +9,7 @@ class RepliesController < ApplicationController
     @tweets = Tweet.where(user_id: @user)
    
     @replies = Reply.where(tweet_id: @tweet)
-    #profile#
+
     @user.likes_count = @user.likes.size
     @tweet.replies_count = @tweet.replies.size
     

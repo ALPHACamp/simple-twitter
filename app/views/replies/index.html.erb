@@ -1,4 +1,5 @@
 <p>
+<%=link_to "#{@tweet.user.name}", tweets_user_path(@tweet.user_id)%>
 <%= @tweet.description %>
 <%= @tweet.created_at %>
 <%= render partial: "shared/like", locals:{tweet: @tweet}%>
@@ -8,7 +9,7 @@
 <p>Profile
 <p>avatar</p>
 <%= @user.name %> 
-<p> @user.introduction</p>
+<p><%=@user.introduction%></p>
 <p> Tweet Count:<%= @tweets.size%></p>
 <p> Followcount</p>
 <p> Followercount</p>
@@ -19,6 +20,7 @@
     <ul>
       <% @replies.each do |r| %>
         <li>
+          <%= link_to  "#{r.user.name}",tweets_user_path(r.user_id)%>
           <%= r.comment %>
           <%= r.created_at%>
         </li>
