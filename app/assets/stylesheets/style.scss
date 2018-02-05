@@ -76,6 +76,8 @@
 
 .tweet-item .tweet-image img {
   border-radius: 5px;
+  width: 80px;
+  height: 80px;
 }
 
 .tweet-item .tweet-content {
@@ -143,6 +145,8 @@
 
 .user-item .user-image img {
   border-radius: 5px;
+  width: 80px;
+  height: 80px;
 }
 
 .user-item .user-content {
@@ -187,6 +191,44 @@
   padding-left: 50px;
 }
 
+
+
+/* --------------- user profile --------------- */
+
+
 .personal-info {
   margin-top: 30px;
+}
+
+.personal-info img {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+}
+
+.personal-info p {
+  padding: 10px 30px 10px 30px;
+  color: #3084cc;
+}
+
+.personal-info .link a {
+  padding-left: 30px;
+  font-size: 23px;
+  line-height: 35px;
+  color: #666666;
+}
+
+.user-edit-btn {
+  font-weight: bold;
+  margin-left: 30px;
+  margin-top: 10px;
+  border-color: #17a2b8;
+  color: #17a2b8;
+}
+
+.follow-btn {
+  margin-left: 30px;
+  margin-top: 10px;
+  border-color: #ef4e6c;
+  color: #ef4e6c;
 }

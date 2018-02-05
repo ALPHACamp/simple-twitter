@@ -6,11 +6,15 @@
       <h2 class="sub-title text-center"><%= @tweet.user.name %></h2>
       <p><%= @tweet.user.introduction %></p>
       
-      <div><%= link_to "Tweet", "#" %></div>
-      <div><%= link_to "Following", "#" %></div>
-      <div><%= link_to "Follower", "#" %></div>
-      <div><%= link_to "Like", "#" %></div>
-      <div><%= link_to "Edit Profile", "#", class: "" %></div>     
+      <div class="link"><%= link_to "Tweet", "#" %></div>
+      <div class="link"><%= link_to "Following", "#" %></div>
+      <div class="link"><%= link_to "Follower", "#" %></div>
+      <div class="link"><%= link_to "Like", "#" %></div>
+      <% if current_user == @tweet.user %>
+        <div><%= link_to "Edit Profile", "#", class: "btn btn-default user-edit-btn" %></div>
+      <% else %>
+        <div><%= link_to "Follow", "#", class: "btn btn-default follow-btn" %></div>
+      <% end %>     
     </div>
 
     <div class="col-md-8 tweet-reply">
