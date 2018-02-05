@@ -29,7 +29,7 @@
                   <li><%= link_to '<i class="glyphicon glyphicon-inbox" aria-hidden="true"></i> '.html_safe, admin_root_path %></li>
                 <% end %>
               <li><p class="navbar-text">Hi, <%= current_user.name %></p></li>
-              <li><%= link_to '<i class="glyphicon glyphicon-user" aria-hidden="true"></i> '.html_safe, user_path(current_user) %></li>
+              <li><%= link_to '<i class="glyphicon glyphicon-user" aria-hidden="true"></i> '.html_safe, tweets_user_path(current_user) %></li>
               <li><%= link_to('<i class="glyphicon glyphicon-log-out" aria-hidden="true"></i> '.html_safe, destroy_user_session_path, method: :delete) %></li>
               <li><%= link_to('<i class="glyphicon glyphicon-wrench" aria-hidden="true"></i> '.html_safe, edit_user_registration_path) %></li>
               <% else %>
