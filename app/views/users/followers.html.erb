@@ -1,0 +1,10 @@
+<h1>Follower</h1>
+
+<% @followers.each do |follower| %>
+<ul>
+  <li><%= image_tag follower.avatar, width:"100px" %></li>
+  <li><%= link_to follower.name, tweets_user_path(follower) %></li>
+  <li><%= follower.introduction %></li>
+  <%= render partial: "shared/follow", locals: { user: follower } %>
+</ul>
+<% end %>
