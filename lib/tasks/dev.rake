@@ -3,28 +3,28 @@ namespace :dev do
   # 其他測試用的假資料請依需要自行撰寫
   task fake_user: :environment do
     User.destroy_all
+    url = "https://uinames.com/api/?ext&region=england&amount=20"
+    response = RestClient.get(url)
+    data = JSON.parse(response.body)
     20.times do |i|
-      name = FFaker::Name::first_name
-      file = File.open("#{Rails.root}/public/avatar/user#{i+1}.jpg")
-
       user = User.new(
-        name: name,
-        email: "#{name}@example.co",
-        password: "12345678",
+        name: data[i]["name"] + "#{i}",
+        email: data[i]["email"],
+        password: data[i]["password"],
         introduction: FFaker::Lorem::sentence(30),
-        avatar: file
+        avatar: data[i]["photo"]
       )
 
       user.save!
       puts user.name
     end
-    file_admin = File.open("#{Rails.root}/public/avatar/user#{rand(1..20)}.jpg")
+
     User.create(
       email: "admin@well.com",
       password: "123456",
       name: "Admin",
-      introduction: "Administrator",
-      avatar: file_admin,
+      introduction: FFaker::Lorem::sentence(30),
+      avatar: "https://uinames.com/api/photos/male/3.jpg",
       role: "admin"
       )
     puts "admin has created"
@@ -68,10 +68,11 @@ namespace :dev do
 
   task fake_follow: :environment do
     Followship.destroy_all
-    User.all.each do |user|
 
-      rand(20).times do |i|
-        user.followships.create(following_id: 2+i)
+    User.all.each do |user|
+      followings = User.all.sample(rand(1..20))
+      for following in followings
+        user.followships.create!(following: following)
       end
     end
     puts "create fake_follow"
