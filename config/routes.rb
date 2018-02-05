@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
       # likes page
       get :likes
-      
+
     end
 
   end
@@ -33,6 +33,9 @@ Rails.application.routes.draw do
     end
 
   end
+
+  resources :followships, only: [:create, :destroy]
+
   root "tweets#index"
 
   namespace :admin do
