@@ -9,6 +9,7 @@
             <% @users.each do |user|%>
               <div>
                 <h4><%= link_to user.name, user_path(user)%></h4>
+                <P><%= simple_format user.introduction %></P>
               </div>
               <hr>
             <% end %>
@@ -20,9 +21,15 @@
    
       <div class="col-md-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3>Comment list</h3></div>
+          <div class="panel-heading"><h3>Tweets list</h3></div>
           <div class="panel-body">
-              
+            <% @tweets.each do |tweet| %>
+              <div>
+                <h4><%= link_to tweet.user.name, tweet_path(tweet) %> Tweet</h4>
+                <p><%= truncate(tweet.description, length: 140) %></p>
+              </div>
+              <hr>
+            <%end%>
           </div>
         </div>
       </div>
