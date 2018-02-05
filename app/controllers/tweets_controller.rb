@@ -23,10 +23,5 @@ class TweetsController < ApplicationController
   def unlike
   end
 
-  private
-
-  def tweet_params
-    params.require(:tweet).permit(:content)
-  end
 
 end

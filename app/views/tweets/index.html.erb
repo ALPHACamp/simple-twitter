@@ -1,17 +1,19 @@
 <div class="container">
-  <h1>前台</h1>
-  
-  
-  <div>
-    <% @tweets.each do |tweet| %>
-        <div class="seinbg">
-          <%= image_tag(tweet.user.avatar, height: 60, width: 60, class: "img-circle") %>
-          <h4><%= tweet.user.name %></h4>
-          <p><%= truncate(tweet.description, length: 80) %></p>
-        </div>
-    <% end %>
+  <div class="row">
+    <h1>前台</h1>
+    
+    
+    <div>
+      <% @tweets.each do |tweet| %>
+          <div class="seinbg">
+            <%= image_tag(tweet.user.avatar, height: 60, width: 60, class: "img-circle") %>
+            <h4><%= tweet.user.name %></h4>
+            <p><%= truncate(tweet.description, length: 80) %></p>
+          </div>
+      <% end %>
+    </div>
+    
   </div>
-
 </div>
 
 <style>
