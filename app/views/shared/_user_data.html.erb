@@ -4,7 +4,7 @@
   </div>
   <h2><%= @user.name %></h2>  
   <p><%= @user.introduction %></p>
-  <%= "Tweets #{@user.tweets.count}" %>
+  <p><%= link_to "Tweets #{@user.tweets.count}", tweets_user_path(@user) %></p>
   <%= "Following" %>
   <%= "Follower" %>
   <%= "Like" %>
