@@ -3,12 +3,12 @@ class RepliesController < ApplicationController
   def index
     @user = current_user
     @reply = Reply.new
-    @replies = Reply.where(tweet_id: @tweet)
+    
 
     @tweet = Tweet.find(params[:tweet_id])
     @tweets = Tweet.where(user_id: @user)
    
-
+    @replies = Reply.where(tweet_id: @tweet)
     #profile#
     @user.likes_count = @user.likes.size
     @tweet.replies_count = @tweet.replies.size
@@ -20,8 +20,10 @@ class RepliesController < ApplicationController
     @reply = @tweet.replies.new(reply_params)
     @reply.user = current_user
     @reply.save
+    @tweet.replies_count = @tweet.replies.size
+    @tweet.save
     redirect_to tweet_replies_path
-   
+  
   end
 
 

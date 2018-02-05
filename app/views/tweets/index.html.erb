@@ -13,6 +13,8 @@
       <%=t.description%>
       <%=t.created_at%>
       <%=link_to "reply", tweet_replies_path(t)%>
+      Reply Count<%= t.replies_count %>
+      Like Count <%= t.likes_count%>
       <%= render partial: "shared/like", locals:{tweet: t}%>
     </li>
   <%end%>

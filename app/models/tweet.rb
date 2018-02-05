@@ -16,8 +16,5 @@ class Tweet < ApplicationRecord
     self.likes_count = self.likes.size
     self.save
   end
-  
-  def count_replies
-    self.replies_count = self.replies.size
-  end
+
 end
