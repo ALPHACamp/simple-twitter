@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-4">
-    <div class = "small-box">
-      <%= image_tag @user.avatar, class: "img-responsive" %>
+    <div class = "box">
+      <%= image_tag @user.avatar, class: "img-responsive img-circle" %>
       <h1><%= @user.name %></h1>
       <h2><%= @user.introduction %></h2>
       <br />
@@ -33,7 +33,7 @@
         <% @tweets.each do |tweet| %>
         <div>
           <div class="avatar">
-            <%= image_tag tweet.user.avatar, class: "img-responsive" %>
+            <%= image_tag tweet.user.avatar, class: "img-responsive img-circle" %>
             <%# image_tag @user.avatar, class: "img-responsive img-circle"%>
           </div>
           <h4><%= link_to "@#{tweet.user.name}, #{tweet.created_at}", tweets_user_path(@user) %></h4>
