@@ -1,1 +1,25 @@
-<h1>前台</h1>
+<div class="container">
+  <div class="col-left">
+    <div class="my-tweet">
+      <%= form_for @tweet do |f| %>
+      <%= f.text_area :description, placeholder: "What's on your mind?" %>
+      <%= f.submit %>
+      <% end %>
+      </div>
+    <br>
+    <div class="tweets">
+      <% @tweets.each do |tweet| %>
+      <%= tweet.description %>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div class="col-right">
+    
+  </div>
+
+
+
+
+</div>
