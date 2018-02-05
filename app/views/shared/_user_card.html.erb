@@ -8,7 +8,7 @@
     <p><%= link_to "@#{user.name}", tweets_user_path(user) %></p>
     <p><%= user.introduction %></p>
   </div>
-  <div class="col-xs-12">
+  <div class="col-xs-12 text-right">
     <%= render partial: "shared/follow", locals: {user: user} %>
   </div>
 </div>
