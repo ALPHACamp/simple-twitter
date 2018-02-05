@@ -5,7 +5,7 @@
     <% end %>
   </div>
   <div class="user-info-sm">
-    <h3><%= link_to "@#{user.name}", tweets_user_path(user) %></h3>
+    <h4><%= link_to "@#{user.name}", tweets_user_path(user) %></h4>
     <p><%= user.introduction %></p>
   </div>
   <% if user != current_user %>
@@ -16,7 +16,7 @@
         <% end %>
       <% else %>
         <%= link_to followships_path(following_id: user), method: :post do %>
-          <button class="btn btn-primary">Follow</button>
+          <button class="btn btn-default">Follow</button>
         <% end %>
       <% end %>
     </div>   

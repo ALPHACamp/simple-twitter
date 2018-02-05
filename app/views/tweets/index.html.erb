@@ -3,6 +3,11 @@
     <div id="tweet-wall">
       <%= form_for @tweet do |f| %>
        <div class="tweet-form form-group">
+        <div class="avatar-xs">
+          <%= link_to tweets_user_path(current_user) do %>
+            <%= image_tag(current_user.avatar, class: "img-circle") %>
+          <% end %>
+        </div>
         <div>
           <%= f.text_area :description, placeholder: "What's on your mind?", class: "tweet-form-textarea form-control" %>
         </div>

@@ -5,15 +5,31 @@
     <% end %>
   </div>
   <div class="tweet-info">
-    <h4><%= link_to "@#{tweet.user.name}", tweets_user_path(tweet.user)%><%= tweet.created_at.strftime(" ,%Y-%m-%d %H:%M") %></h4>
+    <h4><%= link_to "@#{tweet.user.name}", tweets_user_path(tweet.user)%><em><%= tweet.created_at.strftime(" %Y-%m-%d %H:%M") %></em></h4>
     <p><%= tweet.description %></p>
-    <h4>
-      <%= link_to 'Reply', tweet_replies_path(tweet) %>(<%= tweet.replies_count %>) 
+    <div>
+      <span class="comment-o">
+        <%= link_to tweet_replies_path(tweet) do %>
+          <%= fa_icon 'comment-o' %>
+          <span> <%= tweet.replies_count %></span>
+        <% end %>         
+      </span>
       <% if tweet.is_liked?(current_user) %>
-        <%= link_to 'Unlike', unlike_tweet_path(tweet), method: :post %>(<%= tweet.likes_count %>)
+      <span class="heart">
+        <%= link_to unlike_tweet_path(tweet), method: :post do %>
+          <%= fa_icon 'heart' %>
+          <span> <%= tweet.likes_count %></span>
+        <% end %>
+      </span>
       <% else %>
-        <%= link_to 'like', like_tweet_path(tweet), method: :post %>(<%= tweet.likes_count %>)
+      <span class="heart-o">
+         <%= link_to like_tweet_path(tweet), method: :post do %>
+          <%= fa_icon 'heart-o' %>
+          <span> <%= tweet.likes_count %></span>
+        <% end %> 
+      </span>
+
       <% end %>
-    </h4>
+    </div>
   </div>
 </div>

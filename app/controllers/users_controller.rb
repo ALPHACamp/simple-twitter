@@ -17,8 +17,8 @@ class UsersController < ApplicationController
       flash[:notice] = "Profile has been successfully updated"
       redirect_to tweets_user_path    
     else
-      flash[:alert] = "restaurant was failed to update"
-      render :edit
+      flash[:alert] = "Profile was failed to update. #{@user.errors.full_messages.to_sentence}"
+      redirect_back(fallback_location: edit_user_path(@user))
     end  
   end
 

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="index">
-    <%= render partial: "share/user_item", locals: {user: @user} %>
+    <%= render partial: "share/user_item", locals: {user: @user, tweet_class: '', following_class: '', follower_class: '', like_class: 'active'} %>
     <div id="tweet-wall">
       <h2>Like</h2>
       <% @likes.each do |tweet| %>

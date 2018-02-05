@@ -2,15 +2,39 @@
   <div class="avatar-md">
     <%= image_tag(user.avatar, class: "") %>
   </div>
+
   <div class="user-info">
     <h2><%= user.name %></h2>
     <h4><%= user.introduction %></h4>
   </div>
-  <div class="user-dashboard"> 
-    <h3><%= link_to "Tweet #{user.tweets.count}", tweets_user_path(user) %></h3>
-    <h3><%= link_to "Following #{user.followings.count}", followings_user_path(user)%></h3>
-    <h3><%= link_to "Follower #{user.followers.count}", followers_user_path(user)%></h3>
-    <h3><%= link_to "Likes #{user.likes_count}", likes_user_path(user) %></h3>
+  <div class="user-dashboard">
+    <ul>
+      <li class="<%= tweet_class %>">
+        <%= link_to tweets_user_path(user) do %>
+          <div>Tweet</div> 
+          <div class="number"><%= user.tweets.count %></div>
+        <% end %>
+      </li>
+
+      <li class="<%= following_class %>">
+        <%= link_to followings_user_path(user) do %>
+          <div >Following</div> 
+          <div class="number"><%= user.followings.count %></div>
+        <% end %>
+      </li>
+      <li class="<%= follower_class %>">
+        <%= link_to followers_user_path(user) do %>
+          <div >Follower</div> 
+          <div class="number"><%= user.followers.count %></div>
+        <% end %>
+      </li>
+      <li class="<%= like_class %>">
+        <%= link_to likes_user_path(user) do %>
+          <div>Likes</div> 
+          <div class="number"><%= user.likes_count %></div>
+        <% end %>
+      </li>
+    </ul> 
     <div class="follow-btn">
       <% if user == current_user %>
         <%= link_to  edit_user_path(current_user) do  %>
@@ -22,9 +46,9 @@
         <% end %>
       <% else %>
         <%= link_to followships_path(following_id: user), method: :post do %>
-        <button class="btn btn-primary">Follow</button>
+        <button class="btn btn-default">Follow</button>
         <% end %>
       <% end %>
-    </div> 
+    </div>
   </div>
 </div>
