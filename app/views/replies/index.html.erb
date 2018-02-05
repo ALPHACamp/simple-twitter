@@ -6,11 +6,26 @@
 
   <!-- tweets -->
   <div class="col-xs-9">
+
     <h1>Tweets</h1>
     <%= render partial: "shared/message", locals: {message: @tweet, is_tweet: true} %>
+
     <h1>Replies</h1>
     <% @tweet.replies.each do |reply| %>
       <%= render partial: "shared/message", locals: {message: reply, is_tweet: false} %>
     <% end %>
+
+    <!-- reply form -->
+    <div class="tweet-form">
+      <%= form_for [@tweet, @reply] do |f| -%>
+        <div class="form-group">
+          <%= f.text_area :comment, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit 'Reply', class: "btn btn-primary" %>
+        </div>
+      <% end -%>
+    </div>
+
   </div>
 </div>
