@@ -4,5 +4,9 @@ class Admin::TweetsController < Admin::BaseController
   end
 
   def destroy
+    tweet = Tweet.find(params[:id])
+    tweet.destroy
+    flash[:alert] = "tweets delete!"
+    redirect_to admin_tweets_path
   end
 end
