@@ -18,8 +18,7 @@
       <%= user.introduction %>
     </div>
     <div class="row">
-      <%= link_to 'Follow', followships_path(following_id: user), method: :post %>
-      <%= link_to "UnFollow", followship_path(user), method: :delete %>
+      <%= render partial: "share/follow", locals: {user: user} %>
     </div>
   </div>
 </div>

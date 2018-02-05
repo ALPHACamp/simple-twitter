@@ -1,0 +1,7 @@
+<% if current_user != user %>
+  <% if current_user.is_follow?(user) %>
+    <%= link_to "UnFollow", followship_path(user), method: :delete %>
+  <% else %>
+    <%= link_to 'Follow', followships_path(following_id: user), method: :post %>
+  <% end %>  
+<% end %>

@@ -3,8 +3,8 @@ class TweetsController < ApplicationController
   
 
   def index
-    @users = User.all
-    @tweets = Tweet.all
+    @users = User.order('created_at ASC')
+    @tweets = Tweet.order('created_at DESC')
     @tweet = Tweet.new
   end
 
