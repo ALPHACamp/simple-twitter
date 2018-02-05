@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   def tweets
     @user = User.find(params[:id])
-    @tweets = @user.tweets
+    @tweets = @user.tweets.order(created_at: :desc)
   end
 
   def edit
