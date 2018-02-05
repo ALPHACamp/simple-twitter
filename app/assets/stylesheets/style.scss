@@ -153,6 +153,15 @@ input[type="file"] {
 		p {
 			margin: 15px 0;
 		}
+		.like {
+			padding: 0 5px;
+			color: #f00;
+		}
+
+		.unlike {
+			padding: 0 5px;
+			color: #0f1;
+		}
 	}
 }
 

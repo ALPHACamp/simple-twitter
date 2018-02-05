@@ -22,6 +22,7 @@
               <%= link_to "@#{t.user.name},#{t.created_at.to_s(:db)}", tweets_user_path(t.user) %>
               <p><%= t.description %></p>
               <%= link_to "Reply", replies_tweet_path(t) %>
+              <%= render partial: "shared/like", locals: { t: t} %>
             </div>
           </div>
         </div>
