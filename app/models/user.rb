@@ -14,6 +14,9 @@ class User < ApplicationRecord
 
   has_many :tweets
 
+  has_many :replies, through: :tweets
+
+
   def admin?
   	self.role == "admin" 
   end
