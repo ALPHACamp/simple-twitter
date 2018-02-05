@@ -1,2 +1,26 @@
-<h1>This is reply index page</h1>
-<%= @tweet.description%>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2">
+			<%= image_tag @user.avatar, width:'100px', id:"tweet-avatar" %>
+			<h3><%= @user.name%></h3>
+			<p><%= @user.introduction%></p>
+			<% if @user == current_user %>
+				<%= link_to "Edit Profile", edit_user_path(current_user) %>
+			<% else %>
+				follow
+			<% end %>
+		</div>
+		<div class="col-md-10">
+			<h3>Tweets</h3>
+				<div class="thumbnail">
+					<%= image_tag @user.avatar, width:'100px', id:"tweet-avatar" %>
+					<div id="tweet-details-block">
+						<h5 class="text-primary">@<%= @user.name %>, <%= @tweet.created_at %></h5>
+						<p><%= simple_format @tweet.description %></p>
+						<%= link_to "replies", tweet_replies_path(@tweet.id) %>
+					</div>
+				</div>
+			<h3>Replies</h3>
+		</div>
+	</div>
+</div>
