@@ -15,7 +15,8 @@
         <p><%= @tweet.user.introduction %></p>   
       <% end %>
       <br>
-      <h4 style="color:grey;">Tweet <%= @tweet.user.tweets.length %></h4>
+      <h4><%= link_to "Tweet #{@tweet.user.tweets.length}", user_path(@tweet.user), :style=>"color:grey" %></h4>
+      <h4><%= link_to "Like #{@tweet.user.likes.length}", likes_user_path(@tweet.user), :style=>"color:grey" %></h4>
     </div>
 
     <div class="col-md-1">
