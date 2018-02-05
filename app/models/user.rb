@@ -24,7 +24,9 @@ class User < ApplicationRecord
 
   has_many :tweets, dependent: :destroy
   has_many :replies, dependent: :destroy
-
+  def admin?
+    self.role == "admin"
+  end
   def followers_count!
     count=self.followers.size
     self.followers_count=count
