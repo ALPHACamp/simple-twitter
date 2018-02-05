@@ -27,6 +27,9 @@
               <div>
                 <h4><%= link_to tweet.user.name, tweet_path(tweet) %> Tweet</h4>
                 <p><%= truncate(tweet.description, length: 140) %></p>
+                <% if current_user.admin? %>
+                  <%= link_to 'Destory', admin_tweet_path(tweet), method: :delete, data: {confirm: "Are you sure?"} %>
+                <% end %>
               </div>
               <hr>
             <%end%>
