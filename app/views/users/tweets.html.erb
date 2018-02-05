@@ -7,6 +7,9 @@
   <li><%= @user.name %></li>
   <li><%= @user.introduction %></li>
   <li>Tweets <%= @user.tweets_count %></li>
+  <li>Following <%= @user.followings_count %></li>
+  <li>Follower <%= @user.followers_count %></li>
+  <li>like <%= @user.likes_count %></li>
   <%= link_to "Edit Profile", edit_user_path %>
   <%= render partial: "shared/follow", locals: { user: @user } %>
 </ul>
