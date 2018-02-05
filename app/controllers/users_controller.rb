@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def tweets
     @user = User.find(params[:id])
     @tweets = @user.tweets.all
+    @user.likes_count = @user.likes.size
   end
 
   def edit
