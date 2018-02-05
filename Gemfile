@@ -18,6 +18,8 @@ gem 'ffaker'
 gem 'wdm', '>= 0.1.0'
 #use bootstrap-sass
 gem 'bootstrap-sass', '~> 3.3.7'
+#use jquery-rails
+gem 'jquery-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
