@@ -1,7 +1,8 @@
 class FollowshipsController < ApplicationController
-  before_action :set_following, only: [:create ,:destroy]
 
   def create
+    @following = User.find(params[:following_id])
+
     if @following != current_user
       @followship = Followship.new(following: @following, user: current_user)
       @followship.save
@@ -13,6 +14,8 @@ class FollowshipsController < ApplicationController
   end
 
   def destroy
+    @following = User.find(params[:id])
+
     @followship = Followship.where(following: @following, user: current_user)
     if @followship
       @followship.destroy_all
@@ -23,9 +26,5 @@ class FollowshipsController < ApplicationController
   end
 
   private
-
-  def set_following
-    @following = User.find(params[:following_id])
-  end
 
 end
