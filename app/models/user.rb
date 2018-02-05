@@ -14,6 +14,9 @@ class User < ApplicationRecord
 
   # 設置user 與 tweet的一對多關係
   has_many :tweets, dependent: :destroy
+  # 使用者能對別人的推播按 Like/Unlike的多對多關係
+  has_many :likes, dependent: :destroy
+  has_many :liked_tweets, through: :likes, source: :tweet
 
   def admin?
     self.role == 'admin'
