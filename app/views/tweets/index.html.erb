@@ -13,6 +13,20 @@
     <%= render 'shared/tweets_list' %>
   </div>
   <div class="col-md-5">
-   popular twttes
+  <h3>Popular</h3>
+   <% @users.each do |user| %>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">
+          <%= link_to tweets_user_path(user) do%>
+            @<%= user.name %>
+          <% end %>
+        </h5>
+        <p class="card-text"><%= user.introduction %></p>
+
+      </div>
+    </div>
+   <% end %>
+
   </div>
 </div>
