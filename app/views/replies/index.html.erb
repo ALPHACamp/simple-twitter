@@ -1,1 +1,52 @@
-回覆頁面
+<div class="repliesmyfile">
+<%= image_tag User.first.avatar,style:"width:300px;height:300px;display: block;" %><br>
+  <h4>
+    <p><%=User.first.name%></p><br>
+    <p><%=User.first.introduction%></p><br>
+    <%="Tweets"%><br>
+    <%="following"%><br>
+    <%="follower"%><br>
+    <%="like"%><br>
+  </h4>
+<%= link_to 'Edit Profile', edit_user_path(current_user), class:"btn btn-primary"  %>
+</div>
+
+<div class="tweetreplies">
+  <h1>Tweets</h1><br>
+    <div class="media">
+      <div class="media-left media-middle">
+        <a href="#">
+          <%= image_tag User.find(@tweet.user_id).avatar,class:"media-object" ,style:"width:120px;height:120px"  %>
+        </a>
+      </div>
+      <div class="media-body">
+        <h4><%=  User.find(@tweet.user_id).name%></h4>
+        <h4><%= @tweet.description %></h4><br>
+        <%= link_to "Reply (#{@tweet.replies.count})",replies_path(@tweet.id)%>
+      </div>
+    </div>
+  <hr>
+
+<h1>Replies</h1><br>
+  <div class="media">
+    <% @reply_all.each do |reply| %>
+      <% if Tweet.find(params[:id]).id == reply.tweet_id %>
+      <div class="media-left media-middle">
+        <a href="#">
+          <%= image_tag User.find(reply.user_id).avatar,class:"media-object" ,style:"width:120px;height:120px"  %>
+        </a>
+      </div>
+      <div class="media-body">
+        <h4><%=User.find(reply.user_id).name %><%=" "%> <%=reply.created_at%><br></h4>
+        <h4><%=reply.comment %></h4><br>
+      <% end %>
+      </div><br><br>
+    <% end %>
+  </div>
+<hr>
+
+<%=  form_for @reply do |f| %>
+  <%= f.text_area :comment ,class:"form-control",rows:"4",placeholder: "what's on your mind" %><br>
+  <%= f.submit value:"Create Tweet",class:"btn btn-primary" %>
+<% end %>
+</div>

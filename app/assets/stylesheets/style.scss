@@ -59,10 +59,15 @@ text-align:left;
 // 以上為logout選單樣式
 
 .proedit{
-margin: -290px 0px 0px 400px;
+margin: -545px 0px 0px 500px;
 width:700px;
 height:530px;
 text-align:right;
+
+}
+.proeditimg{
+width:500px;
+height:530px;
 }
 // 以上為proedit樣式
 .tweetcommit{
@@ -81,3 +86,13 @@ height:800px;
 text-align:center;
 }
 // 以上為tweet index樣式
+.repliesmyfile{
+width:300px;
+height:800px;
+}
+.tweetreplies{
+margin: -800px 0px 0px 350px;
+width:920px;
+height:800px;
+}
+// 以上為replies樣式
