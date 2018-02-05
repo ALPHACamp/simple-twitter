@@ -2,7 +2,14 @@
 <%= form_for  @tweet do |f| %>
 <div class="field">
   <% f.label :description%>
-  <%= f.text_area :description %>
+  <%= f.text_area :description ,placeholder:"What's on your mind?" %>
 </div>
 <%= f.submit "tweet" %>
+<% end %>
+
+<% @tweets.each do |tweet| %>
+  <%= image_tag tweet.user.avatar.url %>
+  <%= tweet.created_at.strftime("%Y-%m-%d, %T") %>
+  <%= tweet.description %>
+
 <% end %>
