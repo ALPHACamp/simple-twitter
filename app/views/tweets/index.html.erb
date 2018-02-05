@@ -6,7 +6,7 @@
     <div class="tweet-form">
       <%= form_for @tweet do |f| -%>
         <div class="form-group">
-          <%= f.text_area :description, class: "form-control", placeholder: "What's on your mind?" %>
+          <%= f.text_area :description, class: "form-control", id: "message", placeholder: "What's on your mind?" %>
         </div>
         <div class="form-group">
           <%= f.submit 'Tweet', class: "btn btn-primary" %>

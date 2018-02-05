@@ -76,10 +76,13 @@ namespace :dev do
 
   task test: :environment do
     @user = User.first
-    @user.followings.each do |following|
-      # puts "#{followship.user.name}, #{followship.following.name}"
-      puts "#{following.name}"
-    end
+    # @user.followers.each do |follower|
+    #   puts "#{following.name}"
+    # end
+    puts @user.likes_count
+    puts @user.followers_count
+    puts Tweet.find(253).likes_count
+    puts Tweet.find(253).replies_count
   end
 
   #fake all data

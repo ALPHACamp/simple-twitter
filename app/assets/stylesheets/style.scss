@@ -10,3 +10,8 @@ img.nav-avatar{
 .navbar-nav > li > a.nav-avatar-link{
   padding: 0;
 }
+
+textarea#message {
+  resize: none;
+  height: 80px;
+}
