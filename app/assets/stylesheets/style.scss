@@ -137,10 +137,25 @@ input[type="file"] {
 
 // ===========================================================================
 // index page
-#tweet_description {
-	height: 100px;
-	padding: 10px;
+#index {
+	#tweet_description {
+		height: 100px;
+		padding: 10px;
+	}
+	.tweet-form{
+		margin-bottom: 50px;
+	}
+	.tweet-msg {
+		margin-bottom: 15px;
+		padding: 10px;
+		border: 1px solid #aeaeae;
+		border-radius: 5px;
+		p {
+			margin: 15px 0;
+		}
+	}
 }
+
 // user edit page
 #user-edit {
 	textarea.form-control {

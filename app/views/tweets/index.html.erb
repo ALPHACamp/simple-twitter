@@ -1,15 +1,31 @@
-<div class="container">
+<div id="index" class="container">
   <div class="row">
     <div class="col-md-8">
-      <%= form_for @tweet do |f| %>
-      <div class="form-group">
-        <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control"%>
+      <div class="tweet-form">
+        <%= form_for @tweet do |f| %>
+          <div class="form-group">
+            <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control"%>
+          </div>
+          <div class="form-group button-group">
+            <%= f.submit "Tweet", class: "btn" %>
+            <%= f.button "Cancel", type: :reset, class: "btn" %>
+          </div>
+        <% end %>
       </div>
-      <div class="form-group button-group">
-        <%= f.submit "Tweet", class: "btn" %>
-        <%= f.button "Cancel", type: :reset, class: "btn" %>
-      </div>
-    <% end %>
+      <% @tweets.each do |t| %>
+        <div class="tweet-msg">
+          <div class="row">
+            <div class="col-md-2">
+              <%= image_tag t.user.avatar %>
+            </div>
+            <div class="col-md-10">
+              <%= link_to "@#{t.user.name},#{t.created_at.to_s(:db)}", tweets_user_path(t.user) %>
+              <p><%= t.description %></p>
+              <%= link_to "Reply", replies_tweet_path(t) %>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
     <div class="col-md-4"></div>
   </div>
