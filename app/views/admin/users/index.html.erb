@@ -1,0 +1,6 @@
+<h1>admin users</h1>
+<ul>
+  <% @twiters.each do |user| %>
+  <li><%= user.name %> : <%= user.tweets.size %></li>
+  <% end %>
+</ul>

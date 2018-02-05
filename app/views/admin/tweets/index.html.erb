@@ -1,1 +1,6 @@
 <h1>admin index</h1>
+<ul>
+  <% @tweets.each do |tweet| %>
+  <li><%= tweet.user.name %></li>
+  <% end %>
+</ul>
