@@ -1,0 +1,16 @@
+<div class="row">
+  <!-- user profile -->
+  <div class="col-xs-3">
+    <%= render partial: "shared/user_data" %>
+  </div>
+
+  <!-- tweets -->
+  <div class="col-xs-9">
+
+    <h1>Like</h1>
+    <% @likes.each do |like| %>
+      <%= render partial: "shared/message", locals: {message: like, is_tweet: true} %>
+    <% end %>
+
+  </div>
+</div>
