@@ -1,0 +1,4 @@
+id = 1
+views/layouts/application.html.erb
+line 18
+<li><%= link_to('修改個人資料', edit_user_path(current_user)) %></li>
