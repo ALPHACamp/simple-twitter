@@ -45,6 +45,20 @@ namespace :dev do
     puts "Now you have #{Reply.count} replies!"
   end
 
+  task fake_followship: :environment do
+    Followship.destroy_all
+    puts "creating fake followship..." 
+    User.all.each do |u|
+      @users = User.where.not(id: u.id).shuffle
+      (rand(20)).times do
+        u.followships.create!(
+        following: @users.pop,
+        )      
+      end     
+    end
+    puts "now you have #{Followship.count} followship"
+  end
+
   task test: :environment do
   end
 
@@ -56,5 +70,6 @@ namespace :dev do
     Rake::Task['dev:fake_user'].execute
     Rake::Task['dev:fake_tweets'].execute
     Rake::Task['dev:fake_reply'].execute
+    Rake::Task['dev:fake_followship'].execute
   end
 end
