@@ -1,0 +1,14 @@
+<div class="row">
+  <!-- user profile -->
+  <div class="col-xs-3">
+    <%= render partial: "shared/user_data" %>
+  </div>
+
+  <!-- tweets -->
+  <div class="col-xs-9">
+    <% @followings.each do |following| %>
+      <p><%= following.name %></p>
+    <% end %>
+  </div>
+
+</div>
