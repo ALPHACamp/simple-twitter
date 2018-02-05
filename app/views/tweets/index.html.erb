@@ -1,1 +1,17 @@
 <h1>Wellcom to AplhaTweets</h1>
+<%= form_for @tweet do |f| %>
+	<div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+
+	<div class="actions">
+    <%= f.submit "Tweet" %>
+  </div>
+<% end %>
+
+<% @tweets.each do |tweet| %>
+	<%= tweet.user.name %>
+	<%= tweet.description %>
+	<br>
+<% end %>
