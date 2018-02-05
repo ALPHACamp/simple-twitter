@@ -10,7 +10,7 @@
 
   <body>
     <% if current_user %>
-      <% if current_user&.admin? %>
+      <% if current_user.admin? %>
         <li><%= link_to 'Admin Panel', admin_restaurants_path %></li>
       <% end %>
       <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
