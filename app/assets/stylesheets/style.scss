@@ -48,6 +48,7 @@ section{
   width: 85%;
   max-width: 1170px;
   margin: auto;
+  padding: 0;
 }
 
 .nav-a{
@@ -109,6 +110,12 @@ div.notice{
   width: 50%;
 }
 
+.tweet-block{
+  border: 1px solid #eee;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
 .user-text h4, .user-text p:nth-child(2){
   display: inline-block;
 }
@@ -120,4 +127,20 @@ div.notice{
 
 .btn-next{
   margin-right: 10px;
+}
+
+.user-profile{
+  display: inline-block;
+  width: 25%;
+  margin-right: 9%;
+  vertical-align:top
+}
+
+.user-tweet{
+  display: inline-block;
+  width: 65%;
+}
+
+.profile-avatar{
+  width: 100%;
 }
