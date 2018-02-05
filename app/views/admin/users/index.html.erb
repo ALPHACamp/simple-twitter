@@ -3,7 +3,10 @@
 <% @users.each do |user| %>
   <ul>
     <li><%= image_tag user.avatar, width: "100px"%></li>
-    <li><%= user.name %></li>
-    <li><%= user.tweets_count %></li>
+    <li><%= link_to user.name, tweets_user_path(user) %></li>
+    <li><%= link_to "Tweets #{user.tweets_count}", tweets_user_path(user) %></li>
+    <li><%= link_to "Following #{user.followings_count}", followings_user_path(user) %></li>
+    <li><%= link_to "Follower #{user.followers_count}", followers_user_path(user) %></li>
+    <li></li>
   </ul>
 <% end %>
