@@ -12,8 +12,16 @@
 <div id="user_state" class="mt-3 mb-3">
   <ul class="list-group">
     <li class="list-group-item">Tweets: <%= @user.tweets.count %></li>
-    <li class="list-group-item">Following: </li>
-    <li class="list-group-item">Follower: </li>
+    <li class="list-group-item">
+      <%= link_to followings_user_path(@user) do%>
+        Following: <%= @user.followings.count %>
+      <% end %>
+    </li>
+    <li class="list-group-item">
+      <%= link_to followers_user_path(@user) do%>
+        Follower: <%= @user.followers.count %>
+      <% end %>
+    </li>
     <li class="list-group-item">
       <%= link_to likes_user_path(@user) do%>
         Like: <%= @user.liked_tweets.count %>
