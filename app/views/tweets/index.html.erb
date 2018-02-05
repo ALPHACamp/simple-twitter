@@ -11,7 +11,8 @@
 <% end %>
 
 <% @tweets.each do |tweet| %>
-	<%= tweet.user.name %>
+	<%= link_to tweet.user.name, user_path(tweet.user.id) %>
 	<%= tweet.description %>
+	<%= link_to 'Show', tweet_path(tweet)  %>
 	<br>
 <% end %>

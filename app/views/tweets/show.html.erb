@@ -1,0 +1,17 @@
+<p>show</p>
+<%= form_for [@tweet, @reply] do |f| %>
+	<div class="field">
+    <%= f.label :comment %><br>
+    <%= f.text_area :comment %>
+  </div>
+
+	<div class="actions">
+    <%= f.submit "Reply" %>
+  </div>
+<% end %>
+
+<% @replies.each do |reply| %>
+	<%= link_to reply.user.name, user_path(reply.user.id) %>
+	<%= reply.comment %>
+	<br>
+<% end %>

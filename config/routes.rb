@@ -3,6 +3,16 @@ Rails.application.routes.draw do
 
   # 請依照專案指定規格來設定路由
   root 'tweets#index'
-  resources :tweets
-  resources :users
+  resources :tweets, only: [:index, :create, :show] do
+    resources :replies, only: [:index, :create]
+  end
+
+  # resources :users, only: [:edit, :show] do
+  #   member do
+  #     get :followings
+  #     get :followers
+  #     get :likes
+  #     get :tweets
+  #   end
+  # end
 end
