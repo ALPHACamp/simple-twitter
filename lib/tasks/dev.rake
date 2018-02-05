@@ -50,5 +50,33 @@ namespace :dev do
     puts "now you have #{Reply.count} user replies"
   end 
 
+  task fake_like: :environment do
+    Like.destroy_all
+    puts "creating fake likes..."
+    User.all.each do |u|
+     @tweets = Tweet.all.sample(5) 
+     5.times do
+       u.likes.create!(
+        tweet: @tweets.pop,
+       )      
+     end     
+    end
+    puts "now you have #{Like.count} liked tweets"
+  end
+
+  task fake_followship: :environment do
+    Followship.destroy_all
+    puts "creating fake followship..." 
+    User.all.each do |u|
+      @users = User.where.not(id: u.id).shuffle
+      5.times do
+        u.followships.create!(
+        following: @users.pop,
+        )      
+      end     
+    end
+    puts "now you have #{Followship.count} followship"
+  end
+
 
 end

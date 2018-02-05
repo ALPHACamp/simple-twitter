@@ -6,10 +6,11 @@ Rails.application.routes.draw do
   end  
 
   resources :tweets, only: [:index, :create, :show] do
-    resources :replies, only: [:create] #使用者能回覆別人的推播
-    
+    resources :replies, only: [:create] #使用者能回覆別人的推播    
   end
   
+  # user可 建立/刪除 追蹤其他user
+  resources :followships, only: [:create, :destroy]
 
   root "tweets#index"     # 前台入口
 
