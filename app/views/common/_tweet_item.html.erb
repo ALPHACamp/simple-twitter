@@ -8,7 +8,9 @@
         <%= link_to tweet_replies_path(tweet) do %>
           <div>
             Reply(<%=tweet.replies.size%>)
+            <%= render partial:"common/like",locals:{tweet: tweet}%>
           </div>
+
         <%end%>
     </div>
   </div>
