@@ -15,9 +15,9 @@ class User < ApplicationRecord
   #刪掉user 就會刪掉likes
   has_many :liked_tweets, through: :likes, source: :tweet
 
-  has_many :followeships, dependent: :destroy
+  has_many :followships, dependent: :destroy
   #追蹤關係
-  has_many :followings, through: :followeships
+  has_many :followings, through: :followships
   #追縱對象
 
   # 需要 app/views/devise 裡找到樣板，加上 name 屬性
