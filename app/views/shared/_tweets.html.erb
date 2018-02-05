@@ -7,7 +7,7 @@
       </div>
       <h4><%= link_to "@#{tweet.user.name}, #{tweet.created_at}", tweets_user_path(tweet.user) %></h4>
       <h4><%= tweet.description %></h4>
-      <%= link_to "Reply(#{})", tweet_replies_path(tweet), class: "btn btn-primary" %>
+      <%= link_to "Reply(#{tweet.replies.count})", tweet_replies_path(tweet), class: "btn btn-primary" %>
       <%= link_to "Like(#{})",root_path, class: "btn btn-danger" %>
     </div>
     <div class="clearfix"></div>
