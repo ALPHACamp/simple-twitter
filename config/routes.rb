@@ -6,12 +6,12 @@ Rails.application.routes.draw do
   # 前台
   root "tweets#index"
   # # 推播
-  # resources :tweets, only: [:index, :show] do
-  
-  # end
+  resources :tweets, only: [:index, :show] do
+    resources :tweets, only: [:create, :destroy]
+  end
   
   # # 個人資訊
-  # resources :users, only: [:index, :show, :edit, :update]
+  #resources :users, only: [:index, :show, :edit, :update]
 
   # # 追蹤達人
   # resources :followships, only: [:create, :destroy]
