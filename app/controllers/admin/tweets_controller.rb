@@ -3,7 +3,7 @@ class Admin::TweetsController < Admin::BaseController
   before_action :authenticate_admin
 
   def index
-    @tweets = Tweet.all
+    @tweets = Tweet.page(params[:page]).per(10)
     
   end
 
