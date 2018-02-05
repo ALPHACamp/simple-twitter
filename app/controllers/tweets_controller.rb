@@ -17,10 +17,11 @@ class TweetsController < ApplicationController
     end
   end
   
-
+  #讓tweets可以被喜歡
   def like
   end
 
+  #讓tweets可以取消喜歡
   def unlike
   end
 
