@@ -1,14 +1,22 @@
-<div class="userlistwall clearfix"></div>
+<div class="userListWall clearfix"></div>
 <% users.each do |user| %>
-  <div class="col-xs-6">
-    <%= image_tag user.avatar %>
-    <%= user.name %>
-    <%= user.introduction %>
+  <div class="col-xs-6 clearfix">
+    <div class="col-xs-4"><%= image_tag user.avatar, class:"img-responsive" %></div>
+    <div class="col-xs-8">
+      <h4 class="userListItem-name">@<%= user.name %></h4> 
+      <p class="userListItem-intro"><%= user.introduction %></p> 
+      <%= render partial: "common/follow" ,locals:{user:user}%>
+    </div>
+
   </div>
-  <div class="col-xs-6">
-    <%= image_tag user.avatar %>
-    <%= user.name %>
-    <%= user.introduction %>
+  <div class="col-xs-6 clearfix">
+    <div class="col-xs-4"><%= image_tag user.avatar, class:"img-responsive" %></div>
+    <div class="col-xs-8">
+      <h4 class="userListItem-name">@<%= user.name %></h4> 
+      <p class="userListItem-intro"><%= user.introduction %></p> 
+      <%= render partial: "common/follow" ,locals:{user:user}%>
+    </div>
+
   </div>
 <%end%>
 </div>
