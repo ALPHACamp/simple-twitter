@@ -8,6 +8,13 @@ class Tweet < ApplicationRecord
 
   has_many :likes, dependent: :destroy
   #刪掉tweet 就會刪掉like
+  has_many :liked_users, through: :likes, source: :user
+
+
+
+  def is_like?(user)
+    self.liked_users.include?(user)
+  end
 end
 
 
