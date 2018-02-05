@@ -18,6 +18,8 @@
         <br>
         <% if @user==current_user %>
           <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
+        <% else %>
+          <%= render partial: "shared/follow", locals: {user: @user} %>
         <% end %>
 
       </div>
@@ -33,7 +35,7 @@
                 <%= image_tag like.tweet.user.avatar, class: "img-responsive center-block" %>
               </div>
               <div class="col-md-9 col-sm-9 col-lg-9">
-                <h4><%= like.tweet.user.name %></h4>
+                <h4><%= link_to like.tweet.user.name, user_path(like.tweet.user) %></h4>
                 <h5><small><%= like.tweet.created_at %></small></h5>
                 <p><%= like.tweet.description %></p>
                 <% like.tweet.count_replies %><%= link_to "回覆數(#{like.tweet.replies_count})", tweet_replies_path(like.tweet), :style=>"color:blue" %>

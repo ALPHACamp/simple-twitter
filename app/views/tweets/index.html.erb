@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
 
-      <div class="col-md-8">
+      <div class="col-md-7">
         <%= form_for @tweet do |f| %>
           <div class="form-group">
             <%= f.text_area :description, placeholder: "你想說什麼？",  class: "form-control" %>
@@ -34,10 +34,32 @@
 
       </div>
 
-      <div class="col-md-4">
-
+      <div class="col-md-1">
       </div>
 
+      <div class="col-md-4">
+      <h1>Popular</h1>
+        <% @users.each do |user| %>
+          <div class="row rank-item">
+            <div class="col-md-4">
+              <%= image_tag user.avatar, class: "img-responsive center-block" %>
+            </div>
+            <div class="col-md-8">
+              <h4><%= link_to user.name, user_path(user) %></h4>
+              <% if user.introduction==nil %>
+                <p>未新增自介</p>
+              <% else %>
+                <p><%= truncate(user.introduction, length: 50) %></p>
+              <% end %>
+
+              <% if @user==current_user %>
+              <% else %>
+                <%= render partial: "shared/follow", locals: {user: user} %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
   </div>
 </div>
 
