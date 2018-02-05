@@ -2,9 +2,9 @@
 
 <%= form_for @tweet do |f| %>
 
-  <%= f.text_area :description %>
+  <%= f.text_area :description, placeholder: "What's on your mind?" %>
 
-  <%= f.submit %>
+  <%= f.submit "Tweet" %>
 <% end %>
 
 
