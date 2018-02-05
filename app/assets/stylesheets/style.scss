@@ -273,7 +273,35 @@ header .container-fluid {
 }
 
 
+/* ------- tweet user card ------- */
 
+.usercard .container {
+  width: 100%;
+  padding: 5px 0;
+  position: relative;
+  border-bottom: 0.1px inset;
+}
+
+.usercard .container .container {
+  padding: 5px 0;
+  border-bottom: unset;
+}
+
+.userintro {
+  padding-bottom: 10px;
+  padding-top: 5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  white-space: pre-line;
+}
+
+.follow-button {
+  margin: 15px 0;
+}
+
+.usercard .col-xs-2, .tweetlist .col-xs-10 {
+  padding: 5px 0;
+}
 
 
 /* ------- viewport ------- */

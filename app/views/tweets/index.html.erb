@@ -3,7 +3,7 @@
 
     <!-- form & tweets list /start -->
     <div class="col-xs-12 col-md-8">
-      <h3>開工中: tweet發推完成，list施工中</h3>
+      <h3>進度: tweet發推/tweet list完成，link未完成</h3>
       <!-- form for creating tweet / start -->
       <div class="tweetform" >
         <div class="form-group">
@@ -80,16 +80,62 @@
           </div><!-- 包住每一條tweet /end -->
 
         <% end %> <!-- tweets.each -->
+      </div><!-- tweets list /end-->
 
-      </div>
-      <!-- tweets list /end-->
-
-    </div>
-    <!-- form & tweets list /end -->
+    </div><!-- form & tweets list /end -->
 
     <!-- top 10 users list rank by number of followers /start -->
-    <div class="col-xs-6 col-md-4 ">
-      <h3>未開工</h3>
+    <div class="col-xs-12 col-md-4">
+      <h3>Popular:施工中</h3>
+
+      <!-- @user.each 呼叫出各個user card/start -->
+      <% @users.each do |user| %>
+        <div class="usercard clearfix">
+          <div class="container">
+            <div class="container">
+              <!-- Left: user avartar /start -->
+              <div class="col-xs-2">
+                <div class="tweetavatar">
+                  <% if user.avatar? %>
+                    <%= image_tag(user.avatar, width: '100', height: '115',class: 'center-block') %>
+                  <% else %>
+                    <%= image_tag("http://via.placeholder.com/100x115",class: 'center-block') %>
+                  <% end %>
+                </div>
+              </div>
+              <!-- Left: user avartar /end -->
+
+              <!-- Right: user info & introduction /start -->
+              <div class="col-xs-10">
+                
+                <!-- user info -->
+                <div class="tweetheader">
+                  <%= link_to '#info' do  %>
+                    <strong class="username">@<%= content_tag :span, user.name %></strong>
+                  <% end %>
+                </div>
+
+                <!-- user introduction -->
+                <div class="userintro"><%= user.introduction %></div>
+
+              </div>
+              <!-- Right: user info & introduction /end -->
+            </div> <!-- /.container  -->
+
+            <!-- Bottom: Follow/Unfollow button /start -->
+            <div class="follow-button text-right">
+              
+              <!-- 未完成：判斷followship，顯示follow/unfollow -->
+              <%= link_to "Follow(未實裝)", root_path, class: "btn btn-primary" %>
+
+            </div>
+            <!-- Bottom: Follow/Unfollow button /end -->
+
+          </div> <!-- /.container  -->
+        </div> <!-- /.usercard  -->
+      <% end %>
+      <!-- @user.each 呼叫出各個user card/end -->
+
     </div>
     <!-- top 10 users list rank by number of followers /end -->
 
