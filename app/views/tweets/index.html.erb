@@ -18,6 +18,7 @@
 					<div id="tweet-details-block">
 						<h5 class="text-primary">@<%= f.user.name %>, <%= f.created_at %></h5>
 						<p><%= simple_format f.description %></p>
+						<%= link_to "replies", tweet_replies_path(f.id) %>
 					</div>
 				</div>
 				<% end %>
