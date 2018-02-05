@@ -11,46 +11,8 @@
     </div>
     <% end %>
     
+    <%= render partial: "shared/tweet_list", locals: {tweets: @tweets}%>
     
-    <% @tweets.each do |tweet|%>
-      <div class="tweet-item">
-        <div class="col-md-3">
-          <%= link_to tweets_user_path(tweet.user) do%>
-            <%if !tweet.user.avatar?%>
-              <%= image_tag "https://openclipart.org/download/247319/abstract-user-flat-3.svg", class:"img-responsive img-rounded " %>
-            <% else%>
-              <%= image_tag tweet.user.avatar, class:"img-responsive img-rounded" %>
-            <% end %>
-          <% end %>
-        </div>
-        
-
-        <div class="col-md-9">
-          <h4>
-            <%= link_to tweets_user_path(tweet.user) do%>
-            <%= tweet.user.name %>
-            <em><%= tweet.created_at %> </em>
-            <% end %>
-          </h4>
-          
-          <p><%= truncate(tweet.description, length: 200)%></p>
-          <%= link_to "Reply(#{tweet.replies_count})" ,tweet_replies_path(tweet) %>
-          <% if tweet.is_like?(current_user)%>
-            <%= link_to unlike_tweet_path(tweet) ,method: :post do%>
-            <%= '<i class = "glyphicon glyphicon-heart" aria-hidden="true"></i> '.html_safe%>
-            <%= "Like(#{tweet.likes_count})"%>
-            <% end %>   
-          <% else %>
-            <%= link_to like_tweet_path(tweet) ,method: :post do%>
-            <%= '<i class = "glyphicon glyphicon-heart-empty" aria-hidden="true"></i> '.html_safe%>
-            <%= "Like(#{tweet.likes_count})"%>
-            <% end %>  
-          <% end %>
-          
-        </div>
-        <div class="clearfix"></div>
-      </div>
-    <% end %>
   
   
   </div>
