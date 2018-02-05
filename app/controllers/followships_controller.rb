@@ -5,16 +5,20 @@ class FollowshipsController < ApplicationController
     if @following != current_user
       @followship = Followship.new(following: @following, user: current_user)
       @followship.save
+      flash[:notice] = "Followship created"
       @following.update_follower_count
+
     end
     redirect_back(fallback_location: root_path)
   end
 
   def destroy
-    followship = current_user.followships.where(following_id: params[:following_id])
-    followship.destroy_all
-    @following.update_follower_count
-    flash[:alert] = "Followship destroyed"
+    @followship = Followship.where(following: @following, user: current_user)
+    if @followship
+      @followship.destroy_all
+      @following.update_follower_count
+      flash[:alert] = "Followship destroyed"
+    end
     redirect_back(fallback_location: root_path)
   end
 
