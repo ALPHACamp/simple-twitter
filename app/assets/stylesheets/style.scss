@@ -43,7 +43,7 @@
 }
 
 
-/* --------------- index tweet --------------- */
+/* --------------- tweet list --------------- */
 
 
 #tweet-new {
@@ -87,7 +87,7 @@
 }
 
 .tweet-item .tweet-content p {
-  color: gray;
+  color:  #444444;
 }
 
 .tweet-item .tweet-content link {
@@ -109,6 +109,13 @@
   margin-left: 10px;
   font-weight: bold;
   color: #FA8072;
+}
+
+.delete-btn {
+  float: right;
+  font-size: 14px;
+  color: red;
+  border-color: red;
 }
 
 /* --------------- index popular --------------- */
@@ -144,5 +151,13 @@
 }
 
 .user-content p {
-  color: gray;
+  color:  #444444;
+}
+
+
+/* --------------- admin index --------------- */
+
+
+#admin_index_nav {
+  font-size: 16px;
 }

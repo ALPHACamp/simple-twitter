@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root "tweets#index"
+
+    resources :tweets, only: [:index, :destroy]
   end
 
 end

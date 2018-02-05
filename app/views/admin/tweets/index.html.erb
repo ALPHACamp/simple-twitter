@@ -1,1 +1,24 @@
-<h1>餐庭後台</h1>
+<div class="container">
+  <div class="row">
+
+    <h2 class="text-center">Admin Panel</h2>
+    <br>
+    <ul class="nav nav-tabs" id="admin_index_nav">
+      <li role="presentation" class="active">
+        <%= link_to 'Tweets', admin_tweets_path %>
+      </li>
+      <li role="presentation">
+        <%= link_to 'Users', "#" %>
+      </li>
+    </ul>
+
+    <br>
+
+    <div class="col-md-8 col-md-offset-2"> 
+      <div class="col-md-12">   
+        <%= render partial: "shared/tweet_list", locals: {object: @tweets, flag: true} %>   
+      </div>   
+    </div>
+
+  </div>
+</div>
