@@ -33,5 +33,5 @@
 <% if @user == current_user %>
   <%= link_to "Edit porfile", edit_user_path(@user), class: "btn btn-primary" %>
 <% else %>
-  <%= render 'shared/follow_buttom' %>
+  <%= render partial: "shared/follow_button", locals: {user: @user}  %>
 <% end %>

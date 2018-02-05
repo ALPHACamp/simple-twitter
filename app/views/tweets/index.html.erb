@@ -10,20 +10,16 @@
         </div>
       <% end %>
     </div>
-    <%= render 'shared/tweets_list' %>
+    <%= render partial: "shared/tweets_list" %>
   </div>
   <div class="col-md-5">
   <h3>Popular</h3>
    <% @users.each do |user| %>
     <div class="card mb-3">
       <div class="card-body">
-        <h5 class="card-title">
-          <%= link_to tweets_user_path(user) do%>
-            @<%= user.name %>
-          <% end %>
-        </h5>
+        <p class="card-title"><%= link_to "@"+user.name, tweets_user_path(user) %></p>
         <p class="card-text"><%= user.introduction %></p>
-
+        <p class="text-right"><%= render partial: "shared/follow_button", locals: {user: user} %></p>
       </div>
     </div>
    <% end %>
