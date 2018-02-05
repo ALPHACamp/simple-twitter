@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    redirect_to tweets_user_path(current_user) if @user != current_user
+    redirect_to tweets_user_path(@user) if @user != current_user
   end
 
   def update
