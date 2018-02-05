@@ -7,7 +7,16 @@ class TweetsController < ApplicationController
   end
 
   def create
+    @tweet = Tweet.new(tweet_params)
+    if @tweet.save
+      flash[:success] = "Tweet successfully created"
+      redirect_to tweets_path
+    else
+      flash[:error] = "Something went wrong"
+      render tweets_path
+    end
   end
+  
 
   def like
   end
@@ -15,4 +24,9 @@ class TweetsController < ApplicationController
   def unlike
   end
 
+  private
+
+  def tweet_params
+    params.require(:tweet).permit(:description, :user_id)
+  end
 end
