@@ -23,4 +23,8 @@ class User < ApplicationRecord
     self.role == "admin" #回傳布林值
   end
 
+  def following?(user)
+    self.followings.include?(user)
+  end
+
 end

@@ -9,12 +9,9 @@
       <h5>Following : <%= @user.followings.count %></h5>
       <h5>Follower : <%= @user.followers_count %></h5>
       <h5>Like : <%= @user.likes_count %></h5> <!-- 待 like -->
-      <!-- Edit Profile 編輯中，瀏覽器死都要用 POST 方法？No route matches [POST] "/users/72/edit" -->
-      <%= link_to 'Edit Profile', { :controller => 'users', :action => 'edit'} %>
-      <!-- Follow / Unfollow button 切換判斷 -->
-      <%= link_to 'Follow', followships_path(following_id: @user.id), method: :post %>
-      <!-- user 可以不用加 .id，Rails 會自動抓取主鍵 -->
-      <%= link_to 'Unfollow', followship_path(following_id: @user.id), method: :delete %>
+      
+      <%= render partial: "shared/edit", locals: {user: @user} %>
+
       <hr>
     </div>
 
