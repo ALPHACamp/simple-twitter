@@ -13,4 +13,6 @@
 <!-- User can see recent created tweets here -->
 <!-- But now still use sample!!!!!!!! Fix it after follow function finished -->
 <h3>Recnet Tweets</h3>
-<%= render partial: "shared/tweets", locals: { tweets: @tweets } %>
+<% @tweets.each do |tweet| %>
+  <%= render partial: "shared/tweets", locals: { tweet: tweet } %>
+<% end %>

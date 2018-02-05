@@ -9,7 +9,7 @@
   <li><%= link_to "Tweet", tweets_user_path(@user) %> <%= @user.tweets_count %></li>
   <li><%= link_to "Following", followings_user_path(@user) %> <%= @user.followings_count %></li>
   <li><%= link_to "Follower", followers_user_path(@user) %> <%= @user.followers_count %></li>
-  <li>like <%= @user.likes_count %></li>
+  <li><%= link_to "like", likes_user_path(@user) %> <%= @user.likes_count %></li>
   <% if current_user == @user %>
     <%= link_to "Edit Profile", edit_user_path %>
   <% else %>
@@ -20,4 +20,6 @@
 
 <!-- User can see tweets of other(or own) users -->
 <h3>Tweets</h3>
-<%= render partial: "shared/tweets", locals: { tweets: @tweets } %>
+<% @tweets.each do |tweet| %>
+  <%= render partial: "shared/tweets", locals: { tweet: tweet } %>
+<% end %>

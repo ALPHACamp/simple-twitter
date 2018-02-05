@@ -1,0 +1,5 @@
+<h1>Likes</h1>
+
+<% @likes.each do |like| %>
+  <%= render partial: "shared/tweets", locals: { tweet: like.tweet } %>
+<% end %>
