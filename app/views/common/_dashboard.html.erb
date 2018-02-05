@@ -14,7 +14,17 @@
         <!-- show count of likes,  follwings,  followers -->
         <div class="dashboardProfile-state">
           <div class="dashboardProfile-statelist">
-           like following
+            <!-- tweet count -->
+            <%= link_to tweets_user_path(user) do %>
+              <h2>Tweets <%=user.tweets.size %></h2>
+            <%end%>
+          
+            <!-- following count -->
+            <!-- follower count -->
+            <!-- like count -->
+            <%= link_to likes_user_path(user) do %>
+              <h2>Likes <%=user.likes.size %></h2>
+            <%end%>          
           </div>
         </div>
 
