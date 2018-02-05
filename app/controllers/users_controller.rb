@@ -2,16 +2,18 @@ class UsersController < ApplicationController
 
   def tweets
     @user = User.find(params[:id])
-    @tweets = @user.tweets
+    @tweets = @user.tweets.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def edit
+    puts "You enter the edit controller."
     @user = User.find(params[:id])
   end
 
   def update
+    puts "You enter the update controller."
     if current_user.update(user_params)
-      redirect_to user_path(current_user)
+      redirect_to tweets_user_path(current_user)
       flash[:notice] = "#{current_user.name} was successfully updated"
     else
       render :edit
@@ -34,7 +36,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permite(:name)
+    params.require(:user).permit(:name)
   end
 
 end

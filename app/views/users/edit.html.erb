@@ -1,26 +1,29 @@
 <!-- 使用者能編輯自己的名稱、介紹和大頭照 -->
 <div class="row">
-  <%= form_for @user, :url => edit_user_path do |f| %>
+  <%= form_for @user do |f| %>
   <div class="col-md-4">
-    <div class = "small-box">
-      <%= image_tag @user.avatar, class: "img-responsive" %>
-      <%= f.file_field :avatar %>
+    <div class = "box">
+      <%= image_tag @user.avatar, class: "img-responsive img-circle" %>
+      <br />
+      <%= f.file_field :avatar %><!-- , class: "btn btn-primary" -->
     </div>
     <div class="clearfix"></div>
   </div>
 
   <div class="col-md-8">
-    <form>
+    <div class="box">
       <div class="form-group">
         <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= f.text_area :introduction, placeholder: "Type anything about you here...", class: "form-control" %>
+        <%= f.text_area :introduction, size: "60x12", placeholder: "Type anything about you here...", class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= f.submit class: "btn btn-primary" %>
+        <%= puts "before submit" %>
+        <%= f.submit "Update", class: "btn btn-primary" %>
+        <%= puts "after submit" %>
       </div>
-    </form>
+    </div>
   </div>
   <% end %>
 </div>
