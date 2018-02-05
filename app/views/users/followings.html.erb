@@ -8,7 +8,25 @@
 
 
     <div class="col-md-8">
-    
+      <% @followings.each do |following| %>
+        <div class="col-md-5 user-text">
+          <% if following.avatar? %>
+            <%= image_tag(following.avatar, height: 60, width: 60, class: "img-rounded") %>
+            <% else %>
+            <%= image_tag "fallback/avatar.png", height: 60, width: 60,class: " img-rounded" %>
+          <% end %>
+          <%= link_to following.name, tweets_user_path(following) %>
+          <p><%= following.introduction %></p> 
+          <% if following != current_user %>
+            <% if current_user.following?(following)%>
+              <%= link_to 'Unfollow', followship_path(following), method: :delete , class: "btn btn-primary" %>
+            <% else %>
+              <%= link_to 'Follow', followships_path(following_id: following), method: :post , class: "btn btn-default" %>
+            <% end %>
+          <% end %>
+        </div> 
+      <% end %>
     </div>
   </div>
 </div>
+

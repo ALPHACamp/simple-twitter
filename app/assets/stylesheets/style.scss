@@ -26,4 +26,22 @@
   border:1px #ccc solid;
   padding:20px;
   border-radius: 10px;
+  margin: 0 10px 0 0;
+}
+
+h3, a:link,a:visited,a:hover{
+  text-decoration:none;
+}
+
+ a:link,a:visited,a:hover{
+  color:#87CEFA
+}
+
+.user-text {
+  border:1px #ccc solid;
+  padding:10px 20px;
+  border-radius: 10px;
+  margin: 10px 10px 0 0; 
+  width: 350px;
+  height: 280px;
 }
