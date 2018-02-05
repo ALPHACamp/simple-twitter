@@ -1,30 +1,35 @@
+require 'filestack'
 namespace :dev do
   # 請先執行 rails dev:fake_user，可以產生 20 個資料完整的 User 紀錄
   # 其他測試用的假資料請依需要自行撰寫
   task fake_user: :environment do
     User.destroy_all
-    url = "https://uinames.com/api/?ext&region=england&amount=20"
-    response = RestClient.get(url)
-    data = JSON.parse(response.body)
-    20.times do |i|
-      user = User.new(
-        name: data[i]["name"] + "#{i}",
-        email: data[i]["email"],
-        password: data[i]["password"],
-        introduction: FFaker::Lorem::sentence(30),
-        avatar: data[i]["photo"]
-      )
+      20.times do |i|
+        name = FFaker::Name::first_name
+        file = File.open("#{Rails.root}/public/avatar/user#{i+1}.jpg")
+        client = FilestackClient.new('AQ6AJ0B6YT2aGBaqDzqe5z')
+        filelink = client.upload(filepath: file)
+
+        user = User.new(
+          name: name,
+          email: "#{name}@example.co",
+          password: "12345678",
+          introduction: FFaker::Lorem::sentence(30),
+          avatar: filelink.url
+        )
 
       user.save!
       puts user.name
     end
-
+      file = File.open("#{Rails.root}/public/avatar/user15.jpg")
+      client = FilestackClient.new('AQ6AJ0B6YT2aGBaqDzqe5z')
+      filelink = client.upload(filepath: file)
     User.create(
       email: "admin@well.com",
       password: "123456",
       name: "Admin",
       introduction: FFaker::Lorem::sentence(30),
-      avatar: "https://uinames.com/api/photos/male/3.jpg",
+      avatar: filelink.url,
       role: "admin"
       )
     puts "admin has created"
