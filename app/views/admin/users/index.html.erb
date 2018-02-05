@@ -20,7 +20,7 @@
             <th>Tweet數量</th>
             <th>Following</th>
             <th>Follower</th>
-            <th>Liked</th>
+            <th>Like</th>
           </tr>
         </thead>
 
@@ -34,7 +34,7 @@
             <td><%= user.tweets.count %></td>
             <td>關注人數 following</td>
             <td><%= user.followers_count %></td>
-            <td>還沒做 被喜愛的發文</td>
+            <td><%= user.likes.count %></td>
           </tr>
           <% end %>
         </tbody>
