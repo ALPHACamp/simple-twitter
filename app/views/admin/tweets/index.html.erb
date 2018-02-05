@@ -1,1 +1,13 @@
 <h2>餐廳後台</h2>
+
+
+<ul>
+  <% @tweets.each do |tweet|%>
+  <li>
+  Name: <%= tweet.user_id %> <br>
+  Tweets: <%= tweet.description %> <br>
+  </li>
+  <% end %>
+</ul>
+
+
