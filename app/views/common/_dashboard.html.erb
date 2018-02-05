@@ -24,7 +24,9 @@
               <h2>Following <%= user.followings.size %></h2>
             <%end%>
             <!-- follower count -->
-
+            <%= link_to followers_user_path(user) do %>
+              <h2>Follower <%= user.followers.size %></h2>
+            <%end%>
             <!-- like count -->
             <%= link_to likes_user_path(user) do %>
               <h2>Likes <%=user.likes.size %></h2>
