@@ -36,6 +36,7 @@
                 <li><%= link_to 'Admin Panel', admin_root_path %></li>
               <% end %>
               <!-- 個人圖像：user profile -->
+              <li><%= link_to 'Home', root_path %></li>
               <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
               <!-- 修改個人資料 -->
             <% else %>
