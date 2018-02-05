@@ -3,6 +3,9 @@
     <%= render 'shared/user_stats', user: @user %>
   </div>
   <div class="col-md-8">
-    <%= render 'shared/tweets',  objects: @tweets %>    
+    <h3><%= @title %></h3>
+    <% if @likes.any? %>
+      <%= render 'shared/tweets', objects: @likes %>
+    <% end %>
   </div> 
 </div>

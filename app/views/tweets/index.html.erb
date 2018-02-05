@@ -12,24 +12,9 @@
         </div>
         <% end %>
       </div>
-      <div id="tweets">
-        <% @tweets.each do |t| %>
-        <div class="tweet-info clearfix">
-          <div class="col-sm-6 col-md-4">
-            <%= image_tag t.user.avatar, class: "img-responsive center-block", size: "130x120" %>
-          </div>
-          <div class="col-sm-6 col-md-8">
-            <div class="info-item">
-              <%= link_to tweets_user_path(t.user) do %>
-                <h3><%= t.user.name %></h3>
-              <% end %>
-              <p><%= t.created_at %></p>
-              <p><%= truncate(t.description, length: 40){ link_to "continue", "#" } %></p>
-            </div>
-          </div>
-        </div>
-        <% end %>
-      </div>
+      <% if @tweets.any? %>
+        <%= render 'shared/tweets', objects: @tweets %>
+      <% end %>
     </div>
     <div class="col-md-4">
       <div class="popular">

@@ -12,7 +12,7 @@ $gray-medium-light: #eaeaea;
 /* universal */
 
 body {
-  padding-top: 60px;
+  padding-top: 80px;
 }
 
 section {
@@ -73,6 +73,13 @@ p {
     color: white;
     text-decoration: none;
   }
+}
+
+.navbar-img {
+  float: left;
+  font-size: 18px;
+  line-height: 20px;
+  height: 50px;
 }
 
 /* tweets */

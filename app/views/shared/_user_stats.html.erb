@@ -14,5 +14,8 @@
     <%= link_to followings_user_path(user) do %>
       <p>Following：<%= user.followings.size %></p>
     <% end %>
+    <%= link_to likes_user_path(user) do %>
+      <p>Like：<%= user.likes_count %></p>
+    <% end %>
   </div>
 </div>

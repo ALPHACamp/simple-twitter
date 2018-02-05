@@ -19,12 +19,19 @@ class User < ApplicationRecord
   has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id", dependent: :destroy
   has_many :followers, through: :inverse_followships, source: :following, counter_cache: true
 
+  has_many :likes, dependent: :destroy
+  has_many :like_tweets, through: :likes, source: :tweet
+
   def admin?
     self.role == "admin"
   end
 
   def following?(other_user)
     followings.include?(other_user)
+  end
+
+  def like?(tweet)
+    likes.where(tweet: tweet).exists?
   end
 
 end

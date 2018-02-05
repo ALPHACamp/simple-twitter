@@ -1,14 +1,23 @@
 <div id="tweets">
-  <% tweets.each do |t| %>
+  <% objects.each do |t| %>
   <div class="tweet-info clearfix">
     <div class="col-sm-6 col-md-4">
       <%= image_tag t.user.avatar, class: "img-responsive center-block", size: "130x120" %>
     </div>
     <div class="col-sm-6 col-md-8">
       <div class="info-item">
-        <h3><%= t.user.name %></h3>
+        <%= link_to tweets_user_path(t.user) do %>
+          <h3><%= t.user.name %></h3>
+        <% end %>
         <p><%= t.created_at %></p>
         <p><%= truncate(t.description, length: 40){ link_to "continue", "#" } %></p>
+        <% if current_user.like?(t) %>
+          <%= link_to "Unlike", unlike_tweet_path(t), method: :post %>
+        <% else %>
+          <%= link_to like_tweet_path(t), method: :post do %>
+            <p>Like(<%= t.likes_count %>)</p>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
