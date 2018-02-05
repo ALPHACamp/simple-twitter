@@ -6,9 +6,14 @@
 
   <!-- tweets -->
   <div class="col-xs-9">
-    <% @followers.each do |follower| %>
-      <p><%= follower.name %></p>
-    <% end %>
+    <h1>Followers</h1>
+    <div class="row">
+      <% @followers.each do |follower| %>
+        <div class="col-xs-6">
+          <%= render partial: "shared/user_card", locals: {user: follower} %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
 </div>
