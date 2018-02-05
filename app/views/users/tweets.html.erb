@@ -1,0 +1,42 @@
+<div class="col-md-4"> 
+  <div class="container">
+    <div>
+      <%= image_tag @user.avatar, size: "200", class: "img-responsive center-block"%>
+    </div>
+    <div>
+      <h4><%= @user.name%></h4> 
+    </div>
+    <div>
+      <p><%= truncate(@user.introduction, length:100 ) %></p> 
+    </div>
+      <ul class="list-unstyled list-inline">
+        <li> <strong>Tweets :<%= @user.tweets.count %></strong></li>
+      </ul>
+    <div>
+      <% if @user.id == current_user.id %>
+      <%= link_to('Edit Profile', edit_user_path(current_user))%>
+      <% else %>
+      <%= "follow" %>
+      <%end%>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-8">
+  <div class="container">
+    <div class="row">
+      <% @tweets.each do |tweet|%>
+        <div class="tweet-item">
+          <div class="col-md-3">
+            <%= image_tag tweet.user.avatar, size: "200", class: "img-responsive center-block"%>
+          </div>
+          <div class="col-md-9">
+            <h4><%= tweet.user.name %> <%= tweet.created_at.strftime('%Y-%m-%d')%></h4>
+            <p><%= truncate(tweet.description, length:100 ) %></p> 
+          </div> 
+        </div>   
+      <% end %>        
+    </div> 
+  </div>  
+</div>
+

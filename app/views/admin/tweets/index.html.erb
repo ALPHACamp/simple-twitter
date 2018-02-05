@@ -1,1 +1,15 @@
 <h1>後台</h1>
+<div class="container">
+  <div class="row">
+    <% @tweets.each do |tweet|%>
+      <div class="tweet-item">
+        <tr>
+          <th scope="row"><%= tweet.id %></th>
+          <td><%= tweet.description %></td>
+          <td><%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm: "Are you sure?"} %></td>
+        </tr>
+      </div>   
+    <% end %>    
+  </div>
+
+</div>
