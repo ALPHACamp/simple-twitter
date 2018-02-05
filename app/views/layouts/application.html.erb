@@ -24,7 +24,7 @@
           <ul class="pull-right nav navbar-nav">
             <% if current_user %>
               <li>
-                <%= link_to edit_user_path(current_user), class: "nav-avatar-link" do %>
+                <%= link_to tweets_user_path(current_user), class: "nav-avatar-link" do %>
                   <%= image_tag(current_user.avatar, class: "nav-avatar") %>
                 <% end %>
               </li>

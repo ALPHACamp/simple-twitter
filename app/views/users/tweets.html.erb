@@ -1,0 +1,15 @@
+<div class="row">
+  <!-- user profile -->
+  <div class="col-xs-3">
+    
+  </div>
+
+  <!-- tweets -->
+  <div class="col-xs-9">
+    <% @tweets.each do |tweet| %>
+      <%= render partial: "shared/message", locals: {message: tweet, is_tweet: true} %>
+    <% end %>
+    <div class="text-center"><%= paginate @tweets %></div>
+  </div>
+  
+</div>
