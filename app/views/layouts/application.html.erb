@@ -33,10 +33,15 @@
             <% end %>
         
             <div class="nav navbar-nav navbar-right">
-              <p class="navbar-text">Hi, <%= current_user.email %></p>
-              <%= link_to('修改個人資料', edit_user_path(current_user), class: "nav-a") %>
+              <%= link_to tweets_user_path(current_user), class: "nav-avatar" do %>
+                <% for img_id in 0..26 %>
+                  <% if image_path(current_user.avatar).include?('/user'+img_id.to_s+'.jpg') %>
+                    <%= image_tag('/avatar/user'+img_id.to_s+'.jpg') %>
+                  <% end %>
+                <% end %>
+              <% end %>
               <%= link_to('登出', destroy_user_session_path, method: :delete, class: "nav-a") %>
-              <%= '|' %>
+              <p>|</p>
               <%= link_to('修改密碼', edit_user_registration_path, class: "nav-a") %>
             </div>
           </div>
