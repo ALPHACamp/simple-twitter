@@ -8,10 +8,13 @@
   <div class="col-xs-9">
     <h1>Followings</h1>
     <div class="row">
-      <% @followings.each do |followings| %>
+      <% @followings.each_with_index do |followings, i| %>
         <div class="col-xs-6">
           <%= render partial: "shared/user_card", locals: {user: followings} %>
         </div>
+        <% if i.odd? %>
+          <div class="clearfix hidden-xs"></div>
+        <% end %>
       <% end %>
     </div>
   </div>
