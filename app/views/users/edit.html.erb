@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <% if @user.errors.any? %>
+      <h2>We have some errors here ! </h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end%>
+      </ul>
+    <% end %>
+
+    <%= form_for @user do |f| %>
+      <%= f.label :name, "Name" %>
+      <%= f.text_field :name %>
+
+      <%= f.label :introduction, "Introduction" %>
+      <%= f.text_area :introduction %>
+
+      <%= f.label :avatar, "Avatar" %>
+      <%= image_tag @user.avatar, width: 100 if @user.avatar %>
+      <%=%>
+      <%= f.submit "Update" %>
+    <% end %>
+  </div>
+</div>

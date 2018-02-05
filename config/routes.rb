@@ -9,8 +9,9 @@ Rails.application.routes.draw do
   resources :tweets, only: [:create]
 
   # User
-  resources :users, only: [:edit]
+  # resources :users, only: [:edit]
   get '/users/:id/tweets' => 'users#tweets', :as => "user_tweets"
+  get '/users/:id/edit' => 'users#edit', :as => "edit_users"
 
   # Reply
   get '/tweets/:id/replies' => 'replies#index', :as => "replies_user"
