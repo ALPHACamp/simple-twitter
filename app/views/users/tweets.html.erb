@@ -10,10 +10,10 @@
     <div class="col-md-8">
       <% @tweeted.each do |tweet| %>
       <div class="tweets">
-          <h4>
-            <%= link_to "#{tweet.user.name} #{}" , tweets_user_path(tweet.user)%>
-            <%= time_tag(tweet.created_at) %>
-          </h4>
+        <ul class="list-inline">
+          <li class="list-inline-item"><h4><%= link_to "#{tweet.user.name}" , tweets_user_path(tweet.user)%></h4></li>
+          <li class="list-inline-item"><em><%= time_tag(tweet.created_at) %></em></li>
+        </ul>
         <p><%= simple_format tweet.description %></p>
       </div>
       <hr>

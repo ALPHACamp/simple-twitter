@@ -1,14 +1,50 @@
 
 <div class="container">
   <div class="row">
-   <%= form_for [@tweet, @reply] do |f| %>
-    <div class="form-group">
-      <%= f.text_area :comment, placeholder: "留個言吧", class: "form-control" %>
+    <div class="col-md-4">
+      <%= render partial: "shared/user", locals: {user: @tweet.user} %>
     </div>
-    <div class="form-group">
-      <%= f.submit class: "btn btn-primary" %>
-      <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+    <div class="col-md-8">
+      <h2>Tweet</h2>
+      <div class="tweets">
+        <% if @tweet.user.avatar? %>
+          <%= image_tag(@tweet.user.avatar, class: "img-rounded") %>
+          <% else %>
+          <%= image_tag "fallback/avatar.png", class: "img-rounded" %>
+        <% end %>
+        <ul class="list-inline">      
+          <li class="list-inline-item"><h4><%= link_to @tweet.user.name ,tweets_user_path(@tweet.user) %></h4></li>
+          <li class="list-inline-item"><p class="text-muted">
+            <em><%= time_ago_in_words(@tweet.created_at) %> ago -</em></p></li>
+        </ul>
+        <p><%= simple_format @tweet.description %></p> 
+      </div>
+      <h2>Reply</h2>
+      <% @tweet.replies.each do |reply| %>
+        <div class="tweets">
+          <% if reply.user.avatar? %>
+            <%= image_tag(@tweet.user.avatar, class: "img-rounded") %>
+            <% else %>
+            <%= image_tag "fallback/avatar.png", class: "img-rounded" %>
+          <% end %>
+          <ul class="list-inline">      
+            <li class="list-inline-item"><h4><%= link_to reply.user.name ,tweets_user_path(reply.user) %></h4></li>
+            <li class="list-inline-item"><p class="text-muted">
+              <em><%= time_ago_in_words(reply.created_at) %> ago -</em></p></li>
+          </ul>
+          <p><%= simple_format reply.comment %></p>
+        </div>
+        <hr>
+      <% end %>
+      <%= form_for [@tweet, @reply] do |f| %>
+        <h2>Replies</h2>
+        <div class="form-group">
+          <%= f.text_area :comment, placeholder: "留個言吧", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Reply", class: "btn btn-primary" %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
   </div>
 </div>

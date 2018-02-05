@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   def followings
     @tweeted = @user.tweets.order("created_at DESC").uniq
-    @followings = @user.followings
+    @followings = @user.followings.order("created_at DESC")
     @followers = @user.followers
     # 基於測試規格，必須講定變數名稱
   end
@@ -29,13 +29,14 @@ class UsersController < ApplicationController
   def followers
     @tweeted = @user.tweets.order("created_at DESC").uniq
     @followings = @user.followings
-    @followers = @user.followers
+    @followers = @user.followers.order("created_at DESC")
     # 基於測試規格，必須講定變數名稱
   end
 
   def likes
     @likes # 基於測試規格，必須講定變數名稱
   end
+
 
   private
 

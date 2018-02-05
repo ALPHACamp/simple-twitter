@@ -20,6 +20,11 @@ Rails.application.routes.draw do
 
   resources :tweets, only: [:index,:create] do
     resources :replies, only: [:index,:create]
+
+    member do
+      get :like
+      get :unlike
+    end
   end
 
 

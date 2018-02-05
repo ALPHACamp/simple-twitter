@@ -1,14 +1,16 @@
 <div class="col-md-12 col-sm-12">
   <div class="text-center user-tweet-item">
-    <%= image_tag user.avatar, class: "img-responsive img-rounded"  if user.avatar? %>
-    <%= image_tag "fallback/avatar.png",
-      class: " img-rounded" if !user.avatar?%>
+    <% if user.avatar? %>
+    <%= image_tag user.avatar, class: "img-responsive img-rounded" %>
+    <% else %>
+    <%= image_tag "fallback/avatar.png", class: " img-rounded" %>
+    <% end %>
   </div>
 </div>
 <div class="col-md-12 col-sm-12">
   <h2><strong><%= user.name %></strong></h2>
   <p><%= user.introduction %></p>
-  <h3><%= link_to "tweets (#{@tweeted.count})",tweets_user_path(user) %></h3>
+  <h3><%= link_to "tweets (#{user.tweets.count})",tweets_user_path(user) %></h3>
   <h3><%= link_to "following (#{user.followings.count})",followings_user_path(user) %></h3>
   <h3><%= link_to "follower (#{user.followers.count})",followers_user_path(user) %></h3>
   <h3><%= link_to "like ( )" %></h3>

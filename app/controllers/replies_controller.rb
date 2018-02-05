@@ -6,12 +6,11 @@ class RepliesController < ApplicationController
   end
 
   def create
-    @reply = Reply.new(reply_params)
     @tweet = Tweet.find(params[:tweet_id])
-    @user = User.find(params[:user_id])
-    @comment.user = current_user
-    @comment.save!
-    redirect_to tweet_path(@tweet)
+    @reply = @tweet.replies.build(reply_params)
+    @reply.user = current_user
+    @reply.save!
+    redirect_to tweet_replies_path(@tweet)
   end
 
   private

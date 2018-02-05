@@ -29,6 +29,13 @@
   margin: 0 10px 0 0;
 }
 
+.tweets img{ 
+  width: 70px;
+  height: 70px;
+  float:left;
+  margin: 0 10px 0 0;
+}
+
 h3, a:link,a:visited,a:hover{
   text-decoration:none;
 }
@@ -36,6 +43,8 @@ h3, a:link,a:visited,a:hover{
  a:link,a:visited,a:hover{
   color:#87CEFA
 }
+
+
 
 .user-text {
   border:1px #ccc solid;
@@ -45,3 +54,15 @@ h3, a:link,a:visited,a:hover{
   width: 350px;
   height: 280px;
 }
+
+.user-text img {
+  width: 70px;
+  height: 70px;
+  float:left;
+  margin: 0 10px 0 0;
+}
+
+h2{
+  color:#00008B
+}
+
