@@ -26,7 +26,7 @@
            <ul class="pull-right text-right nav navbar-nav">
               <% if current_user %>
                 <% if current_user.admin? %>
-                  <li><%= link_to '<i class="glyphicon glyphicon-inbox" aria-hidden="true"></i> '.html_safe, admin_tweets_path %></li>
+                  <li><%= link_to '<i class="glyphicon glyphicon-inbox" aria-hidden="true"></i> '.html_safe, admin_root_path %></li>
                 <% end %>
               <li><p class="navbar-text">Hi, <%= current_user.name %></p></li>
               <li><%= link_to '<i class="glyphicon glyphicon-user" aria-hidden="true"></i> '.html_safe, user_path(current_user) %></li>
