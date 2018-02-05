@@ -30,6 +30,16 @@ namespace :dev do
     end
   end
 
+  task fake_random_tweet: :environment do
+    
+    10.times do 
+
+      Tweet.create!(description: FFaker::Lorem::paragraph[50..130],
+        user: User.all.sample)
+      puts "create a tweet." 
+    end
+  end
+
   task fake_replies: :environment do
     
     Tweet.all.each do |tweet|
@@ -40,5 +50,6 @@ namespace :dev do
       puts "Add 2 replies to #{tweet.user.name}'s tweet."
     end
   end
+
 
 end
