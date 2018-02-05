@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-3">
+    <%= render partial: "shared/user_profile" %>
+  </div>
+
+  <div class="col-md-offset-1 col-md-8">
+    <h2>Following</h2>
+    <% @followings.each do |following| %>
+      <div class="col-md-6">
+        <div>
+          <div class="avatar-list float-left">
+            <%= image_tag following.avatar, class: "img-responsive img-circle" %>
+          </div>
+          <div class="small-box">
+            <h3><%= link_to "@#{following.name}", tweets_user_path(following) %></h3>
+            <h4><%= following.introduction %></h4>
+            <div class="float-right">
+              <%= render partial: "shared/follow", locals: {user: following} %>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <hr>
+      </div>
+    <% end %>
+  </div>
+</div>
