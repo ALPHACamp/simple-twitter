@@ -33,6 +33,18 @@ namespace :dev do
     puts "Now you have #{Tweet.count} tweets!"
   end
 
+  task fake_reply: :environment do
+    Reply.destroy_all
+    @tweets = Tweet.all
+    @tweets.each do |tweet|
+      3.times do |variable|
+        tweet.replies.create!(comment: FFaker::Tweet.body,
+          user: User.all.sample)
+      end
+    end
+    puts "Now you have #{Reply.count} replies!"
+  end
+
   task test: :environment do
   end
 
@@ -43,5 +55,6 @@ namespace :dev do
     # Rake::Task['db:seed'].execute
     Rake::Task['dev:fake_user'].execute
     Rake::Task['dev:fake_tweets'].execute
+    Rake::Task['dev:fake_reply'].execute
   end
 end
