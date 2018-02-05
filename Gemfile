@@ -67,3 +67,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'rest-client'
 #for uniname api
+
+gem 'bootstrap', '~> 4.0.0'
+gem 'jquery-rails'
+gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
+#分頁功能配上bootstrap4
+
