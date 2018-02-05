@@ -5,7 +5,10 @@ class Tweet < ApplicationRecord
 
   has_many :replies, dependent: :destroy
   #刪掉tweet 就會刪掉reply
+
+  has_many :likes, dependent: :destroy
+  #刪掉tweet 就會刪掉like
 end
 
 
-        
+      
