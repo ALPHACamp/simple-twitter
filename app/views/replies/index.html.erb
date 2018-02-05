@@ -7,12 +7,12 @@
 </p>
 <p>Profile
 <p>avatar</p>
-<%= @user.name %>
+<%= @user.name %> 
 <p> @user.introduction</p>
-<p> tweetscount</p>
+<p> Tweet Count:<%= @tweets.size%></p>
 <p> Followcount</p>
 <p> Followercount</p>
-<%= link_to "Like Count: #{@user_like_count}",likes_user_path(@user)%>
+<%= link_to "Like Count: #{@user.likes_count}",likes_user_path(@user)%>
 <%= link_to "Edit Profile", edit_user_path(@user) %>
 <p>
   <h4>Reply Index</h4>

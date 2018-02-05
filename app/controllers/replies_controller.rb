@@ -2,11 +2,17 @@ class RepliesController < ApplicationController
 
   def index
     @user = current_user
-    @tweet = Tweet.find(params[:tweet_id])
     @reply = Reply.new
     @replies = Reply.where(tweet_id: @tweet)
-    @user_like_count = @user.likes.size
 
+    @tweet = Tweet.find(params[:tweet_id])
+    @tweets = Tweet.where(user_id: @user)
+   
+
+    #profile#
+    @user.likes_count = @user.likes.size
+    @tweet.replies_count = @tweet.replies.size
+    
   end
 
   def create
