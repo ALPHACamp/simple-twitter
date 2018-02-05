@@ -21,6 +21,24 @@
 					</div>
 				</div>
 			<h3>Replies</h3>
+			<%- @replies.each do |r| %>
+				<div class="thumbnail">
+					<%= image_tag r.user.avatar, width:'100px', id:"tweet-avatar" %>
+					<div id="tweet-details-block">
+						<h5 class="text-primary">@<%= r.user.name %>, <%= r.created_at %></h5>
+						<p><%= simple_format r.comment %></p>
+					</div>
+				</div>
+			<%end%>
+			<%= form_for [@tweet, @reply] do |t| %>
+				<div class="form_group">
+					<%= t.text_area :comment, placeholder: "What do you want to say?", rows: "3"%>
+				</div>
+				<br>
+				<div class="form_group">
+					<%= t.submit "Reply", class: "btn btn-primary"%>
+				</div>
+			<% end %>
 		</div>
 	</div>
 </div>
