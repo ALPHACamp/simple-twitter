@@ -20,4 +20,9 @@ Rails.application.routes.draw do
       # get :tweets
     end
   end
+
+  namespace :admin do
+    resources :tweets, only: [:index, :destroy]
+    resources :users
+  end
 end

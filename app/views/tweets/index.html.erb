@@ -14,5 +14,8 @@
 	<%= link_to tweet.user.name, user_path(tweet.user.id) %>
 	<%= tweet.description %>
 	<%= link_to 'Show', tweet_path(tweet)  %>
+	<% if current_user.admin? %>
+		<%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data:{ confirm: "Are you sure?" }  %>
+	<% end %>
 	<br>
 <% end %>

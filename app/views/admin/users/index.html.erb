@@ -1,0 +1,7 @@
+<% @users.each do |user| %>
+	<%= user.name %>
+	<%= "Tweets number: #{user.tweets.size} "%>
+	<%= "Followigs number: #{user.followings.size} "%>
+	<%= "Followers number: #{user.followers.size} "%>
+	<br>
+<% end %>
