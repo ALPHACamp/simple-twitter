@@ -14,6 +14,9 @@
     <%= @user.introduction %>
     <img class="img-circle" src="http://via.placeholder.com/60x60">
     推特數<%= @user.tweets.count %>
+    <%= link_to 'like', likes_user_path(@user), class: "btn btn-primary" %>
+    <%= link_to 'Followings', followings_user_path(@user), class: "btn btn-primary" %>
+    <%= link_to 'Followers', followers_user_path(@user), class: "btn btn-primary" %>
 
     <% if @user.email == current_user.email %>
       <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>

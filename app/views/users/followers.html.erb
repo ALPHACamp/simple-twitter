@@ -1,0 +1,10 @@
+<h2>followers</h2>
+<ul>
+  <% @followers.each do |follower| %>
+    <li>
+      <%= follower.name %>
+      <%= follower.avatar %>
+      <%= follower.created_at %>
+    </li>
+  <% end %>
+</ul>

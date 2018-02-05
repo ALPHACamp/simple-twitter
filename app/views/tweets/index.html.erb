@@ -25,9 +25,21 @@
 <ul>
   <% @users.each do |user| %>
     <li>
-      <%= user.name %>
-      <%= user.introduction %>
       <img class="img-circle" src="http://via.placeholder.com/60x60">
+      <%= link_to user.name, tweets_user_path(user), class: "btn btn-primary" %>
+      <%= user.introduction %>
+
+      <% if user.email == current_user.email %>
+        <%= link_to 'Edit Profile', edit_user_path(user), class: "btn btn-primary" %>
+      <% else %>
+        <% if current_user.following?(user)%>
+          <!-- 會用 DELETE 動作導向 http://localhost:3000/followships/{user.id} -->
+          <%= link_to 'Unfollow', followship_path(user), method: :delete ,class: "btn btn-link" %>
+        <% else %>
+          <!-- 會用 POST 動作導向 http://localhost:3000/followships?following_id={user.id} -->
+          <%= link_to 'Follow', followships_path(following_id: user), method: :post , class: "btn btn-default" %>
+        <% end %>
+      <% end %>
     </li>
   <% end %>
 </ul>
