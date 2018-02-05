@@ -8,7 +8,7 @@
     <h4> <%= link_to "Tweets #{@user.tweets.count}"%></h4>
     <h4> <%= link_to "Following", followings_user_path  %></h4>
     <h4> <%= link_to "Follower",followers_user_path %></h4>
-    <h4> <%= link_to "like",likes_user_path %></h4>
+    <h4> <%= link_to "like #{@user.likes.count}",likes_user_path %></h4>
     <br>
     <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-primary" %>
   <% else %>
