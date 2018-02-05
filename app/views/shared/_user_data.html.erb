@@ -1,0 +1,11 @@
+<div class="user-panel">
+  <div class="panel-avatar">
+    <%= image_tag(@user.avatar, class: "img-responsive center-block") %>
+  </div>
+  <h2><%= @user.name %></h2>  
+  <p><%= @user.introduction %></p>
+  <%= "Tweets #{@user.tweets.count}" %>
+  <%= "Following" %>
+  <%= "Follower" %>
+  <%= "Like" %>
+</div>
