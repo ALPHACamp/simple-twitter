@@ -1,15 +1,18 @@
 class UsersController < ApplicationController
+  before_action :set_user
 
   def tweets
-    @user = User.find(params[:id])
     @tweets = @user.tweets.order(created_at: :desc)
   end
 
   def edit
+    if current_user != @user
+      flash[:alert] = "You can't edit other's profile!"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "User profile was successfully update!"
       redirect_to tweets_user_path(@user)
@@ -20,21 +23,22 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @user = User.find(params[:id])
     @followings = @user.followings.order(created_at: :desc)
   end
 
   def followers
-    @user = User.find(params[:id])
     @followers = @user.followers.order(created_at: :desc)
   end
 
   def likes
-    @user = User.find(params[:id])
     @likes = @user.likes.order(created_at: :desc)
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:avatar, :name, :introduction)
