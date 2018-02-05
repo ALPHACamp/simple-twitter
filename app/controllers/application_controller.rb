@@ -9,7 +9,15 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
 
-  
+  private
+
+# add admin authenticate
+  def authenticate_admin
+    unless current_user.admin?
+      flash[:alert] = "Not allow!"
+      redirect_to root_path
+    end
+  end
 
   # 請參考 Devise 文件自訂表單後通過 Strong Parameters 的方法
   # https://github.com/plataformatec/devise#strong-parameters
