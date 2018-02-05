@@ -37,4 +37,8 @@ class User < ApplicationRecord
     tweet.liked_users.include?(self)
   end
 
+  def follow?(user)
+    self.followings.include?(user)
+  end
+
 end
