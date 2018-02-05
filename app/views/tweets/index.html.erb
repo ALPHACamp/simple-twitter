@@ -10,10 +10,16 @@
       <div class="following-tweets">
         <p>這邊顯示追蹤的人，所發出的推特</p>
         <p>目前先顯示假資料</p>
-        <ul>
-          <% @tweets.each do |tweet| %>
-            <li><%= tweet.description %></li>
-          <% end %>
+        <% @tweets.each do |tweet| %>
+           <div class="col-sm-6 col-md-4">
+            <div class="all-tweet">
+              <div class="caption">
+                <p><%= tweet.description %></p>
+              </div>
+              
+            </div>
+          </div>  
+        <% end %>
         </ul>
       </div>
     </div>
