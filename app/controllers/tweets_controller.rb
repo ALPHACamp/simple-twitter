@@ -8,7 +8,7 @@ class TweetsController < ApplicationController
   def create
     @tweet = Tweet.new(tweet_params)
     @tweet.user = current_user
-    @tweet.save
+    @tweet.save!
     flash[:notice] = "Tweet發送"
     redirect_to root_path
 
