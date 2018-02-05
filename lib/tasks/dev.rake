@@ -10,7 +10,7 @@ namespace :dev do
       user = User.new(
         name: name,
         email: "#{name}@example.co",
-        password: "12345678",
+        password: "test123",
         introduction: FFaker::Lorem::sentence(30),
         avatar: file
       )
@@ -18,6 +18,31 @@ namespace :dev do
       user.save!
       puts user.name
     end
+  end
+
+  task fake_tweet: :environment do
+    Tweet.destroy_all
+    User.all.each do |user|
+      3.times do |i|
+        user.tweets.create!(
+          description: FFaker::Lorem.sentence(10)
+        )
+      end
+    end
+    puts "now you have #{Tweet.count} tweets"
+  end
+
+  task fake_reply: :environment do
+    Reply.destroy_all
+    Tweet.all.each do |tweet|
+      3.times do |i|
+        tweet.replies.create!(
+          comment: FFaker::Lorem.sentence(5),
+          user: User.all.sample
+        )
+      end
+    end
+    puts "now you have #{Reply.count} replies"
   end
 
 end
