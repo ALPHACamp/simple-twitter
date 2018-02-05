@@ -7,20 +7,10 @@
   <!-- tweets -->
   <div class="col-xs-9">
     <h1>Tweets</h1>
-    <%= render partial: "shared/tweet", locals: {tweet: @tweet} %>
+    <%= render partial: "shared/message", locals: {message: @tweet, is_tweet: true} %>
     <h1>Replies</h1>
     <% @tweet.replies.each do |reply| %>
-      <div class="row tweet-box">
-        <div class="col-xs-3">
-          <div class="tweet-avatar">
-            <%= image_tag(reply.user.avatar, class: "img-responsive center-block") %>
-          </div>
-        </div>
-        <div class="col-xs-9">
-          <p><%= "@#{reply.user.name}, #{reply.created_at}" %></p>
-          <p><%= reply.comment %></p>
-        </div>
-      </div>
+      <%= render partial: "shared/message", locals: {message: reply, is_tweet: false} %>
     <% end %>
   </div>
 </div>
