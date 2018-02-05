@@ -10,10 +10,15 @@
 					<%= t.submit "Tweet", class: "btn btn-primary"%>
 				</div>
 			<% end %>
-			<div class="panel panel-default">
-				<%= @tweets.each do |f| %>
-				<div class="panel-body">
-					<%= f.user_id %>
+			<br>
+			<div>
+				<%- @tweets.each do |f| %>
+				<div class="thumbnail">
+					<%= image_tag f.user.avatar, width:'100px', id:"tweet-avatar" %>
+					<div id="tweet-details-block">
+						<h5 class="text-primary">@<%= f.user.name %>, <%= f.created_at %></h5>
+						<p><%= simple_format f.description %></p>
+					</div>
 				</div>
 				<% end %>
 			</div>
