@@ -1,0 +1,17 @@
+<% if @tweet.errors.any? %>
+  <h2>We have some errors here !</h2>
+  <ul>
+    <% @tweet.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<%= form_for (@tweet) do |f| %>
+ 
+  <%= f.text_area :description , rows: 8,cols: 95, placeholder: "Whats on your mind", class: "form-color" %><br>
+
+  <%= f.submit "tweet", class: ' my-btn btn-lg' %>
+  
+<% end %>

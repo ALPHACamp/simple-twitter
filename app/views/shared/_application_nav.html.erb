@@ -1,0 +1,27 @@
+<nav class="navbar navbar-default">
+
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to "LOGO", root_path, class: "brand" %>
+    </div>
+      
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav pull-right">
+            <% if current_user %>
+              <% if current_user.admin? %>
+                <li><%= link_to 'Admin Panel', admin_root_path %></li>
+              <% end %>
+            <li>
+              <%= link_to tweets_user_path(current_user), class: "nav-avatar" do %>
+                <%= image_tag current_user.avatar, size: "50" if current_user.avatar? %>
+              <% end %>
+            </li>
+            <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to '註冊', new_user_registration_path %></li>
+            <li><%= link_to '登入', new_user_session_path %></li>
+          <% end %>
+          </ul>
+      </div>
+  </div>
+</nav>
