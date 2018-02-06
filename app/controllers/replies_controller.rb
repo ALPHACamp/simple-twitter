@@ -2,7 +2,7 @@ class RepliesController < ApplicationController
 
   def index
     @tweet = Tweet.find(params[:tweet_id])
-    @replies = @tweet.replies
+    @replies = @tweet.replies.order(created_at: :desc)
     @reply = Reply.new
   end
 

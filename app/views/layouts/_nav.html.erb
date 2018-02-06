@@ -8,7 +8,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to "Twitter", root_path, class: "navbar-brand", id: "logo" %>
+      <%= link_to  root_path, class: "navbar-brand", id: "logo" do %>
+        <%= image_tag "twitter.png", height: "40px" , margin: "10px" %>
+      <% end %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->

@@ -19,21 +19,21 @@ class UsersController < ApplicationController
   def followings
     @user = User.find(params[:id])
     #@followings = @user.followings  # 基於測試規格，必須講定變數名稱
-    
-    @followings = @user.followings.joins(:inverse_followships).order(created_at: :desc)
-
+    @followings = User.where('followships.user_id = ?', @user.id).joins(:inverse_followships).merge(Followship.order(created_at: :desc))
+  
   end
 
   def followers
     @user = User.find(params[:id])
     #@followers = @user.followers # 基於測試規格，必須講定變數名稱
-    @followers = @user.followers.joins(:followships).order(created_at: :desc)
+    @followers = User.where('followships.following_id = ?', @user.id).joins(:followships).merge(Followship.order(created_at: :desc))
+
   end
 
   def likes
     @user = User.find(params[:id])
     #@likes = @user.like_tweets  # 基於測試規格，必須講定變數名稱
-    @likes = @user.like_tweets.joins(:likes).order(created_at: :asc)
+    @likes = Tweet.joins(:likes).where('likes.user_id = ?', @user.id).order(created_at: :asc)
   end
 
   private
