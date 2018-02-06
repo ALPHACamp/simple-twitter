@@ -31,14 +31,14 @@
 				</div>
 			<%end%>
 			<%= form_for [@tweet, @reply] do |t| %>
+			<form>
 				<div class="form_group">
-					<%= t.text_area :comment, placeholder: "What do you want to say?", rows: "3"%>
+					<%= t.text_area :comment, placeholder: "What do you want to say?", rows: "3", class: "form-control"%>
 				</div>
 				<br>
-				<div class="form_group">
-					<%= t.submit "Reply", class: "btn btn-primary"%>
-				</div>
+				<%= t.submit "Reply", class: "btn btn-primary"%>
 			<% end %>
+			</form>
 		</div>
 	</div>
 </div>
