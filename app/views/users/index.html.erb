@@ -3,7 +3,7 @@
   <% @users.each do |user| %>
     <li>
       <%= user.name %>
-      <%= link_to 'Follow' %>
+      <%= link_to 'Follow', followships_path(following_id: user), method: :post %>
     </li>
   <% end %>
 
