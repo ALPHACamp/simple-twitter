@@ -1,0 +1,8 @@
+<div class="user_item clearfix">
+<div class="col-xs-4"><%= image_tag user.avatar, class:"img-responsive" %></div>
+  <div class="col-xs-8">
+    <h4 class="userListItem-name">@<%= user.name %></h4> 
+    <p class="userListItem-intro"><%= user.introduction %></p> 
+    <%= render partial: "common/follow" ,locals:{user:user}%>
+  </div>
+</div>
