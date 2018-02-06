@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
     member do
       get :likes
+      get :followings
+      get :followers
     end
     
   end

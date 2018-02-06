@@ -14,6 +14,8 @@
         <% end %>
         <br>
         <h4 style="color:grey;">Tweet <%= @user.tweets.length %></h4>
+        <h4 style="color:grey;">Following <%= @user.followships.length %></h4>
+        <h4 style="color:grey;">Follower <%= @user.inverse_followships.length %></h4>
         <h4><%= link_to "Like #{@user.likes.length}", likes_user_path, :style=>"color:grey" %></h4>
         <br>
         <% if @user==current_user %>
