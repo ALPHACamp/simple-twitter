@@ -1,0 +1,6 @@
+<div class="container">
+  <h1>all tweets</h1>
+  <%= link_to 'all tweet', admin_tweets_path, class: "btn btn-default"%>
+  <%=render partial: "admin_userlist", locals: {users: @users}%>
+
+</div>
