@@ -15,6 +15,11 @@ class User < ApplicationRecord
   has_many :tweets
   has_many :replies, through: :tweets
 
+  has_many :followships
+  has_many :followings, through: :followships
+
+  has_many :inverse_followships, class_name: "followship", foreign_key: "following_id"
+  has_many :followers, through: :inverse_followships, source: :user
 
   def admin?
   	self.role == "admin" 
