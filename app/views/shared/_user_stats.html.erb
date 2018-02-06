@@ -1,24 +1,28 @@
-<div class="user-item">
+<div class="user-block">
   <div class="user-img">
-    <%= image_tag user.avatar, class: "img-responsive center-block" %>
+    <%= image_tag user.avatar, class: "img-responsive center-block", size: "250x20" %>
   </div>
   <div class="user-info">
-    <h2><%= user.name %></h2>
+    <h1><%= user.name %></h1>
     <p><%= simple_format user.introduction %></p>
-    <%= link_to tweets_user_path(user) do %>
-      <p>Tweets：<%= user.tweets.size %></p>
-    <% end %>
-    <%= link_to followers_user_path(user) do %>
-      <p>Follower：<%= user.followers_count %></p>
-    <% end %>
-    <%= link_to followings_user_path(user) do %>
-      <p>Following：<%= user.followings.size %></p>
-    <% end %>
-    <%= link_to likes_user_path(user) do %>
-      <p>Like：<%= user.likes_count %></p>
-    <% end %>
-    <% if user == current_user %>
-      <%= link_to "Edit Profile",edit_user_path(user), class: "btn btn-primary", style: "width: 100%" %>
-    <% end %>
+    <div class="user-item">
+      <%= link_to tweets_user_path(user) do %>
+        <p>Tweets <%= user.tweets.size %></p>
+      <% end %>
+      <%= link_to followers_user_path(user) do %>
+        <p>Follower <%= user.followers_count %></p>
+      <% end %>
+      <%= link_to followings_user_path(user) do %>
+        <p>Following <%= user.followings.size %></p>
+      <% end %>
+      <%= link_to likes_user_path(user) do %>
+        <p>Like <%= user.likes_count %></p>
+      <% end %>
+      <div class="edit-btn">
+        <% if user == current_user %>
+          <%= link_to "Edit Profile",edit_user_path(user), class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

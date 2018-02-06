@@ -19,6 +19,7 @@ html, body {
 body {
   padding: 80px;
   margin: 0px;
+  margin-bottom: 300px;
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
@@ -44,7 +45,7 @@ ul, ol {
 
 
 .container {
-  width: 100%;
+  width: 90%;
   max-width: 1170px;
   margin: 0 auto;
   position: relative;
@@ -96,7 +97,9 @@ h4 {
 
 p {
   font-size: 1.1em;
-  line-height: 1.7em;
+  line-height: 1.1em;
+  color: $gray-light;
+  letter-spacing: 1px;
 }
 
 .btn {
@@ -178,6 +181,36 @@ p {
   line-height: 24px;
 }
 
+/* user side */
+
+.user-block {
+  width: 60%;
+}
+.user-info h1{
+  margin: 20px 0;
+  color: #0088A8;
+  letter-spacing: 1px;
+}
+
+.user-info p{
+  color: #4682b4;
+  line-height: 1.2em;
+}
+
+.user-item p{
+  color: #696969;
+  font-size: 2em;
+  font-weight: 500;
+}
+
+.user-item {
+  margin: 25px 0;
+}
+
+.edit-btn {
+  margin-top: 20px;
+  text-align: center;
+}
 /* avatar upload */
 
 .user_avatar_upload {
