@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user ,only: [:tweets, :followings, :followers, :likes]
+  before_action :set_user ,only: [:tweets, :edit, :update, :followings, :followers, :likes]
 
   def tweets
     @tweets = @user.tweets.order('created_at desc').page(params[:page]).per(10)
@@ -9,6 +9,18 @@ class UsersController < ApplicationController
   end
 
   def update
+    if @user != current_user
+      flash.now[:alert] = 'Not able to edit other\'s profile!'
+      redirect_back(fallback_location: root_path)
+    end
+
+    if @user.update(user_params)
+      flash[:notice] = "User porfile was successfully update"
+      redirect_to edit_user_path(current_user)
+    else
+      flash.now[:alert] = 'Update failed!'
+      redirect_to edit_user_path(current_user)
+    end
   end
 
   def followings
@@ -30,6 +42,10 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(:name, :introduction, :avatar)
   end
 
 end
