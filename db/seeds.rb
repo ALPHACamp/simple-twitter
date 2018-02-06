@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 #Default user: admin and guest
 User.create(
-  email: "admin@admin.com",
+  email: "admin@mail.co",
   name: "=BOSS=",
   password: "000000",
   introduction: "Who's your daddy!",
