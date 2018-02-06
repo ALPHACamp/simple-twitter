@@ -1,1 +1,4 @@
-$("#replies").append("<%= j( render partial: "shared/msg", locals: { msg: @reply, msg_content: @reply.comment, msg_btn: false }) %>")
+$("#replies").children().remove()
+<% @replies.each do |reply| %>
+  $("#replies").append("<%= j (render partial: "shared/msg", locals: { msg: reply, msg_content: reply.comment, msg_btn: false }) %>")
+<% end %>

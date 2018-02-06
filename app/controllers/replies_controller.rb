@@ -10,6 +10,7 @@ class RepliesController < ApplicationController
     @tweet = Tweet.find(params[:tweet_id])
     @reply = @tweet.replies.build(comment: reply_params[:comment], user: current_user)
     if @reply.save
+      @replies = @tweet.replies.all
       # redirect_to tweet_replies_path(@tweet), notice: "reply success"
     else
       flash[:alert] = @reply.errors.full_messages.to_sentence
