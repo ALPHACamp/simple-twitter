@@ -3,7 +3,7 @@ class Followship < ApplicationRecord
 
   # 一個followship屬於一個user
   belongs_to :user
-  # 一個followsip屬於一個following關係
+  # 一個followsip屬於另一個被follow的iser
   belongs_to :following, class_name: "User"
 
 end

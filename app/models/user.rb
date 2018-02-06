@@ -20,7 +20,7 @@ class User < ApplicationRecord
 
   # 一個user可以主動擁有很多個followship
   has_many :followships, dependent: :destroy
-  # 一個user可以被動成為其他user的followship
+  # 透過followship，一個user可以follow很多其他user
   has_many :followings, through: :followships
 
 
