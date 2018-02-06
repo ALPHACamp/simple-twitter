@@ -1,0 +1,28 @@
+
+.tweet-item {
+  padding: 4px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow-y: hidden;
+  height: 320px;
+  // .picture {
+  //   max-height: 180px;
+  //   width: 100%;
+  // }
+}
+
+.tweet-item img {
+  max-height: 100px;
+  width: 100px;
+}
+
+.tweet-item .caption {
+  > h3 {
+    margin-top: 5px;
+  }
+  padding: 0 5px 0 10px;
+  .description {
+    padding-top: 5px;
+  }
+}

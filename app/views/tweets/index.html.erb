@@ -14,52 +14,32 @@
         </div>
         <% end %>
       </div>
-      <div class="col-md-12">
-        <!-- 新增的評論 -->
-        <%= form_for [@user,@tweet] do |f| %>
-        <div class="form-group">
-          <%= f.text_area :description, placeholder: "留個言吧", class: "form-control" %>
+      <% @tweets.each do |tweet| %>
+        <div class="col-md-12">
+          <div class="tweet-item">
+            <%= image_tag tweet.user.avatar , size: "100", class: "img-responsive center-block" if tweet.user.avatar?%>
+            <p class="description"><%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></p>
+            
+            <p class="description"><%= tweet.user.name  %></p>
+            <p class="description"><%= tweet.user.name %></p>
+          </div>
         </div>
-        <div class="form-group">
-          <%= f.submit "Tweet" ,class: "btn btn-primary" %>
-        </div>
-        <% end %>
-      </div>
-      <div class="col-md-12">
-        <!-- 新增的評論 -->
-        <%= form_for [@user,@tweet] do |f| %>
-        <div class="form-group">
-          <%= f.text_area :description, placeholder: "留個言吧", class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.submit "Tweet" ,class: "btn btn-primary" %>
-        </div>
-        <% end %>
-      </div>
-      <div class="col-md-12">
-        <!-- 新增的評論 -->
-        <%= form_for [@user,@tweet] do |f| %>
-        <div class="form-group">
-          <%= f.text_area :description, placeholder: "留個言吧", class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.submit "Tweet" ,class: "btn btn-primary" %>
-        </div>
-        <% end %>
-      </div>        
+      <% end %>
+    
     </div>
     <div class="col-md-6">
-      <%= form_for [@user,@tweet] do |f| %>
-      <div class="form-group">
-        <%= f.text_area :description, placeholder: "留個言吧", class: "form-control" %>
+      <div class="row">
+       <div class="col-md-12">
+        <%= form_for [@user,@tweet] do |f| %>
+          <div class="form-group">
+            <%= f.text_area :description, placeholder: "留個言吧", class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.submit "Tweet" ,class: "btn btn-primary" %>
+          </div>
+        <% end %>
+       </div>
       </div>
-      <div class="form-group">
-        <%= f.submit "Tweet" ,class: "btn btn-primary" %>
-      </div>
-      <% end %>
     </div>
-
-
-
   </div>
 </div>
