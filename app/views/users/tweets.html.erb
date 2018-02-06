@@ -1,0 +1,15 @@
+
+  
+  <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
+  <%= @user.name %>
+  <%= @user.introduction %>
+  <%= link_to 'Edit Profile', edit_user_path %>
+  
+  <ul>
+  <% @tweets.each do |tweet|%>
+  <li>
+  Name: <%= tweet.user.name %> <br>
+  Tweets: <%= tweet.description %> <br>
+  </li>
+  <% end %>
+  </ul>
