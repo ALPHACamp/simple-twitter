@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   def tweets
     @user = User.find(params[:id])
     @tweets = @user.tweets.order('created_at DESC')
+    #@following_count =
+    #@follower_count =
   end
 
   def edit

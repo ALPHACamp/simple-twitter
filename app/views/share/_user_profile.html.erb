@@ -15,16 +15,16 @@
     </div>
     <hr>
     <div class="center">
-      <%= link_to "Tweets", tweets_user_path(obj) %>
+      <%= link_to "Tweets  [#{obj.tweets.count}]", tweets_user_path(obj) %>
     </div>
     <div class="center">
-      <%= link_to "Followings", followings_user_path(obj) %>
+      <%= link_to "Followings  [#{obj.followings.count}]", followings_user_path(obj) %>
     </div>
     <div class="center">
-      <%= link_to "Followers", followers_user_path(obj) %>
+      <%= link_to "Followers  [#{obj.followers.count}]", followers_user_path(obj) %>
     </div>
     <div class="center">
-      <%= link_to "Like", likes_user_path(obj) %>
+      <%= link_to "Like  [#{obj.likes.count}]", likes_user_path(obj) %>
     </div>
     <br>
     <% if obj == current_user %>
