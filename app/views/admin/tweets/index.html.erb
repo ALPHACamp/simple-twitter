@@ -29,6 +29,16 @@
             Reply <span class="badge badge-pill badge-primary"><%= tweet.replies_count %></span>
           <% end %>
          
+           <!-- like action button -->
+          <% if tweet.is_liked?(current_user) %>
+            <%= link_to unlike_tweet_path(tweet), method: :post, class: "btn btn-primary" do %>
+              Like <span class="badge badge-pill badge-light"><%= tweet.likes_count %></span>
+            <% end %> 
+          <% else %> 
+            <%= link_to like_tweet_path(tweet), method: :post, class: "btn btn-outline-primary" do %>
+              Like <span class="badge-pill badge-primary"><%= tweet.likes_count %></span>
+            <% end %> 
+          <% end %>
         </td>
         <td></td>
         <td>

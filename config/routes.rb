@@ -7,6 +7,11 @@ Rails.application.routes.draw do
 
   resources :tweets, only: [:index, :create, :show] do
     resources :replies, only: [:index, :create] #使用者能回覆別人的推播    
+
+    member do
+      post :like
+      post :unlike
+    end  
   end
   
   # user可 建立/刪除 追蹤其他user
