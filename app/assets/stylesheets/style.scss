@@ -1,0 +1,60 @@
+.nav-pills-center {
+  text-align: center;
+}
+
+.nav-pills-center > li {
+  float: none;
+  display: inline-block;
+}
+
+.restaurant-item {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 4px;
+  margin-bottom: 20px;
+}
+
+.restaurant-item img {
+  max-height: 180px;
+  width: 100%;
+}
+
+.restaurant-item .caption {
+  padding: 10px;
+}
+
+.edit_user img {
+  width: 50px;
+  margin: 10px;
+}
+
+.my-restaurant {
+  display: inline-block;
+  text-align: center;
+  padding: 7px 7px 0 7px;
+}
+
+.my-restaurant > div {
+  height: 60px;
+}
+
+.my-restaurant img {
+  max-height: 100%;
+}
+
+.panel a:hover .my-restaurant {
+  background-color: #eee;
+}
+
+.ranking-item {
+  margin-bottom: 15px;
+}
+
+.user-item {
+  margin-bottom: 15px;
+}
+
+.user-item img {
+  width: 128px;
+  height: 128px;
+}
