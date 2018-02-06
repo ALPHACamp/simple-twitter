@@ -4,7 +4,7 @@ class RepliesController < ApplicationController
   	@tweet = Tweet.find(params[:tweet_id])
   	@user = @tweet.user
   	@reply = Reply.new
-  	@replies = Reply.where('tweet_id' => params[:tweet_id])
+  	@replies = Reply.where('tweet_id' => params[:tweet_id]).order(created_at: :desc)
   end
 
   def create

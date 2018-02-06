@@ -2,13 +2,14 @@
 -v 使用者能創建帳號、登入、登出
 -v 除了信箱和密碼，使用者在註冊時還能設定自己的名稱
 -v 使用者的名稱不能重覆，若有重覆會跳出錯誤
-    -+ 讓錯誤訊息變成flash error message (https://stackoverflow.com/questions/28963891/replace-devise-error-messages-with-flash-messages)
+    + 讓錯誤訊息變成flash error message (https://stackoverflow.com/questions/28963891/replace-devise-error-messages-with-flash-messages)
 -v 使用者能編輯自己的名稱、介紹和大頭照
 -v 使用者能瀏覽所有的推播 (tweet)
 - 使用者能在首頁看見跟隨者 (followers) 數量排列前 10 的使用者推薦名單
 - 點擊其他使用者的名稱時，能瀏覽該使用者的個人資料及推播
 -v 使用者能新增推播（限制在 140 字裡）
 - 使用者能回覆別人的推播
+    + tweet reply order by created_at 
 - 使用者可以追蹤/取消追蹤其他使用者（不能追蹤自己）
 - 使用者能對別人的推播按 Like/Unlike
 - 任何登入使用者都可以瀏覽特定使用者的以下資料：
