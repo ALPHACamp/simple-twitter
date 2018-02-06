@@ -116,11 +116,14 @@
 	position: absolute;
 	width: 75%;
 	right: 5px;
+	.kar{
+		text-align: center;
+	}
 	.tweet{
 		border: 2px solid rgb(129, 129, 151);
 		padding: 10px;
 		margin-top: 10px;
-		height: 160px;
+		height: 180px;
 		.avatar{
 			// border: 1px solid rgb(1, 1, 3);
 			float: left;

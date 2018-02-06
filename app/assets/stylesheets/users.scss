@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.tweet-detial{
+.like-detial{
   top: 0;
 	// border: 1px solid rgb(1, 1, 3);
 	position: absolute;
@@ -10,5 +10,29 @@
 	right: 5px;
 	.kar{
 		text-align: center;
+	}
+	.tweet{
+		border: 2px solid rgb(129, 129, 151);
+		padding: 10px;
+		margin-top: 10px;
+		height: 180px;
+		.avatar{
+			// border: 1px solid rgb(1, 1, 3);
+			float: left;
+			height: 12%;
+			width: 12%;
+		}
+		.context{
+			// border: 1px solid rgb(1, 1, 3);
+			margin-top: 3px;
+			width: 87%;
+			float: right;
+			padding-left: 10px;
+			overflow: hidden;
+  		text-overflow: ellipsis;
+		}
+		.likes{
+			color: rgb(216, 37, 37);
+		}
 	}
 }

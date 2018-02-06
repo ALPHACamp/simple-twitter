@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :fetch_user, only: [:show, :update, :tweets]
+  before_action :fetch_user, only: [:show, :update, :tweets, :followings, :followers, :likes]
 
   def tweets
     @tweets = @user.tweets.user_tweets.page(params[:page]).per(7)
@@ -16,15 +16,15 @@ class UsersController < ApplicationController
 	end
 
   def followings
-    @followings # 基於測試規格，必須講定變數名稱
+    @followings = @user.followings.order(created_at: :desc).page(params[:page]).per(8)
   end
 
   def followers
-    @followers # 基於測試規格，必須講定變數名稱
+    @followers = @user.followers.order(created_at: :desc).page(params[:page]).per(8)
   end
 
   def likes
-    @likes # 基於測試規格，必須講定變數名稱
+    @likes = @user.likes.order(created_at: :desc).page(params[:page]).per(7)
   end
 
   private
