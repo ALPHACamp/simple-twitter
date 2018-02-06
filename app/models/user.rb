@@ -39,6 +39,11 @@ class User < ApplicationRecord
   def following?(user)
     self.followings.include?(user)
   end
+  def following_date(user)
+    if self.following?(user)
+      self.followships.where(following_id: user.id)[0].created_at
+    end
+  end
 
 
 end

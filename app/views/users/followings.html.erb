@@ -10,6 +10,13 @@
   <div class="col-sm-9">
     <!-- userlist wall-->
     <h2>Following</h2>
+    <% @followings.each do |following|%>
+      <p>
+        name: <%=following.name%> <br>
+        follwing date: <%= @user.following_date(following) %>
+      </p>
+      <hr>
+    <%end%>
     <%= render partial: "common/userlistwall", locals:{users: @followings} %>
   </div>
 
