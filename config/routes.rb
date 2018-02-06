@@ -6,12 +6,18 @@ Rails.application.routes.draw do
   root "tweets#index"
   resources :tweets, only: [:index, :create] do
     resources :replies, only: [:index, :create]
+
+    member do
+      post :like
+      post :unlike
+    end
   end
   resources :users, only: [:edit, :update] do
     member do
       get :tweets
       get :followings
       get :followers
+      get :likes
     end
   end
   resources :followships, only: [:create, :destroy]
