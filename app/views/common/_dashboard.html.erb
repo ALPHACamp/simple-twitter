@@ -1,5 +1,5 @@
   <!-- dashboard start-->
-    <div class="dashboard u-showborder">
+    <div class="dashboard ">
 
       <!-- dashboardProfile field start -->
       <div class="dashboardProfile">
@@ -42,7 +42,7 @@
 
         <!-- if current_user,  show edit button , or follow -->
         <% if user == current_user %>
-        <div class="dashboardContorl-edit"><%= link_to "edit profile", edit_user_path(user), class: "btn btn-primary"%></div> 
+        <div class="dashboardContorl-edit"><%= link_to "Edit Profile", edit_user_path(user), class: "btn btn-primary "%></div> 
         <%else%>
           <div class="dashboardContorl-follow">
             <!-- follow partial -->

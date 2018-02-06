@@ -19,10 +19,12 @@
       <%= render partial: "common/reply_item", locals:{reply: reply}%>
     <%end%>
     <!-- reply form -->
-    <%=simple_form_for @reply ,url: tweet_replies_path(@tweet) do |f|%>
-      <%= f.input :comment, label: false, placeholder:"leave your comment"%>
-      <%= f.button :submit, 'Reply', class:"btn btn-primary" %>
-    <%end%>
+    <div class="reply_form">
+      <%=simple_form_for @reply ,url: tweet_replies_path(@tweet) do |f|%>
+        <%= f.input :comment, label: false, placeholder:"leave your comment"%>
+        <%= f.button :submit, 'Reply', class:"btn btn-primary btn-size-1 u-floatright" %>
+      <%end%>
+    </div>
   </div>
 
 </div>

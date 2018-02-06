@@ -1,9 +1,9 @@
 <div class="container">
   <div class="col-sm-7">
-    <div class="tweet-input">
+    <div class="tweet-input clearfix u-margin-top-40px">
       <%=simple_form_for @tweet do |f|%>
         <%= f.input :description,label: false ,placeholder:"whats on yout mind"%>
-        <%= f.button :submit, 'Tweet',class:"btn btn-primary"%>
+        <%= f.button :submit, 'Tweet',class:"btn btn-primary btn-size-1 u-floatright"%>
       <%end%>
     </div>
     <hr>

@@ -6,8 +6,8 @@
       <%= image_tag @user.avatar, class: "img-responsive img-rounded"%>
       <%= f.input :avatar,as: :file, label: false ,input_html:{class: 'u-padding-top-10px'}%></div>
     <div class="col-xs-8">  
-      <%= f.input :name,label:'名字', input_html:{class: 'form-control'} %>
-      <%= f.input :introduction,label:'關於我',input_html:{class: 'form-control'}%>
+      <%= f.input :name,placeholder:'your name',label:'名字', input_html:{class: 'form-control'} %>
+      <%= f.input :introduction,laceholder:'Type something about you here...',label:'關於我',input_html:{class: 'form-control'}%>
       <%= f.button :submit,'更新個人資料', class: 'btn btn-primary u-floatright' %>
     </div> 
   <%end%>

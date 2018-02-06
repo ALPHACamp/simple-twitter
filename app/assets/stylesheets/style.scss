@@ -1,9 +1,24 @@
+a:link{
+  text-decoration: none
+}
+.btn {
+  transition: 0.5s all;
+}
+.btn.btn-size-1{
+  width: 82px
+}
+.btn.btn-size-max{
+  width: 100%
+}
 /* utility */
 .u-padding-top-40px{
   padding-top: 40px;
 }
 .u-padding-top-10px{
   padding-top: 10px;
+}
+.u-margin-top-10px{
+  margin-top: 10px;
 }
 .u-margin-top-40px{
   margin-top: 40px;
@@ -19,6 +34,10 @@
 .u-floatright{
   float: right;
 }
+.u-fontsize-20{
+  font-size: 20px;
+}
+
 .inset {
   width: 40px;
   height: 40px;
@@ -55,6 +74,9 @@
   resize: none;
 
 }
+.reply_form{
+  margin-top: 20px;
+}
 #user_introduction{
   height: 100px;
   font-size: 18px;
@@ -81,12 +103,13 @@
 }
 /* rely item */
 .reply-item{
-  border: 1px solid #e7e7e7;
+  /* border: 1px solid #e7e7e7; */
   margin-top: 5px;
   padding: 10px;
   word-wrap:break-word;
   position: relative;
   width: 100%;
+  background-color: #f5f5f5;
 }
 .reply-info{
   font-size: 14px;
@@ -103,8 +126,8 @@
 
 /* dashboard */
 .dashboard{
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .dashboardProfile-userfield{
@@ -121,11 +144,48 @@
 .dashboardProfile-userintro{
   font-size: 16px;
 }
+.dashboardProfile-statelist{
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.dashboardProfile-statelist a{
+  color: #808080;
+}
+.dashboardProfile-statelist a:hover{
+  color: #404040;
+}
+.dashboardContorl a.btn{
+  font-size: 20px;
+  width: 100%;
+}
+
+
 
 /* userlist wall */
 .userListItem-name{
-  color: #337ab7;
+
 }
 .userListItem-intro{
-  color:#aaaaaa
+  color:#aaaaaa;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 80px;
+  margin-bottom: 10px;
+  display: -webkit-box;
+-webkit-line-clamp: 4;
+-webkit-box-orient: vertical;
+}
+.userListItem{
+  border: 1px solid #eeeeee;
+  padding: 5px;
+  margin-bottom:5px;
+  height: 180px
+}
+
+a.like_link{
+  color: red;
+}
+a.like_link:hover{
+  color:#a51212;
 }

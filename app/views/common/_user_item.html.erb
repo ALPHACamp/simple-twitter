@@ -1,8 +1,14 @@
-<div class="user_item clearfix">
-<div class="col-xs-4"><%= image_tag user.avatar, class:"img-responsive" %></div>
+<div class="userListItem clearfix">
+<div class="col-xs-4"><%= image_tag user.avatar, class:"img-responsive u-margin-top-10px" %></div>
   <div class="col-xs-8">
-    <h4 class="userListItem-name">@<%= user.name %></h4> 
-    <p class="userListItem-intro"><%= user.introduction %></p> 
-    <%= render partial: "common/follow" ,locals:{user:user}%>
+    <%= link_to tweets_user_path(user) do%>
+    <h4 class="userListItem-name"> 
+      @<%= user.name %>
+    </h4> 
+    <%end%>
+    <div class="userListItem-intro"><%= user.introduction %></div> 
+    <div class= "u-floatright">
+      <%= render partial: "common/follow" ,locals:{user:user}%>
+    </div>
   </div>
 </div>
