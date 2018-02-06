@@ -5,12 +5,12 @@
     </div>
     <div class="col-md-8 row">
       <% @followers.each do |follower| %>                        
-         <div class="col-md-5 col-md-offset-1 well row" style="height: 100%"> 
+        <div class="col-md-5 col-md-offset-1 well row" style="height: 100%"> 
           <div class="col-md-4">
             <%= image_tag(follower.user.avatar, :class => 'img-resposive', :width => '100%') %>                
           </div>                    
           <div class="col-md-8">
-            <p><%= follower.user.name %></p>
+            <p><%= link_to follower.user.name, tweets_user_path(follower.user.id) %></p>
             <p>
               <%= truncate(follower.user.introduction, length: 30) %>
             </p>              
