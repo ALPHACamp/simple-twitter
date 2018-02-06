@@ -14,8 +14,9 @@ class UsersController < ApplicationController
       redirect_to session.delete(:return_to)
       flash[:notice] = "User profile was successfully updated"
     else
+      
+      flash[:alert] = @user.errors.full_messages.to_sentence
       render :edit
-      flash[:alert] = "User profile was failed to update"
     end
   end
 

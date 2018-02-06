@@ -19,7 +19,8 @@
         <% end %>
       </h4>
       
-      <p><%= truncate(tweet.description, length: 200)%></p>
+      <%= truncate(simple_format(tweet.description), length: 200)%>
+      
       <%= link_to "Reply(#{tweet.replies_count})" ,tweet_replies_path(tweet) %>
       <% if tweet.is_like?(current_user)%>
         <%= link_to unlike_tweet_path(tweet) ,method: :post do%>
