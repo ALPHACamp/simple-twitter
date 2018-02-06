@@ -24,8 +24,7 @@
           <p class="text-muted"><em><%= tweet.created_at.to_s(:db) %></em></p>
           <p><%= simple_format tweet.description %></p>
           <%= link_to 'Reply('+tweet.replies.length.to_s+')', tweet_replies_path(tweet) %>
-          <%= link_to 'like', like_tweet_path(tweet), method: :post, class: "btn btn-primary" %>
-<%= link_to 'Unlike', unlike_tweet_path(tweet), method: :post, class: "btn btn-info" %>
+          <%= render partial: "shared/like", locals: {tweet: tweet} %>
         </div>
       </div>
     <% end %>

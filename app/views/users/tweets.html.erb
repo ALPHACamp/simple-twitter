@@ -29,6 +29,7 @@
           <p class="text-muted"><em><%= tweet.created_at.to_s(:db) %></em></p>
           <p><%= simple_format tweet.description %></p>
           <%= link_to 'Reply('+tweet.replies.length.to_s+')', tweet_replies_path(tweet) %>
+          <%= render partial: "shared/like", locals: {tweet: tweet} %>
         </div>
       </div>
     <% end %>
