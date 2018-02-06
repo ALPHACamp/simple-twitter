@@ -15,5 +15,4 @@ Some commands you should do:
 
 * rails db:seed
 
-* ...
 ```
