@@ -1,6 +1,8 @@
 // Place all the styles related to the followships controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*follow button*////////////////////////////////////////////
 .follow, .unfollow, .edit-user, .reply-btn {
   background-color: #87CEFA;
   color: #444444;
@@ -20,3 +22,5 @@
 .edit-user {
   max-width: 100px;
 }
+
+/*following and follower*/////////////////////////////////////////////////////////

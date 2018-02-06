@@ -1,5 +1,14 @@
-<h1>Likes</h1>
+<div class="show-user-profile-page">
+  <div class="user-profile">
+    <%= render partial: "shared/profile", locals: { user: @user } %>
+  </div>
 
-<% @likes.each do |like| %>
-  <%= render partial: "shared/tweets", locals: { tweet: like.tweet } %>
-<% end %>
+  <div>
+    <h3>Like</h3>
+    <% @likes.each do |like| %>
+      <div class="tweet-box">
+        <%= render partial: "shared/tweets", locals: { tweet: like.tweet } %>
+      </div>
+    <% end %>
+  </div>
+</div>
