@@ -65,7 +65,9 @@ namespace :dev do
     500.times do
       user = User.all.sample
       tweet = Tweet.all.sample
-      tweet.likes.create(user: user)
+      unless tweet.likes.create(user: user)
+        return
+      end
     end
     puts "create fake likes"
   end
@@ -74,12 +76,14 @@ namespace :dev do
     Followship.destroy_all
 
     User.all.each do |user|
-      followings = User.all.sample(rand(1..20))
+      followings = User.all.sample(rand(2..20))
+      if followings.include?(user)
+        followings.delete(user)
+      end
       for following in followings
         user.followships.create!(following: following)
       end
     end
     puts "create fake_follow"
   end
-
 end
