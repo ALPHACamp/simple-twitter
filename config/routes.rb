@@ -6,40 +6,40 @@ Rails.application.routes.draw do
 
      root "tweets#index"
 
-     authenticated :user do
-        root to: "tweets#index"
-      end
-      unauthenticated :user do
-        root 'static_pages#index'
-      end
 
-      resources :tweets, except: [:new, :edit] do
+
+      resources :tweets, only: [:index, :create, :show, :edit, :update, :destroy] do
+        resources :replies, only: [:create, :edit, :update, :destroy]
         member do
-          post :reply
+          post :like
+          post :unlike
         end
       end
-      resources :users, except: [:new, :create] do
+
+      resources :users, only: [:index, :show, :edit, :update, :destroy] do
         member do
-          get 'followers'
-          get 'followings'
+          get 'tweets'
           get 'likes'
           get 'replies'
+
+          get 'followings'
+          get 'followers'
         end
       end
 
       resources :followships, only: [:create, :destroy]
       resources :likes, only: [:create, :destroy]
-      resources :replies, only: [:create, :destroy]
-      # resources :find_friends, only: :index
+      resources :replies, only: [:create, :edit, :destroy]
+
 
 
 
 
 
      namespace :admin do
-       resources :tweets
+       resources :tweets, only: [:index, :destroy]
        resources :users
        root "tweets#index"
-  end
+     end
 
 end
