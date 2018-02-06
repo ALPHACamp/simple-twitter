@@ -11,7 +11,7 @@ class TweetsController < ApplicationController
     @tweet = current_user.tweets.build(tweet_params)
     @tweet.save
     flash[:notice] = "成功新增"
-    redirect_to root_path
+    redirect_to tweets_path
   end
 
   def like
