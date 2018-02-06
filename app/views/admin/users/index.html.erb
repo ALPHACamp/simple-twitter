@@ -1,0 +1,30 @@
+<div class="row justify-content-md-center">
+  <div class="col-md-8">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">User ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Tweet</th>
+          <th scope="col">Following</th>
+          <th scope="col">Follower</th>
+          <th scope="col">Likes</th>
+          <th scope="col">Liked</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <th scope="row"><%= user.id %></th>
+            <td><%= link_to user.name, tweets_user_path(user) %></td>
+            <td><%= link_to user.tweets.count, tweets_user_path(user) %></td>
+            <td><%= link_to user.followings.count, followings_user_path(user) %></td>
+            <td><%= link_to user.followers_count, followers_user_path(user)%></td>
+            <td><%= link_to user.liked_tweets.count, likes_user_path(user) %></td>
+            <td><%= user.liked_tweets_count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
