@@ -8,11 +8,14 @@ class TweetsController < ApplicationController
 
   def create
     @tweet = current_user.tweets.build(tweet_params)
-    if @tweet.save
-      # redirect_to tweets_path
-    else
-      flash[:alert] = @tweet.errors.full_messages.to_sentence
-      # redirect_to tweets_path
+    respond_to do |format|
+      if @tweet.save
+        format.js
+        # redirect_to tweets_path
+      else
+        flash[:alert] = @tweet.errors.full_messages.to_sentence
+        format.html {redirect_to tweets_path}
+      end
     end
   end
 
