@@ -7,7 +7,7 @@
               <div class="card-pic-width">
                 <div class="card-pic-height">
                   <div class="card-pic-position">
-                    <img src="<%= t.user.avatar %>" alt="" class="card-picture">
+                    <%= image_tag(t.user.avatar, {onerror:"this.src='/man.jpg';", class:"card-picture"}) %>
                   </div>
                 </div>
               </div>
