@@ -18,7 +18,7 @@
         <%= tweet.description %>
       </div>
       <div class="row">
-        <%= link_to "Reply", tweet_replies_path(tweet.id) %>
+        <%= link_to "Reply", tweet_replies_path(tweet.id), class: "my-btn btn btn-xs btn-primary" %>
         <%= render partial: "share/like", locals: {tweet: tweet} %>
       </div>
     </div>

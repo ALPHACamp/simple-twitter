@@ -26,7 +26,15 @@
     <div class="center">
       <%= link_to "Like", likes_user_path(obj) %>
     </div>
-    <div class="center">
-      <%= link_to "Edit profile", edit_user_path(obj) %>
-    </div>
+    <br>
+    <% if obj == current_user %>
+      <div class="center">
+        <%= link_to "Edit profile", edit_user_path(obj), class: "my-btn btn btn-md btn-primary" %>
+      </div>
+    <% else %>
+      <div class="center">
+            <%= link_to 'Follow', followships_path(following_id: obj), class: "my-btn btn btn-md btn-primary", method: :post %>
+      </div>
+    <% end %>
+
   </div>
