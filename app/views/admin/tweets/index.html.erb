@@ -1,5 +1,5 @@
 <div class="row justify-content-md-center mb-3">
-  <div class="col-md-8">
+  <div class="col-lg-8">
     <ul class="nav nav-tabs">
       <li class="nav-item">
         <%= link_to "User List", admin_users_path, class: "nav-link" %>
@@ -11,7 +11,44 @@
   </div>
 </div>
 <div class="row justify-content-md-center">
-  <div class="col-md-8">
-    tweet index
+  <div class="col-lg-8">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Description</th>
+          <th scope="col">Author</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tweets.each do |tweet| %>
+          <tr class="table-secondary">
+            <th scope="row"><%= link_to tweet.id, tweet_replies_path(tweet) %></th>
+            <td><%= tweet.description %></td>
+            <td><%= link_to tweet.user.name, tweets_user_path(tweet.user) %></td>
+            <td> <%= link_to "Delete", admin_tweet_path(tweet), method: :delete %> </td>
+          </tr>
+          <% if tweet.replies.present? %>
+            <tr>
+              <th></th>
+              <td colspan="2">
+                <% tweet.replies.each do |reply| %>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><%= truncate reply.comment, length: 50  %> <%= link_to "@"+reply.user.name, tweets_user_path(tweet.user) %></li>
+                  </ul>
+                <% end %>
+              </td>
+            </tr>
+          <% else %>
+            <tr>
+              <th></th>
+              <td colspan="3">No reply</td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+
   </div>
 </div>
