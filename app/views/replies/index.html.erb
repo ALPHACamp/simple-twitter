@@ -10,6 +10,7 @@
   <li>
   Name: <%= @tweet.user.name %> <br>
   Tweets: <%= @tweet.description %> <br>
+  <%= "Reply(#{@tweet.replies_count})" %>
   </li>
   </ul>
 
@@ -18,6 +19,8 @@
     <%= reply.user.name %>
     <%= simple_format(reply.comment) %>
   <% end %>
+
+
 
   <%= form_for [@tweet, @reply] do |f| %>
     <%= f.text_area :comment %>

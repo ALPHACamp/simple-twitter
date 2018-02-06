@@ -1,9 +1,10 @@
 
   
-  <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
+  <img src="http://via.placeholder.com/150x150" class="img-responsive img-rounded">
   <%= @user.name %>
   <%= @user.introduction %>
   <%= link_to 'Edit Profile', edit_user_path %>
+  <%= link_to "Tweets(#{@user.tweets.count})", tweets_user_path(@user) %>
   
   <ul>
   <% @tweets.each do |tweet|%>
@@ -12,4 +13,4 @@
   Tweets: <%= tweet.description %> <br>
   </li>
   <% end %>
-  </ul>
+ .count
