@@ -51,12 +51,6 @@ body {
  height:50px;
 }
 
-h3,h4,h5 { 
- border:0 solid #efefef; 
- border-bottom-width:1px;
- padding-bottom:10px;
-}
-
 hr {border-color:#ececec;margin-top: 10px;margin-bottom: 10px;}
 
 .navbar{
@@ -78,4 +72,76 @@ hr {border-color:#ececec;margin-top: 10px;margin-bottom: 10px;}
 
 .margin-10-10{
   margin: 10px 10px;
+}
+
+.tweeter-name{
+  margin-left: 60px;
+  display: inline-block;
+}
+ 
+.tweeter-name h5{
+  margin-bottom: 0;
+}
+ 
+.tweet-avatar{
+  width:50.67px;
+  position: absolute;
+  top:15px;
+  left: 20px;
+  z-index: 1;
+}
+ 
+.profile-block-avatar{
+  position: absolute;
+  top:20px;
+  left: 20px;
+  width:27%;
+  display: inline-block;
+}
+ 
+.card-pic-width{
+  width: 100%;
+  overflow: hidden;
+}
+ 
+.card-pic-height{
+  padding-top: 75%;
+  overflow: hidden;
+}
+ 
+.card-pic-position{
+  width: 100%;
+  height:100%;
+  position: absolute;
+  top:0;
+  left: 0;
+}
+ 
+.card-picture{
+  width: 100%;
+  height:100%;
+  object-fit: cover;
+}
+ 
+.card-text{
+  font-size: 16px;
+  padding: 0 10px;
+}
+ 
+.card-text p{
+  margin-bottom: 0;
+}
+ 
+.card-description{
+  width: 68%;
+  display: inline-block;
+  padding: 0 5px;
+}
+ 
+.text-align-right{
+  text-align: right!important;
+}
+ 
+.text-align-left{
+  text-align: left!important;
 }

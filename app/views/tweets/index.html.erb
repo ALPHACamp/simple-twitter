@@ -12,29 +12,7 @@
           </div>
         </div>
 
-        <% @tweets.each do |t| %>
-        <div class="card card-tweet">
-          <div class="card-block">
-            <div class="card-tittle"><p href="#" class="time-log pull-right"><%=time_ago_in_words t.updated_at %> ago</p><h5><%= t.user.name %></h5>
-            </div>
-            <div class="card-text">
-              <p><%= t.description %></p>
-              <hr>
-            </div>
-            <form>
-              <div class="input-group">
-                <a title="按讚"><button class="btn btn-secondary" ><i class="far fa-thumbs-up"></i>(5)</button></a>
-                <button class="btn btn-secondary"><i class="far fa-comment-alt"></i>(5)</button>
-                <button class="btn btn-secondary"><i class="far fa-share-square"></i></button>
-              </div>
-            </form>
-         </div>
-        </div>
-        <%end%>
-
-        <div class="text-center margin-10-10">
-          <%= paginate @tweets, theme: 'twitter-bootstrap-4', window: 2 %>
-        </div>
+        <%= render partial: "manytweets" %>
 
       </div>
 
