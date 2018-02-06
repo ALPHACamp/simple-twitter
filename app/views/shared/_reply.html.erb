@@ -1,0 +1,9 @@
+<div class="reply">
+  <div>
+    <%= image_tag reply.user.avatar, class: "avatar" %>
+  </div>
+	<div class = "context">
+  	<%= link_to "@#{reply.user.name} ,#{reply.created_at.localtime.strftime '%Y-%m-%d %H:%M:%S'}", user_path(reply.user.id) %><br>
+		<%= reply.comment %><br>
+	</div>
+</div>

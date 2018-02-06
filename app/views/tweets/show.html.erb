@@ -1,22 +1,35 @@
-<p>show</p>
-<%= form_for [@tweet, @reply] do |f| %>
-	<div class="field">
-    <%= f.label :comment %><br>
-    <%= f.text_area :comment %>
-  </div>
+<div class="user">
+  <div class="avatar">
+			<%= image_tag @user.avatar, class: "img" %>
+	</div>
+  <h2><%= link_to @user.name, user_path(@user) %></h2>
+  <h4><%= @user.introduction %></h4>
+  <h3><%= "Tweets #{@user.tweets.size}" %></h3>
+  <h3><%= "Followings #{@user.followings.size}" %></h3>
+  <h3><%= "Followers #{@user.followers_count}" %></h3>
+  <h3><%= "Likes #{@user.likes_count}" %></h3>
+  <%= render partial: "shared/editprofile", locals: {user: @user} %>
+</div>
 
-	<div class="actions">
-    <%= f.submit "Reply" %>
+<div class="tweet-detial">
+  <div>
+    <h1>Tweets <%= render partial: "shared/like", locals: {tweet: @tweet} %></h1>
+    <%= render partial: "shared/tweet", locals: {tweet: @tweet} %>
   </div>
-<% end %>
-
-<% @replies.each do |reply| %>
-	<%= link_to reply.user.name, user_path(reply.user.id) %>
-	<%= reply.comment %>
-	<br>
-<% end %>
-<% if @tweet.is_liked?(current_user) %>
-  <%= link_to 'Unlike', unlike_tweet_path(@tweet), method: :post, class: "btn btn-info" %>
-<% else %>
-  <%= link_to 'Like', like_tweet_path(@tweet), method: :post, class: "btn btn-primary" %>
-<% end %>
+  <div>
+    <h1>Replies</h1>
+    <% @replies.each do |reply| %>
+      <%= render partial: "shared/reply", locals: {reply: reply} %>
+    <% end %>
+    <div class = "input">
+  	  <%= form_for [@tweet, @reply] do |f| %>
+  	    <div class="field">
+          <%= f.text_area :comment, placeholder: "What's on your mind?", class: 'input-area' %>
+        </div>
+  	    <div class="actions button">
+          <%= f.submit "Reply", class: "btn btn-primary btn-lg" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

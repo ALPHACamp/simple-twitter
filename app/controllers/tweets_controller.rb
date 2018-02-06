@@ -11,6 +11,7 @@ class TweetsController < ApplicationController
 
   def show
     @tweet = Tweet.find(params[:id])
+    @user = @tweet.user
     @reply = Reply.new
     @replies = Reply.where(tweet_id: @tweet.id)
   end

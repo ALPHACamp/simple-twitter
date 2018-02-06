@@ -10,7 +10,10 @@
 	<% end %>
 </div>
 <div class = "tweet-list">
-	<%= render partial: "shared/tweet" %>
+	<% @tweets.each do |tweet| %>
+		<%= render partial: "shared/tweet", locals: {tweet: tweet} %>
+	<% end %>
+	<div class="kar"><%= paginate @tweets %></div>
 </div>
 <div class = "popular-tweet">
 	<h1>Popular</h1>
