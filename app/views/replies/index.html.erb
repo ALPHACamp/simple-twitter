@@ -1,0 +1,15 @@
+<h1>This is reply index</h1>
+<div class="reply_rigth_top">
+  <%= @tweet.description %>
+  <%= link_to @tweet.user.name, tweets_user_path(@tweet.user) %>
+</div>
+
+<% @replies.each do |reply| %>
+  <%= render :partial => "shared/reply_list", locals:{ reply: reply } %>
+<% end %>
+
+<%= form_for :reply do |reply| %>
+  <%= reply.hidden_field :tweet_id, :value => @tweet.id %>
+  <%= reply.text_field :comment, placeholder: "Comment" %>
+  <%= reply.submit "Comment" %>
+<% end %>

@@ -1,0 +1,21 @@
+<div class="user_header">
+  <%= link_to current_user.name, tweets_user_path(current_user) %>
+</div>
+<div class="user_content_left">
+  <%= @user.name %>
+  <% if current_user == @user %>
+    tweets <%= current_user.tweets.count %>
+    <%= link_to "Followings #{current_user.followings.count}", followings_user_path(current_user) %>
+    <%= link_to "Followers #{current_user.followers.count}", followers_user_path(current_user) %>
+    <%= link_to "Likes #{current_user.likes.count}", likes_user_path(current_user) %>
+  <% else %> 
+    <%= link_to "Follow", followships_path(id:@user), method: :post %>
+  <% end %>
+</div>
+  
+
+<div class="user-tweet">
+  <% @user.tweets.each do |tweet| %>
+    <%= render :partial => "shared/tweet_list", locals: {tweet: tweet} %>
+  <% end %>
+</div>

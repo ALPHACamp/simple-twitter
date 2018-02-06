@@ -1,0 +1,9 @@
+<div id="tweet-<%= tweet.id %>">
+  <h1>
+    <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
+  </h1>
+  <p>
+    <%= tweet.description %>
+    <%=link_to tweet.replies_count, replies_path(tweet) %>
+  </p>
+</div>
