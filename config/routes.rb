@@ -16,9 +16,15 @@ Rails.application.routes.draw do
     
     member do
       get :tweets
+      get :followings
+      get :followers
     end
 
   end
+
+  # 設置followship
+  resources :followships, only: [:create, :destroy]
+
 
   # 設置tweets index作為網站首頁
   root 'tweets#index'
