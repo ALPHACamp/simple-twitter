@@ -13,7 +13,7 @@ img.nav-avatar{
 
 textarea#message {
   resize: none;
-  height: 80px;
+  height: 10em;
   border-width: 2px;
   border-color: rgb(83, 140, 192);
 }
@@ -33,4 +33,16 @@ textarea#message {
   border: 1px solid gray;
   padding: 5px;
   margin-bottom: 5px;
+}
+
+.reply-col > .tweet-box{
+  margin-left: 40px;
+}
+
+.reply-col > .tweet-form{
+  margin-left: 40px;
+}
+
+.reply-col > h1{
+  margin-top: 0;
 }
