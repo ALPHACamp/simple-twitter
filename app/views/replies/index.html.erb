@@ -13,11 +13,11 @@
         <% @replies.each do |reply| %>
           <div class="container-fluid">
             <div class="well row">
-              <div class="col-md-4">    
-                  <%= image_tag(reply.user.avatar, :class => 'img-responsive') %>
+              <div class="col-md-2">    
+                  <%= image_tag(reply.user.avatar, :class => 'img-responsive', :width => '80%') %>
               </div>
-              <div class="col-md-8">
-                <p> <%= reply.user.name %>, <%= reply.created_at.strftime('%F') %>, <%= reply.created_at.strftime('%R') %> </p>
+              <div class="col-md-10">
+                <p> <%= link_to reply.user.name, tweets_user_path(reply.user.id) %>, <%= reply.created_at.strftime('%F') %>, <%= reply.created_at.strftime('%R') %> </p>
                 <p><%= reply.comment %></p>            
               </div>
             </div>  
