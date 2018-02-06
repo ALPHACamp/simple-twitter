@@ -103,6 +103,8 @@ img {
 
 .btn {
 	background-color: #71A5D0;
+	color: #222;
+	letter-spacing: 2px;
 }
 
 .button-group {
@@ -135,41 +137,43 @@ input[type="file"] {
 	user-select: none;
 }
 
-// ===========================================================================
+.tweet-msg {
+	margin-bottom: 15px;
+	padding: 10px;
+	border: 1px solid #aeaeae;
+	border-radius: 5px;
+	p {
+		margin: 15px 0;
+		color: #7D7D7D;
+	}
+	.like {
+		padding: 0 5px;
+		color: #f00;
+	}
+
+	.unlike {
+		padding: 0 5px;
+		color: #0f1;
+	}
+}
+
+ // ===========================================================================
 // index page
+// tweet index
 #index {
 	#tweet_description {
 		height: 100px;
 		padding: 10px;
+		border: 2px solid #A8CDDF;
 	}
 	.title {
 		margin-bottom: 20px;
 		color: #00677E;
 		font-size: 30px;
-		font-weight: 700;
 		text-align: left;
 	}
 	.tweet-form{
 		margin-bottom: 50px;
-	}
-	.tweet-msg {
-		margin-bottom: 15px;
-		padding: 10px;
-		border: 1px solid #aeaeae;
-		border-radius: 5px;
-		p {
-			margin: 15px 0;
-			color: #7D7D7D;
-		}
-		.like {
-			padding: 0 5px;
-			color: #f00;
-		}
-
-		.unlike {
-			padding: 0 5px;
-			color: #0f1;
-		}
 	}
 	.pop-user {
 		margin-bottom: 15px;
@@ -191,11 +195,72 @@ input[type="file"] {
 
 // user edit page
 #user-edit {
+	#user_name {
+		border: 2px solid #A8CDDF;
+	}
 	textarea.form-control {
 	    height: 150px;
+			border: 2px solid #A8CDDF;
 	}
-
 	img {
 		margin-bottom: 30px;
+	}
+}
+
+// replies
+#replies {
+	#reply_comment {
+		height: 100px;
+		padding: 10px;
+		border: 2px solid #A8CDDF;
+	}
+	.col-md-9 {
+		padding-left: 50px;
+	}
+	.name {
+		padding: 10px 0;
+		color: #00677E;
+		font-size: 26px;
+		font-weight: 700;
+		letter-spacing: 2px;
+	}
+	.content {
+		color: #00677E;
+		font-size: 14px;
+	}
+	.info {
+		margin: 10px 0;
+		.count {
+			color: #4B4C4B;
+			line-height: 2;
+			font-size: 22px;
+			letter-spacing: 2px;
+			span {
+				margin-left: 10px;
+			}
+		}
+	}
+	.btn {
+		font-size: 20px;
+	}
+	.title {
+		margin-bottom: 20px;
+		color: #00677E;
+		font-size: 30px;
+		text-align: left;
+		text-transform: capitalize;
+	}
+	.reply-msg {
+		margin-bottom: 15px;
+		padding: 10px;
+		border: 1px solid #aeaeae;
+		border-radius: 5px;
+		p {
+			margin: 15px 0;
+			color: #7D7D7D;
+		}
+	}
+	.reply-form {
+		margin-top: 30px;
 	}
 }
