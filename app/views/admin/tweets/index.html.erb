@@ -29,7 +29,7 @@
             <th scope="row"><%= tweet.id %></th>
             <td>[<%= tweet.user.name %>]</td>
             <td><%= tweet.description %></td>
-            <td>replies not finish</td>
+            <td><%= tweet.replies %></td>
             <td>
               <span><%= link_to '   ', admin_tweet_path(tweet), method: :delete, data: { confirm: "Are you sure?"}, class: "glyphicon glyphicon-trash" %></span>
             </td>

@@ -5,6 +5,6 @@
 
   <div class="col-md-offset-1 col-md-8">
     <h2>Like</h2>
-    <%= render partial: "shared/tweets" %>
+    <%= render "shared/tweets", :tweets => @likes %>
   </div>
 </div>

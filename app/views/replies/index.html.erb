@@ -27,11 +27,13 @@
       <div class="panel-body">
         <div class = "box">
           <% @replies.each do |reply| %>
-          <div class="avatar">
-            <%= image_tag reply.user.avatar, class: "img-responsive img-circle" %>
-          </div>
-          <h4><%= link_to "@#{reply.user.name}, #{reply.created_at}", tweets_user_path(reply.user) %></h4>
-          <h4><%= reply.comment %></h4>
+            <div class="box">
+              <div class="avatar">
+                <%= image_tag reply.user.avatar, class: "img-responsive img-circle" %>
+              </div>
+            <h4><%= link_to "@#{reply.user.name}, #{reply.created_at}", tweets_user_path(reply.user) %></h4>
+            <h4><%= reply.comment %></h4>
+            </div>
           <% end %>
         </div>
         <hr>

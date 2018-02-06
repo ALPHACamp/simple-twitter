@@ -17,10 +17,10 @@
           <tr>
             <th>ID</th>
             <th>User</th>
-            <th>Tweet數量</th>
+            <th>Tweet</th>
             <th>Following</th>
             <th>Follower</th>
-            <th>Like</th>
+            <th>liked</th>
           </tr>
         </thead>
 
@@ -34,7 +34,7 @@
             <td><%= user.tweets.count %></td>
             <td><%= user.followings.count%></td>
             <td><%= user.followers.count %></td>
-            <td><%= user.likes.count %></td>
+            <td><%= user.liked_tweets.count %></td>
           </tr>
           <% end %>
         </tbody>
