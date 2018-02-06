@@ -10,6 +10,7 @@
     <%= link_to "Tweets "+@user.tweets.count.to_s, tweets_user_path(@user) %><br>
     <%= link_to "Following "+@user.followings.count.to_s, followings_user_path(@user) %><br>
     <%= link_to "Follower "+@user.followers.count.to_s, followers_user_path(@user) %><br>
+    <%= link_to "Like "+@user.likes.count.to_s, likes_user_path(@user) %><br>
     <%= render partial: "shared/follow", locals: {user: @user} %>
     <% if current_user == @user %>
       <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-default" %>
@@ -18,7 +19,7 @@
 
   <div class="user-tweet">
     <h3>Following</h3>
-    <% @user.followings.each do |following| %>
+    <% @followings.each do |following| %>
       <div class="following-block">
         <% for img_id in 0..26 %>
           <% if image_path(following.avatar).include?('/user'+img_id.to_s+'.jpg') %>
