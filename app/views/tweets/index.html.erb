@@ -17,8 +17,21 @@
         <% end %>
       </div>
     </div>
-    <div class="col-md-5">   
-
+    <div class="col-md-4">   
+      <h2>Popular</h2>
+      <% @users.each do |user| %>
+        <div class="row well">        
+          <div class="col-md-4">
+            <%= image_tag(user.avatar, :class => 'img-resposive', :width => '100%') %>                
+          </div>                    
+          <div class="col-md-7">
+            <p><%= link_to user.name, tweets_user_path(user.id) %></p>
+            <p><%= truncate(user.introduction, length: 40) %></p>              
+            <%= render partial: "shared/follow", locals: {user: user} %> 
+          </div>
+           
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
