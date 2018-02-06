@@ -1,4 +1,5 @@
 class RepliesController < ApplicationController
+  after_action :update_count , only: :create
 
   def index
     @tweet = Tweet.find(params[:tweet_id])
@@ -19,6 +20,10 @@ class RepliesController < ApplicationController
 
   def reply_params
     params.require(:reply).permit(:comment)
+  end
+
+  def update_count
+    @tweet.update_count
   end
 
 end

@@ -12,4 +12,9 @@ class Tweet < ApplicationRecord
     self.liked_users.include?(user)
   end
 
+  def update_count
+    self.update(replies_count: self.replies.count)
+    self.update(likes_count: self.likes.count)
+  end
+
 end

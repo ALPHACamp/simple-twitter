@@ -1,5 +1,6 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:like ,:unlike]
+  after_action :update_count , only: [:like, :unlike]
 
   def index
     @tweets = Tweet.all
@@ -42,4 +43,7 @@ class TweetsController < ApplicationController
     params.require(:tweet).permit(:description)
   end
 
+  def update_count
+    @tweet.update_count
+  end
 end
