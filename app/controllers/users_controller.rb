@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       redirect_to edit_user_path(current_user)
     else
       flash.now[:alert] = 'Update failed!'
-      redirect_to edit_user_path(current_user)
+      render :edit
     end
   end
 
