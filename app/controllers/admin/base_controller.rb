@@ -4,7 +4,7 @@ class Admin::BaseController < ApplicationController
   private
 
   def authenticate_admin
-    unless current_user.admin
+    unless current_user.admin?
       flash.alert = "此路不通"
       redirect_to root_path
     end
