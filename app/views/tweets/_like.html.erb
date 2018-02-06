@@ -1,0 +1,5 @@
+<%if follow==false%>
+<div title="按讚！"><i class="far fa-thumbs-up"></i><%=user.followers_count%></div>
+<%else%>
+<div title="收回讚"><i class="fas fa-undo"></i><%=user.followers_count%></div>
+<%end%>
