@@ -5,9 +5,15 @@
     <div><%= image_tag (@user.avatar), class: "user-avatar" %></div>
     <h2><%= @user.name %></h2>
     <%= simple_format @user.introduction, style: "color:#4682B4" %>
-    <h3>Tweets <%= @tweets.count %></h3>
-    <h3>Following <%= @followings.count %></h3>
-    <h3>Follower <%= @followers.count %></h3>
+    <h3><%= link_to tweets_user_path(@user) do %>
+          Tweets <%= @tweets.count %>
+        <% end %></h3>
+    <h3><%= link_to followings_user_path(@user) do %>
+          Following <%= @followings.count %>
+        <% end %></h3>
+    <h3><%= link_to followers_user_path(@user) do %>
+          Follower <%= @followers.count %>
+        <% end %></h3>
     <% if @user.email == current_user.email %>
       <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary btn-lg" %>
     <% else %>
@@ -24,7 +30,7 @@
     <% @user.tweets.each do |tweet| %>
       <div class="panel panel-default twpanel">
           <%= image_tag (tweet.user.avatar), class: "usertweet-avatar" %>
-          <h5>@<%= tweet.user.name %>,<%= tweet.created_at.to_date %>,<%= tweet.created_at.strftime("%k:%M") %></h5>
+          <h5>@<%= link_to tweet.user.name, tweets_user_path(@user) %>,<%= tweet.created_at.to_date %>,<%= tweet.created_at.strftime("%k:%M") %></h5>
           <%= simple_format tweet.description, style: "color:#808080" %>     
       </div>
     <% end %>
