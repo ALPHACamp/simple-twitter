@@ -7,6 +7,6 @@
     <li><%= link_to "Tweets #{user.tweets_count}", tweets_user_path(user) %></li>
     <li><%= link_to "Following #{user.followings_count}", followings_user_path(user) %></li>
     <li><%= link_to "Follower #{user.followers_count}", followers_user_path(user) %></li>
-    
+    <li><%= link_to "like #{user.likes_count}", likes_user_path(user) %></li>
   </ul>
 <% end %>

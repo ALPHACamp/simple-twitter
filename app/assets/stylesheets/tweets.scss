@@ -45,10 +45,13 @@
 }
 
 /*recent tweets*////////////////////////////////////////////////////////
-#recent-tweets > div {
+.tweet-box {
   border: 1px #AAAAAA solid;
   border-radius: 7px;
   margin-top: 10px;
+  display: grid;
+  grid-template-columns: 25% 10% 10% 50% 5%;
+  grid-template-rows: 20% 60% 20%;
 }
 
 /*#popular*////////////////////////////////////////////////////////////
@@ -58,4 +61,53 @@
 
 #popular > div {
   border-left: 2px #DDDDDD solid;
+}
+
+/*_tweets*////////////////////////////////////////////////////////////////
+.tweet-box img {
+  grid-column: 1/2;
+  grid-row: 1/-1;
+  margin: 12px 12px;
+}
+
+.tweet-box h4 {
+  grid-column: 2/-1;
+  grid-row: 1/2;
+  height: 25px;
+  margin-bottom: 5px;
+}
+
+.tweet-box h4 a {
+  text-decoration: none;
+}
+
+.tweet-box h4 p {
+  display: inline-block;
+  font-size: 14px;
+}
+
+.tweet-box p {
+  grid-column: 2/-1;
+  grid-row: 2/3;
+}
+
+.tweet-box > a {
+  text-decoration: none;
+}
+
+.tweet-box a:nth-child(5) {
+  color: #FF4500;
+}
+
+.tweet-box a:nth-child(5):hover {
+  color: #B22222;
+}
+
+.tweet-box a:nth-child(6) {
+  grid-column: 5/-1;
+  color: #696969;
+}
+
+.tweet-box a:nth-child(6):hover {
+  color: #C0C0C0;
 }
