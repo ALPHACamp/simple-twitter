@@ -14,9 +14,23 @@ img.nav-avatar{
 textarea#message {
   resize: none;
   height: 80px;
+  border-width: 2px;
+  border-color: rgb(83, 140, 192);
 }
 
 #intro{
   resize: none;
   height: 15em;
+}
+
+.tweet-box {
+  border: 1px solid gray;
+  padding: 5px;
+  margin: 0 0 5px 0;
+}
+
+.user-card {
+  border: 1px solid gray;
+  padding: 5px;
+  margin-bottom: 5px;
 }
