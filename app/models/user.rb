@@ -22,10 +22,19 @@ class User < ApplicationRecord
   has_many :followships, dependent: :destroy
   has_many :followings, through: :followships
   # 使用者被很多使用者追蹤的多對多關聯
-  has_many :inverse_followships, class_name: "Followship", foreign_key: :following_id
-  has_many :followers, through: :inverse_followships, source: :user
+  has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id", dependent: :destroy
+  has_many :followers, through: :inverse_followships, source: :user 
 
   def admin?
     self.role == 'admin'
   end
+
+  def following?(user)
+    self.followings.include?(user)
+  end
+
+  # def count_followers
+  #   self.followers_count = self.followers.count
+  #   self.save
+  # end
 end
