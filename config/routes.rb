@@ -8,13 +8,16 @@ Rails.application.routes.draw do
     resources :replies, only: [:index, :create]
   end
 
-
   resources :users, only: [:edit, :update] do
     #member 用於找單一user的全部tweets
     member do 
       get :tweets
+      get :followings
+      get :followers
     end
   end
+
+  resources :followships, only: [:create, :destroy]
 
   
   # Admin
