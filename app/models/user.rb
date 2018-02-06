@@ -23,20 +23,16 @@ class User < ApplicationRecord
     self.role == "admin"
   end
 
-  def update_follower_count
+  def update_count
+    self.update(tweets_count: self.tweets.count)
     self.update(followers_count: self.followers.count)
+    self.update(followings_count: self.followings.count)
+    self.update(likes_count: self.likes.count)
+    self.update(liked_tweets_count: self.tweets.sum(:likes_count))
   end
 
   def is_following?(user)
     self.followings.include?(user)
-  end
-
-  def liked_tweets_count
-    liked_tweets_count = 0
-    self.tweets.each do |t|
-      liked_tweets_count += t.liked_users.count
-    end
-    liked_tweets_count
   end
 
 end
