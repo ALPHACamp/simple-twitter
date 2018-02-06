@@ -15,9 +15,12 @@ class User < ApplicationRecord
   
 
   has_many :replies
-  has_many :tweets, through: :replies
+  has_many :tweets
 
   has_many :likes
   has_many :liked_tweets, through: :likes, source: :tweet
+
+  has_many :followships
+  has_many :followings, through: :followships
 
 end
