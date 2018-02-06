@@ -17,9 +17,7 @@
           
         <!-- username: 連結位置待設定 -->
         <div class="profile-username text-center">
-          <%= link_to '#info' do  %>
-            <h2><strong><%= content_tag :span, @tweet.user.name %></strong></h2>
-          <% end %>
+          <h2><strong><%= content_tag :span, @tweet.user.name %></strong></h2>
         </div>
 
         <!-- user introduction -->
@@ -88,53 +86,53 @@
 
         <div class="container"><!-- 包住每一條tweet /start -->
 
-            <!-- Left: user avatar / start-->
-            <div class="col-xs-2">
-              <div class="tweetavatar">
-                <% if @tweet.user.avatar? %>
-                  <%= image_tag(@tweet.user.avatar, width: '100', height: '100',class: 'center-block') %>
-                <% else %>
-                  <%= image_tag("http://via.placeholder.com/100x100",class: 'center-block') %>
-                <% end %>
-              </div>
+          <!-- Left: user avatar / start-->
+          <div class="col-xs-2">
+            <div class="tweetavatar">
+              <% if @tweet.user.avatar? %>
+                <%= image_tag(@tweet.user.avatar, width: '100', height: '100',class: 'center-block') %>
+              <% else %>
+                <%= image_tag("http://via.placeholder.com/100x100",class: 'center-block') %>
+              <% end %>
             </div>
-            <!-- Left: user avatar / end-->
+          </div>
+          <!-- Left: user avatar / end-->
+          
+          <!-- Right: user description / start -->
+          <div class="col-xs-10">
             
-            <!-- Right: user description / start -->
-            <div class="col-xs-10">
+            <!-- base info of user and tweet time / start -->
+            <div class="tweetheader">
+              <%= link_to tweets_user_path(@tweet.user) do  %>
+                <strong class="username">@<%= content_tag :span, @tweet.user.name %></strong>
+              <% end %>
               
-              <!-- base info of user and tweet time / start -->
-              <div class="tweetheader">
-                <%= link_to '#info' do  %>
-                  <strong class="username">@<%= content_tag :span, @tweet.user.name %></strong>
-                <% end %>
-                
-                <!-- 判斷tweet時間是否大於24小時，依據結果分別顯示不同表示方式 -->
-                <% if (Time.now - @tweet.created_at) > 86400  %>
-                  <span class="tweettime"><%= @tweet.created_at.localtime.to_s(:db) %></span><br />
-                <% else %>
-                  <span class="tweettime"><%= time_ago_in_words(@tweet.created_at).gsub('about','・') %></span><br />
-                <% end %>
-              </div><!-- base info of user and tweet time / end -->
+              <!-- 判斷tweet時間是否大於24小時，依據結果分別顯示不同表示方式 -->
+              <% if (Time.now - @tweet.created_at) > 86400  %>
+                <span class="tweettime"><%= @tweet.created_at.localtime.to_s(:db) %></span><br />
+              <% else %>
+                <span class="tweettime"><%= time_ago_in_words(@tweet.created_at).gsub('about','・') %></span><br />
+              <% end %>
+            </div><!-- base info of user and tweet time / end -->
 
-              <!-- tweet description -->
-              <div class="tweettext"><%= @tweet.description %></div>
+            <!-- tweet description -->
+            <div class="tweettext"><%= @tweet.description %></div>
 
-              <!-- reply & like link -->
-              <div>
-                <%= link_to replies_path(@tweet), class: "replylink" do %>
-                  Reply <%= content_tag :span, @tweet.replies_count, class: "badge" %>
-                <% end %>
-             
-                <%= link_to '#counts', class: "likelink" do  %>
-                  Like <%= content_tag :span, @tweet.likes_count, class: "badge" %>
-                <% end %>
-              </div>
-
+            <!-- reply & like link -->
+            <div>
+              <%= link_to replies_path(@tweet), class: "replylink" do %>
+                Reply <%= content_tag :span, @tweet.replies_count, class: "badge" %>
+              <% end %>
+           
+              <%= link_to '#counts', class: "likelink" do  %>
+                Like <%= content_tag :span, @tweet.likes_count, class: "badge" %>
+              <% end %>
             </div>
-            <!-- Right: user description / end -->
 
-          </div><!-- 包住每一條tweet /end -->
+          </div>
+          <!-- Right: user description / end -->
+
+        </div><!-- 包住每一條tweet /end -->
         
       </div>
       <!-- tweet /end-->
@@ -169,7 +167,7 @@
                   
                   <!-- base info of user and tweet time / start -->
                   <div class="tweetheader">
-                    <%= link_to '#info' do  %>
+                    <%= link_to tweets_user_path(reply.user) do  %>
                       <strong class="username">@<%= content_tag :span, reply.user.name %></strong>
                     <% end %>
                     

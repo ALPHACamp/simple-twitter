@@ -48,7 +48,7 @@
               
               <!-- base info of user and tweet time / start -->
               <div class="tweetheader">
-                <%= link_to '#info' do  %>
+                <%= link_to tweets_user_path(tweet.user) do  %>
                   <strong class="username">@<%= content_tag :span, tweet.user.name %></strong>
                 <% end %>
                 
@@ -86,7 +86,7 @@
 
     <!-- top 10 users list rank by number of followers /start -->
     <div class="col-xs-12 col-md-4">
-      <h3>Popular:施工中</h3>
+      <h3>Popular:按鈕未實裝</h3>
 
       <!-- @user.each 呼叫出各個user card/start -->
       <% @users.each do |user| %>
@@ -110,7 +110,7 @@
                 
                 <!-- user info -->
                 <div class="tweetheader">
-                  <%= link_to '#info' do  %>
+                  <%= link_to tweets_user_path(user) do  %>
                     <strong class="username">@<%= content_tag :span, user.name %></strong>
                   <% end %>
                 </div>
