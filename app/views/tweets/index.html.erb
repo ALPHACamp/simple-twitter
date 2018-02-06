@@ -29,7 +29,7 @@
           </small>
           <p class="card-text"><%= tweet.description %></p>
         </div>
- 
+        <%= render partial: "shared/like", locals: {tweet: tweet} %>
 
       </div>
     <% end %>
