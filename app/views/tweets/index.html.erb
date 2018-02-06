@@ -10,7 +10,11 @@
         </div>
       <% end %>
     </div>
-    <%= render partial: "shared/tweets_list" %>
+    <div id="tweets-list">
+      <% @tweets.each do |tweet| %>
+        <%= render partial: "shared/tweet_card", locals: {tweet: tweet} %>
+      <% end %>
+    </div>
   </div>
   <div class="col-md-5">
   <h3>Popular</h3>

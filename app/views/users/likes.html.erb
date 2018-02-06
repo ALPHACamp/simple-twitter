@@ -3,6 +3,10 @@
     <%= render 'shared/user_profile' %>
   </div>
   <div class="col-sm-9 col-12">
-    <%= render 'shared/tweets_list' %>
+    <div id="tweets-list">
+      <% @likes.each do |likes_tweet| %>
+        <%= render partial: "shared/tweet_card", locals: {tweet: likes_tweet} %>
+      <% end %>
+    </div>
   </div>
 </div>
