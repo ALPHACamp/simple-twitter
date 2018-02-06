@@ -9,20 +9,55 @@
   </head>
 
   <body>
-    <% if current_user %>
-      <% if current_user&.admin? %>
-        <li><%= link_to 'Admin Panel', admin_restaurants_path %></li>
-      <% end %>
-      <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
-      <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
-      <li><%= link_to('修改個人資料', edit_user_path(current_user)) %></li>
-      <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
-    <% else %>
-      <li><%= link_to('註冊', new_user_registration_path) %></li>
-      <li><%= link_to('登入', new_user_session_path) %></li>
-    <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+
+    <nav class="navbar navbar-default ">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <%= link_to "Logo", root_path, class:"navbar-brand" %>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="pull-right text-right nav navbar-nav">
+            <% if current_user %>
+              <% if current_user.admin? %>
+                <li><%= link_to "Admin Side", admin_tweets_path %></li>
+              <% end %>
+             <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
+             <li><%= link_to "Profile", tweets_user_path(current_user) %></li>
+             <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+             <li><%= link_to "Change password", edit_user_registration_path %></li>
+            <% else %>
+             <li><%= link_to "Log in", new_user_session_path %></li>
+             <li><%= link_to "Sign up", new_user_registration_path %></li>
+            <% end %>
+          </ul>
+        </div><!-- /.navbar-collapse -->  
+      </div><!-- /.container-fluid -->
+    </nav>
+
+
+    <% if flash[:notice] %>
+       <div class="container">
+         <div class="row">
+           <div class="alert alert-success">
+            <%= notice %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+           </div>
+         </div>
+       </div>
+     <% end %>
+ 
+     <% if flash[:alert] %>
+       <div class="container">
+         <div class="row">
+           <div class="alert alert-danger">
+            <%= alert %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+           </div>
+         </div>
+       </div>
+     <% end %>
+
+ 
     <%= yield %>
   </body>
 </html>
