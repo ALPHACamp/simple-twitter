@@ -5,7 +5,7 @@
   </div>
 
   <!-- tweets -->
-  <div class="col-xs-9">
+  <div class="col-xs-9 user-tweets-col">
     <% @tweets.each do |tweet| %>
       <%= render partial: "shared/message", locals: {message: tweet, is_tweet: true} %>
     <% end %>
