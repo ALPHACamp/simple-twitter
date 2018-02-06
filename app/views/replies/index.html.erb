@@ -1,25 +1,30 @@
-<h1>Tweet Reply</h1>
+<div class="show-user-profile-page">
+  <div class="user-profile">
+    <%= render partial: "shared/profile", locals: { user: @tweet.user } %>
+  </div>
 
-<!-- user profile -->
-
-<!-- tweets -->
-<h3>Tweets</h3>
-<%= render partial: "shared/tweets", locals: { tweet: @tweet } %>
-
-<!-- created replies -->
-<h3>Replies</h3>
-<ul>
-  <% @replies.each do |reply| %>
-    <li><%= image_tag reply.user.avatar, width:"100px" %></li>
-    <li><%= link_to reply.user.name, tweets_user_path(reply.user) %></li>
-    <li><%= reply.created_at %></li>
-    <li><%= reply.comment %></li>
-  <% end %>
-</ul>
+  <div>
+    <h3>Tweets</h3>
+    <div class="tweet-box">
+      <%= render partial: "shared/tweets", locals: { tweet: @tweet } %>
+    </div>
 
 
-<!-- replies form -->
-<%= form_for [@tweet, @reply] do |f| %>
-  <%= f.text_area :comment %>
-  <%= f.submit "Reply" %>
-<% end %>
+    <h3>Replies</h3>
+    <% @replies.each do |reply| %>
+      <div class="reply-box">
+        <%= image_tag reply.user.avatar, width:"100px" %>
+        <h4><%= link_to reply.user.name, tweets_user_path(reply.user) %>,
+          <p><%= reply.created_at %></p></h4>
+        <p><%= reply.comment %></p>
+      </div>
+    <% end %>
+
+    <div class="form-group" id="reply-form">
+      <%= form_for [@tweet, @reply] do |f| %>
+        <%= f.text_area :comment, class: "form-control" %>
+        <%= f.submit "Reply", class: "reply-btn btn btn-default" %>
+      <% end %>
+    </div>
+  </div>
+</div>

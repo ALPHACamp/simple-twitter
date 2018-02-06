@@ -51,7 +51,7 @@
   margin-top: 10px;
   display: grid;
   grid-template-columns: 25% 10% 10% 50% 5%;
-  grid-template-rows: 20% 60% 20%;
+  grid-template-rows: 1fr 2fr 1fr;
   background-color: white;
 }
 
@@ -74,8 +74,8 @@
 .tweet-box h4 {
   grid-column: 2/-1;
   grid-row: 1/2;
-  height: 25px;
-  margin-bottom: 5px;
+  height: 20px;
+  margin-bottom: 0px;
 }
 
 .tweet-box h4 a {
@@ -90,6 +90,8 @@
 .tweet-box p {
   grid-column: 2/-1;
   grid-row: 2/3;
+  word-wrap:break-word;
+  margin-right: 10px;
 }
 
 .tweet-box > a {
