@@ -11,5 +11,12 @@ class FollowshipsController < ApplicationController
   end
 
   def destroy
+  	@followship = current_user.followships.where(following_id: params[:following_id])
+  	if @followship
+  		@followship.destroy_all()
+  		flash[:notice] = "Successfully unfollowed"
+  		redirect_back(fallback_location: root_path)
+  	end
+
   end
 end
