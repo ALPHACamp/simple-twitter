@@ -12,13 +12,24 @@ class User < ApplicationRecord
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
   validates_uniqueness_of :name
 
+  # 一個user可以有很多則tweet
   has_many :tweets
+
+  # 一個user可以有很多條回覆的comment
   has_many :replies, through: :tweets
 
+  # 一個user可以主動擁有很多個followship
+  has_many :followships, dependent: :destroy
+  # 一個user可以被動成為其他user的followship
+  has_many :followings, through: :followships
 
 
   def admin?
     self.role == "admin"
+  end
+
+  def is_following?(user)
+    self.followings.include?(user)
   end
 
 end
