@@ -12,7 +12,7 @@
 <ul>
   <% @tweets.each do |tweet|%>
   <li>
-  Name: <%= tweet.user_id %> <br>
+  Name: <%= tweet.user.name %> <br>
   Tweets: <%= tweet.description %> <br>
   </li>
   <% end %>
