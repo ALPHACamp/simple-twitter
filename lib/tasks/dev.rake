@@ -18,6 +18,8 @@ namespace :dev do
       user.save!
       puts user.name
     end
+      User.create(name: "root", email: "root@example.com", password: "123456", role: "admin")
+      puts "Default admin created!"
   end
 
 end
