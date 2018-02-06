@@ -65,7 +65,7 @@
 
               <!-- reply & like link -->
               <div>
-                <%= link_to '#counts', class: "replylink" do %>
+                <%= link_to replies_path(tweet), class: "replylink" do %>
                   Reply <%= content_tag :span, tweet.replies_count, class: "badge" %>
                 <% end %>
              
