@@ -75,14 +75,15 @@ namespace :dev do
   end
 
   task test: :environment do
-    @user = User.first
+    @user = User.find(21)
     # @user.followers.each do |follower|
     #   puts "#{following.name}"
     # end
-    puts @user.likes_count
-    puts @user.followers_count
-    puts Tweet.find(253).likes_count
-    puts Tweet.find(253).replies_count
+    puts @user.name
+    puts "avatar:#{@user.avatar};"
+    puts @user.avatar.nil?
+    puts @user.avatar == ''
+    puts image_path(@user.avatar) == ''
   end
 
   #fake all data
