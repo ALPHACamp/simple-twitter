@@ -4,7 +4,9 @@
   </div>
           
   <div class="tweet-content">
-    <div class="tweet-info"><%= object.user.name %>, <%= object.created_at.strftime("%Y-%m-%d, %H:%M") %></div>
+    <div class="tweet-info">
+      <%= link_to object.user.name, tweets_user_path(object.user) %>, <%= object.created_at.strftime("%Y-%m-%d, %H:%M") %>
+    </div>
     <p><%= object.description %></p>
 
     <%= link_to "Reply(#{object.replies_count})", replies_path(object), class: "reply-btn" %>

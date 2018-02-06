@@ -2,20 +2,10 @@
   <div class="col-md-10 col-md-offset-1">
 
     <div class="col-md-4 personal-info">
-      <div class="text-center"><img src="http://via.placeholder.com/200x200"></div>
-      <h2 class="sub-title text-center"><%= @tweet.user.name %></h2>
-      <p><%= @tweet.user.introduction %></p>
-      
-      <div class="link"><%= link_to "Tweet", "#" %></div>
-      <div class="link"><%= link_to "Following", "#" %></div>
-      <div class="link"><%= link_to "Follower", "#" %></div>
-      <div class="link"><%= link_to "Like", "#" %></div>
-      <% if current_user == @tweet.user %>
-        <div><%= link_to "Edit Profile", "#", class: "btn btn-default user-edit-btn" %></div>
-      <% else %>
-        <div><%= link_to "Follow", "#", class: "btn btn-default follow-btn" %></div>
-      <% end %>     
+      <%= render partial: "shared/user_info", locals: {object: @tweet.user, page: 0} %>     
     </div>
+
+    <br>
 
     <div class="col-md-8 tweet-reply">
       <h2 class="sub-title">Tweets</h2>

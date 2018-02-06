@@ -46,6 +46,15 @@
   margin-top: 3.5px;
 }
 
+#nav-link > li > a > img {
+  margin-top: -15px;
+  border-radius: 5px;
+}
+
+.nav-user a {
+  margin-right: -20px;
+}
+
 
 /* --------------- tweet list --------------- */
 
@@ -193,7 +202,7 @@
 
 
 
-/* --------------- user profile --------------- */
+/* --------------- user info --------------- */
 
 
 .personal-info {
@@ -212,10 +221,14 @@
 }
 
 .personal-info .link a {
-  padding-left: 30px;
+  padding-left: 35px;
   font-size: 23px;
   line-height: 35px;
   color: #666666;
+}
+
+.link.active a {
+  font-weight: bold;
 }
 
 .user-edit-btn {
@@ -227,7 +240,7 @@
 }
 
 .follow-btn {
-  margin-left: 30px;
+  margin-left: 35px;
   margin-top: 10px;
   border-color: #ef4e6c;
   color: #ef4e6c;

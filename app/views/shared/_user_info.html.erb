@@ -1,0 +1,19 @@
+<div class="text-center">
+  <img src="http://via.placeholder.com/200x200">
+</div>
+<h2 class="sub-title text-center"><%= object.name %></h2>
+<p><%= object.introduction %></p>
+      
+<div class="link <%= "active" if page == 1 %>"><%= link_to "Tweets", tweets_user_path(object) %></div>
+<div class="link <%= "active" if page == 2 %>"><%= link_to "Following", followings_user_path(object) %></div>
+<div class="link <%= "active" if page == 3 %>"><%= link_to "Follower", followers_user_path(object) %></div>
+<div class="link <%= "active" if page == 4 %>"><%= link_to "Like", likes_user_path(object) %></div>
+<% if current_user == object %>
+  <div>
+    <%= link_to "Edit Profile", "#", class: "btn btn-default user-edit-btn" %>
+  </div>
+<% else %>
+  <div>
+    <%= link_to "Follow", "#", class: "btn btn-default follow-btn" %>
+  </div>
+<% end %>

@@ -35,9 +35,13 @@
               <% if current_user.admin? %>
                 <li><%= link_to 'Admin Panel', admin_root_path %></li>
               <% end %>
-              <!-- 個人圖像：user profile -->
               <li><%= link_to 'Home', root_path %></li>
-              <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+              <li class="nav-user">
+                <%= link_to tweets_user_path(current_user) do %>
+                  <img src="http://via.placeholder.com/50x50">
+                <% end %>
+              </li>
+              <li class="nav-user"><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
               <!-- 修改個人資料 -->
             <% else %>
               <li><%= link_to('Sign up', new_user_registration_path) %></li>
