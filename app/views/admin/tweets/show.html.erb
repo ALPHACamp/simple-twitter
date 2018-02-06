@@ -7,3 +7,31 @@ Description:<%= @tweet.description %><br>
 
 <%= link_to 'Back to index', admin_tweets_path %>
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <div class="">
+        
+        <div class="col-md-3 col-sm-4">
+          <div class="text-center">
+            <%= image_tag (@tweet.user.avatar if @tweet.user.avatar?),height: 200 %>
+          </div>
+        <h2><%= @tweet.user.name %></h2>
+        <p><strong><%= @tweet.user.email %></strong></p>
+        <div><%= simple_format @tweet.user.introduction %></div>
+        <% if @tweet.user.email == current_user.email %>
+          <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-info" %>
+          <% end %>
+        <%= link_to 'Back to index', admin_tweets_path %>
+        </div>
+      <div class="col-md-9 col-sm-8">
+
+        <%= @tweet.description %><br>
+
+      </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
