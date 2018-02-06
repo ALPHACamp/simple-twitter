@@ -1,0 +1,7 @@
+<%= form_for @user do |f| %>
+  <%= image_tag @user.avatar %>
+  <%= f.file_field :avatar %>
+  <%= f.text_field :name, placeholder: "Name" %>
+  <%= f.text_area :introduction, placeholder: "Type anything about you here....." %>
+  <%= f.submit "Update" %>
+<% end %>
