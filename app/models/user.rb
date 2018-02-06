@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id", dependent: :destroy
   has_many :followers, through: :inverse_followships, source: :user, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :liked_tweets, through: :likes, source: :tweet
+  has_many :likes_tweets, through: :likes, source: :tweet
 
   mount_uploader :avatar, AvatarUploader
 
