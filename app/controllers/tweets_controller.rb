@@ -11,10 +11,10 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new(tweet_params)
     @tweet.user = current_user
     if @tweet.save
-      flash[:notice] = "留言成功！"
+      flash[:notice] = "推播成功！"
       redirect_to tweets_path(@user)
     else
-      flash[:alert] = "留言不可以空白!!"
+      flash[:alert] = "推播不可以空白!!"
       redirect_to tweets_path(@restaurant)
     end
   end

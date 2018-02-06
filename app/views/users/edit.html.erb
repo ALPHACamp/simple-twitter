@@ -3,7 +3,7 @@
 
 
     <div class="col-md-4">
-      <%= form_for @user, url: {action: "update"} do |f| %>
+      <%= form_for @user do |f| %>
         <div class="form-group">
           <%= image_tag @user.avatar if @user.avatar? %>
           <%= f.file_field :avatar %>
