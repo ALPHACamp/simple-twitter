@@ -3,7 +3,16 @@ Rails.application.routes.draw do
   devise_for :users
 
   # 設置tweets index作為網站首頁
-  resources :tweets, only: [:index,:create]
+  resources :tweets, only: [:index,:create] do 
+
+    member do
+      resources :replies, only: [:index, :create]
+    end
+
+  end
+
+
+
   root 'tweets#index'
 
   # user頁面
