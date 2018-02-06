@@ -7,13 +7,34 @@
     <% end %>
     <h2><%= @user.name %></h2>
     <p><%= simple_format @user.introduction %></p>
-    <%= link_to "Tweets", tweets_user_path(@user) %><br>
-    <%= link_to "Following", followings_user_path(@user) %><br>
-    <%= link_to "Follower", followers_user_path(@user) %><br>
+    <%= link_to "Tweets "+@user.tweets.count.to_s, tweets_user_path(@user) %><br>
+    <%= link_to "Following "+@user.followings.count.to_s, followings_user_path(@user) %><br>
+    <%= link_to "Follower "+@user.followers.count.to_s, followers_user_path(@user) %><br>
     <%= render partial: "shared/follow", locals: {user: @user} %>
     <% if current_user == @user %>
       <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-default" %>
     <% end %>
   </div>
 
+  <div class="user-tweet">
+    <h3>Follower</h3>
+    <% @user.followers.each do |follower| %>
+      <div class="following-block">
+        <% for img_id in 0..26 %>
+          <% if image_path(follower.avatar).include?('/user'+img_id.to_s+'.jpg') %>
+            <%= image_tag('/avatar/user'+img_id.to_s+'.jpg', class: "user-avatar") %>
+          <% end %>
+        <% end %>
+        <div class="user-text">
+          <h4><%= link_to follower.name, tweets_user_path(follower) %></h4>
+          <div class="following-intro">
+            <p><%= truncate(follower.introduction, length: 80) %></p>
+          </div>
+          <div class="following-btn">
+            <%= render partial: "shared/follow", locals: {user: follower} %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

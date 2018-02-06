@@ -7,9 +7,9 @@
     <% end %>
     <h2><%= @user.name %></h2>
     <p><%= simple_format @user.introduction %></p>
-    <%= link_to "Tweets", tweets_user_path(@user) %><br>
-    <%= link_to "Following", followings_user_path(@user) %><br>
-    <%= link_to "Follower", followers_user_path(@user) %><br>
+    <%= link_to "Tweets "+@user.tweets.count.to_s, tweets_user_path(@user) %><br>
+    <%= link_to "Following "+@user.followings.count.to_s, followings_user_path(@user) %><br>
+    <%= link_to "Follower "+@user.followers.count.to_s, followers_user_path(@user) %><br>
     <%= render partial: "shared/follow", locals: {user: @user} %>
     <% if current_user == @user %>
       <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-default" %>
