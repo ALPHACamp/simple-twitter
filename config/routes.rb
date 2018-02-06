@@ -10,12 +10,11 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update] do
     member do
       get :tweets
-      post :follow
-      post :unfollow
       get :followings
       get :followers
     end
   end
+  resources :followships, only: [:create, :destroy]
 
 
   namespace :admin do
