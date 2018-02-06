@@ -1,7 +1,23 @@
-<%= form_for @user do |f| %>
-  <%= image_tag @user.avatar %>
-  <%= f.file_field :avatar %>
-  <%= f.text_field :name, placeholder: "Name" %>
-  <%= f.text_area :introduction, placeholder: "Type anything about you here....." %>
-  <%= f.submit "Update" %>
-<% end %>
+<div class="container">
+  <div class="row">
+
+    <%= form_for @user do |f| %>
+      <div class="col-md-4">
+        <%= image_tag @user.avatar, class: "img-rounded", width: "300px" if @user.avatar? %>
+        <%= f.file_field :avatar %>
+      </div>
+      <div class="col-md-8">
+        <div class="form-group">
+          <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.text_area :introduction, placeholder: "Type anything about you here.....", size: "1x8", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Update", class: "btn btn-info" %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>
