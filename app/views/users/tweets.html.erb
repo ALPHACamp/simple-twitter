@@ -34,10 +34,10 @@
             <% end %>
           </div>
 
-          <!-- following數：連結跟數量未設定, -->
+          <!-- following數：連結未設定, -->
           <div>
             <%= link_to '#' do %>
-              <strong>Following <%= content_tag :span, '99' %></strong><br />
+              <strong>Following <%= content_tag :span, @user.followships.length %></strong><br />
             <% end %>
           </div>
 
@@ -65,7 +65,11 @@
           <% if @user == current_user %>
             <%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-primary" %>
           <% else %>
-            <%= link_to "Follow(未實裝)",root_path ,class: "btn btn-primary" %>
+            <% if current_user.is_following?(@user) %>
+              <%= link_to "Unfollow", followship_path(@user) ,method: :delete, class: "btn btn-danger" %>
+            <% else %>
+              <%= link_to "Follow", followships_path(following_id: @user),method: :post, class: "btn btn-primary" %>
+            <% end %>
           <% end %>
         </div>
         <br />

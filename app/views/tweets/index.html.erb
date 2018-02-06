@@ -126,7 +126,15 @@
             <div class="follow-button text-right">
               
               <!-- 未完成：判斷followship，顯示follow/unfollow -->
-              <%= link_to "Follow(未實裝)", root_path, class: "btn btn-primary" %>
+              <% if user != current_user %>
+                <% if current_user.is_following?(user) %>
+                  <%= link_to "Unfollow", followship_path(user) ,method: :delete, class: "btn btn-danger" %>
+                <% else %>
+                  <%= link_to "Follow", followships_path(following_id: user),method: :post, class: "btn btn-primary" %>
+                <% end %>
+              <% else %>
+                <%= link_to "Follow", followships_path(following_id: user),method: :post, class: "btn btn-primary disabled" %>
+              <% end %>
 
             </div>
             <!-- Bottom: Follow/Unfollow button /end -->
