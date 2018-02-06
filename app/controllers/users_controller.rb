@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:update, :edit]
+  before_action :set_user, only: [:update, :edit, :tweets]
 
   def tweets
+    @tweets = Tweet.where('user_id' => params[:id])
   end
 
   def edit

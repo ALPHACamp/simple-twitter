@@ -12,16 +12,7 @@
 			<% end %>
 			<br>
 			<div>
-				<%- @tweets.each do |f| %>
-				<div class="thumbnail">
-					<%= image_tag f.user.avatar, width:'100px', id:"tweet-avatar" %>
-					<div id="tweet-details-block">
-						<h5 class="text-primary">@<%= f.user.name %>, <%= f.created_at %></h5>
-						<p><%= simple_format f.description %></p>
-						<%= link_to "replies", tweet_replies_path(f.id) %>
-					</div>
-				</div>
-				<% end %>
+				<%= render partial: "shared/showTweets.html.erb", locals: {tweets: @tweets}%>
 			</div>
 		</div>
 		<div class="col-md-4">
