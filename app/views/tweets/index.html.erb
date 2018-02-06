@@ -15,14 +15,7 @@
   <div class="col-md-5">
   <h3>Popular</h3>
    <% @users.each do |user| %>
-    <div class="card mb-3">
-      <div class="card-body">
-        <p class="card-title"><%= link_to "@"+user.name, tweets_user_path(user) %></p>
-        <p class="card-text"><%= user.introduction %></p>
-        <p class="text-right"><%= render partial: "shared/follow_button", locals: {user: user} %></p>
-      </div>
-    </div>
+     <%= render partial: "shared/user_card", locals: {user: user} %>
    <% end %>
-
   </div>
 </div>
