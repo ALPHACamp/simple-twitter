@@ -2,7 +2,7 @@ class Admin::TweetsController < Admin::BaseController
   before_action :set_tweet, only: [:show, :destroy]
 
   def index
-    @tweets = Tweet.all
+    @tweets = Tweet.page(params[:page]).per(20)
   end
 
   def show
