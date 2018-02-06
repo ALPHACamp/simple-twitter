@@ -25,6 +25,7 @@
          <p><%= tweet.description %></p>
          <div>
            <%= link_to "Reply(#{tweet.replies_count})", "#" %>
+           <%= render partial: "shared/like", locals: {tweet: tweet} %>
          </div>
        </div>
      </div>

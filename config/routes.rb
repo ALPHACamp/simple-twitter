@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     root "tweets#index"
   end
 
-  resources :tweets, only: [:index, :destroy] do
+  resources :tweets, only: [:index, :create] do
     resources :replies, only: [:index, :create]
     member do
         post :like
