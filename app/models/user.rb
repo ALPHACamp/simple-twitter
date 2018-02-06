@@ -37,4 +37,17 @@ class User < ApplicationRecord
     self.followings.include?(user)
   end
 
+  def self.recent_following
+    Followship.select('following_id, count(keyword_id) as frequency').
+      order('frequency desc').
+      group('keyword_id').
+      take(20).
+      map(&:keyword)
+  end
+
+  def tweet_reply_count
+    self.tweets.count + self.replies.count
+  end
+  #<%= @user.tweet_reply_count %>
+
 end
