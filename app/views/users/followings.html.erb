@@ -1,0 +1,38 @@
+
+
+<div class="container">
+  <div class="row">
+    
+    <div class="col-md-10">
+
+      
+      <div class="col-md-2">
+
+      </div>
+
+
+      <div class="col-md-6">
+        <h2>Following</h2>
+        <% @followings.each do |following| %>
+          <div class="media user-item user-media">
+            <div class="media-left media-top">
+              <%= image_tag following.avatar, class: "media-object" %>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">
+                <%= link_to "@#{following.name}", tweets_user_path(following) %>
+              </h4>
+              <p><%= following.introduction %></p>
+            </div>
+            <div>
+              <%= render partial: "shared/follow", locals: {user: following} %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>

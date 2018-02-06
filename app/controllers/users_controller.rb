@@ -13,11 +13,15 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings # 基於測試規格，必須講定變數名稱
+    @user = User.find(params[:id])
+    # @followings 基於測試規格，必須講定變數名稱
+    @followings = @user.followings
   end
 
   def followers
-    @followers # 基於測試規格，必須講定變數名稱
+    @followships = Followship.where(following_id: params[:id])
+    # @followers 基於測試規格，必須講定變數名稱
+    @followers = User.where(id: @followships.select(:user_id))
   end
 
   def likes

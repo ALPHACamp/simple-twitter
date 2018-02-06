@@ -26,7 +26,7 @@ class User < ApplicationRecord
   end
 
   def count_followers
-    self.followers_count = self.followings.size
+    self.followers_count = Followship.where(following_id: self.id).size
     self.save
   end
 end
