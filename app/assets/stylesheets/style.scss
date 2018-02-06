@@ -204,6 +204,8 @@ header .container-fluid {
 }
 
 .tweettext {
+  height: 70px;
+  overflow: auto;
   padding-bottom: 10px;
   padding-top: 5px;
   word-break: break-all;
@@ -314,6 +316,8 @@ header .container-fluid {
 }
 
 .userintro {
+  height: 70px;
+  overflow: auto;
   padding-bottom: 10px;
   padding-top: 5px;
   word-break: break-all;
