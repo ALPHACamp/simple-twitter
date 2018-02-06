@@ -1,0 +1,9 @@
+<h1>Tweet Index Page</h1>
+ <ul>
+  <% @tweets.each do |tweet| %>
+  <li>
+    <%= tweet.description %>
+    <%= tweet.user_id %>
+  </li>
+  <% end %>
+</ul>
