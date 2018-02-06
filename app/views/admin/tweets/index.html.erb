@@ -2,7 +2,7 @@
   <div class="col-md-12">
 
     <div>
-      <%= link_to "使用者清單", admin_users_path, class: "btn btn-default" %>
+      <%= link_to fa_icon("users", text: "使用者清單"), admin_users_path, class: "btn btn-default" %>
     </div>
 
     <br>
@@ -10,11 +10,11 @@
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th class="text-center">Tweet Id</th>
-          <th>Description</th>
-          <th>Time</th>
-          <th>User</th>
-          <th>#</th>
+          <th class="text-center">推播ID</th>
+          <th>推播內容</th>
+          <th>推播時間</th>
+          <th>使用者名稱</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -25,8 +25,8 @@
             <td><%= time_ago_in_words(tweet.created_at) %> ago</td>
             <td><%= tweet.user.name %></td>
             <td>
-              <%= link_to "Replies", admin_tweet_path(tweet) %>
-              <%= link_to "Delete", admin_tweet_path(tweet), method: :delete %>
+              <%= link_to fa_icon("comments-o lg"), admin_tweet_path(tweet) %> &nbsp;
+              <%= link_to fa_icon("trash-o lg"), admin_tweet_path(tweet), method: :delete %>
             </td>
           </tr>
         <% end %>
