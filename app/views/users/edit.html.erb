@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="col-left col-md-4">
+    <div class="avatar-lg">
+      <img src="http://via.placeholder.com/200x200"></a>
+    </div>
+    <%= form_for @user do |f| %>
+    <%= f.file_field :avatar %>
+    <% end %>
+  </div>
+
+  <div class="col-right col-md-8">
+    <%= form_for @user do |f| %>
+    
+    <div class="form-group">
+    <%= f.label :name, "name" %>
+    <%= f.text_field :name, class: "form-control"%>
+    </div>
+
+    <div class="form-group">
+    <%= f.text_area :introduction, class: "form-control"%>
+    </div>
+
+    <%= f.submit 'Update', class: "btn btn-primary"%>
+    
+    <% end %>
+    
+  </div>
+</div>
