@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources :users
   resources :followships
 
+  root "tweets#index"
+
 end
