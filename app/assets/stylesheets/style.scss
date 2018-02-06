@@ -11,12 +11,43 @@ $gray-medium-light: #eaeaea;
 
 /* universal */
 
-body {
-  padding-top: 80px;
+html, body {
+  width: 100%;
+  height: 100%;
 }
 
-section {
-  overflow: auto;
+body {
+  padding: 80px;
+  margin: 0px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+}
+
+* {
+  @include box-sizing;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0px;
+  padding: 0px;
+  line-height: 1;
+}
+
+ul, ol {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+
+
+.container {
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+  position: relative;
 }
 
 textarea {
@@ -32,9 +63,6 @@ textarea {
 
 /* typography */
 
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
-}
 
 h1 {
   font-size: 3em;
@@ -50,6 +78,11 @@ h2 {
   text-align: center;
   font-weight: normal;
   color: $gray-light;
+}
+
+h3 {
+  margin-bottom: 10px;
+  font-weight: normal;
 }
 
 p {
@@ -122,4 +155,6 @@ p {
   visibility: hidden;
   height: 0px;
 }
+
+/* like reply */
 
