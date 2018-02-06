@@ -1,25 +1,12 @@
-<h1>User's own tweets</h1>
-
-<!-- User can see profile of other(or own) users -->
-<h3>Profile</h3>
-<ul>
-  <li><%= image_tag @user.avatar %></li>
-  <li><%= @user.name %></li>
-  <li><%= @user.introduction %></li>
-  <li><%= link_to "Tweets #{@user.tweets_count}", tweets_user_path(@user) %></li>
-  <li><%= link_to "Following #{@user.followings_count}", followings_user_path(@user) %></li>
-  <li><%= link_to "Follower #{@user.followers_count}", followers_user_path(@user) %></li>
-  <li><%= link_to "like #{@user.likes_count}", likes_user_path(@user) %></li>
-  <% if current_user == @user %>
-    <%= link_to "Edit Profile", edit_user_path %>
-  <% else %>
-    <%= render partial: "shared/follow", locals: { user: @user } %>
-  <% end %>
-</ul>
+<div class="show-user-profile-page">
+  <div class="user-profile">
+    <%= render partial: "shared/profile", locals: { user: @user } %>
+  </div>
 
 
-<!-- User can see tweets of other(or own) users -->
-<h3>Tweets</h3>
-<% @tweets.each do |tweet| %>
-  <%= render partial: "shared/tweets", locals: { tweet: tweet } %>
-<% end %>
+  <div class="users-own-tweets">
+    <% @tweets.each do |tweet| %>
+      <%= render partial: "shared/tweets", locals: { tweet: tweet } %>
+    <% end %>
+  </div>
+</div>

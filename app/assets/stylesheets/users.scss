@@ -2,10 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/*user-box*///////////////////////////////////////////////////
 .user-box {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 20% 60% 20%;
+  grid-template-rows: 20% 70% 10%;
 }
 
 .user-box img {
@@ -17,6 +18,10 @@
 .user-box h4 {
   grid-column: 2/-1;
   grid-row: 1/2;
+}
+
+.user-box h4 a {
+  text-decoration: none;
 }
 
 .user-box p {
@@ -34,4 +39,44 @@
   width: 70%;
   margin: 10px auto;
   background-color: #AAAAAA;
+}
+
+/*user profile*////////////////////////////////////////////////////
+.show-user-profile-page {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-gap: 20px;
+  width: 100%;
+}
+
+.user-profile {
+  margin-left: 5px;
+}
+
+.user-profile img {
+  width: 200px;
+  margin: 20px 20px 20px 0px;
+}
+
+.user-profile div {
+  height: 1px;
+  background-color: silver;
+  margin-bottom: 8px;
+}
+
+.user-profile .user-attr {
+  display: block;
+  font-size: 16px;
+  color: #696969;
+  font-weight: bold;
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+
+.user-profile .user-attr:hover {
+  color: #C0C0C0;
+}
+
+.user-profile .btn.btn-default {
+  display: block;
 }
