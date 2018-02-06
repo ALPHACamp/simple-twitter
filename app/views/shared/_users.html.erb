@@ -1,8 +1,9 @@
 <% users.each do |user| %>
-  <ul>
-    <li><%= image_tag user.avatar, width:"100px" %></li>
-    <li><%= link_to user.name, tweets_user_path(user) %></li>
-    <li><%= user.introduction %></li>
+  <div class="user-box">
+    <%= image_tag user.avatar, width:"100px" %>
+    <h4><%= link_to user.name, tweets_user_path(user) %></h4>
+    <p><%= truncate(user.introduction, length: 50) %></p>
     <%= render partial: "shared/follow", locals: { user: user } %>
-  </ul>
+  </div>
+  <div></div>
 <% end %>

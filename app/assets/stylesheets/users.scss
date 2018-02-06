@@ -1,3 +1,37 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 20% 60% 20%;
+}
+
+.user-box img {
+  grid-column: 1/2;
+  grid-row: 1/-1;
+  margin: 10px 10px;
+}
+
+.user-box h4 {
+  grid-column: 2/-1;
+  grid-row: 1/2;
+}
+
+.user-box p {
+  grid-column: 2/-1;
+  grid-row: 2/3;
+}
+
+.user-box > a {
+  grid-column: 3/-1;
+  grid-row: 3/-1;
+}
+
+.user-box + div {
+  height: 1px;
+  width: 70%;
+  margin: 10px auto;
+  background-color: #AAAAAA;
+}

@@ -6,6 +6,7 @@
 .navbar-style {
   background-color: #90CEFA;
   height: 56px;
+  margin-bottom: 0;
 }
 
 .navbar-brand span {
@@ -57,4 +58,8 @@
 
 .navbar-right {
   text-align: right;
+}
+
+#background {
+  background-color: #F0F8FF;
 }
