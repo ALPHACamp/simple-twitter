@@ -2,7 +2,13 @@
   <div class="row">
     <div class="col-md-12">
       <h1><%= @tweet.user.name %></h1>
-      <p><%= simple_format @tweet.description %></p>
+      <p class="wrap"><%= @tweet.description %></p>
+      <p class="text-muted">
+        <em><%= time_ago_in_words @tweet.created_at %> ago</em>
+      </p>
     </div>
+    <div class="clearfix"></div>
+    <hr>
   </div>
 </div>
+<%= link_to "Back", admin_root_path %>

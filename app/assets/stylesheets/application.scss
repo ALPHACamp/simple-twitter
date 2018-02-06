@@ -13,3 +13,17 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+  
+  * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  p.wrap {
+    word-wrap: break-word;
+  }
+
+  .clearfix {
+    clear: both;
+  }
