@@ -5,7 +5,31 @@
    <div class="form-group">
      <%= f.submit "Tweet", :disable_with => 'Tweeting...' %>
    </div>
- <% end %>
+<% end %>
+
+<%# render partial: "shared/like", locals: {tweet: @tweet} %>
+
+<div class="tweets">
+   <% @tweets.each do |tweet| %>
+     <div class="tweet-item">
+       <div class="avatar">
+         <%= image_tag tweet.user.avatar, size: "100" if tweet.user.avatar? %>
+       </div>
+       <div>
+         <p>
+           <%= tweet.user.name %>
+           <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %>
+         </p>
+         <p><%= tweet.description %></p>
+         <div>
+           <%= link_to "Reply(#{tweet.replies_count})", "#" %>
+         </div>
+       </div>
+     </div>
+   <% end %>
+ </div>
+
+
 
  <nav aria-label> <!--回到首頁-->
     <ul class="pager">
