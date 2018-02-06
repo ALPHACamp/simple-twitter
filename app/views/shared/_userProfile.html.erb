@@ -4,5 +4,5 @@
 <% if user == current_user %>
 	<%= link_to "Edit Profile", edit_user_path(current_user) %>
 <% else %>
-	follow
+	<%= link_to "Follow", followships_path(following_id: user), method: :post %>
 <% end %>
