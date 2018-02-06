@@ -29,7 +29,7 @@
             <td><%= tweet.description %></td>
             <td><%= tweet.likes_count %></td>
             <td><%= link_to tweet.user.name, tweets_user_path(tweet.user) %></td>
-            <td> <%= link_to "Delete", admin_tweet_path(tweet), method: :delete %> </td>
+            <td> <%= link_to "Delete", admin_tweet_path(tweet), method: :delete, data: {:confirm => 'Are you sure?'} ,class: "btn btn-danger btn-sm" %> </td>
           </tr>
           <tr>
             <th>Re(<%= tweet.replies_count %>):</th>
