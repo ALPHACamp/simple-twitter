@@ -10,4 +10,10 @@ Rails.application.routes.draw do
 
   root "tweets#index"
 
+  namespace :admin do
+    resources :tweets
+    resources :users
+    root "tweets#index"
+  end
+
 end
