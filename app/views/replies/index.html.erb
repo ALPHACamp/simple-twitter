@@ -1,0 +1,85 @@
+<div class="container-fluid">
+  <div class="row">
+    
+    <!-- Left: user profile /start -->
+    <div class="col-md-4">
+      <div class="user-profile">
+        
+        <!-- user avatar /start -->
+          <div class="profile-avatar">
+            <% if @tweet.user.avatar? %>
+              <%= image_tag(@tweet.user.avatar, width: '350', height: '350', class: 'center-block') %>
+            <% else %>
+              <%= image_tag("http://via.placeholder.com/3500x350",class: 'center-block') %>
+            <% end %>
+          </div>
+        <!-- user avatar /end -->
+          
+        <!-- username -->
+        <div class="profile-username text-center">
+          <%= link_to '#info' do  %>
+            <h2><strong><%= content_tag :span, @tweet.user.name %></strong></h2>
+          <% end %>
+        </div>
+
+        <!-- user introduction -->
+        <div class="profile-intro">
+          <p><%= @tweet.user.introduction %></p>
+        </div>
+
+        <!-- user info /start -->
+        <div class="profile-info">
+          <!-- tweet數：連結未設定 -->
+          <div>
+            <%= link_to replies_path(@tweet) do %>
+              <strong>Tweets <%= content_tag :span, @tweet.user.tweets.length %></strong>
+            <% end %>
+          </div>
+
+          <!-- following數：連結跟數量未設定, -->
+          <div>
+            <%= link_to replies_path(@tweet) do %>
+              <strong>Following <%= content_tag :span, @tweet.user.tweets.length %></strong>
+            <% end %>
+          </div>
+
+          <!-- follower數：連結未設定 -->
+          <div>
+            <%= link_to replies_path(@tweet) do %>
+              <strong>Follower <%= content_tag :span, @tweet.user.followers_count %></strong>
+            <% end %>
+          </div>
+
+          <!-- like數：連結未設定 -->
+          <div>
+            <%= link_to replies_path(@tweet) do %>
+              <strong>Like <%= content_tag :span, @tweet.user.likes_count %></strong>
+            <% end %>
+          </div>
+
+        </div>
+        <!-- user info /end -->
+
+        <!-- Button: 判斷使用者是否為本人，依據結果顯示按鈕 -->
+        <div class="text-center">
+          <% if @tweet.user == current_user %>
+            <%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-primary" %>
+          <% else %>
+            <%= link_to "Follow(未實裝)", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+        <br />
+
+
+      </div> <!-- /.user-profile -->
+    </div>
+    <!-- Left: user profile /end -->
+
+    <!-- Right: tweet & replies /start -->
+    <div class="col-md-8">
+      <h2>tweet replies區：待施工</h2>
+    </div>
+    <!-- Right: tweet & replies /end  -->
+
+  </div>
+</div>
