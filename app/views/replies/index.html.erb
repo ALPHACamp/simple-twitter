@@ -11,9 +11,10 @@
     <%= render partial: "shared/message", locals: {message: @tweet, is_tweet: true} %>
 
     <h1>Replies</h1>
-    <% @tweet.replies.each do |reply| %>
+    <% @replies.each do |reply| %>
       <%= render partial: "shared/message", locals: {message: reply, is_tweet: false} %>
     <% end %>
+    <div class="text-center"><%= paginate @replies %></div>
 
     <!-- reply form -->
     <div class="tweet-form">
