@@ -2,7 +2,7 @@
 <div class = "box">
   <%= image_tag @user.avatar, class: "img-responsive img-circle" %>
   <h1><%= @user.name %></h1>
-  <h2><%= @user.introduction %></h2>
+  <p><%= @user.introduction %></p>
   <br />
 
   <h4> <%= link_to "Tweets #{@user.tweets.count}", tweets_user_path(@user)%></h4>
