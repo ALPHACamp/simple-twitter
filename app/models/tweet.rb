@@ -6,4 +6,9 @@ class Tweet < ApplicationRecord
   has_many :liked_users, through: :likes, source: :user
   has_many :replies, dependent: :destroy
 
+  # 判斷(user)是否對此tweet按讚 instance method
+  def is_liked?(user)
+    self.liked_users.include?(user)
+  end
+
 end
