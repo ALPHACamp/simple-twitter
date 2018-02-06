@@ -17,7 +17,7 @@ class User < ApplicationRecord
   has_many :followings, through: :followships
 
   has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id", dependent: :destroy
-  has_many :followers, through: :inverse_followships, source: :following, counter_cache: true
+  has_many :followers, through: :inverse_followships, source: :user
 
   has_many :likes, dependent: :destroy
   has_many :like_tweets, through: :likes, source: :tweet
@@ -33,5 +33,6 @@ class User < ApplicationRecord
   def like?(tweet)
     likes.where(tweet: tweet).exists?
   end
+
 
 end

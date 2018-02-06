@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:tweets, :edit,:followings, :followers, :likes] 
+  before_action :set_user 
+  before_action :correct_user, only: [:edit, :update]
 
   def tweets
     @tweets = @user.tweets.order(created_at: :desc)
@@ -9,6 +10,13 @@ class UsersController < ApplicationController
   end
 
   def update
+    if @user.update_attributes(user_params)
+      flash[:notice] = "成功完成編輯！"
+      redirect_to root_path
+    else
+      flash.now[:alert] = @user.errors.full_messages.to_sentence
+      render 'edit'
+    end
   end
 
   def followings
@@ -35,5 +43,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def user_params
+    params.require(:user).permit(:name, :introduction, :avatar)
+  end
 
+  def correct_user
+    redirect_to root_path unless @user == current_user
+  end
 end

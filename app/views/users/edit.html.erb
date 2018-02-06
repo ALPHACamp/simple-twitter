@@ -1,3 +1,28 @@
-<%= @user.name %>
-<%= @user.avatar %>
-<%= @user.introduction %>
+<div class="row">
+  <div class="col-md-4">
+    <div class="user_avatar_upload">
+      <%= form_for @user do |f| %>
+        <div class="thumbnail">
+          <%= image_tag @user.avatar, class: "img-responsive", size: "300x250" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :avatar, 'Browse files', class: "btn btn-primary",style: "width: 100%" %>
+          <%= f.file_field :avatar %>
+        </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="form-group">
+        <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
+    </div>
+    <div class="form-group">
+        <%= f.text_area :introduction, placeholder: "Type anything about you here...", resize: false, size: "30x10", class: "form-control" %>
+    </div>
+    
+    <div class="action">
+        <%= f.submit "Update", class: "btn btn-primary" %>
+    </div>
+      <% end %>
+  </div>
+</div>
+

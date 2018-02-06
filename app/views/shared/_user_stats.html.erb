@@ -17,5 +17,8 @@
     <%= link_to likes_user_path(user) do %>
       <p>Like：<%= user.likes_count %></p>
     <% end %>
+    <% if user == current_user %>
+      <%= link_to "Edit Profile",edit_user_path(user), class: "btn btn-primary", style: "width: 100%" %>
+    <% end %>
   </div>
 </div>

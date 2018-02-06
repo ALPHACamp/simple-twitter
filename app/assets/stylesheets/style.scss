@@ -112,4 +112,14 @@ p {
   line-height: 24px;
 }
 
+/* avatar upload */
+
+.user_avatar_upload {
+  position: relative;
+}
+
+.user_avatar_upload input[type=file] {
+  visibility: hidden;
+  height: 0px;
+}
 
