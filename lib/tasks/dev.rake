@@ -85,8 +85,8 @@ namespace :dev do
   task fake_all: :environment do
     Rake::Task['db:drop'].execute
     Rake::Task['db:migrate'].execute
-    # Rake::Task['db:seed'].execute
     Rake::Task['dev:fake_user'].execute
+    # Rake::Task['db:seed'].execute
     Rake::Task['dev:fake_tweets'].execute
     Rake::Task['dev:fake_reply'].execute
     Rake::Task['dev:fake_followship'].execute
