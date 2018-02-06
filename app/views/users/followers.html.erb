@@ -1,0 +1,27 @@
+
+<div class="profile">
+  <div class="avatar">
+         <%= image_tag tweet.user.avatar, size: "100" if tweet.user.avatar? %>
+  </div>
+  <p></p>
+  <div class="intro">
+    <%= user.introduction %>
+  </div>
+  <div class="items">
+    <%= link_to "Tweets #{user.tweets.size}", tweets_user_path(user) %>
+    <%= link_to "Following #{user.followings.count}", followings_user_path(user) %>
+    <%= link_to "Follower #{user.followers.count}", followers_user_path(user) %>
+    <%= link_to "like #{user.likes_count}", likes_user_path(user) %>
+  </div>
+  <div class="button">
+    <% if user == current_user %>
+      <%= link_to "Edit Profile", user_path(user) %>
+    <% else %>
+      <%= render partial: "shared/follow", locals: {user: user} %>
+    <% end %>
+  </div>
+</div>
+<h2>Followers</h2>
+<% @followers.each do |follower| %>
+  <%= render partial: "shared/follow", locals: { user: follower } %>
+<% end %>
