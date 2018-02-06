@@ -1,0 +1,14 @@
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "tweets";
+
+.title{
+	float: right;
+	font-size: 0.5cm;
+}
+.frame{
+	margin: 4.5% 5% 0% 5%;
+	position: relative;
+	font-size: 0.5cm;
+}

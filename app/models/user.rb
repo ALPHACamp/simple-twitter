@@ -15,6 +15,8 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
+  scope :popular_ten, -> { order(followers_count: :desc).limit(10) }
+
   def admin?
     self.role == 'admin'
   end

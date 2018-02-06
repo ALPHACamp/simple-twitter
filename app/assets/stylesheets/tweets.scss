@@ -1,3 +1,90 @@
 // Place all the styles related to the tweets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.input{
+	// border: 1px solid red;
+	padding: 10px;
+	width: 70%;
+	height: 200px;
+	float: left;
+	position: relative;
+	.input-area{
+		width: 100%;
+		height: 130px;
+	}
+	.button{
+		right: 10px;
+		bottom: 5px;
+		position: absolute;
+	}
+}
+.tweet-list{
+	margin-top: 5px;
+	padding: 10px;
+	// border: 1px solid rgb(0, 17, 255);
+	width: 70%;
+	float: left;
+	.kar{
+		text-align: center;
+	}
+	.tweet{
+		border: 2px solid rgb(129, 129, 151);
+		padding: 10px;
+		margin-top: 10px;
+		height: 160px;
+		.avatar{
+			// border: 1px solid rgb(1, 1, 3);
+			float: left;
+			height: 12%;
+			width: 12%;
+		}
+		.context{
+			// border: 1px solid rgb(1, 1, 3);
+			margin-top: 3px;
+			width: 87%;
+			float: right;
+			padding-left: 10px;
+			overflow: hidden;
+  		text-overflow: ellipsis;
+		}
+		.likes{
+			color: rgb(216, 37, 37);
+		}
+	}
+}
+.popular-tweet{
+	padding: 10px;
+	position: absolute;
+	top: 10%;
+	right: 0;
+	width: 28%;
+	// border: 1px solid rgb(255, 238, 0);
+	.tweet{
+		border: 2px solid rgb(129, 129, 151);
+		padding: 10px;
+		margin-top: 10px;
+		height: 160px;
+		position: relative;
+		.avatar{
+			// border: 1px solid rgb(1, 1, 3);
+			float: left;
+			height: 24%;
+			width: 24%;
+		}
+		.intro{
+			// border: 1px solid rgb(1, 1, 3);
+			margin-top: 3px;
+			width: 75%;
+			float: right;
+			padding-left: 10px;
+			overflow: hidden;
+  		text-overflow: ellipsis;
+		}
+		.button{
+			position: absolute;
+			right: 5px;
+			bottom: 5px;
+		}
+	}
+}
