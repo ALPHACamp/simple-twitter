@@ -5,22 +5,24 @@
       <th>ID</th>
       <th>Auther</th>
       <th>Description</th>
-      <th>replies</th>
+      <th>replies count</th>
+      <th>Replies</th>
       <th>#</th>
     </tr>
   </thead>
   <tbody>
     <% @tweets.each do |tweet| %>
-      <tr>
+      <tr id="tweet-id-<%= tweet.id %>">
         <td><%= tweet.id %></td>
         <td><%= tweet.user.name %></td>
         <td><%= tweet.description %></td>
+        <td><%= tweet.replies_count %></td>
         <td>
           <% tweet.replies.each do |reply| %>
             <li><%= reply.comment %></li>
           <% end %>
         </td>
-        <td><%= link_to "Delete", admin_tweet_path(tweet), method: :delete %></td>
+        <td><%= link_to "Delete", admin_tweet_path(tweet), remote: true, method: :delete %></td>
       </tr>
     <% end %>
   </tbody>
