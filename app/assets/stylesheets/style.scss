@@ -17,7 +17,7 @@ html, body {
 }
 
 body {
-  padding: 100px;
+  padding: 80px;
   margin: 0px;
   margin-bottom: 300px;
   font-size: 14px;
@@ -45,7 +45,7 @@ ul, ol {
 
 
 .container {
-  width: 90%;
+  width: 80%;
   max-width: 1170px;
   margin: 0 auto;
   position: relative;
@@ -128,12 +128,6 @@ p {
   }
 }
 
-.navbar-img {
-  float: left;
-  font-size: 18px;
-  line-height: 20px;
-  height: 50px;
-}
 
 /* tweets */
 .action {
@@ -178,7 +172,7 @@ p {
 
 .popular-item p{
   color: #767676;
-  line-height: 24px;
+  line-height: 1em;
 }
 
 /* user side */
@@ -258,6 +252,8 @@ p {
 
 .user_avatar_upload {
   position: relative;
+  width: 60%;
+  margin: 0 auto;
 }
 
 .user_avatar_upload input[type=file] {
@@ -279,5 +275,5 @@ p {
 }
 
 .btn-like {
-  color: red;
+  color: #ff0000;
 }

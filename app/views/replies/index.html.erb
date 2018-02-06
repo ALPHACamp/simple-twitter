@@ -12,22 +12,24 @@
         <div class="col-sm-6 col-md-8">
           <div class="info-item">
             <%= link_to tweets_user_path(@user) do %>
-              <h3><%= @user.name %> , <%= @tweet.created_at %></h3>
+              <h4><%= @user.name %> , <%= time_tag(@tweet.created_at) %></h4>
             <% end %>
             <p><%= truncate(@tweet.description, length: 40){ link_to "continue", "#" } %></p>
+            <div class="btn-group">
+              <%= link_to tweet_replies_path(@tweet, @tweet.replies), class: "btn-reply" do %>
+                <b>Relpy(<%= @tweet.replies_count %>)</b>
+              <% end %>  
 
               <% if current_user.like?(@tweet) %>
-                <%= link_to "Unlike", unlike_tweet_path(@tweet), method: :post, class: "btn" %>
+                <%= link_to unlike_tweet_path(@tweet), method: :post, class: "btn-like" do %>
+                  <b>unlike</b>
+                <% end %>
               <% else %>
-                <%= link_to like_tweet_path(@tweet), method: :post, class: "btn" do %>
-                  <p>Like(<%= @tweet.likes_count %>)</p>
+                <%= link_to like_tweet_path(@tweet), method: :post, class: "btn-like" do %>
+                  <b>Like(<%= @tweet.likes_count %>)</b>
                 <% end %>
               <% end %>
-
-              <%= link_to tweet_replies_path(@tweet, @tweet.replies), class: "btn" do %>
-                <p>Relpy(<%= @tweet.replies_count %>)</p>
-              <% end %>   
-
+            </div>
           </div>
         </div>
       </div>
@@ -43,7 +45,7 @@
         <div class="col-sm-6 col-md-8">
           <div class="info-item">
             <%= link_to tweets_user_path(reply.user) do %>
-              <h3><%= reply.user.name %> , <%= reply.created_at %></h3>
+              <h4><%= reply.user.name %> , <%= time_tag(reply.created_at) %></h4>
             <% end %>
             <p><%= reply.comment %></p>
           </div>
@@ -55,7 +57,7 @@
     <div class="tweet-form">
       <%= form_for [@tweet, @reply] do |t| %>
       <div class="form-group">
-        <%= t.text_area :comment, placeholder: "What's on your mind?", class: "form-control", size: "140x10", resize: "none" %>
+        <%= t.text_area :comment, placeholder: "What's on your mind?", class: "form-control", size: "100x7", resize: "none" %>
       </div>
       <div class="action">
         <%= t.submit "Reply", class: "btn btn-default" %>

@@ -8,7 +8,7 @@
       <%= link_to tweets_user_path(follow) do %>
         <h4><%= follow.name %></h4>
       <% end %>
-      <p><%= truncate(follow.introduction, length: 50) %></p>
+      <p><%= truncate(follow.introduction, length: 40) %></p>
     </div>
     <div class="follow-btn">
       <% if current_user != follow %>
