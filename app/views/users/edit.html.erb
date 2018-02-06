@@ -1,31 +1,38 @@
 <div class="row">
-  <!-- user avatar -->
-  <div class="col-xs-4">
-    <div class="avatar">
-      <%= image_tag(@user.avatar, class: "img-responsive center-block") %>
-    </div>
-  </div>
+  <%= form_for @user do |f| %>
 
-  <!-- form -->
-  <div class="col-xs-8">
-    <% if @user.errors.any? %>
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
-      </ul>
-    <% end %>
-    <%= form_for @user do |f| %>
-        <div class="form-group">
-          <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
-        </div>
-        <div class="form-group">
-          <%= f.text_area :introduction, class: "form-control", id: "intro", placeholder: "Type anything about you here..." %>
-        </div>
-        <div class="form-group text-right">
-          <%= f.submit 'Update', class: "btn btn-primary" %>
-        </div>
-    <% end %>
-  </div>
-    
+    <!-- user avatar -->
+    <div class="col-xs-4">
+      <div class="avatar">
+        <%= image_tag(@user.avatar, class: "img-responsive center-block") %>
+      </div>
+
+      <div class="form-group">
+        <%= f.file_field :avatar %>
+      </div>
+    </div>
+
+    <!-- form for name and introduction-->
+    <div class="col-xs-8">
+      <% if @user.errors.any? %>
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <!-- form -->
+      <div class="form-group">
+        <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
+      </div>
+      <div class="form-group">
+        <%= f.text_area :introduction, class: "form-control", id: "intro", placeholder: "Type anything about you here..." %>
+      </div>
+      <div class="form-group text-right">
+        <%= f.submit 'Update', class: "btn btn-primary" %>
+      </div>
+
+    </div>
+  <% end %>    
 </div>
