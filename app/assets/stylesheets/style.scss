@@ -83,6 +83,7 @@ div.notice{
 }
 
 .tweet-index{
+  display: inline-block;
   width: 60%;
   padding: 10px;
 }
@@ -123,6 +124,19 @@ div.notice{
 
 .btn-next{
   margin-right: 10px;
+}
+
+.index-popular{
+  display: inline-block;
+  width: 34%;
+  padding: 10px;
+  margin-left: 5%;
+  vertical-align: top;
+}
+
+.index-popular .following-intro{
+  height: 125px;
+  overflow: scroll;
 }
 
 .user-profile{

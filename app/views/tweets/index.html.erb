@@ -30,4 +30,26 @@
       </div>
     <% end %>
   </div>
+
+  <div class="index-popular">
+    <h3>Popular</h3>
+    <% @user.each do |user| %>
+      <div class="tweet-block">
+        <% for img_id in 0..26 %>
+          <% if image_path(user.avatar).include?('/user'+img_id.to_s+'.jpg') %>
+            <%= image_tag('/avatar/user'+img_id.to_s+'.jpg', class: "user-avatar") %>
+          <% end %>
+        <% end %>
+        <div class="user-text">
+          <h4><%= link_to user.name, tweets_user_path(user) %></h4>
+          <div class="following-intro">
+            <p><%= truncate(user.introduction, length: 80) %></p>
+            <div class="following-btn">
+              <%= render partial: "shared/follow", locals: {user: user} %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
