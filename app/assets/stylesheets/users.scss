@@ -36,3 +36,51 @@
 		}
 	}
 }
+.edit-user{
+	width: 25%;
+	border: 1px solid red;
+	.img{
+		width: 90%;
+		text-align: center;
+	}
+	.upload{
+		position: relative;
+		.default{
+			opacity: 0;
+    	cursor: pointer;
+    	position: absolute;
+    	top: 0;
+    	z-index: 2;
+		}
+		.default:hover{
+			opacity: 0;
+		}
+		button{
+			position: relative;
+    	top: 0;
+    	z-index: 1;
+		}
+	}
+}
+.edit-context{
+	width: 73%;
+	right: 5px;
+	top: 0;
+	position: absolute;
+	border: 1px solid goldenrod;
+	padding: 10px;
+	.input-name{
+		width: 100%;
+		height: 50px;
+	}
+	.input-intro{
+		width: 100%;
+		height: 300px;
+	}
+	.button{
+		float: right;
+	}
+	.file{
+		display: none;
+	}
+}
