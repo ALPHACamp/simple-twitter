@@ -118,8 +118,8 @@ header .container-fluid {
 }
 
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
-    border-color: #e7e7e7;
-    background-color: #204d74;
+  border-color: #e7e7e7;
+  background-color: #204d74;
 }
 
 .navbar-text {
@@ -345,7 +345,7 @@ header .container-fluid {
 
 
 
-/* ------- user profile ------- */
+/* ------- user profile :reply------- */
 
 .profile-avatar {
   width: 100%;
@@ -360,7 +360,8 @@ header .container-fluid {
 }
 
 .profile-intro {
-  padding: 10px 60px;
+  width: 200px;
+  margin: 0 auto;
   word-break: break-all;
   word-wrap: break-word;
   white-space: pre-line;
@@ -368,16 +369,28 @@ header .container-fluid {
 }
 
 .profile-info {
-  padding: 5px 60px;
+  width: 200px;
+  margin: 0 auto;
+  letter-spacing: 1px;
 }
 
 .profile-info a {
-  font-size: 28px;
+  font-size: 20px;
   color: black;
 }
 
 
+/* ------- Reply ------- */
 
+.reply-head {
+  font-size: 28px;
+  color: #337ab7;
+  margin-bottom: 30px;
+}
+
+.reply-form {
+  margin-top: 30px;
+}
 
 
 /* ------- viewport ------- */
@@ -389,29 +402,28 @@ header .container-fluid {
 
 @media screen and (max-width: 767px) {
 
-.tweetavatar img {
+  .tweetavatar img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+  }
+
+  .usercard-avatar {
+    width: 100%;
+    height: auto;
+    margin: auto;  
+  }
+
+  .usercard-avatar img {
     max-width: 100%;
     height: auto;
     display: block;
-}
+  }
 
-.usercard-avatar {
-  width: 100%;
-  height: auto;
-  margin: auto;  
-}
-
-.usercard-avatar img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-.profile-intro {
-  padding: 10px 20px;
-  word-break: break-all;
-  word-wrap: break-word;
-  white-space: pre-line;
-}
+  .profile-intro {
+    word-break: break-all;
+    word-wrap: break-word;
+    white-space: pre-line;
+  }
   
 }
