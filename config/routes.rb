@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
   root 'tweets#index'
   # 請依照專案指定規格來設定路由
-  resources :users, only: [:edit] do
+  resources :users, only: [:edit, :update] do
 
     member do
       get :tweets

@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-md-4">
+      <%= image_tag "http://via.placeholder.com/350x350", class: "img-responsive img-rounded"  unless @user.avatar?%>
+      <%= form_for current_user do |f| %>
+    </div>
+  
+    <div class="col-xs-12 col-md-8">
+
+      <div class="form-group">
+        <%= f.label :name, 'Name' %>
+        <%= f.text_field :name, class:"form-control", placeholder:"Name" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :introduction, 'Introduction' %>
+        <%= f.text_area :introduction, class: "form-control", placeholder:"Type anything about you here...", style: 'height: 250px' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit "Update" , class: "btn button-style navbar-right"  %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
