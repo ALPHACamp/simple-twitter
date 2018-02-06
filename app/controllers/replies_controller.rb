@@ -7,13 +7,15 @@ class RepliesController < ApplicationController
   end
 
   def create
+    @tweet = Tweet.find(params[:id])
     @reply = Reply.new(reply_params)
     @reply.user_id = current_user.id
+    @reply.tweet_id = @tweet.id
     if @reply.save
       flash[:notice] = "留言成功！"
       redirect_back(fallback_location: root_path)
     else
-      lash[:alert] = @reply.errors.full_messages.to_sentence
+      flash[:alert] = @reply.errors.full_messages.to_sentence
       redirect_back(fallback_location: root_path)
     end
   end
@@ -21,7 +23,7 @@ class RepliesController < ApplicationController
   private
 
   def reply_params
-    require(:reply).permit(:comment)
+    params.require(:reply).permit(:comment)
   end
 
 end
