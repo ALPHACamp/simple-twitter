@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-md-4">
+      <div>
+        <%= image_tag @user.avatar ,class:"img-responsive img-rounded" if @user.avatar?%>
+         <%= image_tag "http://via.placeholder.com/250x250", class: "img-responsive img-rounded"  unless @user.avatar?%>
+      </div>
+      <h2><%= @user.name %></h2>
+      <div><%= simple_format @user.introduction %></div>
+      <h4><strong>Tweets  &nbsp;<%= @user.tweets.count %></strong></h4>
+    </div>
+
+    <% @tweets.each do |tweet| %>
+        <div class="col-xs-12 col-md-8">
+        <%= tweet.description %>
+        <%= tweet.created_at %>
+        </div>
+    <% end %>
+
+  </div>
+</div>
