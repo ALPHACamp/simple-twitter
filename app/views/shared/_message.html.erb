@@ -11,6 +11,9 @@
       <div>
         <%= link_to "Reply(#{message.replies.count})", tweet_replies_path(message.id) %>
         <%= render partial: "shared/like", locals: {tweet: message} %>
+        <% if current_user.admin? %>
+          <%= link_to 'Delete', admin_tweet_path(message), method: :delete %>
+        <% end %>
       </div>
     <% else %>
       <p><%= message.comment %></p>
