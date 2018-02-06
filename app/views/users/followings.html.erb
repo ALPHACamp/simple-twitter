@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <%= image_tag @user.avatar, class: "img-responsive center-block" %>
+
+        <h1><%= @user.name %></h1>
+        <h4><%= @user.email %></h4>
+        <hr>
+
+        <% if @user.introduction == nil %>
+          <p>未新增自我介紹</p>
+        <% else %>
+          <p><%= @user.introduction %></p>   
+        <% end %>
+        <br>
+        <h4><%= link_to "Tweet #{@user.tweets.length}", user_path(@user), :style=>"color:grey" %></h4>
+        <h4 style="color:grey;">Following <%= @user.followships.length %></h4>
+        <h4><%= link_to "Follower #{@user.inverse_followships.length}", followers_user_path, :style=>"color:grey" %></h4>
+        <h4><%= link_to "Like #{@user.likes.length}", likes_user_path, :style=>"color:grey" %></h4>
+        <br>
+        <% if @user==current_user %>
+          <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
+        <% else %>
+          <%= render partial: "shared/follow", locals: {user: @user} %>
+        <% end %>
+
+      </div>
+      <div class="col-md-1">
+      </div>
+
+      <div class="col-md-8">
+      <h1>Following</h1>
+        <% @followings.each do |following| %>
+          <div class="col-md-6">
+            <div class="row rank-item">
+              <div class="col-md-4">
+                <%= image_tag User.find(following.following_id).avatar, class: "img-responsive center-block" %>
+              </div>
+              <div class="col-md-8">
+                <h4><%= link_to User.find(following.following_id).name, user_path(User.find(following.following_id)) %></h4>
+                <% if User.find(following.following_id).introduction==nil %>
+                  <p>未新增自介</p>
+                <% else %>
+                  <p><%= truncate(User.find(following.following_id).introduction, length: 50) %></p>
+                <% end %>
+
+                <% if User.find(following.following_id)==current_user %>
+                <% else %>
+                  <%= render partial: "shared/follow", locals: {user: User.find(following.following_id)} %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+  </div>
+</div>
