@@ -23,7 +23,11 @@ class User < ApplicationRecord
   has_many :followings, through: :followships
   # 使用者被很多使用者追蹤的多對多關聯
   has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id", dependent: :destroy
-  has_many :followers, through: :inverse_followships, source: :user 
+  has_many :followers, through: :inverse_followships, source: :user
+
+  # 使用者能回覆別人的推播的多對多關係
+  has_many :replies, dependent: :destroy
+  has_many :replied_tweets, through: :replies, source: :tweet
 
   def admin?
     self.role == 'admin'

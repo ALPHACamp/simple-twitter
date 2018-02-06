@@ -6,6 +6,10 @@ class Tweet < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user
 
+  # 使用者能回覆別人的推播的多對多關係
+  has_many :replies, dependent: :destroy
+  has_many :replied_users, through: :replies, source: :user
+
   def is_liked?(user)
     self.liked_users.include?(user)
   end
