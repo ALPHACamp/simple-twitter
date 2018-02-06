@@ -22,4 +22,16 @@ namespace :dev do
       puts "Default admin created!"
   end
 
+
+  task fake_tweet: :environment do
+    50.times do |i|
+      Tweet.create!(
+        description: FFaker::Lorem.sentence,
+        user: User.all.sample
+        )   
+    end  
+    puts "Created #{Tweet.count} fake tweets"
+  end
+
+
 end
