@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1><%= @tweet.user_id if @tweet.user_id? %></h1>
+      <p><%= simple_format @tweet.description %></p>
+    </div>
+  </div>
+</div>

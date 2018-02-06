@@ -16,9 +16,7 @@
             <tr>
               <th scope="row"><%= tweet.id %></th>
               <td>
-                <%= link_to do %>
-                  <%= truncate(tweet.description.capitalize, length: 50) %>
-                <% end %>
+                <%= link_to truncate(tweet.description.capitalize, length: 50), admin_tweet_path(tweet) %>
                 </td>
               <td>
                 <%= link_to "Delete", admin_tweet_path(tweet), method: :delete,
