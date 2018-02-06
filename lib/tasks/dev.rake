@@ -26,7 +26,7 @@ namespace :dev do
 
     100.times do |i|
       Tweet.create!(description: FFaker::Lorem.paragraph[1..140],
-        user_id: User.all.sample
+        user: User.all.sample
       )
     end
     puts " #{Tweet.count} comment data"
