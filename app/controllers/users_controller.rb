@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   def likes
     @user = User.find(params[:id])
     #@likes = @user.like_tweets  # 基於測試規格，必須講定變數名稱
-    @likes = Tweet.joins(:likes).where('likes.user_id = ?', @user.id).order(created_at: :asc)
+    @likes = Tweet.where('likes.user_id = ?', @user.id).joins(:likes).merge(Like.order(created_at: :desc))
   end
 
   private
