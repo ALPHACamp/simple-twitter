@@ -18,6 +18,13 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_tweets, through: :likes, source: :tweet
 
+  # 使用者追蹤很多使用者的多對多關聯
+  has_many :followships, dependent: :destroy
+  has_many :followings, through: :followships
+  # 使用者被很多使用者追蹤的多對多關聯
+  has_many :inverse_followships, class_name: "Followship", foreign_key: :following_id
+  has_many :followers, through: :inverse_followships, source: :user
+
   def admin?
     self.role == 'admin'
   end
