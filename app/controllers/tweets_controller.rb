@@ -13,11 +13,10 @@ class TweetsController < ApplicationController
     @tweet.user = current_user
     if @tweet.save
       flash[:notice] = 'tweet was successfully created'
-      puts 'good!'
       redirect_to root_path
     else
-      flash.now[:alert] = 'tweet was failed to create'
-      puts 'gg!'
+      flash.now[:alert] = 'tweet was failed to create: ' + @tweet.errors.full_messages.join("<br>").html_safe
+      @tweets = Tweet.order('created_at desc').page(params[:page]).per(10)
       render :index
     end
   end
