@@ -1,0 +1,60 @@
+<div class="container-fluid">
+  <div class="page-header text-center">
+    <h1>iTweet管理後台</h1>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <ul class="nav nav-tabs">
+        <li role="presentation">
+          <%= link_to 'Tweets列表', admin_tweets_path %>
+        </li>        
+        <li role="presentation" class="active">
+          <%= link_to '使用者列表', admin_users_path %>
+        </li>  
+      </ul>
+    </div>
+  </div>
+  <br>
+  <div class="container-fluid">
+    <h2>共<%= @count %>位Users</h2>
+    <table class="table table-bordered">
+      <thead class="vertical-middle horizontal-center thead-darkgrey">
+        <th>#</th>
+        <th width="10%">照片</th>
+        <th>姓名</th>
+        <th width="55%">自我介紹</th>        
+        <th>發文數</th>
+        <th>追蹤數</th>
+        <th>被追蹤數</th>        
+      </thead>
+      <tbody>
+        <% @users.each_with_index do |user, index| %>
+          <tr class="vertical-middle">
+            <td class="horizontal-center">
+              <% if params[:page] == nil %>
+                <%= (index+1) %>
+              <% else %>
+                <%= (index+1)+(params[:page].to_i-1)*10 %>
+              <% end %>
+            </td>
+            <td><%= image_tag(user.avatar, :class => 'img-responsive') %></td>
+            <td class="horizontal-center"><%= link_to user.name, tweets_user_path(user.id) %></td>
+            <td><%= user.introduction %></td>
+            <td class="horizontal-center">
+              <%= link_to user.tweets.count, tweets_user_path(user.id) %>
+            </td>
+            <td class="horizontal-center">
+              <%= link_to user.followings.count, followings_user_path(user.id) %>
+            </td>
+            <td class="horizontal-center">
+              <%= link_to user.followers.count, followers_user_path(user.id) %>
+            </td>            
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>  
+  <div class="text-center">
+      <%= paginate @users %>
+  </div>
+</div>

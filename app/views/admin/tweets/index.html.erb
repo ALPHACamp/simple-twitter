@@ -1,1 +1,65 @@
-<h1>Twitter後台</h1>
+<div class="container-fluid">
+  <div class="page-header text-center">
+    <h1>iTweet管理後台</h1>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <ul class="nav nav-tabs">
+        <li role="presentation" class="active">
+          <%= link_to 'Tweets列表', admin_tweets_path %>
+        </li>        
+        <li role="presentation">
+          <%= link_to '使用者列表', admin_users_path %>
+        </li>  
+      </ul>
+    </div>
+  </div>
+  <br>
+  <div class="container-fluid">
+    <h2>共<%= @count %>筆Tweets</h2>
+    <table class="table table-bordered">
+      <thead class="horizontal-center thead-darkgrey">
+        <th>#</th>
+        <th>Tweet內容</th>
+        <th>Tweet建立者</th>
+        <th width="5%">照片</th>
+        <th>Tweet時間</th>
+        <th>查看</th>
+        <th>刪除</th>
+      </thead>
+      <tbody>
+        <% @tweets.each_with_index do |tweet, index| %>
+          <tr class="vertical-middle">
+            <td class="horizontal-center">
+              <% if params[:page] == nil %>
+                <%= (index+1) %>
+              <% else %>
+                <%= (index+1)+(params[:page].to_i-1)*10 %>
+              <% end %>
+            </td>
+            <td><%= tweet.description %></td>
+            <td class="horizontal-center">
+              <%= link_to tweet.user.name, tweets_user_path(tweet.user.id) %>
+            </td>
+            <td><%= image_tag(tweet.user.avatar, :class => 'img-responsive') %></td>
+            <td class="horizontal-center"><%= tweet.created_at.strftime('%F') %>, <%= tweet.created_at.strftime('%R') %>
+            </td>
+            <td>
+              <%= link_to replies_tweet_path(tweet.id) do %>
+                <i class="btn btn-default btn-lg far fa-search" aria-hidden="true"></i>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to admin_tweet_path(tweet), method: :delete, data: {confirm: "確定要刪除此筆Tweet?"} do %>
+                  <i class="btn btn-default btn-lg far fa-trash" aria-hidden="true"></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>  
+  <div class="text-center">
+      <%= paginate @tweets %>
+  </div>
+</div>
