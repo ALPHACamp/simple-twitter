@@ -6,7 +6,7 @@
     <div class="col-xs-5">
 
       <div class="">
-        <h1>Avatar<%= image_tag @user.avatar, class: "img-responsive img-rounded" %></h1>
+        <img src="http://via.placeholder.com/150x150" class="img-responsive img-rounded">
       </div>
       <div >  
         <h3><%= @user.name %></h3>
@@ -25,18 +25,18 @@
 
     <!-- 右邊 -->
     <div class="tweets-list col-xs-7">
-        <div class="panel panel-default">          
-          <div class="panel-body">
-            <% @tweets.each do |tweet| %>
-              <div>
-                <h4><%= link_to tweet.user.name, tweet_path(tweet) %> Tweet</h4>
-                <p><%= truncate(tweet.description, length: 140) %></p>
-              </div>
-              <hr>
-            <%end%>  
-          </div>    
-        </div>
+      <div class="panel panel-default">          
+        <div class="panel-body">
+          <% @tweets.each do |tweet| %>
+            <div>
+              <h4><%= link_to tweet.user.name, tweet_path(tweet) %> Tweet</h4>
+              <p><%= truncate(tweet.description, length: 140) %></p>
+            </div>
+            <hr>
+          <% end %>  
+        </div>    
       </div>
+    </div>
 
       
 
