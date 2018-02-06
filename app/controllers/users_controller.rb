@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     :followings, :followers, :likes]
 
   def tweets    
+    @tweets = Tweet.where(:user_id => params[:id])
   end
 
   def edit
