@@ -5,31 +5,31 @@
         <div class="form-group">
           <%= f.text_area :description, placeholder: "留個言吧", class: "form-control",style:"height:200px;margin-top:30px" %>
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-offset-10">
           <%= f.submit "Tweet now!", class: "btn btn-primary" %>
         </div>
       <% end %>
       <% @tweets.each do |tweet| %>
         <div class="tweets">
-          <% if tweet.user.avatar? %>
-            <%= image_tag(tweet.user.avatar, class: "img-rounded") %>
-            <% else %>
-            <%= image_tag "fallback/avatar.png", class: "img-rounded" %>
-          <% end %>
-          <ul class="list-inline">      
-            <li class="list-inline-item"><h4><%= link_to tweet.user.name ,tweets_user_path(tweet.user) %></h4></li>
-            <li class="list-inline-item"><p class="text-muted">
-              <em><%= time_ago_in_words(tweet.created_at) %> ago -</em></p></li>
-          </ul>
-          <p><%= simple_format tweet.description %></p>
-          <h4 class="text-muted">
-            <%= link_to "Reply (#{tweet.replies.count})" ,tweet_replies_path(tweet) %>
-            <% if tweet.liked?(current_user) %>
-              <%= link_to "Like (#{tweet.likes_count})", unlike_tweet_path(tweet), method: :post ,style:"color:red;" %>
+            <% if tweet.user.avatar? %>
+              <%= image_tag(tweet.user.avatar, class: "img-rounded") %>
               <% else %>
-              <%= link_to "Like (#{tweet.likes_count})", like_tweet_path(tweet), method: :post ,style:"color:red;" %>
+              <%= image_tag "fallback/avatar.png", class: "img-rounded" %>
             <% end %>
-          </h4>
+            <ul class="list-inline">      
+              <li class="list-inline-item"><h4><%= link_to tweet.user.name ,tweets_user_path(tweet.user) %></h4></li>
+              <li class="list-inline-item"><p class="text-muted">
+                <em><%= time_ago_in_words(tweet.created_at) %> ago -</em></p></li>
+            </ul>
+            <p><%= simple_format tweet.description %></p>
+            <h4 class="text-muted">
+              <%= link_to "Reply (#{tweet.replies.count})" ,tweet_replies_path(tweet) %>
+              <% if tweet.liked?(current_user) %>
+                <%= link_to "Like (#{tweet.likes_count})", unlike_tweet_path(tweet), method: :post ,style:"color:red;" %>
+                <% else %>
+                <%= link_to "Like (#{tweet.likes_count})", like_tweet_path(tweet), method: :post ,style:"color:red;" %>
+              <% end %>
+            </h4>
         </div>
         <hr>
       <% end %>
@@ -37,24 +37,29 @@
     <div class="col-md-5">
       <h2>Popular</h2>
       <div>
-        <% @recent_users.each do |user| %>
-          <div class="user-text">
-            <% if user.avatar? %>
-              <%= image_tag(user.avatar, height: 60, width: 60, class: "img-rounded") %>
-              <% else %>
-              <%= image_tag "fallback/avatar.png", height: 60, width: 60,class: " img-rounded" %>
-            <% end %>
-            <%= link_to "#{user.name} 訂閱人數： #{user.followers_count}", tweets_user_path(user) %>
-            <p><%= user.introduction %></p> 
-            <% if user != current_user %>
-              <% if current_user.following?(user)%>
-                <%= link_to 'Unfollow', followship_path(user), method: :delete , class: "btn btn-primary" %>
-              <% else %>
-                <%= link_to 'Follow', followships_path(following_id: user), method: :post , class: "btn btn-default" %>
+        <% @users.each do |user| %>
+          <div class="user-text col-md-12">
+            <div class="col-sm-4">
+              <% if user.avatar? %>
+                <%= image_tag(user.avatar, height: 60, width: 60, class: "img-rounded") %>
+                <% else %>
+                <%= image_tag "fallback/avatar.png", height: 60, width: 60,class: " img-rounded" %>
               <% end %>
-            <% end %>
+            </div>
+            <div class="col-sm-8">
+              <%= link_to "#{user.name} 訂閱人數： #{user.followers_count}", tweets_user_path(user) %>
+              <p><%= user.introduction %></p> 
+            </div>
+            <div class="col-md-offset-8">
+              <% if user != current_user %>
+                <% if current_user.following?(user)%>
+                  <%= link_to 'Unfollow', followship_path(user), method: :delete , class: "btn btn-primary" %>
+                <% else %>
+                  <%= link_to 'Follow', followships_path(following_id: user), method: :post , class: "btn btn-default" %>
+                <% end %>
+              <% end %>
+            </div>
           </div> 
-
         <% end %>        
       </div>
     </div>

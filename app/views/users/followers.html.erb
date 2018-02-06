@@ -19,7 +19,7 @@
           <%= link_to follower.name, tweets_user_path(follower) %>
           <p><%= follower.introduction %></p> 
           <% if follower != current_user %>
-            <% if current_user.follower?(follower)%>
+            <% if current_user.following?(follower)%>
               <%= link_to 'Unfollow', followship_path(follower), method: :delete , class: "btn btn-primary" %>
             <% else %>
               <%= link_to 'Follow', followships_path(follower_id: follower), method: :post , class: "btn btn-default" %>
