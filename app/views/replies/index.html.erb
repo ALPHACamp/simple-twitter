@@ -1,14 +1,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-2">
-			<%= image_tag @user.avatar, width:'100px', id:"tweet-avatar" %>
-			<h3><%= @user.name%></h3>
-			<p><%= @user.introduction%></p>
-			<% if @user == current_user %>
-				<%= link_to "Edit Profile", edit_user_path(current_user) %>
-			<% else %>
-				follow
-			<% end %>
+			<%= render partial: "shared/userProfile.html.erb", locals: {user: @user}%>
 		</div>
 		<div class="col-md-10">
 			<h3>Tweets</h3>
