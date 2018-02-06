@@ -1,6 +1,44 @@
-<h1>admin index</h1>
-<ul>
-  <% @tweets.each do |tweet| %>
-  <li><%= tweet.user.name %></li>
-  <% end %>
-</ul>
+<div class="container">
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Tweet Content</th>
+        <th scope="col"></th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @tweets.each do |tweet| %>
+      <tr>
+        <th scope="row">
+          <% if tweet.user.avatar? %>
+            <%= image_tag tweet.user.avatar, width: '100px', class: "rounded img-responsive center-block" %>
+          <% else %>
+            <h1 class="text-center"><span class="glyphicon glyphicon-user"></span></h1>
+          <% end %>
+        </th>
+        <td>
+          <h4><%= tweet.user.name %></h4>
+          <p><%= tweet.description %></p>
+
+          
+          <!-- replay link -->
+          <%= link_to tweet_replies_path(tweet), class: "btn btn-link" do %>
+            Reply <span class="badge badge-pill badge-primary"><%= tweet.replies_count %></span>
+          <% end %>
+         
+        </td>
+        <td></td>
+        <td>
+        <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data:{ confirm: "確定刪除此tweet?" }, class: "text-center" %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <div class="container pagination justify-content-center" >
+    <%= paginate @tweets, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm" %>
+  </div>
+</div>

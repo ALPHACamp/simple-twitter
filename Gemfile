@@ -40,7 +40,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'kaminari'
-
+gem 'bootstrap_form'
+gem 'bootstrap4-kaminari-views'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
