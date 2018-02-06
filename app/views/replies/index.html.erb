@@ -1,8 +1,8 @@
 <div class="repliesmyfile">
-<%= image_tag User.first.avatar,style:"width:300px;height:300px;display: block;" %><br>
+<%= image_tag @replyuser.avatar,style:"width:300px;height:300px;display: block;" %><br>
   <h4>
-    <p><%=User.first.name%></p><br>
-    <p><%=User.first.introduction%></p><br>
+    <p><%=@replyuser.name%></p><br>
+    <p><%=@replyuser.introduction%></p><br>
     <%="Tweets"%><br>
     <%="following"%><br>
     <%="follower"%><br>
@@ -20,31 +20,31 @@
         </a>
       </div>
       <div class="media-body">
-        <h4><%=  User.find(@tweet.user_id).name%></h4>
+        <h4><%= link_to User.find(@tweet.user_id).name,tweets_user_path(@tweet.user_id)%></h4>
         <h4><%= @tweet.description %></h4><br>
         <%= link_to "Reply (#{@tweet.replies.count})",replies_path(@tweet.id)%>
       </div>
     </div>
   <hr>
-
 <h1>Replies</h1><br>
-  <div class="media">
-    <% @reply_all.each do |reply| %>
-      <% if Tweet.find(params[:id]).id == reply.tweet_id %>
+
+<div class="media">
+  <% @reply_all.each do |reply| %>
+    <% if Tweet.find(params[:id]).id == reply.tweet_id %>
       <div class="media-left media-middle">
         <a href="#">
           <%= image_tag User.find(reply.user_id).avatar,class:"media-object" ,style:"width:120px;height:120px"  %>
         </a>
       </div>
       <div class="media-body">
-        <h4><%=User.find(reply.user_id).name %><%=" "%> <%=reply.created_at%><br></h4>
-        <h4><%=reply.comment %></h4><br>
-      <% end %>
-      </div><br><br>
+        <h4><%= link_to User.find(reply.user_id).name + "，" , tweets_user_path(reply.user_id)%>
+        <%=reply.created_at.strftime("%Y-%m-%d,%H:%M:%S") %><br></h4>
+        <h4><%=reply.comment %></h4>
+      </div>
+      <br>
     <% end %>
-  </div>
-<hr>
-
+  <% end %>
+</div>
 <%=  form_for @reply do |f| %>
   <%= f.text_area :comment ,class:"form-control",rows:"4",placeholder: "what's on your mind" %><br>
   <%= f.submit value:"Create Tweet",class:"btn btn-primary" %>

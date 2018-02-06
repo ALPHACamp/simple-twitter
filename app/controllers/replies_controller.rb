@@ -4,6 +4,7 @@ class RepliesController < ApplicationController
      @tweet= Tweet.find(params[:id])
      @reply = Reply.new
      @reply_all = Reply.order(created_at: :desc).limit(10)
+     @replyuser = current_user
   end
 
   def create

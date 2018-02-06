@@ -14,8 +14,8 @@
          </a>
        </div>
        <div class="media-body">
-         <%=tweeto.user.name + "，"  %>
-         <%=tweeto.created_at%><br><br>
+        <%= link_to tweeto.user.name + "，",tweets_user_path(tweeto.user_id)%>
+         <%=tweeto.created_at.strftime("%Y-%m-%d,%H:%M:%S")%><br><br>
          <p><%=tweeto.description%></p>
          <br>
          <%= link_to "Reply (#{tweeto.replies.count})",replies_path(tweeto.id)%>

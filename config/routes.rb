@@ -9,7 +9,7 @@ Rails.application.routes.draw do
         post :unlike
   end
     end
-  resources :users, only: [:edit, :update] do
+  resources :users, only: [:edit, :update, :destroy] do
       member do
         get :tweets
         get :followings

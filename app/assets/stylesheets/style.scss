@@ -93,6 +93,21 @@ height:800px;
 .tweetreplies{
 margin: -800px 0px 0px 350px;
 width:920px;
-height:800px;
+height:400px;
+}
+.replies{
+  width:920px;
+  height:400px;
+  border: 0.1px solid ;
 }
 // 以上為replies樣式
+.usermyfile{
+width:300px;
+height:800px;
+}
+.usertweet{
+margin: -800px 0px 0px 350px;
+width:920px;
+height:400px;
+}
+// 以上為usershow樣式

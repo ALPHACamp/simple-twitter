@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 
   def tweets
-  @user  = User.all
-  @user = User.find(params[:id])
+  @tweet_all  = Tweet.all
+  @user_id = User.find(params[:id])
   end
 
   def edit
@@ -14,7 +14,11 @@ class UsersController < ApplicationController
   @user.update_attributes(user_params)
   redirect_to tweets_user_path(current_user)
   end
-
+  def destroy
+    @tweet_id  = Tweet.find(params[:id])
+    @tweet_id.destroy
+    redirect_to tweets_user_path(current_user)
+  end
   def followings
     @followings # 基於測試規格，必須講定變數名稱
   end

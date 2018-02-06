@@ -1,15 +1,36 @@
-<%= image_tag User.first.avatar,style:"width:300px;height:300px;display: block;" %>
+<div class="usermyfile">
+<%= image_tag @user_id.avatar,style:"width:300px;height:300px;display: block;" %><br>
+  <h4>
+    <p><%=@user_id.name%></p><br>
+    <p><%=@user_id.introduction%></p><br>
+    <%="Tweets"%><br>
+    <%="following"%><br>
+    <%="follower"%><br>
+    <%="like"%><br>
+  </h4>
+  <% if current_user == @user_id %>
+<%= link_to 'Edit Profile', edit_user_path(current_user), class:"btn btn-primary"  %>
+    <% end %>
+</div>
+<div class="usertweet">
+  <% @tweet_all.each do |tweet| %>
+    <% if tweet.user_id == @user_id.id %>
+
+    <div class="media-left media-middle">
+      <a href="#">
+        <%= image_tag User.find(tweet.user_id).avatar,class:"media-object" ,style:"width:120px;height:120px"  %>
+      </a>
+    </div>
+    <div class="media-body">
+      <h4><%= link_to User.find(tweet.user_id).name + "，" , tweets_user_path(tweet.user_id)%>
+      <%=tweet.created_at.strftime("%Y-%m-%d,%H:%M:%S") %><br></h4>
+      <h4><%=tweet.description %></h4><br>
+      <% if current_user == @user_id %>
+     <%= link_to "Delete", user_path(tweet), method: :delete , data: { confirm: "確認刪除?" } %>
+       <% end %>
+    </div>
+
 <br>
-<%=User.first.name%>
-<br>
-<%=User.first.introduction%>
-<br>
-<%="Tweets"%>
-<br>
-<%="following"%>
-<br>
-<%="follower"%>
-<br>
-<%="like"%>
-<br>
-<%= link_to 'Edit', edit_user_path(current_user), class:"btn btn-primary"  %>
+    <% end %>
+  <% end %>
+</div>
