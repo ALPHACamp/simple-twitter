@@ -1,0 +1,25 @@
+  <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
+  <%= @tweet.user.name %>
+  <%= @tweet.user.introduction %>
+  <%= link_to 'Edit Profile', user_path(@tweet.user) %>
+
+
+  <h2>Tweets</h2>
+
+  <ul>
+  <li>
+  Name: <%= @tweet.user.name %> <br>
+  Tweets: <%= @tweet.description %> <br>
+  </li>
+  </ul>
+
+  <h2>Replies</h2>
+  <% @replies.each do |reply| %>
+    <%= reply.user.name %>
+    <%= simple_format(reply.comment) %>
+  <% end %>
+
+  <%= form_for [@tweet, @reply] do |f| %>
+    <%= f.text_area :comment %>
+    <%= f.submit "Reply" %>
+  <% end %>
