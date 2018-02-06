@@ -1,5 +1,8 @@
-<h1>Back End: tweets</h1>
-<%= link_to 'To user dashboard', admin_users_path %>
+<ul class="nav nav-tabs">
+  <li role="presentation"><%= link_to 'User dashboard', admin_users_path %></li>
+  <li role="presentation" class="active"><%= link_to 'All tweets', admin_tweets_path %></li>
+</ul>
+<br><h1>All tweets</h1>
 <!-- show tweets -->
 <% @tweets.each do |tweet| %>
   <%= render partial: "shared/message", locals: {message: tweet, is_tweet: true} %>
