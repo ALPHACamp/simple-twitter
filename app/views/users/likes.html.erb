@@ -5,10 +5,14 @@
       <%= render partial: "shared/user_info", locals: {object: @user, page: 4} %>
     </div>
 
-    <br><br>
+    <br>
 
     <div class="col-md-8 tweet-reply">
-      
+      <h2 class="sub-title">Like</h2>
+      <% @likes.each do |tweet| %>
+        <%= render partial: "shared/tweet_list", locals: {object: tweet, flag: false} %>
+        <br>
+      <% end %>
     </div>
   
   </div>
