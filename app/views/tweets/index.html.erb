@@ -12,7 +12,7 @@
 <div class="tweets">
 
    <% @tweets.each do |tweet| %>
-     <%= tweets.text_area :description, placeholder: "Test" %>
+
      <div class="tweet-item">
        <div class="avatar">
          <%= image_tag tweet.user.avatar, size: "100" if tweet.user.avatar? %>
