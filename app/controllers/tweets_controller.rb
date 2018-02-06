@@ -11,11 +11,14 @@ class TweetsController < ApplicationController
 
     @tweet = Tweet.new(tweet_params) #實例變數必須和new相同，這樣才能回傳error訊息回去render
     @tweet.user = current_user
-    if @tweet.save!
+    if @tweet.save
       flash[:notice] = "您的推特已成功推送"
       redirect_back(fallback_location: "root_path")
     else
-      flash.now[:alert] = "失敗"
+      flash.now[:alert] = "長度太長囉～"
+      @users = User.all.order("followers_count DESC").limit(10)
+      @tweet=Tweet.new
+      @tweets=Tweet.order(created_at: :desc).page(params[:page]).per(10)
       render :index
     end
   end
