@@ -10,6 +10,11 @@
     <div class="col-md-8">
       <% @tweeted.each do |tweet| %>
       <div class="tweets">
+        <% if tweet.user.avatar? %>
+          <%= image_tag(tweet.user.avatar, class: "img-rounded") %>
+          <% else %>
+          <%= image_tag "fallback/avatar.png", class: "img-rounded" %>
+        <% end %>
         <ul class="list-inline">
           <li class="list-inline-item"><h4><%= link_to "#{tweet.user.name}" , tweets_user_path(tweet.user)%></h4></li>
           <li class="list-inline-item"><em><%= time_tag(tweet.created_at) %></em></li>

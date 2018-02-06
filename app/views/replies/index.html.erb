@@ -31,7 +31,7 @@
       <% @tweet.replies.each do |reply| %>
         <div class="tweets">
           <% if reply.user.avatar? %>
-            <%= image_tag(@tweet.user.avatar, class: "img-rounded") %>
+            <%= image_tag(reply.user.avatar, class: "img-rounded") %>
             <% else %>
             <%= image_tag "fallback/avatar.png", class: "img-rounded" %>
           <% end %>
