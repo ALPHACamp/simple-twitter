@@ -1,11 +1,11 @@
 <div class="container-fluid">
   <div class="row well">
-    <div class="col-md-4">    
+    <div class="col-md-2">    
         <%= image_tag(tweet.user.avatar, :class => 'img-responsive') %>
     </div>
-    <div class="col-md-7 tweet-content">
+    <div class="col-md-10 tweet-content">
       <p>
-        <%= tweet.user.name %>, <%= tweet.created_at.strftime('%F') %>, <%= tweet.created_at.strftime('%R') %> 
+        <%= link_to tweet.user.name, tweets_user_path(tweet.user.id) %>, <%= tweet.created_at.strftime('%F') %>, <%= tweet.created_at.strftime('%R') %> 
       </p>
       <p><%= tweet.description %></p>
       <div class="row">
