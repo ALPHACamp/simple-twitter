@@ -20,7 +20,7 @@ class User < ApplicationRecord
   has_many :followings, through: :followships#有很多自己追蹤的user
 
   has_many :inverse_followships, class_name: "Followship", foreign_key: :following_id
-  has_many :followers, through: :inverse_followships, source: :user#從inverse_followships表裡面的user欄位去找
+  has_many :followers, through: :inverse_followships, source: :user # 從inverse_followships表裡面的user欄位去找
   def admin?
     self.role == 'admin'
   end

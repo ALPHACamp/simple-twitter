@@ -1,6 +1,4 @@
 class Admin::TweetsController < Admin::BaseController
-  before_action :authenticate_user!
-  before_action :authenticate_admin
   def index
     @tweets = Tweet.all
   end
@@ -9,6 +7,6 @@ class Admin::TweetsController < Admin::BaseController
     @tweet = Tweet.find(params[:id])
     @tweet.destroy
     flash[:alert] = "成功刪除推播！"
-    redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: admin_root_path)
   end
 end
