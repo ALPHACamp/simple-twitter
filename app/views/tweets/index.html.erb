@@ -19,7 +19,12 @@
       <div class="panel panel-default twpanel">
           <%= image_tag (tweet.user.avatar), class: "usertweet-avatar" %>
           <h5>@<%= tweet.user.name %>,<%= tweet.created_at.to_date %>,<%= tweet.created_at.strftime("%k:%M") %></h5>
-          <%= simple_format tweet.description, style: "color:#808080" %>     
+          <%= simple_format tweet.description, style: "color:#808080" %>
+          <% if tweet.is_liked?(current_user) %>
+            <%= link_to 'Unlike', unlike_tweet_path(tweet), method: :post, class: "text-danger" %>
+          <% else %>
+            <%= link_to 'Like', like_tweet_path(tweet), method: :post, class: "text-danger" %>
+          <% end %>     
       </div>
     <% end %>
     </div>
