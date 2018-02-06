@@ -7,7 +7,8 @@
   <br>
   <% @tweets.each do |tweet| %>
     <div class="tweets-list">
-    <li><%= link_to tweet.user.name, user_path(tweet.user) %>
+      <h5><%= link_to tweet.user.name,user_path(tweet.user) %> <em>,<%=time_ago_in_words(tweet.created_at) %> ago </em></h5>
+  
       <span><%= link_to 'delete', admin_tweet_path(tweet), method: :delete, data: {confirm: "are you sure?"} %></span>
     </li>
     <li><%= tweet.description %></li>

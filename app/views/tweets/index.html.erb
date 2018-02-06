@@ -1,27 +1,36 @@
 <div class="container">
+
+  <% if @tweet.errors.any? %>
+  <h3>We have some errors here!</h3>
+  <ul>
+  <% @tweet.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+  <% end %>
+
   <div class="col-left">
     <div class="my-tweet">
       <%= form_for @tweet do |f| %>
       <%= f.text_area :description, placeholder: "What's on your mind?" %>
-      <%= f.submit %>
+      <%= f.submit%>
       <% end %>
       </div>
     <br>
-    <div class="tweets">
-      <% @tweets.each do |tweet| %>
-      <li><%= link_to tweet.user.name, user_path(tweet.user) %></li>
-      <li><%= tweet.description %></li>
-      <% end %>
-      <br>
-    </div>
 
+    <% @tweets.each do |tweet| %>
+      <div class="tweet-list">
+         <h5><%= link_to tweet.user.name,user_path(tweet.user) %> <em>,<%=time_ago_in_words(tweet.created_at) %> ago </em></h5>
+        <li><%= tweet.description %></li>
+        <br>
+      </div>
+    <% end %>
+ 
   </div>
 
   <div class="col-right">
     
   </div>
-
-
 
 
 </div>

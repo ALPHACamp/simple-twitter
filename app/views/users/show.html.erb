@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+
+      <div class="col-left col-sm-4 col-md-3">
+        <div class="avatar-lg">
+          <img src="http://via.placeholder.com/150x150"></a>
+        </div>
+        <h3><% @user.name %></h3>
+        <p><% @user.introduction %></p>
+        <ul>
+          <li>Tweet </li>
+          <li>Following</li>
+          <li>Follower</li>
+          <li>like</li>
+        </ul>
+        <% if @user.email == current_user.email %>
+        <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-defult" %>
+        <% else %>
+        <%= link_to 'Follow', class: "btn btn-default" %>
+        <% end %>        
+      </div>
+
+      <div class="col-right col-sm-8 col-md-9">
+        <% @user.tweets.each do |tweet| %>
+        <div class="tweet-list">
+          <div class="avatar">
+            <img src="http://via.placeholder.com/50x50"></a>
+          </div>
+          <div class="tweet-content">
+            <h5><%= tweet.user.name %> <em>,<%=time_ago_in_words(tweet.created_at) %> ago </em></h5>
+            <p><%= tweet.description %></p>
+            <br>
+
+
+          </div>
+
+        </div>
+        <% end %>
+        
+      </div>
+
+
+    </div>
+  </div>
+</div>
