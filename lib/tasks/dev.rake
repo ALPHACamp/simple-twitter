@@ -35,7 +35,7 @@ namespace :dev do
   task fake_other: :environment do
 
     Tweet.destroy_all
-    300.times do |i|
+    100.times do |i|
       Tweet.create!(
         description: FFaker::Lorem::phrase,
         user_id: rand(User.first.id..User.last.id)
@@ -44,7 +44,7 @@ namespace :dev do
     puts "now you have #{Tweet.count} tweets data"
 
     Reply.destroy_all
-    900.times do |i|
+    300.times do |i|
       Reply.create(
         comment: FFaker::Lorem::sentence(30),
         tweet_id: rand(Tweet.first.id..Tweet.last.id),
@@ -54,7 +54,7 @@ namespace :dev do
     puts "now you have #{Reply.count} replys data"
 
     Like.destroy_all
-    900.times do |i|
+    500.times do |i|
       Like.create(
         tweet_id: rand(Tweet.first.id..Tweet.last.id),
         user_id: rand(User.first.id..User.last.id)
@@ -69,11 +69,25 @@ namespace :dev do
         following_id: rand(User.first.id..User.last.id)
         )
     end
-    users = User.all
-    users.each do |user|
-       user.update_follower_count
+    followships = Followship.all
+    followships.each do |followship|
+      if followship.user_id == followship.following_id
+        followship.destroy
+      end
     end
     puts "now you have #{Followship.count} Followship data"
+
+    tweets = Tweet.all
+    tweets.each do |tweet|
+       tweet.update_count
+    end
+    puts "now all tweets count were ready"
+
+    users = User.all
+    users.each do |user|
+       user.update_count
+    end
+    puts "now all users count were ready"
 
   end
 
