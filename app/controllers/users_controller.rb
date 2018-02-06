@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  before_action :fetch_user, only: [:show, :update]
+  before_action :fetch_user, only: [:show, :update, :tweets]
 
   def tweets
+    @tweets = @user.tweets.user_tweets.page(params[:page]).per(7)
   end
   
   def update

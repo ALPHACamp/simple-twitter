@@ -17,13 +17,13 @@
 </div>
 <div class = "popular-tweet">
 	<h1>Popular</h1>
-	<% @popular_tweeter.each do |tweeter| %>
+	<% @popular_tweeters.each do |tweeter| %>
 		<div class="tweet">
 			<div>
 				<%= image_tag tweeter.avatar, class: "avatar" %>
 			</div>
 			<div class="intro">
-				<%= link_to "@#{tweeter.name}", user_path(tweeter.id) %><br>
+				<%= link_to "@#{tweeter.name}", tweets_user_path(tweeter) %><br>
 				<%= tweeter.introduction %><br>
 			</div>
 			<div class="button"><%= render partial: "shared/followbutton", locals: {user: tweeter} %></div>

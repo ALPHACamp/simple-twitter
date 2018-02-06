@@ -1,20 +1,21 @@
-<div class="user">
-  <div class="avatar">
-			<%= image_tag @user.avatar, class: "img" %>
-	</div>
-  <h2><%= link_to @user.name, user_path(@user) %></h2>
-  <h4><%= @user.introduction %></h4>
-  <h3><%= "Tweets #{@user.tweets.size}" %></h3>
-  <h3><%= "Followings #{@user.followings.size}" %></h3>
-  <h3><%= "Followers #{@user.followers_count}" %></h3>
-  <h3><%= "Likes #{@user.likes_count}" %></h3>
-  <%= render partial: "shared/editprofile", locals: {user: @user} %>
-</div>
-
+<%= render partial: "shared/userprofile" %>
 <div class="tweet-detial">
   <div>
     <h1>Tweets <%= render partial: "shared/like", locals: {tweet: @tweet} %></h1>
-    <%= render partial: "shared/tweet", locals: {tweet: @tweet} %>
+    <div class = "tweet">
+	  <div>
+	  	<%= image_tag @user.avatar, class: "avatar" %>
+	  </div>
+	  <div class = "context">
+	  	<%= link_to "@#{@user.name} ,#{@tweet.created_at.localtime.strftime '%Y-%m-%d %H:%M:%S'}" , tweets_user_path(@user) %><br>
+	  	<%= @tweet.description %><br>
+	  	<%= link_to "Reply(#{@tweet.replies.size})", tweet_path(@tweet) %>&nbsp;&nbsp;
+	  	<span class= "likes"><%= "like(#{@tweet.likes.size})" %></span>
+	  	<% if current_user.admin? %>
+	  		<%= link_to 'Delete', admin_tweet_path(@tweet), method: :delete, data:{ confirm: "Are you sure?" }  %>
+	  	<% end %>
+	  </div>
+</div>
   </div>
   <div>
     <h1>Replies</h1>

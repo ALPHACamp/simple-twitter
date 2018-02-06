@@ -13,11 +13,7 @@ Rails.application.routes.draw do
   resources :followships, only: [:create, :destroy]
   resources :users, only: [:edit, :show, :update] do
     member do
-      # get :followings
-      # get :followers
-      # get :like
-      # get :unlike
-      # get :tweets
+      get :tweets
     end
   end
 

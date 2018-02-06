@@ -1,0 +1,12 @@
+<div class="user">
+  <div class="avatar">
+		<%= image_tag @user.avatar, class: "img" %>
+	</div>
+  <h2><%= link_to @user.name, user_path(@user) %></h2>
+  <h4><%= @user.introduction %></h4>
+  <h3><%= "Tweets #{@user.tweets.size}" %></h3>
+  <h3><%= "Followings #{@user.followings.size}" %></h3>
+  <h3><%= "Followers #{@user.followers_count}" %></h3>
+  <h3><%= "Likes #{@user.likes_count}" %></h3>
+  <%= render partial: "shared/editprofile", locals: {user: @user} %>
+</div>
