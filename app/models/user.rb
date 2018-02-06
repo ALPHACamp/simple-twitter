@@ -11,7 +11,7 @@ class User < ApplicationRecord
   # 並參考 Devise 文件自訂表單後通過 Strong Parameters 的方法
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
 
-  has_many :tweetsd, dependent: :destroy
+  has_many :tweets, dependent: :destroy
 
 
 

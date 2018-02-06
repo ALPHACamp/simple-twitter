@@ -1,2 +1,49 @@
 <h1><%=  @user.name %></h1>
 
+<div class="container">
+  <div class="row">
+    <div class="info">
+      <% if @user.avatar? %>
+          <%= image_tag @user.avatar, width:"300px", class: "img-responsive center-block" %>
+        <% else %>
+          <%= image_tag "http://via.placeholder.com/200x200", width:"300px", class: "img-responsive center-block" %>
+        <% end %>
+      <h4><%= @user.name %></h4>
+      <p><%= @user.introduction %></p>
+      <ul class="list-group">
+        <li class="list-group-item">Tweets <%= @user.tweets.count %></li>
+        <li class="list-group-item">Following <%= %></li>
+        <li class="list-group-item">Follower <%= %></li>
+        <li class="list-group-item">Like <%= %></li>
+      </ul>
+
+      <div class="btn-group">
+        <% if @user==current_user %>
+          <%= link_to "Edit profile", edit_user_path, class: "btn btn-primary" %>  
+        <% else %>
+          <%= ink_to "Follow", edit_user_path, class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+
+
+
+  <div class="row">
+    <% @tweets.each do |tweet| %>
+      <div class="card" style="width: 40rem;">
+        <img class="card-img" src="..." alt="Card image cap">
+        <div class="card-block">
+          <small class="text-muted">
+            <%= tweet.user.name %>,
+            <%= tweet.created_at.to_formatted_s(:db)%>
+          </small>
+          <p class="card-text"><%= tweet.description %></p>
+        </div>
+ 
+
+      </div>
+    <% end %>
+  </div>
+
+  </div>
+</div>    

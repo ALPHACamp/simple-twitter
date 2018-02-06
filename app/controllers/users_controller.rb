@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def tweets
     @user = User.find(params[:id])
+    @tweets = Tweet.where(user: @user)
   end
 
   def edit
