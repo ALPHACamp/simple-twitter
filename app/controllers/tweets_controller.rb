@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
-  before_action :set_tweet, only:  [:like, :unlike, :destroy]
+  before_action :set_tweet, only:  [:like, :unlike, :destroy, :update]
 
   def index
     @users = User.order(followers_count: :desc).limit(10) # 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
@@ -13,12 +13,20 @@ class TweetsController < ApplicationController
     @tweet.user = current_user
 
     if @tweet.save
-      flash[:notice] = "tweet was successfully created"
-      redirect_to root_path
+      flash[:notice] = "Tweet was successfully created"
     else
-      flash[:alert] = "tweet was failed to create"
-      render root_path
+      flash[:alert] = "Tweet was failed to create.  #{@tweet.errors.full_messages.to_sentence}"
     end
+    redirect_to root_path
+  end
+
+  def update
+    if @tweet.update(tweet_params)
+      flash[:notice] = "Tweet was successfully updated."
+    else
+      flash[:alert] = "Tweet was failed to update. #{@tweet.errors.full_messages.to_sentence}"
+    end
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
@@ -26,9 +34,9 @@ class TweetsController < ApplicationController
       @tweet.destroy
 
       if @tweet.present?
-        flash[:notice] = "tweet was successfully deleted."
+        flash[:notice] = "Tweet was successfully deleted."
       else
-        flash[:alert] = "tweet does not exist."
+        flash[:alert] = "Tweet does not exist."
       end
       redirect_to root_path
       

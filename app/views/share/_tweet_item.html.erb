@@ -6,8 +6,21 @@
   </div>
   <div class="tweet-info">
     <h4><%= link_to "@#{tweet.user.name}", tweets_user_path(tweet.user)%><em><%= tweet.created_at.strftime(" %Y-%m-%d %H:%M") %></em></h4>
+    <% if tweet.user == current_user %>
+      <div class="edit-reply-form">
+        <%= form_for tweet do |f| %>
+          <div class="form-group">
+            <div>
+              <%= f.text_area :description, placeholder: "Tweet something...", maxlength: 140, class: "tweet-form-textarea form-control"%>
+            </div>
+          </div>
+          <%= f.submit 'Update', style: "margin: 0 0 0 5px", class: "tweet-btn btn btn-primary btn-sm pull-right" %> 
+          <button class="btn btn-danger btn-sm pull-right">Cancel</button>
+        <% end %>
+      </div>
+    <% end %>
     <p><%= tweet.description %></p>
-    <div>
+    <div class="last-row">
       <span class="comment-o">
         <%= link_to tweet_replies_path(tweet) do %>
           <%= fa_icon 'comment-o' %>
@@ -31,7 +44,10 @@
         <% if tweet.user == current_user %> 
           <span class="delete-btn"><em>
               <%= link_to 'delete', tweet_path(tweet), method: :delete, data: {confirm: "Are you sure?"} %>
-            </em></span> 
+            </em>
+            <em>&nbsp;&nbsp;|&nbsp;&nbsp;</em>
+            <em><a href="#" class="edit-reply-btn">edit</a></em>
+          </span> 
         <% end %>
       <% end %>
     </div>

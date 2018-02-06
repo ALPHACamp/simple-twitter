@@ -26,13 +26,27 @@
           <% end %>
           </div>
           <div class="reply-info">
-            <h4><%= link_to "@#{reply.user.name}", tweets_user_path(reply.user)%><%= reply.created_at.strftime(" ,%Y-%m-%d %I:%M") %></h4>
+            <h4><%= link_to "@#{reply.user.name}", tweets_user_path(reply.user)%><em><%= reply.created_at.strftime("%Y-%m-%d %I:%M") %></em></h4>
+            <% if reply.user == current_user %>
+              <div class="edit-reply-form">
+                <%= form_for [@tweet, reply] do |f| %>
+                  <div class="form-group">
+                    <div>
+                      <%= f.text_area :comment, placeholder: "Reply something...", maxlength: 140, class: "tweet-form-textarea form-control"%>
+                    </div>
+                  </div>
+                  <%= f.submit 'Update', style: "margin: 0 0 0 5px", class: "tweet-btn btn btn-primary btn-sm pull-right" %> 
+                  <button class="btn btn-danger btn-sm pull-right">Cancel</button>
+                <% end %>
+              </div>
+            <% end %>
             <p><%= reply.comment %></p>
-            <div>
-              <% if reply.user == current_user %> 
-              <span class="delete-btn"><em>
-                <%= link_to 'delete', tweet_reply_path(@tweet, reply), method: :delete, data: {confirm: "Are you sure?"} %>
-                </em></span> 
+            <div class="delete-btn">
+              <% if reply.user == current_user %>
+                <em><%= link_to ' delete', tweet_reply_path(@tweet, reply), method: :delete, data: {confirm: "Are you sure?"} %>
+                </em>
+                <em>&nbsp;&nbsp;|&nbsp;&nbsp;</em>
+                <em><a href="#" class="edit-reply-btn">edit</a></em>
               <% end %>
             </div>  
           </div>

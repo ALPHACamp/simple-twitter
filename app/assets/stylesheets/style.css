@@ -232,6 +232,17 @@ h2 {
   margin-right: 0;
 }
 
+.tweet-info .delete-btn a:hover,
+.reply-info .delete-btn a:hover {
+  color: red;
+}
+
+.reply-info .edit-reply-form,
+.tweet-info .edit-reply-form {
+  display: none;
+  z-index: 1000;
+}
+
 
 /* popular wall */
 

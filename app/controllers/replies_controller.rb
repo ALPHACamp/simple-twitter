@@ -12,11 +12,22 @@ class RepliesController < ApplicationController
 
     if @reply.save
       flash[:notice] = "Reply was successfully created"
-      redirect_to tweet_replies_path(@tweet)
     else
-      flash[:alert] = "Reply was failed to create"
-      render tweet_replies_path(@tweet)
+      flash[:alert] = "Reply was failed to create. #{@reply.errors.full_messages.to_sentence}"
     end
+    redirect_to tweet_replies_path(@tweet)
+  end
+
+  def update
+    @reply = Reply.find(params[:id])
+    @tweet = @reply.tweet
+
+    if @reply.update(reply_params)
+      flash[:notice] = "Reply was successfully updated."
+    else
+      flash[:alert] = "Reply was failed to update. #{@reply.errors.full_messages.to_sentence}"
+    end
+    redirect_to tweet_replies_path(@tweet)
   end
 
   def destroy
