@@ -4,5 +4,8 @@
   </div>
   <div class="col-sm-9 col-12">
     <h3>Follower</h3>
+    <% @followers.each do |follower| %>
+     <%= render partial: "shared/user_card", locals: {user: follower} %>
+    <% end %>
   </div>
 </div>
