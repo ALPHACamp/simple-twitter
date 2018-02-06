@@ -18,5 +18,13 @@
 //= require bootstrap-sprockets
 
 $(function() {
- 
+
+ $('button.following-state').hover(function(){
+  $(this).css('background', 'red');
+  $(this).text('Unfollow');
+  }, function(){
+  $(this).css('background', 'var(--mblue)');
+  $(this).text('Following');
+ }); // end following button hover
+
 });

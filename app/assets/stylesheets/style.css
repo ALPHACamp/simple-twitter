@@ -81,7 +81,7 @@ header {
 }
 
 #content {
-  margin-top: 50px;
+  padding-top: 50px;
   padding-bottom: 20px;
 }
 
@@ -349,6 +349,8 @@ h2 {
   grid-gap: 50px;
   grid-template-columns: 350px 1fr;
   margin-top: 20px;
+  padding: 10px 10px 0 10px ;
+  background: var(--lblue);
 }
 
 #edit-avatar {
@@ -356,8 +358,10 @@ h2 {
 }
 
 .avatar-lg {
+  background: white;
   width: 330px;
   height: 330px;
+  border: 1px solid #C4E8F9;
 }
 
 #edit-info {
@@ -400,8 +404,12 @@ h2 {
   width: 20px;
 }
 
-.admin-wall, .admin-wall table {
+.admin-wall, .admin-wall > table {
+  background: white;
   margin-top: 20px;
+  padding: 20px 30px 0 30px;
+  border-radius: 10px;
+
 }
 
 .tweets-table> tbody tr td:nth-child(n+4), 
@@ -414,6 +422,32 @@ h2 {
   text-align: center;
 }
 
+
+/* devise */
+
+.welcom-title {
+  font-family: Brush Script MT, cursive;
+  font-size: 56px;
+  text-align: center;
+}
+
+.welcom-subtitle {
+  color: var(--blue);
+  text-align: center;
+}
+
+.log-form {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 20px;
+  background: var(--lblue);
+  border: 2px dashed var(--mblue);
+  border-radius: 10px ; 
+}
+
+/* RWD */
+
 @media(max-width: 1024px) {
   .follow-wall {
     grid-template-columns: 1fr; 
@@ -422,6 +456,10 @@ h2 {
   .follow-wall h2,
   .follow-wall .user-item-sm {
     border-right: none;
+  }
+
+  .log-form {
+    width: 80%;
   }
 }
 
@@ -461,6 +499,8 @@ h2 {
     justify-self: center;
   }
   
-
+  .log-form {
+    width: 100%;
+  }
 }
 

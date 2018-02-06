@@ -12,7 +12,7 @@
     <div class="follow-btn">
       <% if current_user.is_following?(user) %>
         <%= link_to followship_path(user), method: :delete do %>
-          <button class="btn btn-primary">Unfollow</button>
+          <button class="following-state btn btn-primary">Following</button>
         <% end %>
       <% else %>
         <%= link_to followships_path(following_id: user), method: :post do %>
