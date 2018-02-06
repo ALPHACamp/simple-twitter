@@ -1,10 +1,8 @@
 <div class="row user-card">
-  <div class="col-xs-3">
-    <div class="tweet-avatar">
-      <%= user_avatar(user.avatar, "img-responsive center-block") %>
-    </div>
+  <div class="col-xs-4 card-avatar-box">
+    <%= user_avatar(user.avatar, "img-responsive center-block") %>
   </div>
-  <div class="col-xs-9">
+  <div class="col-xs-8">
     <p><%= link_to "@#{user.name}", tweets_user_path(user) %></p>
     <p><%= truncate(user.introduction, length: 80) %></p>
   </div>
