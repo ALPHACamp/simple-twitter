@@ -7,7 +7,9 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   has_many :tweets
-  has_many :replies
+
+  has_many :replies, dependent: :destroy
+  has_many :replied_tweets, through: :replies, source: :tweet
 
 
   has_many :followships, dependent: :destroy

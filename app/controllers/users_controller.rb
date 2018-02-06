@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:tweets, :edit, :update, :followings, :followers]
+  before_action :set_user, only: [:tweets, :edit, :update, :followings, :followers, :likes]
 
 
   def tweets
     @tweeted = @user.tweets.order("created_at DESC").uniq
     @followings = @user.followings
     @followers = @user.followers
+    @liked_tweets = @user.liked_tweets
   end
 
   def edit
@@ -20,21 +21,27 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @tweeted = @user.tweets.order("created_at DESC").uniq
+    @tweeted = @user.tweets
     @followings = @user.followings.order("created_at DESC")
     @followers = @user.followers
+    @liked_tweets = @user.liked_tweets
     # 基於測試規格，必須講定變數名稱
   end
 
   def followers
-    @tweeted = @user.tweets.order("created_at DESC").uniq
+    @tweeted = @user.tweets
     @followings = @user.followings
     @followers = @user.followers.order("created_at DESC")
+    @liked_tweets = @user.liked_tweets
     # 基於測試規格，必須講定變數名稱
   end
 
   def likes
-    @likes # 基於測試規格，必須講定變數名稱
+    @tweeted = @user.tweets
+    @followings = @user.followings
+    @followers = @user.followers
+    @liked_tweets = @user.liked_tweets.order("created_at DESC")
+    # 基於測試規格，必須講定變數名稱
   end
 
 

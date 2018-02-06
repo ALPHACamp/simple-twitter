@@ -10,21 +10,29 @@
         </div>
       </div>
     </div>
-    <% @users.each do |user| %>
-      <div class="col-md-3 col-sm-4 col-xs-6 text-center user-item">
-
-        <%= link_to tweets_user_path(user) do %>
-          <% if user.avatar? %>
-            <%= image_tag(user.avatar, class: "img-rounded") %>
-          <% else %>
-            <%= image_tag "fallback/avatar.png",
-              class: "img-rounded" %>
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>user</th>
+            <th>tweets</th>
+            <th>followings</th>
+            <th>follower</th>
+            <th>likes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.name %></div></td>
+            <td><%= user.tweets.count %></td>
+            <td><%= user.followings.count %></td>
+            <td><%= user.followers_count %></td>
+            <td><%= user.likes_count %></td>
+          </tr>
           <% end %>
-            <h4><%= user.name %></h4>
-        <% end %>
-
-      </div>
-    <% end %>
-
+        </tbody>
+      </table>
   </div>
 </div>
