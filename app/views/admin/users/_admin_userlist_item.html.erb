@@ -11,7 +11,7 @@
         <li>Tweets: <%= user.tweets.size%></li>
         <li>Following: <%= user.followings.size%></li>
         <li>Followers: <%= user.followers.size%></li>
-        <li>like: <%= user.likes.size%></li>
+        <li>liked: <%= user.tweets.sum(:likes_count)%></li>
       </ul>
     </div>
   </div>
