@@ -19,6 +19,26 @@ class RepliesController < ApplicationController
     end
   end
 
+  def destroy
+    @reply = Reply.find(params[:id])
+
+    if @reply.user == current_user   
+      @tweet = @reply.tweet
+      @reply.destroy
+
+      if @reply.present?
+        flash[:notice] = "reply was successfully deleted."
+      else
+        flash[:alert] = "reply does not exist."
+      end
+      redirect_back(fallback_location: root_path)
+      
+    else
+      flash[:alert] = "You are not authorized."
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
   private 
 
   def reply_params

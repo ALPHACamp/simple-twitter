@@ -11,7 +11,7 @@ class Admin::TweetsController < Admin::BaseController
     if tweet.present?
       flash[:notice] = "tweet(#{tweet.id}) was successfully deleted."
     else
-      flash[:alert] = "twet(#{tweet.id}) does not exist."
+      flash[:alert] = "tweet(#{tweet.id}) does not exist."
     end
     
     redirect_back(fallback_location: admin_tweets_path)

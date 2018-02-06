@@ -12,7 +12,7 @@
             <% end %>
           </div>
           <div>
-            <%= f.text_area :comment, placeholder: "Reply something...", class: "tweet-form-textarea form-control"%>
+            <%= f.text_area :comment, placeholder: "Reply something...", maxlength: 140, class: "tweet-form-textarea form-control"%>
           </div>
           <%= f.submit 'Reply', class: "tweet-btn btn btn-primary" %>
         </div> 
@@ -28,6 +28,13 @@
           <div class="reply-info">
             <h4><%= link_to "@#{reply.user.name}", tweets_user_path(reply.user)%><%= reply.created_at.strftime(" ,%Y-%m-%d %I:%M") %></h4>
             <p><%= reply.comment %></p>
+            <div>
+              <% if reply.user == current_user %> 
+              <span class="delete-btn"><em>
+                <%= link_to 'delete', tweet_reply_path(@tweet, reply), method: :delete, data: {confirm: "Are you sure?"} %>
+                </em></span> 
+              <% end %>
+            </div>  
           </div>
         </div>
       <% end %>

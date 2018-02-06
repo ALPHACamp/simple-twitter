@@ -190,7 +190,7 @@ h2 {
   min-height: 150px;
 }
 
-.tweet-info {
+.tweet-info, .reply-info {
   display: grid;
   grid-gap: 10px;
   grid-template-columns: 1fr;
@@ -201,14 +201,14 @@ h2 {
   font-size: 18px;
 }
 
-.tweet-info em {
+.tweet-info em, .reply-info em {
   float: right;
   margin-top: 5px;
   font-size: 12px;
   color: var(--lgrey);
 }
 
-.tweet-info div a {
+.tweet-info div a, .reply-info div a {
   color: var(--lgrey);
   margin-right: 20px;
 }
@@ -225,6 +225,11 @@ h2 {
 
 #tweet-wall .avatar-sm {
   align-self: center;
+}
+
+.tweet-info .delete-btn a,
+.reply-info .delete-btn a {
+  margin-right: 0;
 }
 
 
