@@ -112,3 +112,15 @@ $dropDown       : false;
   word-break: break-all;
 }
 
+.vertical-middle td, th{
+  vertical-align: middle !important;
+}
+
+.horizontal-center, .horizontal-center th {
+  text-align: center;
+}
+
+.thead-darkgrey {
+  background-color: darkgrey;
+  color: white
+}
