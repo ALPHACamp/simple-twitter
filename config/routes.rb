@@ -9,7 +9,13 @@ Rails.application.routes.draw do
   end
 
 
-  resources :users, only: [:edit, :update]
+  resources :users, only: [:edit, :update] do
+    #member 用於找單一user的全部tweets
+    member do 
+      get :tweets
+    end
+  end
+
   
   # Admin
   namespace :admin do
