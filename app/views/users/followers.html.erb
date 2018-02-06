@@ -10,6 +10,17 @@
   <div class="col-sm-9">
     <!-- userlist wall-->
     <h2>Follower</h2>
+    <!---  測試是否有照追蹤時間排序  
+    <% if false %>
+     <% @followers.each do |follower|%>
+      <p>
+        name: <%=follower.name%> <br>
+        follwing date: <%= follower.following_date(@user) %>
+      </p>
+      <hr>
+    <%end%>
+    <% end %> 
+  -->
     <%= render partial: "common/userlistwall", locals:{users: @followers} %>
   </div>
 

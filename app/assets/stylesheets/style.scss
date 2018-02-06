@@ -16,7 +16,9 @@
 .u-showborder{
   border: 1px solid #eeeeee
 }
-
+.u-floatright{
+  float: right;
+}
 .inset {
   width: 40px;
   height: 40px;
@@ -52,6 +54,11 @@
   font-size: 20px;
   resize: none;
 
+}
+#user_introduction{
+  height: 100px;
+  font-size: 18px;
+  resize: none;
 }
 /* tweet-item */
 .tweet-item{

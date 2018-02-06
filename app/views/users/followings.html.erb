@@ -10,6 +10,8 @@
   <div class="col-sm-9">
     <!-- userlist wall-->
     <h2>Following</h2>
+    <!--- 測試是否有照追蹤時間排序
+    <% if false %>
     <% @followings.each do |following|%>
       <p>
         name: <%=following.name%> <br>
@@ -17,6 +19,7 @@
       </p>
       <hr>
     <%end%>
+    <%end%>  -->
     <%= render partial: "common/userlistwall", locals:{users: @followings} %>
   </div>
 

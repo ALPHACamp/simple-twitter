@@ -1,11 +1,15 @@
 <div class="container">
 
   <%= simple_form_for @user do |f|%>
-    <%= image_tag @user.avatar %>
-    <%= f.input :avatar,as: :file, label:'大頭照' ,input_html:{class: ''}%>
-    <%= f.input :name,label:'名字', input_html:{class: 'form-control'} %>
-    <%= f.input :introduction,label:'關於我',input_html:{class: 'form-control'}%>
-    <%= f.button :submit, class: 'btn btn-primary' %>
+    <div class="col-xs-4">
+
+      <%= image_tag @user.avatar, class: "img-responsive img-rounded"%>
+      <%= f.input :avatar,as: :file, label: false ,input_html:{class: 'u-padding-top-10px'}%></div>
+    <div class="col-xs-8">  
+      <%= f.input :name,label:'名字', input_html:{class: 'form-control'} %>
+      <%= f.input :introduction,label:'關於我',input_html:{class: 'form-control'}%>
+      <%= f.button :submit,'更新個人資料', class: 'btn btn-primary u-floatright' %>
+    </div> 
   <%end%>
 
 </div>
