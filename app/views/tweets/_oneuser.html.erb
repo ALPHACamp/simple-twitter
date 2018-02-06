@@ -18,9 +18,9 @@
         <hr>
                 <%if not user==current_user %>
                   <%if current_user.followings.exists?(:id => user.id) %>
-                    <%= link_to render(partial:"like", locals:{user: user, follow: true}), followship_path(user), {method: :delete, class:"btn btn-secondary"} %>
+                    <%= link_to render(partial:"follow", locals:{user: user, follow: true}), followship_path(user), {method: :delete, class:"btn btn-secondary"} %>
                   <%else%>
-                    <%= link_to render(partial:"like", locals:{user: user, follow: false}), followships_path(following_id: user), {method: :post, class:"btn btn-info"} %>
+                    <%= link_to render(partial:"follow", locals:{user: user, follow: false}), followships_path(following_id: user), {method: :post, class:"btn btn-info"} %>
                   <%end%>
                 <% else %>
                   <%= link_to "編輯", edit_user_registration_path, {method: :get, class:"btn btn-primary"} %>

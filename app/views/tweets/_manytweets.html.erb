@@ -26,8 +26,13 @@
             <hr>
             <form>
               <div class="input-group">
-                <button class="btn btn-secondary"><i class="far fa-thumbs-up"></i>(5)</button>
-                <button class="btn btn-secondary"><i class="far fa-comment-alt"></i>(5)</button>
+                <%if t.liked_users.include?(current_user) %>
+                <%= link_to render(partial:"like", locals:{tweet: t, like: true}), unlike_tweet_path(t), {method: :post, class:"btn btn-secondary"} %>
+                <%else %>
+                <%= link_to render(partial:"like", locals:{tweet: t, like: false}), like_tweet_path(t), {method: :post, class:"btn btn-info"} %>
+                <%end%>
+
+                <%= link_to render(partial:"tocomment", locals:{tweet: t}), tweet_path(t), {class:"btn btn-secondary"} %>
                 <button class="btn btn-secondary"><i class="far fa-share-square"></i></button>
               </div>
             </form>

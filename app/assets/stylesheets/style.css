@@ -1,6 +1,7 @@
 *{position: relative;}
 @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
 @import url(http://fonts.googleapis.com/css?family=Roboto:400);
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Permanent+Marker');
 body {
   background-color:#e0e0e0;
   font: normal 14px;
@@ -144,4 +145,9 @@ hr {border-color:#ececec;margin-top: 10px;margin-bottom: 10px;}
  
 .text-align-left{
   text-align: left!important;
+}
+
+.divtitle{
+  padding: 20px 0;
+  font-family: 'Abril Fatface', cursive;
 }

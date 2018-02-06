@@ -7,20 +7,16 @@
             <div class="card-tittle"><h4>What's new?</h4></div>
             <%= form_for @tweet, {class: "my-form"} do |f| %>
                 <%= f.text_area :description, :class => "form-control", :style => "padding: 0 0; height: 100px;", :placeholder=> "Update your status" %>
-                <%= f.submit "Post", :class => "btn btn-success pull-right" %>
+                <%= f.submit "Create", :class => "btn btn-success pull-right" %>
             <% end %>
           </div>
         </div>
-        
-        <div class="divtitle"><h3>Recent tweets</h3></div>
+
         <%= render partial: "manytweets" %>
 
       </div>
 
-
-
       <div class="col-md-4 col-sm-12">
-        <div class="divtitle"><h3>Top 10 users</h3></div>
         <% @users.each do |u| %>
         <%= render partial: "oneuser", locals:{user: u}%>
         <%end%>
