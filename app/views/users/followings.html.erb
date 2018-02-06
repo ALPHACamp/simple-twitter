@@ -10,7 +10,7 @@
         <% @followings.each do |user| %>
           <div class="panel panel-default ppanel">
             <%= image_tag (user.avatar), class: "usertweet-avatar" %>
-            <h3>@<%= link_to user.name, tweets_user_path(user) %><%= user.updated_at %></h3>
+            <h3>@<%= link_to user.name, tweets_user_path(user) %></h3>
               <%= simple_format user.introduction, style: "color:#808080" %>
             <% if user != current_user %>
               <% if current_user.following?(user)%>

@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4"> 
+    </div>   
+
+
+
+    <div class="col-md-4">
+      <h2>Follower</h2>
+        <% @followers.each do |user| %>
+          <div class="panel panel-default ppanel">
+            <%= image_tag (user.avatar), class: "usertweet-avatar" %>
+            <h3>@<%= link_to user.name, tweets_user_path(user) %></h3>
+              <%= simple_format user.introduction, style: "color:#808080" %>
+            <% if user != current_user %>
+              <% if current_user.following?(user)%>
+                <%= link_to 'Unfollow', followship_path(user), method: :delete, class: "btn btn-primary btn-lg movebtn" %>
+              <% else %>
+                <%= link_to 'Follow', followships_path(following_id: user), method: :post, class: "btn btn-primary btn-lg movebtn" %>
+              <% end %>
+            <% end %>    
+          </div>
+        <% end %>
+    </div>
+
+    </div>
+  </div>
+</div>
