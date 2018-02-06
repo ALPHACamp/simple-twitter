@@ -107,7 +107,7 @@ div.notice{
 
 .user-text{
   display: inline-block;
-  width: 50%;
+  width: 70%;
   margin-left: 20px;
 }
 
@@ -146,4 +146,23 @@ div.notice{
   display: inline-block;
   margin: 0px 10px 2px 10px;
   vertical-align: middle;
+}
+
+.following-block{
+  display: inline-block;
+  width: 49%;
+  border: 1px solid #eee;
+  padding: 15px;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 10px;
+}
+
+.following-intro{
+  height: 80px;
+  overflow: scroll;
+}
+
+.following-btn{
+  text-align: right;
 }

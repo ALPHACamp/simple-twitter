@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="user-profile">
+    <% for img_id in 0..26 %>
+      <% if image_path(@user.avatar).include?('/user'+img_id.to_s+'.jpg') %>
+        <%= image_tag('/avatar/user'+img_id.to_s+'.jpg', class: "profile-avatar") %>
+      <% end %>
+    <% end %>
+    <h2><%= @user.name %></h2>
+    <p><%= simple_format @user.introduction %></p>
+    <%= link_to "Tweets", tweets_user_path(@user) %><br>
+    <%= link_to "Following", followings_user_path(@user) %><br>
+    <%= link_to "Follower", followers_user_path(@user) %><br>
+    <%= render partial: "shared/follow", locals: {user: @user} %>
+    <% if current_user == @user %>
+      <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-default" %>
+    <% end %>
+  </div>
+
+</div>
