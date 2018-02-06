@@ -4,15 +4,15 @@ Rails.application.routes.draw do
 
   # 請依照專案指定規格來設定路由
   # 前台
-  root "tweets#index"
+
   # # 推播
-  resources :tweets, only: [:index, :show] do
-    resources :tweets, only: [:create, :destroy]
+  resources :tweets, only: [:index, :show, :create] do
+
   end
   
   # # 個人資訊
-  #resources :users, only: [:index, :show, :edit, :update]
-
+  resources :users, only: [:index, :show, :edit, :update]
+  root "tweets#index"
   # # 追蹤達人
   # resources :followships, only: [:create, :destroy]
 

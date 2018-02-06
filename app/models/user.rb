@@ -11,8 +11,11 @@ class User < ApplicationRecord
   validates_presence_of :name
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
 
-  #  dependent: :destroy 當Restaurant 物件被刪除時，將會刪除依賴的 Comment
-  has_many :tweets, dependent: :destroy
+  # User 若有推播，就不允許刪除帳號（刪除時拋出 Error）
+  has_many :tweets, dependent: :restrict_with_error
+  has_many :user_info, through: :tweets
+
+
   def admin?
     self.role == "admin"
   end
