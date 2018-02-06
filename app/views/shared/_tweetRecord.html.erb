@@ -1,18 +1,20 @@
 <div class="container-fluid">
   <div class="row well">
-    <div class="col-md-2">    
-        <%= image_tag(tweet.user.avatar, :class => 'img-responsive') %>
+    <div class="col-md-2 col-sm-3 col-xs-4">    
+        <%= image_tag(tweet.user.avatar, :class => 'img-responsive img-circle') %>
     </div>
-    <div class="col-md-10 tweet-content">
+    <div class="col-md-10 col-sm-9 col-xs-8 tweet-content">
       <p>
         <%= link_to tweet.user.name, tweets_user_path(tweet.user.id) %>, <%= tweet.created_at.strftime('%F') %>, <%= tweet.created_at.strftime('%R') %> 
       </p>
       <p><%= tweet.description %></p>
       <div class="row">
-        <div class="col-md-6">
-          <%= link_to "Reply(#{tweet.replies_count})", replies_tweet_path(tweet.id) %>    
+        <div class="col-md-6 col-sm-6 col-xs-6">
+          <%= link_to replies_tweet_path(tweet.id) do %>
+          <i class="btn btn-default far fa-envelope" aria-hidden="true">(<%= tweet.replies_count %>)</i>
+          <% end %>    
         </div>                  
-        <div class="col-md-6">
+        <div class="col-md-6 col-sm-6 col-xs-6">
           <%= render partial: "shared/like", locals: {tweet: tweet} %>
         </div>
       </div>

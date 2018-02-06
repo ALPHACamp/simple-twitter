@@ -1,5 +1,9 @@
 <% if tweet.is_liked?(current_user) %>
-  <%= link_to "Unlike(#{tweet.likes_count})", unlike_tweet_path(tweet.id), method: :post %>                      
+  <%= link_to unlike_tweet_path(tweet.id), method: :post do %>
+  <i class="btn btn-default fas fa-thumbs-up" aria-hidden="true" style="color: #9F88FF">(<%= tweet.likes_count %>)</i>
+  <% end %>                      
 <% else %>  
-  <%= link_to "Like(#{tweet.likes_count})", like_tweet_path(tweet.id), method: :post %>    
+  <%= link_to like_tweet_path(tweet.id), method: :post do%>    
+   <i class="btn btn-default far fa-thumbs-up" aria-hidden="true" style="color: #9F88FF">(<%= tweet.likes_count %>)</i>
+  <% end %> 
 <% end %>    

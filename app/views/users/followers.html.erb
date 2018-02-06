@@ -1,21 +1,24 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 col-sm-4">
       <%= render partial: "shared/userProfile", locals: {user: @user} %>  
     </div>
-    <div class="col-md-8 row">
+    <div class="col-md-8 col-sm-8 row">
+      <h4 class="text-center">粉絲名單</h4>
+      <hr>
       <% @followers.each do |follower| %>                        
-        <div class="col-md-5 col-md-offset-1 well row" style="height: 100%"> 
-          <div class="col-md-4">
-            <%= image_tag(follower.user.avatar, :class => 'img-resposive', :width => '100%') %>                
+        <div class="col-md-5 col-md-offset-1 col-sm-5 col-sm-offset-1 col-xs-10 col-xs-offset-1 well row" style="height: 100%"> 
+          <div class="col-md-4 col-sm-5 col-xs-4">
+            <%= image_tag(follower.user.avatar, :class => 'img-resposive img-circle', :width => '100%') %>                
           </div>                    
-          <div class="col-md-8">
-            <p><%= link_to follower.user.name, tweets_user_path(follower.user.id) %></p>
+          <div class="col-md-8 col-sm-7 col-xs-8">
+            <p><%= link_to follower.user.name, tweets_user_path(follower.user.id) %>
+               <%= render partial: "shared/follow", locals: {user: follower.user} %>   
+            </p>
             <p>
               <%= truncate(follower.user.introduction, length: 30) %>
             </p>              
-          </div>
-           <%= render partial: "shared/follow", locals: {user: follower.user} %>   
+          </div>        
         </div>   
       <% end %>  
     </div>

@@ -1,5 +1,9 @@
 <% if current_user.following?(user)%>  
-  <%= link_to 'Unfollow', followship_path(user), :class => 'btn btn-danger', method: :delete %>
+  <%= link_to followship_path(user), method: :delete do %>
+    <i class="fas fa-star" aria-hidden="true" style="color: #00DD00"></i>
+  <% end %>
 <% else %>
-  <%= link_to 'Follow', followships_path(following_id: user.id), :class => "btn btn-default", method: :post %>  
+  <%= link_to followships_path(following_id: user.id), method: :post do %>  
+    <i class="far fa-star" aria-hidden="true" style="color: #00DD00"></i>
+  <% end %>
 <% end %>    

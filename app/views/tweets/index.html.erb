@@ -1,6 +1,6 @@
 <div class="container-fluid">  
   <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-7 col-sm-6">
       <div class="container-fluid">
         <%= form_for :tweet , :url => {:controller=>'tweets', :action => 'create' } do |f| %>
           <div class="form-group">
@@ -17,21 +17,23 @@
         <% end %>
       </div>
     </div>
-    <div class="col-md-4">   
+    <div class="col-md-4 col-sm-5">         
       <h2>Popular</h2>
-      <% @users.each do |user| %>
-        <div class="row well">        
-          <div class="col-md-4">
-            <%= image_tag(user.avatar, :class => 'img-resposive', :width => '100%') %>                
-          </div>                    
-          <div class="col-md-7">
-            <p><%= link_to user.name, tweets_user_path(user.id) %></p>
-            <p><%= truncate(user.introduction, length: 40) %></p>              
-            <%= render partial: "shared/follow", locals: {user: user} %> 
+        <% @users.each do |user| %>
+          <div class="row well">        
+            <div class="col-md-4 col-sm-4 col-xs-4">
+              <%= image_tag(user.avatar, :class => 'img-resposive img-circle', :width => '100%') %>                
+            </div>                    
+            <div class="col-md-7 col-sm-7 col-xs-7">
+              <p>
+                <%= link_to user.name, tweets_user_path(user.id) %>
+                <%= render partial: "shared/follow", locals: {user: user} %> 
+              </p>
+              <p><%= truncate(user.introduction, length: 40) %></p>                          
+            </div>
+             
           </div>
-           
-        </div>
-      <% end %>
+        <% end %>      
     </div>
   </div>
 </div>
