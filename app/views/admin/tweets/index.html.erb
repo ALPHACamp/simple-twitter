@@ -1,1 +1,19 @@
-<h1>後台</h1>
+<div class="container">
+
+  <ul class = "nav nav-tabs">
+    <li role="presentation" class= "active"><%=link_to "Tweets", admin_tweets_path %></li>
+    <li role="presentation"><%= link_to "Users" %></li>
+  </ul>
+  <br>
+  <% @tweets.each do |tweet| %>
+    <div class="tweets-list">
+    <li><%= link_to tweet.user.name, user_path(tweet.user) %>
+      <span><%= link_to 'delete', admin_tweet_path(tweet), method: :delete, data: {confirm: "are you sure?"} %></span>
+    </li>
+    <li><%= tweet.description %></li>
+    <hr>
+    </div>
+  <% end %>
+
+
+</div>
