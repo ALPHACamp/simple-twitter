@@ -47,39 +47,39 @@ namespace :dev do
     end
     puts "have created fake replies"
     puts "now you have #{Reply.count} replies data"
-  end
+  # end
 
-  # task fake_favorite: :environment do
-    # Favorite.destroy_all
-    # User.all.each do |user|
-    #   rand(50).times do |i|
-    #     user.favorites.create!(
-    #       user_id: user.id, 
-    #       restaurant_id: Restaurant.all.sample.id)
-    #   end
-    # end
-    # Restaurant.all.each do |restaurant|
-    #   restaurant.favorites_count = Favorite.where(restaurant_id: restaurant.id).count
-    #   restaurant.save
-    # end
-    # puts "have created fake favorites"
-    # puts "now you have #{Favorite.count} favorites data"
+  # task fake_like: :environment do
+    Like.destroy_all
+    User.all.each do |user|
+      rand(50).times do |i|
+        user.likes.create!(
+          user_id: user.id, 
+          tweet_id: Tweet.all.sample.id)
+      end
+    end
+    Tweet.all.each do |tweet|
+      tweet.likes_count = Like.where(tweet_id: tweet.id).count
+      tweet.save
+    end
+    puts "have created fake likes"
+    puts "now you have #{Like.count} likes data"
   # end
 
   # task fake_followship: :environment do
-  #   Followship.destroy_all
-  #   User.all.each do |user|
-  #     rand_user = User.select{|x| x!=user}.sample(5)
-  #     rand(5).times do |i|
-  #       user.followships.create!(
-  #         user_id: user.id, 
-  #         following_id: rand_user[i].id)
-  #     end
-  #   end
+    Followship.destroy_all
+    User.all.each do |user|
+      rand_user = User.select{|x| x!=user}.sample(5)
+      rand(5).times do |i|
+        user.followships.create!(
+          user_id: user.id, 
+          following_id: rand_user[i].id)
+      end
+    end
    
-  #   puts "have created fake followship"
-  #   puts "now you have #{Followship.count} followships data"
-  # # end
+    puts "have created fake followship"
+    puts "now you have #{Followship.count} followships data"
+  end
 
   # # task fake_friendship: :environment do
   #   Friendship.destroy_all
