@@ -14,7 +14,7 @@
         <tbody>
           <% @tweets.each do |tweet| %>
             <tr>
-              <th scope="row"><%= tweet.id %></th>
+              <th scope="row"><%= tweet.user.name %></th>
               <td>
                 <%= link_to truncate(tweet.description.capitalize, length: 50), admin_tweet_path(tweet) %>
                 </td>

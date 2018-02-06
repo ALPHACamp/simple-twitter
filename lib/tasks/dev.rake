@@ -3,7 +3,7 @@ namespace :dev do
   # 其他測試用的假資料請依需要自行撰寫
   task fake_user: :environment do
     User.all.each do |user|
-      User.destroy unless user.admin?
+      user.destroy unless user.admin?
     end
 
     20.times do |i|
@@ -28,7 +28,8 @@ namespace :dev do
 
     300.times do |i|
       Tweet.create!(
-        description: FFaker::Lorem::characters(140)
+        description: FFaker::Lorem::characters(140),
+        user: User.all.sample
       )
     end
     puts "Tweet was create successfully, having #{Tweet.count} tweets data"
