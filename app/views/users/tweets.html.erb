@@ -13,8 +13,19 @@
 
     <% @tweets.each do |tweet| %>
         <div class="col-xs-12 col-md-8">
-        <%= tweet.description %>
-        <%= tweet.created_at %>
+          <div class="media tweet-box">
+            <div class="media-left">
+              <%= image_tag @user.avatar, class:"" if @user.avatar?%>
+                <%= image_tag "http://via.placeholder.com/60x60", class: ""  unless @user.avatar?%>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">
+                <%= link_to tweet.user.name, tweets_user_path(tweet.user) %> , 
+                <%= tweet.created_at %>
+              </h4>
+              <p><%= tweet.description %></p>
+            </div>
+          </div>
         </div>
     <% end %>
 
