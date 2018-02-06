@@ -1,0 +1,16 @@
+ <img src="http://via.placeholder.com/150x150" class="img-responsive img-rounded">
+  <%= @user.name %>
+  <%= @user.introduction %>
+  <%= link_to 'Edit Profile', edit_user_path %>
+  <%= link_to "Tweets(#{@user.tweets.count})", tweets_user_path(@user) %>
+  <%= link_to "Following(#{@user.followings.count})", followings_user_path(@user) %>
+  <%= link_to "Follower(#{@user.followers.count})", followers_user_path(@user) %>
+  
+  <h2>Followerings</h2>
+
+  <% @followings.each do |following| %>
+    <%= link_to tweets_user_path(following) do %>
+      <img src="http://via.placeholder.com/50x50" class="img-responsive img-rounded">
+      <%= following.name %>
+    <% end %>
+  <% end %>
