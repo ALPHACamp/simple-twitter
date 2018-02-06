@@ -1,12 +1,11 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update]
   def tweets
+    @tweet = Tweet.all
   end
 
   def edit
-    unless @user == current_user
-      redirect_to root_path(@user)
-    end
+     @user = current_user
   end
 
   def update

@@ -7,9 +7,14 @@
 <%= f.submit "tweet" %>
 <% end %>
 
+<div>
+
 <% @tweets.each do |tweet| %>
-  <%= image_tag tweet.user.avatar.url %>
+<ul>
+  <!-- 推文者圖片
+  推文者name有超連結 -->
   <%= tweet.created_at.strftime("%Y-%m-%d, %T") %>
   <%= tweet.description %>
-
+</ul>
 <% end %>
+<div>
