@@ -24,6 +24,7 @@ namespace :dev do
 
 
   task fake_tweet: :environment do
+    Tweet.destroy_all
     50.times do |i|
       Tweet.create!(
         description: FFaker::Lorem.sentence,
