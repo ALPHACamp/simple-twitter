@@ -1,1 +1,6 @@
-<h1>back</h1>
+<h1>Back End</h1>
+<!-- show tweets -->
+<% @tweets.each do |tweet| %>
+  <%= render partial: "shared/message", locals: {message: tweet, is_tweet: true} %>
+<% end %>
+<div class="text-center"><%= paginate @tweets %></div>

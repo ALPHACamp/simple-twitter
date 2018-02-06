@@ -27,9 +27,9 @@
                 <!-- Button for admin to switch between front and back -->
                 <% if current_user.role == 'admin' %>
                   <% if request.url.include? 'admin' %>
-                    <%= link_to "Front End", root_path, class: "nav-text" %>
+                    <%= link_to "To Front End", root_path, class: "nav-text" %>
                   <% else %>
-                    <%= link_to "Back End", admin_tweets_path, class: "nav-text" %>
+                    <%= link_to "To Back End", admin_tweets_path, class: "nav-text" %>
                   <% end %>
                 <% end %>
               </li>

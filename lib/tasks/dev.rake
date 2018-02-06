@@ -75,15 +75,10 @@ namespace :dev do
   end
 
   task test: :environment do
-    @user = User.find(21)
-    # @user.followers.each do |follower|
-    #   puts "#{following.name}"
-    # end
-    puts @user.name
-    puts "avatar:#{@user.avatar};"
-    puts @user.avatar.nil?
-    puts @user.avatar == ''
-    puts image_path(@user.avatar) == ''
+    @users = User.all
+    @users.each do |user|
+      puts "#{user.id} #{user.name}"
+    end
   end
 
   #fake all data
