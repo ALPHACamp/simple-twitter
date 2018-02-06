@@ -30,9 +30,9 @@
           <h4><%= link_to follower.name, tweets_user_path(follower) %></h4>
           <div class="following-intro">
             <p><%= truncate(follower.introduction, length: 80) %></p>
-          </div>
-          <div class="following-btn">
-            <%= render partial: "shared/follow", locals: {user: follower} %>
+            <div class="following-btn">
+              <%= render partial: "shared/follow", locals: {user: follower} %>
+            </div>
           </div>
         </div>
       </div>

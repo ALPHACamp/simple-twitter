@@ -45,4 +45,31 @@ namespace :dev do
     puts "now you have #{Reply.count} replies"
   end
 
+  task fake_followship: :environment do
+    Followship.destroy_all
+    User.all.each do |user|
+      following = User.all.sample(3)
+      
+      for i in 0..2
+        user.followships.create!(
+          following: following[i]
+        )
+      end
+    end
+    puts "now you have #{Followship.count} followships"
+  end
+
+  task fake_like: :environment do
+    Like.destroy_all
+    User.all.each do |user|
+      tweet = Tweet.all.sample(3)
+      for i in 0..2
+        user.likes.create!(
+          tweet: tweet[i]
+        )
+      end
+    end
+    puts "now you have #{Like.count} likes"
+  end
+
 end
