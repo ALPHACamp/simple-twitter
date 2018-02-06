@@ -3,7 +3,7 @@
   <% @tweets.each do |tweet| %>
   <li>
     <%= tweet.description %>
-    <%= tweet.user_id %>
+    <%= tweet.user.name %>
   </li>
   <% end %>
 </ul>
