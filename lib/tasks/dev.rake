@@ -30,7 +30,7 @@ namespace :dev do
 
   task fake_tweet: :environment do
     Tweet.destroy_all    
-    30.times do |i|
+    50.times do |i|
             
       tweet = Tweet.new(
         description: FFaker::Lorem.sentence,
@@ -38,7 +38,49 @@ namespace :dev do
       )
       tweet.save!     
     end
-    puts '30 tweets have been created!'
+    puts '50 tweets have been created!'
   end
+
+  task fake_reply: :environment do
+    Reply.destroy_all    
+    500.times do |i|
+            
+      reply = Reply.new(
+        comment: FFaker::Lorem.sentence,
+        user: User.all.sample,
+        tweet: Tweet.all.sample
+      )
+      reply.save!     
+    end
+    puts '500 replies have been created!'
+  end
+
+  task fake_like: :environment do
+    Like.destroy_all    
+    500.times do |i|
+            
+      like = Like.new(        
+        user: User.all.sample,
+        tweet: Tweet.all.sample
+      )
+      like.save!     
+    end
+    puts '500 likes have been created!'
+  end
+
+  task fake_followship: :environment do
+    Followship.destroy_all    
+    500.times do |i|
+      user = User.all.sample
+      following = (User.all - [user]).sample
+
+      Followship.create(        
+        user: user,
+        following: following
+      )
+    end
+    puts '500 followship have been created!'
+  end
+
 
 end
