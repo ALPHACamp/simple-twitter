@@ -1,4 +1,57 @@
-<%= form_for [@tweet, @reply] do |f| %>
-  <%= f.text_area :comment, placeholder: "reply一下", class: "form-controller" %>
-  <%= f.submit class: "btn btn-primary" %>
-<% end %>
+<div class="col-md-4"> 
+  <div class="container">
+    <div>
+      <%= image_tag current_user.avatar, size: "200", class: "img-responsive center-block"%>
+    </div>
+    <div>
+      <h2><%= current_user.name%></h2> 
+    </div>
+    <div>
+      <p><%= truncate(current_user.introduction, length:100 ) %></p> 
+    </div>
+      <ul class="list-unstyled list-inline">
+        <li> <strong>Tweets :<%= current_user.tweets.count %></strong></li>
+      </ul>
+    <div>
+      <%= link_to('Edit Profile', edit_user_path(current_user))%>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-8">
+  <div>
+    <h2>Tweets</h2>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <%= image_tag @tweet.user.avatar, size: "200x60", class: "img-responsive center-block"%>
+        </div>
+        <div class="col-md-9">
+          <h4><%= link_to @tweet.user.name, tweets_user_path(@tweet.user) %> <%= @tweet.created_at.strftime('%Y-%m-%d')%></h4>
+          <p><%= truncate(@tweet.description, length:100 ) %></p> 
+          <%= link_to "reply", tweet_replies_path(@tweet)  %> 
+        </div>       
+      </div> 
+    </div>  
+  </div>
+  <div>
+    <h2>Replies</h2>
+    <% @replies.each do |reply|%>
+      <div class="col-md-3">
+        <%= image_tag reply.user.avatar, size: "200x60", class: "img-responsive center-block"%>
+      </div>
+      <div class="col-md-9">
+        <h4><%= link_to reply.user.name, tweets_user_path(reply.user) %> <%= reply.created_at.strftime('%Y-%m-%d')%></h4>
+        <p><%= truncate(reply.comment, length:100 ) %></p>
+      </div> 
+    <% end %>
+
+    <%= form_for [@tweet, @reply] do |f| %>
+      <%= f.text_area :comment, placeholder: "reply一下", class: "form-controller" %>
+      <%= f.submit class: "btn btn-primary" %>
+    <% end %>  
+  </div>
+</div>
+
+
+

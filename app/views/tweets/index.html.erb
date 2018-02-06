@@ -16,7 +16,7 @@
       <% @tweets.each do |tweet|%>
         <div class="tweet-item">
           <div class="col-md-3">
-            <%= image_tag tweet.user.avatar, size: "200", class: "img-responsive center-block"%>
+            <%= image_tag tweet.user.avatar, size: "200x60", class: "img-responsive center-block"%>
           </div>
           <div class="col-md-9">
             <h4><%= link_to tweet.user.name, tweets_user_path(tweet.user) %> <%= tweet.created_at.strftime('%Y-%m-%d')%></h4>
