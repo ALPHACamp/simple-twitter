@@ -1,0 +1,17 @@
+<p>Profile
+<p>avatar</p>
+<%= @user.name %> 
+<p><%=@user.introduction%></p>
+<p> Tweet Count</p>
+<p> Followcount</p>
+<p> Followercount</p>
+ "Like Count:
+ "Edit Profile"
+<p>
+<h1>Follower</h1>
+<% @followers.each do |f|%>
+<%= f.user.name%>
+<%= f.user.introduction%>
+
+
+<% end%>

@@ -1,0 +1,16 @@
+<p>Profile
+<p>avatar</p>
+<%= @user.name %> 
+<p><%=@user.introduction%></p>
+<p> Tweet Count</p>
+<p> Followcount</p>
+<p> Followercount</p>
+ "Like Count:
+ "Edit Profile"
+<p>
+<h1>Followings</h1>
+<% @followings.each do |f|%>
+ <%= f.following.name %>
+ <%= f.following.introduction %>
+ <%= link_to "Unfollow",followship_path(following_id: f), :method => "delete" %>
+<%end%>

@@ -10,7 +10,7 @@
 <p> Followercount</p>
 <p><%= link_to "Like Count : #{@user.likes.count}",likes_user_path(@user)%></p>
 <% if @user != current_user %>
-  <h4>follow</h4>
+  <h4><%= link_to "Follow",followships_path(following_id: @user.id), :method => "post" %></h4>
 <%else%>
   <%=link_to"Edit Profile", edit_user_path(@user)%>
 <% end%>

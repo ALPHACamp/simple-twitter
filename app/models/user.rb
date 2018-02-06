@@ -23,4 +23,8 @@ class User < ApplicationRecord
   has_many :followships
   has_many :followings, through: :followships
 
+
+  def is_following?(user)
+    self.followings.include?(user)
+  end
 end
