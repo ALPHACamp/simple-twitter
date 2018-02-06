@@ -20,6 +20,7 @@
           <%= image_tag (tweet.user.avatar), class: "usertweet-avatar" %>
           <h5>@<%= tweet.user.name %>,<%= tweet.created_at.to_date %>,<%= tweet.created_at.strftime("%k:%M") %></h5>
           <%= simple_format tweet.description, style: "color:#808080" %>
+          <%= link_to "Reply", tweet_replies_path(tweet) %>
           <% if tweet.is_liked?(current_user) %>
             <%= link_to unlike_tweet_path(tweet), method: :post, class: "text-danger" do %>
               Unlike(<%= tweet.likes.count %>)
