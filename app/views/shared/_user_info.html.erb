@@ -10,7 +10,7 @@
 <div class="link <%= "active" if page == 4 %>"><%= link_to "Like", likes_user_path(object) %></div>
 <% if current_user == object %>
   <div>
-    <%= link_to "Edit Profile", "#", class: "btn btn-default user-edit-btn" %>
+    <%= link_to "Edit Profile", edit_user_path(object), class: "btn btn-default user-edit-btn" %>
   </div>
 <% else %>
   <div>

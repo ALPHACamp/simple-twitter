@@ -245,3 +245,32 @@
   border-color: #ef4e6c;
   color: #ef4e6c;
 }
+
+
+/* --------------- udit profile --------------- */
+
+.edit-title {
+  color: #286090;
+  font-size: 18px;
+}
+
+#edit-avatar {
+  width: 250px;
+  height:250px;
+}
+
+#edit-name {
+  border: 2px solid #8ab7dc;
+  border-radius: 12px;
+  height: 50px;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+#edit-intro {
+  border: 2px solid #8ab7dc;
+  border-radius: 12px;
+  height: 150px;
+  font-size: 18px;
+  margin-top: 10px;
+}
