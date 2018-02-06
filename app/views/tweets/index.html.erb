@@ -17,21 +17,10 @@
       </div>
 
       <div class="col-md-4 col-sm-12">
-        <div class="card card-tweet">
-          <div class="card-block">
-            <div class="card-tittle"><a href="#" class="pull-right">View all</a><h5>Stackoverflow</h5></div>
-            <div class="card-text">
-              <p>If you're looking for help with Bootstrap code, the <code>twitter-bootstrap</code> tag at <a href="http://stackoverflow.com/questions/tagged/twitter-bootstrap">Stackoverflow</a> is a good place to find answers.</p>
-              <hr>
-            </div>
-            <form>
-              <div class="input-group">
-                <button class="btn btn-secondary"><i class="far fa-thumbs-up"></i>(5)</button>
-                <button class="btn btn-secondary"><i class="far fa-comment-alt"></i>(5)</button>
-              </div>
-            </form>
-            </div>
-         </div>
+        <% @users.each do |u| %>
+        <%= render partial: "oneuser", locals:{user: u}%>
+        <%end%>
+
       </div>
 
     </div>
