@@ -46,7 +46,8 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-// =================================Default====================================
+
+// ==============Default=================
 
 html, body {
   width: 100%;
@@ -75,12 +76,17 @@ img {
   width: 100%;
   height: auto;
   display: block;
+	border-radius: 5px;
 }
 
 .clearfix::after  {
   content: "";
   display: table;
   clear: both;
+}
+
+.col-md-9 {
+	padding-left: 50px;
 }
 
 .navbar {
@@ -105,6 +111,8 @@ img {
 	background-color: #71A5D0;
 	color: #222;
 	letter-spacing: 2px;
+	text-transform: capitalize;
+	font-size: 20px;
 }
 
 .button-group {
@@ -128,7 +136,7 @@ input[type="file"] {
 	border: 1px solid transparent;
 	white-space: nowrap;
 	padding: 6px 12px;
-	font-size: 14px;
+	font-size: 20px;
 	line-height: 1.428571429;
 	border-radius: 4px;
 	-webkit-user-select: none;
@@ -157,8 +165,38 @@ input[type="file"] {
 	}
 }
 
- // ===========================================================================
-// index page
+.name {
+	padding: 10px 0;
+	color: #00677E;
+	font-size: 26px;
+	font-weight: 700;
+	letter-spacing: 2px;
+}
+
+.content {
+	color: #00677E;
+	font-size: 14px;
+}
+
+.info {
+	margin: 10px 0;
+
+	.count {
+		color: #4B4C4B;
+		line-height: 2;
+		font-size: 22px;
+		letter-spacing: 2px;
+		display: block;
+		margin-bottom: 5px;
+
+		span {
+			margin-left: 10px;
+		}
+	}
+}
+
+ //=====================================================
+
 // tweet index
 #index {
 	#tweet_description {
@@ -190,6 +228,9 @@ input[type="file"] {
 			font-weight: 700;
 			letter-spacing: 2px;
 		}
+		.btn {
+			font-size: 16px;
+		}
 	}
 }
 
@@ -214,35 +255,6 @@ input[type="file"] {
 		padding: 10px;
 		border: 2px solid #A8CDDF;
 	}
-	.col-md-9 {
-		padding-left: 50px;
-	}
-	.name {
-		padding: 10px 0;
-		color: #00677E;
-		font-size: 26px;
-		font-weight: 700;
-		letter-spacing: 2px;
-	}
-	.content {
-		color: #00677E;
-		font-size: 14px;
-	}
-	.info {
-		margin: 10px 0;
-		.count {
-			color: #4B4C4B;
-			line-height: 2;
-			font-size: 22px;
-			letter-spacing: 2px;
-			span {
-				margin-left: 10px;
-			}
-		}
-	}
-	.btn {
-		font-size: 20px;
-	}
 	.title {
 		margin-bottom: 20px;
 		color: #00677E;
@@ -255,6 +267,7 @@ input[type="file"] {
 		padding: 10px;
 		border: 1px solid #aeaeae;
 		border-radius: 5px;
+
 		p {
 			margin: 15px 0;
 			color: #7D7D7D;
