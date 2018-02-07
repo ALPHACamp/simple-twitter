@@ -16,6 +16,16 @@ $ bundle install
 $ rails db:migrate
 ```
 
+## 更新 Fork 的程式碼
+
+由於是先 fork 再 clone，一般的 pull origin 只會拉到自己的 github repo
+如果 AC 專案有更新，想要同步到最新專案程式碼的話，你需要先把 AC 專案位置加入遠端清單，再執行 pull
+```
+git remote add upstream git@github.com:ALPHACamp/simple-twitter.git
+git pull upstream master
+```
+
+
 ## 自動化測試
 
 和自動化測試有關的程式碼，都存放在 **/spec** 的專案目錄下，所有的 Model 和 Controller 文件都會有一個對應的 spec 檔案，使用 `rails generate model` 或 `rails generate controller` 指令時會自動覆寫到現有的 spec 檔案。
