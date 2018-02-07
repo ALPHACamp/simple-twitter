@@ -21,9 +21,9 @@
       <tr>
         <th scope="row">
           <% if tweet.user.avatar? %>
-            <%= image_tag tweet.user.avatar, width: '100px', class: "rounded img-responsive center-block" %>
+            <%= image_tag tweet.user.avatar, width: '100px', class: "rounded m-auto d-block" %>
           <% else %>
-            <h1 class="text-center"><span class="glyphicon glyphicon-user"></span></h1>
+            <h1 class="text-center">No User Image</span></h1>
           <% end %>
         </th>
         <td>
@@ -36,16 +36,9 @@
             Reply <span class="badge badge-pill badge-primary"><%= tweet.replies_count %></span>
           <% end %>
          
-           <!-- like action button -->
-          <% if tweet.is_liked?(current_user) %>
-            <%= link_to unlike_tweet_path(tweet), method: :post, class: "btn btn-primary" do %>
-              Like <span class="badge badge-pill badge-light"><%= tweet.likes_count %></span>
-            <% end %> 
-          <% else %> 
-            <%= link_to like_tweet_path(tweet), method: :post, class: "btn btn-outline-primary" do %>
-              Like <span class="badge-pill badge-primary"><%= tweet.likes_count %></span>
-            <% end %> 
-          <% end %>
+          <!-- like action button -->
+          <%= render partial: "shared/like", locals: {tweet: tweet} %>
+          
         </td>
         <td></td>
         <td>

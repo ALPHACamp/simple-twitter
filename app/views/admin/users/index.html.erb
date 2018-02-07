@@ -23,16 +23,16 @@
       <tr>
         <th scope="row">
           <% if user.avatar? %>
-            <%= image_tag user.avatar, width: '100px', class: "rounded img-responsive center-block" %>
+            <%= image_tag user.avatar, width: '100px', class: "rounded m-auto d-block" %>
           <% else %>
             <h1 class="text-center"><span class="glyphicon glyphicon-user"></span></h1>
           <% end %>
         </th>
         <td><%= user.name %></td>
         <td><%= user.tweets.size %></td>
-        <td></td>
+        <td><%= user.likes_count %></td>
         <td><%= user.followings.size %></td>
-        <td><%= user.followers.size %></td>
+        <td><%= user.followers_count %></td>
       </tr>  
     <% end %>
     </tbody>
