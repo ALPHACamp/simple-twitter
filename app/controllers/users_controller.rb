@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :checkid, except: [:tweets]
 
   #呈現用戶頁面，自己或他人
   def tweets
@@ -33,5 +34,14 @@ class UsersController < ApplicationController
     @likes # 基於測試規格，必須講定變數名稱
     @user = User.find(params[:id])
   end
+  
+  private
 
+  def checkid
+    @user = User.find(params[:id])
+    unless current_user == @user
+       flash[:alert] = "Not allow!"
+       redirect_to tweets_user_path(current_user)
+     end
+  end
 end
