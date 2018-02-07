@@ -7,13 +7,13 @@ class Tweet < ApplicationRecord
   validates_length_of :description, maximum: 140
   
   #處理user的關聯
-  belongs_to :user, class_name: "User", foreign_key: "user_id"
+  belongs_to :user, class_name: "User"
 
   #處理reply的關聯
-  has_many :replies, class_name: "Reply", foreign_key: "reference_id", dependent: :destroy
+  has_many :replies, class_name: "Reply", dependent: :destroy
 
   #處理like的關聯
-  has_many :likes, class_name: "Like", foreign_key: "reference_id", dependent: :destroy
+  has_many :likes, class_name: "Like", dependent: :destroy
   has_many :liked_users, through: :likes, source: :user
 
   def is_liked?(user)

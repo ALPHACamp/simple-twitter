@@ -21,11 +21,11 @@ class User < ApplicationRecord
   has_many :tweets, through: :replies, source: :reply
 
   #處理like的關聯
-  has_many :likes, class_name: "Like", foreign_key: "reference_id", dependent: :destroy
+  has_many :likes, class_name: "Like", dependent: :destroy
   has_many :liked_tweets, through: :likes, source: :tweet
 
   #處理followship的關聯
-  has_many :followships, class_name: "Followship", foreign_key: "reference_id", dependent: :destroy
+  has_many :followships, class_name: "Followship", dependent: :destroy
   has_many :followings, through: :followships
 
   #確認是管理者

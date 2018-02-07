@@ -23,9 +23,10 @@ namespace :dev do
   
   task fake_tweet: :environment do
     Tweet.destroy_all
-    40.times do  |i|
+    60.times do |i|
       Tweet.create!(
-        description: FFaker::Lorem::sentence(2)
+        description: FFaker::Lorem::sentence[0..140],
+        user: User.all.sample
       )
     end
     puts "have created fake comments"
