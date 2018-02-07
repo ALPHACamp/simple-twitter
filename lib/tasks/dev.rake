@@ -25,7 +25,7 @@ namespace :dev do
     end  
   end
 
-  task fake_tweets: :environment do
+  task fake_tweet: :environment do
     Tweet.destroy_all
     100.times do |i|
       Tweet.create!(
@@ -47,7 +47,7 @@ namespace :dev do
        )      
      end     
     end
-    puts "now you have #{Reply.count} user replies"
+    puts "now you have #{Reply.count} replies"
   end 
 
   task fake_like: :environment do
@@ -78,5 +78,14 @@ namespace :dev do
     puts "now you have #{Followship.count} followship"
   end
 
+  task fake_all: :environment do
+    Rake::Task['db:migrate'].execute
+    Rake::Task['db:seed'].execute
+    Rake::Task['dev:fake_user'].execute
+    Rake::Task['dev:fake_tweet'].execute
+    Rake::Task['dev:fake_reply'].execute
+    Rake::Task['dev:fake_like'].execute
+    Rake::Task['dev:fake_followship'].execute
+  end
 
 end

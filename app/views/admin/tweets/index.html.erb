@@ -27,7 +27,7 @@
           <% end %>
         </th>
         <td>
-          <h4><%= tweet.user.name %></h4>
+          <%= link_to tweets_user_path(tweet.user) do %><h4>@<%= tweet.user.name %></h4><% end %>
           <p><%= tweet.description %></p>
 
           

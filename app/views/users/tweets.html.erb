@@ -1,1 +1,37 @@
-<p>User's tweets</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+    <!-- user's info -->
+      <div class="card">
+        <div class="card-body">
+          <% if @user.avatar %>
+            <%= image_tag @user.avatar, width: '95%', class: "rounded m-auto d-block" %>
+          <% else %>
+            <h1 class="text-center"><span class="glyphicon glyphicon-user"></span></h1>
+          <% end %>
+          <h4 class="card-title"><%= @user.name %></h4>
+          <p class="card-text"><%= @user.introduction %></p>
+
+          <!-- user's data link -->
+          <div class="list-unstyled">
+            <li><%= link_to tweets_user_path(@user) do %>Tweets: <%= @user.tweets.size %><% end %></li>
+            <li><%= link_to followings_user_path(@user) do %>Followings: <%= @user.followings.size %><% end %></li>  
+            <li><%= link_to followers_user_path(@user) do %>Followers: <%= @user.followers_count %><% end %></li> 
+            <li><%= link_to likes_user_path(@user) do %>Likes: <%= @user.liked_tweets.size %><% end %></li> 
+          </div> 
+         
+          <%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-primary" if @user == current_user%>
+          
+          <%= render partial: "shared/followship", locals: {user: @user} %>  
+       
+        </div>
+      </div>
+    </div>  
+    <div class="col-12 col-sm-8">
+    <!-- user's data show area -->
+    <% @user.tweets.all.each do |tweet| %>
+      <%= render partial: "shared/tweet_in_table", locals: {tweet: tweet} %>  
+    <% end %>  
+    </div>
+  </div>
+</div>

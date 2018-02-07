@@ -1,0 +1,26 @@
+<table class="table  my-tweet">
+  <tbody>
+    <tr>
+      <th scope="row">
+        <% if tweet.user.avatar? %>
+          <%= image_tag tweet.user.avatar, width: '100px', class: "rounded m-auto d-block" %>
+        <% else %>
+          <h1 class="text-center">No User Image</span></h1>
+        <% end %>
+      </th>
+      <td>      
+        <%= link_to tweets_user_path(tweet.user) do %>
+          <h4 class="card-text">@<%= tweet.user.name %></h4>
+        <% end %>
+        <p class="card-text"><%= tweet.description %></p>
+        <!-- replay link -->
+        <%= link_to tweet_replies_path(tweet), class: "btn btn-link" do %>
+          Reply <span class="badge badge-pill badge-primary"><%= tweet.replies_count %></span>
+        <% end %>
+       
+        <!-- like action button -->
+        <%= render partial: "shared/like", locals: {tweet: tweet} %>
+      </td>
+    </tr>
+  </tbody> 
+</table>  
