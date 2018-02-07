@@ -10,18 +10,8 @@
       <% end %>
     </div>
     <div class="col-md-8">
-      <% @tweets.each do |tweet| %>
-        <div class="tweet-well clearfix">
-          <div class="tweet-avatar">
-            <%= image_tag tweet.user.avatar %>
-          </div>
-          <div class="tweet-item">
-            <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>,
-            <%= time_tag tweet.created_at %>
-            <p class="wrap"><%= tweet.description %></p>
-          </div>
-        </div>
-      <% end %>
+      <%= render partial: "shared/tweet_list", locals: {tweets: @tweets} %>
+
       <div class="text-center">
         <%= paginate @tweets %>
       </div>
