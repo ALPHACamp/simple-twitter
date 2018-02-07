@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /*follow button*////////////////////////////////////////////
-.follow, .unfollow, .edit-user, .reply-btn, .upload-btn, .log-in-btn {
+.follow, .unfollow, .edit-user, .reply-btn, .upload-btn {
   background-color: #87CEFA;
   color: #444444;
   font-weight: bold;
@@ -11,7 +11,7 @@
   max-width: 90px;
 }
 
-.follow:hover, .unfollow:hover, .edit-user:hover, .reply-btn, .upload-btn:hover, .log-in-btn {
+.follow:hover, .unfollow:hover, .edit-user:hover, .reply-btn, .upload-btn:hover {
   background-color: #87CEFA;
 }
 
@@ -25,10 +25,6 @@
 
 .upload-btn {
   max-width: 160px;
-}
-
-.log-in-btn {
-  max-width: 200px;
 }
 
 /*following and follower*/////////////////////////////////////////////////////////
