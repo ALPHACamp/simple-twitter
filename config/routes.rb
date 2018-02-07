@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   end
   
   # # 個人資訊
-  resources :users, only: [:index, :edit, :update]
+  resources :users, only: [:index, :edit, :update] do
+    get :tweets, :on => :member
+
+  end
   root "tweets#index"
 
 

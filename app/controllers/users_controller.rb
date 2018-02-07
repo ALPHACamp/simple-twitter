@@ -2,7 +2,8 @@ class UsersController < ApplicationController
 
   #個別user的推播與簡介
   def tweets
-    #@user = User.find(params[:id])
+    @user = User.find(params[:id])
+    @tweets = @user.tweets
   end
 
   def edit

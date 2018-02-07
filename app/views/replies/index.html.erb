@@ -35,7 +35,7 @@
                 <%= image_tag @tweet.user.avatar , size: "100", class: "img-responsive" if @tweet.user.avatar?%>
               </div>
               <div class="col-md-10">
-                <p class="description"><%= @tweet.user.name  %>, <%= @tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></p>
+                <p class="description"><%= link_to @tweet.user.name , tweets_user_path(@tweet.user) %>, <%= @tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></p>
                 <p class="description"><%= @tweet.description  %></p>
                 <p class="description">Reply(<%= @tweet.replies.count %>)</p>
               </div>

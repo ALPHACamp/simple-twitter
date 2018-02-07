@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+     <div class="col-md-12">
+      <div class="col-md-12">
+        <%= image_tag @user.avatar , size: "150", class: "img-responsive " if @user.avatar?%>
+      </div>
+      <div class="col-md-12">
+        <p><%= @user.name %></p>
+        <p><%= @user.introduction %></p>
+      </div>
+      <div class="col-md-12">
+        <p>Tweet數量</p>
+      </div>
+      <div class="col-md-12">
+        <p>Following</p>
+      </div>
+      <div class="col-md-12">
+        <p>Follower</p>
+      </div>
+      <div class="col-md-12">
+        <p>Like</p>
+      </div>
+      <div class="col-md-12">
+        <p>Edit Profile/Follow</p>
+      </div>    
+     </div>
+    </div>
+    <div class="col-md-9">
+      <h1>Tweet</h1>
+      <div class="col-md-12">
+        <% @tweets.each do |tweet| %>
+          <div class="col-md-12">
+            <div class="tweet-detail">
+              <div class="col-md-3">
+                <%= image_tag tweet.user.avatar , size: "100", class: "img-responsive center-block" if tweet.user.avatar?%>
+              </div>
+              <div class="col-md-9">
+                <p class="description"><%= tweet.user.name  %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></p>
+                <p class="description"><%= tweet.description  %></p>
+                <p class="description"><%= link_to "Reply(#{tweet.replies.count})" , tweet_replies_path(tweet) %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
