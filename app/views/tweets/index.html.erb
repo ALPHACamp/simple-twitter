@@ -1,1 +1,43 @@
-<h1>test</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-7">
+      <%= form_for @tweet do |f| %>
+        <div class="form-group">
+          <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control text-area", rows: "5" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Tweet", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+      <div class="col-md-12">
+        <% @tweets.each do |tweet| %>
+          <div class="tweets-items row">
+            <div class="col-md-3">
+              <%= image_tag tweet.user.avatar, width: "100%" if tweet.user.avatar? %>      
+            </div>
+            <div class="col-md-9">
+              <p>@<%= tweet.user.name %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M")  %></p> 
+              <p><%= tweet.description%></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="col-md-12">
+        <h1>Popular</h1>
+        <% @users.each do |user| %>
+          <div class="tweets-items row">
+            <div class="col-md-3">
+              <%= image_tag user.avatar, width: "100%" if user.avatar? %>
+            </div>
+            <div class="col-md-9">
+                <p>@<%= user.name %></p> 
+                <p><%= user.introduction %></p>          
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
