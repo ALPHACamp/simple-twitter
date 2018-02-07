@@ -5,6 +5,7 @@
       <div>
         <p>
           <%= link_to message.user.name, tweets_user_path(message.user) %>
+          <%= render partial: "shared/follow", locals: { user: @user } %>
           <%= message.created_at.strftime("%Y-%m-%d, %H:%M") %>
         </p>
          <p><%= message_content %></p>
@@ -12,9 +13,10 @@
       <% if message_btn %>
         <div >
           <div id="reply" class="inline">
-            <%= link_to "Reply(#{message.replies_count})", tweet_replies_path(message), class: "links" %>
+            <%= link_to "Reply(#{message.replies_count})", tweet_replies_path(message), class: "btn btn-info" %>
       </div>
       <%= render partial: "shared/like", locals: {tweet: message} %>
+
     </div>
   <% end %>
 </div>

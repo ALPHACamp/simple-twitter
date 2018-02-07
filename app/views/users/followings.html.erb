@@ -1,14 +1,19 @@
-<h1>Followings</h1>
+<div class="container">
 
-<ul>
 
-  <% @followings.each do |following| %>
-    <li>
-      <%= render partial: "shared/profile", locals: { user: following} %>
-        <%= render partial: "shared/follow", locals: {user: following} %>
-    </li>
-  <% end %>
+  <ul>
+    <!-- user profile -->
+    <div class="col-xm-4">
+      <%=render partial: "/shared/profile", locals:{user: @user}%>
+    </div>
+      <div class="col-sm-9">
+      <h1>Followings</h1>
+      <%= render partial: "shared/follow", locals: {user: @following} %>
 
-</ul>
+      </div>
+    <% end %>
 
-<%= render partial: "shared/backhome" %>
+  </ul>
+
+  <%= render partial: "shared/backhome" %>
+</div>

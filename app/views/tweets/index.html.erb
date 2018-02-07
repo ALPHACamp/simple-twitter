@@ -1,3 +1,6 @@
+<div class="row justify-content-md-center">
+  <div class="col-md-7">
+
 <%= form_for(@tweet) do |f| %>
    <div class="form-group">
      <%= f.text_area :description, placeholder: "What's on your mind?" %>
@@ -8,13 +11,24 @@
 <% end %>
 
 
-<div class="tweets">
+    <div class="tweets">
       <% @tweets.each do |tweet| %>
         <%= render partial: "shared/message", locals: {message: tweet, message_content: tweet.description, message_btn: true} %>
       <% end %>
     </div>
+    <%#Popular    %>
+    <div class="col-xs-5">
+      <div class="popular col-xs-12">
+        <h1>Popular</h1>
+        <% @users.each do |user| %>
+          <%= render partial:"shared/avatar", locals:{avatar: user.avatar} if user.avatar? %>
+          <%= link_to user.name, tweets_user_path(user) %>
+          <%= truncate user.introduction, length: 100 %>
+          <%= render partial: "shared/follow", locals: { user: user } %>
+        <%end%>
+      </div>
+    </div>
 
-
-
-
-<%= render partial: "shared/backhome" %>
+    <%= render partial: "shared/backhome" %>
+  </div>
+</div>

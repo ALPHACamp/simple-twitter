@@ -15,3 +15,76 @@
  */
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+
+* {
+  font-family: 'Lato', monospace;
+}
+a:hover {
+  text-decoration: none;
+}
+nav.navbar {
+  background-color: lightblue;
+}
+.tweets-form {
+  margin-bottom: 50px;
+}
+
+.navbar-brand {
+  text-align: center;
+  color: black;
+  font-size: 2em;
+  padding: 10px;
+  margin-top: 15px;
+}
+
+.navbar-nav {
+  li {
+    a.nav-avatar {
+      padding: 10px;
+    }
+    a {
+      padding: 25px 10px;
+      font-size: 1em;
+    }
+  }
+}
+
+.tweet-item {
+  border: 2px solid lightgray;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.user-item {
+  border: 2px solid lightgray;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+.user-name {
+  text-align: center;
+  font-size: 5em;
+  color:lightblue;
+}
+
+.my-btn {
+  background-color: #71a6d0;
+}
+
+.my-btn:hover {
+  background-color: lightblue;
+}
+
+.links {
+  font-size: 1.2em;
+}
+.links-red {
+  color: red;
+}
+.links-red:hover {
+  color: red;
+}
+textarea.text-area {
+  font-size: 1.5em;
+  height: 20em;
+}
