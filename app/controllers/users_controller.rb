@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
   def likes
     # @likes # 基於測試規格，必須講定變數名稱
-    @likes = @user.likes_tweets.order('likes.created_at desc')
+    @likes = @user.likes_tweets.order('likes.created_at desc').page(params[:page]).per(6)
   end
 
   private
