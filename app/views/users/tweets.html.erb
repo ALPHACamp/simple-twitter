@@ -1,13 +1,11 @@
-<h1>前台</h1>
-<%= form_for  @tweet do |f| %>
-<div class="field">
-  <% f.label :description%>
-  <%= f.text_area :description ,placeholder:"What's on your mind?" %>
-</div>
-<%= f.submit "tweet" %>
-<% end %>
+<h3>Profile</h3>
+<ul>
+  <li><%= image_tag @user.avatar, size: '150x150'%></li>
+  <li><%= @user.name %></li>
+  <li><%= @user.introduction %></li>
+  <li>tweets <%=@user.tweets.size %></li>
+</ul>
 
-<div>
 
 <% @tweets.each do |tweet| %>
 <ul>
@@ -17,6 +15,4 @@
   <%= tweet.description %>
   <%= link_to "Reply(#{tweet.replies.size})", tweet_replies_path(tweet) %>
 </ul>
-
-<% end %>
-<div>
+<%end%>
