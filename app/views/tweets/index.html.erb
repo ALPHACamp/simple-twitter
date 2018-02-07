@@ -14,14 +14,19 @@
       <% @tweets.each do |tweet| %>
 
         <%= image_tag tweet.user.avatar, height: 85, width: 85 %>
-        <h5><%= tweet.user.name %></h5>
+        <h3>@<%= tweet.user.name %></h3>
         <p><%= tweet.description %></p>
-        <h5>
-          <%= link_to Reply, replies_user_path(tweet) %>
-          <small>(<%= tweet.replies.count %>)</small>
-          Like 連結 <!-- 待 like -->
-          (<%= tweet.likes.count %>)
-        </h5>
+
+        <!-- Reply link -->
+        <%= link_to (replies_user_path(tweet)) do %>
+          <h5>Reply(<%= tweet.replies.count %>)</h5>
+        <% end %>
+
+        <!-- Likes -->
+        <h5>Like(<%= tweet.likes.count %>)</h5>
+        
+        
+
         <hr>
       <% end %>
     <% end %>
@@ -31,9 +36,23 @@
     <% @users.each do |user| %>
 
       <%= image_tag user.avatar, height: 85, width: 85 %>
-      <h5><%= link_to user.name, users_tweets_path(user) %></h5>
+
+      <!-- user link -->
+      <%= link_to (users_tweets_path(user)) do %>
+        <h5>@<%= user.name %></h5>
+      <% end %>
+
       <p><%= user.introduction %></p>
+
       <!-- follow / unfollow 待完成 -->
+      <% if user != current_user %>
+        <% if current_user.following?(user) %>
+          <%= link_to 'Unfollow', followship_path(user), method: :delete, class: "btn btn-link" %>
+        <% else %>
+          <%= link_to 'Follow', followships_path(following_id: user), method: :post, class: "btn btn-default" %>
+        <% end %>
+      <% end %>
+
       <hr>
 
     <% end %>
