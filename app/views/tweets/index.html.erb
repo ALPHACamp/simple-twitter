@@ -29,6 +29,7 @@
           </small>
           <p class="card-text"><%= truncate(tweet.description,  length: 80) %></p>
         </div>
+        <%= link_to "Reply", tweet_replies_path(tweet) %>
         <%= render partial: "shared/like", locals: {tweet: tweet} %>
 
       </div>

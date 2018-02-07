@@ -4,15 +4,15 @@
     <h4><%= user.name %></h4>
     <p><%= user.introduction %></p>
     <ul class="list-group">
-      <li class="list-group-item"><%= link_to "Tweets #{user.tweets.count}", tweets_user_path %></li>
-      <li class="list-group-item"><%= link_to "Following #{user.followships.count}", followings_user_path %></li>
-      <li class="list-group-item"><%= link_to "Follower #{user.followers_count}", followers_user_path %></li>
-      <li class="list-group-item"><%= link_to "Like #{user.likes_count}", likes_user_path %></li>
+      <li class="list-group-item"><%= link_to "Tweets #{user.tweets.count}", tweets_user_path(user) %></li>
+      <li class="list-group-item"><%= link_to "Following #{user.followships.count}", followings_user_path(user) %></li>
+      <li class="list-group-item"><%= link_to "Follower #{user.followers_count}", followers_user_path(user) %></li>
+      <li class="list-group-item"><%= link_to "Like #{user.likes_count}", likes_user_path(user) %></li>
     </ul>
 
     <div class="btn-group">
       <% if user==current_user %>
-        <%= link_to "Edit profile", edit_user_path, class: "btn btn-primary" %>  
+        <%= link_to "Edit profile", edit_user_path(user), class: "btn btn-primary" %>  
       <% else %>        
         <%= render partial: "shared/follow", locals: {user: user} %>
       <% end %>
