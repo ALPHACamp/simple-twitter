@@ -1,7 +1,7 @@
 <div class="row user-panel">
   <div class="col-xs-6 col-sm-12 panel-avatar">
     <%= user_avatar(@user.avatar,"img-responsive center-block") %>
-    <h2><%= @user.name %></h2>
+    <h2><%= link_to "#{@user.name}", tweets_user_path(@user) %></h2>
   </div>    
   <div class="col-sm-12 hidden-xs full-intro"><%= @user.introduction %></div>
   <div class="col-xs-6 col-sm-12">
