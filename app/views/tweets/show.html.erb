@@ -1,9 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10">
       <div class="">
         
-        <div class="col-md-3 col-sm-4">
+        <div class="col-md-4 col-sm-4">
           <div class="text-center">
             <%= image_tag (@tweet.user.avatar if @tweet.user.avatar?),height: 200 %>
           </div>
@@ -15,27 +14,53 @@
           <% end %>
         <%= link_to 'Back to index', tweets_path %>
         </div>
-      <div class="col-md-9 col-sm-8">
 
-        <%= @tweet.description %><br>
+      <div class="col-md-8 col-sm-8">
 
-        <div class="container">
-        <div class="row">
+        <div class="seinbg">
+          <%= @tweet.description %><br>
+        </div>
+
+        <hr>
+
+        <% @tweet.replies.each do |reply| %>
+        <div>
+          <h4><%= reply.user.name %></h4>
+          <p><%= simple_format reply.comment %></p>
+          <p class="text-muted">
+            <em><%= time_ago_in_words(reply.created_at) %> </em>
+            <% if current_user.admin? %>
+              <%= link_to "Delete", tweet_reply_path(@tweet, reply), method: :delete %>
+            <% end %>
+          </p>
+        </div>
+        <hr>
+        <% end %>
+
+        
          <%= form_for [@tweet, @reply] do |f| %>
           <div class="form-group">
             <%= f.text_area :comment, placeholder: "留個言吧", class: "form-control" %>
           </div>
           <div class="form-group">
-            <%= f.submit class: "btn btn-primary" %>
+            <%= f.submit class: "btn btn-info" %>
             <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
           </div>
-        <% end %>
-        </div>
-      </div>
+        <% end %>  
 
       </div>
       </div>
 
-    </div>
   </div>
 </div>
+
+<style>
+  .seinbg{
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-color: #eee;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+  }
+</style>

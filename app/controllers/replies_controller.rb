@@ -11,8 +11,20 @@ class RepliesController < ApplicationController
     redirect_to tweet_path(@tweet)
   end
 
+  def destroy
+    @tweet = Tweet.find(params[:tweet_id])
+    @reply = Reply.find(params[:id])
+
+    if current_user.admin?
+      @reply.destroy
+      redirect_to tweet_path(@tweet)
+    end
+  end
+
+  private
+
   def reply_params
-    params.require(:reply).permit(:content)
+    params.require(:reply).permit(:comment)
   end
 
 end

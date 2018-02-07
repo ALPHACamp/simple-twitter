@@ -15,7 +15,10 @@ class User < ApplicationRecord
   validates_presence_of :name
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
 
-  has_many :tweets, dependent: :restrict_with_error
-  has_many :tweeted, through: :users
+  # has_many :tweets, dependent: :restrict_with_error
+  # has_many :tweeted, through: :users
+
+  has_many :replies, dependent: :restrict_with_error
+  has_many :tweets, through: :replies
 
 end
