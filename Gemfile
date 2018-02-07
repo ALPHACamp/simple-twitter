@@ -46,7 +46,7 @@ gem 'kaminari'
 # gem 'capistrano-rails', group: :development
 
 group :production do
-  gem 'pg'
+  gem 'pg', '~> 0.18'
 end
 
 group :development, :test do
