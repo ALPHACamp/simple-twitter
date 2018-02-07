@@ -1,6 +1,7 @@
 class Tweet < ApplicationRecord
   validates_length_of :description, maximum: 140
   validates_presence_of :description
+  default_scope { order(created_at: :desc) }
 
   belongs_to :user
   has_many :replies, dependent: :destroy

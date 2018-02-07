@@ -4,7 +4,7 @@
     <div class="col-xs-2">
       
 
-      <%= render partial: "shared/user_section" %>
+      <%= render partial: "shared/user_section", locals: {user: @tweet.user} %>
     </div>
 
     <div class="col-xs-9 col-xs-offset-1">

@@ -15,7 +15,11 @@
         <div class="clearfix"></div>
       <% end %>
 
-      <%= render partial: "shared/tweet_list" %>
+      <div>
+        <% @tweets.each do |tweet| %>
+          <%= render partial: "shared/tweet_list", locals: {tweet: tweet} %>
+        <% end %>
+      </div>
     </div>
 
     <div class="col-xs-4">

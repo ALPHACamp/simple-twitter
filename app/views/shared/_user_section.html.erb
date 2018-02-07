@@ -1,22 +1,22 @@
 <div class="">
   <div  class="tweet-item-img">  
-    <%= link_to tweets_user_path(@tweet.user) do %>
-      <%= image_tag @tweet.user.avatar, class: "img-responsive center-block img-rounded" %>
+    <%= link_to tweets_user_path(user) do %>
+      <%= image_tag user.avatar, class: "img-responsive center-block img-rounded" %>
     <% end %>
   </div>
 
   <div class="caption">
-    <h3><%= link_to @tweet.user.name, tweets_user_path(@tweet.user) %></h3>
-    <p><%= simple_format @tweet.user.introduction %></p>
-    <h3><%= link_to "Tweets #{@tweet.user.likes_count}", tweets_user_path(@tweet.user), style:"color:#5d5b5b;" %></h3> 
-    <h3><%= link_to "Following #{@tweet.user.likes_count}", followings_user_path(@tweet.user), style:"color:#5d5b5b;" %></h3> 
-    <h3><%= link_to "Follower #{@tweet.user.followers_count}", followers_user_path(@tweet.user), style:"color:#5d5b5b;" %></h3> 
-    <h3><%= link_to "Like #{@tweet.user.likes_count}", likes_user_path(@tweet.user), style:"color:#5d5b5b;" %></h3>
+    <h3><%= link_to user.name, tweets_user_path(user) %></h3>
+    <p><%= simple_format user.introduction %></p>
+    <h3><%= link_to "Tweets #{user.likes_count}", tweets_user_path(user), style:"color:#5d5b5b;" %></h3> 
+    <h3><%= link_to "Following #{user.likes_count}", followings_user_path(user), style:"color:#5d5b5b;" %></h3> 
+    <h3><%= link_to "Follower #{user.followers_count}", followers_user_path(user), style:"color:#5d5b5b;" %></h3> 
+    <h3><%= link_to "Like #{user.likes_count}", likes_user_path(user), style:"color:#5d5b5b;" %></h3>
 
-    <% if @tweet.user == current_user %>
-      <%= link_to "Edit Profile", edit_user_path(@tweet.user) %>
+    <% if user == current_user %>
+      <%= link_to "Edit Profile", edit_user_path(user) %>
     <% else %>
-      <%= link_to "Follow", followships_path(following_id: @tweet.user), method: :post %>  
+      <%= link_to "Follow", followships_path(following_id: user), method: :post %>  
     <% end %>
   </div>
   </div>
