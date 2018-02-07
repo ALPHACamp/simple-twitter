@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <%= render partial: "share/user_profile", locals: {obj: @user} %>
+    <div class="col-xs-8">
+      <% @followings.each do |following| %>
+        <div class="col-xs-6">
+          <%= render partial: "share/user_box", locals: {user: following} %>
+        </div>
+      <% end %>  
+    </div>
+  </div>
+</div>
