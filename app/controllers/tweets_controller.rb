@@ -10,10 +10,10 @@ class TweetsController < ApplicationController
     @tweet = current_user.tweets.build(tweet_params)
     if @tweet.save
       flash[:notice] = "Tweet was successfully created!"
-      redirect_back(fallback_location: root_path)
+      redirect_to tweets_path
     else
       flash[:alert] = @tweet.errors.full_messages.to_sentence
-      redirect_to root_path(tweet_params)
+      redirect_to tweets_path(tweet_params)
     end
   end
 
