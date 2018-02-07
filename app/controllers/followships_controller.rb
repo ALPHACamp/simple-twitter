@@ -3,6 +3,9 @@ class FollowshipsController < ApplicationController
   before_action :set_followship ,only: [:destroy]
   
   def create
+    if followship_params[:following_id] == current_user.id
+      flash[:alert] = "You can't follow yourself"
+    end
     @followship = current_user.followships.build(followship_params)
     if @followship.save
       flash[:notice] = 'Successfully followed!'
