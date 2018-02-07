@@ -7,7 +7,7 @@
 			<h3>Followings</h3>
 			<%- @followings.each do |f| %>
 				<div class="thumbnail followships">
-					<%= image_tag f.avatar, width:'100px', id:"tweet-avatar" %>
+					<%= image_tag f.avatar, width:'100px', id:"tweet-avatar followships" %>
 					<div class="caption">
 						<h3><%= f.name%></h3>
 						<p><%= f.introduction%></p>

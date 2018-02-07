@@ -16,7 +16,7 @@
 
 #tweet-avatar{
 	display: inline-block;
-	margin: 5px 10px 0px 10px;
+	margin: 0px 10px 10px 10px;
 }
 
 #tweet-details-block{
@@ -25,4 +25,9 @@
 
 .thumbnail.followships{
 	display: inline-block;
+}
+
+#tweet-avatar.followships{
+	display: inline-block;
+	margin: 2px 10px 0px 10px;
 }
