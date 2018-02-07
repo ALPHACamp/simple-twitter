@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user,only:[:show, :edit, :update]
 
   def tweets
-    @users = User.all
+    
   end
 
   def show
