@@ -24,7 +24,7 @@
     Hi, <%= current_user.name %>
     <%= link_to('logout', destroy_user_session_path, method: :delete) %> |
     <%= link_to('modify', edit_user_registration_path) %>
-   
+    <%= link_to('my tweets', tweets_user_path(current_user)) %>
   <% else %>
     <%= link_to('singup', new_user_registration_path) %> |
     <%= link_to('login', new_user_session_path) %>

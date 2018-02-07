@@ -20,6 +20,8 @@ class User < ApplicationRecord
     self.role == "admin"
   end  
 
-
+  def profile?(tweet)
+    self.tweets.include?(tweet)    
+  end
   
 end
