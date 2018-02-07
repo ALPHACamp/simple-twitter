@@ -1,27 +1,10 @@
 <div class="container">
   <%= render partial: "shared/info", locals: {user: @user} %>
-
-
   <div class="row">
     <div class="follow col-sm-8"">
       <%= @followings.each do |following| %>
-        <div class="col-sm-6" >
-          <div class="thumbnail">
-            <% if following.avatar? %>
-              <%= image_tag following.avatar, width:"300px", class: "img-responsive center-block" %>
-            <% else %>
-              <%= image_tag "http://via.placeholder.com/200x200", width:"300px", class: "img-responsive center-block" %>
-            <% end %>
-            <div class="caption">
-              <h3><%= following.name %></h3>
-              <p><%= following.introduction %></p>
-              <%= render partial: "shared/follow", locals: {user: following} %>
-            </div>
-          </div>
-        </div>
+        <%= render partial: "shared/followship", locals: {user: following} %>
       <% end %>
     </div>
-
-
   </div>
 </div>   

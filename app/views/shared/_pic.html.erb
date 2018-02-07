@@ -1,0 +1,5 @@
+<% if user.avatar? %>
+  <%= image_tag user.avatar, width:"300px", class: "img-responsive center-block" %>
+<% else %>
+  <%= image_tag "http://via.placeholder.com/200x200", width:"300px", class: "img-responsive center-block" %>
+<% end %>
