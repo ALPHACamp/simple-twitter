@@ -20,6 +20,8 @@
 
   <div id="popular">
     <h3>Popular</h3>
-    <%= render partial: "shared/users", locals: { users: @users } %>
+    <% @users.each do |user| %>
+      <%= render partial: "shared/users", locals: { user: user } %>
+    <% end %>
   </div>
 </div>
