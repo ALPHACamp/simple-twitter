@@ -1,5 +1,5 @@
 <% if tweet.user == current_user %>
-  <span><%= "Like(#{tweet.liked_users.count})" %></span>
+  <span id="like"><%= "Like(#{tweet.liked_users.count})" %></span>
 <% else %>
   <% if tweet.is_liked(current_user) %>
     <%= link_to "UnLike(#{tweet.liked_users.count})", unlike_tweet_path(tweet), method: :post, id: 'like' %>
