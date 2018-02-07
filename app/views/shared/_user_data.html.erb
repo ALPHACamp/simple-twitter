@@ -10,6 +10,6 @@
   <p class="black-link"><%= link_to "Like #{@user.likes_tweets.count}", likes_user_path(@user) %></p>
   <%= render partial: "shared/follow", locals: {user: @user} %>
   <% if @user == current_user %>
-    <%= link_to 'Edit Profile', edit_user_path, class: 'btn btn-primary' %>
+    <%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-primary' %>
   <% end %>
 </div>
