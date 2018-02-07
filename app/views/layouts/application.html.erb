@@ -38,7 +38,11 @@
               <li><%= link_to 'Home', root_path %></li>
               <li class="nav-user">
                 <%= link_to tweets_user_path(current_user) do %>
-                  <img src="http://via.placeholder.com/50x50">
+                  <% if current_user.avatar? %>
+                    <%= image_tag current_user.avatar %>
+                  <% else %>
+                    <img src="http://via.placeholder.com/50x50">
+                  <% end %>
                 <% end %>
               </li>
               <li class="nav-user"><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>

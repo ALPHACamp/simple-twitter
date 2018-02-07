@@ -1,6 +1,12 @@
 <div class="tweet-item clearfix">
   <div class="tweet-image">
-    <img src="http://via.placeholder.com/80x80">
+    <%= link_to tweets_user_path(object.user) do %>
+      <% if object.user.avatar? %>
+        <%= image_tag object.user.avatar %>
+      <% else %>
+        <img src="http://via.placeholder.com/80x80">
+      <% end %>
+    <% end %>
   </div>
           
   <div class="tweet-content">
