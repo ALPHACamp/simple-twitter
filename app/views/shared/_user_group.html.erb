@@ -1,7 +1,11 @@
 <div class="tweets row">
   <h2><%= user_title %></h2>
   <% users.each_with_index do |user, index| %>
-    <div class="col-xs-6 follow-item">
+    <% if index.odd? %>
+      <div class="col-xs-6 follow-item row pull-right">
+    <% else %>
+      <div class="col-xs-6 follow-item row pull-left">
+    <% end %>
       <div class="col-xs-4">
         <%= render partial: "shared/avatar", locals: {avatar: user.avatar} if user.avatar? %>
       </div>
