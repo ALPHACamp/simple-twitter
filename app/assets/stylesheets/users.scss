@@ -3,13 +3,32 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .user-box {
-  border: 1px solid #ddd;
+ 
   margin: 5px;
+  border: 1px solid #ddd;
+  height: 145px;
+
 } 
+
+span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.last-line {
+  height: 3.6em; /* exactly three lines */
+  text-overflow: -o-ellipsis-lastline;
+}
+
 
 .intro {
   word-wrap: break-word;
   margin-right: 2px;
+  height: 90px;
 }
 
 .user-img, .tweet-img, .nav-img {
