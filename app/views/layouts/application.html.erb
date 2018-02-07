@@ -33,6 +33,9 @@
                 </li>
               <% end %>
             <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
+            <li>
+              <%= link_to image_tag(@user.avatar), root_path, class: "head-shot" %>
+            </li>
             <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
             <!-- 暫時移除編輯個人資料連結 id = 1 -->
             <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
