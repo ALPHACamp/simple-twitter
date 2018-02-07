@@ -28,7 +28,7 @@
             <td><%= user.followings.ids.length %></td>
             <td><%= user.followers.ids.length %></td>
             <td><%= user.tweets.sum(:likes_count) %></td>
-            <td><%= link_to 'Show', admin_user_path(user) %></td>
+            <td><%= link_to 'Show', tweets_user_path(user) %></td>
           </tr>
           <% end %>
         </tbody>

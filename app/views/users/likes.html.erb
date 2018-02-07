@@ -13,7 +13,7 @@
           <p><%= @user.introduction %></p>   
         <% end %>
         <br>
-        <h4><%= link_to "Tweet #{@user.tweets.length}", user_path(@user), :style=>"color:grey" %></h4>
+        <h4><%= link_to "Tweet #{@user.tweets.length}", tweets_user_path(@user), :style=>"color:grey" %></h4>
         <h4><%= link_to "Following #{@user.followships.length}", followings_user_path, :style=>"color:grey" %></h4>
         <h4><%= link_to "Follower #{@user.inverse_followships.length}", followers_user_path, :style=>"color:grey" %></h4>
         <h4 style="color:grey;">Like <%= @user.likes.length %></h4>
@@ -37,7 +37,7 @@
                 <%= image_tag like.tweet.user.avatar, class: "img-responsive center-block" %>
               </div>
               <div class="col-md-9 col-sm-9 col-lg-9">
-                <h4><%= link_to like.tweet.user.name, user_path(like.tweet.user) %></h4>
+                <h4><%= link_to like.tweet.user.name, tweets_user_path(like.tweet.user) %></h4>
                 <h5><small><%= like.tweet.created_at %></small></h5>
                 <p><%= like.tweet.description %></p>
                 <% like.tweet.count_replies %><%= link_to "回覆數(#{like.tweet.replies_count})", tweet_replies_path(like.tweet), :style=>"color:blue" %>

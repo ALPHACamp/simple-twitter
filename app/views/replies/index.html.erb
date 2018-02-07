@@ -15,7 +15,7 @@
         <p><%= @tweet.user.introduction %></p>   
       <% end %>
       <br>
-      <h4><%= link_to "Tweet #{@tweet.user.tweets.length}", user_path(@tweet.user), :style=>"color:grey" %></h4>
+      <h4><%= link_to "Tweet #{@tweet.user.tweets.length}", tweets_user_path(@tweet.user), :style=>"color:grey" %></h4>
       <h4><%= link_to "Following #{@tweet.user.followships.length}", followings_user_path(@tweet.user), :style=>"color:grey" %></h4>
       <h4><%= link_to "Follower #{@tweet.user.inverse_followships.length}", followers_user_path(@tweet.user), :style=>"color:grey" %></h4>
       <h4><%= link_to "Like #{@tweet.user.likes.length}", likes_user_path(@tweet.user), :style=>"color:grey" %></h4>
@@ -70,7 +70,7 @@
             </div>
 
             <div class="col-md-9 col-sm-9 col-lg-9">
-              <h4><%= link_to reply.user.name, user_path(reply.user) %> <small><%= reply.created_at %></small></h4>
+              <h4><%= link_to reply.user.name, tweets_user_path(reply.user) %> <small><%= reply.created_at %></small></h4>
               <p><%= simple_format reply.comment %></p>
               <% if current_user.admin? || current_user==reply.user%>
                 ---<%= link_to "Delete", tweet_reply_path(@tweet, reply), method: :delete %>         

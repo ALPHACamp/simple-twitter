@@ -7,6 +7,10 @@ class Admin::UsersController < Admin::BaseController
 
   end
 
+  def tweets
+    @tweets = @user.tweets.order(created_at: :desc)
+  end 
+
   def show
     @tweets = @user.tweets.order(created_at: :desc)
   end

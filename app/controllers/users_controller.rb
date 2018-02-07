@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user
 
   def tweets
+    @tweets = @user.tweets.order(created_at: :desc)
   end
 
   def show
