@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user
 
   def tweets
+    @tweets = @user.tweets
   end
 
   def edit
