@@ -5,11 +5,10 @@
   <% @followings.each do |following| %>
     <li>
       <%= render partial: "shared/profile", locals: { user: following} %>
-      <%= following.user.name %>
-        <%= render partial: "shared/avatar", locals: {avatar: following.user.avatar} if following.user.avatar? %>
-        <%= following.introduction %>
         <%= render partial: "shared/follow", locals: {user: following} %>
     </li>
   <% end %>
 
 </ul>
+
+<%= render partial: "shared/backhome" %>

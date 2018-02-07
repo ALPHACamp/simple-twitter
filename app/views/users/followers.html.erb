@@ -2,5 +2,13 @@
 <%= render partial: "shared/profile", locals: { user: @user } %>
 <h1>Followers</h1>
 <% @followers.each do |follower| %>
-  <%= render partial: "shared/follow", locals: { user: follower } %>
+  <%= render partial: "shared/follow", locals: { user: @followers } %>
 <% end %>
+
+ <nav aria-label> <!--回到首頁-->
+    <ul class="pager">
+      <li><%= link_to 'Back to index', tweets_path %></li>
+    </ul>
+  </nav>
+
+<%= render partial: "shared/backhome" %>

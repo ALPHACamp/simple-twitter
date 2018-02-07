@@ -7,8 +7,6 @@
    </div>
 <% end %>
 
-<%# render partial: "shared/like", locals: {tweet: @tweet} %>
-
 <div class="tweets">
 
    <% @tweets.each do |tweet| %>
@@ -34,8 +32,4 @@
 
 
 
- <nav aria-label> <!--回到首頁-->
-    <ul class="pager">
-      <li><%= link_to 'Back to index', tweets_path %></li>
-    </ul>
-  </nav>
+<%= render partial: "shared/backhome" %>
