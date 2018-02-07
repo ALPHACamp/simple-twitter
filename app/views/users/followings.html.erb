@@ -3,7 +3,7 @@
   <div class="row">
     <div class="follow col-sm-8"">
       <%= @followings.each do |following| %>
-        <%= render partial: "shared/followship", locals: {user: following} %>
+        <%= render partial: "shared/followcard", locals: {user: following} %>
       <% end %>
     </div>
   </div>
