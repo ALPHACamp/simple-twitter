@@ -2,6 +2,7 @@
   <div class="form-group">
     <%=form_for @tweet do |f|%>
       <%= f.text_area :description, class: "form-control text-area"%>
+      <br/>
       <div class="text-right">
         <%=f.submit class: "btn btn-primary" %>
       </div>

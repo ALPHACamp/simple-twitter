@@ -1,15 +1,10 @@
   <div class="content col-md-4">
     <%= form_for @user do |f| %>
-      <div class="card" style="">
+      <div class="card">
         <%= image_tag @user.avatar, class: "card-img-top rounded" if @user.avatar? %>
         <br/>
         <br/>
-        <button class="btn btn-primary btn-lg">
-          Choose a file
-        <span style = "display: none;">
           <%= f.file_field :avatar%>
-        </span>
-        </button>
       </div>
   </div>
   <div class="content col-md-8">
