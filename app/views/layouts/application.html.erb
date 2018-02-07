@@ -11,7 +11,7 @@
 
   <body>
     <!-- 導覽列 -->
-    <nav class="navbar navbar-expand-lg navbar-fixed-top" style="background-color: #CCDDFF;">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #CCDDFF;">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -31,7 +31,7 @@
               <% if current_user&.admin? %>
                 <li><%= link_to 'Admin Control Panel', admin_root_path %></li>
               <% end %>
-                <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
+                <li><p class="navbar-text">Hi, <%= current_user.name %></p></li>
 
                 <li class="nav-btn"><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
                 <li class="nav-btn"><%= link_to('修改個人資料', edit_user_path(current_user)) %></li>

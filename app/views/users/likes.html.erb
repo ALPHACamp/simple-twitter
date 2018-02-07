@@ -1,0 +1,14 @@
+
+<div class="row justify-content-center mt-5">
+
+  <div class="col-sm-3 col-12">
+    <%= render 'shared/profile', locals: { user: tweet.user} %>
+  </div>
+  <div class="col-sm-9 col-12">
+    <h1>Likes</h1>
+    <% @likes.each do |tweet| %>
+      <%= render 'shared/message' , locals: {message: tweet, message_content: tweet.description, message_btn: true} %>
+    <% end %>
+  </div>
+</div>
+<%= render partial: "shared/backhome" %>
