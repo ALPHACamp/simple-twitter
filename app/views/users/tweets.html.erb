@@ -8,7 +8,7 @@
     <br><br>
 
     <div class="col-md-8 tweet-reply">
-      <% @user.tweets.each do |tweet| %>
+      <% @tweets.each do |tweet| %>
         <%= render partial: "shared/tweet_list", locals: {object: tweet, flag: false} %>
         <br>
       <% end %>
