@@ -8,7 +8,7 @@
 
 
     <div class="col-md-8">
-      <% @tweeted.each do |tweet| %>
+      <% @tweets.each do |tweet| %>
       <div class="tweets">
         <% if tweet.user.avatar? %>
           <%= image_tag(tweet.user.avatar, class: "img-rounded") %>

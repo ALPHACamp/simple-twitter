@@ -19,9 +19,9 @@
         <h4 class="text-muted">
           <%= link_to "Reply (#{tweet.replies.count})" ,tweet_replies_path(tweet) %>
           <% if tweet.liked?(current_user) %>
-            <%= link_to "Like (#{tweet.likes_count})", unlike_tweet_path(tweet), method: :post ,style:"color:red;" %>
+            <%= link_to "Unlike (#{tweet.likes.count})", unlike_tweet_path(tweet), method: :post ,style:"color:red;" %>
             <% else %>
-            <%= link_to "Like (#{tweet.likes_count})", like_tweet_path(tweet), method: :post ,style:"color:red;" %>
+            <%= link_to "Like (#{tweet.likes.count})", like_tweet_path(tweet), method: :post ,style:"color:red;" %>
           <% end %>
         </h4>
       </div>
