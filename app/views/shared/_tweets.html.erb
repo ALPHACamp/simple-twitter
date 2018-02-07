@@ -4,7 +4,7 @@
       <%= image_tag tweet.user.avatar, class: "img-responsive center-block show-img" %>
     </div>
     <%= link_to tweet.user.name, tweets_user_path(tweet.user.id) %>
-    <%= tweet.created_at %>
+    <%= time_ago_in_words(tweet.created_at) %>
     <br>
     <%= tweet.description %>
     <br>

@@ -16,7 +16,7 @@
             <%= image_tag reply.user.avatar, class: "img-responsive center-block show-img" %>
           </div>
           <%= link_to reply.user.name, tweets_user_path(reply.user) %>,
-          <%= reply.created_at %>
+          <%= time_ago_in_words(reply.created_at) %>
           <br>
           <%= reply.comment %>
         </div>
