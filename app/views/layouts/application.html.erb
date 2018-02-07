@@ -33,7 +33,7 @@
                 </li>
               <% end %>
             <li>
-              <%= link_to image_tag(current_user.avatar), root_path, :alt => "Edit youself!", class: "head-shot" %>
+              <%= link_to image_tag(current_user.avatar), tweets_user_path(current_user), :alt => "Edit youself!", class: "head-shot" %>
             </li>
             <li><%= link_to(image_tag('logout.png'), destroy_user_session_path, method: :delete, class: "log-out") %></li>
             <!-- 暫時移除編輯個人資料連結 id = 1 -->
