@@ -1,24 +1,26 @@
-<% follows.each do |follow| %>
-<div class="follow-block">
-  <div class="follow-item">
-    <div class="follow-img">
-      <%= image_tag follow.avatar,class: "img-responsive center-block", size: "130x120" %>
-    </div>
-    <div class="follow-info">
-      <%= link_to tweets_user_path(follow) do %>
-        <h4><%= follow.name %></h4>
-      <% end %>
-      <p><%= truncate(follow.introduction, length: 40) %></p>
-    </div>
-    <div class="follow-btn">
-      <% if current_user != follow %>
-        <% if current_user.following?(follow) %>
-          <%= link_to "Unfollow", followship_path(follow), method: :delete, class: "btn btn-primary" %>
-        <% else %>
-          <%= link_to "Follow", followships_path(following_id: follow), method: :post, class: "btn btn-primary" %>
+<section>
+  <% follows.each do |follow| %>
+  <div class="follow-block">
+    <div class="follow-item">
+      <div class="follow-img">
+        <%= image_tag follow.avatar.url ,class: "img-responsive center-block", size: "130x120" %>
+      </div>
+      <div class="follow-info">
+        <%= link_to tweets_user_path(follow) do %>
+          <h4><%= follow.name %></h4>
         <% end %>
-      <% end %>
+        <p><%= truncate(follow.introduction, length: 40) %></p>
+      </div>
+      <div class="follow-btn">
+        <% if current_user != follow %>
+          <% if current_user.following?(follow) %>
+            <%= link_to "Unfollow", followship_path(follow), method: :delete, class: "btn btn-primary" %>
+          <% else %>
+            <%= link_to "Follow", followships_path(following_id: follow), method: :post, class: "btn btn-primary" %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
-<% end %>
+  <% end %>
+</section>

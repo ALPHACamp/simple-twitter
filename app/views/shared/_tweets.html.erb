@@ -1,8 +1,7 @@
 <div class="tweets">
-  <% objects.each do |t| %>
   <div class="tweet-info clearfix">
     <div class="col-sm-6 col-md-4">
-      <%= image_tag t.user.avatar.medium , class: "img-responsive center-block", size: "130x120" %>
+      <%= image_tag t.user.avatar.medium.url , class: "img-responsive center-block", size: "120x120" %>
     </div>
     <div class="col-sm-6 col-md-8">
       <div class="info-item">
@@ -27,5 +26,4 @@
       </div>
     </div>
   </div>
-  <% end %>
 </div>

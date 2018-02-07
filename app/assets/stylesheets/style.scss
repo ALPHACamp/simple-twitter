@@ -45,9 +45,7 @@ ul, ol {
 
 
 .container {
-  width: 80%;
   max-width: 1170px;
-  margin: 0 auto;
   position: relative;
 }
 
@@ -249,11 +247,8 @@ p {
   right: 10px;
 }
 /* avatar upload */
-
 .user_avatar_upload {
   position: relative;
-  width: 60%;
-  margin: 0 auto;
 }
 
 .user_avatar_upload input[type=file] {
