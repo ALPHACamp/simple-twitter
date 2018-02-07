@@ -4,34 +4,37 @@
       <%= user_avatar(message.user.avatar, "img-responsive center-block") %>
     </div>
   </div>
-  <div class="col-xs-9">
-    <div class="row">
-      <div class="col-xs-12">
-        <%= link_to "@#{message.user.name}", tweets_user_path(message.user) %><%= ", #{message.created_at}" %>
-      </div>
-    </div>
+  <div class="col-xs-9 no-padding">
+    <p>
+      <%= link_to "@#{message.user.name}", tweets_user_path(message.user) %><%= ", #{message.created_at}" %>
+    </p>
     <% if is_tweet %>
-      <div class="col-xs-12">
+      <p>
         <%= message.description %>
-      </div>
-      <div class="col-xs-4">
-        <%= link_to "Reply(#{message.replies.count})", tweet_replies_path(message.id) %>
-        <% if with_reply %>
-          <%= render partial: "shared/collapse_btn", locals: {title: '', collapse_target: "message#{message.id}", class_name: 'inline-block'} %>
-        <% end %>
-      </div>
-      <div class="col-xs-4">
-        <%= render partial: "shared/like", locals: {tweet: message} %>
-      </div>
-      <% if current_user.admin? %>
-        <div class="col-xs-4">
-          <%= link_to 'Delete', admin_tweet_path(message), method: :delete %>
-        </div>
-      <% end %>
+      </p>
     <% else %>
-      <div class="col-xs-12"><%= message.comment %></div>
+      <p><%= message.comment %></p>
     <% end %>
   </div>
+
+  <!-- buttons -->
+  <div class="clearfix"></div>
+  <% if is_tweet %>
+    <div class="col-xs-3 col-sm-3 col-xs-offset-3 col-sm-offset-3 msg-btn-col">
+      <%= link_to "Reply(#{message.replies.count})", tweet_replies_path(message.id) %>
+      <% if with_reply %>
+        <%= render partial: "shared/collapse_btn", locals: {title: '', collapse_target: "message#{message.id}", class_name: 'inline-block', btn_class: 'less-padding'} %>
+      <% end %>
+    </div>
+    <div class="col-xs-3 col-sm-3 msg-btn-col">
+      <%= render partial: "shared/like", locals: {tweet: message} %>
+    </div>
+    <% if current_user.admin? %>
+      <div class="col-xs-3 col-sm-3 msg-btn-col">
+        <%= link_to 'Delete', admin_tweet_path(message), method: :delete, data:{confirm:"Are you sure?"} %>
+      </div>
+    <% end %>
+  <% end %>
 
   <% if with_reply %>
     <div class="row collapse" id=<%= "message#{message.id}" %>>
