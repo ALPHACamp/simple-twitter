@@ -40,9 +40,8 @@ img {
   margin: 0;
 }
 
-button, button:focus{
+.btn, button, button:focus{
   outline:0px !important;
-  -webkit-appearance:none;
 }
 
 
@@ -104,7 +103,9 @@ nav {
 .avatar-xs {
   width: 40px;
   height: 40px;
-  background-color: white;
+  background-image: image-url("default-user-image.png");
+  background-position: center;
+  background-size: cover;
   border-radius: 50%;
   align-self: center;
   justify-self: center;
@@ -271,6 +272,7 @@ h2 {
 .avatar-sm {
   height: 90px;
   width: 90px;
+  background-image: image-url("default-user-image.png");
   background-size: cover;
   background-position:center;
   align-self: start;
@@ -309,6 +311,9 @@ h2 {
 .avatar-md {
   width: 280px;
   height: 280px;
+  background-image: image-url("default-user-image.png");
+  background-size: cover;
+  background-position:center;
   min-width: 170px;
   min-height: 170px;
 }
@@ -385,7 +390,9 @@ h2 {
 }
 
 .avatar-lg {
-  background: white;
+  background-image: image-url("default-user-image.png");
+  background-size: cover;
+  background-position:center;
   width: 330px;
   height: 330px;
   border: 1px solid #C4E8F9;
