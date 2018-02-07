@@ -12,7 +12,7 @@
     <nav class="text-right bg-primary">
       <ul>
         <% if current_user %>
-          <li class="float-left">LOGO</li>
+          <li class="float-left"><%= link_to "LOGO" ,root_path %></li>
           <li><%= image_tag current_user.avatar, class: "logo rounded"%></li>
           <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
           <li><%= link_to('Edit Profile', edit_user_path(current_user)) %></li>

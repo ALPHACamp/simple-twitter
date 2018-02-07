@@ -1,5 +1,6 @@
 class Admin::TweetsController < Admin::BaseController
   def index
+    @user = current_user
     @tweets = Tweet.all
   end
 

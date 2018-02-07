@@ -1,10 +1,16 @@
-<h1>admin controller</h1>
-<ul>
+<div class="content col-md-4">
+  <%= render partial: "shared/profile" %>
+  <div class="card-body">
+    <%= link_to "Front End",tweets_path, class: "btn btn-primary" %>
+  </div>
+</div>
+<div class="conten col-md-8">
+  <h4>Admin</h4>
   <% @tweets.each do |t| %>
-    <%= t.description %>
-    <%= t.created_at %>
-    <%= link_to "Delete",admin_tweet_path(t), method: :delete, data:{confirm:'Are you sure?'}%>
-  <% end %>
-</ul>
-
-<%= link_to "Front End",tweets_path %>
+   <div class="media">
+    <%= image_tag t.user.avatar, class: "align-self-center mr-3 avatar rounded" %>
+    <%= render partial: "shared/tweet", locals:{tweet: t}%>
+    <%= link_to "Delete",admin_tweet_path(t), method: :delete, data:{confirm:'Are you sure?'}, class: "btn btn-primary"%>
+    </div>
+  <%end%>
+</div>

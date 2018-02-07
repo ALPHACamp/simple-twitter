@@ -1,0 +1,12 @@
+<div class="content col-md-12">
+  <% @users.each do |u|%>
+    <div class="media small-profile col-md-4 float-left">
+      <%= image_tag u.avatar, class: "align-self-center mr-3 avatar rounded" %>
+      <div class="media-body">
+        <h5 class="mt-0">
+          <%= link_to "#{u.name}",tweets_user_path(u) %></h5>
+          <p><%= truncate(u.introduction,:length => 60)%></p>
+      </div>
+    </div>
+  <%end%>
+</div>
