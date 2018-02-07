@@ -1,9 +1,30 @@
 <h1>前台首頁</h1>
-<ul>
-  <% @tweets.each do |tweet| %>
-  <li>
-    <%= tweet.description %>
-    <%= tweet.user.name %>
-  </li>
-  <% end %>
-</ul>
+
+<div class="hgp padding-20 h-gap-10">
+ 
+  <div class="vgp padding-10 v-gap-10">
+   
+    <div class="vgp padding-0 v-gap-10"> 
+      <%= form_for @tweet do |f| %>    
+        <%= f.text_area :description %>
+        <%= f.submit %>    
+      <% end %> 
+    </div> 
+     
+    <ul>
+      <% @tweets.each do |tweet| %>
+      <li>
+        <%= tweet.description %>
+        <%= tweet.user.name %>
+      </li>
+      <% end %>
+    </ul>
+    
+  </div>  
+  
+  <div class="com">
+    <h1>popular</h1>
+  </div>
+  
+</div>
+
