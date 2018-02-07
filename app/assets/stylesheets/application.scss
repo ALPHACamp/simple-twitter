@@ -27,3 +27,27 @@
   .clearfix {
     clear: both;
   }
+
+  .tweet-well {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 10px;
+    max-height: 122px; 
+  }
+
+  .tweet-avatar {
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin: 10px;
+  }
+
+  .tweet-avatar img {
+    max-width: 100%;
+    
+  }
+
+  .tweet-item {
+    margin: 10px;
+  }
+

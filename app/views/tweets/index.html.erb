@@ -1,1 +1,21 @@
-<h1>This is tweets index</h1>
+<div class="container">
+  <div class="row">
+    <h1 class="text-center">This is tweets index</h1>
+    <div class="col-md-8">
+      <% @tweets.each do |tweet| %>
+        <div class="tweet-well clearfix">
+          <div class="tweet-avatar">
+            <%= image_tag tweet.user.avatar %>
+          </div>
+          <div class="tweet-item">
+            <%= tweet.user.name %>,
+            <%= time_tag tweet.created_at %>
+            <p class="wrap"><%= tweet.description %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>
+
