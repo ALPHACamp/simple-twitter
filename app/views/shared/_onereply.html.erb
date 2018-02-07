@@ -1,0 +1,26 @@
+        <div class="card">
+          <div class="card-block">
+ 
+            <div class="tweet-avatar">
+              <div class="card-pic-width">
+                <div class="card-pic-height">
+                  <div class="card-pic-position">
+                    <%= image_tag(t.user.avatar, {onerror:"this.src='/man.jpg';", class:"card-picture"}) %>
+                  </div>
+                </div>
+              </div>
+            </div>
+ 
+            <div class="card-tittle">
+              <div class="tweeter-name"><h5><%= t.user.name %></h5></div>
+              <p href="#" class="time-log pull-right"><%=time_ago_in_words t.updated_at %> ago</p>
+              <hr>
+            </div>
+ 
+           
+            <div class="card-text">
+              <p><%= t.comment %></p>
+            </div>
+            <hr>
+          </div>
+        </div>

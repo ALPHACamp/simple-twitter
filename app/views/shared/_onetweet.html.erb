@@ -1,4 +1,3 @@
-<% @tweets.each do |t| %>
  
         <div class="card">
           <div class="card-block">
@@ -27,19 +26,14 @@
             <form>
               <div class="input-group">
                 <%if t.liked_users.include?(current_user) %>
-                <%= link_to render(partial:"like", locals:{tweet: t, like: true}), unlike_tweet_path(t), {method: :post, class:"btn btn-secondary"} %>
+                <%= link_to render(partial:"shared/like", locals:{tweet: t, like: true}), unlike_tweet_path(t), {method: :post, class:"btn btn-secondary"} %>
                 <%else %>
-                <%= link_to render(partial:"like", locals:{tweet: t, like: false}), like_tweet_path(t), {method: :post, class:"btn btn-info"} %>
+                <%= link_to render(partial:"shared/like", locals:{tweet: t, like: false}), like_tweet_path(t), {method: :post, class:"btn btn-info"} %>
                 <%end%>
 
-                <%= link_to render(partial:"tocomment", locals:{tweet: t}), tweet_path(t), {class:"btn btn-secondary"} %>
-                <button class="btn btn-secondary"><i class="far fa-share-square"></i></button>
+                <%= link_to render(partial:"shared/tocomment", locals:{tweet: t}), replies_tweet_path(t), {class:"btn btn-secondary"} %>
+                <button class="btn btn-secondary"><i class="fa fa-share-square-o fa-lg"></i></button>
               </div>
             </form>
             </div>
          </div>
- <%end%>
-
-         <div class="text-center margin-10-10">
-          <%= paginate @tweets,  window: 2 %>
-        </div>

@@ -1,0 +1,45 @@
+<% @tweets.each do |t| %>
+ 
+        <div class="card">
+          <div class="card-block">
+ 
+            <div class="tweet-avatar">
+              <div class="card-pic-width">
+                <div class="card-pic-height">
+                  <div class="card-pic-position">
+                    <%= image_tag(t.user.avatar, {onerror:"this.src='/man.jpg';", class:"card-picture"}) %>
+                  </div>
+                </div>
+              </div>
+            </div>
+ 
+            <div class="card-tittle">
+              <div class="tweeter-name"><h5><%= t.user.name %></h5></div>
+              <p href="#" class="time-log pull-right"><%=time_ago_in_words t.updated_at %> ago</p>
+              <hr>
+            </div>
+ 
+           
+            <div class="card-text">
+              <p><%= t.description %></p>
+            </div>
+            <hr>
+            <form>
+              <div class="input-group">
+                <%if t.liked_users.include?(current_user) %>
+                <%= link_to render(partial:"shared/like", locals:{tweet: t, like: true}), unlike_tweet_path(t), {method: :post, class:"btn btn-secondary"} %>
+                <%else %>
+                <%= link_to render(partial:"shared/like", locals:{tweet: t, like: false}), like_tweet_path(t), {method: :post, class:"btn btn-info"} %>
+                <%end%>
+
+                <%= link_to render(partial:"shared/tocomment", locals:{tweet: t}), replies_tweet_path(t), {class:"btn btn-secondary"} %>
+                <button class="btn btn-secondary"><i class="fa fa-share-square-o fa-lg"></i></button>
+              </div>
+            </form>
+            </div>
+         </div>
+ <%end%>
+
+         <div class="text-center margin-10-10">
+          <%= paginate @tweets,  window: 2 %>
+        </div>
