@@ -3,6 +3,6 @@ class Tweet < ApplicationRecord
 
   belongs_to :user
 
-  has_many :replies
+  has_many :replies, dependent: :destroy
   has_many :replying_users, through: :replies, source: :user
 end
