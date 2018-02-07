@@ -8,12 +8,17 @@
     </div>
 
     <div class="col-xs-9 col-xs-offset-1">
-      <h3>Tweet</h3>
-      <%= render partial: "shared/tweet_list" %>
+      <h3>Tweets</h3>
+      <div class="row">
+        <div class="col-xs-offset-1">
+          <%= render partial: "shared/tweet_list" %>
+        </div>
+      </div>
 
       <h3> Replies </h3>
-      <div class="">
-        <% @replies.each do |tweet| %>
+      <div class="row">
+        <div class="col-xs-offset-1">
+          <% @replies.each do |tweet| %>
             <div class="tweet-item">
               <div class="row">
                 <div  class="col-xs-2 tweet-item-img">  
@@ -31,24 +36,23 @@
                 </div>
               </div>
             </div>
-        <% end %>
+          <% end %>
+
+          <%= form_for [@tweet, @reply] do |f| %>
+            <div class="form-group">
+              <%= f.text_area :comment, placeholder: "", class: "form-control tweet-form", rows: "5" %>
+            </div>
+
+            <% if @reply.errors.any? %>
+              <%= @reply.errors.full_messages.to_sentence %>
+            <% end %>
+            <div class="form-group tweet-btn">
+              <%= f.submit "Reply", class: "btn btn-primary" %>
+            </div>
+            <div class="clearfix"></div>
+          <% end %>
+        </div>    
       </div>
-
-      <%= form_for [@tweet, @reply] do |f| %>
-        <div class="form-group">
-          <%= f.text_area :comment, placeholder: "", class: "form-control tweet-form", rows: "5" %>
-        </div>
-
-        <% if @reply.errors.any? %>
-          <%= @reply.errors.full_messages.to_sentence %>
-        <% end %>
-        <div class="form-group tweet-btn">
-          <%= f.submit "Reply", class: "btn btn-primary" %>
-        </div>
-        <div class="clearfix"></div>
-      <% end %>
-
-
     </div>
   </div>
 </div>
