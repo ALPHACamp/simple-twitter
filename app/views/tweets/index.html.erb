@@ -19,25 +19,7 @@
     <div class="col-md-5">
       <h2 class="sub-title" id="popular">Popular</h2><br>
       <% @users.each do |user| %>
-        <div class="user-item clearfix">
-          <div class="user-image">
-            <%= link_to tweets_user_path(user) do %>
-              <% if user.avatar? %>
-                <%= image_tag user.avatar %>
-              <% else %>
-                <img src="http://via.placeholder.com/80x80">
-              <% end %>
-            <% end %>
-          </div>
-          
-          <div class="user-content">
-            <h4><%= link_to user.name, tweets_user_path(user) %></h4>
-            <p><%= truncate(user.introduction, length: 100) %></p>
-            <div>
-              <%= render partial: "shared/follow", locals: {object: user} %>
-            </div>       
-          </div>
-        </div>
+        <%= render partial: "shared/user_list", locals: {object: user} %>
         <br>
       <% end %>
     </div>

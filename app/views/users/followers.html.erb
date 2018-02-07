@@ -5,10 +5,16 @@
       <%= render partial: "shared/user_info", locals: {object: @user, page: 3} %>
     </div>
 
-    <br><br>
+    <br>
 
     <div class="col-md-8 tweet-reply">
-      
+      <h2 class="sub-title">Follower</h2><br>
+      <% @followers.each do |user| %>
+        <div class="col-md-10 col-md-offset-1">
+          <%= render partial: "shared/user_list", locals: {object: user} %>
+          <br>
+        </div>
+      <% end %>
     </div>
   
   </div>

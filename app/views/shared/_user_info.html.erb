@@ -4,10 +4,18 @@
 <h2 class="sub-title text-center"><%= object.name %></h2>
 <p><%= object.introduction %></p>
       
-<div class="link <%= "active" if page == 1 %>"><%= link_to "Tweets", tweets_user_path(object) %></div>
-<div class="link <%= "active" if page == 2 %>"><%= link_to "Following", followings_user_path(object) %></div>
-<div class="link <%= "active" if page == 3 %>"><%= link_to "Follower", followers_user_path(object) %></div>
-<div class="link <%= "active" if page == 4 %>"><%= link_to "Like", likes_user_path(object) %></div>
+<div class="link <%= "active" if page == 1 %>">
+  <%= link_to "Tweets #{object.tweets.count}", tweets_user_path(object) %>
+</div>
+<div class="link <%= "active" if page == 2 %>">
+  <%= link_to "Following #{object.followings.count}", followings_user_path(object) %>
+</div>
+<div class="link <%= "active" if page == 3 %>">
+  <%= link_to "Follower #{object.followers.count}", followers_user_path(object) %>
+</div>
+<div class="link <%= "active" if page == 4 %>">
+  <%= link_to "Like #{object.likes.count}", likes_user_path(object) %>
+</div>
 
 <% if current_user == object %>
   <div>

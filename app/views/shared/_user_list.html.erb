@@ -1,0 +1,19 @@
+<div class="user-item clearfix">
+  <div class="user-image">
+    <%= link_to tweets_user_path(object) do %>
+      <% if object.avatar? %>
+        <%= image_tag object.avatar %>
+      <% else %>
+        <img src="http://via.placeholder.com/80x80">
+      <% end %>
+    <% end %>
+  </div>
+          
+  <div class="user-content">
+    <h4><%= link_to object.name, tweets_user_path(object) %></h4>
+    <p><%= truncate(object.introduction, length: 100) %></p>
+    <div>
+      <%= render partial: "shared/follow", locals: {object: object} %>
+    </div>       
+  </div>
+</div>
