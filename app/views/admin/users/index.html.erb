@@ -1,12 +1,26 @@
-<h1>Admin User Index</h1>
+<ul class="nav nav-pills style-pills">
+  <li role="presentation"><%= link_to "Tweets", admin_tweets_path %></li>
+  <li role="presentation" class="active"><%= link_to "Users", admin_users_path %></li>
+</ul>
+<hr>
 
-<% @users.each do |user| %>
-  <ul>
-    <li><%= image_tag user.avatar, width: "100px"%></li>
-    <li><%= link_to user.name, tweets_user_path(user) %></li>
-    <li><%= link_to "Tweets #{user.tweets_count}", tweets_user_path(user) %></li>
-    <li><%= link_to "Following #{user.followings_count}", followings_user_path(user) %></li>
-    <li><%= link_to "Follower #{user.followers_count}", followers_user_path(user) %></li>
-    <li><%= link_to "like #{user.likes_count}", likes_user_path(user) %></li>
-  </ul>
-<% end %>
+<div>
+  <% @users.each do |user| %>
+    <div class="admin-user-box">
+      <div>
+        <% if user.role == "admin" %>
+          <span class="label label-info"><%= user.role %></span>
+        <% end %>
+        <%= image_tag user.avatar, width: "100px"%>
+      </div>
+      <h4><%= link_to user.name, tweets_user_path(user) %></h4>
+      <p><%= user.introduction %></p>
+      <div>
+        <%= link_to "Tweets #{user.tweets_count}", tweets_user_path(user) %>
+        <%= link_to "Following #{user.followings_count}", followings_user_path(user) %>
+        <%= link_to "Follower #{user.followers_count}", followers_user_path(user) %>
+        <%= link_to "like #{user.likes_count}", likes_user_path(user) %>
+      </div>
+    </div>
+  <% end %>
+</div>

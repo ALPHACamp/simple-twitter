@@ -1,7 +1,11 @@
-<h1>Admin tweets index</h1>
-<%= link_to "User", admin_users_path %>
+<ul class="nav nav-pills style-pills">
+  <li role="presentation" class="active"><%= link_to "Tweets", admin_tweets_path %></li>
+  <li role="presentation"><%= link_to "Users", admin_users_path %></li>
+</ul>
+<hr>
 
-<h3>Tweets</h3>
 <% @tweets.each do |tweet| %>
-  <%= render partial: "shared/tweets", locals: { tweet: tweet } %>
+  <div class="tweet-box">
+    <%= render partial: "shared/tweets", locals: { tweet: tweet } %>
+  </div>
 <% end %>

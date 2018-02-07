@@ -1,3 +1,59 @@
 // Place all the styles related to the admin/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.admin-user-box {
+  display: grid;
+  grid-template-columns: 20% 1fr 15%;
+  grid-template-rows: 30% 1fr;
+  grid-column-gap: 20px;
+  border: 1px #AAAAAA solid;
+  border-radius: 7px;
+  background-color: white;
+  margin-top: 20px;
+}
+
+.admin-user-box div:nth-child(1) {
+  grid-column: 1/2;
+  grid-row: 1/-1;
+  position: relative;
+}
+
+.admin-user-box div:nth-child(1) img {
+  margin: 12px;
+}
+
+.admin-user-box div:nth-child(1) span {
+  position: absolute;
+  left: -10px;
+  top: -10px;
+  font-size: 14px;
+}
+
+.admin-user-box h4 {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+
+.admin-user-box p {
+  grid-column: 2/3;
+  grid-row: 2/-1;
+}
+
+.admin-user-box div:nth-child(4) {
+  grid-column: 3/-1;
+  grid-row: 1/-1;
+}
+
+.admin-user-box div:nth-child(4) a {
+  display: block;
+  font-size: 16px;
+  color: #696969;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 3px auto 3px auto;
+}
+
+.admin-user-box div:nth-child(4) a:hover {
+  color: #C0C0C0;
+}
