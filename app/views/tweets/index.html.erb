@@ -6,7 +6,7 @@
     <div class="speak  col-xs-12"">
       
       <% @tweets.each do |tweet| %>
-        <%= render partial: 'shared/master',locals: {tweet: tweet, tweet_des: tweet.description, tweet_time: tweet.created_at }%>
+        <%= render partial: 'shared/master',locals: {tweet: tweet, tweet_des: tweet.description, tweet_time: tweet.created_at ,tweet_cache: true}%>
       <% end %>
     
     </div>

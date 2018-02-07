@@ -1,6 +1,6 @@
 <div class="speak-item row">
   <div class="col-xs-3">
-     <%= render partial: "shared/avatar", locals: {avatar: tweet.user.avatar} if tweet.user.avatar? %>
+     <%= render partial: "shared/avatar", locals: {avatar: tweet.user.avatar} ,size: "200"if tweet.user.avatar? %>
      
   </div>
 
@@ -14,13 +14,14 @@
 
 
   </div>
+ 
+ <% if tweet_cache %>
+
   <div class="col-xs-9 col-xs-offset-3">
-    <div id="reply" class= "reply-item">
-      <%= link_to "Reply(#{tweet.replies_count})",tweet_replies_path(tweet),class: "address" %>
+    <div id="reply" class= "reply-item inline">
+      <%= link_to "Reply(#{tweet.replies.size})",tweet_replies_path(tweet),class: "address" %>
     </div>
-    
-
+    <%= render partial: "shared/like", locals: {tweet: tweet} %>
   </div>
-
-
+  <% end %>
 </div>

@@ -9,20 +9,22 @@
   <div class="col-xs-8 col-xs-offset-1">
     <div class="col-xs-12">
       <%= render partial: "shared/master", locals: {
-        tweet: @tweet, tweet_des: @tweet.description, tweet_time: @tweet.created_at }%>
+        tweet: @tweet, tweet_des: @tweet.description, tweet_time: @tweet.created_at,tweet_cache: true }%>
       
     </div>
   </div>
   <div class="col-xs-9 ">
     <h1>Replies</h1>
   </div>
+  <div class="col-xs-12">
   <div class="col-xs-8 col-xs-offset-4">
     <% @replies.each do |rely| %>
       <%= render partial: "shared/master",locals: {
-          tweet: rely, tweet_des: rely.comment, tweet_time: rely.created_at }%>
-        
+          tweet: rely, tweet_des: rely.comment, tweet_time: rely.created_at,tweet_cache: false }%>        
     <% end %>
   </div>
+  </div>
+  
 
     
 
@@ -34,6 +36,7 @@
       <div class="form-group">
         <%= f.submit "Reply", class: "btn btn-default my-btn btn-lg" %>
       </div>
+      
     
 
     <% end %>

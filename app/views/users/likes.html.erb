@@ -5,15 +5,15 @@
 
   <div class="col-xs-8 col-xs-offset-1">
     <div class="speak  col-xs-12"">
-      <h1>Tweets</h1>
-      <% @tweets.each do |tweet| %>
-        <%= render partial: 'shared/master',locals: {tweet: tweet}%>
+      <h1>Likes</h1>
+      <% @likes.each do |tweet| %>
+        <%= render partial: 'shared/master',locals: {tweet: tweet, tweet_des: tweet.description, tweet_time: tweet.created_at,tweet_cache: true }%>
       <% end %>
     
     </div>
 
 
- <!-- , tweet_des: tweet.description, tweet_time: tweet.created_at,tweet_cache: true } -->
+ 
 
 
 
