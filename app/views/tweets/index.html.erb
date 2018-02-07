@@ -18,13 +18,17 @@
         <div class="panel panel-default">          
           <div class="panel-body">
             <% @tweets.each do |tweet| %>
-              <div>
-                <h4><%= link_to tweet.user.name, tweet_path(tweet) %> Tweet</h4>
-                <p><%= truncate(tweet.description, length: 140) %></p>
-                <% if current_user.admin? %>
-                  <%= link_to 'Destory', admin_tweet_path(tweet), method: :delete, data: {confirm: "Are you sure?"} %>
-                <% end %>
-              </div>
+              
+              <div class="row">
+                <div class="col-sm-3">
+                  <img src="http://via.placeholder.com/70x70" class="img-responsive img-rounded">
+                </div>
+                <div class="col-sm-8">
+                  <h4><%= tweet.user.name%>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></h4>
+                  <p><%= tweet.description %></p> 
+                </div>
+              </div>          
+          
               <hr>
             <%end%>  
           </div>    
@@ -42,7 +46,8 @@
           <% @users.each do |user|%>
             <div>
               <h4><%= link_to user.name, user_path(user)%></h4>
-              <P><%= simple_format user.introduction %></P>
+              <!-- truncate 可截斷文字限定字數。simple_format 可讓文字自動換行 -->
+              <P><%= truncate(user.introduction, length: 100) %></P>
             </div>
             <hr>
           <% end %>
