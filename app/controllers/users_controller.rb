@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     unless @user == current_user
       flash.alert = "只能修改自己的資料喔！"
-      redirect_to tweets_path
+      redirect_to root_path
     end
   end
 

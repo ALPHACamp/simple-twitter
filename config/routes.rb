@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :tweets, only: [:index, :create] do
     resources :replies, only: [:index, :create]
   end
+  
   root 'tweets#index'
 
   namespace :admin do
