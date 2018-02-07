@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # resources :users, only: [:edit]
   get '/users/:id/tweets' => 'users#tweets', :as => "user_tweets"
   get '/users/:id/edit' => 'users#edit', :as => "edit_users"
+  match '/users/:id/update', to:'users#update', via: [:patch]
 
 
   # Reply

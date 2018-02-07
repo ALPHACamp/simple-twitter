@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:notice] = "User was successfully updated"
-      redirect_to user_tweets_path(@user)
+      redirect_to :action => :edit, :id => @user
     else
       flash[:alert] = "User was failed to updated"
       render :edit
