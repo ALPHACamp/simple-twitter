@@ -1,0 +1,20 @@
+<div class="user-item">
+  <div class="row">
+    <div  class="col-xs-2 tweet-item-img">  
+      <%= link_to tweets_user_path(user) do %>
+        <%= image_tag user.avatar, class: "img-responsive center-block img-rounded" %>
+      <% end %>
+    </div>
+
+    <div class="col-xs-10">
+      <div class="caption">
+        <h5><%= link_to user.name, tweets_user_path(user) %></h5>
+        <p><%= simple_format user.introduction %></p>
+        <div class="follow-btn">
+          <%= render partial: "shared/follow_btn", locals: {user: user} %>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>
