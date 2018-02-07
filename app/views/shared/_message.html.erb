@@ -5,18 +5,28 @@
     </div>
   </div>
   <div class="col-xs-9">
-    <p><%= link_to "@#{message.user.name}", tweets_user_path(message.user) %><%= ", #{message.created_at}" %></p>
-    <% if is_tweet %>
-      <p><%= message.description %></p>
-      <div>
-        <%= link_to "Reply(#{message.replies.count})", tweet_replies_path(message.id) %>
-        <%= render partial: "shared/like", locals: {tweet: message} %>
-        <% if current_user.admin? %>
-          <%= link_to 'Delete', admin_tweet_path(message), method: :delete %>
-        <% end %>
+    <div class="row">
+      <div class="col-xs-12">
+        <%= link_to "@#{message.user.name}", tweets_user_path(message.user) %><%= ", #{message.created_at}" %>
       </div>
+    </div>
+    <% if is_tweet %>
+      <div class="col-xs-12">
+        <%= message.description %>
+      </div>
+      <div class="col-xs-4">
+        <%= link_to "Reply(#{message.replies.count})", tweet_replies_path(message.id) %>        
+      </div>
+      <div class="col-xs-4">
+        <%= render partial: "shared/like", locals: {tweet: message} %>
+      </div>
+      <% if current_user.admin? %>
+        <div class="col-xs-4">
+          <%= link_to 'Delete', admin_tweet_path(message), method: :delete %>
+        </div>
+      <% end %>
     <% else %>
-      <p><%= message.comment %></p>
+      <div class="col-xs-12"><%= message.comment %></div>
     <% end %>
   </div>
 </div>
