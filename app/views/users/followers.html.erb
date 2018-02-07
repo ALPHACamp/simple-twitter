@@ -1,1 +1,29 @@
 <h1>user followers</h1>
+<div class="container">
+  <div class="portfolio">
+    <div class="row">
+      <p>avatar</p>
+      <%= image_tag(@user.avatar) %>
+      <p>username</p>
+      <p><%= @user.name %></p>
+      <p>introduction</p>
+      <p><%= @user.introduction %></p>
+      <p>tweets_count-link_to_this_page</p>
+      <p><%= link_to "tweets", tweets_user_path %></p>
+      <p>following_count-link_to_following</p>
+      <p><%= link_to "following", followings_user_path %></p>
+      <p>follower_count-link_to_follower</p>
+      <p><%= link_to "follower", followers_user_path %></p>
+      <p>like_count-link_to_like</p>
+      <p><%= link_to "like", likes_user_path %></p>
+      <p>button-edit_profile-link_to_edit</p>
+      <p><%= link_to "edit", edit_user_path %></p>
+    </div>
+  </div>
+  <div class="follower">
+    <div class="row">
+      <p>Follower</p>
+      <p>list of followers</p>
+    </div>
+  </div>
+</div>
