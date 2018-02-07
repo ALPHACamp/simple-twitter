@@ -3,16 +3,18 @@ class FollowshipsController < ApplicationController
   before_action :set_followship ,only: [:destroy]
   
   def create
-    if followship_params[:following_id] == current_user.id
+    if followship_params[:following_id] == current_user.id.to_s
       flash[:alert] = "You can't follow yourself"
-    end
-    @followship = current_user.followships.build(followship_params)
-    if @followship.save
-      flash[:notice] = 'Successfully followed!'
+      redirect_to tweets_user_path(current_user)
     else
-      flash[:alert] = @followship.errors.full_messages.to_sentence
+      @followship = current_user.followships.build(followship_params)
+      if @followship.save
+        flash[:notice] = 'Successfully followed!'
+      else
+        flash[:alert] = @followship.errors.full_messages.to_sentence
+      end
+      redirect_back(fallback_location: root_path)
     end
-    redirect_back(fallback_location: root_path)
   end
 
   def destroy

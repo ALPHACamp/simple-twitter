@@ -50,12 +50,12 @@ namespace :dev do
     Followship.destroy_all
     puts "creating fake followship..." 
     User.all.each do |u|
-      @users = User.where.not(id: u.id).shuffle
-      (rand(20)).times do
-        u.followships.create!(
-        following: @users.pop,
-        )      
-      end     
+      # @users = User.where.not(id: u.id).shuffle
+      # (rand(20)).times do
+      #   u.followships.create!(
+      #   following: @users.pop,
+      #   )      
+      # end     
     end
     puts "now you have #{Followship.count} followship"
   end
@@ -83,13 +83,13 @@ namespace :dev do
 
   #fake all data
   task fake_all: :environment do
-    # Rake::Task['db:drop'].execute
+    Rake::Task['db:drop'].execute
     Rake::Task['db:migrate'].execute
     Rake::Task['dev:fake_user'].execute
     Rake::Task['dev:fake_tweets'].execute
     Rake::Task['dev:fake_reply'].execute
     Rake::Task['dev:fake_followship'].execute
     Rake::Task['dev:fake_like'].execute
-    Rake::Task['db:seed'].execute
+    # Rake::Task['db:seed'].execute
   end
 end
