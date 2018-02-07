@@ -17,7 +17,8 @@
         <% if @user.email == current_user.email %>
         <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
         <% else %>
-        <%= link_to 'Follow', class: "btn btn-primary" %>
+        <!--follow-->
+        <%= render partial: "shared/follow", locals: {user: @user}  %>
         <% end %>        
       </div>
 
