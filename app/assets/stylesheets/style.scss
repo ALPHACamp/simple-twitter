@@ -19,13 +19,7 @@ a.logo {
   display: inline-block;
 }
 
-a.admin-logo {
-  width: 60px;
-  height: 60px;
-  display: inline-block;
-}
-
-a.head-shot {
+a.admin-logo, a.head-shot, a.log-out {
   width: 60px;
   height: 60px;
   display: inline-block;
@@ -33,6 +27,10 @@ a.head-shot {
 
 a.logo img, a.admin-logo img, a.head-shot img {
   width: 100%;
+}
+
+a.log-out img {
+  width: 120%;
 }
 
 div#nav {

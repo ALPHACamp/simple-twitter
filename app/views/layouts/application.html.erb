@@ -32,13 +32,12 @@
                   <%= link_to image_tag('admin-logo'), admin_tweets_path, :alt => "AdminPanel", class: "admin-logo" %>
                 </li>
               <% end %>
-            <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
             <li>
-              <%= link_to image_tag(@user.avatar), root_path, class: "head-shot" %>
+              <%= link_to image_tag(@user.avatar), root_path, :alt => "Edit youself!", class: "head-shot" %>
             </li>
-            <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
+            <li><%= link_to(image_tag('logout.png'), destroy_user_session_path, method: :delete, class: "log-out") %></li>
             <!-- 暫時移除編輯個人資料連結 id = 1 -->
-            <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
+            <!-- 移除修改個人密碼的連結 id = 2 -->
             <% else %>
             <li><%= link_to('註冊', new_user_registration_path) %></li>
             <li><%= link_to('登入', new_user_session_path) %></li>

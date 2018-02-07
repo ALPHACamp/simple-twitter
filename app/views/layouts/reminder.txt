@@ -1,4 +1,5 @@
 id = 1
-views/layouts/application.html.erb
-line 18
 <li><%= link_to('修改個人資料', edit_user_path(current_user)) %></li>
+
+id = 2
+<li><%= link_to('修改密碼', edit_user_registration_path) %></li>
