@@ -1,0 +1,9 @@
+<% if tweet.is_liked?(current_user) %>
+  <div id="tweet-id-<%= tweet.id %>" class="inline">
+    <%= link_to "unlike(#{tweet.likes_count})", unlike_tweet_path(tweet), remote: true, method: :post, class: "links links-red" %>
+  </div>
+<% else %>
+  <div id="tweet-id-<%= tweet.id %>" class="inline">
+    <%= link_to "likes(#{tweet.likes_count})", like_tweet_path(tweet), remote: true, method: :post, class: "links links-red" %>
+  </div>
+<% end %>
