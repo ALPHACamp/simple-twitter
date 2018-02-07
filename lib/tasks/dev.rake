@@ -22,4 +22,18 @@ namespace :dev do
     end
   end
 
+  task fake_tweet: :environment do
+    Tweet.destroy_all
+    User.all.each do |i|
+      2.times do |j|
+        tweet = Tweet.new(
+          user: i,
+          description: FFaker::Lorem::sentence(10)
+        )
+
+        tweet.save!
+      end
+    end
+    puts "Finished!"
+  end
 end

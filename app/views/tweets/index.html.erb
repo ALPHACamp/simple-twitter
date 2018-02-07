@@ -1,0 +1,25 @@
+<!-- User can create tweet here -->
+<div id="tweets-index">
+  <div class="form-group" id="new-tweet">
+    <%= form_for @tweet do |f| %>
+      <%= f.text_area :description, class: "form-control", placeholder: "What's on your mind?" %>
+      <%= f.submit "Tweet", class: "btn btn-default" %>
+    <% end %>
+  </div>
+
+
+<!-- User can see recent created tweets here -->
+<!-- But now still use sample!!!!!!!! Fix it after follow function finished -->
+  <div id="recent-tweets">
+    <% @tweets.each do |tweet| %>
+      <div class="tweet-box">
+        <%= render partial: "shared/tweets", locals: { tweet: tweet } %>
+      </div>
+    <% end %>
+  </div>
+
+  <div id="popular">
+    <h3>Popular</h3>
+    <%= render partial: "shared/users", locals: { users: @users } %>
+  </div>
+</div>

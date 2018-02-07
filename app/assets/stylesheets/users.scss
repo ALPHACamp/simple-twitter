@@ -1,3 +1,134 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*user-box*///////////////////////////////////////////////////
+.user-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 20% 60% 19% 1%;
+}
+
+.user-box img {
+  grid-column: 1/2;
+  grid-row: 1/4;
+  margin: 10px 10px;
+}
+
+.user-box h4 {
+  grid-column: 2/-1;
+  grid-row: 1/2;
+}
+
+.user-box h4 a {
+  text-decoration: none;
+}
+
+.user-box p {
+  grid-column: 2/-1;
+  grid-row: 2/3;
+}
+
+.user-box > a {
+  grid-column: 3/-1;
+  grid-row: 3/4;
+}
+
+.user-box > div {
+  grid-column: 1/-1;
+  grid-row: 4/-1;
+  height: 1px;
+  width: 70%;
+  margin: 10px auto;
+  background-color: #AAAAAA;
+}
+
+/*user profile*////////////////////////////////////////////////////
+.show-user-profile-page {
+  display: grid;
+  grid-template-columns: 28% 65%;
+  grid-gap: 60px;
+  width: 100%;
+}
+
+.user-profile {
+  margin-left: 5px;
+}
+
+.user-profile img {
+  width: 200px;
+  margin: 20px 20px 20px 0px;
+}
+
+.user-profile div {
+  height: 1px;
+  background-color: silver;
+  margin-bottom: 8px;
+}
+
+.user-profile .user-attr {
+  display: block;
+  font-size: 16px;
+  color: #696969;
+  font-weight: bold;
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+
+.user-profile .user-attr:hover {
+  color: #C0C0C0;
+}
+
+.user-profile .btn.btn-default {
+  display: block;
+}
+
+/*edit user profile page*/////////////////////////////////////////////
+#edit-user-page form {
+  display: grid;
+  grid-template-columns: 30% 1fr 1fr;
+  grid-template-rows: 20% 1fr 15%;
+  margin: 30px 20px;
+}
+
+#edit-user-page form > div {
+  grid-column: 1/2;
+  grid-row: 1/-1;
+}
+
+#edit-user-page form > div img {
+  width: 200px;
+}
+
+.upload-btn {
+  margin: 20px auto 0 20px;
+  display: block;
+}
+
+.upload-btn span {
+  display: none;
+}
+
+#edit-user-page form input[placeholder="Name"] {
+  grid-column: 2/-1;
+  grid-row: 1/2;
+  border: 2px #99D1F5 solid;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  height: 40px;
+}
+
+#edit-user-page form textarea {
+  grid-column: 2/-1;
+  grid-row: 2/3;
+  resize: none;
+  border: 2px #99D1F5 solid;
+  border-radius: 5px;
+}
+
+#edit-user-page form input[type=submit] {
+  grid-column: 3/-1;
+  grid-row: 3/-1;
+  margin-right: 0;
+  margin-left: auto;
+}
