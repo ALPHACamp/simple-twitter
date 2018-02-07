@@ -2,7 +2,7 @@
   <div class="col-xs-8">
     <div>
       <%= form_for @tweet do |f| %>
-        <%= f.text_area :description, class: "form-control" %>
+        <%= f.text_area :description, class: "form-control holder", placeholder: "Lets's tweet..." %>
         <%= f.submit class: "tweet-button btn btn-primary" %>
         <br>
         <br>

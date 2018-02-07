@@ -3,9 +3,9 @@
     <div class="col-xs-3 center">
       <%= link_to tweets_user_path(tweet.user) do %>
         <% if tweet.user.avatar.present? %>
-          <%= image_tag tweet.user.avatar, class: "tweet-img" %>
+          <%= image_tag tweet.user.avatar, class: "big-img" %>
         <% else %>
-          <%= image_tag "default.jpg", class: "tweet-img" %>
+          <%= image_tag "default.jpg", class: "big-img" %>
         <% end %>
       <% end %>
     </div>

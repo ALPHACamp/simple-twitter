@@ -54,7 +54,7 @@
         
       <hr>
       <%= form_for [:tweet,@reply] do |f| %>
-        <%= f.text_area :comment, class: "form-control" %>
+        <%= f.text_area :comment, class: "form-control holder",placeholder: "Say something..." %>
         <br>
         <%= f.submit class: "btn btn-primary" %>
         <br>
