@@ -13,8 +13,12 @@
 <ul>
   <!-- 推文者圖片
   推文者name有超連結 -->
+  <%= image_tag tweet.user.avatar, size: '150x150'%>
+  <%= link_to tweet.user.name, tweets_user_path(tweet.user)%>
   <%= tweet.created_at.strftime("%Y-%m-%d, %T") %>
   <%= tweet.description %>
+  <%= link_to "Reply(#{tweet.replies.size})", tweet_replies_path(tweet) %>
 </ul>
+
 <% end %>
 <div>
