@@ -20,4 +20,10 @@ Rails.application.routes.draw do
 
   resources :followships, only: [:create, :destroy]
 
+  # Backend routes setup
+  namespace :admin do
+    resources :tweets, only: [:index, :destroy]
+    resources :users, only: [:index]
+    root 'tweets#index'
+  end
 end
