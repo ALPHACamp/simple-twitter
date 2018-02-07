@@ -1,8 +1,15 @@
-<div class="row">
-  <div class="col-xs-3">
-    <%= render partial: "shared/profile", locals: { user: @user} %>
-  </div>
-  <div class="col-xs-8 col-xs-offset-1">
-    <%= render partial: "shared/user_group", locals: { users: @followings, user_title: "Following"} %>
-  </div>
-</div>
+<h1>Followings</h1>
+
+<ul>
+
+  <% @followings.each do |following| %>
+    <li>
+      <%= render partial: "shared/profile", locals: { user: following} %>
+      <%= following.user.name %>
+        <%= render partial: "shared/avatar", locals: {avatar: following.user.avatar} if following.user.avatar? %>
+        <%= following.introduction %>
+        <%= render partial: "shared/follow", locals: {user: following} %>
+    </li>
+  <% end %>
+
+</ul>

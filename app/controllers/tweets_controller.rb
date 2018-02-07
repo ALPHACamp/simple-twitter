@@ -10,7 +10,7 @@ class TweetsController < ApplicationController
   def create
      @tweet = current_user.tweets.build(tweet_params)
      if @tweet.save
-      redirect_to root_path
+      redirect_to tweets_path
      else
        flash[:alert] = @tweet.errors.full_messages.to_sentence
        @tweets = Tweet.all.order(created_at: :desc)
@@ -20,13 +20,13 @@ class TweetsController < ApplicationController
 
   def like
     @tweet.likes.create!(user: current_user)
-    redirect_back(fallback_location: root_path)  # 導回上一頁
+    redirect_to tweet_replies_path(@tweet)  # 導回上一頁
   end
 
   def unlike
     likes = Like.where(tweet: @tweet, user: current_user)
     likes.destroy_all
-    redirect_back(fallback_location: root_path)
+    redirect_to tweet_replies_path(@tweet)
   end
 
   private
