@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def tweets
     # Tweets：排序依日期，最新的在前
-    @tweets = @user.tweets.order(created_at: :desc).page(params[:page]).per(10)
+    @tweets = @user.tweets.includes(:liked_users).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def edit
