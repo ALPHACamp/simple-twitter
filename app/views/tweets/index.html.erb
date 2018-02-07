@@ -1,6 +1,6 @@
 <div class="row">
   <!-- your tweets -->
-  <div class="col-xs-8 tweet-col">
+  <div class="col-xs-12 col-sm-8 tweet-col">
 
     <!-- tweets form -->
     <div class="tweet-form">
@@ -15,18 +15,22 @@
     </div>
 
     <!-- show tweets -->
-    <% @tweets.each do |tweet| %>
-      <%= render partial: "shared/message", locals: {message: tweet, is_tweet: true} %>
-    <% end %>
-    <div class="text-center"><%= paginate @tweets %></div>
-
+    <%= render partial: "shared/collapse_btn", locals: {title: 'Tweets', collapse_target: 'tweets'} %>
+    <div class="collapse in" id="tweets">
+      <% @tweets.each do |tweet| %>
+        <%= render partial: "shared/message", locals: {message: tweet, is_tweet: true} %>
+      <% end %>
+      <div class="text-center"><%= paginate @tweets %></div>
+    </div>
   </div>
 
   <!-- popular -->
-  <div class="col-xs-4">
+  <div class="padding-left15"><%= render partial: "shared/collapse_btn", locals: {title: 'Popular', collapse_target: 'popular'} %></div>
+  <div class="col-xs-12 col-sm-4 collapse in" id="popular">
     <h1>Popular</h1>
     <% @users.each do |user| %>
       <%= render partial: "shared/user_card", locals: {user: user} %>
     <% end %>
   </div>
+
 </div>

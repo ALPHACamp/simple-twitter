@@ -32,7 +32,7 @@ textarea#message {
 .user-card {
   border: 1px solid gray;
   padding: 5px;
-  margin-bottom: 5px;
+  margin: 0 0 5px 0;
 }
 
 .reply-col > .tweet-box{
@@ -95,4 +95,8 @@ textarea#message {
 
 .black-link > a{
   color: black;
+}
+
+.padding-left15{
+  padding-left: 15px;
 }
