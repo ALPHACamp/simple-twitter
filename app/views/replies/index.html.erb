@@ -3,7 +3,9 @@
     <%= render partial: "share/user_item", locals: {user: current_user, tweet_class: '', following_class: '', follower_class: '', like_class: ''} %>
     <div id="tweet-wall">
       <h2>Tweet</h2>
-      <%= render partial: "share/tweet_item", locals: {tweet: @tweet} %>
+      <div class="tweet-item" id="tweet-<%= @tweet.id %>">
+        <%= render partial: "share/tweet_item", locals: {tweet: @tweet} %>
+      </div>
       <%= form_for [@tweet, @reply] do |f| %>
         <div class="tweet-form form-group">
           <div class="avatar-xs">
@@ -19,7 +21,7 @@
       <% end %>
       <h2>Replies</h2>
       <% @replies.each do |reply| %>
-        <div class="tweet-item">
+        <div class="tweet-item" id="reply-<%= reply.id %>">
           <div class="avatar-sm">
           <%= link_to tweets_user_path(reply.user) do %>
             <%= image_tag(reply.user.avatar, class: "") %>
@@ -29,7 +31,7 @@
             <h4><%= link_to "@#{reply.user.name}", tweets_user_path(reply.user)%><em><%= reply.created_at.strftime("%Y-%m-%d %I:%M") %></em></h4>
             <% if reply.user == current_user %>
               <div class="edit-tweet-form">
-                <%= form_for [@tweet, reply] do |f| %>
+                <%= form_for [@tweet, reply], remote: true do |f| %>
                   <div class="form-group">
                     <div>
                       <%= f.text_area :comment, placeholder: "Reply something...", maxlength: 140, class: "tweet-form-textarea form-control"%>
@@ -41,7 +43,7 @@
               </div>
             <% end %>
             <div class="show-area">
-              <p><%= reply.comment %></p>
+              <%= render partial: 'share/comment', locals: {reply: reply} %> 
               <div class="edit-delete-btn">
                 <% if reply.user == current_user %>
                   <em><%= link_to ' delete', tweet_reply_path(@tweet, reply), method: :delete, data: {confirm: "Are you sure?"} %>

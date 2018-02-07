@@ -22,12 +22,10 @@ class RepliesController < ApplicationController
     @reply = Reply.find(params[:id])
     @tweet = @reply.tweet
 
-    if @reply.update(reply_params)
-      flash[:notice] = "Reply was successfully updated."
-    else
+    if !@reply.update(reply_params)
       flash[:alert] = "Reply was failed to update. #{@reply.errors.full_messages.to_sentence}"
     end
-    redirect_to tweet_replies_path(@tweet)
+    # redirect_to tweet_replies_path(@tweet)
   end
 
   def destroy

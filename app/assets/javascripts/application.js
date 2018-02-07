@@ -31,7 +31,6 @@ $(document).on('turbolinks:load', function() {
     e.preventDefault();
     $(this).parents('.show-area').css('display', 'none');
     $(this).parents('.tweet-info').children('.edit-tweet-form').css('display', 'block');
-  
   });
 
   $('.edit-tweet-form .btn-danger').on('click', function(e) {
@@ -40,4 +39,12 @@ $(document).on('turbolinks:load', function() {
     $(this).parents('.edit-tweet-form').css('display', 'none');
   });
 
+  $('.edit-tweet-form textarea').keyup(function(){
+    var textarea = $(this).val();
+    if (textarea.length == 0) {
+      $('.tweet-item .btn-primary').attr('disabled', true);
+    } else {
+      $('.tweet-item .btn-primary').attr('disabled', false);
+    } 
+  });
 });

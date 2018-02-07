@@ -21,12 +21,10 @@ class TweetsController < ApplicationController
   end
 
   def update
-    if @tweet.update(tweet_params)
-      flash[:notice] = "Tweet was successfully updated."
-    else
+    if !@tweet.update(tweet_params)
       flash[:alert] = "Tweet was failed to update. #{@tweet.errors.full_messages.to_sentence}"
     end
-    redirect_back(fallback_location: root_path)
+    # redirect_back(fallback_location: root_path)
   end
 
   def destroy
