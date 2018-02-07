@@ -14,24 +14,32 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id]) 
-    @user.update(user_params)
-    redirect_to root_path
+    if @user.update(user_params)
+      redirect_to tweets_user_path(current_user)
+      flash[:note] = "#{current_user.name} was successfully updated"
+    else
+      render :edit
+      flash[:alert] = "#{current_user.name} was failed to update"
+    end
   end
 
   def followings
+    # 基於測試規格，必須講定變數名稱
     @user = User.find(params[:id])
-    @followings = @user.followings # 基於測試規格，必須講定變數名稱
+    @followings = @user.followings.all.order(created_at: :desc)
   end
 
   def followers
+    # 基於測試規格，必須講定變數名稱
     @user = User.find(params[:id])
-    @followers = @user.followers # 基於測試規格，必須講定變數名稱
+    @followers = @user.followers.all.order(created_at: :desc)
   end
 
   def likes
+    # 基於測試規格，必須講定變數名稱
     @user = User.find(params[:id])
     @tweets = @user.liked_tweets
-    @likes = @tweets.all  # 基於測試規格，必須講定變數名稱
+    @likes = @tweets.all.order(created_at: :desc)
   end
 
   private

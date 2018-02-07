@@ -1,7 +1,19 @@
-  <%= render partial: "shared/user_profile" %>
-  
-  <h2>Likes</h2>
+  <div class="row">
+    <div class="col-md-3 col-md-offset-1">
+      <%= render partial: "shared/user_profile" %>    
+    </div>
+    
+    <div class="col-md-6 col-md-offset-1">
+      <div class="tweets col-xs-12">
+      <h2>Likes</h2>
+      <%= render partial: "shared/tweets" %>
+      </div>
+    </div>
 
-  <%= render partial: "shared/tweets" %>
+  </div>
+
+
+  
+
 
 

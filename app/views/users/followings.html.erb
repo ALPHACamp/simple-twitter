@@ -1,14 +1,28 @@
-  <%= render partial: "shared/user_profile" %>
+<div class="row">
+  <div class="col-md-4">
+    <%= render partial: "shared/user_profile" %>
+  </div>
   
-  <h2>Followerings</h2>
+  <div class="col-md-8">
+    <h2>Followerings</h2>
+    <% @followings.each do |following| %>
+      <div class="col-md-6">
+        <div class="avatar-list float-left">
+          <!-- <img src="http://via.placeholder.com/50x50" class="img-responsive img-rounded"> -->
+          <%= image_tag following.avatar, width: "80%" %>     
+        </div>
+        <div class="small-box">
+          <h3><%= link_to following.name, tweets_user_path(following) %></h3>
+          <h4><%= following.introduction %></h4> 
 
-  <% @followings.each do |following| %>
-    <!-- <img src="http://via.placeholder.com/50x50" class="img-responsive img-rounded"> -->
-    <%= image_tag following.avatar %>
-    <%= link_to following.name, tweets_user_path(following) %>
-    <%= following.introduction %>
-    <%= render partial: "shared/follow", locals: {user:following}%>
-
-  <% end %>
-
+          <div class="float-right">
+            <%= render partial: "shared/follow", locals: {user:following}%>
+          </div>       
+        </div>
+        <div class="clearfix"></div>
+        <hr>
+      </div>
+    <% end %>
+  </div>
+</div>  
 
