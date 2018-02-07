@@ -5,9 +5,9 @@
 
   <div>
     <h3>Like</h3>
-    <% @likes.each do |like| %>
+    <% @liked_tweets.each do |liked_tweet| %>
       <div class="tweet-box">
-        <%= render partial: "shared/tweets", locals: { tweet: like.tweet } %>
+        <%= render partial: "shared/tweets", locals: { tweet: liked_tweet } %>
       </div>
     <% end %>
   </div>
