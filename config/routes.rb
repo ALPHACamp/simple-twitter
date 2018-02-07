@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/users/:id/tweets' => 'users#tweets', :as => "user_tweets"
   get '/users/:id/edit' => 'users#edit', :as => "edit_users"
 
+
   # Reply
   get '/tweets/:id/replies' => 'replies#index', :as => "replies_user"
   post '/tweets/:id/replies' => 'replies#create', :as => "replies"
