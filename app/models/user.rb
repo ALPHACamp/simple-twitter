@@ -15,6 +15,8 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_tweets, through: :likes, source: :tweet
 
+  has_many :replies, dependent: :restrict_with_error
+
   has_many :followships, dependent: :destroy
   has_many :followings, through: :followships
 
