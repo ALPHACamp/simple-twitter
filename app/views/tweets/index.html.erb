@@ -26,6 +26,7 @@
               </h5>
               <!--<p><%= truncate(tweet.description, length: 80) %></p>-->
               <p><%= tweet.description %></p>
+              <%= link_to "Reply", tweet_replies_path(tweet) %>
             </div>
           </div>
         <% end %>
