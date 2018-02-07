@@ -1,17 +1,5 @@
-.restaurant-item {
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 4px;
-  margin-bottom: 20px;
-}
-
-.restaurant-item img {
-  max-height: 180px;
-  width: 100%;
-}
-
-.restaurant-item .caption {
-  padding: 10px;
+h1,h2{
+  color: darkcyan;
 }
 
 .nav-pills-center{
@@ -37,7 +25,7 @@
 }
 
 .avatar {
-  height: 120px;
+  max-height: 120px;
   width: 120px;
   float: left;
   margin: 0px 40px 10px 0px;
@@ -104,4 +92,18 @@
   width: 120px;
   margin: auto;
   display: block;
+}
+
+.radius{
+  border-radius: 20px;
+}
+
+.box-board{
+  height: 140px;
+  padding: 10px;
+  text-align: left;
+  border-style: solid;
+  border-color: lightgray;
+  border-width: 1px;
+  border-radius: 5px;
 }

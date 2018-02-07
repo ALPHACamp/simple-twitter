@@ -5,7 +5,7 @@
     <div class="form-horizontal">
       <%= form_for @tweet do |f| %>
       <div class="form-group">
-        <%= f.text_area :description, size: "60x12", placeholder: "What's on your mind?", class: "form-control" %>
+        <%= f.text_area :description, size: "60x12", placeholder: "What's on your mind?", class: "radius form-control" %>
       </div>
       <div class="col-sm-6">
         <% if @tweet.errors.any? %>
@@ -21,7 +21,6 @@
     <br />
 
     <!-- 使用者能瀏覽所有的推播 (tweet) -->
-    <h2>Newesr Tweet</h2>
     <%= render partial: "shared/tweets" %>
   </div>
   
