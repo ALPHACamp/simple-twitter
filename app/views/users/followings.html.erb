@@ -1,23 +1,13 @@
- <img src="http://via.placeholder.com/150x150" class="img-responsive img-rounded">
-  <%= @user.name %>
-  <%= @user.introduction %>
-  <%= link_to 'Edit Profile', edit_user_path %>
-  <%= link_to "Tweets(#{@user.tweets.count})", tweets_user_path(@user) %>
-  <%= link_to "Following(#{@user.followings.count})", followings_user_path(@user) %>
-  <%= link_to "Follower(#{@user.followers.count})", followers_user_path(@user) %>
-  <%= link_to "Like(#{@user.likes.count})", likes_user_path(@user) %>
+  <%= render partial: "shared/user_profile" %>
   
   <h2>Followerings</h2>
 
   <% @followings.each do |following| %>
-    <img src="http://via.placeholder.com/50x50" class="img-responsive img-rounded">
+    <!-- <img src="http://via.placeholder.com/50x50" class="img-responsive img-rounded"> -->
+    <%= image_tag following.avatar %>
     <%= link_to following.name, tweets_user_path(following) %>
-    
-    <% if current_user.following?(following)%>
-      <%=  link_to "Unfollow", followship_path(following), method: :delete %>
-    <% else %>
-      <%=  link_to "Follow", followships_path(following_id: following), method: :post %>
-    <% end %>
+    <%= following.introduction %>
+    <%= render partial: "shared/follow", locals: {user:following}%>
 
   <% end %>
 

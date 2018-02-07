@@ -1,0 +1,11 @@
+  
+  <!-- <img src="http://via.placeholder.com/150x150" class="img-responsive img-rounded"> -->
+  <%= image_tag @user.avatar %>
+  <%= @user.name %>
+  <%= @user.introduction %>
+  <%= link_to "Tweets(#{@user.tweets.count})", tweets_user_path(@user) %>
+  <%= link_to "Following(#{@user.followings.count})", followings_user_path(@user) %>
+  <%= link_to "Follower(#{@user.followers.count})", followers_user_path(@user) %>
+  <%= link_to "Like(#{@user.likes.count})", likes_user_path(@user) %>
+
+  <%= render partial: "shared/follow", locals: {user: @user}%>

@@ -1,26 +1,11 @@
 <h1>Tweets 前台</h1>
 
 <%= form_for @tweet do |f| %>
-
   <%= f.text_area :description, placeholder: "What's on your mind?" %>
-
   <%= f.submit "Tweet" %>
 <% end %>
 
 
+<h2>分隔線</h2>
 
-<ul>
-  <% @tweets.each do |tweet|%>
-  <li>
-  Name: <%= link_to tweet.user.name, tweets_user_path(tweet.user) %> <br>
-  Tweets: <%= tweet.description %> <br>
-  <%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet) %>
-  
-  <% if tweet.is_liked?(current_user)%>
-    <%= link_to "Unlike(#{tweet.likes.count})", unlike_tweet_path(tweet), method: :post %>
-  <% else %>
-   <%= link_to "Like(#{tweet.likes.count})", like_tweet_path(tweet), method: :post %>
-  <% end %>
-  </li>
-  <% end %>
-</ul>
+<%= render partial: "shared/tweets"%>

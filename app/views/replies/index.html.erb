@@ -1,8 +1,5 @@
-  <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
-  <%= link_to @tweet.user.name, tweets_user_path(@tweet.user) %>
-  <%= @tweet.user.introduction %>
-  <%= link_to 'Edit Profile', user_path(@tweet.user) %>
 
+  <%= render partial: "shared/user_profile" %>
 
   <h2>Tweets</h2>
 
