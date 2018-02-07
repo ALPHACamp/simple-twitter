@@ -9,7 +9,17 @@ Rails.application.routes.draw do
     resources :replies, only: [:index, :create]
   end
 
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update] do
+    member do
+      post :like
+      post :unlike
+      get :likes
+      get :followings
+      get :followers
+    end
+  end
+
+  resources :followships, only: [:create, :destroy]
 
 
   namespace :admin do
