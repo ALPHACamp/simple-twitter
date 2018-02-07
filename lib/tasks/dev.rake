@@ -13,6 +13,11 @@ namespace :dev do
         introduction: FFaker::Lorem::sentence(30),
         avatar: file
       )
+      
+      if i == 1
+        user.role = "admin"
+      end
+      
       user.save!
       # puts user.name
     end
