@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
     member do
       resources :replies, only: [:index, :create]
+      post :like
+      post :unlike
     end
 
   end
@@ -18,13 +20,13 @@ Rails.application.routes.draw do
       get :tweets
       get :followings
       get :followers
+      get :likes
     end
 
   end
 
   # 設置followship
   resources :followships, only: [:create, :destroy]
-
 
   # 設置tweets index作為網站首頁
   root 'tweets#index'
