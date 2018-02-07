@@ -29,7 +29,7 @@
         <div class="profile-info">
           <!-- tweet數：連結已設定 -->
           <div>
-            <%= link_to replies_path(@tweet) do %>
+            <%= link_to tweets_user_path(@tweet.user) do %>
               <strong>Tweets <%= content_tag :span, @tweet.user.tweets.length %></strong><br />
             <% end %>
           </div>
@@ -41,9 +41,9 @@
             <% end %>
           </div>
 
-          <!-- follower數：連結未設定 -->
+          <!-- follower數：連結已設定 -->
           <div>
-            <%= link_to replies_path(@tweet) do %>
+            <%= link_to followers_user_path(@tweet.user) do %>
               <strong>Follower <%= content_tag :span, @tweet.user.followers_count %></strong><br />
             <% end %>
           </div>

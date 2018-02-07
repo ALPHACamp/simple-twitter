@@ -43,7 +43,7 @@
 
           <!-- follower數：連結未設定 -->
           <div>
-            <%= link_to '#' do %>
+            <%= link_to followers_user_path(@user) do %>
               <strong>Follower <%= content_tag :span, @user.followers_count %></strong><br />
             <% end %>
           </div>
