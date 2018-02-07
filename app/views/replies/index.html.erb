@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+     <div class="col-md-12">
+      <div class="col-md-12">
+        <%= image_tag @tweet.user.avatar , size: "150", class: "img-responsive " if @tweet.user.avatar?%>
+      </div>
+      <div class="col-md-12">
+        <p><%= @tweet.user.name %></p>
+        <p><%= @tweet.user.introduction %></p>
+      </div>
+      <div class="col-md-12">
+        <p>Tweet數量</p>
+      </div>
+      <div class="col-md-12">
+        <p>Following</p>
+      </div>
+      <div class="col-md-12">
+        <p>Follower</p>
+      </div>
+      <div class="col-md-12">
+        <p>Like</p>
+      </div>
+      <div class="col-md-12">
+        <p>Edit Profile/Follow</p>
+      </div>    
+     </div>
+    </div>
+    <div class="col-md-9">
+      <div class="col-md-12">
+          <h1>Tweet</h1>
+          <div class="col-md-12">
+            <div class="tweet-detail">
+              <div class="col-md-2">
+                <%= image_tag @tweet.user.avatar , size: "100", class: "img-responsive" if @tweet.user.avatar?%>
+              </div>
+              <div class="col-md-10">
+                <p class="description"><%= @tweet.user.name  %>, <%= @tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></p>
+                <p class="description"><%= @tweet.description  %></p>
+                <p class="description">Reply(<%= @tweet.replies.count %>)</p>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="col-md-12">
+        <h1>Replies</h1>
+        <% @tweet.replies.each do |reply| %>
+          <div class="col-md-12">
+            <div class="tweet-detail">
+              <div class="col-md-2">
+                <%= image_tag reply.user.avatar , size: "100", class: "img-responsive center-block" if reply.user.avatar?%>
+              </div>
+              <div class="col-md-10">
+                <p class="description"><%= reply.user.name  %>, <%= reply.created_at.strftime("%Y-%m-%d, %H:%M") %></p>
+                <p><%= reply.comment  %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+  </div>
+</div>

@@ -7,14 +7,14 @@ Rails.application.routes.draw do
 
   # # 推播
   resources :tweets, only: [:index, :show, :create] do
-
+    # 回覆推播
+    resources :replies, only: [:create, :index]
   end
   
   # # 個人資訊
   resources :users, only: [:index, :edit, :update]
   root "tweets#index"
-  # 回覆推播
-  resources :replies, only: [:create, :index]
+
 
   # 後台
   namespace :admin do
