@@ -30,11 +30,18 @@
               <li><%= link_to tweets_user_path(current_user) do%>
                 <div class="inset"><%= image_tag current_user.avatar %></div> 
                 <%end%></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%=current_user.name%> <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><%=link_to "個人檔案" ,tweets_user_path(current_user)%></li>
+                  <li><%=link_to "編輯個人檔案",edit_user_path(current_user)%></li>
+                  <li> <%=link_to '修改密碼', edit_user_registration_path(current_user) %> </li>
+                </ul>
+              </li>
               <% if current_user.admin? %>
                 <li><%=link_to "後台", admin_tweets_path %></li>
               <%end %>
               <li> <%=link_to '登出', destroy_user_session_path, method: :delete %></li>
-              <li> <%=link_to 'edit_profile(temp)', edit_user_registration_path %> </li>
             <% else %>
               <li><%= link_to '註冊', new_user_registration_path %></li>
               <li><%= link_to '登入', new_user_session_path %></li>
