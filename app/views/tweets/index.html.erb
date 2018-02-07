@@ -13,7 +13,7 @@
         </div>
         
         <div class="divtitle"><h3>Recent tweets</h3></div>
-        <%= render partial: "manytweets" %>
+        <%= render partial: "shared/manytweets" %>
 
       </div>
 
@@ -22,7 +22,7 @@
       <div class="col-md-4 col-sm-12">
         <div class="divtitle"><h3>Top 10 users</h3></div>
         <% @users.each do |u| %>
-        <%= render partial: "oneuser", locals:{user: u}%>
+        <%= render partial: "shared/oneuser", locals:{user: u}%>
         <%end%>
 
       </div>

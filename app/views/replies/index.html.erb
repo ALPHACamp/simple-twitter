@@ -1,0 +1,30 @@
+    <div class="row">
+
+      <div class="col-md-8 col-sm-12">
+
+      <div class="divtitle"><h3>Tweet</h3></div>
+
+      <%= render partial: "shared/onetweet" , locals:{t: @tweet}%>
+
+      <div class="divtitle"><h3>Replies</h3></div>
+
+      <% @replies.each do |t| %>
+      <%= render partial: "shared/onereply" , locals:{t: t}%>
+      <%end%>
+
+        <div class="card card-updates">
+          <div class="card-block">
+            <div class="card-tittle"><h4>Leave your reply</h4></div>
+            <%= form_for @reply, :url=> replies_tweet_path, class: "my-form" do |f| %>
+                <%= f.text_area :comment, :class => "form-control", :style => "padding: 0 0; height: 100px;", :placeholder=> "Update your status" %>
+                <%= f.submit "Reply", :class => "btn btn-success pull-right" %>
+            <% end %>
+          </div>
+        </div>
+
+       
+
+      </div>
+
+
+    </div>

@@ -8,7 +8,6 @@ class TweetsController < ApplicationController
   end
 
   def create
-
     @tweet = Tweet.new(tweet_params) #實例變數必須和new相同，這樣才能回傳error訊息回去render
     @tweet.user = current_user
     if @tweet.save
