@@ -70,3 +70,21 @@ textarea#message {
 #like{
   color: red;
 }
+
+.table > tbody > tr > td.td-text{
+  width: 18%;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.td-text > a{
+  font-size: x-large;
+}
+
+.td-avatar{
+  width: 10%;
+}
+
+.table-hover > tbody > tr:hover{
+  background-color: gold;
+}
