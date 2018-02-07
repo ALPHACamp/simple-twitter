@@ -18,13 +18,14 @@ class User < ApplicationRecord
   # 一個user可以有很多條回覆的comment
   has_many :replies, through: :tweets
 
-  # 一個user可以主動擁有很多個followship
-  has_many :followships, dependent: :destroy
+
+  # 一個user可以主動擁有很多個followship & + 用order排序followship更新時間達到followings以最新followship排序
+  has_many :followships,-> { order('followships.created_at DESC') }, dependent: :destroy
   # 透過followship，一個user可以follow很多其他user
   has_many :followings, through: :followships
 
-  # 一個follower可以有很多個followship
-  has_many :inversed_followships, class_name: "Followship", primary_key: "id", foreign_key: "following_id"
+  # 一個follower可以有很多個followship & + 用order排序followship更新時間達到followers以最新followship排序
+  has_many :inversed_followships,-> { order('followships.created_at DESC') }, class_name: "Followship", primary_key: "id", foreign_key: "following_id"
   # 透過followship，一個user可以有很多follower
   has_many :followers, through: :inversed_followships, source: :user
 

@@ -24,12 +24,12 @@ class UsersController < ApplicationController
 
   def followings
     @user = User.find(params[:id])
-    @followings = @user.followings.order(updated_at: :desc)
+    @followings = @user.followings
   end
 
   def followers
     @user = User.find(params[:id])
-    @followers = @user.followers.order(updated_at: :desc)
+    @followers = @user.followers
   end
 
   def likes
