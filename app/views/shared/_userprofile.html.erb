@@ -46,7 +46,7 @@
 
       <!-- like數：連結未設定 -->
       <div>
-        <%= link_to '#' do %>
+        <%= link_to likes_user_path(user) do %>
           <strong>Like <%= content_tag :span, user.likes_count %></strong><br />
         <% end %>
       </div>
