@@ -11,8 +11,8 @@ gem 'devise'
 gem 'carrierwave'
 # resize image size
 gem 'mini_magick'
-gem 'fog-aws',                 '2.0.0'
-gem 'nokogiri',                '1.8.1'
+gem 'fog'               
+
 gem 'ffaker'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
