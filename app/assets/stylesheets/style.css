@@ -151,3 +151,17 @@ hr {border-color:#ececec;margin-top: 10px;margin-bottom: 10px;}
   padding: 20px 0;
   font-family: 'Abril Fatface', cursive;
 }
+
+/*
+fix the icon missing issue
+https://stackoverflow.com/questions/21218359/why-are-my-font-awesome-icons-disappearing-on-page-loading
+*/
+
+i.fa, i.fab, i.far {
+  -webkit-animation: show 1s 1!important;
+  /* any other properties to override from FontAwesome's default .fa rule */
+}
+@-webkit-keyframes show {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
