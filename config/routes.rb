@@ -11,10 +11,10 @@ Rails.application.routes.draw do
   end
   
   # # 個人資訊
-  resources :users, only: [:index, :show, :edit, :update]
+  resources :users, only: [:index, :edit, :update]
   root "tweets#index"
-  # # 追蹤達人
-  # resources :followships, only: [:create, :destroy]
+  # 回覆推播
+  resources :replies, only: [:create, :index]
 
   # 後台
   namespace :admin do

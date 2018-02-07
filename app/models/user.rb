@@ -13,8 +13,8 @@ class User < ApplicationRecord
 
   # User 若有推播，就不允許刪除帳號（刪除時拋出 Error）
   has_many :tweets, dependent: :restrict_with_error
-  has_many :user_info, through: :tweets
-
+  # 回覆推播
+  has_many :replies, dependent: :destroy
 
   def admin?
     self.role == "admin"
