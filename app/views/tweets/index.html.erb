@@ -23,6 +23,10 @@
     </div>
 
     <div class="col-xs-4">
+      <h3>Popular</h3>
+      <% @users.each do |user| %>
+          <%= render partial: "shared/user_list", locals: {user: user} %>
+      <% end %>
     </div>
   </div>
 </div>
