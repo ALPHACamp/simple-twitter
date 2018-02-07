@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
   #呈現用戶頁面，自己或他人
   def tweets
+    @user = User.find(params[:id])
+    @tweets = Tweet.where(:user_id => @user.id )
   end
 
   #編輯自己的資料
