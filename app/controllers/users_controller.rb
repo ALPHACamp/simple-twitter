@@ -11,14 +11,17 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = User.find(params[:id])
   end
 
   def followings
-    @followings # 基於測試規格，必須講定變數名稱
+    @user = User.find(params[:id])
+    @followings = @user.followings.order(created_at: :desc)
   end
 
   def followers
-    @followers # 基於測試規格，必須講定變數名稱
+    @user = User.find(params[:id])
+    @followers = @user.followships.order(created_at: :desc)
   end
 
   def likes
