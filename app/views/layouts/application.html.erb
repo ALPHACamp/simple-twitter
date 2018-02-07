@@ -27,8 +27,7 @@
               <li class="nav-item"><%= link_to 'Admin Panel', admin_tweets_path %></li>
             <% end %>
             <li class="nav-item">
-              <p class="navbar-text">Hi,
-                <%= current_user.email %></p>
+              <%= image_tag current_user.avatar, class: "nav-img" %>
             </li>
             <li class="nav-item"><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
             <li class="nav-item"><%= link_to('修改個人資料', edit_user_path(current_user)) %></li>

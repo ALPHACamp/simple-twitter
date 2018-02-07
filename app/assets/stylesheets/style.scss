@@ -46,7 +46,8 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-// =================================Default====================================
+
+// ==============Default=================
 
 html, body {
   width: 100%;
@@ -75,12 +76,26 @@ img {
   width: 100%;
   height: auto;
   display: block;
+	border-radius: 5px;
 }
 
 .clearfix::after  {
   content: "";
   display: table;
   clear: both;
+}
+
+.col-md-9 {
+	padding-left: 50px;
+}
+
+.navbar {
+	margin-bottom: 50px;
+}
+
+.nav-img {
+	width: 50px;
+	height: 50px;
 }
 
 .title {
@@ -92,17 +107,197 @@ img {
   letter-spacing: 2px;
 }
 
-.navbar {
-	margin-bottom: 100px;
+.btn {
+	background-color: #71A5D0;
+	color: #222;
+	letter-spacing: 2px;
+	text-transform: capitalize;
+	font-size: 20px;
 }
 
-// ===========================================================================
-// index page
 .button-group {
 	text-align: right;
 }
 
-#tweet_description {
-	height: 100px;
+input[type="file"] {
+    display: none;
+}
+
+.file-upload {
+	display: inline-block;
+	width: 100%;
+	margin-bottom: 0;
+	letter-spacing: 2px;
+	text-align: center;
+	vertical-align: middle;
+	touch-action: manipulation;
+	cursor: pointer;
+	background-color: #71A5D0;
+	border: 1px solid transparent;
+	white-space: nowrap;
+	padding: 6px 12px;
+	font-size: 20px;
+	line-height: 1.428571429;
+	border-radius: 4px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.tweet-msg {
+	margin-bottom: 15px;
 	padding: 10px;
+	border: 1px solid #aeaeae;
+	border-radius: 5px;
+	p {
+		margin: 15px 0;
+		color: #7D7D7D;
+	}
+	.like {
+		padding: 0 5px;
+		color: #f00;
+	}
+
+	.unlike {
+		padding: 0 5px;
+		color: #0f1;
+	}
+}
+
+.name {
+	padding: 10px 0;
+	color: #00677E;
+	font-size: 26px;
+	font-weight: 700;
+	letter-spacing: 2px;
+}
+
+.content {
+	color: #00677E;
+	font-size: 14px;
+}
+
+.info {
+	margin: 10px 0;
+
+	.count {
+		color: #4B4C4B;
+		line-height: 2;
+		font-size: 22px;
+		letter-spacing: 2px;
+		display: block;
+		margin-bottom: 5px;
+
+		span {
+			margin-left: 10px;
+		}
+	}
+}
+
+.pop-user {
+	margin-bottom: 15px;
+	padding: 10px;
+	border: 1px solid #aeaeae;
+	border-radius: 5px;
+	p {
+		color: #7D7D7D;
+		font-size: 14px;
+	}
+	a.name {
+		padding: 10px 0;
+		font-size: 18px;
+		font-weight: 700;
+		letter-spacing: 2px;
+	}
+	.btn {
+		font-size: 16px;
+	}
+}
+
+ //=====================Page css====================
+
+// tweet index
+#index {
+	#tweet_description {
+		height: 100px;
+		padding: 10px;
+		border: 2px solid #A8CDDF;
+	}
+	.title {
+		margin-bottom: 20px;
+		color: #00677E;
+		font-size: 30px;
+		text-align: left;
+	}
+	.tweet-form{
+		margin-bottom: 50px;
+	}
+}
+
+// user edit page
+#user-edit {
+	#user_name {
+		border: 2px solid #A8CDDF;
+	}
+	textarea.form-control {
+	    height: 150px;
+			border: 2px solid #A8CDDF;
+	}
+	img {
+		margin-bottom: 30px;
+	}
+}
+
+// replies
+#replies {
+	#reply_comment {
+		height: 100px;
+		padding: 10px;
+		border: 2px solid #A8CDDF;
+	}
+	.title {
+		margin-bottom: 20px;
+		color: #00677E;
+		font-size: 30px;
+		text-align: left;
+		text-transform: capitalize;
+	}
+	.reply-msg {
+		margin-bottom: 15px;
+		padding: 10px;
+		border: 1px solid #aeaeae;
+		border-radius: 5px;
+
+		p {
+			margin: 15px 0;
+			color: #7D7D7D;
+		}
+	}
+	.reply-form {
+		margin-top: 30px;
+	}
+}
+
+//user follow/unfollow
+#follow {
+	.title {
+		margin-bottom: 20px;
+		color: #00677E;
+		font-size: 30px;
+		text-align: left;
+		text-transform: capitalize;
+	}
+	.pop-user {
+		position: relative;
+		height: 280px;
+		.btn {
+			position: absolute;
+			right: 10px;
+			bottom: 10px;
+		}
+	}
+	.col-md-8 {
+		position: static;
+	}
 }

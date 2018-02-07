@@ -14,9 +14,31 @@ class User < ApplicationRecord
 
   # 設置user 與 tweet的一對多關係
   has_many :tweets, dependent: :destroy
+  # 使用者能對別人的推播按 Like/Unlike的多對多關係
+  has_many :likes, dependent: :destroy
+  has_many :liked_tweets, through: :likes, source: :tweet
+
+  # 使用者追蹤很多使用者的多對多關聯
+  has_many :followships, dependent: :destroy
+  has_many :followings, through: :followships
+  # 使用者被很多使用者追蹤的多對多關聯
+  has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id", dependent: :destroy
+  has_many :followers, through: :inverse_followships, source: :user
+
+  # 使用者能回覆別人的推播的多對多關係
+  has_many :replies, dependent: :destroy
+  has_many :replied_tweets, through: :replies, source: :tweet
 
   def admin?
     self.role == 'admin'
   end
 
+  def following?(user)
+    self.followings.include?(user)
+  end
+
+  # def count_followers
+  #   self.followers_count = self.followers.count
+  #   self.save
+  # end
 end

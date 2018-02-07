@@ -1,16 +1,26 @@
-<div class="container">
+<div id="index" class="container">
   <div class="row">
     <div class="col-md-8">
-      <%= form_for @tweet do |f| %>
-      <div class="form-group">
-        <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control"%>
+      <div class="tweet-form">
+        <%= form_for @tweet do |f| %>
+          <div class="form-group">
+            <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control"%>
+          </div>
+          <div class="form-group button-group">
+            <%= f.submit "Tweet", class: "btn" %>
+            <%= f.button "Cancel", type: :reset, class: "btn" %>
+          </div>
+        <% end %>
       </div>
-      <div class="form-group button-group">
-        <%= f.submit "Tweet", class: "btn btn-info" %>
-        <%= f.button "Cancel", type: :reset, class: "btn btn-info" %>
-      </div>
-    <% end %>
+      <% @tweets.each do |t| %>
+        <%= render partial: "shared/tweet_msg", locals: { tweet: t} %>
+      <% end %>
     </div>
-    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <h3 class="title">Popular</h3>
+      <% @users.each do |u| %>
+          <%= render partial: "shared/user_follow", locals: { user: u} %>
+      <% end %>
+    </div>
   </div>
 </div>
