@@ -1,1 +1,16 @@
 <h1>front end</h1>
+<%= form_for @tweet do |f| %>
+  <div class="form-group">
+    <%= f.text_area :description, placeholder: "What's on your mind?", class:"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "tweet", class:"btn btn-primary pull-right" %>
+  </div>
+<% end %>
+
+<% @tweets.each do |tweet| %>
+  <div>
+    <h4><%= tweet.user.name %></h4>
+    <p><%= simple_format tweet.description %></p>
+  </div>
+<% end %>
