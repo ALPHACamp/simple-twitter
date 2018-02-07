@@ -17,13 +17,18 @@
         <p>這邊顯示追蹤的人，所發出的推特</p>
         <p>目前先顯示假資料</p>
         <% @tweets.each do |tweet| %>
-           <div class="col-sm-6 col-md-4">
-            <div class="all-tweet">
-              <div class="caption">
-                <p><%= tweet.description %></p>
-                <p><%= tweet.user.email %></p>
-              </div>
-              
+           <div class="col-sm-6 col-md-4 all-tweets">
+            <div class="single-tweet">
+              <%= image_tag(tweet.user.avatar, height: '32', width: '32') %>
+              <p>
+                <%= tweet.user.name %>
+                <em>, <%= tweet.created_at %>, 找尋切割年月日、時間的寫法</em>
+              </p>
+              <p><%= tweet.description %></p>
+              <P>
+                <%= link_to  "Reply(X)", root_path %>
+                <em><%= link_to  "like(XO)", root_path %></em>
+              </P>
             </div>
           </div>  
         <% end %>
