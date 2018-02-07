@@ -29,11 +29,12 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="pull-right text-right nav navbar-nav">
           <% if current_user %>
+            <li><%= link_to image_tag(current_user.avatar, :style=>"height:25px"), tweets_user_path(current_user) %></li>
+            <li><p class="navbar-text"><%= current_user.name %></p></li>
+            <li><%= link_to '首頁', root_path %></li>
             <% if current_user&.admin? %>
               <li><%= link_to '後台', admin_root_path %></li>
             <% end %>
-            <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
-            <li><%= link_to('Profile', tweets_user_path(current_user)) %></li>
             <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
             <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
           <% else %>
