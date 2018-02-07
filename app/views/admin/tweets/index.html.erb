@@ -26,7 +26,7 @@
             <td><%= tweet.user.name %></td>
             <td>
               <%= link_to fa_icon("comments-o lg"), admin_tweet_path(tweet) %> &nbsp;
-              <%= link_to fa_icon("trash-o lg"), admin_tweet_path(tweet), method: :delete %>
+              <%= link_to fa_icon("trash-o lg"), admin_tweet_path(tweet), method: :delete, data: { confirm: "Are you sure?" } %>
             </td>
           </tr>
         <% end %>
