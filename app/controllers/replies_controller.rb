@@ -4,7 +4,6 @@ class RepliesController < ApplicationController
      @tweet= Tweet.find(params[:id])
      @reply = Reply.new
      @reply_all = Reply.order(created_at: :desc).limit(10)
-     @replyuser = current_user
   end
 
   def create
@@ -14,6 +13,19 @@ class RepliesController < ApplicationController
     if @replies.save
       redirect_to replies_path(Tweet.find(params[:id]))
    end
+  end
+
+  def like
+    @tweet_id = Tweet.find(params[:id])
+    @tweet_id.likes.create!(user: current_user)
+    redirect_back(fallback_location: root_path)  # 導回上一頁
+  end
+
+  def unlike
+    @tweet_id = Tweet.find(params[:id])
+    likesx = Like.where(tweet: @tweet_id , user: current_user)
+    likesx.destroy_all
+    redirect_back(fallback_location: root_path)
   end
 
   private

@@ -57,7 +57,16 @@ position: absolute;
 text-align:left;
 }
 // 以上為logout選單樣式
-
+.all_left_div{
+width:300px;
+height:800px;
+}
+.all_right_div{
+margin: -800px 0px 0px 350px;
+width:920px;
+height:400px;
+}
+// 以上為全體頁面適用
 .proedit{
 margin: -545px 0px 0px 500px;
 width:700px;
@@ -86,28 +95,10 @@ height:800px;
 text-align:center;
 }
 // 以上為tweet index樣式
-.repliesmyfile{
-width:300px;
-height:800px;
-}
-.tweetreplies{
-margin: -800px 0px 0px 350px;
-width:920px;
-height:400px;
-}
+
 .replies{
   width:920px;
   height:400px;
   border: 0.1px solid ;
 }
 // 以上為replies樣式
-.usermyfile{
-width:300px;
-height:800px;
-}
-.usertweet{
-margin: -800px 0px 0px 350px;
-width:920px;
-height:400px;
-}
-// 以上為usershow樣式

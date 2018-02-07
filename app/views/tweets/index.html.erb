@@ -13,18 +13,23 @@
           <%= image_tag tweeto.user.avatar , class:"media-object" ,style:"width:120px;height:120px"  %>
          </a>
        </div>
-       <div class="media-body">
-        <%= link_to tweeto.user.name + "，",tweets_user_path(tweeto.user_id)%>
-         <%=tweeto.created_at.strftime("%Y-%m-%d,%H:%M:%S")%><br><br>
-         <p><%=tweeto.description%></p>
-         <br>
-         <%= link_to "Reply (#{tweeto.replies.count})",replies_path(tweeto.id)%>
-       </div>
+         <div class="media-body">
+           <h4>
+            <%= link_to tweeto.user.name + "，",tweets_user_path(tweeto.user_id)%>
+            <%=tweeto.created_at.strftime("%Y-%m-%d,%H:%M:%S")%><br><br>
+            <p><%=tweeto.description%></p>
+           </h4><br>
+            <%= link_to "Reply (#{tweeto.replies.count})",replies_path(tweeto.id), class: "btn btn-primary"%>
+            <% if tweeto.is_likes?(current_user) %>
+            <%= link_to "UnLike (#{tweeto.likes.count})", unlike_tweet_path(tweeto), method: :post, class: "btn btn-info" %>
+            <% else %>
+            <%= link_to "Like (#{tweeto.likes.count})", like_tweet_path(tweeto), method: :post, class: "btn btn-primary" %>
+            <% end %>
+         </div>
      </div>
     <hr size=4><br>
   <% end %>
 </div>
-
 <div class="tweetpopular">
   <h2>popular</h2>
 </div>

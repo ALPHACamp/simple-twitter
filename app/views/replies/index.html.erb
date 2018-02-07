@@ -1,17 +1,17 @@
-<div class="repliesmyfile">
-<%= image_tag @replyuser.avatar,style:"width:300px;height:300px;display: block;" %><br>
+<div class="all_left_div">
+<%= image_tag current_user.avatar,style:"width:300px;height:300px;display: block;" %><br>
   <h4>
-    <p><%=@replyuser.name%></p><br>
-    <p><%=@replyuser.introduction%></p><br>
-    <%="Tweets"%><br>
-    <%="following"%><br>
-    <%="follower"%><br>
-    <%="like"%><br>
+    <p><%=current_user.name%></p><br>
+    <p><%=current_user.introduction%></p><br>
+    <%= link_to "Tweets #{current_user.tweets.count}",tweets_user_path(current_user)%><br>
+    <%= link_to "following #{current_user.followings.count}",followings_user_path(current_user)%><br>
+    <%= link_to "follower #{current_user.followers.count}",followers_user_path(current_user)%><br>
+    <%= link_to "like #{current_user.likes.count}",likes_user_path(current_user)%><br>
   </h4>
 <%= link_to 'Edit Profile', edit_user_path(current_user), class:"btn btn-primary"  %>
 </div>
 
-<div class="tweetreplies">
+<div class="all_right_div">
   <h1>Tweets</h1><br>
     <div class="media">
       <div class="media-left media-middle">
@@ -22,12 +22,17 @@
       <div class="media-body">
         <h4><%= link_to User.find(@tweet.user_id).name,tweets_user_path(@tweet.user_id)%></h4>
         <h4><%= @tweet.description %></h4><br>
-        <%= link_to "Reply (#{@tweet.replies.count})",replies_path(@tweet.id)%>
+        <%= link_to "Reply (#{@tweet.replies.count})",replies_path(@tweet.id), class: "btn btn-primary" %>
+        <% if @tweet.is_likes?(current_user) %>
+          <%= link_to "UnLike (#{@tweet.likes.count})", unlike_tweet_path(@tweet), method: :post, class: "btn btn-info" %>
+        <% else %>
+          <%= link_to "Like (#{@tweet.likes.count})", like_tweet_path(@tweet), method: :post, class: "btn btn-primary" %>
+        <% end %>
       </div>
     </div>
   <hr>
-<h1>Replies</h1><br>
 
+<h1>Replies</h1><br>
 <div class="media">
   <% @reply_all.each do |reply| %>
     <% if Tweet.find(params[:id]).id == reply.tweet_id %>
