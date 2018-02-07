@@ -9,8 +9,16 @@
   <h2>Followers</h2>
 
   <% @followers.each do |follower| %>
-    <%= link_to tweets_user_path(follower) do %>
-      <img src="http://via.placeholder.com/50x50" class="img-responsive img-rounded">
-      <%= follower.name %>
+    <img src="http://via.placeholder.com/50x50" class="img-responsive img-rounded">
+    <%= link_to follower.name, tweets_user_path(follower) %>
+
+    <% if current_user.following?(follower)%>
+      <%=  link_to "Unfollow", followship_path(follower), method: :delete %>
+    <% else %>
+      <%=  link_to "Follow", followships_path(following_id: follower), method: :post %>
     <% end %>
   <% end %>
+
+
+ 
+
