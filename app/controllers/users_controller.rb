@@ -29,7 +29,9 @@ class UsersController < ApplicationController
   end
 
   def likes
-    @likes # 基於測試規格，必須講定變數名稱
+    @user = User.find(params[:id])
+    @tweets = @user.liked_tweets
+    @likes = @tweets.all  # 基於測試規格，必須講定變數名稱
   end
 
   private

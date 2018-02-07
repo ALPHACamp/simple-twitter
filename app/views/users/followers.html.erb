@@ -5,6 +5,7 @@
   <%= link_to "Tweets(#{@user.tweets.count})", tweets_user_path(@user) %>
   <%= link_to "Following(#{@user.followings.count})", followings_user_path(@user) %>
   <%= link_to "Follower(#{@user.followers.count})", followers_user_path(@user) %>
+  <%= link_to "Like(#{@user.likes.count})", likes_user_path(@user) %>
   
   <h2>Followers</h2>
 

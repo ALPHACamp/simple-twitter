@@ -7,18 +7,17 @@
   <%= link_to "Follower(#{@user.followers.count})", followers_user_path(@user) %>
   <%= link_to "Like(#{@user.likes.count})", likes_user_path(@user) %>
   
-  <h2>Followerings</h2>
+  <h2>Likes</h2>
 
-  <% @followings.each do |following| %>
+  <% @likes.each do |tweet| %>
     <img src="http://via.placeholder.com/50x50" class="img-responsive img-rounded">
-    <%= link_to following.name, tweets_user_path(following) %>
-    
-    <% if current_user.following?(following)%>
-      <%=  link_to "Unfollow", followship_path(following), method: :delete %>
+    <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
+    <%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet) %>
+    <% if tweet.is_liked?(current_user)%>
+      <%= link_to "Unlike(#{tweet.likes.count})", unlike_tweet_path(tweet), method: :post %>
     <% else %>
-      <%=  link_to "Follow", followships_path(following_id: following), method: :post %>
+     <%= link_to "Like(#{tweet.likes.count})", like_tweet_path(tweet), method: :post %>
     <% end %>
-
   <% end %>
 
 
