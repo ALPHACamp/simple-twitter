@@ -1,0 +1,145 @@
+<div class="container-fluid">
+  
+  <!-- Left: user profile /start -->
+  <div class="col-md-4">
+    <div class="user-profile">
+        
+      <!-- user avatar /start -->
+      <div class="profile-avatar">
+        <% if @user.avatar? %>
+          <%= image_tag(@user.avatar, width: '200', height: '200', class: 'center-block') %>
+        <% else %>
+          <%= image_tag("http://via.placeholder.com/200x200",class: 'center-block') %>
+        <% end %>
+      </div>
+      <!-- user avatar /end -->
+        
+      <!-- username: 連結位置待設定 -->
+      <div class="profile-username text-center">
+        <h2><strong><%= content_tag :span, @user.name %></strong></h2>
+      </div>
+
+      <!-- user introduction -->
+      <div class="profile-intro">
+        <p><%= @user.introduction %></p>
+      </div>
+
+      <!-- user info /start -->
+      <div class="profile-info">
+        <!-- tweet數：連結已設定 -->
+        <div>
+          <%= link_to tweets_user_path(@user) do %>
+            <strong>Tweets <%= content_tag :span, @user.tweets.length %></strong><br />
+          <% end %>
+        </div>
+
+        <!-- following數：連結已設定, -->
+        <div>
+          <%= link_to followings_user_path(@user) do %>
+            <strong>Following <%= content_tag :span, @user.followships.length %></strong><br />
+          <% end %>
+        </div>
+
+        <!-- follower數：連結未設定 -->
+        <div>
+          <%= link_to '#' do %>
+            <strong>Follower <%= content_tag :span, @user.followers_count %></strong><br />
+          <% end %>
+        </div>
+
+        <!-- like數：連結未設定 -->
+        <div>
+          <%= link_to '#' do %>
+            <strong>Like <%= content_tag :span, @user.likes_count %></strong><br />
+          <% end %>
+        </div>
+
+      </div>
+      <!-- user info /end -->
+
+      <br />
+
+      <!-- Button: 判斷使用者是否為本人，依據結果顯示按鈕 -->
+      <div class="text-center">
+        <% if @user == current_user %>
+          <%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-primary" %>
+        <% else %>
+          <% if current_user.is_following?(@user) %>
+            <%= link_to "Unfollow", followship_path(@user) ,method: :delete, class: "btn btn-danger" %>
+          <% else %>
+            <%= link_to "Follow", followships_path(following_id: @user),method: :post, class: "btn btn-primary" %>
+          <% end %>
+        <% end %>
+      </div>
+      <br />
+
+
+    </div> <!-- /.user-profile -->
+  </div>
+  <!-- Left: user profile /end -->
+
+  <!-- Right: followings usercards /start -->
+  <div class="col-md-8">
+    <h2 class="usercard-head"><strong>Followings</strong></h2>
+
+    <!-- @user.each 呼叫出各個user card/start -->
+    <% @followings.each do |user| %>
+      <div class="col-md-6">
+      <div class="usercard clearfix">
+        <div class="container">
+          <div class="container">
+            <!-- Left: user avartar /start -->
+            <div class="col-xs-2">
+              <div class="usercard-avatar">
+                <% if user.avatar? %>
+                  <%= image_tag(user.avatar, width: '60', height: '60',class: 'center-block') %>
+                <% else %>
+                  <%= image_tag("http://via.placeholder.com/60x60",class: 'center-block') %>
+                <% end %>
+              </div>
+            </div>
+            <!-- Left: user avartar /end -->
+
+            <!-- Right: user info & introduction /start -->
+            <div class="col-xs-10">
+              
+              <!-- user info -->
+              <div class="tweetheader">
+                <%= link_to tweets_user_path(user) do  %>
+                  <strong class="username">@<%= content_tag :span, user.name %></strong>
+                <% end %>
+              </div>
+
+              <!-- user introduction -->
+              <div class="userintro"><%= user.introduction %></div>
+
+            </div>
+            <!-- Right: user info & introduction /end -->
+          </div> <!-- /.container  -->
+
+          <!-- Bottom: Follow/Unfollow button /start -->
+          <div class="follow-button text-right">
+            
+            <!-- 未完成：判斷followship，顯示follow/unfollow -->
+            <% if user != current_user %>
+              <% if current_user.is_following?(user) %>
+                <%= link_to "Unfollow", followship_path(user) ,method: :delete, class: "btn btn-danger" %>
+              <% else %>
+                <%= link_to "Follow", followships_path(following_id: user),method: :post, class: "btn btn-primary" %>
+              <% end %>
+            <% else %>
+              <%= link_to "Follow", followships_path(following_id: user),method: :post, class: "btn btn-primary disabled" %>
+            <% end %>
+
+          </div>
+          <!-- Bottom: Follow/Unfollow button /end -->
+
+        </div> <!-- /.container  -->
+      </div> <!-- /.usercard  -->
+      </div>
+    <% end %>
+    <!-- @user.each 呼叫出各個user card/end -->
+  </div>
+  <!-- Right: followings usercards /end -->
+
+</div>
