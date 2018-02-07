@@ -17,10 +17,18 @@
       <ul>
 
   <% @users.each do |user| %>
-    <li>
-      <%= user.name %>
-      <%= link_to 'Follow', followships_path(following_id: user), method: :post %>
-    </li>
+    <div class="seinbg">
+      <%= image_tag(user.avatar, height: 60, width: 60, class: "img-circle") %>
+      <h4><%= user.name %></h4>
+        
+
+      <% if current_user.following?(user)%>
+        <%= link_to 'Unfollow', followship_path(user), method: :delete %>
+      <% else %>
+        <%= link_to 'Follow', followships_path(following_id: user), method: :post %>
+      <% end %>
+    </div>
+
   <% end %>
 
 </ul>
