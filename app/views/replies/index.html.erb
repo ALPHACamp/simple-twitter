@@ -19,16 +19,16 @@
       <% end %>
       <h2>Replies</h2>
       <% @replies.each do |reply| %>
-        <div class="reply-item">
+        <div class="tweet-item">
           <div class="avatar-sm">
           <%= link_to tweets_user_path(reply.user) do %>
             <%= image_tag(reply.user.avatar, class: "") %>
           <% end %>
           </div>
-          <div class="reply-info">
+          <div class="tweet-info">
             <h4><%= link_to "@#{reply.user.name}", tweets_user_path(reply.user)%><em><%= reply.created_at.strftime("%Y-%m-%d %I:%M") %></em></h4>
             <% if reply.user == current_user %>
-              <div class="edit-reply-form">
+              <div class="edit-tweet-form">
                 <%= form_for [@tweet, reply] do |f| %>
                   <div class="form-group">
                     <div>
@@ -40,15 +40,17 @@
                 <% end %>
               </div>
             <% end %>
-            <p><%= reply.comment %></p>
-            <div class="delete-btn">
-              <% if reply.user == current_user %>
-                <em><%= link_to ' delete', tweet_reply_path(@tweet, reply), method: :delete, data: {confirm: "Are you sure?"} %>
-                </em>
-                <em>&nbsp;&nbsp;|&nbsp;&nbsp;</em>
-                <em><a href="#" class="edit-reply-btn">edit</a></em>
-              <% end %>
-            </div>  
+            <div class="show-area">
+              <p><%= reply.comment %></p>
+              <div class="edit-delete-btn">
+                <% if reply.user == current_user %>
+                  <em><%= link_to ' delete', tweet_reply_path(@tweet, reply), method: :delete, data: {confirm: "Are you sure?"} %>
+                  </em>
+                  <em>&nbsp;&nbsp;|&nbsp;&nbsp;</em>
+                  <em><a href="#" class="edit-tweet-btn">edit</a></em>
+                <% end %>
+              </div> 
+            </div>
           </div>
         </div>
       <% end %>

@@ -27,40 +27,17 @@ $(document).on('turbolinks:load', function() {
     $(this).text('Following');
   }); // end following button hover
 
-
-  $('.reply-info .edit-reply-btn').on('click', function(e) {
+  $('.tweet-info .edit-tweet-btn').on('click', function(e) {
     e.preventDefault();
-    $(this).parents('.reply-info').css('grid-template-rows', 'auto 1fr');
-    $(this).parents('.reply-info').children('p').css('display', 'none');
-    $(this).parents('.reply-info').children('.delete-btn').css('display', 'none');
-    $(this).parents('.reply-info').children('.edit-reply-form').css('display', 'block');
+    $(this).parents('.show-area').css('display', 'none');
+    $(this).parents('.tweet-info').children('.edit-tweet-form').css('display', 'block');
   
   });
 
-  $('.edit-reply-form .btn-danger').on('click', function(e) {
+  $('.edit-tweet-form .btn-danger').on('click', function(e) {
     e.preventDefault();
-    $(this).parents('.reply-info').css('grid-template-rows', 'auto 1fr auto');
-    $(this).parents('.reply-info').children('p').css('display', 'block');
-    $(this).parents('.reply-info').children('.delete-btn').css('display', 'block');
-    $(this).parents('.edit-reply-form').css('display', 'none');
-  });
-
-
-  $('.tweet-info .edit-reply-btn').on('click', function(e) {
-    e.preventDefault();
-    $(this).parents('.tweet-info').css('grid-template-rows', 'auto 1fr');
-    $(this).parents('.tweet-info').children('p').css('display', 'none');
-    $(this).parents('.tweet-info').children('.last-row').css('display', 'none');
-    $(this).parents('.tweet-info').children('.edit-reply-form').css('display', 'block');
-  
-  });
-
-  $('.edit-reply-form .btn-danger').on('click', function(e) {
-    e.preventDefault();
-    $(this).parents('.tweet-info').css('grid-template-rows', 'auto 1fr auto');
-    $(this).parents('.tweet-info').children('p').css('display', 'block');
-    $(this).parents('.tweet-info').children('.last-row').css('display', 'block');
-    $(this).parents('.edit-reply-form').css('display', 'none');
+    $(this).parents('.tweet-info').children('.show-area').css('display', 'grid')
+    $(this).parents('.edit-tweet-form').css('display', 'none');
   });
 
 });

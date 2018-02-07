@@ -42,12 +42,10 @@ class RepliesController < ApplicationController
       else
         flash[:alert] = "reply does not exist."
       end
-      redirect_back(fallback_location: root_path)
-      
     else
       flash[:alert] = "You are not authorized."
-      redirect_back(fallback_location: root_path)
     end
+    redirect_back(fallback_location: root_path)
   end
 
   private 
@@ -57,6 +55,9 @@ class RepliesController < ApplicationController
   end
 
   def set_tweet
-    @tweet = Tweet.find(params[:tweet_id])
+    @tweet = Tweet.find_by_id(params[:tweet_id])
+    if !@tweet
+      redirect_to(root_path)
+    end
   end
 end

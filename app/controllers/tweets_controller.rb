@@ -38,7 +38,7 @@ class TweetsController < ApplicationController
       else
         flash[:alert] = "Tweet does not exist."
       end
-      redirect_to root_path
+      redirect_back(fallback_location: root_path)
       
     else
       flash[:alert] = "You are not authorized."
@@ -66,5 +66,4 @@ class TweetsController < ApplicationController
   def tweet_params
     params.require(:tweet).permit(:description)
   end
-
 end
