@@ -195,6 +195,26 @@ input[type="file"] {
 	}
 }
 
+.pop-user {
+	margin-bottom: 15px;
+	padding: 10px;
+	border: 1px solid #aeaeae;
+	border-radius: 5px;
+	p {
+		color: #7D7D7D;
+		font-size: 14px;
+	}
+	a.name {
+		padding: 10px 0;
+		font-size: 18px;
+		font-weight: 700;
+		letter-spacing: 2px;
+	}
+	.btn {
+		font-size: 16px;
+	}
+}
+
  //=====================================================
 
 // tweet index
@@ -212,25 +232,6 @@ input[type="file"] {
 	}
 	.tweet-form{
 		margin-bottom: 50px;
-	}
-	.pop-user {
-		margin-bottom: 15px;
-		padding: 10px;
-		border: 1px solid #aeaeae;
-		border-radius: 5px;
-		p {
-			color: #7D7D7D;
-			font-size: 14px;
-		}
-		a.name {
-			padding: 10px 0;
-			font-size: 18px;
-			font-weight: 700;
-			letter-spacing: 2px;
-		}
-		.btn {
-			font-size: 16px;
-		}
 	}
 }
 
@@ -275,5 +276,28 @@ input[type="file"] {
 	}
 	.reply-form {
 		margin-top: 30px;
+	}
+}
+
+//user follow/unfollow
+#follow {
+	.title {
+		margin-bottom: 20px;
+		color: #00677E;
+		font-size: 30px;
+		text-align: left;
+		text-transform: capitalize;
+	}
+	.pop-user {
+		position: relative;
+		height: 280px;
+		.btn {
+			position: absolute;
+			right: 10px;
+			bottom: 10px;
+		}
+	}
+	.col-md-8 {
+		position: static;
 	}
 }
