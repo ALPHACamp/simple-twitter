@@ -13,6 +13,7 @@ class User < ApplicationRecord
 
   has_many :tweets
   has_many :replies
+  has_many :likes
   
   def admin?
     self.role == "admin"
