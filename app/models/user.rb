@@ -13,6 +13,7 @@ class User < ApplicationRecord
   validates_uniqueness_of :name
 
   has_many :tweets
+  has_many :replies
 
   has_many :followships, dependent: :destroy
   has_many :followings, through: :followships
