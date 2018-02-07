@@ -21,11 +21,17 @@
 <ul>
   <% @tweets.each do |tweet| %>
     <li>
-      <%= tweet.user_id %>  
+      <%= tweet.id %>  
       <%= tweet.updated_at %>
       <%= tweet.description %>
       <%= tweet.replies_count %>
-      <%= tweet.replies.comment %>
+
     </li>
-    <% end %>
+  <% end %>
+  <% @replies.each do |reply| %>
+    <li>
+      <%= reply.tweet_id %>
+      <%= reply.comment %>
+    </li>
+  <% end %>
 </ul>
