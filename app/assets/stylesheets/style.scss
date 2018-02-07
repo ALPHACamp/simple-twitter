@@ -14,15 +14,21 @@
 }
 
 a.logo {
-  width: 50.61px;
-  height: 50.61px;
+  width: 50px;
+  height: 50px;
   display: inline-block;
 }
 
-a.logo img {
+a.admin-logo {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+}
+
+a.logo img, a.admin-logo img {
   width: 100%;
 }
 
 div#nav {
-  background-color: #00aced;
+  background-color: #28AAE1;
 }
