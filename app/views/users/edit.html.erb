@@ -1,0 +1,38 @@
+<div class="row">
+  
+  <br>
+
+  <%= form_for @user do |f| %>
+
+  <div class="col-md-4">
+    <div class="form-group">
+      <% if @user.avatar? %>
+        <%= image_tag @user.avatar, width: "300px" %>
+      <% else %>
+        <img src="https://api.fnkr.net/testimg/300x300/d3d3d3/FFF/?">
+      <% end %> 
+    </div>
+    <div class="form-group">
+      <%= f.file_field :avatar %> 
+    </div>
+  </div>
+
+  <div class="col-md-8">
+    
+      <div class="form-group">
+        <%= f.text_field :name, placeholder: "Name", class: "form-control input-lg" %> 
+      </div>
+
+      <div class="form-group">
+        <%= f.text_area :introduction, placeholder: "Type anything about you here....", class: "form-control input-lg", rows: "10" %> 
+      </div>
+
+      <div class="form-group text-right">
+        <%= f.submit "Update", class: "btn btn-primary btn-lg" %>
+      </div>
+      
+  </div>
+
+  <% end %>
+
+</div>
