@@ -6,8 +6,7 @@ class Admin::TweetsController < Admin::BaseController
     @tweets = Tweet.all
   end
 
-  def destroy
-  end
+
 
   def new
     @tweet = Tweet.new
@@ -24,6 +23,9 @@ class Admin::TweetsController < Admin::BaseController
   def destroy
     find_tweet
     @tweet.destroy
+    @user = @tweet.user
+    @user.likes_count = @user.tweets.count
+    @user.save
     flash[:notice] = "delete success"
     redirect_to admin_tweets_path
   end

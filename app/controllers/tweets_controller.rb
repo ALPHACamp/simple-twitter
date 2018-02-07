@@ -12,6 +12,8 @@ class TweetsController < ApplicationController
     @tweet =  Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
     @tweet.save
+    current_user.likes_count = current_user.tweets.count
+    current_user.save
     redirect_to tweets_path
   end
 
@@ -35,7 +37,7 @@ class TweetsController < ApplicationController
   end
 
   def like_params
-    params.require(:like).permit(:user_id, :tweet_id)
+    params.require(:like).permit(:user_id, :tweet_id, :likes_count)
   end
 
 end
