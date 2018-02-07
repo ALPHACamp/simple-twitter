@@ -1,38 +1,38 @@
 <div class="container">
   <div class="row">
-    <h1 class="text-center">Admin Tweets Page</h1>
+    <h1 class="text-center">List all Users</h1>
     <p class="text-center">
       <%= link_to "Tweets", admin_root_path %> |
       <%= link_to "Users", admin_users_path %>
     </p>
-  
+
     <div class="col-md-10 col-md-offset-1">
       <table class="table table-striped table-bordered">
         <thead>
           <tr>
-            <th>#</th>
-            <th>Description</th>
+            <th>Avatar</th>
+            <th>Name</th>
             <th>#</th>
           </tr>
         </thead>
         <tbody>
-          <% @tweets.each do |tweet| %>
+          <% @users.each do |user| %>
             <tr>
-              <th scope="row"><%= tweet.user.name %></th>
+              <td><%= image_tag user.avatar, width: "100px" %></td>
+              <td><%= user.name %></td>
               <td>
-                <%= link_to truncate(tweet.description.capitalize, length: 50), admin_tweet_path(tweet) %>
-                </td>
-              <td>
-                <%= link_to "Delete", admin_tweet_path(tweet), method: :delete,
-                                      data: {confirm: "Are you sure?"} %>
+                <p><%= user.tweets.count %> tweets</p>
               </td>
             </tr>
           <% end %>
         </tbody>
       </table>
       <div class="text-center">
-        <%= paginate @tweets %>
+        <%= paginate @users %>
       </div>
     </div>
   </div>
 </div>
+
+
+
