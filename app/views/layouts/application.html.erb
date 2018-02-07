@@ -28,7 +28,7 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <% if current_user.admin? %>
               <ul class="nav navbar-nav">
-                <li><%= link_to 'Admin Panel' %></li>
+                <li><%= link_to 'Admin Panel', admin_root_path %></li>
               </ul>
             <% end %>
         
