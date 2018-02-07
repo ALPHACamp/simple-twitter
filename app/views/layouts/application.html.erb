@@ -31,7 +31,11 @@
               <% if current_user&.admin? %>
                 <li><%= link_to 'Admin Control Panel', admin_root_path %></li>
               <% end %>
-                <li><p class="navbar-text">Hi, <%= current_user.name %></p></li>
+                <li><%= link_to tweets_user_path(current_user) do%>
+
+              <%= image_tag current_user.avatar, width: '55px' ,heitht: '55px', class: "" %>
+                <% end %>
+                </li>
 
                 <li class="nav-btn"><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
                 <li class="nav-btn"><%= link_to('修改個人資料', edit_user_path(current_user)) %></li>
