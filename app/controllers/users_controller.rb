@@ -10,6 +10,13 @@ class UsersController < ApplicationController
   end
 
   def update
+    if @user.update(user_params)
+      redirect_to tweets_user_path(@user)
+      flash[:notice] = "User was successfully update."
+    else
+      render :edit
+      flash.now[:alert] = "User was failed to update."
+    end
   end
 
   def followings
@@ -28,6 +35,10 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(:name, :introduction, :avatar)
   end
 
 end

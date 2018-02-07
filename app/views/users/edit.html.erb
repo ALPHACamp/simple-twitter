@@ -1,1 +1,24 @@
 <h1>edit user file</h1>
+<%= form_for @user do |f| %>
+
+  <div class="form-group">
+    <%= f.label :avatar, "avatar" %>
+    <%= image_tag @user.avatar, width: '300px' if @user.avatar? %>
+    <%= f.file_field :avatar %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :introduction, "Introduction" %>
+    <%= f.text_area :introduction, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Update", class:"btn btn-primary" %>
+  </div>
+
+<% end %>
