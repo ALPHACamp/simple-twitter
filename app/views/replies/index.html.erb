@@ -8,11 +8,16 @@
 
       <div class="divtitle"><h3>Replies</h3></div>
 
-      <% @replies.each do |t| %>
-      <%= render partial: "shared/onereply" , locals:{t: t}%>
+
+      <% if @tweet.replies.size == 0 %>
+        <div>尚未有留言，成為第一個留言者<div>
+      <% else %>
+        <% @replies.each do |t| %>
+        <%= render partial: "shared/onereply" , locals:{t: t}%>
+        <%end%>
       <%end%>
 
-        <div class="card card-updates">
+        <div class="card card-updates" style="margin-top: 15px">
           <div class="card-block">
             <div class="card-tittle"><h4>Leave your reply</h4></div>
             <%= form_for @reply, :url=> replies_tweet_path, class: "my-form" do |f| %>
