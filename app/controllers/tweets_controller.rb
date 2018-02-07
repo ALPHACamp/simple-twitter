@@ -12,13 +12,13 @@ class TweetsController < ApplicationController
     @tweet.user = current_user
     if @tweet.save
       flash[:notice] = "tweet was successfully created"
-      redirect_to root_path
+      redirect_to tweets_path
 
     else
       flash.now[:alert] = "Did you miss something?"
       @users = User.order(followers_count: :desc).limit(10)
       @tweets = Tweet.order(created_at: :desc)
-      render :index
+      redirect_to(assigns(:tweets))
     end
   end
 
