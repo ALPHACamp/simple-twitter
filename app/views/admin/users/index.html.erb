@@ -1,6 +1,14 @@
 <div class="container">
-  <h1>all tweets</h1>
-  <%= link_to 'all tweet', admin_tweets_path, class: "btn btn-default"%>
-  <%=render partial: "admin_userlist", locals: {users: @users}%>
-
+  <div class="page-header">
+    <h1>簡單推特 Simple Twitter  <small>網站後台 admin page</small></h1>
+  </div>
+  <ul class="nav nav-tabs nav-justified">
+    <li role="presentation">
+      <%= link_to 'All Tweets', admin_tweets_path%>
+    </li>
+    <li role="presentation" class="active"> <a herf="">All Users List</a></li>
+  </ul>
+  <div class="admin_page_content">
+    <%=render partial: "admin_userlist", locals: {users: @users}%>
+  </div>
 </div>
