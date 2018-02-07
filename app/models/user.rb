@@ -29,6 +29,11 @@ class User < ApplicationRecord
   # 透過followship，一個user可以有很多follower
   has_many :followers, through: :inversed_followships, source: :user
 
+  # 一個user可以有很多like
+  has_many :likes, -> { order('likes.created_at DESC') }, dependent: :destroy
+  # 透過like，一個user可以like很多tweets
+  has_many :liked_tweets, through: :likes, source: :tweet
+
 
   def admin?
     self.role == "admin"
@@ -36,6 +41,10 @@ class User < ApplicationRecord
 
   def is_following?(user)
     self.followings.include?(user)
+  end
+
+  def liked_tweet?(tweet)
+    self.liked_tweets.include?(tweet)
   end
 
 end
