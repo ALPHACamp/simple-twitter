@@ -3,5 +3,7 @@ class Followship < ApplicationRecord
   default_scope { order(created_at: :desc) }
 
   # belongs_to :user, counter_cache: true
+  belongs_to :user
+  belongs_to :following, class_name: "User"
 
 end
