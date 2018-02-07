@@ -14,6 +14,8 @@ Rails.application.routes.draw do
           post :like
           post :unlike
         end
+
+      
       end
 
       resources :users, only: [:index, :show, :edit, :update, :destroy] do
@@ -37,7 +39,7 @@ Rails.application.routes.draw do
 
 
      namespace :admin do
-       resources :tweets, only: [:index, :destroy]
+       resources :tweets
        resources :users
        root "tweets#index"
      end
