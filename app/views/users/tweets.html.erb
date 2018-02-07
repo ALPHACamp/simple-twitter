@@ -11,11 +11,15 @@
     <div class="com">Following 14</div>
     <div class="com">Follower 10</div>
     <div class="com">like 23</div>
-    <% if current_user.following?(@user) %>
-      <%= link_to 'Unfollow', followship_path(following_id: @user), method: :delete, class: "btn btn-danger" %>
+    <% if current_user != @user %>
+      <% if current_user.following?(@user) %>
+        <%= link_to 'Unfollow', followship_path(following_id: @user), method: :delete, class: "btn btn-danger" %>
+      <% else %>
+        <%= link_to "Follow", followships_path(following_id: @user), method: :post, class: "btn btn-primary" %>
+      <% end %>
     <% else %>
-      <%= link_to "Follow", followships_path(following_id: @user), method: :post,class: "btn btn-primary" %>
-    <% end %>   
+      <%= link_to "Edit", edit_user_path(@user), method: :get, class: "btn btn-primary" %>
+    <% end %>     
   </div>  
   
   <div class="vgp padding-10 v-gap-10">
