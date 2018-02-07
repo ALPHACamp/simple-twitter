@@ -4,11 +4,11 @@
       <%= render partial: "shared/info", locals: { user: @user} %>
     </div>
     <div class="col-md-9">
-      <h3 class="title">following</h3>
+      <h3 class="title">follower</h3>
       <div class="row clearfix">
-        <% @followings.each do |f| %>
+        <% @followers.each do |f| %>
           <div class="col-md-6">
-            <%= render partial: "shared/user_follow", locals: { user: f.following} %>
+            <%= render partial: "shared/user_follow", locals: { user: f.user} %>
           </div>
         <% end %>
       </div>
