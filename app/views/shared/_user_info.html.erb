@@ -8,12 +8,14 @@
 <div class="link <%= "active" if page == 2 %>"><%= link_to "Following", followings_user_path(object) %></div>
 <div class="link <%= "active" if page == 3 %>"><%= link_to "Follower", followers_user_path(object) %></div>
 <div class="link <%= "active" if page == 4 %>"><%= link_to "Like", likes_user_path(object) %></div>
+
 <% if current_user == object %>
   <div>
     <%= link_to "Edit Profile", edit_user_path(object), class: "btn btn-default user-edit-btn" %>
   </div>
 <% else %>
   <div>
-    <%= link_to "Follow", "#", class: "btn btn-default follow-btn" %>
+    <%= render partial: "shared/follow", locals: {object: object} %>
   </div>
 <% end %>
+<br>

@@ -173,6 +173,10 @@
   color:  #444444;
 }
 
+.user-content > div {
+  float: right;
+}
+
 
 /* --------------- admin index --------------- */
 
@@ -246,6 +250,14 @@
   margin-top: 10px;
   border-color: #ef4e6c;
   color: #ef4e6c;
+}
+
+.followed-btn {
+  margin-left: 35px;
+  margin-top: 10px;
+  border-color: #ef4e6c;
+  background-color: #ef4e6c;
+  color: white;
 }
 
 
