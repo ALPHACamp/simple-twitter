@@ -3,30 +3,44 @@
   <head>
     <title>SimpleTwitter</title>
     <%= csrf_meta_tags %>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <nav class="text-right bg-primary">
+      <ul>
+        <% if current_user %>
+          <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
+          <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+          <li><%= link_to('Edit Profile', edit_user_path(current_user)) %></li>
+          <li><%= link_to('Change Password', edit_user_registration_path) %></li>
+            <% if current_user.role == "admin"%>
+             <%= link_to "Admin",admin_tweets_path %>
+            <%end%>
+        <% else %>
+          <li><%= link_to('Sign up', new_user_registration_path) %></li>
+          <li><%= link_to('Log In', new_user_session_path) %></li>
+        <% end %>
+      </ul>
+    </nav>
+    <% if flash[:notice]%>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <%= notice %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% elsif flash[:alert]%>   
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <%= alert %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <%end%>
     <div class="container">
       <div class="row">
-    <% if current_user %>
-      <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
-      <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
-      <li><%= link_to('修改個人資料', edit_user_path(current_user)) %></li>
-      <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
-        <% if current_user.role == "admin"%>
-          <%= link_to "admin",admin_tweets_path %>
-        <%end%>
-    <% else %>
-      <li><%= link_to('註冊', new_user_registration_path) %></li>
-      <li><%= link_to('登入', new_user_session_path) %></li>
-    <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+        <%= yield %>
       </div>
     </div>
   </body>

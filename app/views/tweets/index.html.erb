@@ -1,38 +1,32 @@
-<div class="content">
-  <div class="content-left">
-    <div class="tweet-block">
-      <%=form_for @tweet  do |f|%>
-        <%= f.text_field :description  %>
-        <%=f.submit %>
-      <%end%>
+<div class="content col-md-8">
+  <%=form_for @tweet, html: {class: "col-md-12"}  do |f|%>
+    <div class="form-group">
+      <%= f.text_area :description, class: "form-control text-area"%>
     </div>
-    <div class="message-blcok">
-      <% @tweets.each do |t| %>
-        <div class="avatar">
-          <%= image_tag t.user.avatar%>
-        </div>
-        <div class="message">
-          <%= link_to t.user.try(:name),tweets_user_path(t.user_id)%>
-          <%=t.description%>
-          <%=t.created_at%>
-          <%=link_to "reply", tweet_replies_path(t)%>
-          Reply Count<%= t.replies_count %>
-          Like Count <%= t.likes_count%>
-          <%= render partial: "shared/like", locals:{tweet: t}%>
-        </div>
-      <%end%>
+    <div class="text-right">
+      <%=f.submit class: "btn btn-primary" %>
     </div>
-  </div>
-<div class="content-right">
+  <%end%>
+  <br/>
+  <br/>
+  <% @tweets.each do |t| %>
+    <div class="media">
+      <%= image_tag t.user.avatar , class: "align-self-center mr-3 avatar rounded"%>
+      <%= render partial: "shared/tweet", locals:{tweet: t}%>
+    </div>
+  <%end%>  
+</div>
+<div class="content col-md-4">
   <h4>Popular</h4>
   <% @users.each do |u| %>
-  <div class="avatar">
-    <%= image_tag u.avatar %>
-  </div>
-  <div class="avatar-message">
-    <%= u.name %>
-    <%= u.introduction%>
-    <%= render partial: "shared/follow", locals:{user: u} %>
-  </div>
+    <div class="media small-profile">
+      <%= image_tag u.avatar, class: "align-self-center mr-3 avatar rounded" %>
+      <div class="media-body">
+        <h5 class="mt-0"><%= link_to "#{u.name}",tweets_user_path(u) %></h5>
+        <p><%= truncate(u.introduction,:length => 60)%></p>
+        <%= render partial: "shared/follow", locals:{user: u}%>
+      </div>
+    </div>
   <%end%>
 </div>
+

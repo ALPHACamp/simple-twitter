@@ -1,3 +1,23 @@
+
+<div class="content col-md 4">
+<div class="card" style="width: 18rem;">
+  <%= image_tag @user.avatar, class: "card-img-top" %>
+  <div class="card-body">
+    <h5 class="card-title"><%= @user.name%></h5>
+    <p class="card-text"><%= @user.introduction%></p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Tweets <%= @tweets.size%></li>
+    <li class="list-group-item">Following</li>
+    <li class="list-group-item">Follower</li>
+    <li class="list-group-item"><%= link_to "Like #{@user.likes_count}",likes_user_path(@user)%></li>
+  </ul>
+  <div class="card-body">
+    <%= link_to "Edit Profile", edit_user_path(@user), class: "card-link" %>
+  </div>
+</div>
+</div>
+<div class="content col-md-8">
 <p>
 <%=link_to "#{@tweet.user.name}", tweets_user_path(@tweet.user_id)%>
 <%= @tweet.description %>
@@ -6,16 +26,6 @@
 <%= @tweet.replies_count%>
 <%= @tweet.likes_count%>
 </p>
-<p>Profile
-<p>avatar</p>
-<%= @user.name %> 
-<p><%=@user.introduction%></p>
-<p> Tweet Count:<%= @tweets.size%></p>
-<p> Followcount</p>
-<p> Followercount</p>
-<%= link_to "Like Count: #{@user.likes_count}",likes_user_path(@user)%>
-<%= link_to "Edit Profile", edit_user_path(@user) %>
-<p>
   <h4>Reply Index</h4>
     <ul>
       <% @replies.each do |r| %>
@@ -32,5 +42,4 @@
   <%= r.text_area :comment%>
   <%= r.submit %>
 <% end %>
-
-<%= link_to "index",tweets_path%>
+</div>

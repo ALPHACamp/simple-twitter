@@ -10,12 +10,12 @@ class User < ApplicationRecord
   # 並參考 Devise 文件自訂表單後通過 Strong Parameters 的方法   V
   validates_uniqueness_of :name
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)   V
-
+  
 
   
 
   has_many :replies
-  has_many :tweets
+  has_many :tweets, through: :replies
 
   has_many :likes
   has_many :liked_tweets, through: :likes, source: :tweet
