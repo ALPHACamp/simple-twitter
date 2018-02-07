@@ -1,1 +1,27 @@
-<h1>index page (Working...)</h1>
+<h1>tweets index (working...)</h1>
+<div class="container">
+<div class="container">
+    <div class="row">
+        <div class="form-group">
+        <%= form_for @tweet  do |f| %>   
+        <%= f.text_area :description, placeholder: "140 character...", maxlength: 140, class:"form-control" %>
+        </div>
+        <div class ="form-group">
+        <%= f.submit "Tweet"  ,class:"btn btn-primary" %> 
+        </div>
+        <% end %>
+    </div>
+</div>
+
+
+<% @tweets.each do |tweet| %>
+<div class="container">
+  <div class="col-md-12">
+  <h4><%= link_to "@#{tweet.user.name}" %>, <%= tweet.created_at.strftime("%F")%>, <%=tweet.created_at.strftime(" %H:%M ")%></h4>
+  <p><%= truncate(tweet.description, length: 300)%></p>
+ 
+  </div>
+</div>
+<% end %>
+</div>
+
