@@ -1,23 +1,23 @@
-<h1><%=  @user.name %></h1>
-
 <div class="container">
   <%= render partial: "shared/info", locals: {user: @user} %>
-
-
-  <div class="row">
-    <% @tweets.each do |tweet| %>
+  
+    <div class="row">
+      <h4>Likes</h4>
+    <% @likes.each do |like| %>
       <div class="card" style="width: 40rem;">
         <img class="card-img" src="..." alt="Card image cap">
         <div class="card-block">
           <small class="text-muted">
-            <%= tweet.user.name %>,
-            <%= tweet.created_at.to_formatted_s(:db)%>
+            <%= like.user.name %>,
+            <%= like.created_at.to_formatted_s(:db)%>
           </small>
-          <p class="card-text"><%= truncate(tweet.description  length: 80) %></p>
+          <p class="card-text"><%= truncate(like.description, length: 80) %></p>
         </div>
  
+
       </div>
     <% end %>
   </div>
+  
 
-</div>    
+</div>      

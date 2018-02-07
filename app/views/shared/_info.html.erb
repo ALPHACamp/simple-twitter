@@ -11,7 +11,7 @@
       <li class="list-group-item">Tweets <%= user.tweets.count %></li>
       <li class="list-group-item">Following <%= user.followships.count %></li>
       <li class="list-group-item">Follower <%= user.followers_count %></li>
-      <li class="list-group-item">Like <%= user.likes_count %></li>
+      <li class="list-group-item"><%= link_to "Like #{user.likes_count}", likes_user_path %></li>
     </ul>
 
     <div class="btn-group">
