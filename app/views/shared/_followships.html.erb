@@ -1,0 +1,18 @@
+<% followships.each do |followship| %>
+  <div class="following-block">
+    <% for img_id in 0..26 %>
+      <% if image_path(followship.avatar).include?('/user'+img_id.to_s+'.jpg') %>
+        <%= image_tag('/avatar/user'+img_id.to_s+'.jpg', class: "user-avatar") %>
+      <% end %>
+    <% end %>
+    <div class="user-text">
+      <h4><%= link_to followship.name, tweets_user_path(followship) %></h4>
+      <div class="following-intro">
+        <p><%= truncate(followship.introduction, length: 80) %></p>
+      </div>
+      <div class="following-btn">
+        <%= render partial: "shared/follow", locals: {user: followship} %>
+      </div>
+    </div>
+  </div>
+<% end %>
