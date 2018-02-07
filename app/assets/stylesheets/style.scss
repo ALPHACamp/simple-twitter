@@ -303,11 +303,15 @@ header .container-fluid {
 
 /* ------- tweet user card ------- */
 
+.usercard {
+  border: 3px outset;
+  margin-bottom: 10px;
+}
+
 .usercard .container {
   width: 100%;
-  padding: 5px 0;
+  padding: 5px 10px;
   position: relative;
-  border-bottom: 0.1px inset;
 }
 
 .usercard .container .container {

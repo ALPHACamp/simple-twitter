@@ -6,13 +6,13 @@
       <div class="user-profile">
         
         <!-- user avatar /start -->
-          <div class="profile-avatar">
-            <% if @user.avatar? %>
-              <%= image_tag(@user.avatar, width: '200', height: '200', class: 'center-block') %>
-            <% else %>
-              <%= image_tag("http://via.placeholder.com/200x200",class: 'center-block') %>
-            <% end %>
-          </div>
+        <div class="profile-avatar">
+          <% if @user.avatar? %>
+            <%= image_tag(@user.avatar, width: '200', height: '200', class: 'center-block') %>
+          <% else %>
+            <%= image_tag("http://via.placeholder.com/200x200",class: 'center-block') %>
+          <% end %>
+        </div>
         <!-- user avatar /end -->
           
         <!-- username: 連結位置待設定 -->
@@ -34,9 +34,9 @@
             <% end %>
           </div>
 
-          <!-- following數：連結未設定, -->
+          <!-- following數：連結已設定, -->
           <div>
-            <%= link_to '#' do %>
+            <%= link_to followings_user_path(@user) do %>
               <strong>Following <%= content_tag :span, @user.followships.length %></strong><br />
             <% end %>
           </div>
