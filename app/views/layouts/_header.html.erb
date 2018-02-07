@@ -10,7 +10,7 @@
 
           <li>
             <%= link_to tweets_user_path(current_user), class: "navbar-brand" do %>
-              <%= image_tag current_user.avatar, size: "40", style: "position:relative;top:-10px" %>
+              <%= image_tag current_user.avatar.thumb , size: "40", style: "position:relative;top:-10px" %>
             <% end %>
           </li>
           <li class="dropdown">
