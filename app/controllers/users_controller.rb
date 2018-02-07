@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update, :tweets, :followings, :followers]
+  before_action :set_user, only: [:edit, :update, :tweets, :followings, :followers, :likes]
 
   def tweets
     @tweets = @user.tweets
@@ -31,7 +31,8 @@ class UsersController < ApplicationController
   end
 
   def likes
-    @likes # 基於測試規格，必須講定變數名稱
+    @likes = @user.liked_tweets.order('likes.created_at DESC')
+    # 基於測試規格，必須講定變數名稱
   end
 
   private
