@@ -1,15 +1,15 @@
 class Admin::TweetsController < Admin::BaseController
 
-  before_action :set_tweet, only:  [:show, :destroy]
+
 
     def index
-      # @tweets = Tweet.page(params[:page]).per(30)
-        @tweets = Tweet.all
+      @tweets = Tweet.page(params[:page]).per(30).order(created_at: :desc)
 
-        
+    
     end
 
     def destroy
+        @tweet = Tweet.find(params[:id])
         @tweet.destroy
         redirect_to admin_tweets_path
         flash[:alert] = "tweet was deleted"
@@ -20,13 +20,8 @@ class Admin::TweetsController < Admin::BaseController
   private
 
     def tweet_params
-      params.require(:tweet).permit(:user_name, :description, :avatar)
+      params.require(:tweet).permit(:name, :description, :avatar)
     end
-
-    def set_tweet
-       @tweet = Tweet.find(params[:id])
-    end
-
 
 
 
