@@ -5,7 +5,7 @@
   <div class="vgp padding-10 v-gap-10">
    
     <div class="vgp padding-0 v-gap-10"> 
-      <%= form_for @tweet do |f| %>    
+      <%= form_for @tweet, as: :x do |f| %>    
         <%= f.text_area :description %>
         <%= f.submit %>    
       <% end %> 
@@ -16,6 +16,7 @@
       <li>
         <%= tweet.description %>
         <%= tweet.user.name %>
+        <%= tweet.created_at.to_s[0..15] %>
       </li>
       <% end %>
     </ul>
