@@ -1,3 +1,12 @@
-<h1>Follower</h1>
+<div class="show-user-profile-page">
+  <div class="user-profile">
+    <%= render partial: "shared/profile", locals: { user: @user } %>
+  </div>
 
-<%= render partial: "shared/users", locals: { users: @followers } %>
+  <div>
+    <h3>Follower</h3>
+    <div class="user-follow-page">
+      <%= render partial: "shared/users", locals: { users: @followers } %>
+    </div>
+  </div>
+</div>

@@ -6,12 +6,12 @@
 .user-box {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 20% 70% 10%;
+  grid-template-rows: 20% 60% 19% 1%;
 }
 
 .user-box img {
   grid-column: 1/2;
-  grid-row: 1/-1;
+  grid-row: 1/4;
   margin: 10px 10px;
 }
 
@@ -31,10 +31,12 @@
 
 .user-box > a {
   grid-column: 3/-1;
-  grid-row: 3/-1;
+  grid-row: 3/4;
 }
 
-.user-box + div {
+.user-box > div {
+  grid-column: 1/-1;
+  grid-row: 4/-1;
   height: 1px;
   width: 70%;
   margin: 10px auto;
