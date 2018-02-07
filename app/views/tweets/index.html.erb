@@ -22,12 +22,13 @@
               <%= image_tag(tweet.user.avatar, height: '32', width: '32') %>
               <p>
                 <%= tweet.user.name %>
-                <em>, <%= tweet.created_at %>, 找尋切割年月日、時間的寫法</em>
+                <em>, <%= tweet.created_at.strftime("%Y-%m-%d") %>,
+                  <%= tweet.created_at.strftime("%I:%M%p") %></em>
               </p>
               <p><%= tweet.description %></p>
               <P>
-                <%= link_to  "Reply(X)", root_path %>
-                <em><%= link_to  "like(XO)", root_path %></em>
+                <%= link_to  "Reply(X)，連結到reply，等同show", root_path %>
+                <em><%= link_to  "like(XO)，等同favorite，沒有頁面", root_path %></em>
               </P>
             </div>
           </div>  
