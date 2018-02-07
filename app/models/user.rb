@@ -15,11 +15,11 @@ class User < ApplicationRecord
   has_many :tweets, dependent: :restrict_with_error
 
   has_many :likes, dependent: :destroy
-  has_many :liked_tweet, through: :likes, source: :tweet
+  has_many :liked_tweets, through: :likes, source: :tweet
 
 
   has_many :replies, dependent: :restrict_with_error
-  has_many :replied_tweet, through: :replies, source: :tweet
+  has_many :replied_tweets, through: :replies, source: :tweet
 
   has_many :followships, dependent: :destroy
   has_many :followings, through: :followships
@@ -31,4 +31,5 @@ class User < ApplicationRecord
   def following?(user)
     self.followings.include?(user)
   end
+
 end

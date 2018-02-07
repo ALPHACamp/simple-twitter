@@ -1,0 +1,6 @@
+
+<% if tweet.is_liked?(current_user) %>
+  <%= link_to '', unlike_tweet_path(tweet),method: :post, class: "glyphicon glyphicon-star" %>
+<% else %>
+  <%= link_to '', like_tweet_path(tweet), method: :post, class: "glyphicon glyphicon-star-empty" %>
+<% end %>
