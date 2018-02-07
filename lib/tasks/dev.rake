@@ -28,6 +28,7 @@ namespace :dev do
   end
 
   # Tweet Model 設定 description 140 字限制
+  # 待修，關連有空值產生！？
   task fake_tweet: :environment do
     Tweet.destroy_all
     100.times do |i|

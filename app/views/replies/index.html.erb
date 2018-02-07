@@ -37,7 +37,7 @@
         <%= f.hidden_field :tweet_id, :value => @tweet.id %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
         <%= f.text_field :comment, placeholder: "Reply here", :size=>"50", class: "form-control" %>
-        <%= f.submit %>
+        <%= f.submit 'Reply'%>
       <% end %>
 
 

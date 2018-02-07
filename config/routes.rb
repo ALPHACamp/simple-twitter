@@ -5,12 +5,12 @@ Rails.application.routes.draw do
   # 請依照專案指定規格來設定路由
 
   # Tweet
-  get '/tweets' => 'tweets#index', :as => "tweets"
+  get '/tweets' => 'tweets#index', :as => "tweets" # helper 數量注意 (原複改單 -> 又兩種都可以了)
   resources :tweets, only: [:create]
 
   # User
   # resources :users, only: [:edit]
-  get '/users/:id/tweets' => 'users#tweets', :as => "user_tweets"
+  get '/users/:id/tweets' => 'users#tweets', :as => "users_tweets" # helper user 要加 s
   get '/users/:id/edit' => 'users#edit', :as => "edit_users"
   match '/users/:id/update', to:'users#update', via: [:patch]
 

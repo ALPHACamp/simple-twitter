@@ -1,53 +1,42 @@
 <div class="container">
   <div class="row">
-    <h1>Twitter Front-End index page</h1>
-    
-    <div class="col-md-8">
-      <%= form_for Tweet.new do |f| %>
-        <div class="form-group">
-          <%= f.text_field :description, placeholder: "Tweet something!", :size=>"50", class: "form-control" %>
-          <%= f.hidden_field :user_id, :value => @user %>
-        </div>
-        <%= f.submit class: "btn btn-primary" %>
+    <!-- 當前使用者推特發文區 -->
+    <%= form_for Tweet.new do |f| %>
+      <div class="form-group">
+        <%= f.text_field :description, placeholder: "Tweet something!", :size=>"50", class: "form-control" %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+      </div>
+      <%= f.submit 'Tweet', class: "btn btn-primary" %>
+    <% end %>
+
+    <!-- All Tweets  -->
+    <% if @tweets != nil %>
+      <% @tweets.each do |tweet| %>
+
+        <%= image_tag tweet.user.avatar, height: 85, width: 85 %>
+        <h5><%= tweet.user.name %></h5>
+        <p><%= tweet.description %></p>
+        <h5>
+          <%= link_to Reply, replies_user_path(tweet) %>
+          <small>(<%= tweet.replies.count %>)</small>
+          Like 連結 <!-- 待 like -->
+          (<%= tweet.likes.count %>)
+        </h5>
+        <hr>
       <% end %>
-      <!-- 推文區加按鈕 -->
-      <br>
-      <div class="clearfix">
-        <% @tweets.each do |tweet| %>
-          <div class="float-left">
-            <%= image_tag tweet.user.avatar, height: 85, width: 85 %>
-          </div>
-          <h5><%= tweet.user.name %></h5>
-          <p><%= tweet.description %></p>
-          <h5>
-            <%= link_to Reply, replies_user_path(tweet) %>
-            <small>(<%= tweet.replies.count %>)</small>
-            Like 連結 <!-- 待 like -->
-            (<%= tweet.likes.count %>)
-          </h5>
-          <hr>
-        <% end %>
-      </div>
-    </div>
+    <% end %>
 
-    <div class="col-md-4">
-      <h1>Popular</h1>
 
-      <div>
-        <% @users.each do |user| %>
-          <div class="float-left">
-            <%= image_tag user.avatar, height: 85, width: 85 %>
-          </div>
-          <h5>
-            <%= link_to user.name, user_tweets_path(user) %> <!-- edit -->
-          </h5>
-          <p><%= user.introduction %></p>
-          <!-- follow / unfollow 待完成 -->
-          <hr>
-        <% end %>
-      </div>
+    <h1>Popular</h1>
+    <% @users.each do |user| %>
 
-    </div>
+      <%= image_tag user.avatar, height: 85, width: 85 %>
+      <h5><%= link_to user.name, users_tweets_path(user) %></h5>
+      <p><%= user.introduction %></p>
+      <!-- follow / unfollow 待完成 -->
+      <hr>
+
+    <% end %>
 
   </div>
 </div>
