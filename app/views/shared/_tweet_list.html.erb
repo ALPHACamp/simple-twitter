@@ -14,7 +14,11 @@
               <p><%= simple_format tweet.description %></p>
               <h5>
                 <%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet_id: tweet) %>  
-                <%= link_to "Like(#{tweet.likes_count})", like_tweet_path(tweet),  method: :post, style:"color:red;" %>    
+                <% if tweet.is_liked?(current_user) %>
+                  <%= link_to "Unlike(#{tweet.likes_count})", unlike_tweet_path(tweet), method: :post, style:"color:pink;" %>
+                <% else %>
+                  <%= link_to "Like(#{tweet.likes_count})", like_tweet_path(tweet),  method: :post, style:"color:red;" %>  
+                <% end %>
               </h5>
             </div>
           </div>
