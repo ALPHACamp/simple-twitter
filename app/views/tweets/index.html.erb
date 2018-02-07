@@ -14,8 +14,8 @@
     <ul>
       <% @tweets.each do |tweet| %>
       <li>
+        <%= link_to tweet.user.name, tweets_user_path(tweet.user.id) %>
         <%= tweet.description %>
-        <%= tweet.user.name %>
         <%= tweet.created_at.to_s[0..15] %>
         <%= link_to "Reply", tweet_replies_path(tweet.id) %>
       </li>

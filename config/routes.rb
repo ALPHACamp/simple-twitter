@@ -3,10 +3,15 @@ Rails.application.routes.draw do
   devise_for :users
 
   # 請依照專案指定規格來設定路由
-  resources :tweets, only: [:index, :create, :show] do
+  resources :tweets, only: [:index, :create] do
     resources :replies, only: [:index, :create]
   end
-  resources :users, only: [:edit, :update]
+  
+  resources :users, only: [:edit, :update] do  
+    member do
+      get :tweets
+    end
+  end
   
   # 前台首頁：看見站內所有的推播，以及跟隨者最多的使用者
   root 'tweets#index'

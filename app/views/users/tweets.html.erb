@@ -1,0 +1,13 @@
+<h1>看見某一使用者的推播牆，以及該使用者簡介</h1>
+
+
+<h3><%= @user.name %></h3>
+
+<ul>
+  <% @tweets.each do |tweet| %>
+  <li>
+    <%= tweet.description %>
+    <%= tweet.user.name %>
+  </li>
+  <% end %>
+</ul>
