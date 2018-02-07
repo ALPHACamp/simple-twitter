@@ -7,27 +7,47 @@
 <!-- 選定的tweet -->
 <div class="container">
   <div class="row">
-    
+    <h3>Tweets</h3>
+    <div class="form-group">
+      <div class="avatar"><%= image_tag(@tweet.user.avatar, height: '32', width: '32') %></div>
+      <p>
+        @<%= @tweet.user.name %>
+        <em>, <%= @tweet.created_at.strftime("%Y-%m-%d") %>, <%= @tweet.created_at.strftime("%I:%M%p") %></em>
+      </p>
+      <p><%= @tweet.description %></p>
+      <P>
+        Reply(X)喪失連結，僅顯示reply數量
+        <em><%= link_to  "like(XO)，等同favorite，沒有頁面", root_path %></em>
+      </P>
+    </div>
   </div>
 </div>
 
 <!-- 已回覆的以及輸入框 -->
 <div class="container">
   <div class="row">
+    <h3>Replies</h3>
     <% @tweet.replies.each do |reply| %>
-      <div>
-        <h4><%= reply.user.email %></h4>
+      <div class="form-group">
+        <div class="avatar">
+          <%= image_tag(reply.user.avatar, height: '32', width: '32') %>
+        </div>
+        <h4>
+          @<%= reply.user.name %>
+          <em>,
+            <%= reply.created_at.strftime("%Y-%m-%d") %>,
+              <%= reply.created_at.strftime("%I:%M%p") %>
+          </em>
+        </h4>
         <p><%= simple_format reply.comment %></p>
-        <p class="text-muted">
-          <em><%= time_ago_in_words(reply.created_at) %> ago -</em>
-        </p>
+        
       </div>
       <hr>
     <% end %>
 
     <%= form_for [@tweet, @reply] do |f| %>
       <div class="form-group">
-        <%= f.text_area :content, placeholder: "留個言吧", class: "form-control" %>
+        <%= f.text_area :comment, placeholder: "留個言吧", class: "form-control" %>
       </div>
       <div class="form-group">
         <%= f.submit class: "btn btn-primary" %>

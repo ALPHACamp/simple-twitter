@@ -22,12 +22,11 @@
               <%= image_tag(tweet.user.avatar, height: '32', width: '32') %>
               <p>
                 <%= tweet.user.name %>
-                <em>, <%= tweet.created_at.strftime("%Y-%m-%d") %>,
-                  <%= tweet.created_at.strftime("%I:%M%p") %></em>
+                <em>, <%= tweet.created_at.strftime("%Y-%m-%d") %>, <%= tweet.created_at.strftime("%I:%M%p") %></em>
               </p>
               <p><%= tweet.description %></p>
               <P>
-                <%= link_to  "Reply(X)，連結到reply，等同show", root_path %>
+                <%= link_to  "Reply(X)，連結到reply，等同show", tweet_replies_path(tweet) %>
                 <em><%= link_to  "like(XO)，等同favorite，沒有頁面", root_path %></em>
               </P>
             </div>
