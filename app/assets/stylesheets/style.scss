@@ -1,3 +1,12 @@
+.navbar-default {
+  background-color: #BAD3DC;
+  border-color: #E7E7E7;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #000;
+}
+
 .user-item {
   margin-bottom: 15px;
 }
@@ -36,12 +45,8 @@
   margin: 0 10px 0 0;
 }
 
-h3, a:link,a:visited,a:hover{
+a:link,a:visited,a:hover{
   text-decoration:none;
-}
-
- a:link,a:visited,a:hover{
-  color:#87CEFA
 }
 
 
@@ -68,4 +73,24 @@ h2{
 
 .botton{
   text-align: right;
+}
+
+
+.replies {
+  border:1px #ccc solid;
+  padding:20px;
+  padding-bottom:45px;
+  border-radius: 10px;
+  margin: 0 10px 0 0;
+}
+
+.replies img{ 
+  width: 110px;
+  height: 110px;
+  float:left;
+  margin: 0 10px 0 0;
+}
+
+.user-list a{
+  color:block;
 }

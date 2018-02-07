@@ -25,7 +25,7 @@
             <h4 class="text-muted">
               <%= link_to "Reply (#{tweet.replies.count})" ,tweet_replies_path(tweet) %>
               <% if tweet.liked?(current_user) %>
-                <%= link_to "Like (#{tweet.likes_count})", unlike_tweet_path(tweet), method: :post ,style:"color:red;" %>
+                <%= link_to "Unlike (#{tweet.likes_count})", unlike_tweet_path(tweet), method: :post ,style:"color:red;" %>
                 <% else %>
                 <%= link_to "Like (#{tweet.likes_count})", like_tweet_path(tweet), method: :post ,style:"color:red;" %>
               <% end %>
@@ -50,7 +50,7 @@
               <%= link_to "#{user.name} 訂閱人數： #{user.followers_count}", tweets_user_path(user) %>
               <p><%= user.introduction %></p> 
             </div>
-            <div class="col-md-offset-8">
+            <div class="col-md-offset-8 user-list">
               <% if user != current_user %>
                 <% if current_user.following?(user)%>
                   <%= link_to 'Unfollow', followship_path(user), method: :delete , class: "btn btn-primary" %>

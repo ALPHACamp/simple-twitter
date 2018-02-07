@@ -21,7 +21,7 @@
         <h4 class="text-muted">
           <%= link_to "Reply (#{@tweet.replies.count})" ,tweet_replies_path(@tweet) %>
           <% if @tweet.liked?(current_user) %>
-            <%= link_to "Like (#{@tweet.likes_count})", unlike_tweet_path(@tweet), method: :post ,style:"color:red;" %>
+            <%= link_to "Unlike (#{@tweet.likes_count})", unlike_tweet_path(@tweet), method: :post ,style:"color:red;" %>
             <% else %>
             <%= link_to "Like (#{@tweet.likes_count})", like_tweet_path(@tweet), method: :post ,style:"color:red;" %>
           <% end %>
@@ -29,7 +29,7 @@
       </div>
       <h2>Reply</h2>
       <% @tweet.replies.each do |reply| %>
-        <div class="tweets">
+        <div class="replies">
           <% if reply.user.avatar? %>
             <%= image_tag(reply.user.avatar, class: "img-rounded") %>
             <% else %>

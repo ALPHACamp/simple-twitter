@@ -11,7 +11,7 @@ namespace :dev do
         name: name,
         email: "#{name}@example.co",
         password: "12345678",
-        introduction: FFaker::Lorem::sentence(30),
+        introduction: FFaker::Lorem::sentence(10),
         avatar: file
       )
 

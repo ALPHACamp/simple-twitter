@@ -7,21 +7,21 @@
     <% end %>
   </div>
 </div>
-<div class="col-md-12 col-sm-12">
+<div class="col-md-12 col-sm-12 user-list">
   <h2><strong><%= user.name %></strong></h2>
   <p><%= user.introduction %></p>
   <h3><%= link_to "tweets (#{user.tweets_count})",tweets_user_path(user) %></h3>
   <h3><%= link_to "following (#{user.followings.count})",followings_user_path(user) %></h3>
   <h3><%= link_to "follower (#{user.followers_count})",followers_user_path(user) %></h3>
   <h3><%= link_to "like (#{user.likes.count})",likes_user_path(user) %></h3>
-</div>
-<% if user == current_user %>
-  <%= link_to 'Edit Profile', edit_user_path(user), class: "btn btn-primary" %>
-<% end %>      
-<% if user != current_user %>
-  <% if current_user.following?(user)%>
-    <%= link_to 'Unfollow', followship_path(user), method: :delete , class: "btn btn-primary" %>
-  <% else %>
-    <%= link_to 'Follow', followships_path(following_id: user), method: :post , class: "btn btn-default" %>
+  <% if user == current_user %>
+    <%= link_to 'Edit Profile', edit_user_path(user), class: "btn btn-primary" %>
+  <% end %>      
+  <% if user != current_user %>
+    <% if current_user.following?(user)%>
+      <%= link_to 'Unfollow', followship_path(user), method: :delete , class: "btn btn-primary" %>
+    <% else %>
+      <%= link_to 'Follow', followships_path(following_id: user), method: :post , class: "btn btn-default" %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
