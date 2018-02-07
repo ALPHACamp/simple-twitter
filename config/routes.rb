@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users
 
-  resources :tweets, only: [:index, :show, :create, :destroy]
+  resources :tweets, only: [:index, :show, :create, :destroy] do
+    resources :replies, only: [:create, :destroy]
+  end
+
 
   root "tweets#index"
 
