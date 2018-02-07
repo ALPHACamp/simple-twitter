@@ -250,7 +250,19 @@ header .container-fluid {
   text-decoration: none;
 }
 
-.tweetlist .likelink .badge {
+.unlikelink {
+  color: #007979;
+  text-decoration: none;
+  padding-right: 10px;
+}
+
+.unlikelink:hover, .unlikelink:focus {
+  color: #00AEAE;
+  text-decoration: none;
+}
+
+
+.tweetlist .likelink .badge, .tweetlist .unlikelink .badge,{
   display: inline-block;
   min-width: 10px;
   padding: 3px 7px;
