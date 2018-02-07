@@ -10,7 +10,7 @@ class Admin::TweetsController < Admin::BaseController
     @tweet = Tweet.find(params[:id])
     @tweet.destroy
     flash[:alert] = "Tweet destroyed"
-    redirect_to action: :index
+    redirect_to admin_root_path
   end
 
   def update_count
