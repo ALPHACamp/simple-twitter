@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users
   # 請依照專案指定規格來設定路由
-  resources :users, only: [:index, :show, :edit, :update] do
+  resources :users, only: [:index, :edit] do
     member do
       get :tweets
       get :followings
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end  
   end  
 
-  resources :tweets, only: [:index, :create, :show] do
+  resources :tweets, only: [:index, :create] do
     resources :replies, only: [:index, :create] #使用者能回覆別人的推播    
 
     member do
