@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-User.destroy_all
+#User.destroy_all
 User.create(email: "root@example.com", name: "root" , password:"12345678", role:"admin")
 puts " #{User.count} users data"
 

@@ -1,8 +1,6 @@
-
-
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-8">
       <div class="col-md-12">
         <!-- 新增的評論 -->
         <%= form_for [@user,@tweet] do |f| %>
@@ -16,18 +14,22 @@
       </div>
       <% @tweets.each do |tweet| %>
         <div class="col-md-12">
-          <div class="tweet-item">
-            <%= image_tag tweet.user.avatar , size: "100", class: "img-responsive center-block" if tweet.user.avatar?%>
-            <p class="description"><%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></p>
-            
-            <p class="description"><%= tweet.user.name  %></p>
-            <p class="description"><%= tweet.user.name %></p>
+          <div class="tweet-detail">
+            <div class="col-md-3">
+              <%= image_tag tweet.user.avatar , size: "100", class: "img-responsive center-block" if tweet.user.avatar?%>
+            </div>
+            <div class="col-md-9">
+              <p class="description"><%= tweet.user.name  %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></p>
+              <p class="description"><%= tweet.description  %></p>
+              <%= link_to "test", tweet_replies_path(tweet) %>
+        
+              <p class="description">Reply(<%= tweet.replies.count %>)</p>
+            </div>
           </div>
         </div>
       <% end %>
-    
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="row">
        <div class="col-md-12">
         <%= form_for [@user,@tweet] do |f| %>
