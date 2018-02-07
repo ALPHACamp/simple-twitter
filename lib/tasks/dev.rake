@@ -14,7 +14,7 @@ namespace :dev do
         avatar: file
       )
       
-      if i == 1
+      if i == 0
         user.role = "admin"
       end
       
