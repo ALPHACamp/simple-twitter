@@ -7,16 +7,19 @@ class UsersController < ApplicationController
   end
 
   def edit
+    unless @user == current_user
+      redirect_to tweets_user_path(@user)
+    end
   end
 
   def update
-      if current_user.update(user_params)
-        redirect_to tweets_user_path(current_user)
-        flash[:notice] = "#{current_user.name} was successfully updated"
-      else
-        render :edit
-        flash[:alert] = "#{current_user.name} was failed to update"
-      end
+    if current_user.update(user_params)
+      redirect_to tweets_user_path(current_user)
+      flash[:notice] = "#{current_user.name} was successfully updated"
+    else
+      render :edit
+      flash[:alert] = "#{current_user.name} was failed to update"
+    end
   end
 
   def followings
