@@ -17,7 +17,6 @@ body {
   box-sizing: border-box;
 }
 
-
 ul, ol, li {
   list-style: none;
   margin: 0px;
@@ -26,6 +25,7 @@ ul, ol, li {
 
 a, a:hover, a:focus {
   text-decoration: none;
+  color: #669BC7;
 }
 
 img {
@@ -44,6 +44,81 @@ section{
   display: table;
 }
 
+.nav{
+  background-color: #AEC9D6;
+  border: none;
+  border-radius: 0;
+}
+
+.navbar-default .navbar-brand {
+  color: #333;
+  font-weight: 900;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #333;
+  font-weight: 900;
+}
+
+h2, h3{
+  color: #1D778C;
+  font-weight: 900;
+}
+
+.form-control{
+  border: 2px solid #A1CDE3;
+  border-radius: 7px;
+  box-shadow: none;
+}
+
+.btn-default {
+  color: #254865;
+  background-color: #669BC7;
+  border: none;
+  font-weight: 900;
+  border-radius: 7px;
+}
+
+.reply-btn{
+  display: inline-block;
+  color: #92B6C8;
+  font-weight: 900;
+  margin-right: 15px;
+}
+
+.like-num{
+  display: inline-block;
+  color: #F58A8A;
+  font-weight: 900;
+}
+
+.heart{
+  display: inline-block;
+  font-size: 17px;
+  color: #F58A8A;
+  margin-right: 20px;
+  font-weight: 200;
+}
+
+.profile-intro{
+  color: #669BC7;
+}
+
+.profile-link{
+  color: #545454;
+  font-weight: 900;
+  font-size: 17px;
+  line-height: 28px;
+}
+
+.profile-btn{
+  margin-top: 15px;
+}
+
+.btn-right{
+  float: right;
+}
+
 .container {
   width: 85%;
   max-width: 1170px;
@@ -54,6 +129,7 @@ section{
 .nav-a, .nav p{
   display: inline-block;
   margin: 15px 5px;
+  color: #1D778C;
 }
 
 .remind{

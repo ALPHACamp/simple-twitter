@@ -22,9 +22,9 @@
         <div class="form-group">
           <%= f.text_area :introduction, placeholder: "Type anything about you here...", size: "1x6", class: "form-control" %>
         </div>
-
-        <%= link_to 'Cancel', tweets_user_path(@user), class: "btn btn-default btn-next" %>
-        <%= f.submit class: "btn btn-default"%>
+        
+        <%= f.submit 'Update', class: "btn btn-default btn-right"%>
+        <%= link_to 'Cancel', tweets_user_path(@user), class: "btn btn-default btn-next btn-right" %>
       </div>
     <% end %>
   </div>
