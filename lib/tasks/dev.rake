@@ -9,10 +9,10 @@ namespace :dev do
 
       user = User.new(
         name: name,
-        email: "user#{i}@mail.co",
-        password: "000000",
-        # email: "#{name}@mail.co",
-        # password: "123456",
+        # email: "user#{i}@mail.co",
+        # password: "000000",
+        email: "#{name}@mail.co",
+        password: "123456",
         introduction: FFaker::Lorem::sentence(30),
         avatar: file
       )
