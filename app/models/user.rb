@@ -18,9 +18,22 @@ class User < ApplicationRecord
   has_many :followed, class_name: "Followship" , foreign_key: :following_id
   has_many :followers, through: :followed, source: :user
   has_many :likes
+  has_many :like_tweets, through: :likes, source: :tweet
 
   def admin?
     return true if self.role == "admin"
+  end
+
+  def follow?(following_id)
+    return true if self.followships.where(following_id: following_id).first != nil
+  end
+
+  def like?(tweet_id)
+    return true if self.likes.where(tweet_id: tweet_id).first != nil
+  end
+
+  def tweet?(tweet_id)
+    return true if self.tweets.find_by(id: tweet_id) != nil
   end
 
 end

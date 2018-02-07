@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <% if current_user.avatar.url %>
+        <%= image_tag current_user.avatar.url, class: "img-fluid img-thumbnail" %>
+      <% else %>
+        THere is no photo
+      <% end %>
+    </div>
+
+    <div class="col-9">
+      <%= form_for @user do |user| %>
+        <div class="form-group">
+          <%= user.text_field :name, class: "form-control" %>
+          <%= user.text_area :introduction,rows: "5", class: "form-control"%>
+          <%= user.submit "Update", class: "btn btn-primary" %>
+        </div>          
+      <% end %>
+    </div>
+  </div>
+</div>

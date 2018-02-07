@@ -1,15 +1,31 @@
-<h1>This is reply index</h1>
-<div class="reply_rigth_top">
-  <%= @tweet.description %>
-  <%= link_to @tweet.user.name, tweets_user_path(@tweet.user) %>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= render :partial => "shared/profile", locals: {user: current_user} %>
+    </div>
+
+    <div class="col-7">
+      <div class="reply_rigth_top">
+        <h3>Tweet</h3>
+        <%= render :partial => "shared/tweet_list", locals: {tweet: @tweet} %>
+
+        <h3>Reply</h3>
+        <% @replies.each do |reply| %>
+          <%= render :partial => "shared/reply_list", locals:{ reply: reply } %>
+        <% end %>
+
+        <%= form_for :reply do |reply| %>
+          <div class="form-group">
+            <%= reply.hidden_field :tweet_id, :value => @tweet.id %>
+            <%= reply.text_field :comment,class: "form-control", placeholder: "Comment" %>
+            <%= reply.submit "Comment", class: "btn btn-primary" %>
+          </div>  
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
-<% @replies.each do |reply| %>
-  <%= render :partial => "shared/reply_list", locals:{ reply: reply } %>
-<% end %>
 
-<%= form_for :reply do |reply| %>
-  <%= reply.hidden_field :tweet_id, :value => @tweet.id %>
-  <%= reply.text_field :comment, placeholder: "Comment" %>
-  <%= reply.submit "Comment" %>
-<% end %>
+
+        

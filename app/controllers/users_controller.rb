@@ -5,9 +5,11 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = current_user
   end
 
   def update
+    @user = current_user.update(user_params)
   end
 
   def followings
@@ -19,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def likes
-    @likes = current_user.likes # 基於測試規格，必須講定變數名稱
+    @likes = current_user.like_tweets.all # 基於測試規格，必須講定變數名稱
   end
 
   private
@@ -29,7 +31,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :intro, :avatar)
+    params.require(:user).permit(:name, :introduction, :avatar)
   end
 
 end

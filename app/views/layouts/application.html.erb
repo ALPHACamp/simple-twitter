@@ -9,20 +9,27 @@
   </head>
 
   <body>
-    <% if current_user %>
-      <% if current_user&.admin? %>
-        <li><%= link_to 'Admin Panel', admin_restaurants_path %></li>
-      <% end %>
-      <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
-      <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
-      <li><%= link_to('修改個人資料', edit_user_path(current_user)) %></li>
-      <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
-    <% else %>
-      <li><%= link_to('註冊', new_user_registration_path) %></li>
-      <li><%= link_to('登入', new_user_session_path) %></li>
-    <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="container-fluid">
+      <ul class="list-inline">
+        <% if current_user %>
+          <% if current_user&.admin? %>
+            <li class="list-inline-item"><%= link_to 'Admin Panel', admin_restaurants_path %></li>
+          <% end %>
+
+          <li class="list-inline-item"><p class="navbar-text">Hi, <%= current_user.name %></p></li>
+          <li class="list-inline-item"><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
+          <li class="list-inline-item"><%= link_to('修改個人資料', edit_user_path(current_user)) %></li>
+          <li class="list-inline-item"><%= link_to('修改密碼', edit_user_registration_path) %></li>
+        <% else %>
+          <li class="list-inline-item"><%= link_to('註冊', new_user_registration_path) %></li>
+          <li class="list-inline-item"><%= link_to('登入', new_user_session_path) %></li>
+        <% end %>
+      </ul>
+        
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+    </div>
+      
     <%= yield %>
   </body>
 </html>

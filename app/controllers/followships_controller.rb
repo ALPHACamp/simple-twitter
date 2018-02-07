@@ -4,5 +4,7 @@ class FollowshipsController < ApplicationController
   end
 
   def destroy
+    @followship = current_user.followships.find_by(following_id: params[:id])
+    @followship.destroy
   end
 end

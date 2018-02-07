@@ -1,4 +1,18 @@
-<h1>this is followers page</h1>
-<% @followers.each do |follower| %>
-  <%= follower.name %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= render :partial => "shared/profile", locals: {user: current_user} %>
+    </div>
+
+    <div class="col-9">
+      <div class="row">
+        <% @followers.each do |follower| %>
+          <div class="col-6">
+            <%= render :partial => "shared/user_list", locals: {user: follower} %>
+          </div>
+        <% end %>
+      </div>
+        
+    </div>
+  </div>
+</div>

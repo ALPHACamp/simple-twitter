@@ -9,6 +9,16 @@
   </div>
 
   <div class="field">
+    <%= f.label :introduction %><br />
+    <%= f.text_field :introduction, autocomplete: "intro" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :avatar %><br />
+    <%= f.file_field :avatar, autocomplete: "avatar" %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>

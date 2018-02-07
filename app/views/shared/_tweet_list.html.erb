@@ -1,9 +1,32 @@
-<div id="tweet-<%= tweet.id %>">
-  <h1>
-    <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
-  </h1>
-  <p>
-    <%= tweet.description %>
-    <%=link_to tweet.replies_count, replies_path(tweet) %>
-  </p>
+<div id="tweet-<%= tweet.id %>" class="border rounded">
+  <div class="row">
+    <div class="col-3">
+      <% if tweet.user.avatar.url %>
+        <%= image_tag tweet.user.avatar.url, class: "img-fluid img-thumbnail" %>
+      <% else %>
+        THere is no photo
+      <% end %>
+    </div>
+
+    <div class="col-9">
+      <h5>
+        <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>, <%= tweet.created_at %>
+      </h5>
+      <p>
+        <%= tweet.description %>
+      </p>
+      <span>
+        <%= link_to " replies (#{tweet.replies_count})", replies_path(tweet), class: "btn btn-outline-primary" %>
+      </span>
+      <span>
+        <% if current_user&.like?(tweet.id) %>
+          <%= link_to "unlike (#{tweet.likes.count})", unlike_tweet_path(tweet),class: "btn btn-outline-danger", method: :post %>
+        <% elsif current_user&.tweet?(tweet.id) %>
+
+        <% else %>
+          <%= link_to "likes (#{tweet.likes.count})", like_tweet_path(tweet),class: "btn btn-outline-primary", method: :post %>
+        <% end %>
+      </span>
+    </div>
+  </div>  
 </div>

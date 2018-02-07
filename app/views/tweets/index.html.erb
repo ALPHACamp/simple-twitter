@@ -1,17 +1,29 @@
-<h1>This is Tweet index</h1>
-<%= form_for :tweet do |tweet| %>
-  <%= tweet.text_field :description, placeholder: "What's on your mind?"  %>
-  <%= tweet.submit "Submit" %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <%= form_for :tweet do |tweet| %>
+        <div class="form-group">
+          <%= tweet.text_area :description,rows: "5", class: "form-control", placeholder: "What's on your mind?"  %>
+          <%= tweet.submit "tweet", class: "btn btn-primary" %>
+        </div>
+      <% end %>
 
-<div class="all-tweet">
-  <% @tweets.each do |tweet| %>
-    <%= render :partial => "shared/tweet_list", locals: {tweet: tweet} %>
-  <% end %>
+      <div class="all-tweet container">
+        <% @tweets.each do |tweet| %>
+          <%= render :partial => "shared/tweet_list", locals: {tweet: tweet} %>
+        <% end %>
+      </div>
+
+    </div>
+
+    <div class="col-4">
+      <h2>Popular</h2>
+      <div class="border">
+        <% @users.each do |user| %>
+          <%= render :partial => "shared/user_list", locals: {user: user} %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="popular">
-  <% @users.each do |user| %>
-    <%= render :partial => "shared/user_list", locals: {user: user} %>
-  <% end %>
-</div>

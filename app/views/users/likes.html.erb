@@ -1,5 +1,15 @@
-<h1>this is likes page</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= render :partial => "shared/profile", locals: {user: current_user} %>
+    </div>
 
-<% @likes.each do |like| %>
-  <%= like.name %>
-<% end %>
+    <div class="col-9">
+        <% @likes.each do |tweet| %>
+          <div>
+            <%= render :partial => "shared/tweet_list", locals: {tweet: tweet} %>
+          </div>
+        <% end %>        
+    </div>
+  </div>
+</div>

@@ -1,3 +1,26 @@
-<div id="user-<%= user.id %>">
-  <%= link_to user.name, tweets_user_path(user) %>
+
+<div id="user-<%= user.id %>" class="container border rounded">
+  <div class="row">
+    <div class="col-3">
+      <% if user.avatar.url %>
+        <%= image_tag user.avatar.url, class: "img-fluid img-thumbnail" %>
+      <% else %>
+        THere is no photo
+      <% end %>
+    </div>
+
+    <div class="col-9">
+      <h5><%= link_to user.name, tweets_user_path(user) %></h5>
+      <p>
+        <%= user.introduction %>
+      </p>
+      <span>
+        <% if current_user&.follow?(user.id) %>
+          <%= link_to "Unfollow", followship_path(user), method: :delete %>
+        <% else %>
+          <%= link_to "Follow", followships_path(id:user), method: :post %>
+        <% end %>
+      </span>
+    </div>
+  </div>
 </div>
