@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # 後台首頁：管理者登入網站後，能夠進入後台頁面
   namespace :admin do
     root "tweets#index"
+    resources :tweets, only: [:index, :destroy]
   end
 
 
