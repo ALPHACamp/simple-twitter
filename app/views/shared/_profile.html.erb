@@ -1,28 +1,20 @@
-<div class="card" style="width: 18rem;">
-  <%= image_tag user.avatar, class: "card-img-top" %>
-  <div class="card-body">
-    <h5 class="card-title"><%= @user.name%></h5>
-    <p class="card-text"><%= @user.introduction%></p>
+  <div class="card" style="width: 18rem;">
+    <%= image_tag @user.avatar, class: "card-img-top rounded" %>
+    <div class="card-body">
+      <h5 class="card-title"><%= @user.name%></h5>
+      <p class="card-text"><%= @user.introduction%></p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><%= link_to "Tweets #{@tweets.size}", tweets_user_path(@user)%></li>
+      <li class="list-group-item"><%= link_to "Following #{@user.followships.size}",followings_user_path(@user)%></li>
+      <li class="list-group-item"><%= link_to "Follower #{@user.followers_count}",followers_user_path(@user)%></li>
+      <li class="list-group-item"><%= link_to "Like #{@user.likes_count}",likes_user_path(@user)%></li>
+    </ul>
+    <div class="card-body">
+      <% if @user != current_user %>
+        <%= link_to "Follow",followships_path(id: current_user, following_id: @user.id), :method => "post",class: "btn btn-primary"  %>
+      <%else%>
+        <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-primary" %>
+      <% end%>
+    </div>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Tweets <%= @tweets.size%></li>
-    <li class="list-group-item">Following</li>
-    <li class="list-group-item">Follower</li>
-    <li class="list-group-item"><%= link_to "Like #{user.likes_count}",likes_user_path(@user)%></li>
-  </ul>
-  <div class="card-body">
-    <%= link_to "Edit Profile", edit_user_path(@user), class: "card-link" %>
-  </div>
-</div>
-
-
-
-<p>avatar</p>
-<%= @user.name %> 
-<p><%=@user.introduction%></p>
-<p> Tweet Count:<%= @tweets.size%></p>
-<p> Followcount</p>
-<p> Followercount</p>
-<%= link_to "Like Count: #{@user.likes_count}",likes_user_path(@user)%>
-<%= link_to "Edit Profile", edit_user_path(@user) %>
-<p>

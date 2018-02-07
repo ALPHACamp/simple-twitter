@@ -19,12 +19,14 @@ class UsersController < ApplicationController
 
   def followings
     @user = User.find(params[:id])
-    @followings = @user.followships.all# 基於測試規格，必須講定變數名稱
+    @tweets = Tweet.where(user_id: @user)
+    @followings = @user.followings# 基於測試規格，必須講定變數名稱
   end
 
   def followers
     @user = User.find(params[:id])
-    @followers = Followship.where(following_id: @user.id) # 基於測試規格，必須講定變數名稱
+    @tweets = Tweet.where(user_id: @user)
+    @followers = @user.followers # 基於測試規格，必須講定變數名稱
   end
 
   def likes

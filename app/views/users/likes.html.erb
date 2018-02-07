@@ -1,30 +1,11 @@
-<h1>Users#like</h1>
-
-
-<p>Profile</p>
-<p>avatar</p>
-<%= @user.name %>
-<p><%=@user.introduction%></p>
-<p><%= link_to "tweetscount:#{@tweets.count}",tweets_user_path(@user)%></p>
-<p> Followcount</p>
-<p> Followercount</p>
-<p><%= link_to "Like Count : #{@user.likes.count}",likes_user_path(@user)%></p>
-<p>Follow</p>
-
-
-
-<ul>
-<% @likes.each do |like|%>
-  <li>
-    <%= like.tweet.user.name%>
-    <%= like.created_at%>
-    <%= like.tweet.description  %>
-    <%=link_to "reply", tweet_replies_path(like.tweet_id)%>
-      Reply Count: <%= like.tweet.replies.count%>
-      Like Count : <%= like.tweet.likes_count%>
-    <%= render partial: "shared/like", locals:{tweet: like.tweet}%>
-  
-    </li>
-  </li>
-<% end %>
-</ul>
+<div class="content col-md-4">
+  <%= render partial: "shared/profile" %>
+</div>
+<div class="content col-md-8">
+  <% @likes.each do |like|%>
+    <div class="media">
+      <%= image_tag like.user.avatar , class: "align-self-center mr-3 avatar rounded"%>
+      <%= render partial: "shared/tweet", locals:{tweet: like.tweet} %>
+    </div>
+  <% end %>
+</div>

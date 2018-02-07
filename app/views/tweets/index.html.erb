@@ -1,14 +1,13 @@
 <div class="content col-md-8">
-  <%=form_for @tweet, html: {class: "col-md-12"}  do |f|%>
-    <div class="form-group">
+  <div class="form-group">
+    <%=form_for @tweet do |f|%>
       <%= f.text_area :description, class: "form-control text-area"%>
-    </div>
-    <div class="text-right">
-      <%=f.submit class: "btn btn-primary" %>
-    </div>
-  <%end%>
-  <br/>
-  <br/>
+      <div class="text-right">
+        <%=f.submit class: "btn btn-primary" %>
+      </div>
+    <%end%>
+  </div> 
+ 
   <% @tweets.each do |t| %>
     <div class="media">
       <%= image_tag t.user.avatar , class: "align-self-center mr-3 avatar rounded"%>

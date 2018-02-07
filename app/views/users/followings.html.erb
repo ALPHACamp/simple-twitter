@@ -1,16 +1,17 @@
-<p>Profile
-<p>avatar</p>
-<%= @user.name %> 
-<p><%=@user.introduction%></p>
-<p> Tweet Count</p>
-<p> Followcount</p>
-<p> Followercount</p>
- "Like Count:
- "Edit Profile"
-<p>
-<h1>Followings</h1>
-<% @followings.each do |f|%>
- <%= f.following.name %>
- <%= f.following.introduction %>
- <%= link_to "Unfollow",followship_path(following_id: f), :method => "delete" %>
-<%end%>
+<div class="conten col-md-4">
+  <%= render partial: "shared/profile"%>
+</div>
+<div class="content col-md-8">
+  <h4>Following</h4>
+  <% @followings.each do |f|%>
+    <div class="media small-profile col-md-6 float-left">
+      <%= image_tag f.avatar, class: "align-self-center mr-3 avatar rounded" %>
+      <div class="media-body">
+        <h5 class="mt-0">
+          <%= link_to "#{f.name}",tweets_user_path(f) %></h5>
+          <p><%= truncate(f.introduction,:length => 60)%></p>
+          <%= render partial: "shared/follow", locals:{user: f} %>
+      </div>
+    </div>
+  <%end%>
+</div>

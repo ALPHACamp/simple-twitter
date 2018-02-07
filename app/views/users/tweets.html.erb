@@ -1,31 +1,12 @@
-
-
-<p>Profile</p>
-<p>avatar</p>
-<%=@user.avatar%>
-<%= @user.name %>
-<p><%=@user.introduction%></p>
-<p> tweetscount:<%=@tweets.count%></p>
-<p> Followcount</p>
-<p> Followercount</p>
-<p><%= link_to "Like Count : #{@user.likes.count}",likes_user_path(@user)%></p>
-<% if @user != current_user %>
-  <h4><%= link_to "Follow",followships_path(following_id: @user.id), :method => "post" %></h4>
-<%else%>
-  <%=link_to"Edit Profile", edit_user_path(@user)%>
-<% end%>
-
-
-<ul>
-<% @tweets.each do |t| %>
-  <li>
-  <%= t.description %>
-  <%= t.created_at%>
-  <%=link_to "reply", tweet_replies_path(t)%>
-  Reply Count:<%= t.replies_count%>
-  <%= render partial: "shared/like", locals:{tweet: t}%>
-  Like Count : <%= t.likes_count %>
-  </li>
-<% end %>
-</ul>
+<div class="content col-md-4">
+  <%= render partial: "shared/profile" %>
+</div>
+<div class="content col-md-8">
+  <% @tweets.each do |t| %>
+    <div class="media">
+      <%= image_tag t.user.avatar , class: "align-self-center mr-3 avatar rounded"%>
+      <%= render partial: "shared/tweet", locals:{tweet: t}%>
+    </div>
+  <% end %>
+</div>
 
