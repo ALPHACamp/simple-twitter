@@ -23,7 +23,7 @@
       </div>
 
       <h1>Replise</h1>
-      <% @tweet.replies.each do |reply| %>
+      <% @replies.each do |reply| %>
 
         <div class="tweets"> <!-- each do 內包或外包待測試-->
           <%= image_tag reply.user.avatar, height: 75, width: 75 %>

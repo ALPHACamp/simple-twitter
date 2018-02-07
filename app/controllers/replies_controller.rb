@@ -3,6 +3,7 @@ class RepliesController < ApplicationController
   def index
     @tweet = Tweet.find(params[:tweet_id])
     @user = User.find(@tweet.user_id) #S15L1U3
+    @replies = Reply.where(tweet_id: @tweet.id).order(created_at: :desc) # editing
   end
 
   def create
