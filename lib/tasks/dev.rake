@@ -18,6 +18,16 @@ namespace :dev do
       user.save!
       puts user.name
     end
+    admin_file = File.open("#{Rails.root}/public/avatar/user1.jpg")
+    User.create!(
+      name: "admin",
+      email: "admin@admin.com",
+      password: "12345678",
+      introduction: FFaker::Lorem::sentence(30),
+      avatar: admin_file,
+      role: "admin"
+    )
+    puts "default admin user created"
   end
 
 end
