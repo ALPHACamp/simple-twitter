@@ -14,6 +14,8 @@ class User < ApplicationRecord
   # 當 user 被刪除時，順便刪除依賴的 tweets
   has_many :tweets, dependent: :destroy
 
+  has_many :replies
+
 
   def admin?
     self.role == "admin"
