@@ -80,3 +80,53 @@
 .user-profile .btn.btn-default {
   display: block;
 }
+
+/*edit user profile page*/////////////////////////////////////////////
+#edit-user-page form {
+  display: grid;
+  grid-template-columns: 30% 1fr 1fr;
+  grid-template-rows: 20% 1fr 15%;
+  margin: 30px 20px;
+}
+
+#edit-user-page form > div {
+  grid-column: 1/2;
+  grid-row: 1/-1;
+}
+
+#edit-user-page form > div img {
+  width: 200px;
+}
+
+.upload-btn {
+  margin: 20px auto 0 20px;
+  display: block;
+}
+
+.upload-btn span {
+  display: none;
+}
+
+#edit-user-page form input[placeholder="Name"] {
+  grid-column: 2/-1;
+  grid-row: 1/2;
+  border: 2px #99D1F5 solid;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  height: 40px;
+}
+
+#edit-user-page form textarea {
+  grid-column: 2/-1;
+  grid-row: 2/3;
+  resize: none;
+  border: 2px #99D1F5 solid;
+  border-radius: 5px;
+}
+
+#edit-user-page form input[type=submit] {
+  grid-column: 3/-1;
+  grid-row: 3/-1;
+  margin-right: 0;
+  margin-left: auto;
+}
