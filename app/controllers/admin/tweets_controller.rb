@@ -6,14 +6,14 @@ class Admin::TweetsController < Admin::BaseController
   end
 
   def destroy
-    if current_user.admin?
+    # if current_user.admin?
       flash[:notice] = "Tweet by \"#{@tweet.user.name}\" was successfully deleted"
       @tweet.destroy
-      redirect_back(fallback_location: root_path)
-    else
-      flash[:alert] = 'Not allow!'
-      redirect_back(fallback_location: root_path)
-    end
+      redirect_to admin_root_path
+    # else
+    #   flash[:alert] = 'Not allow!'
+    #   redirect_back(fallback_location: root_path)
+    # end
   end
 
   private
