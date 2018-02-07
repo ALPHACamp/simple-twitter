@@ -1,6 +1,6 @@
 <div class="tweetlist">
         
-  <% @tweets.each do |tweet| %>
+  <% tweets.each do |tweet| %>
     
     <div class="container"><!-- 包住每一條tweet /start -->
 
@@ -41,10 +41,18 @@
           <%= link_to replies_path(tweet), class: "replylink" do %>
             Reply <%= content_tag :span, tweet.replies_count, class: "badge" %>
           <% end %>
-       
-          <%= link_to '#counts', class: "likelink" do  %>
+          
+          <!-- 判別current_user是否有Like該tweet -->
+          <% if current_user.liked_tweet?(tweet) %>
+            <%= link_to unlike_tweet_path(tweet) ,method: :destroy, class: "unlikelink" do  %>
+            Unlike <%= content_tag :span, tweet.likes_count, class: "badge" %>
+            <% end %>
+          <% else %>
+            <%= link_to like_tweet_path(tweet) ,method: :post, class: "likelink" do  %>
             Like <%= content_tag :span, tweet.likes_count, class: "badge" %>
+            <% end %>
           <% end %>
+          
         </div>
 
       </div>
