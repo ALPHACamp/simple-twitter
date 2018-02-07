@@ -33,14 +33,14 @@ namespace :dev do
     puts "30 個 Tweets 已創建"
     
     Reply.destroy_all
-    30.times do |i|
+    68.times do |i|
       Reply.create!(
         comment: "這是有的沒的回覆",
         user_id: User.all.sample.id,
         tweet_id: Tweet.all.sample.id
         )
     end
-    puts "30 個 Replies 已創建"
+    puts "68 個 Replies 已創建"
     
     
     
