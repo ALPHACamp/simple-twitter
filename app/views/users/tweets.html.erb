@@ -1,6 +1,14 @@
 <div class="container">
   <div class="row">
-    <h1 class="text-center">This is tweets index</h1>
+    <div class="col-md-4">
+      <%= image_tag @user.avatar, width: "200px", class: "img-responsive center-block" %>
+      <h1 class="text-center"><%= @user.name %></h1>
+      <p class="wrap"><%= @user.introduction %></p>
+      <p>Tweets <%= @tweets.count %></p>
+      <% if @user == current_user %>
+        <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-primary" %>
+      <% end %>
+    </div>
     <div class="col-md-8">
       <% @tweets.each do |tweet| %>
         <div class="tweet-well clearfix">
@@ -14,8 +22,10 @@
           </div>
         </div>
       <% end %>
+      <div class="text-center">
+        <%= paginate @tweets %>
+      </div>
     </div>
-    <div class="col-md-4"></div>
   </div>
 </div>
 
