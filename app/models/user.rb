@@ -15,6 +15,10 @@ class User < ApplicationRecord
 
   validates_uniqueness_of :name
 
+  has_many :tweets, dependent: :destroy
+  has_many :replies, dependent: :destroy
+  has_many :likes, dependent: :destroy
+
   def admin?
     self.role == "admin"
   end
