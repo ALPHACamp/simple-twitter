@@ -3,7 +3,7 @@
     <h1>前台</h1>
     
     
-    <div>
+    <div class="col-md-8">
       <% @tweets.each do |tweet| %>
           <div class="seinbg">
             <%= image_tag(tweet.user.avatar, height: 60, width: 60, class: "img-circle") %>
@@ -12,13 +12,26 @@
           </div>
       <% end %>
     </div>
+
+    <div class="col-md-4">
+      <ul>
+
+  <% @users.each do |user| %>
+    <li>
+      <%= user.name %>
+      <%= link_to 'Follow' %>
+    </li>
+  <% end %>
+
+</ul>
+    </div>
     
   </div>
 </div>
 
 <style>
   .seinbg{
-    width: 500px;
+    
     border-style: solid;
     border-width: 1px 1px 1px 1px;
     border-color: #eee;

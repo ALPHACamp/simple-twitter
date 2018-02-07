@@ -21,4 +21,7 @@ class User < ApplicationRecord
   has_many :replies, dependent: :restrict_with_error
   has_many :tweets, through: :replies
 
+  has_many :followships, dependent: :destroy
+  has_many :followings, through: :followships
+
 end
