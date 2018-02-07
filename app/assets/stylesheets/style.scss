@@ -1,6 +1,6 @@
 
 body {
-  padding-top: 20px;
+  padding-top: 90px;
 }
 
 .container {
@@ -12,4 +12,9 @@ body {
   right: 15px;
   margin: auto;
   background:#e3f2fd;
+}
+
+.my-tweet{
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem; 
 }
