@@ -3,7 +3,7 @@
   <%= puts "get in edit.html.erb" %>
   <%= puts "#{@user}" %>
   <%= puts "current_user" %>
-  <%= form_for @user, :url => edit_user_path do |f| %>
+  <%= form_for @user do |f| %>
   <div class="col-md-3">
     <div class = "box">
       <%= image_tag @user.avatar, class: "img-responsive img-circle" %>

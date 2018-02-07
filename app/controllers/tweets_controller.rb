@@ -1,7 +1,7 @@
 class TweetsController < ApplicationController
 
   def index
-    @tweets = Tweet.all.order(created_at: :desc)#.limit(10)
+    @tweets = Tweet.order(created_at: :desc)#.limit(10)
     # @tweet = current_user.tweets.build(user_id: params[:user_id])
     # puts "Yes, you enter index!"
     # if params[:id]
