@@ -13,7 +13,8 @@
           <p><%= simple_format tweet.description %></p>
           <%= link_to 'Reply('+tweet.replies.length.to_s+')', tweet_replies_path(tweet) %>
           <%= 'Like('+tweet.liked_users.length.to_s+')' %>
-          <%= render partial: "shared/like", locals: {tweet: tweet} %><hr>
+          <%= render partial: "shared/like", locals: {tweet: tweet} %>
+          <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sore?"}, class: "btn btn-default" %><hr>
           <% tweet.replies.each do |reply| %>
             <div class="all-tweet-reply">
               <% for img_id in 0..26 %>
