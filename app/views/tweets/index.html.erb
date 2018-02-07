@@ -1,1 +1,12 @@
-<h1>Twitter 前台</h1>
+<ul>
+  <% @tweets.each do |tweet| %>
+  <li>
+    <%= image_tag tweet.user.avatar %>
+    <p><%= tweet.user.name %></p>
+    <p><%= tweet.created_at %></p>
+    <p><%= tweet.description %></p>
+    <p>Replye(<%= tweet.replies_count %>)</p>
+    <p>Like(<%= tweet.likes_count %>)</p>
+  </li>
+  <% end %>
+</ul>

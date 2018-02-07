@@ -12,6 +12,9 @@ class User < ApplicationRecord
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
   validates :name, uniqueness: {message: "已被他人註冊"}
 
+  #使用者的tweets
+  has_many :tweets
+
   def admin?
     self.role == "admin"
   end
