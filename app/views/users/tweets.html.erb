@@ -9,7 +9,7 @@
     <div class="col-md-8">
 
       <!-- tweets /start-->
-      <%= render partial: "shared/tweets" %>
+      <%= render partial: "shared/tweets", locals: {tweets: @tweets} %>
       <!-- tweet /end-->
 
     </div>

@@ -3,7 +3,7 @@
 
     <!-- form & tweets list /start -->
     <div class="col-xs-12 col-md-8">
-      <h3>進度: Like link未完成</h3>
+  
       <!-- form for creating tweet / start -->
       <div class="tweetform" >
         <div class="form-group">
@@ -25,7 +25,7 @@
       <!-- form for creating tweet / end -->
       
       <!-- tweets list /start-->
-      <%= render partial: "shared/tweets" %>
+      <%= render partial: "shared/tweets", locals: {tweets: @tweets} %>
       <!-- tweets list /end-->
 
     </div><!-- form & tweets list /end -->
