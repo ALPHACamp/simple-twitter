@@ -19,22 +19,7 @@
     <div class="col-md-4">
       <h3 class="title">Popular</h3>
       <% @users.each do |u| %>
-        <div class="pop-user">
-          <div class="row">
-            <div class="col-md-4">
-              <%= image_tag u.avatar %>
-            </div>
-            <div class="col-md-8">
-              <%= link_to "@#{u.name}", tweets_user_path(u), class: "name" %>
-              <p><%= u.introduction %></p>
-              <div class="button-group">
-                <% if u != current_user %>
-                  <%= render partial: "shared/follow", locals: { u: u} %>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
+          <%= render partial: "shared/user_follow", locals: { user: u} %>
       <% end %>
     </div>
   </div>
