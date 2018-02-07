@@ -1,0 +1,12 @@
+<% tweets.each do |tweet| %>
+  <div class="card" style="width: 40rem;">
+    <img class="card-img" src="..." alt="Card image cap">
+    <div class="card-block">
+      <small class="text-muted">
+        <%= tweet.user.name %>,
+        <%= tweet.created_at.to_formatted_s(:db)%>
+      </small>
+      <p class="card-text"><%= truncate(tweet.description,  length: 80) %></p>
+    </div>
+  </div>
+<% end %>
