@@ -29,5 +29,18 @@ namespace :dev do
     )
     puts "default admin user created"
   end
+  
+  task fake_tweet: :environment do
+    Tweet.destroy_all
 
+    User.all.each do |user|
+      rand(1..20).times do
+        user.tweets.create(
+          description: FFaker::Lorem::sentence(8)
+        )
+      end
+    end
+    puts "have created fake tweets"
+    puts "now you have #{Tweet.count} tweets data"
+  end
 end
