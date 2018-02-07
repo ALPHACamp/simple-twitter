@@ -1,17 +1,6 @@
 <div id="replies" class="container">
   <div class="col-md-3">
-      <%= image_tag @tweet.user.avatar %>
-      <h3 class="name"><%= @tweet.user.name %></h3>
-      <p class="content"><%= @tweet.user.introduction %></p>
-      <div class="info">
-        <p class="count">Tweets<span><%= @tweet.user.tweets.count %></span></p>
-        <p class="count">Following<span><%= @tweet.user.followings.count %></span></p>
-        <p class="count">Follower<span><%= @tweet.user.followers_count %></span></p>
-        <p class="count">Like<span><%= @tweet.user.likes_count %></span></p>
-      </div>
-      <% if @tweet.user != current_user %>
-        <%= render partial: "shared/follow", locals: { u: @tweet.user} %>
-      <% end %>
+      <%= render partial: "shared/info", locals: { user: @tweet.user} %>
   </div>
   <div class="col-md-9">
     <h3 class="title">tweets</h3>
