@@ -7,28 +7,13 @@
    </div>
 <% end %>
 
+
 <div class="tweets">
+      <% @tweets.each do |tweet| %>
+        <%= render partial: "shared/message", locals: {message: tweet, message_content: tweet.description, message_btn: true} %>
+      <% end %>
+    </div>
 
-   <% @tweets.each do |tweet| %>
-
-     <div class="tweet-item">
-       <div class="avatar">
-         <%= image_tag tweet.user.avatar, size: "100" if tweet.user.avatar? %>
-       </div>
-       <div>
-         <p>
-           <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
-           <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %>
-         </p>
-         <p><%= tweet.description %></p>
-         <div>
-           <%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet), class: "links" %>
-           <%= render partial: "shared/like", locals: {tweet: tweet} %>
-         </div>
-       </div>
-     </div>
-   <% end %>
- </div>
 
 
 

@@ -3,6 +3,7 @@
   <p></p>
   <div class="intro">
     <%= user.introduction %>
+  </div>
   <div class="items">
     <%= link_to "Tweets #{user.tweets.size}", tweets_user_path(user), class: "links links-black" %><br/>
     <%= link_to "Following #{user.followings.count}", followings_user_path(user), class: "links links-black" %><br/>
