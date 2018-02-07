@@ -10,7 +10,7 @@
 
     <h1>Like</h1>
     <% @likes.each do |like| %>
-      <%= render partial: "shared/message", locals: {message: like, is_tweet: true} %>
+      <%= render partial: "shared/message", locals: {message: like, is_tweet: true, with_reply: false} %>
     <% end %>
     <div class="text-center"><%= paginate @likes %></div>
 

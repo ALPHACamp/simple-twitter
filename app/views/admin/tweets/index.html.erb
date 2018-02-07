@@ -5,6 +5,6 @@
 <br><h1>All tweets</h1>
 <!-- show tweets -->
 <% @tweets.each do |tweet| %>
-  <%= render partial: "shared/message", locals: {message: tweet, is_tweet: true} %>
+  <%= render partial: "shared/message", locals: {message: tweet, is_tweet: true, with_reply: true} %>
 <% end %>
 <div class="text-center"><%= paginate @tweets %></div>
