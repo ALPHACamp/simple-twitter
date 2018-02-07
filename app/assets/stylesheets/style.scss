@@ -76,12 +76,17 @@ img {
   width: 100%;
   height: auto;
   display: block;
+	border-radius: 5px;
 }
 
 .clearfix::after  {
   content: "";
   display: table;
   clear: both;
+}
+
+.col-md-9 {
+	padding-left: 50px;
 }
 
 .navbar {
@@ -249,9 +254,6 @@ input[type="file"] {
 		height: 100px;
 		padding: 10px;
 		border: 2px solid #A8CDDF;
-	}
-	.col-md-9 {
-		padding-left: 50px;
 	}
 	.title {
 		margin-bottom: 20px;
