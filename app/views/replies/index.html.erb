@@ -1,4 +1,4 @@
-
+<%= link_to "@#{@tweet.user.name},", tweets_user_path(@tweet.user), class: "btn btn-primary" %>
 <%= @tweet.description %>
 <%= @tweet.created_at %>
 
