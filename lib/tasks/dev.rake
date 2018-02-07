@@ -24,13 +24,25 @@ namespace :dev do
     puts "20 個使用者已創建"
     
     Tweet.destroy_all
-    100.times do |i|
+    30.times do |i|
       Tweet.create!(
         description: FFaker::Lorem.sentence,
         user_id: User.all.sample.id
         )
     end
-    puts "100 個 Tweets 已創建"
+    puts "30 個 Tweets 已創建"
+    
+    Reply.destroy_all
+    30.times do |i|
+      Reply.create!(
+        comment: "這是有的沒的回覆",
+        user_id: User.all.sample.id,
+        tweet_id: Tweet.all.sample.id
+        )
+    end
+    puts "30 個 Replies 已創建"
+    
+    
     
   end
   

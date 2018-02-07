@@ -1,1 +1,8 @@
 <h1>這是 reply 的首頁</h1>
+<ul>
+  <% @replies.each do |reply| %>
+  <li>
+    <%= reply.commet %>
+  </li>
+  <% end %>
+</ul>
