@@ -1,1 +1,33 @@
-<h1>前台</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8">
+      <% @tweets.each do |tweet| %>
+          <div class="tweet-item">
+            <div class="row">
+              <div  class="col-xs-2 tweet-item-img">  
+                <%= link_to tweets_user_path(tweet.user) do %>
+                  <%= image_tag tweet.user.avatar, class: "img-responsive center-block img-rounded" %>
+                <% end %>
+              </div>
+
+              <div class="col-xs-10">
+                <div class="caption">
+                  <h5><%= link_to tweet.user.name, tweets_user_path(tweet.user) %>, <%= "#{tweet.created_at}".split(" ").first %>, <%= "#{tweet.created_at}".split(" ").second %>  </h5>
+                  <p><%= simple_format tweet.description %></p>
+                  <h5>
+                    <%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet_id: tweet) %>  
+                    <%= link_to "Like(#{tweet.likes_count})", like_tweet_path(tweet),  method: :post, style:"color:red;" %>    
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+
+    <div class="col-xs-4">
+    </div>
+  </div>
+</div>
+
+
