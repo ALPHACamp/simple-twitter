@@ -22,5 +22,7 @@ Rails.application.routes.draw do
     resources :tweets, only: [:index, :destroy]
   end
 
+  # 追蹤／取消追蹤
+  resources :followships, only: [:create, :destroy]
 
 end

@@ -10,7 +10,9 @@
 
   <body>
     <% if current_user %>
+      <!-- FIXME: 暫時加入 id 方便觀看-->
       <li><%= link_to tweets_user_path(current_user.id) do %>
+            <%= current_user.id %>
             <%= current_user.name %>
           <% end %>
       </li>
