@@ -1,7 +1,9 @@
 <div class="container-fluid">
   <div class="row well">
-    <div class="col-md-2 col-sm-3 col-xs-4">    
+    <div class="col-md-2 col-sm-3 col-xs-4">  
+      <% if !tweet.user.avatar.nil? %> 
         <%= image_tag(tweet.user.avatar, :class => 'img-responsive img-circle') %>
+        <% end %>
     </div>
     <div class="col-md-10 col-sm-9 col-xs-8 tweet-content">
       <p>

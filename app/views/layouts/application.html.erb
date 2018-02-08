@@ -7,6 +7,8 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <%= filestack_js_include_tag %>
+    <%= filestack_js_init_tag %> 
   </head>
 
  <body>        
@@ -31,7 +33,11 @@
                <li>
                 <p class="navbar-text">
                   Hi, <%= current_user.name %>
-                  <%= link_to image_tag(current_user.avatar, :style => 'width: 20px; height: 20px', :class => 'img-circle'), tweets_user_path(current_user) %>
+                  <% if !current_user.avatar.nil? %>
+                    <a href="<%= tweets_user_path(current_user.id) %>"><%= image_tag(current_user.avatar, style: 'width: 20px; height: 20px', class: 'img-circle') %></a>
+                  <% else %>
+                    <% link_to '個人資料', tweets_user_path(current_user.id) %>
+                  <% end %> 
                 </p>                
               </li>
               <li>

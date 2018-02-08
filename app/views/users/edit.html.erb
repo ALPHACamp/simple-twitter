@@ -2,11 +2,13 @@
  <div class="row">
   <%= form_for @user do |f| %>
     <div class="col-md-4">    
-      <div class="form-group">        
-        <%= image_tag(@user.avatar, :class => 'img-responsive', :style => 'max-width: 200px') if @user.avatar? %>         
-        <br>
+      <div class="form-group">  
+        <% if !@user.avatar.nil? %>
+          <%= image_tag(@user.avatar, :class => 'img-responsive img-circle') %>
+          <br>
+        <% end %>
         <%= f.label :avatar, "大頭照上傳" %>
-        <%= f.file_field :avatar %>
+        <%= f.filestack_field :avatar, 'Upload Your Avatar' %>
       </div>
     </div>
     <div class="col-md-8">
@@ -20,8 +22,11 @@
        </div>
        <div class="form-group">
          <%= f.submit "Update", class: "btn btn-primary pull-right" %>         
-       </div>  
+       </div>         
     </div>          
   <% end %>
  </div>
 </div>
+<script type="text/javascript">
+  console.log(custom_client)
+</script>
