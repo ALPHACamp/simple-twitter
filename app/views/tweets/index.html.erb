@@ -1,0 +1,59 @@
+<div class="container">
+
+
+  <div class="col-md-8">
+    <%= form_for [@tweet] do |f| %>
+    <div class="form-group">
+      <%= f.text_area :description, placeholder: "What's on your mind?", rows: "5",class: "form-control" %>
+    </div>
+    <div class="form-group text-right">
+      <%= f.submit "Tweet",class: "btn btn-primary" %>   
+    </div>
+    <% end %>
+    
+    <%= render partial: "shared/tweet_list", locals: {tweets: @tweets}%> 
+    <%= paginate @tweets %> 
+  </div>
+    
+
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%=%> Popular</h3>
+      </div>
+      <div class="panel-body">
+        <% @users.each do |user|%>
+          <div class="user-item">
+            <div class="col-md-3">
+              <%= link_to tweets_user_path(user) do%>
+                <%if !user.avatar?%>
+                  <%= image_tag "https://openclipart.org/download/247319/abstract-user-flat-3.svg", class:"img-responsive img-rounded " %>
+                <% else%>
+                  <%= image_tag user.avatar, class:"img-responsive img-rounded" %>
+                <% end %>
+              <% end %>
+            </div>
+            
+
+            <div class="col-md-9">
+              <h4>
+                <%= link_to user.name,tweets_user_path(user) %>
+              </h4>
+              
+              <p><%= truncate(user.introduction, length: 200)%></p>
+              <div class="text-right">
+                <% if user != current_user %>
+                  <%= render partial: "shared/follow", locals: {user: user}%>
+                <% end %>
+              </div>            
+              
+              <hr>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        <% end %>
+      </div>  
+    </div>
+  </div>
+
+</div>

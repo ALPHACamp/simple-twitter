@@ -1,0 +1,33 @@
+<div class="container">
+  
+  <% @users.each do |user| %>
+    <div class="row">
+      <div class="col-md-4">
+        <%if !user.avatar?%>
+          <%= image_tag "https://openclipart.org/download/247319/abstract-user-flat-3.svg", height: 170,width: 170 ,class:"img-responsive img-rounded " %>
+        <% else%>
+          <%= image_tag user.avatar,height: 170,width: 170 , class:"img-responsive img-rounded" %>
+        <% end %>
+     
+      </div>
+      <div class="col-md-8">
+        <h2>
+          <%= link_to user.name,tweets_user_path(user) %>
+        </h2>
+        
+
+        <h4><%= link_to "Tweets #{user.tweets.count}" , tweets_user_path(user)%></h4>
+        <h4><%= link_to "追蹤名單 #{user.followings.count}" , followings_user_path(user)%></h4>
+        <h4><%= link_to "粉絲 #{user.followers_count}" , followers_user_path(user)%></h4>
+        <h4>
+          <%= link_to '<i class = "glyphicon glyphicon-heart" aria-hidden="true"></i> '.html_safe , likes_user_path(user)%> 
+          <%= link_to "Like #{user.likes_count}" , likes_user_path(user)%>    
+        </h4>
+        <hr>    
+      </div>
+      <hr> 
+    </div>
+    
+  <% end %>
+  <%= paginate @users %> 
+</div>

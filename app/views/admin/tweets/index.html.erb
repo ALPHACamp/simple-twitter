@@ -1,0 +1,65 @@
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="#">Tweets</a></li>
+  <li role="presentation" ><%= link_to "Users",admin_users_path%></li>
+</ul>
+
+<br>
+<div class="container">
+  <div class="row">
+    <div >      
+      
+        <% @tweets.each do |tweet| %>
+          <div class="tweet-item col-md-4">
+            <h4>Tweets(#<%= tweet.id%>)</h4>
+            <hr>
+            
+            <div >
+              
+              <div class="col-md-12">
+                  <h4>
+                    <%= link_to tweets_user_path(tweet.user) do%>
+                    <%= tweet.user.name %>
+                    <% end %>
+                  </h4>
+                  
+                  <p><%= truncate(tweet.description, length: 200)%></p>
+                 
+                 
+                
+                </div>
+                <div class="clearfix"></div>
+            </div> 
+
+            <h4>Replies</h4>
+            <hr>
+            
+
+            <% tweet.replies.each do |reply| %>
+              <div>
+                
+
+                <div class="col-md-12">
+                  <h4>
+                    <%= link_to tweets_user_path(reply.user) do%>
+                    <%= reply.user.name %>                  
+                    <% end %>
+                  </h4>
+                  
+                  <p><%= truncate(reply.comment, length: 200)%></p>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            <% end %>
+            <hr>
+            <%= link_to '<i class = "glyphicon glyphicon-trash" aria-hidden="true"></i>Delete'.html_safe, admin_tweet_path(tweet), method: :delete, data:{confirm:"Are you sure>"} %>
+          </div>
+          
+        <% end %> 
+ 
+
+      
+    </div>
+    
+  </div>
+  <%= paginate @tweets %>
+</div>
