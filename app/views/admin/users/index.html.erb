@@ -16,7 +16,7 @@
   <% @users.each do |user| %>
     <tr>
       <td class="td-text"><%= link_to user.name, tweets_user_path(user)  %></td>
-      <td class="td-avatar"><%= image_tag(user.avatar, class: "img-responsive center-block") %></td>
+      <td class="td-avatar"><%= user_avatar(user.avatar, "img-responsive center-block") %></td>
       <td class="td-text"><%= link_to user.tweets_count, tweets_user_path(user) %></td>
       <td class="td-text"><%= link_to user.followings_count, followings_user_path(user) %></td>
       <td class="td-text"><%= link_to user.followers_count, followers_user_path(user) %></td>
