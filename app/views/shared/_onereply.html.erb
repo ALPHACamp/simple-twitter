@@ -5,14 +5,14 @@
               <div class="card-pic-width">
                 <div class="card-pic-height">
                   <div class="card-pic-position">
-                    <%= image_tag(t.user.avatar, {onerror:"this.src='/man.jpg';", class:"card-picture"}) %>
+                    <%= link_to image_tag(t.user.avatar, {onerror:"this.src='/man.jpg';", class:"card-picture"}), tweets_user_path(t.user)%>
                   </div>
                 </div>
               </div>
             </div>
  
             <div class="card-tittle">
-              <div class="tweeter-name"><h5><%= t.user.name %></h5></div>
+              <div class="tweeter-name"><h5><%= link_to t.user.name, tweets_user_path(t.user), {class:"namelink"}%></h5></div>
               <p href="#" class="time-log pull-right"><%=time_ago_in_words t.updated_at %> ago</p>
               <hr>
             </div>

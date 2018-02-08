@@ -5,7 +5,7 @@
         <div class="card-pic-width">
           <div class="card-pic-height">
             <div class="card-pic-position">
-              <%= image_tag(user.avatar, {onerror:"this.src='/fe.jpg';", class:"card-picture"}) %>
+              <%= link_to image_tag(user.avatar, {onerror:"this.src='/fe.jpg';", class:"card-picture"}), tweets_user_path(user)%>
             </div>
           </div>
         </div>
@@ -13,7 +13,7 @@
 
       <div class="card-description text-align-left">
         <div class="card-tittle">
-          <h5><%=user.name%></h5>
+          <h5><%= link_to user.name, tweets_user_path(user), {class:"namelink"}%></h5>
         </div>
         <hr>
                 <%if not user==current_user %>
