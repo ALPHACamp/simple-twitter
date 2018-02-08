@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-xs-8">
+    <div>
+      <%= form_for @tweet do |f| %>
+        <%= f.text_area :description, class: "form-control holder", placeholder: "Lets's tweet..." %>
+        <%= f.submit class: "tweet-button btn btn-primary" %>
+        <br>
+        <br>
+      <% end %>
+    </div>
+    <%= render partial: "share/tweet", locals: {tweets: @tweets} %>
+  </div>
+  <div class="col-xs-4">
+    <% @users.each do |user| %>
+      <%= render partial: "share/user_box", locals: {user: user} %>
+    <% end %>
+  </div>
+</div>
+
