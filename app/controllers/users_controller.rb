@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def tweets
     @tweets = @user.tweets.order(created_at: :desc).page(params[:page]).per(10)
+    @followers = @user.followers
   end
 
   def edit
