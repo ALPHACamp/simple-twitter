@@ -11,7 +11,7 @@ class RepliesController < ApplicationController
     @reply = @tweet.replies.build(reply_params)
     @reply.user = current_user
     @reply.save!
-    redirect_back fallback_location: root_path
+    redirect_to root_path
   end
 
 private
