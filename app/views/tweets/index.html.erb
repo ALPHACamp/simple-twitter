@@ -20,11 +20,10 @@
 
 <ul>
     <li>
-      <%= current_user.name %>
-      <%= current_user.avatar %>
       <div class="avatar-pic">
         <%= image_tag current_user.avatar, :size => "100x100", class: "img-responsive img-rounded" %>
       </div>
+      <%= current_user.name %>
       <%= link_to 'My Tweets', tweets_user_path(current_user) %>
     </li>
 </ul>
