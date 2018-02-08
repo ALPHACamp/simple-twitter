@@ -20,7 +20,8 @@
       </h4>
       <p><%= simple_format tweet.description %></p>
       <%= link_to "Reply", tweet_replies_path(tweet.id)%>
-      
+      <%= link_to "Like", like_tweet_path(tweet), method: :post, class:"btn btn-primary" %>
+      <%= link_to "Unlike", unlike_tweet_path(tweet), method: :post, class:"btn btn-info" %>
     </div>
   </div>
 <% end %>
