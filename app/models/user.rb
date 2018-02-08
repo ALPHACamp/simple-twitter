@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  validates_uniqueness_of :name, :case_sensitive => false ,message: "已有人註冊相同名稱"
+  validates_presence_of :name
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -31,9 +34,6 @@ class User < ApplicationRecord
   end
   # 需要 app/views/devise 裡找到樣板，加上 name 屬性
   # 並參考 Devise 文件自訂表單後通過 Strong Parameters 的方法
-  validates :name,uniqueness: { case_sensitive: false,
-    massage:"此名稱已被註冊" }
-
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
 
 end
