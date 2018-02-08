@@ -36,4 +36,9 @@ class User < ApplicationRecord
     return true if self.tweets.find_by(id: tweet_id) != nil
   end
 
+  def count_tweets
+    self.tweets_count = self.tweets.size
+    self.save
+  end
+
 end

@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>You're user's admin</h1>
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Tweet</th>
+          <th scope="col">Reply</th>
+          <th scope="col">Like</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr  id="user-<%= user.id %>">
+            <th scope="row"><%= user.id %></th>
+            <td><%= user.name %></td>
+            <th><%= user.tweets.count %></th>
+            <td><%= user.replies.count %></td>
+            <td><%= user.likes_count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

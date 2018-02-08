@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user.update(user_params)
-    redirect_to tweets_user_path(current_user)
+    redirect_to root_path
   end
 
   def followings

@@ -16,9 +16,13 @@
   
   <% if current_user == user %>
     <h6><%= link_to "tweets #{current_user.tweets.count}", tweets_user_path(current_user) %> </h6>
-    <h6><%= link_to "Followings #{current_user.followings.count}", followings_user_path(current_user) %></h6>
-    <h6><%= link_to "Followers #{current_user.followers.count}", followers_user_path(current_user) %></h6>
-    <h6><%= link_to "Likes #{current_user.likes.count}", likes_user_path(current_user) %></h6>
+    <h6 id="user_followings_count">
+      <%= render :partial => 'shared/count_user_followings'%>
+    </h6>
+    <h6><%= link_to "Followers #{current_user.followers_count}", followers_user_path(current_user) %></h6>
+    <h6 id="tweet_like_count">
+      <%= render :partial => 'shared/count_user_like'%>
+    </h6>
     <%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-primary" %>
   <% else %>
     <h6>Tweets <%= user.tweets.count %></h6>

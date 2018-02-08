@@ -1,5 +1,5 @@
 <% if current_user&.like?(tweet.id) %>
-  <%= link_to "unlike (#{tweet.likes.count})", unlike_tweet_path(tweet),class: "btn btn-outline-danger", method: :post, remote: true %>
+  <%= link_to "unlike (#{tweet.likes_count})", unlike_tweet_path(tweet),class: "btn btn-outline-danger", method: :post, remote: true %>
 <% else %>
   <%= link_to "likes (#{tweet.likes.count})", like_tweet_path(tweet),class: "btn btn-outline-primary", method: :post, remote: true %>
 <% end %>
