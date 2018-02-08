@@ -1,0 +1,2 @@
+//改為將增加的tweet加在最上方
+$("#tweets").prepend("<%= j(render partial: "shared/msg", locals: {msg: @tweet, msg_content: @tweet.description, msg_btn: true}) %>")

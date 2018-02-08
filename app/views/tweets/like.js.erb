@@ -1,0 +1,1 @@
+$("#tweet-id-<%= @tweet.id %>").html("<%= j( link_to "unlikes(#{@tweet.likes_count })", unlike_tweet_path(@tweet), remote: true, method: :post, class: "links links-red" ) %>")

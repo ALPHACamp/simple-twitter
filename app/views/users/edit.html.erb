@@ -1,0 +1,22 @@
+<div class="row">
+  <%= form_for @user do |f| %>
+    <div class="col-xs-4">
+      <div class="form-group">
+        <%= image_tag @user.avatar, width: "100%" if @user.avatar? %><br />
+        <%= f.filestack_field :avatar, 'Upload Your Avatar!',  pickerOptions: { accept: 'image/*' }, id: 'unique-id', class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-xs-8">
+      <div class="form-group">
+        <%= f.text_field :name, placeholder: "Name", class: "form-control text-field" %>
+      </div>
+      <div class="form-group">
+        <%= f.text_area :introduction, placeholder: "Type anything about you here....", class: "form-control text-area" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit "Update", :disable_with => 'Submiting...', class: "btn btn-default my-btn pull-right btn-lg" %>
+      </div>
+    </div>
+  <% end %>
+</div>
