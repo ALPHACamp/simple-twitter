@@ -60,6 +60,8 @@ group :development, :test do
   gem 'shoulda-matchers', '~> 3.1'
   gem 'rails-controller-testing'
   gem 'sqlite3'
+  gem 'bullet'  # Bullet for n+1 query
+  # gem 'ruby_gntp'  # Bullet need this
 end
 
 group :development do
