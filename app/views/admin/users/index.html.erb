@@ -1,5 +1,12 @@
 <div class="container">
-  <h1>You're user's admin</h1>
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+      <%= link_to "Tweet's edit", admin_tweets_path, class: "nav-link" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "User's edit", admin_users_path, class: "nav-link active" %>
+    </li>
+  </ul>
   <div class="row">
     <table class="table table-striped">
       <thead>

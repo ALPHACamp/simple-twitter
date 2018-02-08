@@ -28,7 +28,7 @@
     <h6>Tweets <%= user.tweets.count %></h6>
     <h6>Following <%= user.followings.count %></h6>
     <h6 id="followed-<%= user.id %>">Follower <%= user.followers.count %></h6>
-    <h6>Likes <%= user.likes.count %> </h6>
+    <h6>Likes <%= user.likes_count %> </h6>
     <span id="follow-<%= user.id %>">
     <%= render :partial => 'shared/follow_list', locals: {user: user} %>
     </span>
