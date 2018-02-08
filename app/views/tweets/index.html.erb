@@ -17,20 +17,7 @@
 		</div>
 		<div class="col-md-4">
 			<% @users.each do |user|%>
-				<div class="thumbnail followships">
-					<%= image_tag user.avatar, width:'100px', id:"tweet-avatar followships" %>
-					<div class="caption">
-						<h3><%= user.name%></h3>
-						<p><%= user.introduction%></p>
-						<% if not user == current_user %>
-							<% if not current_user.following?(user)%>
-								<%= link_to "Follow", followships_path(following_id: user), method: :post, class: "btn btn-primary" %>
-							<% else %>
-								<%= link_to "Unfollow", followship_path(id: user), method: :delete, class: "btn btn-primary" %>
-							<% end %>
-						<% end %>
-					</div>
-				</div>
+				<%= render partial: "shared/followships.html.erb", locals: {user: user}%>
 			<%end%>
 		</div>
 	</div>
