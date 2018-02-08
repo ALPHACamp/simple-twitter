@@ -1,0 +1,27 @@
+<div class="container">
+  <%= link_to "new tweet", new_admin_tweet_path, class: "btn btn-primary" %>
+  <div class="col-xs-10 col-xs-offset-1">
+    <table class= "table table-striped">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>description></th>
+          <th>action</th>
+        </tr>
+      </thead>
+
+
+      <tbody>
+        <% @tweets.each do |tweet| %>
+          <tr>
+            <td><%= tweet.user.name %></td>
+            <td><%= tweet.description %></td>
+            <td><%= link_to "Replies", tweet_replies_path(tweet) %></td>
+            <td><%= link_to "delete", admin_tweet_path(tweet), method: :delete, data: {confirm: "Are you sure??"} %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div> 
+</div>
+ 
