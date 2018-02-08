@@ -33,7 +33,7 @@
       <!-- following數：連結已設定, -->
       <div>
         <%= link_to followings_user_path(user) do %>
-          <strong>Following <%= content_tag :span, user.followships.length %></strong><br />
+          <strong>Following <%= content_tag :span, user.followships.size %></strong><br />
         <% end %>
       </div>
 
