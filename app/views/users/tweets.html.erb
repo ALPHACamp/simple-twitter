@@ -10,7 +10,7 @@
     <% @tweets.each do |tweet| %>
       <%= render partial: "shared/message", locals: {message: tweet, is_tweet: true, with_reply: false} %>
     <% end %>
-    <div class="text-center"><%= paginate @tweets %></div>
+    <!-- <div class="text-center"><%#= paginate @tweets %></div> -->
   </div>
 
 </div>
