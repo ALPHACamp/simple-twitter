@@ -10,7 +10,9 @@ class RepliesController < ApplicationController
   def create
     @reply = @tweet.replies.build(reply_params)
     @reply.user = current_user
-    @reply.save!
+    if !@reply.save
+      flash[:alert] = @reply.errors.full_messages.to_sentence
+    end
     redirect_to tweet_replies_path(@tweet)
   end
 
