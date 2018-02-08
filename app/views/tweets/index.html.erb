@@ -20,6 +20,7 @@
           <%= render partial: "shared/tweet_list", locals: {tweet: tweet} %>
         <% end %>
       </div>
+      <div><%= paginate @tweets %></div>
     </div>
 
     <div class="col-xs-4">

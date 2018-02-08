@@ -9,6 +9,8 @@
 
       <br>
 
+      <div><%= paginate @tweets %></div>
+
       <table class="table table-striped table-bordered table-condensed">
         <thead>
           <tr>
@@ -46,6 +48,8 @@
           <% end %>
         </tbody>
       </table>
+
+      <div><%= paginate @tweets %></div>
     </div>
   </div>
 </div>

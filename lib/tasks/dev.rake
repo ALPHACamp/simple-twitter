@@ -14,7 +14,7 @@ namespace :dev do
         name: name,
         email: "#{name}@example.com",
         password: "123456",
-        introduction: FFaker::Lorem::sentence(30),
+        introduction: FFaker::Lorem::sentence(15),
         avatar: file
       )
 
@@ -44,7 +44,7 @@ namespace :dev do
     Tweet.all.each do |tweet|
       2.times do |i|
          tweet.replies.create!(
-          comment: FFaker::Lorem.paragraph,
+          comment: FFaker::Lorem::sentence(10),
           user: User.all.sample
         )
       end
