@@ -1,0 +1,12 @@
+<h1>Tweet replies<h1>
+
+<%= @tweet.description %>
+
+
+<ul>
+  <% @replies.each do |reply| %>
+  <li>
+    <%= reply.comment %>
+  </li>
+  <% end %>
+</ul>

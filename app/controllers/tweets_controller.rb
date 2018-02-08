@@ -15,4 +15,9 @@ class TweetsController < ApplicationController
   def unlike
   end
 
+  def replies
+    @tweet=Tweet.find(params[:id])
+    @replies=Tweet.find(params[:id]).reply
+  end
+
 end
