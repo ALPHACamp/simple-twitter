@@ -2,8 +2,6 @@ class Admin::TweetsController < Admin::BaseController
   def index
     @tweets = Tweet.all
     @replies = Reply.all
-    @users = User.order(@tweets.count :desc) 
-
 
   end
 
