@@ -3,16 +3,16 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="form-group">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, class: "form-control", placeholder: "Full Name" %>
-</div>
+  <div class="field">
+    <%= f.label :user_name %><br />
+    <%= f.text_field :name, autofocus: true, placeholder: "User Name" %>
+ </div>
 
 
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autocomplete: "email" %>
   </div>
 
   <div class="field">
