@@ -11,6 +11,7 @@
     <h2>Like</h2>
     <!-- user tweetswall -->
     <div class="tweetswall">
+
       <%@likes.each do |like| %>
       <%= render partial: "common/tweet_item", locals:{tweet: like.tweet} %>
       <%end%> 

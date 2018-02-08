@@ -50,10 +50,12 @@ namespace :dev do
   end
 
   task fake_likes: :environment do
+    Like.destroy_all
     1000.times do |i|
+      dayago = i % 5 +1
       Like.create!(
         user_id: User.all.sample.id,
-        tweet_id: Tweet.all.sample.id
+        tweet_id: Tweet.all.sample.id,
       )
     end
     puts "create fake 1000 likes!"
