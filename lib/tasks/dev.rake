@@ -43,4 +43,19 @@ namespace :dev do
     puts "have created fake tweets"
     puts "now you have #{Tweet.count} tweets data"
   end
+
+  task fake_reply: :environment do
+    Reply.destroy_all
+
+    Tweet.all.each do |tweet|
+      rand(1..10).times do
+        tweet.replies.create(
+          comment: FFaker::Lorem::sentence(20),
+          user: User.all.sample
+        )
+      end
+    end
+    puts "have created fake replies"
+    puts "now you have #{Reply.count} replies data"
+  end
 end
