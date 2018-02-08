@@ -1,1 +1,8 @@
-<h1>這首頁</h1>
+<div class="container">
+  <div class="row">
+    <% @tweets.each do |tweet| %>
+      <h3><%= link_to tweet.user.name, tweets_user_path(tweet.user) %></h3>
+        <p class="label label-default"><%= tweet.description %><p>
+    <% end %>  
+  </div>
+</div>
