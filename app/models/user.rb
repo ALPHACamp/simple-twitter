@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
 
   has_many :replies, dependent: :destroy
-  
+  has_many :replied_tweets, through: :replies, source: :tweets
 
   has_many :likes, dependent: :destroy
   has_many :liked_tweets, through: :likes, source: :tweets
@@ -38,6 +38,11 @@ class User < ApplicationRecord
     self.followings.include?(user)
   end
 
-
-
+  def liked_tweets_count
+    # tweets_count = self.tweets.count
+    # followings_count = self.followings.count
+    # followers_count = self.followers.count
+    likes_count = self.likes_count
+    liked_tweets_count = self.tweets.sum(:likes_count)
+  end
 end
