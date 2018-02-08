@@ -1,12 +1,18 @@
 <% tweets.each do |tweet| %>
-  <div class="card" style="width: 40rem;">
-    <img class="card-img" src="..." alt="Card image cap">
-    <div class="card-block">
-      <small class="text-muted">
-        <%= tweet.user.name %>,
-        <%= tweet.created_at.to_formatted_s(:db)%>
-      </small>
-      <p class="card-text"><%= truncate(tweet.description,  length: 80) %></p>
+  <div class="col-sm-6" >
+    <div class="thumbnail postcard">
+        <%= render partial: "shared/pic", locals: {user: tweet.user} %>
+      <div class="caption">
+        <small class="text-muted">
+          <%= link_to "#{tweet.user.name}", tweets_user_path(tweet.user) %>
+          <%= tweet.created_at.to_formatted_s(:db)%>
+        </small>
+        <p class="card-text"><%= tweet.description %></p>
+      </div>
+      <div class="button">
+        <%= link_to "Reply (#{tweet.replies_count}) ", tweet_replies_path(tweet) %>
+        <%= render partial: "shared/like", locals: {tweet: tweet} %>
+      </div>
     </div>
   </div>
-<% end %>
+<% end %>  

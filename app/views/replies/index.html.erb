@@ -2,20 +2,7 @@
   <%= render partial: "shared/info", locals: {user: @user} %>
 
   <h4>Tweets</h4>
-  <div class="col-sm-6" >
-    <div class="thumbnail">
-        <%= render partial: "shared/pic", locals: {user: @user} %>
-      <div class="caption">
-        <small class="text-muted">
-          <%= link_to "#{ @user.name}", tweets_user_path( @user) %>,
-          <%= @tweet.created_at.to_formatted_s(:db)%>
-        </small>        
-        <p><%= @tweet.description %></p>
-        <%= link_to "Reply", tweet_replies_path(@tweet) %>
-        <%= render partial: "shared/like", locals: {tweet: @tweet} %>
-      </div>
-    </div>
-  </div>
+  <%= render partial: "shared/post", locals: {tweets: [@tweet]} %>
 
   <h4>Replies</h4>
   <%= @replies.each do |reply| %>
