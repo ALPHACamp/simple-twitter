@@ -15,33 +15,4 @@
 <br>
 
 <!-- All Tweets -->
-<div class="container">
-  <div class="row">
-
-    <% @tweets.each do |tweet| %>
-      <div class="tweet-item">
-
-        <div class="col-left">
-          <div class="avatar">
-            <%= image_tag tweet.user.avatar, class: "img-rounded", width: "200px", hight: "200px",
-            onerror: 'this.error=null;this.src="https://d30y9cdsu7xlg0.cloudfront.net/png/17241-200.png"' %>
-          </div>
-        </div>
-
-        <div class="col-rigth">
-          <div class="caption">
-            <p><%= tweet.user.name %>,<%= tweet.created_at.strftime('%F') %>,<%= tweet.created_at.strftime('%H:%M') %></p>
-            <p><%= tweet.description %></p>
-            <p>
-              Replye(<%= tweet.replies_count %>)
-              <% if current_user != tweet.user %>
-                Like(<%= tweet.likes_count %>)
-              <% end %>
-            </p>
-          </div>
-        </div>
-
-      </div>
-    <% end %>
-  </div>
-</div>
+<%= render partial: "shared/tweets_item" %>
