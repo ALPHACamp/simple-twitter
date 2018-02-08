@@ -8,7 +8,10 @@
       <li>Tweets <%= @user.tweets.count %></li>
       <li>Following</li>
       <li>Follower</li>
-      <li>Like</li>
+      <li>
+        <%= link_to "Like", likes_user_path(@user) %>
+        <%= @user.likes.count %>
+      </li>
     </ul>
     <% if @user == current_user %>
       <%= link_to('Edit Profile', edit_user_path(current_user)) %>
