@@ -7,6 +7,11 @@ class UsersController < ApplicationController
   end
 
   def edit
+    if !current_user
+      redirect_to tweets_user_path
+    else
+      render 'edit'
+    end
   end
 
   def update
