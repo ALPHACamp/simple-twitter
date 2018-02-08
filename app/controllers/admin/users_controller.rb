@@ -38,6 +38,6 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def current_title
-    %w[Name Tweets Followings Followers Got likes].include?(params[:sort]) ? params[:sort] : 'Tweets'
+    ['Name', 'Tweets', 'Followings', 'Followers', 'Got likes'].include?(params[:sort]) ? params[:sort] : 'Tweets'
   end
 end
