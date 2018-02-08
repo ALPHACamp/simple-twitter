@@ -14,5 +14,16 @@ class User < ApplicationRecord
    
   has_many :tweets, dependent: :destroy
   has_many :replies, dependent: :destroy
+  
+  has_many :likes, dependent: :destroy
+  has_many :like_tweets, through: :likes, source: :tweet
  
+  has_many :followships, dependent: :destroy
+  has_many :followings, through: :followships
+  
+  # 「使用者的追蹤者」的設定
+  # 透過 class_name, foreign_key 的自訂，指向 Followship 表上的另一側
+  has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
+  has_many :followers, through: :inverse_followships, source: :user
+  
 end
