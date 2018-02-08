@@ -36,7 +36,7 @@ namespace :dev do
     puts "Finished!"
   end
 
-  tast fake_online_user: :environment do
+  task fake_online_user: :environment do
     User.all.each do |i|
       if i.role != "admin"
         i.destroy
