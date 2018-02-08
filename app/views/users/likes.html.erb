@@ -1,0 +1,10 @@
+<h1>user's likess<h1>
+
+
+<ul>
+  <% @likes.each do |like| %>
+  <li>
+    <%= like.tweet.description %>
+  </li>
+  <% end %>
+</ul>
