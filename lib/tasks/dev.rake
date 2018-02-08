@@ -20,6 +20,19 @@ namespace :dev do
       puts user.name
     end
   end
+
+  #製造假Admin
+  task fake_admin: :environment do
+    User.create!(
+      name: "homer",
+      email: "admin@example.com",
+      password: "123456",
+      introduction: "Doh! Doh! Doh! Doh! Doh! Doh!",
+      avatar: File.open("#{Rails.root}/public/avatar/admin.png"),
+      role: "admin"
+    )
+    puts "Admin Homer created!"
+  end
   
   #製造假tweet
   task fake_tweet: :environment do
