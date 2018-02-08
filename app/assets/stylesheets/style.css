@@ -102,6 +102,7 @@ hr {border-color:#ececec;margin-top: 10px;margin-bottom: 10px;}
   top:20px;
   left: 20px;
   width:27%;
+  max-width: 120px;
   display: inline-block;
 }
  
