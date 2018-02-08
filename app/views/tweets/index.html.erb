@@ -23,7 +23,14 @@
                 <%= tweet.created_at %>
               </h4>
               <p><%= tweet.description %></p>
-              <%= render partial: "shared/like", locals: {tweet: tweet} %>
+              <ul class="list-unstyled list-inline">
+                <li>
+                  <%= render partial: "shared/reply", locals: {tweet: tweet} %>
+                </li>
+                <li>
+                  <%= render partial: "shared/like", locals: {tweet: tweet} %>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
