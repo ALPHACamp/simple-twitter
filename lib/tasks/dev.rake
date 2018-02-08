@@ -6,13 +6,12 @@ namespace :dev do
     20.times do |i|
       name = FFaker::Name::first_name
       file = File.open("#{Rails.root}/public/avatar/user#{i+1}.jpg")
-      number = rand(5..30)
 
       user = User.new(
         name: name,
         email: "#{name}@example.co",
         password: "12345678",
-        introduction: FFaker::Lorem::sentence(number),
+        introduction: FFaker::Lorem::sentence,
         avatar: file
       )
 
@@ -25,15 +24,30 @@ namespace :dev do
     Tweet.destroy_all
   
     30.times do |i|
-      number = rand(2..8) 
       Tweet.create!(
-        description: FFaker::Lorem.sentence(number),
+        description: FFaker::Lorem.sentence,
         user: User.all.sample
       )
     end
 
-    puts "have created fake tweet"
-    puts "now you have #{Tweet.count} comment data"
+    puts "have created fake tweets"
+    puts "now you have #{Tweet.count} tweet data"
+  end
+
+  task fake_reply: :environment do
+    Reply.destroy_all
+
+    50.times do
+      Reply.create!(
+        comment: FFaker::Lorem.sentence,
+        tweet: Tweet.all.sample,
+        user: User.all.sample,
+      )
+    end
+
+    puts "have created fake replies"
+    puts "now you have #{Reply.count} reply data"
+
   end
 
 end

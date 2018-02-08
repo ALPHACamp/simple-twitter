@@ -1,6 +1,6 @@
 <div class="container">
   <div id="reply-index">
-    <%= render partial: "share/user_item", locals: {user: current_user, tweet_class: '', following_class: '', follower_class: '', like_class: ''} %>
+    <%= render partial: "share/user_item", locals: {user: @tweet.user, tweet_class: '', following_class: '', follower_class: '', like_class: ''} %>
     <div id="tweet-wall">
       <h2>Tweet</h2>
       <div class="tweet-item" id="tweet-<%= @tweet.id %>">

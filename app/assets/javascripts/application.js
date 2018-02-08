@@ -42,9 +42,9 @@ $(document).on('turbolinks:load', function() {
   $('.edit-tweet-form textarea').keyup(function(){
     var textarea = $(this).val();
     if (textarea.length == 0) {
-      $('.tweet-item .btn-primary').attr('disabled', true);
+      $(this).parents('.tweet-item').find('.btn-primary').attr('disabled', true);
     } else {
-      $('.tweet-item .btn-primary').attr('disabled', false);
+      $(this).parents('.tweet-item').find('.btn-primary').attr('disabled', false);
     } 
   });
 });
