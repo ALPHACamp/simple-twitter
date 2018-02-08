@@ -149,7 +149,7 @@
 
 .user-item .user-image {
   float: left;
-  width: 33%;
+  width: 30%;
   padding-right: 15px;
   margin-top: 8px;
 }
@@ -161,8 +161,9 @@
 }
 
 .user-item .user-content {
-  float: right;
+  float: left;
   width: 67%;
+  padding-left: 15px;
 }
 
 .user-content h4 {
@@ -268,6 +269,7 @@
 
 /* --------------- udit profile --------------- */
 
+
 .edit-title {
   color: #286090;
   font-size: 18px;
@@ -292,4 +294,14 @@
   height: 150px;
   font-size: 18px;
   margin-top: 10px;
+}
+
+
+/* --------------- user followship --------------- */
+
+
+.followship-block {
+  float: left;
+  width: 50%;
+  padding-right: 15px;
 }

@@ -10,7 +10,7 @@
     <div class="col-md-8 tweet-reply">
       <h2 class="sub-title">Follower</h2><br>
       <% @followers.each do |user| %>
-        <div class="col-md-10 col-md-offset-1">
+        <div class="followship-block">
           <%= render partial: "shared/user_list", locals: {object: user, admin: false} %>
           <br>
         </div>
