@@ -4,7 +4,7 @@ body {
 }
 
 .container {
-  width: 80%;
+  width: 85%;
   margin: 0 auto;
 }
 
@@ -16,5 +16,11 @@ body {
 
 .my-tweet{
   border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem; 
 }
+
+.user-table{
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  display: inline-block;
+  margin: 10 px;
+}
+

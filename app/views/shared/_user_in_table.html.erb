@@ -1,0 +1,22 @@
+
+
+<table class="table user-table">
+  <tbody>
+    <tr>
+      <th scope="row">
+        <% if user.avatar? %>
+          <%= image_tag user.avatar, width: '100px', class: "rounded" %>
+        <% else %>
+          <p class="text-center">No User Image</p>
+        <% end %>
+      </th>
+      <td>      
+        <ul class="list-inline">
+        <li><h5><%= link_to tweets_user_path(user) do %>@<%= user.name %><% end %></h5></li>
+        <li><p><%= truncate(user.introduction, length:80) %></p></li>
+        <li><div class="text-right"><%= render partial: "shared/followship", locals: {user: user} %> </div></li>
+      </ul>
+      </td>
+    </tr>
+  </tbody> 
+</table>  

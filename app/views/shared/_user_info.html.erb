@@ -12,7 +12,7 @@
     <div class="list-unstyled">
       <li><%= link_to tweets_user_path(@user) do %>Tweets: <%= @user.tweets.size %><% end %></li>
       <li><%= link_to followings_user_path(@user) do %>Followings: <%= @user.followings.size %><% end %></li>  
-      <li><%= link_to followers_user_path(@user) do %>Followers: <%= @user.followers_count %><% end %></li> 
+      <li><%= link_to followers_user_path(@user) do %>Followers: <%= @user.followers.size %><% end %></li> 
       <li><%= link_to likes_user_path(@user) do %>Likes: <%= @user.liked_tweets.count %><% end %></li> 
     </div> 
    <!-- user's action button -->

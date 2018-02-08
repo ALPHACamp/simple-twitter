@@ -1,1 +1,18 @@
-<p>User's followings</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+    <!-- user's info -->
+      <%= render partial: "shared/user_info", locals: {user: @user} %>
+    </div>  
+    <div class="col-xs-12 col-sm-8">
+      <div class="row"> 
+      <!-- user's data show area -->
+      <% @followings.each do |user| %>
+        <div class="col-xs-12 col-sm-6">
+          <%= render partial: "shared/user_in_table", locals: {user: user} %>  
+        </div>
+      <% end %>   
+      </div>  
+    </div>
+  </div>
+</div>

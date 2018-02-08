@@ -27,7 +27,7 @@ namespace :dev do
 
   task fake_tweet: :environment do
     Tweet.destroy_all
-    100.times do |i|
+    200.times do |i|
       Tweet.create!(
         description: FFaker::Lorem::sentence(10),
         user_id: User.all.sample.id
@@ -69,7 +69,7 @@ namespace :dev do
     puts "creating fake followship..." 
     User.all.each do |u|
       @users = User.where.not(id: u.id).shuffle
-      5.times do
+      6.times do
         u.followships.create!(
         following: @users.pop,
         )      
