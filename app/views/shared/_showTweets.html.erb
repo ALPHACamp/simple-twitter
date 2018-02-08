@@ -13,7 +13,7 @@
 			<% if not f.liked_by_user?(current_user)%>
 				<%= link_to "like", like_tweet_path(f.id), method: :post %>
 			<%else%>
-				something else
+				<%= link_to "Unlike", unlike_tweet_path(f.id), method: :delete %>
 			<%end%>
 		</div>
 	</div>
