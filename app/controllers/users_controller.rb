@@ -24,16 +24,16 @@ class UsersController < ApplicationController
   def followings
     @user = User.find(params[:id])
     # 不確定
-    @followings = @user.followings.order('followships.updated_at DESC')
+    @followings = @user.followings.order('followships.created_at DESC')
     #SELECT  "users".* FROM "users" INNER JOIN "followships"
     # ON "users"."id" = "followships"."following_id" WHERE "followships"."user_id" = ? 
-    # ORDER BY followships.updated_at DESC
+    # ORDER BY followships.created DESC
   end
 
   def followers
     @user = User.find(params[:id])
     # 不確定
-    @followers = @user.followers.order('followships.updated_at DESC')
+    @followers = @user.followers.order('followships.created_at DESC')
   end
 
   def likes
