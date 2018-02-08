@@ -1,0 +1,18 @@
+ <div class="col-md-3 col-sm-4">
+          <div class="text-center">
+            <%= image_tag @user.avatar, class: "img-responsive img-rounded" %>
+          </div>
+        </div>
+
+        <div class="col-md-9 col-sm-8">
+          <h2><%= @user.name %></h2>
+          <p><strong><%= @user.email %></strong></p>
+          <!-- inline & unstyled 的 list -->
+          <ul class="list-unstyled list-inline">
+           
+          </ul>
+          <div><%= @user.introduction %></div>
+          <% if @user.email == current_user.email %>
+            <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
+          <% end %>
+</div>
