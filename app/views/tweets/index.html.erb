@@ -17,7 +17,7 @@
 
   <div class="index-popular">
     <h3>Popular</h3>
-    <% @user.each do |user| %>
+    <% @users.each do |user| %>
       <div class="tweet-block">
         <% for img_id in 0..26 %>
           <% if image_path(user.avatar).include?('/user'+img_id.to_s+'.jpg') %>
