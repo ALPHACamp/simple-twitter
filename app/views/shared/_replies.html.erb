@@ -1,0 +1,17 @@
+<div class="replies-block">
+  <% object.each do |reply| %>
+  <div class="tweet-info clearfix">
+    <div class="col-sm-6 col-md-4">
+      <%= image_tag reply.user.avatar.medium.url , class: "img-responsive center-block", size: "130x120" %>
+    </div>
+    <div class="col-sm-6 col-md-8">
+      <div class="info-item">
+        <%= link_to tweets_user_path(reply.user) do %>
+          <h4><%= reply.user.name %> , <%= time_tag(reply.created_at) %></h4>
+        <% end %>
+        <p><%= reply.comment %></p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
