@@ -10,20 +10,20 @@
       <h4><strong>Tweets  &nbsp;<%= @user.tweets.count %></strong></h4>
       <%= link_to "Edit Profile", edit_user_path(@user) , class:'btn button-style' %>
     </div>
-
     <% @tweets.each do |tweet| %>
         <div class="col-xs-12 col-md-8">
           <div class="media tweet-box">
             <div class="media-left">
-              <%= image_tag @user.avatar, class:"" if @user.avatar?%>
-                <%= image_tag "http://via.placeholder.com/60x60", class: ""  unless @user.avatar?%>
+              <%= image_tag @user.avatar if @user.avatar?%>
+                <%= image_tag "http://via.placeholder.com/60x60"  unless @user.avatar?%>
             </div>
             <div class="media-body">
               <h4 class="media-heading">
-                <%= link_to tweet.user.name, tweets_user_path(tweet.user) %> , 
+                <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
                 <%= tweet.created_at %>
               </h4>
               <p><%= tweet.description %></p>
+              <h4><%= link_to "Reply", tweet_replies_path(tweet), class:"reply-style"  %></h4>
             </div>
           </div>
         </div>

@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-md-4">
+      <div>
+        <%= image_tag @tweet.user.avatar ,class:"img-responsive img-rounded" if @tweet.user.avatar?%>
+         <%= image_tag "http://via.placeholder.com/250x250", class: "img-responsive img-rounded"  unless @tweet.user.avatar?%>
+      </div>
+      <h2><%= @tweet.user.name %></h2>
+      <div><%= simple_format @tweet.user.introduction %></div>
+      <h4><strong>Tweets  &nbsp;<%= @tweet.user.tweets.count %></strong></h4>
+      <%= link_to "Edit Profile", edit_user_path(@tweet) , class:'btn button-style' %>
+    </div>
+  
+    <h3>Tweets</h3>
+    <div class="col-xs-12 col-md-8">
+      <div class="media tweet-box">
+        <div class="media-left">
+          <%= image_tag @tweet.user.avatar, class:"" if @tweet.user.avatar?%>
+            <%= image_tag "http://via.placeholder.com/60x60", class: ""  unless @tweet.user.avatar?%>
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <%= link_to @tweet.user.name, tweets_user_path(@tweet.user) %>
+            <%= @tweet.created_at %>
+          </h4>
+          <p><%= @tweet.description %></p>
+          <h4><%= link_to "Reply", tweet_replies_path(@tweet), class:"reply-style"  %></h4>
+        </div>
+      </div>
+    <h3>Replies</h3>
+    <% @replies.each do |reply| %>
+      <div class="media tweet-box">
+        <div class="media-left">
+          <%= image_tag reply.user.avatar if reply.user.avatar?%>
+            <%= image_tag "http://via.placeholder.com/60x60" unless reply.user.avatar?%>
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <%= link_to reply.user.name, tweets_user_path(reply.user) %>
+            <%= reply.created_at %>
+          </h4>
+          <p><%= @tweet.description %></p>
+        </div>
+      </div>
+    <% end %>
+
+     <%= form_for [@tweet, @reply] do |f| %>
+        <div class="form-group">
+          <%= f.text_area :comment, class: "form-control " , style: 'height: 100px'%>
+          <br/>
+          <em><%= f.submit "Reply" , class: 'button-style navbar-right' %></em>
+          <br/>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
