@@ -1,6 +1,15 @@
 <div class="container">
   <div class="row">
-    <% @tweets.each do |tweet| %>
+    <%= form_for [@tweet] do |f| %>
+      <div class="form-group">
+        <%= f.text_area :description, placeholder: "Whats on your mind?", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Tweet", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+
+    <% @tweets.reverse.each do |tweet| %>
       <h3><%= link_to tweet.user.name, tweets_user_path(tweet.user) %></h3>
         <p class="label label-default"><%= tweet.description %><p>
     <% end %>  
