@@ -1,21 +1,7 @@
-<h1><%= @user.name %> likes</h1>
-<% @tweets.each do |tweet| %>
-  <div>
-    <div class="">
-      <img src="http://via.placeholder.com/40x40" alt="avatar">
-    </div>
-    <div class="">
-      <h4>
-        <%=link_to tweet.user.name, tweets_user_path(tweet.user) %>,
-        <%= tweet.created_at %>
-      </h4>
-      <p><%= simple_format tweet.description %></p>
-      <%= link_to "Reply", tweet_replies_path(tweet.id)%>
-      <% if tweet.is_liked?(current_user) %>
-        <%= link_to "Unlike", unlike_tweet_path(tweet), method: :post, class:"btn btn-info" %>
-      <% else %>
-        <%= link_to "Like", like_tweet_path(tweet), method: :post, class:"btn btn-primary" %>
-      <% end %>
-    </div>
-  </div>
-<% end %>
+<div class="col-md-4">
+  <%= render partial: "shared/user-profile", locals: {user: @user} %>
+</div>
+<div class="col-md-8">
+  <h1>Like</h1>
+  <%= render partial: "shared/tweet", locals: {tweets: @tweets}%>
+</div>
