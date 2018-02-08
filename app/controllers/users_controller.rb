@@ -6,7 +6,12 @@ class UsersController < ApplicationController
   end
 
   def edit
-    session[:return_to] ||= request.referer
+    if current_user == @user
+
+      session[:return_to] ||= request.referer
+    else
+      redirect_to tweets_user_path(@user)
+    end
   end
 
   def update
