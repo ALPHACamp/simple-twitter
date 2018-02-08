@@ -12,5 +12,6 @@
   <div>
     <h4><%=link_to tweet.user.name, tweets_user_path(tweet.user) %></h4>
     <p><%= simple_format tweet.description %></p>
+    <%= link_to "Reply", tweet_replies_path(tweet.id)%>
   </div>
 <% end %>

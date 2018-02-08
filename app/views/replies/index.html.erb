@@ -1,0 +1,24 @@
+<h1>replies</h1>
+
+<p><%= @tweet.description %></p>
+
+<% @tweet.replies.each do |reply| %>
+  <div class="">
+    <h4><%=link_to reply.user.name, tweets_user_path(reply.user) %></h4>
+    <p><%= simple_format reply.comment %></p>
+    <p class="text-muted">
+      <em><%= reply.created_at %></em>
+    </p>
+  </div>
+  <hr />
+<% end %>
+
+<%= form_for [@tweet, @reply] do |f| %>
+  <div class="form-group">
+    <%= f.text_area :comment, placeholder: "Leave reply.", class:"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.submit class:"btn btn-primary" %>
+    <%= f.button "Cancel", type: :reset, class:"btn btn-default" %>
+  </div>
+<% end %>
