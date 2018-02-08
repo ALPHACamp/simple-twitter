@@ -1,6 +1,6 @@
 <div class="col-md-3">
 
-  <%= render partial: "shared/userlist", locals: {user: @user} %>
+  <%= render partial: "shared/profile", locals: {user: @user} %>
 
 </div>
 
@@ -9,18 +9,9 @@
   <div class='container'>
   <h2>Followers</h2>
   <% @followers.each do |follower| %>
-    <div class="col-md-5 border">
-      <div class='col-md-4'>
-        <%= image_tag follower.avatar, class: "img-responsive center-block"%>
-      </div>
-      <div class='col-md-8'>
-        <%= link_to follower.name, tweets_user_path(follower) %>
-          <br>
-          <%= truncate(follower.introduction, length: 100) %>
-            <br>
-            <%= render partial: "shared/follow", locals: {user: follower} %>
-      </div>
-    </div>
+     
+          <%= render partial: "shared/userlist", locals: {follow: follower} %>
+       
     <% end %>
   </div>
 </div>

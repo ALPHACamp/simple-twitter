@@ -1,0 +1,27 @@
+
+ 
+  <div class="text-center">
+    <%= image_tag user.avatar, class: "img-responsive img-rounded" %>
+  </div>
+
+  <h2>
+    <%= user.name %>
+  </h2>
+  <p><strong><%= user.email %></strong></p>
+ 
+  <div>
+    <%= user.introduction %>
+  </div>
+  
+  <div>
+    <h4><%= link_to "Tweets #{user.tweets.count}", tweets_user_path(user) %> </h4>
+    
+    <h4><%= link_to "Following #{user.followings.count}", followings_user_path(user), class: "links links-black" %></h4>
+     <h4><%= link_to "Follower #{user.followers.count}", followers_user_path(user), class: "links links-black" %></h4>
+    <h4>Like <strong><%= user.tweets.count %></strong>   </h4>
+  </div>
+ 
+    
+      <% if user.email == current_user.email %>
+    <%= link_to 'Edit Profile', edit_user_path(user), class: "btn btn-primary" %>
+      <% end %>

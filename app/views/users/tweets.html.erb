@@ -1,36 +1,15 @@
 
 <div class="col-md-3 col-sm-4">
       
-        <%= render partial: "shared/userlist", locals: {user: @user} %>
+        <%= render partial: "shared/profile", locals: {user: @user} %>
      
     </div>
 
 
 <div class="col-xs-7 col-xs-offset-1">
     <div class="row">
-      <% @tweets.each do |tweet| %>
-         <div class='col-xs-12 tweet-box'>
-            <div class="col-xs-3">
-               <%= image_tag tweet.user.avatar, class: "img-responsive img-rounded center-block" %>
-            </div>
-            <div class="col-xs-9">
-
-
-              <div class="caption">
-
-                <p>
-                  <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
-                    <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %>
-                </p>
-                <p>
-                  <%= truncate(tweet.description, length: 80) %>
-                </p>
-
-              </div>
-
-
-            </div>
-          </div>
+      <% @tweets.each do |tweet| %>    
+          <%= render partial: "shared/tweetlist", locals: {tweet: tweet} %>
       <% end %>
     </div>
 </div>
