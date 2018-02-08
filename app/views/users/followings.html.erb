@@ -21,6 +21,7 @@
 
 <% single=true %>
 <div class="all_right_div">
+ <h2>Following<h2> 
   <div class="media">
     <% @followings.each do |follow| %>
       <%if single==true%>
@@ -33,7 +34,14 @@
             </div>
             <div class="media-body">
               <h4><%= link_to User.find(follow.following_id.to_i).name , tweets_user_path(User.find(follow.following_id.to_i))%></h4>
-              <h4><%= User.find(follow.following_id.to_i).introduction %></h4>
+              <h4><%= truncate(User.find(follow.following_id.to_i).introduction,length: 70)%></h4>
+                      <div class="align_right">
+              <% if current_user.following?(User.find(follow.following_id.to_i))%>
+              <%= link_to 'Unfollow', followship_path(User.find(follow.following_id.to_i)), method: :delete , class:"btn btn-primary" %>
+              <% else %>
+              <%= link_to 'Follow', followships_path(following_id: User.find(follow.following_id.to_i)), method: :post ,class:"btn btn-primary"%>
+              <% end %>
+              </div>
             </div>
           </div>
           <% single=false %>
@@ -46,12 +54,18 @@
             </div>
             <div class="media-body">
               <h4><%= link_to User.find(follow.following_id.to_i).name , tweets_user_path(User.find(follow.following_id.to_i))%></h4>
-              <h4><%= User.find(follow.following_id.to_i).introduction %></h4>
+              <h4><%= truncate(User.find(follow.following_id.to_i).introduction, length: 70) %></h4>
+                                    <div class="align_right">
+              <% if current_user.following?(User.find(follow.following_id.to_i))%>
+              <%= link_to 'Unfollow', followship_path(User.find(follow.following_id.to_i)), method: :delete , class:"btn btn-primary" %>
+              <% else %>
+              <%= link_to 'Follow', followships_path(following_id: User.find(follow.following_id.to_i)), method: :post ,class:"btn btn-primary"%>
+              <% end %>
+                    </div>
             </div>
           </div>
           <% single=true %>
-          <br>
-      </div>
+      </div><hr>
       <% end %>
     <% end %>
   </div>

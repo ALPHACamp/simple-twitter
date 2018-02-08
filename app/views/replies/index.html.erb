@@ -23,10 +23,12 @@
         <h4><%= link_to User.find(@tweet.user_id).name,tweets_user_path(@tweet.user_id)%></h4>
         <h4><%= @tweet.description %></h4><br>
         <%= link_to "Reply (#{@tweet.replies.count})",replies_path(@tweet.id), class: "btn btn-primary" %>
-        <% if @tweet.is_likes?(current_user) %>
-          <%= link_to "UnLike (#{@tweet.likes.count})", unlike_tweet_path(@tweet), method: :post, class: "btn btn-info" %>
-        <% else %>
-          <%= link_to "Like (#{@tweet.likes.count})", like_tweet_path(@tweet), method: :post, class: "btn btn-primary" %>
+        <% if User.find(@tweet.user_id) != current_user %>
+          <% if @tweet.is_likes?(current_user) %>
+            <%= link_to "UnLike (#{@tweet.likes.count})", unlike_tweet_path(@tweet), method: :post, class: "btn btn-info" %>
+          <% else %>
+            <%= link_to "Like (#{@tweet.likes.count})", like_tweet_path(@tweet), method: :post, class: "btn btn-primary" %>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -50,8 +52,10 @@
     <% end %>
   <% end %>
 </div>
-<%=  form_for @reply do |f| %>
+<%= form_for @reply do |f| %>
   <%= f.text_area :comment ,class:"form-control",rows:"4",placeholder: "what's on your mind" %><br>
-  <%= f.submit value:"Create Tweet",class:"btn btn-primary" %>
+  <div class="align_right">
+    <%= f.submit value:"Create Tweet",class:"btn btn-primary" %>
+  </div>
 <% end %>
 </div>

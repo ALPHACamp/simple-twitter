@@ -3,6 +3,8 @@ before_action :authenticate_user!
   def index
     @tweets = Tweet.new
     @tweet_order = Tweet.order(created_at: :desc).limit(10)
+    @user_all= User.all
+    @user_followers_count = User.order(followers_count: :desc).limit(3)
   end
 
   def create

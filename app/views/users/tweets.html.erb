@@ -27,16 +27,23 @@
           <%= image_tag User.find(tweet.user_id).avatar,class:"media-object" ,style:"width:120px;height:120px"  %>
         </a>
       </div>
-      <div class="media-body">
-        <h4><%= link_to User.find(tweet.user_id).name + "，" , tweets_user_path(tweet.user_id)%>
-          <%=tweet.created_at.strftime("%Y-%m-%d,%H:%M:%S") %><br>
-        </h4>
+    <div class="media-body">
+      <h4><%= link_to User.find(tweet.user_id).name + "，" , tweets_user_path(tweet.user_id)%>
+        <%=tweet.created_at.strftime("%Y-%m-%d,%H:%M:%S") %><br>
+      </h4>
         <h4><%=tweet.description %></h4><br>
-        <% if current_user == @user_id %>
-          <%= link_to "Delete", user_path(tweet), method: :delete , data: { confirm: "確認刪除?" } %>
-         <% end %>
+          <%= link_to "Reply (#{tweet.replies.count})",replies_path(tweet.id), class: "btn btn-primary" %>
+          <% if current_user == @user_id %>
+          <%= link_to "Delete", user_path(tweet), method: :delete , data: { confirm: "確認刪除?" } , class: "btn btn-primary"  %>
+          <%else%>
+          <% if tweet.is_likes?(current_user) %>
+          <%= link_to "UnLike (#{tweet.likes.count})", unlike_tweet_path(tweet), method: :post, class: "btn btn-info" %>
+          <% else %>
+          <%= link_to "Like (#{tweet.likes.count})", like_tweet_path(tweet), method: :post, class: "btn btn-primary" %>
+          <% end %>
+          <% end %>
       </div>
-      <br>
+     <br>
     <% end %>
   <% end %>
 </div>

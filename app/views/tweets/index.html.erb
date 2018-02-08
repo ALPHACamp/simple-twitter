@@ -5,6 +5,7 @@
   <% end %>
 </div>
 <br>
+
 <div class="tweetdynamic">
   <% @tweet_order.each do |tweeto| %>
      <div class="media">
@@ -20,16 +21,42 @@
             <p><%=tweeto.description%></p>
            </h4><br>
             <%= link_to "Reply (#{tweeto.replies.count})",replies_path(tweeto.id), class: "btn btn-primary"%>
-            <% if tweeto.is_likes?(current_user) %>
-            <%= link_to "UnLike (#{tweeto.likes.count})", unlike_tweet_path(tweeto), method: :post, class: "btn btn-info" %>
-            <% else %>
-            <%= link_to "Like (#{tweeto.likes.count})", like_tweet_path(tweeto), method: :post, class: "btn btn-primary" %>
+            <% if tweeto.user != current_user %>
+              <% if tweeto.is_likes?(current_user) %>
+              <%= link_to "UnLike (#{tweeto.likes.count})", unlike_tweet_path(tweeto), method: :post, class: "btn btn-info" %>
+              <% else %>
+              <%= link_to "Like (#{tweeto.likes.count})", like_tweet_path(tweeto), method: :post, class: "btn btn-primary" %>
+              <% end %>
             <% end %>
          </div>
      </div>
     <hr size=4><br>
   <% end %>
 </div>
+
 <div class="tweetpopular">
-  <h2>popular</h2>
+  <h2>popular</h2><br>
+  <% @user_followers_count.each do |usertop| %>
+    <div class="media">
+      <div class="media-left media-top">
+        <a href="#">
+         <%= image_tag usertop.avatar , class:"media-object" ,style:"width:100px;height:100px"  %>
+        </a>
+      </div>
+        <div class="media-body">
+          <h4>
+           <%= link_to usertop.name ,tweets_user_path(usertop.id)%>
+           <p><%=truncate(usertop.introduction,length:70)%></p>
+          </h4><br>
+            <div class="align_right">
+          <% if current_user.following?(usertop.id)%>
+          <%= link_to 'Unfollow', followship_path(usertop.id), method: :delete , class:"btn btn-primary" %>
+          <% else %>
+          <%= link_to 'Follow', followships_path(following_id: usertop.id), method: :post ,class:"btn btn-primary"%>
+          <% end %>
+            </div>
+        </div>
+    </div>
+    <br>
+  <% end %>
 </div>
