@@ -1,0 +1,75 @@
+<div class="col-md-3">
+  <h1>Tweet</h1>
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>X</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tweets.each do |tweet| %>
+         <tr>  
+
+           <td> <%= tweet.user.name %></td>
+            <td> <%= tweet.description %></td>
+              <td><% if current_user.admin? %>
+                <%= link_to "Delete", admin_tweet_path(tweet), method: :delete %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
+
+<div class="col-md-3">
+  <h1>Rely</h1>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Comment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @replies.each do |reply| %>
+       <tr>  
+
+         <td> <%= reply.user.name %></td>
+          <td> <%= reply.comment %></td>
+          
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="col-md-4">
+  <h1>User</h1>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Tweet </th>
+        <th>Following</th>
+        <th>Follower</th>
+        <th>Like</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+       <tr>  
+
+        <td> <%= user.name %></td>
+        <td> <%= user.tweets.count %></td>
+        <td> <%= user.followings.count %></td>
+        <td> <%= user.followers.count %></td>
+        <td> <%= user.likes.count %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
