@@ -10,4 +10,10 @@ Rails.application.routes.draw do
   end
 
   resources :tweets, only: [:index, :create]
+
+  resources :users, only: [:edit, :update] do
+    member do
+      get :tweets
+    end
+  end
 end
