@@ -50,15 +50,14 @@
                 <li><%= link_to 'Admin Panel_Tweets', admin_root_path %></li>
                 <li><%= link_to 'Admin Panel_Users', admin_users_path %></li>
               <% end %>
-              <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
-              <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
+              <li><%= link_to('Log out', destroy_user_session_path, method: :delete) %></li>
     <!--   edit wrong link-> need to add route for edit_user_path-->
-              <li><%= link_to('修改個人資料', edit_user_password_path) %></li>
-              <li><%= link_to('修改密碼', edit_user_registration_path(current_user)) %></li>
+              <li><%= link_to('Edit Password', edit_user_registration_path(current_user)) %></li>
               <li><%= link_to current_user.name, tweets_user_path(current_user) %></li>
+              <li><%= image_tag current_user.avatar, class: "nav-bar-img" %>
             <% else %>
-              <li><%= link_to('註冊', new_user_registration_path) %></li>
-              <li><%= link_to('登入', new_user_session_path) %></li>
+              <li><%= link_to('Sign up', new_user_registration_path) %></li>
+              <li><%= link_to('Log in', new_user_session_path) %></li>
             <% end %>
 
 
@@ -73,7 +72,7 @@
         <div class="alert alert-success alert-dismissible" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <%= notice %>        
-        </div>>
+        </div>
       </div>
     </div>
     <% end %>
