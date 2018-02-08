@@ -34,16 +34,16 @@
   
     <% @followings.each do |following| %>
     <div class="col-sm-6 col-md-4">
-      <div class="item">
+      <div class="item clearfix">
         <img class="img-circle" src="http://via.placeholder.com/60x60">
         <%= link_to following.name, tweets_user_path(following)  %>
         <p><%= following.introduction %></p>
         <% if current_user.following?(following)%>
           <!-- 會用 DELETE 動作導向 http://localhost:3000/followships/{user.id} -->
-          <%= link_to 'Unfollow', followship_path(following), method: :delete ,class: "btn btn-info" %>
+          <%= link_to 'Unfollow', followship_path(following), method: :delete ,class: "btn btn-info right" %>
         <% else %>
           <!-- 會用 POST 動作導向 http://localhost:3000/followships?following_id={user.id} -->
-          <%= link_to 'Follow', followships_path(following_id: following), method: :post , class: "btn btn-primary" %>
+          <%= link_to 'Follow', followships_path(following_id: following), method: :post , class: "btn btn-primary right" %>
         <% end %>
       </div>
     </div>
