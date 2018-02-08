@@ -1,7 +1,7 @@
 class Tweet < ApplicationRecord
   validates_length_of :description, maximum: 140
   # 設置tweet 與 user的多對一關係
-  belongs_to :user
+  belongs_to :user, counter_cache: true
   # 使用者能對別人的推播按 Like/Unlike的多對多關係
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user

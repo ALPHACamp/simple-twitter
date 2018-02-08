@@ -79,6 +79,12 @@ img {
 	border-radius: 5px;
 }
 
+th {
+	font-size: 18px;
+	text-align: center;
+	text-transform: capitalize;
+}
+
 .clearfix::after  {
   content: "";
   display: table;
@@ -299,5 +305,26 @@ input[type="file"] {
 	}
 	.col-md-8 {
 		position: static;
+	}
+}
+
+//admin
+#admin {
+	.time {
+		width: 130px;
+	}
+	.like {
+		text-align: center;
+	}
+	.user {
+		td {
+			text-align: center;
+		}
+	}
+	.modal {
+		li {
+			margin-bottom: 10px;
+			line-height: 1.6;
+		}
 	}
 }
