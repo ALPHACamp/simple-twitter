@@ -21,7 +21,7 @@
   <div class="clearfix"></div>
   <% if is_tweet %>
     <div class="col-xs-3 col-sm-3 col-xs-offset-3 col-sm-offset-3 msg-btn-col">
-      <%= link_to "Reply(#{message.replies.count})", tweet_replies_path(message.id) %>
+      <%= link_to "Reply(#{message.replies_count})", tweet_replies_path(message.id) %>
       <% if with_reply %>
         <%= render partial: "shared/collapse_btn", locals: {title: '', collapse_target: "message#{message.id}", class_name: 'inline-block', btn_class: 'less-padding'} %>
       <% end %>
