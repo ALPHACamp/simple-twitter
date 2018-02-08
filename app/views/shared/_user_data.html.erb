@@ -1,0 +1,23 @@
+<div class="row user-panel">
+
+  <div class="col-xs-6 col-sm-12 panel-avatar">
+    <%= user_avatar(@user.avatar,"img-responsive center-block") %>
+    <h2><%= link_to "#{@user.name}", tweets_user_path(@user) %></h2>
+  </div> 
+
+  <div class="col-sm-12 hidden-xs full-intro"><%= @user.introduction %></div>
+  <div class="col-xs-6 col-sm-12">
+    <p class="black-link"><%= link_to "Tweets #{@user.tweets_count}", tweets_user_path(@user) %></p>
+    <p class="black-link"><%= link_to "Following #{@user.followings_count}", followings_user_path(@user) %></p>
+    <p class="black-link"><%= link_to "Follower #{@user.followers_count}", followers_user_path(@user) %></p>
+    <p class="black-link"><%= link_to "Like #{@user.likes_count}", likes_user_path(@user) %></p>
+  </div>
+  <div class="col-xs-12 hidden-sm hidden-md hidden-lg full-intro"><%= @user.introduction %></div> 
+
+  <div class="padding-left15">
+    <%= render partial: "shared/follow", locals: {user: @user} %>
+    <% if @user == current_user %>
+      <%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

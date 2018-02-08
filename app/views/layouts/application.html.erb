@@ -6,23 +6,56 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= filestack_js_include_tag %>
+    <%= filestack_js_init_tag %> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
   <body>
-    <% if current_user %>
-      <% if current_user&.admin? %>
-        <li><%= link_to 'Admin Panel', admin_restaurants_path %></li>
-      <% end %>
-      <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
-      <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
-      <li><%= link_to('修改個人資料', edit_user_path(current_user)) %></li>
-      <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
-    <% else %>
-      <li><%= link_to('註冊', new_user_registration_path) %></li>
-      <li><%= link_to('登入', new_user_session_path) %></li>
-    <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <!-- Navbar -->
+    <nav class="navbar-fixed-top my-nav navbar navbar-default">
+      <div class="container" id="nav-container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="glyphicon glyphicon-menu-hamburger"></span>
+          </button>
+          <a class="navbar-brand" href="/">Tweeter</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+          <ul class="pull-right nav navbar-nav">
+            <% if current_user %>
+              <li>
+                <!-- Button for admin to switch between front and back -->
+                <% if current_user.role == 'admin' %>
+                  <% if request.url.include? 'admin' %>
+                    <%= link_to "To Front End", root_path, class: "nav-text" %>
+                  <% else %>
+                    <%= link_to "To Back End", admin_tweets_path, class: "nav-text" %>
+                  <% end %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to tweets_user_path(current_user), class: "nav-avatar-link" do %>
+                  <%= user_avatar(current_user.avatar, "nav-avatar") %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+              </li>
+            <% else %>
+              <li><%= link_to('註冊', new_user_registration_path) %></li>
+              <li><%= link_to('登入', new_user_session_path) %></li>
+            <% end %><!-- if current_user -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="container">
+      <%= render partial: "shared/alert" %>
+      <%= yield %>
+    </div>
   </body>
 </html>

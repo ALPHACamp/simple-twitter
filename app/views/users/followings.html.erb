@@ -1,0 +1,24 @@
+<div class="row">
+  <!-- user profile -->
+  <div class="col-xs-12 col-sm-3">
+    <%= render partial: "shared/user_data" %>
+  </div>
+
+  <!-- Followings -->
+  <div class="col-xs-12 col-sm-9">
+    <hr class="hidden-sm hidden-md hidden-lg">
+    <h1>Followings</h1>
+    <div class="row">
+      <% @followings.each_with_index do |followings, i| %>
+        <div class="col-xs-12 col-sm-6 user-card-container">
+          <%= render partial: "shared/user_card", locals: {user: followings} %>
+        </div>
+        <% if i.odd? %>
+          <div class="clearfix hidden-xs"></div>
+        <% end %>
+      <% end %>
+      <div class="text-center"><%= paginate @followings %></div>
+    </div>
+  </div>
+
+</div>

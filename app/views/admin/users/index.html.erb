@@ -1,0 +1,26 @@
+<ul class="nav nav-tabs">
+  <li role="presentation"><%= link_to 'All tweets', admin_tweets_path %></li>
+  <li role="presentation" class="active"><%= link_to 'User dashboard', admin_users_path %></li>
+</ul>
+<br><h1>User dashboard</h1>
+
+<table class="table table-hover table-striped">
+  <tr>
+    <th class="text-center"><%= sortable('Name', @current_title) %></th>
+    <th class="text-center">Avatar</th>
+    <th class="text-center"><%= sortable('Tweets', @current_title) %></th>
+    <th class="text-center"><%= sortable('Followings', @current_title) %></th>
+    <th class="text-center"><%= sortable('Followers', @current_title) %></th>
+    <th class="text-center"><%= sortable('Got likes', @current_title) %></th>
+  </tr>
+  <% @users.each do |user| %>
+    <tr>
+      <td class="td-text"><%= link_to user.name, tweets_user_path(user)  %></td>
+      <td class="td-avatar"><%= user_avatar(user.avatar, "img-responsive center-block") %></td>
+      <td class="td-text"><%= link_to user.tweets_count, tweets_user_path(user) %></td>
+      <td class="td-text"><%= link_to user.followings_count, followings_user_path(user) %></td>
+      <td class="td-text"><%= link_to user.followers_count, followers_user_path(user) %></td>
+      <td class="td-text"><%= link_to user.got_likes_count, tweets_user_path(user) %></td>
+    </tr>
+  <% end %>
+</table>

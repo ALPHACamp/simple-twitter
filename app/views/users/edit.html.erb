@@ -1,0 +1,37 @@
+<div class="row">
+  <%= form_for @user do |f| %>
+    <!-- user avatar -->
+    <div class="col-xs-12 col-sm-4">
+      <div class="avatar">
+        <%= user_avatar(@user.avatar,"img-responsive center-block") %>
+      </div>
+
+      <div class="form-group text-center">
+        <%= f.filestack_field :avatar, 'Upload Your Avatar!',  pickerOptions: { accept: 'image/*', 'fromSources': 'local_file_system'}, id: 'unique-id', class: "btn btn-default" %>
+      </div>
+    </div>
+
+    <!-- form for name and introduction-->
+    <div class="col-xs-12 col-sm-8">
+      <% if @user.errors.any? %>
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <!-- form -->
+      <div class="form-group">
+        <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
+      </div>
+      <div class="form-group">
+        <%= f.text_area :introduction, class: "form-control", id: "intro", placeholder: "Type anything about you here..." %>
+      </div>
+      <div class="form-group text-right">
+        <%= f.submit 'Update', class: "btn btn-primary" %>
+      </div>
+
+    </div>
+  <% end %>    
+</div>
