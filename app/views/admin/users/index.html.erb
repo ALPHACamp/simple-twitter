@@ -1,0 +1,58 @@
+<div class="container-fluid admin-index">
+  <h2 class="reply-head text-center"><strong>Tweets 後台</strong></h2>
+  <!-- Nav-tabs /start -->
+  <ul class="nav nav-tabs container">
+    <li role="presentation">
+      <%= link_to "Tweet List", admin_root_path %>
+    </li>
+    <li role="presentation" class="active">
+      <%= link_to "User List", admin_users_path %>
+    </li>
+  </ul>
+  <!-- Nav-tabs /end -->
+  
+  <!-- User List /start -->
+  <div class="container">
+    <% @users.each do |user| %>
+      <div class="userlist clearfix">
+        <div class="container">
+          <!-- Left: user avartar /start -->
+          <div class="col-xs-2">
+            <div class="userlist-avatar">
+              <% if user.avatar? %>
+                <%= image_tag(user.avatar, width: '80', height: '80',class: 'center-block') %>
+              <% else %>
+                <%= image_tag("http://via.placeholder.com/80x80",class: 'center-block') %>
+              <% end %>
+            </div>
+          </div>
+          <!-- Left: user avartar /end -->
+
+          <!-- Right: user info  /start -->
+          <div class="col-xs-10">
+            
+            <!-- user info: name -->
+            <div class="tweetheader">
+              <%= link_to tweets_user_path(user) do  %>
+                <strong class="username">@<%= content_tag :span, user.name %></strong>
+              <% end %>
+            </div>
+
+            <!-- user number od tweets/followings/followers/likes -->
+            <div>
+              <p>Tweets: <%= user.tweets_count %></p>
+              <p>Followings: <%= user.followships.length %></p>
+              <p>Followers: <%= user.followers_count %></p>
+              <p>Likes: <%= user.likes_count %></p>
+            </div>
+
+          </div>
+          <!-- Right: user info /end -->
+
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <!-- User List /end -->
+
+</div>
