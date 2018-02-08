@@ -11,7 +11,7 @@
     <th class="text-center"><%= sortable('Tweets', @current_title) %></th>
     <th class="text-center"><%= sortable('Followings', @current_title) %></th>
     <th class="text-center"><%= sortable('Followers', @current_title) %></th>
-    <th class="text-center">Tweet likes</th>
+    <th class="text-center"><%= sortable('Got likes', @current_title) %></th>
   </tr>
   <% @users.each do |user| %>
     <tr>
@@ -20,7 +20,7 @@
       <td class="td-text"><%= link_to user.tweets_count, tweets_user_path(user) %></td>
       <td class="td-text"><%= link_to user.followings_count, followings_user_path(user) %></td>
       <td class="td-text"><%= link_to user.followers_count, followers_user_path(user) %></td>
-      <td class="td-text"><%= link_to user.tweets.joins(:likes).count, tweets_user_path(user) %></td>
+      <td class="td-text"><%= link_to user.got_likes_count, tweets_user_path(user) %></td>
     </tr>
   <% end %>
 </table>

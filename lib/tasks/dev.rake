@@ -115,9 +115,7 @@ namespace :dev do
   end
 
   task test: :environment do
-    User.all.each do |u|
-      puts "#{u.name} ======= #{u.got_likes_count}"      
-    end
+    puts %[Got likes followings].include?('Got likes')
   end
 
   #fake all data

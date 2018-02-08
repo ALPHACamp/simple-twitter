@@ -24,6 +24,9 @@ class Admin::UsersController < Admin::BaseController
       when 'Followers'
         'followers_count'
 
+      when 'Got likes'
+        'got_likes_count'
+
       else
         'tweets_count'
 
@@ -35,6 +38,6 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def current_title
-    %w[Name Tweets Followings Followers].include?(params[:sort]) ? params[:sort] : 'Tweets'
+    %w[Name Tweets Followings Followers Got likes].include?(params[:sort]) ? params[:sort] : 'Tweets'
   end
 end
