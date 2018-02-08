@@ -1,6 +1,7 @@
 <h3>front</h3>
 <%= form_for @tweet do |f| %>
   <%= f.text_area :description %>
-
   <%= f.submit %>
+
+  <%= link_to 'Edit', edit_user_path(@user) %>
 <% end %>
