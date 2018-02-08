@@ -1,47 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-     <div class="col-md-12">
-      <div class="col-md-12">
-        <%= image_tag @user.avatar , size: "150", class: "img-responsive " if @user.avatar?%>
-      </div>
-      <div class="col-md-12">
-        <p><%= @user.name %></p>
-        <p><%= @user.introduction %></p>
-      </div>
-      <div class="col-md-12">
-        <p>Tweet數量</p>
-      </div>
-      <div class="col-md-12">
-        <p>Following</p>
-      </div>
-      <div class="col-md-12">
-        <p>Follower</p>
-      </div>
-      <div class="col-md-12">
-        <p>Like</p>
-      </div>
-      <div class="col-md-12">
-        <p>Edit Profile/Follow</p>
-      </div>    
-     </div>
+      <%= render partial: "shared/user_info", locals: {user: @user} %>
     </div>
     <div class="col-md-9">
-      <h1>Tweet</h1>
+      <h1>Followings</h1>
       <div class="col-md-12">
         <% @followings.each do |following| %>
-          <div class="col-md-12">
-            <div class="tweet-detail">
-              <div class="col-md-3">
-                <%= image_tag following.avatar , size: "100", class: "img-responsive center-block" if following.avatar?%>
-              </div>
-              <div class="col-md-9">
-                <p class="description"><%= following.name  %></p>
-                <p class="description"><%= following.introduction  %></p>
-              
-              </div>
-            </div>
-          </div>
+          <%= render partial: "shared/follow_list", locals: {follow: following} %>
         <% end %>
       </div>
     </div>

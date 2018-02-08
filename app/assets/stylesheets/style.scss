@@ -6,10 +6,6 @@
   border-radius: 4px;
   overflow-y: hidden;
   height: 150px;
-  // .picture {
-  //   max-height: 180px;
-  //   width: 100%;
-  // }
 }
 
 .tweet-item img {
@@ -25,4 +21,13 @@
   .description {
     padding-top: 5px;
   }
+}
+
+.follow-detail {
+  padding: 4px;
+  margin: 5px 0 10px 0px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow-y: hidden;
+  height: 200px;
 }

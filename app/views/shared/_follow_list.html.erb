@@ -1,0 +1,12 @@
+<div class="col-md-6">
+  <div class="follow-detail">
+    <div class="col-md-6">
+      <%= image_tag follow.avatar , size: "150", class: "img-responsive center-block" if follow.avatar?%>
+    </div>
+    <div class="col-md-6">
+      <p class="description"><%= link_to follow.name , tweets_user_path(follow) %></p>
+      <p class="description"><%= truncate(follow.introduction, length: 80)  %></p>
+      <button>Follow/Unfollow</button>
+    </div>
+  </div>
+</div>
