@@ -46,4 +46,15 @@ namespace :dev do
     puts "now you have #{Reply.count} reply data"
   end
 
+  task fake_like: :environment do
+    Tweet.all.each do |tweet|
+      rand(1..3).times do |i|
+        tweet.likes.create!(
+          user: User.all.sample
+        )
+      end
+    end
+    puts "have created fake likes"
+    puts "now you have #{Like.count} like data"
+  end
 end
