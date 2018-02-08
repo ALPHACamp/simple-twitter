@@ -10,7 +10,8 @@
 <tr> 
     <th>使用者</th> 
     <th>建立時間</th> 
-    <th>推播內容</th> 
+    <th>推播內容</th>
+    <th>連結</th> 
     <th>回覆數</th>
     <th>按讚數</th> 
     <th>動作</th> 
@@ -19,9 +20,10 @@
 <tbody>
 <% @tweets.each do |u| %> 
 <tr> 
-    <td><%= u.user.name%></td> 
+    <td><%= link_to u.user.name, tweets_user_path(u.user) %></td> 
     <td><%= u.created_at.strftime("%F %H:%M")%></td> 
-    <td style="max-width: 400px;"><%= u.description%></td> 
+    <td style="max-width: 400px;"><%= u.description%></td>
+    <td><%= link_to "Link", replies_tweet_path(u)%></td> 
     <td><%= u.replies.size%></td> 
     <td><%= u.likes.size%></td>
     <td>

@@ -20,7 +20,7 @@
 <tbody>
 <% @users.each do |u| %> 
 <tr> 
-    <td><%= u.name%></td> 
+    <td><%= link_to u.name, tweets_user_path(u) %></td>  
     <td><%= u.tweets_count%></td> 
     <td><%= u.followings.size%></td> 
     <td><%= u.followers.size%></td> 
