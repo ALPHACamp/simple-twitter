@@ -35,8 +35,9 @@ class UsersController < ApplicationController
 
   def likes
     @user = User.find(params[:id])
-    @likes = @user.likes.all  # 基於測試規格，必須講定變數名稱
+    @likes = @user.liked_tweets.all # 基於測試規格，必須講定變數名稱
     @tweets = Tweet.where(user_id: @user)
+    @user.likes_count = @user.likes.size
   end
 
 

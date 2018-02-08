@@ -5,7 +5,7 @@
   <% @likes.each do |like|%>
     <div class="media">
       <%= image_tag like.user.avatar , class: "align-self-center mr-3 avatar rounded"%>
-      <%= render partial: "shared/tweet", locals:{tweet: like.tweet} %>
+      <%= render partial: "shared/tweet", locals:{tweet: like} %>
     </div>
   <% end %>
 </div>

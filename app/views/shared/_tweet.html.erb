@@ -1,7 +1,7 @@
 
 <div class="media-body">
   <h5 class="mt-0">
-    <%= link_to "#{tweet.user.name} #{tweet.created_at}",tweets_user_path(tweet.user_id)%>
+    <%= link_to "#{tweet.user.name} #{tweet.created_at.to_s(:db)}",tweets_user_path(tweet.user_id)%>
   </h5>
   <p>
     <%=tweet.description%>
