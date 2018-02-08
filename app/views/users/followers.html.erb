@@ -1,0 +1,14 @@
+<div class="show-user-profile-page">
+  <div class="user-profile">
+    <%= render partial: "shared/profile", locals: { user: @user } %>
+  </div>
+
+  <div>
+    <h3>Follower</h3>
+    <div class="user-follow-page">
+      <% @inverse_followships.each do |inverse_followship| %>
+        <%= render partial: "shared/users", locals: { user: inverse_followship.user } %>
+      <% end %>
+    </div>
+  </div>
+</div>

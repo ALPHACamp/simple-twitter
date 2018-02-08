@@ -1,3 +1,41 @@
 // Place all the styles related to the followships controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*follow button*////////////////////////////////////////////
+.follow, .unfollow, .edit-user, .reply-btn, .upload-btn, .log-in-btn {
+  background-color: #87CEFA;
+  color: #444444;
+  font-weight: bold;
+  height: 32px;
+  max-width: 90px;
+}
+
+.follow:hover, .unfollow:hover, .edit-user:hover, .reply-btn, .upload-btn:hover, .log-in-btn {
+  background-color: #87CEFA;
+}
+
+.unfollow {
+  background-color: #8FDFFF;
+}
+
+.edit-user {
+  max-width: 100px;
+}
+
+.upload-btn {
+  max-width: 160px;
+}
+
+.log-in-btn {
+  max-width: 200px;
+}
+
+/*following and follower*/////////////////////////////////////////////////////////
+.user-follow-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: auto;
+  grid-column-gap: 10px;
+  grid-row-gap: 20px;
+}

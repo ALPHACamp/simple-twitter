@@ -1,0 +1,14 @@
+<div class="show-user-profile-page">
+  <div class="user-profile">
+    <%= render partial: "shared/profile", locals: { user: @user } %>
+  </div>
+
+
+  <div>
+    <% @tweets.each do |tweet| %>
+      <div class="tweet-box">
+        <%= render partial: "shared/tweets", locals: { tweet: tweet } %>
+      </div>
+    <% end %>
+  </div>
+</div>

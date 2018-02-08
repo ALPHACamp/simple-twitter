@@ -1,0 +1,18 @@
+<div id="edit-user-page">
+  <%= form_for @user do |f| %>
+    <div>
+      <%= image_tag user_avatar(@user) %>
+      <div class="btn btn-default upload-btn">
+        Browse files..
+        <span><%= f.file_field :avatar %></span>
+      </div>
+      <%= link_to 'Change passwords', edit_user_registration_path, class: "btn btn-default upload-btn" %>
+    </div>
+
+    <%= f.text_field :name, placeholder: "Name" %>
+
+    <%= f.text_area :introduction, placeholder: "Type anything about you here..." %>
+
+    <%= f.submit "Update", class: "btn btn-default upload-btn"%>
+  <% end %>
+</div>
