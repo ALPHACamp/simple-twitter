@@ -3,10 +3,11 @@
   border-radius: 4px;
   padding: 10px;
   margin-bottom: 20px;
+  overflow: auto;
 }
 
 .col-left, .col-rigth {
-  display: inline-block;
+  float: left;
   padding: 10px;
 }
 
