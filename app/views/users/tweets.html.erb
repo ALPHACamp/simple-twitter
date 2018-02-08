@@ -41,15 +41,14 @@
           <p>@<%= tweet.user.name %>, <%= tweet.created_at %></p>
           <%= tweet.description %>
           <h5>Reply(<%= tweet.replies.count %>) Like(<%= tweet.likes_count %>)</h5>
+
+          <!-- like / unlike button -->
+
           <hr>
         </div>
 
       <% end %>
     </div>
-
-
-
-
 
   </div>
 </div>
