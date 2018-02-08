@@ -14,17 +14,17 @@ class User < ApplicationRecord
   validates_length_of :introduction, maximum: 200
   
 
-  has_many :replies
+  has_many :replies, dependent: :destroy
   has_many :tweets, through: :replies
 
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :liked_tweets, through: :likes, source: :tweet
 
-  has_many :followships
+  has_many :followships, dependent: :destroy
   has_many :followings, through: :followships
 
 
-  has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
+  has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id", dependent: :destroy
   has_many :followers, through: :inverse_followships, source: :user
 
 
