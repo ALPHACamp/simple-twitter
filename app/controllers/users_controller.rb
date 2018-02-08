@@ -4,7 +4,8 @@ class UsersController < ApplicationController
 
 
   def tweets
-    @tweets = User.find(params[:id]).tweets
+    @user = User.find(params[:id])
+    @tweets = @user.tweets
   end
 
   def edit
