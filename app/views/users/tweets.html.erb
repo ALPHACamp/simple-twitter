@@ -21,9 +21,9 @@
         <h5>Follower : <%= @user.followers_count %></h5>
       <% end %>
 
-      <!-- like -->
+      <!-- like 按過讚的推特數 -->
       <%= link_to (user_likes_path(@user)) do %>
-        <h5>Like : <%= @user.likes_count %></h5>
+        <h5>Like : <%= @user.liked_tweets.count %></h5>
       <% end %>
       
       <%= render partial: "shared/edit", locals: {user: @user} %>

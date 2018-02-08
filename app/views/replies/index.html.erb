@@ -8,7 +8,7 @@
       <h5>Tweets : <%= @user.tweets.count %></h5>
       <h5>Following : <%= @user.followings.count %></h5>
       <h5>Follower : <%= @user.followers_count %></h5>
-      <h5>Like : <%= @user.tweets.count %></h5> <!-- 被讚文章總數 -->
+      <h5>Like : <%= @user.liked_tweets.count %></h5> <!-- 按過讚的推特總數 -->
     </div>
 
     <div class="col-md-8">
