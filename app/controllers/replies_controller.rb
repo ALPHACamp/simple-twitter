@@ -1,13 +1,14 @@
 class RepliesController < ApplicationController
 
+  before_action :set_tweet
   def index
-      @tweet = Tweet.find(params[:tweet_id])
+      #@tweet = Tweet.find(params[:tweet_id])
       @replies = @tweet.replies.all
       @reply = Reply.new
   end
 
   def create
-     @tweet = Tweet.find(params[:tweet_id])
+     #@tweet = Tweet.find(params[:tweet_id])
      @reply = @tweet.replies.build(comment: reply_params[:comment], user: current_user)
      
     if @reply.save
@@ -24,6 +25,10 @@ class RepliesController < ApplicationController
   end
   
   private
+  
+  def set_tweet
+    @tweet = Tweet.find(params[:tweet_id])
+  end
   
   def reply_params
     params.require(:reply).permit(:comment)

@@ -10,14 +10,14 @@ class TweetsController < ApplicationController
   def create
     #@tweet = Tweet.create(tweet_params)
     #@tweet.user = current_user
-     @tweet = current_user.tweets.build(tweet_params)
+    @tweet = current_user.tweets.build(tweet_params)
     if @tweet.save
       flash[:notice] = "Successfully tweeted"
       redirect_to tweets_url
     else
       flash.now[:alert] = @tweet.errors.full_messages.to_sentence if @tweet.errors.any?
-      @tweets = Tweet.all
-      render :index
+      #@tweets = Tweet.all
+     
     end  
    
   end
