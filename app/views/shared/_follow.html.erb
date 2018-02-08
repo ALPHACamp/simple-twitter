@@ -4,4 +4,6 @@
   <% else %>
     <%= link_to "Follow", followships_path(id: current_user.id, following_id: user.id), class: "btn btn-primary", method: :post%>
   <% end%>
+<%else%>
+    <%= link_to "Profile",tweets_user_path(current_user), class: "btn btn-primary"%>
 <% end%>
