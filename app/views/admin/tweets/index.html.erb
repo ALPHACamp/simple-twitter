@@ -16,7 +16,7 @@
             <th>User</th>
             <th>Tweet</th>
             <th>#</th>
-            <th>Date</th>
+            <th>DateCreated</th>
           </tr>
         </thead>
         <tbody>
@@ -25,12 +25,14 @@
             <th scope="row"><%= tweet.id %></th>
             <td><%= tweet.user.name %></td>
             <td>
-              <p><%= tweet.description %></p>
-              <p>
+              <p><%= '"'+tweet.description+'"' %></p>
+                <table class="table  table-bordered table-condensed">
+                
                 <% tweet.replies.each do |reply| %>
-                <p><%= "Reply by [#{reply.user.name}] on "+"#{reply.created_at}".split(" ").first %></p>
-                <p><%= reply.comment %></p>
+                <tr><td><p><%= "Reply by [#{reply.user.name}] on "+"#{reply.created_at}".split(" ").first %></p>
+                <p><%= '"'+reply.comment+'"' %></p></td></tr>
                 <% end %>
+                </table>
 
               </p>
             </td>
