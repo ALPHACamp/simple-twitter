@@ -28,7 +28,8 @@
     clear: both;
   }
 
-  .tweet-well {
+  /* ###### Tweet ###### */
+  .tweet-wall {
     border: 1px solid #ccc;
     border-radius: 10px;
     margin: 10px;
@@ -59,5 +60,22 @@
     float: right;
     margin-right: 20px;
     margin-bottom: 20px;
+  }
+
+  /* ###### Followship ###### */
+  .follow-wall {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .name {
+    font-size: 16px;
+  }
+
+  .follow-btn {
+    float: right;
+    margin: 5px;
   }
 
