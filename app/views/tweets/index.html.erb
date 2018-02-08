@@ -16,12 +16,12 @@
         <%= render partial: "shared/message", locals: {message: tweet, message_content: tweet.description, message_btn: true} %>
       <% end %>
   </div>
-    <%#Popular    %>
+
   </div>
   <div class="popular col-md-5">
         <h1>Popular</h1>
         <% @users.each do |user| %>
-          <%= render partial:"shared/avatar", locals:{avatar: user.avatar} if user.avatar? %>
+          <%= render partial:"shared/avatar", locals:{avatar: user.avatar} if user.avatar?  %>
           <%= link_to user.name, tweets_user_path(user) %>
           <%= truncate user.introduction, length: 140 %>
           <%= render partial: "shared/follow", locals: { user: user } %>

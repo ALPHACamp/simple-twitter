@@ -1,5 +1,13 @@
-<% users.each do |user| %>
-  <div class="col-xs-6">
-    <%= render partial:"shared/userlist_followers", locals:{user:user}%>
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="float-right w-75">
+
+          <%= render partial:"shared/avatar", locals:{avatar: user.avatar} if user.avatar? %>
+          <%= link_to user.name, tweets_user_path(user) %>
+          <%= truncate user.introduction, length: 140 %>
+          <%= render partial: "shared/follow", locals: { user: user } %>
+
+
+    </div>
   </div>
-<%end%>
+</div>

@@ -1,10 +1,10 @@
 
 <div >
-  <div >
+  <div class ="col-md-5" >
     <%= render partial: "shared/profile", locals: { user: @user} %>
   </div>
   <div class>
-    <div class>
+    <div class ="col-md-7" >
       <% @tweets.each do |tweet| %>
         <%= render partial: "shared/message", locals: {message: tweet, message_content: tweet.description, message_btn: true} %>
       <% end %>

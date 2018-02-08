@@ -3,16 +3,24 @@
 
   <ul>
     <!-- user profile -->
-    <div class="col-xm-4">
+    <div class ="col-md-5" >
       <%=render partial: "/shared/profile", locals:{user: @user}%>
     </div>
-      <div class="col-sm-9">
+      <div class ="col-md-7" >
       <h1>Followings</h1>
-      <%= render partial: "shared/userlist", locals: {user: @following} %>
+
+        <% @followings.each do |user| %>
+          <%= render partial:"shared/avatar", locals:{avatar: user.avatar} if user.avatar? %>
+          <%= link_to user.name, tweets_user_path(user) %>
+          <%= truncate user.introduction, length: 140 %>
+          <%= render partial: "shared/follow", locals: { user: user } %>
+        <%end%>
+
 
       </div>
 
   </ul>
 
-  <%= render partial: "shared/backhome" %>
+
 </div>
+<%= render partial: "shared/backhome" %>

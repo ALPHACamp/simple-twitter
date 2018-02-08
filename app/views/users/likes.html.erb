@@ -3,16 +3,16 @@
   <h1>Likes</h1>
   <%# render 'shared/profile', locals: { user: @user} %>
   <!-- user info panel -->
-  <div class="col-xm-4">
+  <div class="col-md-5" >
     <%=render partial: "/shared/profile", locals:{user: @user}%>
   </div>
 
-  <ul>
+  <div class ="col-md-7" >
     <!-- user's tweetwall -->
         <% @likes.each do |tweet| %>
          <%= render partial: "shared/message", locals: {message: tweet, message_content: tweet.description, message_btn: true} %>
         <% end %>
 
-  </ul>
+  </div>
   <%= render partial: "shared/backhome" %>
 </div>

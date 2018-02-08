@@ -1,11 +1,14 @@
 <div class="container">
-  <h1>Followers</h1>
-  <ul>
-  <%= render partial: "shared/profile", locals: { user: @user } %>
-
+  <div class ="col-md-5" >
+    <h1>Followers</h1>
+    <ul>
+    <%= render partial: "shared/profile", locals: { user: @user } %>
+  </div>
+  <div class ="col-md-7" >
   <% @followers.each do |follower| %>
-    <%= render partial: "shared/follow", locals: { user: @followers } %>
+    <%= render partial: "shared/userlist", locals: { user: follower } %>
   <% end %>
-  </ul>
-  <%= render partial: "shared/backhome" %>
+  </div>
+
 </div>
+<%= render partial: "shared/backhome" %>
