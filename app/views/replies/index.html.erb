@@ -20,7 +20,7 @@
     </div>
 
     <h3>Replies</h3>
-    <% @tweet.replies.each do |reply| %>
+    <% @replies.each do |reply| %>
       <div class="tweet-block">
         <% for img_id in 0..26 %>
           <% if image_path(reply.user.avatar).include?('/user'+img_id.to_s+'.jpg') %>

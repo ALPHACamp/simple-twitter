@@ -4,7 +4,7 @@
     <li role="presentation"><%= link_to "使用者清單", admin_users_path %></li>
   </ul>
   <div class="admin-tweet">
-    <% @tweets.each do |tweet| %>
+    <% @tweets.order(created_at: :desc).each do |tweet| %>
       <div class="tweet-block">
         <% for img_id in 0..26 %>
           <% if image_path(tweet.user.avatar).include?('/user'+img_id.to_s+'.jpg') %>
