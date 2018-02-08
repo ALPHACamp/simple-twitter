@@ -14,7 +14,7 @@
     <p><%= truncate(object.introduction, length: 100) %></p>
     <% if admin %>
       <div class="user-status">
-        <span class="label label-info">Tweets：<%= object.tweets.size %></span>
+        <span class="label label-info">Tweets：<%= object.tweets_count %></span>
         <span class="label label-info">Following：<%= object.followings.size %></span>
         <span class="label label-info">Follower：<%= object.followers_count %></span>
         <span class="label label-info">Received Likes：<%= object.likes_count %></span>
