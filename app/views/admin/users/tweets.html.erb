@@ -1,0 +1,71 @@
+<h1>Simple Twitter前台</h1>
+
+<div class="container">
+  <div class="row">
+
+    <ul class="nav nav-tabs">
+      <li role="presentation">
+        <%= link_to 'Index', root_path %>
+      </li>
+      <li role="presentation">
+        <%= link_to 'Tweets', tweets_path %>
+      </li>
+      <li role="presentation" class="active">
+        <%= link_to 'Users', users_path %>
+      </li>
+    </ul>
+
+  </div>
+</div>
+
+<% if @user != current_user %>
+
+  <ul>
+    <li>
+        <%= @user.name %>
+        <%= image_tag @user.avatar, :size => "100x100", class: "img-responsive img-rounded" %>
+        <%= @user.introduction %>
+        <%= link_to 'Tweets' %>
+        <%= link_to 'Followings' %>
+        <%= link_to 'Followers' %>
+        <%= link_to 'Likes' %>
+        <%= link_to 'Follow' %>
+    </li>
+  </ul>
+  <h2>His Tweets</h2>
+
+<% else %>
+
+  <ul>
+    <li>
+      <%= image_tag current_user.avatar, :size => "100x100", class: "img-responsive img-rounded" %>
+      <%= current_user.name %>
+      <%= current_user.introduction %>
+      <%= link_to 'Tweets', tweets_user_path(current_user) %>
+      <%= link_to 'Followings', followings_user_path(current_user) %>
+      <%= link_to 'Followers', followers_user_path(current_user) %>
+      <%= link_to 'Likes', likes_user_path(current_user) %>
+      <%= link_to 'Edit Profile', edit_user_path(current_user) %>
+    </li>
+  </ul>
+  <h2>My Tweets</h2>
+
+<% end %>
+
+  <ul>
+    <% @tweets.each do |tweet| %>
+      <li>
+        <%= image_tag tweet.user.avatar, :size => "100x100", class: "img-responsive img-rounded" %>
+        <%= tweet.updated_at %>
+        <%= tweet.description %>
+        <%= link_to 'Reply', tweet_replies_path(tweet) %>
+          <% if tweet.replies_count > 0 %>
+            (<%= tweet.replies_count %>)
+          <% end %>
+        <%= link_to 'Like', likes_tweet_path(tweet) %>
+          <% if tweet.likes_count > 0 %>
+            (<%= tweet.likes_count %>)
+          <% end %>
+      </li>
+    <% end %>
+  </ul>

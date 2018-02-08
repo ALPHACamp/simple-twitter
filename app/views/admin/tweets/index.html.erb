@@ -25,7 +25,7 @@
       <%= tweet.updated_at %>
       <%= tweet.description %>
       <%= tweet.replies_count %>
-
+      <%= link_to 'Destroy', admin_tweet_path(tweet), method: :delete, data:{ confirm: "Are you sure?" } %>
     </li>
   <% end %>
 </ul>

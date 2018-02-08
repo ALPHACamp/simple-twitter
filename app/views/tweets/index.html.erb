@@ -18,6 +18,15 @@
   </div>
 </div>
 
+<%= form_for @tweet do |f| %>
+  <div class="form-group">
+    <ul>
+      <%= f.text_area :description, :size => "80x8", class: "form-control" %>
+      <%= f.submit "Tweet", class: "btn btn-primary" %>  
+    </ul>
+  </div>
+<% end %>
+
 <ul>
     <li>
       <div class="avatar-pic">
