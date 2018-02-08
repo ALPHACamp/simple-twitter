@@ -5,7 +5,9 @@
   <div class="col-md-8">
     <h3><%= @title %></h3>
     <% if @likes.any? %>
-      <%= render 'shared/tweets', objects: @likes %>
+      <% @likes.each do |like| %>
+        <%= render 'shared/tweets', t: like %>
+      <% end %>
     <% end %>
   </div> 
 </section>

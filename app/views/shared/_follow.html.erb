@@ -3,7 +3,7 @@
   <div class="follow-block">
     <div class="follow-item">
       <div class="follow-img">
-        <%= image_tag follow.avatar.url ,class: "img-responsive center-block", size: "130x120" %>
+        <%= image_tag follow.avatar.medium.url ,class: "img-responsive center-block", size: "130x120" %>
       </div>
       <div class="follow-info">
         <%= link_to tweets_user_path(follow) do %>
