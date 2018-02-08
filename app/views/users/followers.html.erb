@@ -3,9 +3,10 @@
   
   <%= render partial: "shared/user_intro" %>
   
-    <div class="col-md-4">
+    <div class="col-md-8">
       <h2>Follower</h2>
         <% @followers.each do |user| %>
+          <div class="col-md-6">
           <div class="panel panel-default ppanel">
             <%= image_tag (user.avatar), class: "usertweet-avatar" %>
             <h3>@<%= link_to user.name, tweets_user_path(user) %></h3>
@@ -17,6 +18,7 @@
                 <%= link_to 'Follow', followships_path(following_id: user), method: :post, class: "btn btn-primary btn-lg movebtn" %>
               <% end %>
             <% end %>    
+          </div>
           </div>
         <% end %>
     </div>
