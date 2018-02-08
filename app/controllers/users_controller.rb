@@ -14,11 +14,13 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings = @user.followings # 基於測試規格，必須講定變數名稱
+    @followings = @user.followings.order('followships.created_at DESC')
+    # 基於測試規格，必須講定變數名稱
   end
 
   def followers
-    @followers = @user.followers # 基於測試規格，必須講定變數名稱
+    @followers = @user.followers.order('followships.created_at DESC') 
+    # 基於測試規格，必須講定變數名稱
   end
 
   def likes
