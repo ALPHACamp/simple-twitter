@@ -1,4 +1,14 @@
-<h1>Tweet Front End<h1>
+   <%= form_for @tweet do |f| %>
+
+    <div class="form-group">
+      <%= f.text_area :description, placeholder: "What's in your mind?", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+
 
 
 <div class="container">
