@@ -1,7 +1,7 @@
 class FollowshipsController < ApplicationController
   def create
-    followship = current_user.followships.build(following_id: params[:following_id])
-    followship.save
+    @followship = current_user.followships.build(following_id: params[:following_id])
+    @followship.save
 
     user = User.find(params[:following_id])
     user.count_followers
@@ -10,8 +10,8 @@ class FollowshipsController < ApplicationController
   end
 
   def destroy
-    followships = Followship.where(user: current_user, following: params[:id])
-    followships.destroy_all
+    @followships = Followship.where(user: current_user, following: params[:id])
+    @followships.destroy_all
 
     user = User.find(params[:id])
     user.count_followers

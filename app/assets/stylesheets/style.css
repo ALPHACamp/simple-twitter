@@ -67,7 +67,8 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 50;
+  height: 50px;
+  z-index: 1000;
 }
 
 
@@ -91,7 +92,9 @@ nav {
   grid-template-columns: 1fr;
   grid-auto-flow: column;
   padding: 5px;
+  align-content: center;
   align-items: center;
+  height: 50px;
 }
 
 .fa-twitter {
@@ -465,6 +468,7 @@ h2 {
   font-family: Brush Script MT, cursive;
   font-size: 56px;
   text-align: center;
+  margin-top: 20px;
 }
 
 .welcom-subtitle {

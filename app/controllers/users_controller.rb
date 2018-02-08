@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def edit
     if @user != current_user 
       flash[:alert] = "You are not authorized."
-      redirect_to tweets_user_path(current_user)
+      redirect_to tweets_user_path(@user)
     end  
   end
 

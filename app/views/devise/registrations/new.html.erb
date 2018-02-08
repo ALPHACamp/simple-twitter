@@ -1,8 +1,17 @@
+<% if devise_error_messages!.present? %>
+  <div class="alert alert-danger" role="alert">
+    <div class="container">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">&times;</button>
+      <div class="text-center">
+        <%= resource.errors.full_messages.to_sentence %>
+      </div>
+    </div>
+  </div>
+<% end %>  
 <div class="container">
   <%= render "devise/shared/title" %>
   <div class="log-form">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= devise_error_messages! %>
       
       <div class="field form-group">
         <%= f.label :name %><br />

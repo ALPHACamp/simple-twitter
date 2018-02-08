@@ -2,10 +2,12 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>SimpleTwitter</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="turbolinks-cache-control" content="no-cache">
   </head>
   <body>
     <header id="header">
@@ -18,7 +20,7 @@
           </div>
           <ul id="menu">
             <% if current_user&.admin? %>
-              <li><%= link_to 'Admin Panel', admin_tweets_path, class: "logout-btn" %></li>
+              <li><%= link_to 'Admin Panel', admin_root_path, class: "logout-btn" %></li>
             <% end %>
             <% if current_user %>
               <li class="avatar-xs">
@@ -46,7 +48,7 @@
               </div>
             </div>
           </div>
-        <% elsif flash[:alert] %> 
+        <% elsif flash[:alert]%> 
           <div class="alert alert-danger" role="alert">
             <div class="container">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">&times;</button>
@@ -54,7 +56,7 @@
                 <%= flash[:alert] %>
               </div>
             </div>
-          </div>
+          </div>               
         <% end %>
       </div>
       <%= yield %>

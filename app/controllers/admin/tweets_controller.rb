@@ -4,16 +4,16 @@ class Admin::TweetsController < Admin::BaseController
   end
 
   def destroy
-    tweet = Tweet.find(params[:id])
+    @tweet = Tweet.find(params[:id])
 
-    tweet.destroy
+    @tweet.destroy
 
-    if tweet.present?
-      flash[:notice] = "tweet(#{tweet.id}) was successfully deleted."
+    if @tweet.present?
+      flash[:notice] = "tweet(#{@tweet.id}) was successfully deleted."
     else
-      flash[:alert] = "tweet(#{tweet.id}) does not exist."
+      flash[:alert] = "tweet(#{@tweet.id}) does not exist."
     end
     
-    redirect_back(fallback_location: admin_tweets_path)
+    redirect_to admin_root_path
   end
 end

@@ -51,8 +51,8 @@ class TweetsController < ApplicationController
   end
 
   def unlike
-    likes = Like.where(tweet: @tweet, user: current_user)
-    likes.destroy_all
+    @likes = Like.where(tweet: @tweet, user: current_user)
+    @likes.destroy_all
     @tweet.reload
     # redirect_back(fallback_location: root_path)  Ajax設定之前
   end
