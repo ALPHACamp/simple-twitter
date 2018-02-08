@@ -9,6 +9,7 @@ class RepliesController < ApplicationController
 
   def create
     @tweet = Tweet.find(params[:tweet_id])
+    @replies = @tweet.replies.all
     @reply = @tweet.replies.build(reply_params)
     @reply.user = current_user
     if @reply.save
