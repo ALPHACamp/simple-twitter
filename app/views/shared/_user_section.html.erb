@@ -14,7 +14,7 @@
     <h3><%= link_to "Like #{user.likes_count}", likes_user_path(user), style:"color:#5d5b5b;" %></h3>
 
     <% if user == current_user %>
-      <%= link_to "Edit Profile", edit_user_path(user) %>
+      <%= link_to "Edit Profile", edit_user_path(user), class: "btn btn-primary" %>
     <% else %>
       <%= render partial: "shared/follow_btn", locals: {user: user} %>
     <% end %>
