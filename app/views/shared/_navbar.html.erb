@@ -19,7 +19,7 @@
         <% end %>
       </li>
       <li>
-        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete, data: { confirm: "Want to Quit?"} %>
       </li>
     <% else %>  
       <li><%= link_to('註冊', new_user_registration_path) %></li>
