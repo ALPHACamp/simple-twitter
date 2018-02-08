@@ -46,8 +46,8 @@ before_action :set_user, only: [:tweets, :edit, :update, :likes, :followings, :f
 
    def likes
      # @likes # 基於測試規格，必須講定變數名稱
-     @likes = @user.tweets.joins(:likes).page(params[:page]).per(10).order("likes.created_at DESC")
-    #  @likes = @user.like_tweets.page(params[:page]).per(10).order("likes.created_at DESC")
+    #  @likes = @user.tweets.joins(:likes).page(params[:page]).per(10).order("likes.created_at DESC")
+     @likes = @user.like_tweets.page(params[:page]).per(10).order("likes.created_at DESC")
    end
 
 
@@ -77,6 +77,6 @@ before_action :set_user, only: [:tweets, :edit, :update, :likes, :followings, :f
        params.require(:user).permit(:name, :introduction, :avatar)
      end
 
-    
+
 
 end
