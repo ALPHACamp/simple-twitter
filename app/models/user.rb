@@ -16,6 +16,11 @@ class User < ApplicationRecord
 
   has_many :replies
 
+  # 使用者的followships資料
+  has_many :followships, dependent: :destroy
+  # 此使用者追蹤的人
+  has_many :followings, through: :followships
+
 
   def admin?
     self.role == "admin"
