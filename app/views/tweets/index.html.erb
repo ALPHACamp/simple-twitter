@@ -12,20 +12,11 @@
         </div>
         <% end %>
       </div>
-      <% @tweets.each do |tweet| %>
-        <div class="col-md-12">
-          <div class="tweet-detail">
-            <div class="col-md-3">
-              <%= image_tag tweet.user.avatar , size: "100", class: "img-responsive center-block" if tweet.user.avatar?%>
-            </div>
-            <div class="col-md-9">
-              <p class="description"><%= link_to tweet.user.name , tweets_user_path(tweet.user) %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></p>
-              <p class="description"><%= tweet.description  %></p>
-              <p class="description"><%= link_to "Reply(#{tweet.replies.count})" , tweet_replies_path(tweet) %></p>
-            </div>
-          </div>
-        </div>
-      <% end %>
+      <div class="col-md-12">
+        <% @tweets.each do |tweet| %>
+          <%= render partial: "shared/tweet_detail", locals: {tweet: tweet} %>
+        <% end %>
+      </div>
     </div>
     <div class="col-md-4">
       <div class="row">

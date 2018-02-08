@@ -6,7 +6,9 @@
     <div class="col-md-9">
       <h1>Like</h1>
       <div class="col-md-12">
-         <%= render partial: "shared/tweet_detail", locals: {tweets: @likes} %>
+        <% @likes.each do |tweet| %>
+          <%= render partial: "shared/tweet_detail", locals: {tweet: tweet} %>
+        <% end %>
     </div>
   </div>
 </div>
