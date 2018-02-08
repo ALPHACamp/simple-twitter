@@ -5,6 +5,12 @@
   </div>
   <h2><%= user.name %></h2>
   <div><%= simple_format user.introduction %></div>
-  <h4><strong>Tweets  &nbsp;<%= user.tweets.count %></strong></h4>
+  <br/>
+  <%= link_to tweets_user_path do %>
+    <h4><strong>Tweets  &nbsp;<%= user.tweets.count %></strong></h4>
+  <% end %>
+  <%= link_to likes_user_path do %>
+    <h4><strong>Likes  &nbsp;<%= user.likes.count %></strong></h4>
+  <% end %>
   <%= link_to "Edit Profile", edit_user_path(user) , class:'btn button-style' %>
 </div>
