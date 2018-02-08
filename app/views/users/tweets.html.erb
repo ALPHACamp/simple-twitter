@@ -1,32 +1,10 @@
 <h1>user's file</h1>
 <div class="row">
   <div class="col-md-4">
-    <img src="http://via.placeholder.com/200x200" alt="avatar">
-    <h2><%= @user.name %></h2>
-    <p>introduction: <%= @user.introduction %></p>
-    <ul>
-      <li>Tweets <%= @user.tweets.count %></li>
-      <li>Following</li>
-      <li>Follower</li>
-      <li>
-        <%= link_to "Like", likes_user_path(@user) %>
-        <%= @user.likes.count %>
-      </li>
-    </ul>
-    <% if @user == current_user %>
-      <%= link_to('Edit Profile', edit_user_path(current_user)) %>
-    <% else %>
-      <button>Follow</button>
-    <% end %>
+    <%= render partial: "shared/user-profile", locals: {user: @user} %>
   </div>
 
   <div class="col-md-8">
-    <!--發的貼文(tweets)-->
-    <% @tweets.each do |tweet| %>
-      <div>
-        <h4><%= tweet.user.name %></h4>
-        <p><%= simple_format tweet.description %></p>
-      </div>
-    <% end %>
+    <%= render partial: "shared/tweet", locals: {tweets: @tweets} %>
   </div>
 </div>
