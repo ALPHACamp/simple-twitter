@@ -16,6 +16,16 @@ class User < ApplicationRecord
   # 回覆推播
   has_many :replies, dependent: :destroy
 
+  has_many :followships
+  #user/followship已建立關係, 所以無需增加 source: :user
+  has_many :followings, through: :followships
+  #透過Followship的foreign_key取得追隨者的資料
+  has_many :self_follower, class_name: "Followship", foreign_key: "following_id", dependent: :destroy
+  has_many :followers, through: :self_follower, source: :user
+
+  
+  has_many :likes
+
   def admin?
     self.role == "admin"
   end

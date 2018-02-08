@@ -13,10 +13,10 @@
         <p>Tweet數量</p>
       </div>
       <div class="col-md-12">
-        <p><%= link_to "Following(#{@user.followships.count})" , followings_user_path %></p>
+        <p>Following</p>
       </div>
       <div class="col-md-12">
-        <p><%= link_to "Follower(#{@user.followers.count})" , followers_user_path %></p>
+        <p>Follower</p>
       </div>
       <div class="col-md-12">
         <p>Like</p>
@@ -29,16 +29,16 @@
     <div class="col-md-9">
       <h1>Tweet</h1>
       <div class="col-md-12">
-        <% @tweets.each do |tweet| %>
+        <% @followers.each do |follower| %>
           <div class="col-md-12">
             <div class="tweet-detail">
               <div class="col-md-3">
-                <%= image_tag tweet.user.avatar , size: "100", class: "img-responsive center-block" if tweet.user.avatar?%>
+                <%= image_tag follower.avatar , size: "100", class: "img-responsive center-block" if follower.avatar?%>
               </div>
               <div class="col-md-9">
-                <p class="description"><%= tweet.user.name  %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></p>
-                <p class="description"><%= tweet.description  %></p>
-                <p class="description"><%= link_to "Reply(#{tweet.replies.count})" , tweet_replies_path(tweet) %></p>
+                <p class="description"><%= follower.name  %></p>
+                <p class="description"><%= follower.introduction  %></p>
+              
               </div>
             </div>
           </div>
