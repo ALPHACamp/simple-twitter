@@ -8,7 +8,7 @@ class RepliesController < ApplicationController
     @tweet = Tweet.find(params[:tweet_id])
     @tweets = Tweet.where(user_id: @user)
    
-    @replies = Reply.where(tweet_id: @tweet)
+    @replies = Reply.where(tweet_id: @tweet).order(created_at: :desc)
 
     @user.likes_count = @user.likes.size
     @tweet.replies_count = @tweet.replies.size

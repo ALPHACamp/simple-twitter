@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   def tweets
     @user = User.find(params[:id])
-    @tweets = Tweet.where(user_id: @user)
+    @tweets = Tweet.where(user_id: @user).order(created_at: :desc)
     @user.likes_count = @user.likes.size
 
   end
@@ -13,20 +13,24 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    @user.update_attributes(user_params)
-    redirect_to tweets_user_path
+    if @user.update_attributes(user_params)
+      flash[:notice] = "Profile Updated"
+      redirect_to tweets_user_path
+    else
+      flash[:notice] = @user.errors.full_messages
+    end
   end
 
   def followings
     @user = User.find(params[:id])
     @tweets = Tweet.where(user_id: @user)
-    @followings = @user.followings# 基於測試規格，必須講定變數名稱
+    @followings = @user.followings.order(created_at: :desc)# 基於測試規格，必須講定變數名稱
   end
 
   def followers
     @user = User.find(params[:id])
     @tweets = Tweet.where(user_id: @user)
-    @followers = @user.followers # 基於測試規格，必須講定變數名稱
+    @followers = @user.followers.order(created_at: :desc) # 基於測試規格，必須講定變數名稱
   end
 
   def likes

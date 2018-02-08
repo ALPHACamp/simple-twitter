@@ -2,7 +2,7 @@ class TweetsController < ApplicationController
  
   def index
     @tweet = Tweet.new
-    @tweets = Tweet.all
+    @tweets = Tweet.order(created_at: :desc).all
     @users = User.order(followers_count: :desc).limit(10)
     #Top 10
     # 基於測試u規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
@@ -11,8 +11,11 @@ class TweetsController < ApplicationController
   def create
     @tweet = Tweet.new(tweet_params)
     @tweet.user = current_user
-    @tweet.save
+    if @tweet.save
     redirect_to tweets_path
+    else
+      flash[:notice]=" Tweet text maximum is 140 !"
+    end
   end
 
 
