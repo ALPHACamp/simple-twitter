@@ -11,7 +11,7 @@
 -v 使用者能回覆別人的推播
     + tweet reply order by created_at 
 -v 使用者可以追蹤/取消追蹤其他使用者（不能追蹤自己）
-- 使用者能對別人的推播按 Like/Unlike
+-v 使用者能對別人的推播按 Like/Unlike
 - 任何登入使用者都可以瀏覽特定使用者的以下資料：
     -v Tweets：排序依日期，最新的在前
     -v Following：該使用者的關注清單，排序依照追蹤紀錄成立的時間，愈新的在愈前面

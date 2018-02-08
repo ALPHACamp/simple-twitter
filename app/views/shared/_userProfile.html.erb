@@ -7,7 +7,7 @@
 
 	<%= link_to(followings_user_path(user), class: "btn btn-light") do %>Followings <%= user.followings.count%><%end%>
 	<%= link_to(followers_user_path(user), class: "btn btn-light") do %>Followers <%= user.followers.count%><%end%>
-
+	<%= link_to(likes_user_path(user), class: "btn btn-light") do %>Likes <%= user.liked_tweets.count%><%end%>
 	<% if user == current_user %>
 		<%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-light" %>
 	<% else %>
