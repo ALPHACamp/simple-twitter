@@ -13,7 +13,7 @@
           <li class="list-inline-item"><h4><%= link_to tweet.user.name ,tweets_user_path(tweet.user) %></h4></li>
           <li class="list-inline-item"><p class="text-muted">
             <em><%= time_ago_in_words(tweet.created_at) %> ago -</em></p></li>
-          <li class="list-inline-item"><%= link_to "Delete", admin_tweets_path(tweet), method: :delete , data: { confirm: "Are you sure?"}%></li>
+          <li class="list-inline-item"><%= link_to "Delete", admin_tweet_path(tweet), method: :delete, data: { confirm: "Are you sure?"} %></li>
         </ul>
         <p><%= simple_format tweet.description %></p>
         <h4 class="text-muted">
