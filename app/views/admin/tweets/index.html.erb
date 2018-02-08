@@ -1,15 +1,41 @@
-<h1>後台</h1>
+
+
 <div class="container">
-  <div class="row">
-    <% @tweets.each do |tweet|%>
-      <div class="tweet-item">
-        <tr>
-          <th scope="row"><%= tweet.id %></th>
-          <td><%= tweet.description %></td>
-          <td><%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm: "Are you sure?"} %></td>
-        </tr>
-      </div>   
-    <% end %>    
+  <h1>後台</h1>
+  <div>
+    <%= link_to 'Tweet', admin_root_path %>
+    <%= link_to 'User', admin_users_path%>
   </div>
 
+  <div class="row">
+
+    <div class="col-md-12">
+      
+      <table class="table table-striped table-bordered table-hover ">
+        <thead >
+          <tr>
+            <th>#</th>
+            <th>user</th>
+            <th>Tweet </th>            
+            <th>#</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @tweets.each do |tweet|%>
+            <tr>
+              <th scope="row"><%= tweet.id %></th>
+              <td><%= tweet.user.name%></td>
+              <td><%= tweet.description %><%= link_to "reply(#{tweet.replies.count})", tweet_replies_path(tweet)  %> </td>
+              <td><%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm: "Are you sure?"} %></td>
+            </tr>  
+        <% end %>  
+        </tbody>
+      </table>
+    </div>
+
+  </div>  
+
 </div>
+<h4> <%= paginate @tweets %></h4>
+
+
