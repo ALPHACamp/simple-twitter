@@ -92,6 +92,11 @@ hr {border-color:#ececec;margin-top: 10px;margin-bottom: 10px;}
   z-index: 1;
 }
 
+.navbar-avatar{
+  width: 50px;
+  margin-right: 10px;
+}
+
 .profile-avatar{
   width:100%;
   padding: 10px 10px;
