@@ -13,10 +13,10 @@ class RepliesController < ApplicationController
     
     if @reply.save
       flash[:notice] = "留言成功！"
-      redirect_back(fallback_location: tweets_path)
+      redirect_to tweet_replies_path(@tweet)
     else
       flash[:alert] = @reply.errors.full_messages.to_sentence
-      redirect_back(fallback_location: tweets_path)
+      redirect_to tweet_replies_path(@tweet)
     end
   end
 
