@@ -12,10 +12,10 @@ class TweetsController < ApplicationController
     @tweet.user_id = current_user.id
     if @tweet.save
       flash[:notice] = "成功推播(tweet)"
-      redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: tweets_path)
     else
       flash[:alert] = @tweet.errors.full_messages.to_sentence
-      redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: tweets_path)
     end
   end
 
@@ -23,10 +23,10 @@ class TweetsController < ApplicationController
     @like = current_user.likes.build(tweet_id: params[:id])
     if @like.save
       flash[:notice] = "成功Like該則推播！"
-      redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: tweets_path)
     else
       flash[:alert] = @like.errors.full_messages.to_sentence
-      redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: tweets_path)
     end
   end
 
@@ -34,7 +34,7 @@ class TweetsController < ApplicationController
     @like = current_user.likes.where(tweet_id: params[:id]).first
     @like.destroy
     flash[:notice] = "成功Unlike該則推播！"
-    redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: tweets_path)
   end
 
   private
