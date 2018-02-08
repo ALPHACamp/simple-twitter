@@ -1,31 +1,9 @@
+
 <div class="col-md-3 col-sm-4">
-  <div class="text-center">
-    <%= image_tag @user.avatar, class: "img-responsive img-rounded" %>
-  </div>
-
-  <h2>
-    <%= @user.name %>
-  </h2>
-  <p><strong><%= @user.email %></strong></p>
- 
-  <div>
-    <%= @user.introduction %>
-  </div>
-  
-  <div>
-    <h4>Tweets <strong><%= @tweets.count %></strong>   </h4>
-    <h4>Following <strong><%= @tweets.count %></strong>   </h4>
-    <h4>Follower <strong><%= @tweets.count %></strong>   </h4>
-    <h4>Like <strong><%= @tweets.count %></strong>   </h4>
-  </div>
- 
-    
-      <% if @user.email == current_user.email %>
-    <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
-      <% end %>
-</div>
-
-
+      
+        <%= render partial: "shared/userlist", locals: {user: @user} %>
+     
+    </div>
 
 
 <div class="col-xs-7 col-xs-offset-1">
