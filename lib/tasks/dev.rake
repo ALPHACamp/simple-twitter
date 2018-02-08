@@ -113,7 +113,7 @@ namespace :dev do
   end
 
   task test: :environment do
-    puts %[Got likes followings].include?('Got likes')
+    puts %[Got likes].include?("Got likes")
   end
 
   #fake all data
