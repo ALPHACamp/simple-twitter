@@ -14,7 +14,7 @@ class RepliesController < ApplicationController
     @reply.user = current_user
     if @reply.save
       flash[:notice] = "成功回覆"
-      redirect_back(fallback_location: "root_path")
+      redirect_back(fallback_location: root_path)
     else
       redirect_to request.referrer, alert: "Comment不得為空白"
     end

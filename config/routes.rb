@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   # 請依照專案指定規格來設定路由
-  get "/", :to => "tweets#index"
+  root"tweets#index"
   resources :tweets, only: [:index, :show, :create] do
   	member do
   		get :replies ,:to => "replies#index"
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   resources :followships, only: [:create, :destroy]
 
   namespace :admin do
-  	get "/", :to => "tweets#index"
+    root"tweets#index"
   	resources :tweets, only: [:index, :destroy, :show] do
       member do
         post :delete_reply
