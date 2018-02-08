@@ -1,0 +1,11 @@
+<div class="tweets-items row">
+  <div class="col-md-3">
+    <%= image_tag tweet.user.avatar, class: "avatar-styled" if tweet.user.avatar? %>
+  </div>
+  <div class="col-md-9">
+    <p class="tweet-title"><%= link_to "@#{tweet.user.name}", tweets_user_path(tweet.user), class: "tweet-title" %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></p> 
+    <p><%= tweet.description%></p>
+    <%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet), class: "reply-font" %>
+    <%= render partial: "shared/like", locals: {tweet: tweet} %>
+  </div>
+</div>
