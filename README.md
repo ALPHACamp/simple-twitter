@@ -34,7 +34,11 @@ git pull upstream master
 
 相對的，在你下載的專案中，已經準備好對應的 Model 和 Controller 檔案。
 
+
+https://lighthouse.alphacamp.co/units/1124
+
 如果想在本地執行自動化測試，可以輸入指令
 ```
 $ rspec
 ```
+

@@ -20,4 +20,10 @@ namespace :dev do
     end
   end
 
+  task fake_tweet: :environment do
+    Tweet.destroy_all
+    puts "delete all tweets"
+  end
+
+
 end

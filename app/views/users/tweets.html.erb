@@ -1,0 +1,55 @@
+<div class="col-md-4">
+
+<ul>
+  
+    <img class="img-circle" src="http://via.placeholder.com/120x120">
+    <h2><%= @user.name %></h2>
+    <%= @user.introduction %>
+    
+    <h3><%= link_to "Tweets #{@user.tweets.count}", tweets_user_path(@user) %></h3>
+    <h3><%= link_to "like #{@user.likes.count}", likes_user_path(@user) %></h3>
+    <h3><%= link_to "Followings #{@user.followings.count}", followings_user_path(@user) %></h3>
+    <h3><%= link_to "Followers #{@user.followers.count}", followers_user_path(@user) %></h3>
+
+    <% if @user.email == current_user.email %>
+      <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
+    <% else %>
+      <% if current_user.following?(@user)%>
+        <!-- 會用 DELETE 動作導向 http://localhost:3000/followships/{user.id} -->
+        <%= link_to 'Unfollow', followship_path(@user), method: :delete ,class: "btn btn-link" %>
+      <% else %>
+        <!-- 會用 POST 動作導向 http://localhost:3000/followships?following_id={user.id} -->
+        <%= link_to 'Follow', followships_path(following_id: @user), method: :post , class: "btn btn-default" %>
+      <% end %>
+    <% end %>
+  
+</ul>
+
+</div>
+
+
+<div class="col-md-6">
+
+<% @tweeted.each do |tweet| %>
+  
+  <div class="item">
+    <div class="col-md-2">
+      <img class="img-round" src="http://via.placeholder.com/60x60">
+    </div>
+
+    <%= link_to "@#{tweet.user.name},#{tweet.created_at.strftime("%Y-%m-%d, %H:%M")}", tweets_user_path(tweet.user) %>
+
+    <p><%= tweet.description %></p>
+
+    <%= link_to "Reply(#{tweet.replies.count})" , tweet_replies_path(tweet) %> 
+
+    <% if tweet.is_liked?(current_user) %>
+      <%= link_to "Unlike(#{tweet.likes.count})", unlike_tweet_path(tweet), method: :post %>
+    <% else %>
+      <%= link_to "Like(#{tweet.likes.count})", like_tweet_path(tweet), method: :post , class: "red" %>
+    <% end %>
+  </div>
+  <br>
+<% end %>
+
+</div>
