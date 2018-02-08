@@ -21,6 +21,7 @@ namespace :dev do
     end
   end
   
+  #製造假tweet
   task fake_tweet: :environment do
     Tweet.destroy_all
     60.times do |i|
@@ -33,6 +34,7 @@ namespace :dev do
     puts "now you have #{Tweet.count} tweet data"
   end
 
+  #製造假reply
   task fake_reply: :environment do
     Tweet.all.each do |tweet|
       3.times do |i|
@@ -46,6 +48,7 @@ namespace :dev do
     puts "now you have #{Reply.count} reply data"
   end
 
+  #製造假like
   task fake_like: :environment do
     Tweet.all.each do |tweet|
       rand(1..3).times do |i|
@@ -56,5 +59,22 @@ namespace :dev do
     end
     puts "have created fake likes"
     puts "now you have #{Like.count} like data"
+  end
+
+  #製造假followship，我花了6小才做出來
+  task fake_followship: :environment do
+    Followship.destroy_all
+    User.all.each do |user|
+      15.times do |i|
+        followed = User.all.sample 
+        unless user.id == followed.id or Followship.all.where(:user_id => user.id).pluck(:following_id).include? followed.id
+          user.followships.create!(
+            following: followed
+          )
+        end
+      end
+    end
+    puts "have created fake followships"
+    puts "now you have #{Followship.count} followships data"
   end
 end
