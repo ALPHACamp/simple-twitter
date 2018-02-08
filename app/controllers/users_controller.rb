@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
   def followings
     
-    @followings = @user.followings.order(updated_at: :desc)# 基於測試規格，必須講定變數名稱
+    @followings = @user.followings.order(created_at: :desc)# 基於測試規格，必須講定變數名稱
   end
 
   def followers
@@ -36,7 +36,13 @@ class UsersController < ApplicationController
   end
 
   def likes
-    @likes =@user.liked_tweets.order(updated_at: :desc)# 基於測試規格，必須講定變數名稱
+
+    @likes = @user.likes.order(created_at: :desc)# 基於測試規格，必須講定變數名稱
+    @liked_tweets = Array.new
+    @likes.each do |like|
+      @liked_tweets << Tweet.find(like.tweet_id)
+    end
+   @likes = @liked_tweets
   end
 
   private
