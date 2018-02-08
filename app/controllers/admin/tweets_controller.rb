@@ -21,13 +21,15 @@ class Admin::TweetsController < Admin::BaseController
   end
 
   def destroy
-    find_tweet
-    @tweet.destroy
-    @user = @tweet.user
-    @user.likes_count = @user.tweets.count
-    @user.save
-    flash[:notice] = "delete success"
-    redirect_to admin_root_path
+    if current_user.role == "admin"
+      find_tweet
+      @tweet.destroy
+      @user = @tweet.user
+      @user.likes_count = @user.tweets.count
+      @user.save
+      flash[:notice] = "delete success"
+      redirect_to admin_root_path
+    end
   end
 
 
