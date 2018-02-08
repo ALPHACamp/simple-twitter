@@ -8,8 +8,6 @@ namespace :dev do
       file = File.open("#{Rails.root}/public/avatar/user#{i+1}.jpg")
       # 這組路徑在 Heroku 上無法使用，同學可跳過 Heroku 上圖片顯示的問題
       # 若特別想攻克的同學可參考 Filestack 說明 => https://lighthouse.alphacamp.co/units/1110
-      # client = FilestackClient.new('AusaD7GlvTDSm2n1fTcwTz')
-      # filelink = client.upload(filepath: file)
       
       user = User.new(
         # name: name,
@@ -19,7 +17,6 @@ namespace :dev do
         # email: "#{name}@mail.co",
         # password: "123456",
         introduction: FFaker::Lorem::sentence(30),
-        # avatar: filelink.url
       )
 
       user.save!
@@ -63,7 +60,7 @@ namespace :dev do
       (rand(20)+1).times do |variable|
         user.tweets.create!(description: FFaker::Tweet.body)
       end
-      puts "#{user.name} has #{user.tweets.count} tweets!"
+      # puts "#{user.name} has #{user.tweets.count} tweets!"
     end
     puts "Now you have #{Tweet.count} tweets!"
   end
@@ -90,7 +87,6 @@ namespace :dev do
         following: @users.pop,
         )      
       end 
-      puts "#{u.name} has #{u.followers_count} followers!" 
     end
     puts "now you have #{Followship.count} followship"
   end
@@ -104,14 +100,24 @@ namespace :dev do
        u.likes.create!(
         tweet: Tweet.all.sample,
        )      
-     end     
+     end
     end
     puts "now you have #{Like.count} liked tweets"
   end
 
+  # count likes of user's tweet.
+  # this needs manual execute after fake_all, or it won't work
+  task count_got_likes: :environment do
+    User.all.each do |u|
+      u.update(got_likes_count: u.tweets.joins(:likes).count) 
+      puts "#{u.name} got #{u.got_likes_count} likes"
+    end
+  end
+
   task test: :environment do
-    @user = User.find(1)
-    puts @user.avatar
+    User.all.each do |u|
+      puts "#{u.name} ======= #{u.got_likes_count}"      
+    end
   end
 
   #fake all data

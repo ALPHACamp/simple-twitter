@@ -24,6 +24,7 @@ class TweetsController < ApplicationController
 
   def like
     @tweet.likes.create!(user: current_user)
+    @tweet.user.count_got_likes
     # redirect_back(fallback_location: root_path) # I think this is better
     redirect_to tweets_path  # this doesn't make any fucking sense
   end
@@ -31,6 +32,7 @@ class TweetsController < ApplicationController
   def unlike
     like = Like.where(user: current_user, tweet: @tweet)
     like.destroy_all
+    @tweet.user.count_got_likes
     # redirect_back(fallback_location: root_path) # I think this is better
     redirect_to tweets_path  # this doesn't make any fucking sense
   end

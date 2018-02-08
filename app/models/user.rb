@@ -26,4 +26,9 @@ class User < ApplicationRecord
   def is_following?(user)
     self.followings.include?(user)
   end
+
+  def count_got_likes
+    self.got_likes_count = self.tweets.joins(:likes).count
+    self.save
+  end
 end
