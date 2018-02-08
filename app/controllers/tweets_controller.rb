@@ -10,6 +10,7 @@ class TweetsController < ApplicationController
     @tweets = Tweet.all
     @tweet = Tweet.new(tweet_params)
     @tweet.user = current_user
+    @user = User.order(followers_count: :desc).limit(10)
     if @tweet.save
       redirect_to root_path
     else

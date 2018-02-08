@@ -249,12 +249,15 @@ div.notice{
 }
 
 .following-intro{
-  height: 95px;
+  height: 125px;
   overflow: scroll;
+  position: relative;
 }
 
 .following-btn{
-  text-align: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 .all-tweet-reply{
