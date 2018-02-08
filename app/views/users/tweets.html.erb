@@ -1,0 +1,11 @@
+<div>
+  <%= @user.name %>
+  <%= @user.introduction %>
+  <%= @user.avatar %>
+</div>
+<hr />
+<div>
+  <% @tweets.each do |tweet| %>
+    <%= tweet.description %>
+  <% end %>
+</div>

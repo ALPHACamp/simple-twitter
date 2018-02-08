@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update]
+  before_action :set_user, only: [:edit, :update, :tweets]
 
   def tweets
+    @tweets = @user.tweets
   end
 
   def edit
