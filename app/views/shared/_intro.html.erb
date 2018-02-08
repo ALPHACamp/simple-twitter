@@ -12,6 +12,8 @@
   <%= link_to likes_user_path do %>
     <h4><strong>Likes  &nbsp;<%= user.likes.count %></strong></h4>
   <% end %>
-  <%= link_to "Edit Profile", edit_user_path(user) , class:'btn button-style' %>
+  <% if user == current_user %>
+    <%= link_to "Edit Profile", edit_user_path(user) , class:'btn button-style' %>
+  <% end %>
   <%= render partial: "shared/follow" , locals: { user: user } %>
 </div>
