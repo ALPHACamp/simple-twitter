@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-4">
+      <%= image_tag @tweet.user.avatar, height: 100, width: 100 %>
+      <h3><%= @tweet.user.name %></h3> <!-- 待 user#tweets user_tweets_path -->
+      <p><%= @tweet.user.introduction %></p>    
+      <h5>Tweets : <%= @user.tweets.count %></h5>
+      <h5>Following : <%= @user.followings.count %></h5>
+      <h5>Follower : <%= @user.followers_count %></h5>
+      <h5>Like : <%= @user.liked_tweets.count %></h5> <!-- 按過讚的推特總數 -->
+    </div>
+
+    <div class="col-md-8">
+      <h1>Tweets</h1>
+      <div class="tweets">
+        <%= image_tag @tweet.user.avatar, height: 75, width: 75 %>
+        <p>@<%= @user.name %>, <%= @tweet.created_at %></p>
+        <%= @tweet.description %>
+        <h5>Reply(<%= @tweet.replies.count %>) Like(<%= @tweet.likes_count %>)</h5><!-- 文章被讚總數 -->
+
+        <!-- like / unlike button -->
+        <%= render partial: "shared/like", locals: {tweet: @tweet} %>
+
+        
+
+        <hr>
+      </div>
+
+      <h1>Replise</h1>
+      <% @replies.each do |reply| %>
+
+        <div class="tweets"> <!-- each do 內包或外包待測試-->
+          <%= image_tag reply.user.avatar, height: 75, width: 75 %>
+          <h3>@<%= reply.user.name %>, <%= reply.created_at %></h3>
+          <p><%= reply.comment %></p>
+        </div>
+
+      <% end %>
+      <!-- Reply area 筆記 copy 過來 防字體錯誤 -->
+      <%= form_for Reply.new do |f| %>
+        <%= f.hidden_field :tweet_id, :value => @tweet.id %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.text_field :comment, placeholder: "Reply here", :size=>"50", class: "form-control" %>
+        <%= f.submit 'Reply'%>
+      <% end %>
+
+
+
+
+
+
+    </div>
+
+  </div>
+</div>
