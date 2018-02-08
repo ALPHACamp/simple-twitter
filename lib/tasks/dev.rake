@@ -6,25 +6,30 @@ namespace :dev do
     20.times do |i|
       name = FFaker::Name::first_name
       file = File.open("#{Rails.root}/public/avatar/user#{i+1}.jpg")
+      client = FilestackClient.new('AUiYc1YfFRfRL04YG22igz')
+      filelink = client.upload(filepath: file)
 
       user = User.new(
         name: name,
         email: "#{name}@example.co",
         password: "12345678",
         introduction: FFaker::Lorem::sentence(30),
-        avatar: file
+        avatar: filelink.url
       )
 
       user.save!
       puts user.name
     end
-    admin_file = File.open("#{Rails.root}/public/avatar/user1.jpg")
+    admin_file = File.open("#{Rails.root}/public/avatar/admin.jpg")
+    client = FilestackClient.new('AUiYc1YfFRfRL04YG22igz')
+    filelink = client.upload(filepath: admin_file)
+
     User.create!(
       name: "admin",
       email: "admin@admin.com",
       password: "12345678",
       introduction: FFaker::Lorem::sentence(30),
-      avatar: admin_file,
+      avatar: filelink.url,
       role: "admin"
     )
     puts "default admin user created"
