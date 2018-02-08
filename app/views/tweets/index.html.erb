@@ -1,21 +1,37 @@
 <h1>Tweet Front End<h1>
 
-<h1>Tweet wall<h1>
 
-<ul>
-  <% @tweets.each do |tweet| %>
-  <li>
-    <%= tweet.description %>
-  </li>
-  <% end %>
-</ul>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8"> 
 
-<h1>Popular users<h1>
+      <% @tweets.each do |tweet| %>
+        <div class="">
+          <div class="tweet-item">
+            <%= image_tag tweet.user.avatar, class: "img-responsive center-block" %>
+            <div class="caption">
+              <h3><%= link_to tweet.user.name, tweets_user_path(tweet.user) %></h3>
+              <h4><%= truncate(tweet.description, length: 80) %></h4>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
 
-<ul>
-  <% @users.each do |user| %>
-  <li>
-    <%= user.name %>
-  </li>
-  <% end %>
-</ul>
+    <div class="col-sm-4"> 
+
+      <% @users.each do |user| %>
+        <div class="">
+          <div class="tweet-item">
+            <%= image_tag user.avatar, class: "img-responsive center-block" %>
+            <div class="caption">
+              <h3><%= link_to user.name, tweets_user_path(user) %></h3>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>  
+
+      
+  </div>
+</div>
