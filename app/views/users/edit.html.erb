@@ -2,16 +2,43 @@
 <div class="container">
   <div class="avatar">
     <div class="row">
-      <p>avatar</p>
-      <p><%= image_tag(@user.avatar) %></p>
-      <p>button-to-update-avatar-by-gem</p>
+
+      <% if @user.errors.any? %>
+        <h4>We have some errors here !</h4>
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+        <hr>
+      <% end %>
+
+      <%= form_for admin_users_path do |f| %>
+      <div class="form-group">
+        <% f.label :avatar, "Avatar" %>
+          <%= image_tag @user.avatar, width: '300px' if @user.avatar? %>
+            <%= f.file_field :avatar, class: "btn btn-primary" %>
+      </div>
+      <% end %>
     </div>
   </div>
   <div class="editing">
     <div class="row">
-      <p>type area for name</p>
-      <p>type area for introduction</p>
-      <p>button-to-update-and-render-to-this-page</p>
+      <%= form_for admin_users_path do |f| %>      
+        <div class="form-group">
+          <%= f.label :name, "Name" %>
+            <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
+        </div>
+      
+        <div class="form-group">
+          <%= f.label :introduction, "Introduction" %>
+            <%= f.text_area :introduction, placeholder: "Type anything about you here...", class: "form-control" %>
+        </div>
+      
+        <div class="form-group">
+          <%= f.submit class: "btn btn-primary" %>
+        </div>
+        <% end %>
     </div>
   </div>
 </div>
