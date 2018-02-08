@@ -16,6 +16,17 @@ class TweetsController < ApplicationController
   end
 
   def like
+    @tweet = Tweet.find(params[:id])
+    @like = current_user.likes.build(tweet_id: params[:id])
+    if @like.save
+      flash[:notice] = "Successfully liked"
+        current_user.increment!(:likes_count)
+        @tweet.increment!(:likes_count)
+      redirect_back(fallback_location: root_path)
+    else
+      flash[:alert] = @like.errors.full_messages.to_sentence
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def unlike

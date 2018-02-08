@@ -7,5 +7,5 @@ class Tweet < ApplicationRecord
   has_many :replying_users, through: :replies, source: :user
 
   has_many :likes, dependent: :destroy
-  has_many :liked_users, throug: :likes, source: :user
+  has_many :liked_users, through: :likes, source: :user
 end

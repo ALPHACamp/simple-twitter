@@ -9,7 +9,8 @@
 				<%= f.created_at %>
 			</h5>
 			<p><%= simple_format f.description %></p>
-			<%= link_to "replies", tweet_replies_path(f.id) %>
+			<%= link_to "Replies", tweet_replies_path(f.id) %>
+			<%= link_to "like", like_tweet_path(f.id), method: :post %>
 		</div>
 	</div>
 <% end %>
