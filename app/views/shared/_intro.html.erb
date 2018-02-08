@@ -6,10 +6,10 @@
   <h2><%= user.name %></h2>
   <div><%= simple_format user.introduction %></div>
   <br/>
-  <%= link_to tweets_user_path do %>
+  <%= link_to tweets_user_path(user) do %>
     <h4><strong>Tweets  &nbsp;<%= user.tweets.count %></strong></h4>
   <% end %>
-  <%= link_to likes_user_path do %>
+  <%= link_to likes_user_path(user) do %>
     <h4><strong>Likes  &nbsp;<%= user.likes.count %></strong></h4>
   <% end %>
   <% if user == current_user %>
