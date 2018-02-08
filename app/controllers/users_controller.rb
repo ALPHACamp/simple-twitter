@@ -8,6 +8,16 @@ class UsersController < ApplicationController
   end
 
   def update
+    if @user == current_user
+      # only userself can update profile in right format
+      if @user.update(user_params)
+        redirect_to tweets_user_path(params[:id]), notice: "User's profile was successfully updated"
+      else
+        render :edit
+      end
+    else
+        redirect_to tweets_user_path(params[:id]), alert: "You can not edit other user's profile!"
+    end    
   end
 
   def followings
@@ -27,4 +37,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def user_params
+    params.require(:user).permit(:name, :introduction, :avatar)
+  end
 end

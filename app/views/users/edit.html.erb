@@ -1,1 +1,58 @@
-<h1>edit user's profile</h1>
+<div class="container">
+  <!--當前用戶為本人顯示編輯資料 -->
+  <% if @user == current_user %>
+    <h2>個人資訊編輯:</h2>
+    <!-- 錯誤提示:名稱不可空白  -->
+      <% if @user.errors.any? %>
+        <h4>We have some errors here !</h4>
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+        <hr>
+      <% end %>
+
+      <table >
+        <tbody>
+          <%= form_for @user do |f| %>
+          <tr>
+            <th scope="row">
+              <%= f.label :avatar, "上傳大頭照" %>
+              <br>
+              <%= image_tag @user.avatar, width: '150px' if @user.avatar? %>
+              <br>
+              <%= f.file_field :avatar %>
+            </th>
+            <td >  
+              <div class="form_group">
+                <%= f.label :name, "您的名稱" %>
+                <%= f.text_field :name, class: "form-control" %>
+              </div>  
+              <br>
+              <div class="form_group">
+                <%= f.label :introduction, "自我介紹" %>
+                <%= f.text_area :introduction, class: "form-control" %>
+              </div>
+              <br>
+              <div class="form_group">
+                <%= f.submit class: "btn btn-primary" %>
+                <%= f.button 'cancel', type: :reset, class: "btn btn-default" %>
+              </div>            
+            </td>
+          </tr>
+          <% end %>
+        </tbody> 
+      </table>  
+
+  <!-- 非本人顯示警告與跳轉連結 -->  
+  <% else %>
+    <h2 class="text-center">
+      個人資料僅限本人編輯
+    </h2>  
+      <ul class="list-inline text-center">
+        <li><%= link_to '返回前頁', :back, class: "btn btn-default"%></li>
+        <li><%= link_to "首頁", root_path, class: "btn btn-default" %></li>
+      </ul>
+  <% end %> 
+</div> 
