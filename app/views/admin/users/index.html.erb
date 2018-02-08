@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <ul class="nav nav-tabs">
+      <li role="presentation"><%= link_to 'Tweets list', admin_tweets_path %></a></li>
+      <li role="presentation" class="active"><%= link_to 'Users list', admin_users_path %></a></li>
+    </ul>
+    <hr>
+    <div class="col-md-12">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Tweet Counts</th>
+            <th>Following Counts</th>
+            <th>Follower Counts</th>
+            <th>Like Counts</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+            <td>
+              <%= link_to user.name, tweets_user_path(user) %>
+            </td>
+            <td>
+              <%= link_to user.tweets_count, tweets_user_path(user) %>
+            </td>
+            <td>
+              <%= link_to user.followings.count, followings_user_path(user) %>
+            </td>
+            <td>
+              <%= link_to user.followers_count, followers_user_path(user) %>
+            </td>
+            <td>
+              <%= link_to user.likes_count, likes_user_path(user) %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="text-center">
+        <%= paginate @users %>
+      </div>
+    </div>
+  </div>
+</div>
