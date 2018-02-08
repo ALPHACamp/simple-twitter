@@ -14,3 +14,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "tweets";
+
+.tweet-box {
+  border: 1px solid lightgray;
+  padding: 8px;
+  margin-bottom: 15px;
+}
