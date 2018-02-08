@@ -1,7 +1,7 @@
 <% object.each do |user| %>
 <div class="popular-item clearfix">
   <div class="col-md-5">
-    <%= image_tag user.avatar.url ,class: "img-responsive center-block" %>
+    <%= image_tag user.avatar.medium.url ,class: "img-responsive center-block" %>
   </div>
   <div class="col-md-7">
     <%= link_to tweets_user_path(user) do %>
