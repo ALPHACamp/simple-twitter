@@ -17,7 +17,7 @@ class Admin::TweetsController < Admin::BaseController
     tweet.user_id = current_user.id
     tweet.save
     flash[:notice] = "Add a new tweet"
-    redirect_to admin_tweets_path
+    redirect_to admin_root_path
   end
 
   def destroy
