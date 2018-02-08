@@ -1,0 +1,40 @@
+<div class="col-xs-4 user-block">
+    <div class="center">
+      <% if obj.avatar.present? %>
+        <%= image_tag obj.avatar, class: "big-img" %>
+      <% else %>
+        <%= image_tag "default.jpg", class: "big-img" %>
+      <% end %> 
+    </div>
+    <br>
+    <div class="center">    
+        <%= obj.name %>
+    </div>
+    <div class="center intro">
+      <%= obj.introduction %>
+    </div>
+    <hr>
+    <div class="center">
+      <%= link_to "Tweets  [#{obj.tweets.count}]", tweets_user_path(obj) %>
+    </div>
+    <div class="center">
+      <%= link_to "Followings  [#{obj.followings.count}]", followings_user_path(obj) %>
+    </div>
+    <div class="center">
+      <%= link_to "Followers  [#{obj.followers.count}]", followers_user_path(obj) %>
+    </div>
+    <div class="center">
+      <%= link_to "Like  [#{obj.likes.count}]", likes_user_path(obj) %>
+    </div>
+    <br>
+    <% if obj == current_user %>
+      <div class="center">
+        <%= link_to "Edit profile", edit_user_path(obj), class: "my-btn btn btn-md btn-primary" %>
+      </div>
+    <% else %>
+      <div class="center">
+            <%= link_to 'Follow', followships_path(following_id: obj), class: "my-btn btn btn-md btn-primary", method: :post %>
+      </div>
+    <% end %>
+
+  </div>
