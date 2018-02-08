@@ -17,7 +17,13 @@
       <% @tweet.replies.each do |reply| %>
         <div class="tweet-item clearfix">
           <div class="tweet-image">
-            <img src="http://via.placeholder.com/80x80">
+            <%= link_to tweets_user_path(reply.user) do %>
+              <% if reply.user.avatar? %>
+                <%= image_tag reply.user.avatar %>
+              <% else %>
+                <img src="http://via.placeholder.com/80x80">
+              <% end %>
+            <% end %>
           </div>
                   
           <div class="tweet-content">

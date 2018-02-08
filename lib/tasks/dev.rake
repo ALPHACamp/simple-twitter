@@ -20,7 +20,7 @@ namespace :dev do
     end
 
     # Default admin
-    User.create(name: "Admin", email: "admin@example.com", password: "123456", role: "admin")
+    User.create(name: "Admin", email: "admin@example.com", password: "123456", introduction: FFaker::Lorem::sentence(30), role: "admin")
     puts "Default admin created!"
   end
 
@@ -28,12 +28,28 @@ namespace :dev do
     Tweet.destroy_all
 
     30.times do |i|
+      author = User.all.sample
       Tweet.create!(
         description: FFaker::Lorem::paragraph[1..rand(1..140)],
-        user: User.all.sample
+        user: author
       )
+      author.tweets_count += 1
+      author.save
     end
     puts "now there are #{Tweet.count} tweets"
   end
+
+  task fake_reply: :environment do
+    50.times do |i|
+      Reply.create!(
+        comment: FFaker::Lorem::paragraph[1..rand(1..140)],
+        user: User.all.sample,
+        tweet: Tweet.all.sample
+      )
+    end
+    puts "now there are #{Reply.count} replies"
+  end
+
+  
 
 end
