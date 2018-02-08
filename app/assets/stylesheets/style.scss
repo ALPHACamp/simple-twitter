@@ -1,0 +1,8 @@
+.tweet {
+  border: 1px solid black;
+  margin-bottom: 15px;
+}
+.tweet > .avatar, .text {
+  float: left;
+  padding: 15px;
+}

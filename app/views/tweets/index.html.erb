@@ -1,30 +1,37 @@
-<h1>front end</h1>
-<%= form_for @tweet do |f| %>
-  <div class="form-group">
-    <%= f.text_area :description, placeholder: "What's on your mind?", class:"form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.submit "tweet", class:"btn btn-primary pull-right" %>
-  </div>
-<% end %>
+<div class="row">
+  <div class="col-md-8">
+    <%= form_for @tweet do |f| %>
+      <div class="form-group">
+        <%= f.text_area :description, placeholder: "What's on your mind?", class:"form-control" %>
+      </div>
+      <div class="form-group clearfix">
+        <%= f.submit "Tweet", class:"btn btn-primary pull-right" %>
+      </div>
+    <% end %>
 
-<% @tweets.each do |tweet| %>
-  <div>
-    <div class="">
-      <img src="http://via.placeholder.com/40x40" alt="avatar">
-    </div>
-    <div class="">
-      <h4>
-        <%=link_to tweet.user.name, tweets_user_path(tweet.user) %>,
-        <%= tweet.created_at %>
-      </h4>
-      <p><%= simple_format tweet.description %></p>
-      <%= link_to "Reply", tweet_replies_path(tweet.id)%>
-      <% if tweet.is_liked?(current_user) %>
-        <%= link_to "Unlike", unlike_tweet_path(tweet), method: :post, class:"btn btn-info" %>
-      <% else %>
-        <%= link_to "Like", like_tweet_path(tweet), method: :post, class:"btn btn-primary" %>
-      <% end %>
-    </div>
+    <% @tweets.each do |tweet| %>
+      <div class="tweet clearfix">
+        <div class="avatar">
+          <img src="http://via.placeholder.com/40x40" alt="avatar">
+        </div>
+        <div class="text">
+          <h4>
+            <%=link_to tweet.user.name, tweets_user_path(tweet.user) %>,
+            <%= tweet.created_at %>
+          </h4>
+          <p><%= simple_format tweet.description %></p>
+          <%= link_to "Reply", tweet_replies_path(tweet.id)%>
+          <% if tweet.is_liked?(current_user) %>
+            <%= link_to "Unlike", unlike_tweet_path(tweet), method: :post, class:"btn btn-info" %>
+          <% else %>
+            <%= link_to "Like", like_tweet_path(tweet), method: :post, class:"btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+
+  <div class="col-md-4">
+    <h1>popular user</h1>
+  </div>
+</div>
