@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def tweets
     @tweets = @user.tweets.order(created_at: :desc).page(params[:page]).per(10)
     @followers = @user.followers
+    @followings = @user.followings
   end
 
   def edit
@@ -20,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings # 基於測試規格，必須講定變數名稱
+    @followings = @user.followings.order(created_at: :desc).limit(10)
   end
 
   def followers

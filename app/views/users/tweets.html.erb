@@ -5,6 +5,7 @@
       <h1 class="text-center"><%= @user.name %></h1>
       <p class="wrap"><%= @user.introduction %></p>
       <p>Tweets <%= @tweets.count %></p>
+      <p>Followings <%= @followings.count %></p>
       <p>Followers <%= @followers.count %></p>
       <div class="profile-btn text-center">
         <% if @user == current_user %>
