@@ -2,7 +2,7 @@
   <div class="row">
 
     <div class="col-xs-8">
-
+      <!-- tweet form  -->
       <div class="tweets-area col-xs-12">
         <%= form_for @tweet do |t|%>
           <div class="form-group">
@@ -13,7 +13,7 @@
           </div>
         <% end %>  
       </div>
-
+      <!-- Tweet list -->
       <div class="tweets-list col-xs-12">
         <div class="panel panel-default">          
           <div class="panel-body">
@@ -21,7 +21,7 @@
               
               <div class="row">
                 <div class="col-sm-3">
-                  <img src="http://via.placeholder.com/70x70" class="img-responsive img-rounded">
+                  <img src="http://via.placeholder.com/90x90" class="img-responsive img-rounded">
                 </div>
                 <div class="col-sm-8">
                   <h4><%= tweet.user.name%>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></h4>
@@ -38,17 +38,24 @@
 
     </div>
   
- 
+    <!-- Popular -->
     <div class="col-xs-4">
       <div class="popular-user col-xs-12">
       <h2>Popular</h2>
       <div class="panel panel-default">
         <div class="panel-body">
           <% @users.each do |user|%>
-            <div>
-              <h4><%= link_to user.name, user_path(user)%></h4>
-              <!-- truncate 可截斷文字限定字數。simple_format 可讓文字自動換行 -->
-              <P><%= truncate(user.introduction, length: 100) %></P>
+            <div class="row">
+              <div class="col-sm-3">
+                <img src="http://via.placeholder.com/90x90" class="img-responsive img-rounded">
+              </div>
+              <div class="col-sm-8">
+                  <h4><%= link_to user.name, user_path(user)%></h4>
+                  <!-- truncate 可截斷文字限定字數。simple_format 可讓文字自動換行 -->
+                  <P><%= truncate(user.introduction, length: 50) %></P>
+                    <%= link_to '取消追蹤', followship_path(user), method: :delete, class: "btn btn-primary" %>
+                    <%= link_to '追蹤', followships_path(following_id: user), method: :post, class: "btn btn-primary" %>
+              </div>
             </div>
             <hr>
           <% end %>
