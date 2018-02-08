@@ -1,14 +1,19 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:tweets, :edit, :followings]
+  before_action :set_user, only: [:tweets, :edit, :update, :followings]
 
   def tweets
     @tweets = @user.tweets.order(created_at: :desc)
   end
 
   def edit
+    if @user != current_user
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def update
+    @user.update(user_params)
+    redirect_back(fallback_location: root_path)
   end
 
   def followings
@@ -31,6 +36,10 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(:name, :introduction, :avatar)
   end
 
 end
