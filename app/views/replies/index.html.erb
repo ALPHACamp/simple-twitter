@@ -5,41 +5,53 @@
   </div>
   <div class="col-xs-9 ">
     <h1>Tweets</h1>
-  </div>
-  <div class="col-xs-8 col-xs-offset-1">
-    <div class="col-xs-12">
-      <%= render partial: "shared/master", locals: {
-        tweet: @tweet, tweet_des: @tweet.description, tweet_time: @tweet.created_at,tweet_cache: true }%>
-      
-    </div>
-  </div>
-  <div class="col-xs-9 ">
+  
+    
+      <div class="col-xs-10 col-xs-offset-2">
+        <%= render partial: "shared/master", locals: {
+          tweet: @tweet, tweet_des: @tweet.description, tweet_time: @tweet.created_at,tweet_cache: true }%>
+        
+      </div>
+    
+    
     <h1>Replies</h1>
-  </div>
-  <div class="col-xs-12">
-  <div class="col-xs-8 col-xs-offset-4">
-    <% @replies.each do |rely| %>
-      <%= rely.comment %>    
-    <% end %>
-  </div>
-  </div>
-  
-
     
+   
+    <div class="col-xs-10 col-xs-offset-2">
+      <% @replies.each do |rely| %>
+        <div class="speak-item row">
+          <div class="col-xs-3">
+            <%= render partial: "shared/avatar", locals: {avatar: rely.user.avatar} ,size: "200"if rely.user.avatar? %>
+       
+          </div>
 
-  <div class="col-xs-8 col-xs-offset-4">
-    <%= form_for [@tweet, @reply] do |f| %>
-      <div class="form-group">
-        <%= f.text_area :comment, class: "form-control text" %>
-      </div>
-      <div class="form-group">
-        <%= f.submit "Reply", class: "btn btn-default my-btn btn-lg" %>
-      </div>
+          <div class="col-xs-9">
+            <p>
+            <%= link_to rely.user.name,tweets_user_path(rely.user) %> ,
+            <%= rely.created_at.strftime("%Y-%m-%d, %H:%M") %>
+
+            </p>
+            <p> <%=rely.comment %></p>
+          </div>
+        </div>
+        
+  
+  
+      <% end %>
+
+   
+      <%= form_for [@tweet, @reply] do |f| %>
+        <div class="form-group">
+          <%= f.text_area :comment, class: "form-control text" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Reply", class: "btn btn-default my-btn btn-lg" %>
+        </div>
+        
       
-    
 
-    <% end %>
+      <% end %>
+    </div>
+
   </div>
-
-  
 </div>

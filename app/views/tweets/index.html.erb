@@ -6,17 +6,35 @@
     <div class="speak  col-xs-12"">
       
       <% @tweets.each do |tweet| %>
-        <%= render partial: 'shared/master',locals: {tweet: tweet, tweet_des: tweet.description, tweet_time: tweet.created_at ,tweet_cache: true}%>
+        <%= render partial: 'shared/master',locals: {tweet: tweet}%>
       <% end %>
     
     </div>
-
-   
-
   </div>
 
   <div class="col-sm-5 ">
-    <%= @tweets%>
+   <h1 class="popular"> Popular </h1>
+    <div class="speak  col-xs-12"">
+      <% @followers.each do |follower| %>
+        <div class="speak-item row">
+          <div class="col-xs-3">
+            <%= render partial: "shared/avatar", locals: {avatar: follower.avatar} ,size: "200"if follower.avatar? %>
+               
+          </div>
+
+          <div class="col-xs-9">
+            <p>
+              <%= link_to follower.name,tweets_user_path(follower) %> 
+              <%= follower.created_at.strftime("%Y-%m-%d, %H:%M") %>
+            </p>
+            <p> <%= follower.introduction%></p> 
+          </div>
+
+        </div>
+      <% end %>
+      
+
+    </div>
 
 
 

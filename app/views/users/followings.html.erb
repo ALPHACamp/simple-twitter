@@ -9,8 +9,8 @@
      
       <% @followings.each do |user| %>
         <div class="  following">
-          <div class="col-xs-3">
-             <%= render partial: "shared/avatar", locals: {avatar: user.avatar} ,size: "200"if user.avatar? %>
+          <div class="col-xs-3 follow-image">
+             <%= render partial: "shared/avatar", locals: {avatar: user.avatar} ,size: "100"if user.avatar? %>
              
           </div>
 
