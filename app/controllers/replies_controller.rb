@@ -1,9 +1,25 @@
 class RepliesController < ApplicationController
 
   def index
+    @tweet = Tweet.find(params[:tweet_id])
+    @replies = @tweet.replies.order(created_at: :desc)
+    @reply = Reply.new
   end
 
   def create
+    @tweet = Tweet.find(params[:tweet_id])
+    @reply = @tweet.replies.build(reply_params)
+    @reply.user = current_user
+
+    @reply.save
+    redirect_to tweet_replies(@tweet)
+
+  end
+
+  private
+
+  def reply_params
+    params.require(:reply).permit(:comment, :user_id, :tweet_id)
   end
 
 end
