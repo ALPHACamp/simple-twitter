@@ -13,4 +13,5 @@
     <h4><strong>Likes  &nbsp;<%= user.likes.count %></strong></h4>
   <% end %>
   <%= link_to "Edit Profile", edit_user_path(user) , class:'btn button-style' %>
+  <%= link_to "Follow",  followships_path(following_id: user), class:'btn button-style', method: :post %>
 </div>
