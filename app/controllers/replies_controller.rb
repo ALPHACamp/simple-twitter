@@ -12,7 +12,6 @@ class RepliesController < ApplicationController
 
     @user.likes_count = @user.likes.size
     @tweet.replies_count = @tweet.replies.size
-    
   end
 
   def create

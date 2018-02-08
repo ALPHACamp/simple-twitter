@@ -4,7 +4,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @tweets = Tweet.where(user_id: @user).order(created_at: :desc)
     @user.likes_count = @user.likes.size
-
   end
 
   def edit
