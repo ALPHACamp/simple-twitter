@@ -28,6 +28,13 @@ Rails.application.routes.draw do
   # 設置followship
   resources :followships, only: [:create, :destroy]
 
+  # 設置admin
+  namespace :admin do
+    resources :tweets, only: [:index, :destroy]
+    root 'tweets#index'
+  end
+
+
   # 設置tweets index作為網站首頁
   root 'tweets#index'
 
