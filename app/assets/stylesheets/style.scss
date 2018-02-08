@@ -416,11 +416,19 @@ header .container-fluid {
 .reply-head {
   font-size: 28px;
   color: #337ab7;
+  letter-spacing: 2px;
   margin-bottom: 30px;
 }
 
 .reply-form {
   margin-top: 30px;
+}
+
+
+/* ------- admin ------- */
+
+.admin-index .container {
+  padding: 5px 0;
 }
 
 
