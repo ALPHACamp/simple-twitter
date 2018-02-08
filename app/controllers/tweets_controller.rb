@@ -3,7 +3,8 @@ class TweetsController < ApplicationController
   
 
   def index
-    @users = User.order(followers_count: :desc).limit(15)
+    @users2 = User.order(followers_count: :desc).limit(10)
+    @users = @users2.reverse
     @tweets = Tweet.order('created_at DESC')
     @tweet = Tweet.new
   end
