@@ -1,3 +1,23 @@
+<h1>Simple Twitter前台</h1>
+
+<div class="container">
+  <div class="row">
+
+    <ul class="nav nav-tabs">
+      <li role="presentation">
+        <%= link_to 'Index', root_path %>
+      </li>
+      <li role="presentation">
+        <%= link_to 'Tweets', tweets_path %>
+      </li>
+      <li role="presentation" class="active">
+        <%= link_to 'Users', users_path %>
+      </li>
+    </ul>
+
+  </div>
+</div>
+
 <div class="container">
   <div class="row">
 
@@ -7,22 +27,17 @@
 
       <%= form_for @user do |f| %>
         <div class="form-group">
-          <%= f.label :name, "Name" %>
-          <%= f.text_field :name, class: "form-control" %>
+          <% if @user.avatar? %>
+            <ul><%= image_tag @user.avatar, :size => "200x200", class: "img-responsive img-rounded" %></ul>
+          <% end %>
+          <ul><%= f.file_field :avatar %></ul>
+          <ul><%= f.submit "Update", class: "btn btn-primary" %></ul>
         </div>
         <div class="form-group">
-          <%= f.label :intro, "自我介紹" %>
-          <%= f.text_area :intro, class: "form-control" %>
+          <ul><%= f.text_field :name, :size => "20", class: "form-control" %></ul>
+          <ul><%= f.text_area :introduction, :size => "20x4", class: "form-control" %></ul>
         </div>
-        <div class="form-group">
-          <%= f.label :avatar, "大頭照上傳" %>
-          <%= image_tag @user.avatar if @user.avatar? %>
-          <%= f.file_field :avatar %>
-        </div>
-        <div class="form-group">
-          <%= f.submit "Update", class: "btn btn-primary" %>
-          <%= link_to "Cancel", user_path(@user), class: "btn btn-default" %>
-        </div>
+
       <% end %>
 
     </div>
