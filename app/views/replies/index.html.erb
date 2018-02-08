@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+
+      <div class="col-left col-sm-4 col-md-3">
+        <%= render partial: "users/user", locals: {user: @tweet.user}  %>
+      </div>
+
+      <div class="col-right col-sm-8 col-md-9">
+        <!--Tweet lust-->
+      <%= render partial: "tweets/tweet" %>
+
+        <!--reply list-->
+        <div class="col-reply">
+          <h3>Replies</h3>
+          <% @tweet.replies.each do |reply| %>
+          <div class="reply-list">
+            <div class="avatar">
+              <img src="http://via.placeholder.com/50x50"></a>
+            </div>
+            
+            <div class = "reply-content">
+              
+              <p><%= reply.comment %></p>
+              
+            </div>
+            <div class="clearfix"></div>
+            <br>
+            <% end %>
+          </div> 
+        <!--reply form-->
+          <div calss = "reply-form">
+          <%= form_for [@tweet, @reply] do |f| %>
+            <%= f.text_area :comment %>
+            <%= f.submit 'Reply', class: "btn btn-primary" %>
+          <% end %>
+          </div>
+        </div>
+
+
+    </div>
+  </div>
+</div>
