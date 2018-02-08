@@ -9,7 +9,7 @@ gem 'devise'
 gem 'carrierwave'
 
 gem 'ffaker'
-
+gem 'filestack-rails'
 gem 'rails', '~> 5.1.4'
 gem 'puma', '~> 3.7'
 gem 'bootstrap-sass', '~> 3.3.7'

@@ -20,7 +20,7 @@
 	<% @popular_tweeters.each do |tweeter| %>
 		<div class="tweet">
 			<div>
-				<%= image_tag tweeter.avatar, class: "avatar" %>
+				<%= filestack_image tweeter.avatar, transform: filestack_transform.resize(width:100, height:100), class: "avatar" %>
 			</div>
 			<div class="intro">
 				<%= link_to "@#{tweeter.name}", tweets_user_path(tweeter) %><br>

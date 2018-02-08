@@ -1,6 +1,6 @@
 <div class = "tweet">
 	<div>
-		<%= image_tag tweet.user.avatar, class: "avatar" %>
+		<%= filestack_image tweet.user.avatar, transform: filestack_transform.resize(width:100, height:100), class: "avatar" %>
 	</div>
 	<div class = "context">
 		<%= link_to "@#{tweet.user.name} ,#{tweet.created_at.localtime.strftime '%Y-%m-%d %H:%M:%S'}", tweets_user_path(tweet.user) %><br>

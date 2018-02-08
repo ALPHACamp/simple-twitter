@@ -1,14 +1,14 @@
 <%= form_for current_user do |f| %>
   <div class="edit-user">
     <div class="avatar">
-      <%= image_tag @user.avatar, class: "img" %>
+      <%= filestack_image @user.avatar, transform: filestack_transform.resize(width:100, height:100), class: "img" %>
     </div>
     <div class="upload">
       <div class="default">
-        <%= f.file_field :avatar %>
+        <%= f.filestack_field :avatar, 'Upload Your Avatar!',  pickerOptions: { accept: 'image/*'}, id: 'unique-id', class:"filed" %>
       </div>
       <button class="btn btn-primary btn-block btn-lg" >
-        <i class="fa-icon-cloud-upload"></i>&nbsp;Browse file..
+        Browse file..
       </button>
     </div>
   </div>

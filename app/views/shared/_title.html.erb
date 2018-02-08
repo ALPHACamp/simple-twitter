@@ -6,7 +6,7 @@
 				<li><%= link_to 'Admin User', admin_users_path %></li>
   	  <% end %>
   	  <li>
-				<%= link_to image_tag(current_user.avatar, height: 50, width: 50), tweets_user_path(current_user) %>
+				<%= link_to filestack_image( current_user.avatar, transform: filestack_transform.resize(width:50, height:50)), tweets_user_path(current_user) %>
 			</li>
   	  <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
   	<% else %>

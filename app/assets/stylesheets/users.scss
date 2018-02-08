@@ -47,18 +47,22 @@
 		position: relative;
 		.default{
 			opacity: 0;
-    	cursor: pointer;
-    	position: absolute;
-    	top: 0;
-    	z-index: 2;
-		}
-		.default:hover{
-			opacity: 0;
+			cursor: pointer;
+			// border: 1px solid red;
+			width: 100%;
+			height: 100%;
+    		position: absolute;
+    		top: 0;
+			z-index: 2;
+			.filed{
+				width: 100%;
+				height: 100%;
+			}
 		}
 		button{
 			position: relative;
-    	top: 0;
-    	z-index: 1;
+    		top: 0;
+    		z-index: 1;
 		}
 	}
 }

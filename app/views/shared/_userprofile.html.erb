@@ -1,6 +1,6 @@
 <div class="user">
   <div class="avatar">
-		<%= image_tag user.avatar, class: "img" %>
+		<%= filestack_image user.avatar, transform: filestack_transform.resize(width:100, height:100), class: "img" %>
 	</div>
   <h2><%= link_to user.name, user_path(user) %></h2>
   <h4><%= user.introduction %></h4>
