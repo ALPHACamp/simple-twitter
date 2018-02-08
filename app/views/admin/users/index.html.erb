@@ -14,17 +14,20 @@
           <tr>
             <th>#</th>
             <th>user</th>
-            <th>Tweet </th>            
-            <th>#</th>
+            <th>Active </th>            
           </tr>
         </thead>
         <tbody>
-        <% @tweets.each do |tweet|%>
+        <% @users.each do |user|%>
             <tr>
-              <th scope="row"><%= tweet.id %></th>
-              <td><%= tweet.user.name%></td>
-              <td><%= tweet.description %><%= link_to "reply(#{tweet.replies.count})", tweet_replies_path(tweet)  %> </td>
-              <td><%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm: "Are you sure?"} %></td>
+              <th scope="row"><%= user.id %></th>
+              <td><%= user.name%></td>
+              <td>
+                <strong><%= "Tweets:#{user.tweets.count}"%></strong>
+                <strong><%= "Followings:#{user.followings.count}"%></strong> 
+                <strong><%= "Followers:#{user.followers.count}"%></strong> 
+                <strong><%= "likes:#{user.likes.count}"%></strong>  
+              </td>
             </tr>  
         <% end %>  
         </tbody>
@@ -34,6 +37,3 @@
   </div>  
 
 </div>
-<h4> <%= paginate @tweets %></h4>
-
-
