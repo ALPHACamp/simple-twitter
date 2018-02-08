@@ -30,6 +30,11 @@
             <p><%= link_to "@#{@tweet.user.name}", tweets_user_path(@tweet.user) %>, <%= @tweet.created_at.strftime("%Y-%m-%d, %H:%M")  %></p> 
             <p><%= @tweet.description%></p>
             <%= link_to "Reply(#{@tweet.replies_count})", tweet_replies_path(@tweet), class: "reply-font" %>
+            <% if @tweet.is_liked?(current_user)%>
+              <%= link_to "Unlike(#{@tweet.likes_count})", unlike_tweet_path(@tweet), method: :delete, class: "reply-font like-red" %> 
+            <% else %>
+              <%= link_to "Like(#{@tweet.likes_count})", like_tweet_path(@tweet), method: :post, class: "reply-font like-red" %>
+            <% end %>
           </div>
         </div>
       </div>
