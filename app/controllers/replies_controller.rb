@@ -1,16 +1,16 @@
 class RepliesController < ApplicationController
 
   def index
-    @tweet = Tweet.find(params[:id])
-    @replies = Reply.where(tweet_id: params[:id])
+    @tweet = Tweet.find(params[:tweet_id])
+    @replies = @tweet.replies
     @reply = Reply.new
   end
 
   def create
-    @tweet = Tweet.find(params[:id])
-    @reply = Reply.new(reply_params)
+    @tweet = Tweet.find(params[:tweet_id])
+    @reply = @tweet.replies.create(reply_params)
     @reply.user_id = current_user.id
-    @reply.tweet_id = @tweet.id
+    
     if @reply.save
       flash[:notice] = "留言成功！"
       redirect_back(fallback_location: root_path)

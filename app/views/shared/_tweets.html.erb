@@ -38,7 +38,7 @@
 
         <!-- reply ,like & admin destroy link /start -->
         <div>
-          <%= link_to replies_path(tweet), class: "replylink" do %>
+          <%= link_to tweet_replies_path(tweet), class: "replylink" do %>
             Reply <%= content_tag :span, tweet.replies_count, class: "badge" %>
           <% end %>
           

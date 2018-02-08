@@ -50,7 +50,7 @@
 
             <!-- reply ,like & admin destroy link /start -->
             <div>
-              <%= link_to replies_path(@tweet), class: "replylink" do %>
+              <%= link_to tweet_replies_path(@tweet), class: "replylink" do %>
                 Reply <%= content_tag :span, @tweet.replies_count, class: "badge" %>
               <% end %>
            
@@ -136,7 +136,7 @@
 
       <!-- form for creating reply /start-->
       <div class="reply-form">
-        <%= form_for @reply do |f| %>
+        <%= form_for @reply, url: tweet_replies_path(@tweet) do |f| %>
           <div class="field">
             <%= f.text_area :comment, class: "form-control", placeholder: "Comment", rows: "5" %>
           </div>

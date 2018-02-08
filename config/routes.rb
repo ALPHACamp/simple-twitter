@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   # 設置tweets
   resources :tweets, only: [:index,:create] do 
 
+    resources :replies, only: [:index, :create]
+    
     member do
-      resources :replies, only: [:index, :create]
       post :like
       post :unlike
     end
