@@ -11,6 +11,11 @@ Rails.application.routes.draw do
 
   resources :tweets, only: [:index, :create] do
     resources :replies, only: [:index, :create]
+
+    member do
+      post :like
+      delete :unlike
+    end
   end
   
   resources :users, only: [:edit, :update] do
@@ -18,6 +23,7 @@ Rails.application.routes.draw do
       get :tweets
       get :followings
       get :followers
+      get :likes
     end
   end
 
