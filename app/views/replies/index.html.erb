@@ -12,7 +12,7 @@
 
       <p><%= current_user.introduction %></p>
 
-      <%= link_to tweet_replies_path(:tweet_id, current_user) do %>
+      <%= link_to tweets_user_path(current_user) do %>
         <h4>Tweets <span class="badge"><%= current_user.tweets.count %></span></h4>
       <% end %>
 
@@ -40,7 +40,11 @@
           <div class="panel-body">
             <div class="media">
               <div class="media-left">
-                <%= image_tag @tweet.user.avatar, class: "media-object", width: "100px" %>
+                <% if @tweet.user.avatar? %>
+                  <%= image_tag @tweet.user.avatar, class: "media-object", width: "100px" %>
+                <% else %>
+                  <img src="https://api.fnkr.net/testimg/100x100/d3d3d3/FFF/?">
+                <% end %>               
               </div>
               <div class="media-body">
                 <h4 class="media-heading">

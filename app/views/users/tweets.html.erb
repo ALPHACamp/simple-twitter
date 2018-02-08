@@ -21,8 +21,6 @@
         
         <h4>Like <span class="badge"><%=  %></span></h4>
       
-      <br>
-      
       <div class="text-center">
         <% if @user == current_user %>
           <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-primary btn-lg btn-block" %>
@@ -38,7 +36,11 @@
         <div class="panel-body">
           <div class="media">
             <div class="media-left">
-              <%= image_tag @user.avatar, class: "media-object", width: "100px" %>
+              <% if @user.avatar? %>
+                <%= image_tag @user.avatar, class: "media-object", width: "100px" %>
+              <% else %>
+                <img src="https://api.fnkr.net/testimg/100x100/d3d3d3/FFF/?">
+              <% end %>              
             </div>
             <div class="media-body">
               <h4 class="media-heading">
