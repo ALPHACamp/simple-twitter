@@ -6,9 +6,14 @@ class UsersController < ApplicationController
   end
 
   def edit
+    unless @user == current_user
+      redirect_to user_path(@user)
+    end
   end
 
   def update
+    @user.update(user_params)
+    redirect_to user_path(@user)
   end
 
   def followings

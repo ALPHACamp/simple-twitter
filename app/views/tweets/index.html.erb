@@ -22,6 +22,7 @@
     <li>
       <%= current_user.name %>
       <%= current_user.avatar %>
+      <%= image_tag current_user.avatar, class: "img-responsive img-rounded" %>
       <%= link_to 'My Tweets', tweets_user_path(current_user) %>
     </li>
 </ul>
@@ -51,7 +52,11 @@
   <% @users.each do |user| %>
     <li>
       <td><%= link_to user.name, tweets_user_path(user) %></td>
-      <td><%= user.avatar %></td>
+        <div class="col-md-3 col-sm-4">
+          <div class="text-center">
+            <%= image_tag user.avatar, class: "img-responsive img-rounded" %>
+          </div>
+        </div>
       <td><%= user.introduction %></td>
     <% if @user != current_user %>
       <td><%= link_to 'Follow' %></td>
