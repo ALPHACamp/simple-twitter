@@ -1,1 +1,6 @@
 hello, this is <%= @user.name %>
+<br>
+<% @user.tweets.each do |tweet| %>
+  <%= tweet.description %>
+  <br>
+<% end %>
