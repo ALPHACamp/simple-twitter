@@ -1,1 +1,43 @@
-<h1>Users Index</h1>
+<div class="container">
+  <div class="row">
+    <ul class="nav nav-tabs">
+      <li role="presentation">
+        <%= link_to 'Tweets', admin_root_path %>
+      </li>
+      <li role="presentation" class="active"">
+        <%= link_to 'Users', admin_users_path %>
+      </li>
+    </ul>
+  </div>
+</div>
+<br>
+
+<div class="container">
+  <div class="row">
+    <% @users.each do |user| %>
+      <div class="col-md-6">
+
+        <div class="media user-item user-media">
+          <div class="media-left media-top">
+            <%= image_tag user.avatar, class: "media-object" %>
+          </div>
+          
+          <div class="media-body user-profile">
+            <ul>
+
+              <li><h3><%= user.name %></h3></li>
+              <li><p><%= user.introduction %></p></li>
+              <li><h5><%= "Tweets #{user.tweets.count}" %></h5></li>
+              <li><h5><%= "Following #{user.followings.count}" %></h5></li>
+              <li><h5><%= "Follower #{user.followers_count}" %></h5></li>
+              <li><h5><%= "Like #{user.likes.count}" %></h5></li>
+            </ul>
+          
+          </div>
+        </div>
+
+      </div>
+    <% end %>
+
+  </div>
+</div>

@@ -1,5 +1,4 @@
 class TweetsController < ApplicationController
-  before_action :authenticate_user!
 
   def index
     @tweet = Tweet.new
@@ -12,9 +11,9 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new(tweet_params)
     @tweet.user = current_user
     if @tweet.save
-      flash[:notice] = 'tweet was successfully created'
+      #flash[:notice] = 'tweet was successfully created'
     else
-      flash[:alert] = @tweet.errors.full_messages.to_sentence
+      #flash[:alert] = @tweet.errors.full_messages.to_sentence
     end
     redirect_to tweets_url
   end
@@ -22,6 +21,7 @@ class TweetsController < ApplicationController
   def like
     @tweet = Tweet.find(params[:id])
     @tweet.likes.create!(user: current_user)
+    @tweet.count_likes
     redirect_back(fallback_location: root_path)
   end
 
@@ -29,6 +29,7 @@ class TweetsController < ApplicationController
     @tweet = Tweet.find(params[:id])
     likes = Like.where(tweet: @tweet, user: current_user)
     likes.destroy_all
+    @tweet.count_likes
     redirect_back(fallback_location: root_path)
   end
 

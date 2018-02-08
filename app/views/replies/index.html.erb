@@ -1,46 +1,48 @@
 <div class="container">
   <div class="row">
 
-    <div class="media tweet-item">
-      <div class="media-left media-middle">
-        <%= image_tag @tweet.user.avatar, class: "media-object" %>
-      </div>
-      <div class="media-body">
-        <h5 class="media-heading">
-          <%= link_to "@#{@tweet.user.name}", tweets_user_path(@tweet.user) %>
-          <%= time_ago_in_words(@tweet.created_at) %> ago
-        </h5>
-        <p><%= @tweet.description %></p>
-      </div>
+    <div class="col-md-3 user-profile">
+      <ul>
+        <%= render partial: "shared/user_profile", locals: {user: current_user} %>
+        <li>
+          <%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-primary btn-md" %>
+        </li>
+      </ul>
     </div>
 
-    <div class="clearfix"></div>
+    <div class="col-md-8">
 
-  </div>
-</div>
+      <h3>Tweets</h3>
 
-<hr>
-<% @tweet.replies.each do |reply| %>
-  <div>
-    <h4><%= reply.user.name %></h4>
-    <%= link_to "@#{reply.user.name}", tweets_user_path(reply.user) %>
-    <p><%= simple_format reply.comment %></p>
-    <p class="text-muted">
-      <em><%= time_ago_in_words(reply.created_at) %> ago -</em>
-    </p>
-  </div>
-  <hr>
-<% end %>
+      <%= render partial: "shared/tweet", locals: {tweet: @tweet} %>
 
-<div class="container">
-  <div class="row">
-    <%= form_for [@tweet, @reply] do |f| %>
-      <div class="form-group">
-        <%= f.text_area :comment, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.submit class: "btn btn-primary" %>
-      </div>
-    <% end %>
+      <h3>Replies</h3>
+
+      <% @tweet.replies.each do |reply| %>
+        <div class="media tweet-item">
+          <div class="media-left media-middle">
+            <%= image_tag reply.user.avatar, class: "media-object" %>
+          </div>
+          <div class="media-body">
+            <h5 class="media-heading">
+              <%= link_to "@#{reply.user.name}", tweets_user_path(reply.user) %>
+              <%= time_ago_in_words(reply.created_at) %> ago
+            </h5>
+            <p><%= reply.comment %></p>
+          </div>
+        </div>
+      <% end %>
+
+      <%= form_for [@tweet, @reply] do |f| %>
+        <div class="form-group">
+          <%= f.text_area :comment, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit class: "btn btn-primary btn-md pull-right" %>
+        </div>
+      <% end %>
+
+    </div>
+
   </div>
 </div>

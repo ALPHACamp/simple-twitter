@@ -1,35 +1,20 @@
-
-
 <div class="container">
   <div class="row">
-    
-    <div class="col-md-10">
 
-      
-      <div class="col-md-2">
+    <div class="col-md-3 user-profile">
+      <ul>
+        <%= render partial: "shared/user_profile", locals: {user: current_user} %>
+        <li>
+          <%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-primary btn-md" %>
+        </li>
+      </ul>
+    </div>
 
-      </div>
-
-
-      <div class="col-md-6">
-        <h2>Like</h2>
-        <% @likes.each do |like| %>
-          <div class="media tweet-item">
-            <div class="media-left media-middle">
-              <%= image_tag like.tweet.user.avatar, class: "mr-3" %>
-            </div>
-            <div class="media-body">
-              <h5 class="media-heading">
-                <%= link_to "@#{like.tweet.user.name}", tweets_user_path(like.tweet.user) %>
-                <%= time_ago_in_words(like.tweet.created_at) %> ago
-              </h5>
-              <p><%= like.tweet.description %></p>
-            </div>
-          </div>
-        <% end %>
-      </div>
-
-
+    <div class="col-md-8">
+      <h2>Like</h2>
+      <% @likes.each do |like| %>
+        <%= render partial: "shared/tweet", locals: {tweet: like.tweet} %>
+      <% end %>
     </div>
 
   </div>

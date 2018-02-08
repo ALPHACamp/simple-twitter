@@ -3,7 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .blank-tweet {
-  margin: 20px;
+  padding: 4px;
+  margin: 10px;
+  width: 100%;
 }
 
 .media {
@@ -16,4 +18,14 @@
 .tweet-item img {
   max-width: 80px;
   max-height: 80px;
+}
+
+.user-profile img {
+  max-width: 160px;
+  max-height: 160px;
+}
+
+.user-profile ul {
+  list-style-type: none;
+  padding: 0px 20px;
 }

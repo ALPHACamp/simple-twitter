@@ -10,6 +10,7 @@ class RepliesController < ApplicationController
     @reply = @tweet.replies.build(reply_params)
     @reply.user = current_user
     @reply.save!
+    @tweet.count_replies
     redirect_to tweet_replies_path(@tweet)
   end
 
