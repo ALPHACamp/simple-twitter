@@ -1,25 +1,27 @@
-  <div class="content col-md-4">
-    <%= form_for @user do |f| %>
+<div class="content clear-fix">
+  <%= form_for @user do |f| %>
+    <div class="content col-md-4 float-left ">
       <div class="card">
         <%= image_tag @user.avatar, class: "card-img-top rounded" if @user.avatar? %>
         <br/>
         <br/>
           <%= f.file_field :avatar%>
       </div>
-  </div>
-  <div class="content col-md-8">
-    <div class="card">
-      <%= f.label :name, "Name"%>
-      <%= f.text_field :name, class: "form-control"%>
     </div>
-    <div class="card">
-      <%= f.label :introduction, "Introduction" %>
-      <%= f.text_field :introduction, class: "form-control text-area"%>
-      <br/>
-      <br/>
-      <div class="text-right">
-        <%= f.submit class: "btn btn-primary"%>
+    <div class="content col-md-6 float-left ">
+      <div class="card">
+        <%= f.label :name, "Name"%>
+        <%= f.text_field :name, class: "form-control"%>
       </div>
-    </div>
-    <%end%>
-  </div>
+      <div class="card">
+        <%= f.label :introduction, "Introduction" %>
+        <%= f.text_field :introduction, class: "form-control text-area"%>
+        <br/>
+        <br/>
+        <div class="text-right">
+          <%= f.submit class: "btn btn-primary" , method: :update%>
+        </div>
+      </div>
+     </div>
+  <%end%>
+</div>

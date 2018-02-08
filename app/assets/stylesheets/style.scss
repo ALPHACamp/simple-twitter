@@ -35,3 +35,8 @@ padding-right:0px;}
 .list-group .list-group-item{border:none;}
 
 
+.clearfix::after {
+  content: '';
+  display: table;
+  clear: both;
+}
