@@ -27,7 +27,7 @@ class Admin::TweetsController < Admin::BaseController
     @user.likes_count = @user.tweets.count
     @user.save
     flash[:notice] = "delete success"
-    redirect_to admin_tweets_path
+    redirect_to admin_root_path
   end
 
 
