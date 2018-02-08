@@ -27,8 +27,8 @@ Rails.application.routes.draw do
 
   # Like
   get '/users/:id/likes' => 'users#likes', :as => "user_likes"
-  post '/tweets/:id/like' => 'tweets#like', :as => "tweet_like"
-  post '/tweets/:id/unlike' => 'tweets#unlike', :as => "tweet_unlike"
+  post '/tweets/:id/like' => 'tweets#like', :as => "like_tweet"
+  post '/tweets/:id/unlike' => 'tweets#unlike', :as => "unlike_tweet"
 
   # Back-End
   namespace :admin do
