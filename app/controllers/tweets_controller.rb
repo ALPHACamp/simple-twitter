@@ -31,7 +31,7 @@ class TweetsController < ApplicationController
   def like
     @tweet = Tweet.find(params[:id])
     current_user.likes.create(tweet: @tweet)
-    @tweet.user.likes_count += 1
+    @tweet.user.likes_count += 1 # tweet author's "likes_count" plus 1 
     @tweet.user.save
     redirect_back(fallback_location: root_path)
   end

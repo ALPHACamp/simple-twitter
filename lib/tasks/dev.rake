@@ -50,6 +50,17 @@ namespace :dev do
     puts "now there are #{Reply.count} replies"
   end
 
-  
+  task fake_like: :environment do
+    50.times do |i|
+      post = Tweet.all.sample
+      Like.create(
+        user: User.all.sample,
+        tweet: post
+      )
+      post.user.likes_count += 1
+      post.user.save
+    end
+    puts "now there are #{Like.count} likes"
+  end  
 
 end
