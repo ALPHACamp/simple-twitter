@@ -10,7 +10,7 @@
 <div>
   <ul>
     <% @users.each do |user| %>
-      <li><%= user.name %></li>
+      <li><%= link_to user.name, tweets_user_path(user)%></li>
     <% end %>
   </ul>
 </div>
