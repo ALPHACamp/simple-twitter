@@ -11,7 +11,7 @@
         <% if user.role == "admin" %>
           <span class="label label-info"><%= user.role %></span>
         <% end %>
-        <%= image_tag user.avatar, width: "100px"%>
+        <%= image_tag user_avatar(user), width: "100px" %>
       </div>
       <h4><%= link_to user.name, tweets_user_path(user) %></h4>
       <p><%= user.introduction %></p>

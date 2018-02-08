@@ -35,8 +35,10 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <% if current_user %>
-              <li><%= link_to tweets_user_path(current_user), id: "avatar" do %>
-                <%= image_tag current_user.avatar %><% end %>
+              <li>
+                <%= link_to tweets_user_path(current_user), id: "avatar" do %>
+                  <%= image_tag user_avatar(current_user) %>
+                <% end %>
               </li>
               <li><%= link_to('Log out', destroy_user_session_path, method: :delete, class: "navbar-text") %></li>
             <% else %>

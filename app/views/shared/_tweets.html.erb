@@ -1,4 +1,4 @@
-<%= image_tag tweet.user.avatar, width:"100px" %>
+<%= image_tag user_avatar(tweet.user), width: "100px" %>
 <h4><%= link_to tweet.user.name, tweets_user_path(tweet.user) %>, <p><%= tweet.created_at %></p></h4>
 <p><%= tweet.description %></p>
 <%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet) %>

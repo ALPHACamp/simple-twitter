@@ -13,7 +13,7 @@
     <h3>Replies</h3>
     <% @replies.each do |reply| %>
       <div class="reply-box">
-        <%= image_tag reply.user.avatar, width:"100px" %>
+        <%= image_tag user_avatar(reply.user), width: "100px" %>
         <h4><%= link_to reply.user.name, tweets_user_path(reply.user) %>,
           <p><%= reply.created_at %></p></h4>
         <p><%= reply.comment %></p>
