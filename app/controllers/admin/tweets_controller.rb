@@ -6,6 +6,8 @@ class Admin::TweetsController < Admin::BaseController
   def destroy
     @tweet = Tweet.find(params[:id]);
     @tweet.destroy;
+    @tweet.user.tweets_count -= 1
+    @tweet.user.save
     redirect_to admin_tweets_path
   end
 end

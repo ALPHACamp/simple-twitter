@@ -13,6 +13,8 @@ class TweetsController < ApplicationController
     @tweet.user = current_user;
     if @tweet.save
       flash[:notice] = "Nice Tweet!"
+      current_user.tweets_count += 1
+      current_user.save
       redirect_to tweets_path
     else
       if @tweet.errors.present?
