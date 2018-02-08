@@ -1,0 +1,24 @@
+<table class= "table table-striped">
+  <% @users.each do |user| %>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>tweets</th>
+        <th>Likes</th>
+        <th>followigns</th>
+        <th>followers</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.tweets.count %></td>
+        <td><%= user.likes.count %></td>
+        <td>  <%= user.followings.count %></td>
+        <td> <%= user.followers.count %></td>
+      </tr>
+    </tbody>
+  <% end %>
+</table>
+
+
