@@ -4,7 +4,7 @@ class RepliesController < ApplicationController
   def index
     @reply = Reply.new
     @user = @tweet.user
-    @replies = @tweet.replies.page(params[:page]).per(5)
+    @replies = @tweet.replies.includes(:user).page(params[:page]).per(5)
   end
 
   def create

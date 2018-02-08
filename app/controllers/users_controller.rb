@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user ,only: [:tweets, :edit, :update, :followings, :followers, :likes]
 
   def tweets
-    @tweets = @user.tweets
+    @tweets = @user.tweets.includes(:liked_users)
   end
 
   def edit
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
 
   def likes
     # @likes # 基於測試規格，必須講定變數名稱
-    @likes = @user.likes_tweets.order('likes.created_at desc').page(params[:page]).per(6)
+    @likes = @user.likes_tweets.includes(:user, :liked_users).order('likes.created_at desc').page(params[:page]).per(6)
   end
 
   private
