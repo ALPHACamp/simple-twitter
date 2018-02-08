@@ -9,7 +9,7 @@
       <div class="media-body">
         <h5 class="mt-0">
           <%= link_to "#{f.name}",tweets_user_path(f) %></h5>
-          <p><%= truncate(f.introduction,:length => 60)%></p>
+          <p class="small-profile-intro"><%= truncate(f.introduction,:length => 60)%></p>
           <%= render partial: "shared/follow", locals:{user: f} %>
       </div>
     </div>
