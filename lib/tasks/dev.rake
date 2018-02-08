@@ -78,4 +78,9 @@ namespace :dev do
     puts "have created fake replies"
     puts "now you have #{Reply.count} replies' data"
   end
+
+  task count_tweet: :environment do
+    User.find_each { |user| User.reset_counters(user.id, :tweets) }
+    puts "Finished!"
+  end
 end
