@@ -153,6 +153,9 @@ GEM
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
     parallel (1.11.2)
+    pg (0.21.0)
+    pg (0.21.0-x64-mingw32)
+    pg (0.21.0-x86-mingw32)
     puma (3.11.2)
     puma (3.11.2-java)
     rack (2.0.4)
@@ -298,6 +301,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   listen (>= 3.0.5, < 3.2)
+  pg (~> 0.21)
   puma (~> 3.7)
   rails (~> 5.1.4)
   rails-controller-testing
