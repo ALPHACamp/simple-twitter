@@ -20,8 +20,9 @@
         <h5>Reply(<%= @tweet.replies.count %>) Like(<%= @tweet.likes.count %>)</h5>
 
         <!-- like / unlike button -->
-        <%= link_to 'Like', like_tweet_path(@tweet), method: :post, class: "btn btn-primary" %>
-        <%= link_to 'Unlike', unlike_tweet_path(@tweet), method: :post, class: "btn btn-info" %>
+        <%= render partial: "shared/like", locals: {tweet: @tweet} %>
+
+        
 
         <hr>
       </div>
