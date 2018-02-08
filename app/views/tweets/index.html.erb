@@ -34,7 +34,14 @@
             </div>
             <div class="col-md-9">
               <%= link_to "@#{user.name}", tweets_user_path(user) %>
-                <p><%= user.introduction %></p>          
+              <p><%= user.introduction %></p>
+              <div class="btn-right">
+                <% if current_user.following?(user)%>
+                  <%= link_to 'Unfollow', followship_path(user), method: :delete, class: "btn btn-primary" %>
+                <% else %>
+                  <%= link_to 'Follow', followships_path(following_id: user), method: :post, class: "btn btn-primary" %>
+                <% end %>
+              </div>
             </div>
           </div>
         <% end %>
