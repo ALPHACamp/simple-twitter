@@ -1,19 +1,19 @@
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-3">
     <%= render partial: "shared/user_profile" %>
   </div>
   
-  <div class="col-md-8">
+  <div class="col-md-9">
     <h2>Followerings</h2>
     <% @followings.each do |following| %>
       <div class="col-md-6">
         <div class="avatar-list float-left">
           <!-- <img src="http://via.placeholder.com/50x50" class="img-responsive img-rounded"> -->
-          <%= image_tag following.avatar, width: "80%" %>     
+          <%= image_tag following.avatar, width: "30%" %>     
         </div>
         <div class="small-box">
           <h3><%= link_to following.name, tweets_user_path(following) %></h3>
-          <h4><%= following.introduction %></h4> 
+          <h4><%= truncate following.introduction, length: 150 %></h4> 
 
           <div class="float-right">
             <%= render partial: "shared/follow", locals: {user:following}%>
@@ -25,4 +25,3 @@
     <% end %>
   </div>
 </div>  
-

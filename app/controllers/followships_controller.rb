@@ -1,4 +1,5 @@
 class FollowshipsController < ApplicationController
+  
   def create
     @followship = current_user.followships.build(following_id: params[:following_id])
 
@@ -18,4 +19,5 @@ class FollowshipsController < ApplicationController
     flash[:alert] = "Followship destroyed"
     redirect_back(fallback_location: root_path) 
   end
+  
 end

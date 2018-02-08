@@ -1,14 +1,14 @@
 class RepliesController < ApplicationController
 
+  before_action :set_reply_tweet, only: [:index, :create]
+
   def index
-    @tweet = Tweet.find(params[:tweet_id])
     @replies = @tweet.replies.all
     @reply = Reply.new
     @user = @tweet.user
   end
 
   def create
-    @tweet = Tweet.find(params[:tweet_id])
     @reply = @tweet.replies.build(comment: reply_params[:comment], user: current_user)
     if @reply.save
       redirect_to tweet_replies_path(@tweet), notice: "reply success"
@@ -19,6 +19,12 @@ class RepliesController < ApplicationController
   end
 
   private
+
+  
+
+  def set_reply_tweet
+    @tweet = Tweet.find(params[:tweet_id])
+  end
 
   def reply_params
     params.require(:reply).permit(:comment)

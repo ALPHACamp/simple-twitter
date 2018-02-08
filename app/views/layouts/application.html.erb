@@ -24,14 +24,18 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="pull-right text-right nav navbar-nav">
             <% if current_user %>
-              <li><p class="navbar-text">Hi, <%= current_user.name %></p></li>
+              <!-- <li><p class="navbar-text">Hi, <%= current_user.name %></p></li> -->
+              <li><%= link_to tweets_user_path(current_user) do %>
+                <div class="inset"><%= image_tag current_user.avatar %></div>
+                <% end %>
+              </li>
               <!-- 使用者能創建帳號、登入、登出 -->
-               <% if current_user&.admin? %>
+              <% if current_user&.admin? %>
                 <li><%= link_to 'Admin Panel', admin_tweets_path %></li>
               <% end %>
               <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
-              <li><%= link_to('個人資料', tweets_user_path(current_user)) %></li>
-              <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
+              <!-- <li><%= link_to('個人資料', tweets_user_path(current_user)) %></li> -->
+              <!-- <li><%= link_to('修改密碼', edit_user_registration_path) %></li> -->
             <% else %>
               <li><%= link_to('註冊', new_user_registration_path) %></li>
               <li><%= link_to('登入', new_user_session_path) %></li>

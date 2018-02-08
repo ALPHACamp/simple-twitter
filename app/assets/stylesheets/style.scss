@@ -54,6 +54,23 @@ nav.navbar {
 }
 
 
+.inset {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  margin: -10px;
+}
+
+.inset img {
+  border-radius: inherit;
+  width: inherit;
+  height: inherit;
+  display: block;
+  position: relative;
+
+}
+
+
 .tweets-form {
   margin-bottom: 20px;
 }
@@ -87,6 +104,11 @@ nav.navbar {
   border: 2px solid lightgray;
   padding: 10px;
   margin-bottom: 30px;
+}
+
+.user-item-follow {
+  text-align: right;
+
 }
 
 .user-name {
