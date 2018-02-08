@@ -48,6 +48,6 @@ class UsersController < ApplicationController
   end
 
   def correct_user
-    redirect_to tweets_path unless @user == current_user
+    redirect_to tweets_user_path unless @user == current_user
   end
 end
