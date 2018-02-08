@@ -62,5 +62,8 @@ Rails.application.configure do
     Bullet.alert = true
     Bullet.bullet_logger = true
     Bullet.console = true
+    
+    # Detect eager-loaded associations which are not used
+    Bullet.unused_eager_loading_enable = false
   end
 end
