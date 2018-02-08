@@ -7,7 +7,7 @@ namespace :dev do
       name = FFaker::Name::first_name
       file = File.open("#{Rails.root}/public/avatar/user#{i+1}.jpg")
       client = FilestackClient.new('AUiYc1YfFRfRL04YG22igz')
-      filelink = client.upload(filepath: file)
+      filelink = client.upload(filepath: file, multipart: false)
 
       user = User.new(
         name: name,
@@ -22,7 +22,7 @@ namespace :dev do
     end
     admin_file = File.open("#{Rails.root}/public/avatar/admin.jpg")
     client = FilestackClient.new('AUiYc1YfFRfRL04YG22igz')
-    filelink = client.upload(filepath: admin_file)
+    filelink = client.upload(filepath: admin_file, multipart: false)
 
     User.create!(
       name: "admin",
