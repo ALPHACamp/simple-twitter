@@ -42,6 +42,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
@@ -51,7 +52,6 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'rails-controller-testing'
-  gem 'sqlite3'
 end
 
 group :development do
@@ -65,6 +65,7 @@ end
 
 group :production do
   gem 'pg'
+  gem 'rails_12factor'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
