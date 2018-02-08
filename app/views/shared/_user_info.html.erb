@@ -16,7 +16,7 @@
     <p><%= link_to "Follower(#{user.followers.count})" , followers_user_path(user) %></p>
   </div>
   <div class="col-md-12">
-    <p>Like</p>
+    <p><%= link_to "Like(#{user.likes.count})" , likes_user_path(user) %></p>
   </div>
   <div class="col-md-12">
     <%= render partial: "shared/follow", locals: {user: user} %>
