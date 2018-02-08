@@ -4,9 +4,9 @@ Rails.application.routes.draw do
 
   # 請依照專案指定規格來設定路由
   namespace :admin do
-    resources :tweets, only: [:index, :delete]
+    resources :tweets, only: [:index, :destroy]
     resources :users, only: [:index]
-    root "tweet#index"
+    root "tweets#index"
   end 
 
   resources :tweets, only: [:index, :create] do

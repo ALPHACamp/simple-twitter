@@ -1,0 +1,2 @@
+$("#follow-<%= @followship.following_id %>").html("<%=j render :partial => 'shared/follow_list', locals: {user: @followed} %>");
+$("#followed-<%= @followship.following_id %>").html("Follower <%= @followed.followers.count %>");

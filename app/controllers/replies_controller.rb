@@ -7,7 +7,8 @@ class RepliesController < ApplicationController
   end
 
   def create
-    @tweet = current_user.replies.create(reply_params)
+    @reply = current_user.replies.create(reply_params)
+    @tweet = @reply.tweet
   end
 
   private

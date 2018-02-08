@@ -6,11 +6,13 @@
       THere is no photo
     <% end %>
   </div>
-  
-  <h4><%= user.name %></h4>
-  <p>
-    <%= user.introduction %>
-  </p>
+  <div>
+    <h4><%= user.name %></h4>
+    <p>
+      <%= user.introduction %>
+    </p>
+  </div>
+    
   
   <% if current_user == user %>
     <h6><%= link_to "tweets #{current_user.tweets.count}", tweets_user_path(current_user) %> </h6>
@@ -21,14 +23,10 @@
   <% else %>
     <h6>Tweets <%= user.tweets.count %></h6>
     <h6>Following <%= user.followings.count %></h6>
-    <h6>Follower <%= user.followers.count %></h6>
+    <h6 id="followed-<%= user.id %>">Follower <%= user.followers.count %></h6>
     <h6>Likes <%= user.likes.count %> </h6>
-
-
-    <% if current_user&.follow?(user.id) %>
-      <%= link_to "Unfollow", followship_path(id:user.id), method: :delete, class: "btn btn-danger" %>
-    <% else %>
-      <%= link_to "Follow", followships_path(id:user), method: :post, class: "btn btn-primary" %>
-    <% end %>
+    <span id="follow-<%= user.id %>">
+    <%= render :partial => 'shared/follow_list', locals: {user: user} %>
+    </span>
   <% end %>
 </div>

@@ -14,12 +14,8 @@
       <p>
         <%= user.introduction %>
       </p>
-      <span>
-        <% if current_user&.follow?(user.id) %>
-          <%= link_to "Unfollow", followship_path(user), method: :delete %>
-        <% else %>
-          <%= link_to "Follow", followships_path(id:user), method: :post %>
-        <% end %>
+      <span id="follow-<%= user.id %>">
+        <%= render :partial => "shared/follow_list", locals:{user: user} %>
       </span>
     </div>
   </div>

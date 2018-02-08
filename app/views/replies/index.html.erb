@@ -10,11 +10,12 @@
         <%= render :partial => "shared/tweet_list", locals: {tweet: @tweet} %>
 
         <h3>Reply</h3>
-        <% @replies.each do |reply| %>
-          <%= render :partial => "shared/reply_list", locals:{ reply: reply } %>
-        <% end %>
-
-        <%= form_for :reply do |reply| %>
+        <div id="replies">
+          <% @replies.each do |reply| %>
+            <%= render :partial => "shared/reply_list", locals:{ reply: reply } %>
+          <% end %>
+        </div>
+        <%= form_for :reply, html: {id: "reply_form"}, remote: true do |reply| %>
           <div class="form-group">
             <%= reply.hidden_field :tweet_id, :value => @tweet.id %>
             <%= reply.text_field :comment,class: "form-control", placeholder: "Comment" %>

@@ -11,10 +11,12 @@ class TweetsController < ApplicationController
 
   def like
     @like = current_user.likes.create(tweet_id: params[:id])
+    @tweet = Tweet.find(params[:id])
   end
 
   def unlike
     @like = current_user.likes.find_by(tweet_id: params[:id])
+    @tweet = Tweet.find(params[:id])
     @like.destroy
   end
 

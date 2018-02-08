@@ -11,13 +11,13 @@ class User < ApplicationRecord
   validates_presence_of :name
   validates :name, uniqueness: true
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
-  has_many :tweets
-  has_many :replies
-  has_many :followships
-  has_many :followings, through: :followships
+  has_many :tweets, dependent: :destroy
+  has_many :replies, dependent: :destroy
+  has_many :followships, dependent: :destroy
+  has_many :followings, through: :followships, dependent: :destroy
   has_many :followed, class_name: "Followship" , foreign_key: :following_id
   has_many :followers, through: :followed, source: :user
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :like_tweets, through: :likes, source: :tweet
 
   def admin?
