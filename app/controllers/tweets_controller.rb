@@ -29,6 +29,8 @@ class TweetsController < ApplicationController
   def like
     @tweet = Tweet.find(params[:id])
     current_user.likes.create(tweet: @tweet)
+    @tweet.user.likes_count += 1
+    @tweet.user.save
     redirect_back(fallback_location: root_path)
   end
 
@@ -36,6 +38,8 @@ class TweetsController < ApplicationController
     @tweet = Tweet.find(params[:id])
     @like = Like.where(user: current_user, tweet: @tweet)
     @like.destroy_all
+    @tweet.user.likes_count -= 1
+    @tweet.user.save
     redirect_back(fallback_location: root_path)
   end
 
