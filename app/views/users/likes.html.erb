@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-3">
       <%= image_tag @user.avatar, class: "avatar-styled" %>
-      <h2><%= @user.name %></h2>
+      <h1><%= @user.name %></h1>
       <p><%= @user.introduction %></p>
       <h2><%= link_to "Tweet  #{@user.tweets_count}", tweets_user_path(@user) %></h2>
       <h2><%= link_to "Following  #{@user.followings.count}", followings_user_path(@user) %></h2>
@@ -19,30 +19,25 @@
         <% end %>
       <% end %>  
     </div>
-    <div class="col-md-9">
-      <h2>Follower</h2>
+    <div class="col-md-8 col-md-offset-1">
+      <h1>Like</h1>
       <div class="col-md-12">
-        <% @followers.each do |f| %>
-        <div class="col-md-6">
-          <div class="col-md-12">
-            <div class="tweets-items row">
-              <div class="col-md-4">
-                <%= image_tag f.avatar, class: "avatar-styled" if f.avatar? %>
-              </div>
-              <div class="col-md-8">
-                <%= link_to "@#{f.name}", tweets_user_path(f) %>
-                <p><%= f.introduction %></p>
-                <div class="btn-right">
-                  <% if current_user.following?(f)%>
-                    <%= link_to 'Unfollow', followship_path(f), method: :delete, class: "btn btn-primary" %>
-                  <% else %>
-                    <%= link_to 'Follow', followships_path(following_id: f), method: :post, class: "btn btn-primary" %>
-                  <% end %>
-                </div>
-              </div>
+        <% @likes.each do |like| %>
+          <div class="tweets-items row">
+            <div class="col-md-3">
+              <%= image_tag like.user.avatar, class: "avatar-styled" if like.user.avatar? %>      
+            </div>
+            <div class="col-md-9">
+              <p><%= link_to "@#{like.user.name}", tweets_user_path(like.user) %>, <%= like.created_at.strftime("%Y-%m-%d, %H:%M")  %></p> 
+              <p><%= like.description%></p>
+              <%= link_to "Reply(#{like.replies_count})", tweet_replies_path(like), class: "reply-font" %>
+              <% if like.is_liked?(current_user)%>
+                <%= link_to "Unlike(#{like.likes_count})", unlike_tweet_path(like), method: :delete, class: "reply-font" %> 
+              <% else %>
+                <%= link_to "Like(#{like.likes_count})", like_tweet_path(like), method: :post, class: "reply-font" %>
+              <% end %>
             </div>
           </div>
-        </div>
         <% end %>
       </div>
     </div>

@@ -7,7 +7,7 @@
       <h2><%= link_to "Tweet  #{@user.tweets_count}", tweets_user_path(@user) %></h2>
       <h2><%= link_to "Following  #{@user.followings.count}", followings_user_path(@user) %></h2>
       <h2><%= link_to "Follower  #{@user.followers_count}", followers_user_path(@user) %></h2>
-      <h2>Like</h2>
+      <h2><%= link_to "Like  #{@user.likes_count}", likes_user_path(@user) %></h2>
       <hr>
       <% if @user == current_user %>
         <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
@@ -31,9 +31,9 @@
               <p><%= tweet.description%></p>
               <%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet), class: "reply-font" %>
               <% if tweet.is_liked?(current_user)%>
-                <%= link_to "Unlike(#{tweet.likes_count})", unlike_tweet_path(tweet), method: :delete, class: "reply-font like-red" %> 
+                <%= link_to "Unlike(#{tweet.likes_count})", unlike_tweet_path(tweet), method: :delete, class: "reply-font" %> 
               <% else %>
-                <%= link_to "Like(#{tweet.likes_count})", like_tweet_path(tweet), method: :post, class: "reply-font like-red" %>
+                <%= link_to "Like(#{tweet.likes_count})", like_tweet_path(tweet), method: :post, class: "reply-font" %>
               <% end %>
             </div>
           </div>
