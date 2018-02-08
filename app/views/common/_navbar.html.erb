@@ -19,7 +19,12 @@
                 <%= link_to('管理後台', admin_tweets_path) %>
               </li>
             <% end %>
-          <% end %>    
+          <% end %>               
+          <li class="nav-profile">
+            <%= link_to tweets_user_path(current_user) do %>
+            <%= image_tag current_user.avatar, class: "nav-img" if current_user.avatar? %>
+            <% end %>
+          </li>
           <li class="stnavbar-logout"> <%= link_to('Logout', destroy_user_session_path, method: :delete) %> <!-- 也可以改成 :method => :delete --></li>
         <% else %>
           <li><%= link_to('註冊', new_user_registration_path) %></li>
