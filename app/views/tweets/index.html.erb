@@ -21,7 +21,12 @@
           <div class="col-md-9">
             <h4><%= link_to tweet.user.name, tweets_user_path(tweet.user) %> <%= tweet.created_at.strftime('%Y-%m-%d')%></h4>
             <p><%= truncate(tweet.description, length:100 ) %></p> 
-            <%= link_to "reply", tweet_replies_path(tweet)  %> 
+            <%= link_to "reply(#{tweet.replies.count})", tweet_replies_path(tweet)  %> 
+            <% if current_user.is_liking?(tweet) %>
+              <%= link_to "unlike(#{tweet.likes.count})", unlike_tweet_path(tweet), method: :delete  %>
+            <% else %>
+              <%= link_to "like(#{tweet.likes.count})", like_tweet_path(tweet), method: :post  %>
+            <% end %>
           </div> 
         </div>   
       <% end %>        

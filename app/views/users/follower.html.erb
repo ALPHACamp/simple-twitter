@@ -13,7 +13,7 @@
         <li> <strong><%= link_to "Tweets:#{@user.tweets.count}",tweets_user_path(@user)%></strong></li>
         <li> <strong><%= link_to "Followings:#{@user.followings.count}",followings_user_path(@user) %></strong></li>
         <li> <strong><%= link_to "Followers:#{@user.followers.count}",followers_user_path(@user) %></strong></li>
-        <li> <strong><%= link_to "likes:#{@user.likes.count}",likes_user_path(@user) %></strong></li>
+        <li> <strong><%= link_to "followings:#{@user.followings.count}",followings_user_path(@user) %></strong></li>
       </ul>
     <div>
       <% if @user.id == current_user.id %>
@@ -30,26 +30,21 @@
 </div>
 
 <div class="col-md-8">
+  <h2>followings</h2>
   <div class="container">
     <div class="row">
-      <% @tweets.each do |tweet|%>
+      <% @followers.each do |follower|%>
         <div class="tweet-item">
           <div class="col-md-3">
-            <%= image_tag tweet.user.avatar, size: "200", class: "img-responsive center-block"%>
+            <%= image_tag follower.avatar, size: "200", class: "img-responsive center-block"%>
           </div>
           <div class="col-md-9">
-            <h4><%= tweet.user.name %> <%= tweet.created_at.strftime('%Y-%m-%d')%></h4>
-            <p><%= truncate(tweet.description, length:100 ) %></p> 
-            <%= link_to "reply(#{tweet.replies.count})", tweet_replies_path(tweet)  %> 
-            <% if current_user.is_liking?(tweet) %>
-              <%= link_to "unlike(#{tweet.likes.count})", unlike_tweet_path(tweet), method: :delete  %>
-            <% else %>
-              <%= link_to "like(#{tweet.likes.count})", like_tweet_path(tweet), method: :post  %>
-            <% end %>
+            <h4><%=link_to follower.name, tweets_user_path(follower) %> <%= follower.created_at.strftime('%Y-%m-%d')%></h4>
+            <p><%= truncate(follower.description, length:100 ) %></p>
+
           </div> 
         </div>   
       <% end %>        
     </div> 
   </div>  
 </div>
-

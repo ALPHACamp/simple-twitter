@@ -30,26 +30,26 @@
 </div>
 
 <div class="col-md-8">
+  <h2>likes</h2>
   <div class="container">
     <div class="row">
-      <% @tweets.each do |tweet|%>
+      <% @likes.each do |like|%>
         <div class="tweet-item">
           <div class="col-md-3">
-            <%= image_tag tweet.user.avatar, size: "200", class: "img-responsive center-block"%>
+            <%= image_tag like.user.avatar, size: "200", class: "img-responsive center-block"%>
           </div>
           <div class="col-md-9">
-            <h4><%= tweet.user.name %> <%= tweet.created_at.strftime('%Y-%m-%d')%></h4>
-            <p><%= truncate(tweet.description, length:100 ) %></p> 
-            <%= link_to "reply(#{tweet.replies.count})", tweet_replies_path(tweet)  %> 
-            <% if current_user.is_liking?(tweet) %>
-              <%= link_to "unlike(#{tweet.likes.count})", unlike_tweet_path(tweet), method: :delete  %>
+            <h4><%=link_to like.user.name, tweets_user_path(like.tweet.user) %> <%= like.created_at.strftime('%Y-%m-%d')%></h4>
+            <p><%= truncate(like.tweet.description, length:100 ) %></p>
+            <%= link_to "reply(#{like.tweet.replies.count})", tweet_replies_path(like)  %> 
+            <% if current_user.is_liking?(like.tweet) %>
+              <%= link_to "unlike(#{like.tweet.likes.count})", unlike_tweet_path(like.tweet), method: :delete  %>
             <% else %>
-              <%= link_to "like(#{tweet.likes.count})", like_tweet_path(tweet), method: :post  %>
-            <% end %>
+              <%= link_to "like(#{like.tweet.likes.count})", like_tweet_path(like.tweet), method: :post  %>
+            <% end %> 
           </div> 
         </div>   
       <% end %>        
     </div> 
   </div>  
 </div>
-

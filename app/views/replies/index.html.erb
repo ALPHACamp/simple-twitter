@@ -10,10 +10,13 @@
       <p><%= truncate(current_user.introduction, length:100 ) %></p> 
     </div>
       <ul class="list-unstyled list-inline">
-        <li> <strong>Tweets :<%= current_user.tweets.count %></strong></li>
+        <li> <strong><%= link_to "Tweets:#{current_user.tweets.count}",tweets_user_path(current_user)%></strong></li>
+        <li> <strong><%= link_to "Followings:#{current_user.followings.count}",followings_user_path(current_user) %></strong></li>
+        <li> <strong><%= link_to "Followers:#{current_user.followers.count}",followers_user_path(current_user) %></strong></li>
+        <li> <strong><%= link_to "likes:#{current_user.likings.count}",likes_user_path(current_user) %></strong></li>
       </ul>
     <div>
-      <%= link_to('Edit Profile', edit_user_path(current_user))%>
+      <%= link_to "Edit Profile", edit_user_path(current_user),:class => 'btn btn-primary'%>
     </div>
   </div>
 </div>

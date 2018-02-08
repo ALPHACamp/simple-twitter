@@ -19,15 +19,19 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings # 基於測試規格，必須講定變數名稱
+    @user = User.find(params[:id])
+    @followings = @user.followings.all.order(created_at: :desc).limit(6)# 基於測試規格，必須講定變數名稱
+    
   end
 
   def followers
-    @followers # 基於測試規格，必須講定變數名稱
+    @user = User.find(params[:id])
+    @followers = @user.followers.tweets.all.order(created_at: :desc).limit(6)# 基於測試規格，必須講定變數名稱
   end
 
   def likes
-    @likes # 基於測試規格，必須講定變數名稱
+    @user = User.find(params[:id])
+    @likes = @user.likes.all.order(created_at: :desc).limit(10)  # 基於測試規格，必須講定變數名稱
   end
 
   private

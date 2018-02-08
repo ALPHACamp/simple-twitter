@@ -9,11 +9,16 @@ class User < ApplicationRecord
   has_many :tweets, dependent: :destroy
   has_many :replies, dependent: :destroy
 
+
   has_many :followships, dependent: :destroy
   has_many :followings, through: :followships
 
-  has_many :inverse_followship, class_name: "Followship", foreign_key: "following_id"
-  has_many :follower, through :inverse_followship, source :user
+  has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
+  has_many :followers, through: :inverse_followships, source: :user
+
+  has_many :likes, dependent: :destroy
+  has_many :likings, through: :likes
+
 
 
   # 需要 app/views/devise 裡找到樣板，加上 name 屬性
@@ -28,6 +33,10 @@ class User < ApplicationRecord
 
   def is_following?(user)
     self.followings.include?(user)
+  end
+
+  def is_liking?(tweet)
+    self.likings.include?(tweet)
   end
 
 end

@@ -15,9 +15,21 @@ class TweetsController < ApplicationController
   end
 
   def like
+    @like = current_user.likes.build(tweet_id: params[:id])
+    if @like.save!
+      flash[:notice] = "liked"
+      redirect_back(fallback_location: root_path)
+    else
+      flash[:alert] = @like.errors.full_messages.to_sentence
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def unlike
+    @unlike = current_user.likes.where(tweet_id: params[:id]).first
+    @unlike.destroy
+    flash[:notice] = "unliked"
+    redirect_back(fallback_location: root_path)
   end
 
   private
