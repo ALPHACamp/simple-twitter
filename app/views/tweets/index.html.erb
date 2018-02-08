@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row">
+    <!-- 當前使用者推特發文區 -->
+    <%= form_for Tweet.new do |f| %>
+      <div class="form-group">
+        <%= f.text_field :description, placeholder: "Tweet something!", :size=>"50", class: "form-control" %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+      </div>
+      <%= f.submit 'Tweet', class: "btn btn-primary" %>
+    <% end %>
+
+    <!-- All Tweets  -->
+    <% if @tweets != nil %>
+      <% @tweets.each do |tweet| %>
+
+        <%= image_tag tweet.user.avatar, height: 85, width: 85 %>
+        <h3>@<%= tweet.user.name %></h3>
+        <p><%= tweet.description %></p>
+
+        <!-- Reply link -->
+        <%= link_to (replies_user_path(tweet)) do %>
+          <h5>Reply(<%= tweet.replies.count %>)</h5>
+        <% end %>
+
+        <!-- Likes -->
+        <h5>Like(<%= tweet.likes.count %>)</h5>
+        
+        
+
+        <hr>
+      <% end %>
+    <% end %>
+
+
+    <h1>Popular</h1>
+    <% @users.each do |user| %>
+
+      <%= image_tag user.avatar, height: 85, width: 85 %>
+
+      <!-- user link -->
+      <%= link_to (users_tweets_path(user)) do %>
+        <h5>@<%= user.name %></h5>
+      <% end %>
+
+      <p><%= user.introduction %></p>
+
+      <!-- follow / unfollow partial -->
+      <%= render partial: "shared/tweets-follow", locals: {user: user} %>
+
+      <hr>
+
+    <% end %>
+
+  </div>
+</div>

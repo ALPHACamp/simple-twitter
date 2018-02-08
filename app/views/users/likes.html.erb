@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row">
+    <h1>Likes page</h1>
+    <div class="col-md-4">
+      <%= image_tag @user.avatar, height: 100, width: 100 %>
+      <h3><%= @user.name %></h3>
+      <p><%= @user.introduction %></p>
+
+      <!-- user link -->
+      <%= link_to (users_tweets_path(@user)) do %>
+        <h5>Tweets : <%= @user.tweets.count %></h5>
+      <% end %>
+
+      <!-- followings -->
+      <%= link_to (following_user_path(@user)) do %>
+        <h5>Following : <%= @user.followings.count %></h5>
+      <% end %>
+
+      <!-- followers -->
+      <%= link_to (user_follower_path(@user)) do %>
+        <h5>Follower : <%= @user.followers_count %></h5>
+      <% end %>
+
+      <!-- like -->
+      <%= link_to (user_likes_path(@user)) do %>
+        <h5>Like : <%= @user.likes_count %></h5>
+      <% end %>
+      
+      <%= render partial: "shared/edit", locals: {user: @user} %>
+
+      <hr>
+    </div>
+
+    <!-- likes -->
+    <div class="col-md-8">
+      <h2>Likes</h2>
+      <% if @likes != nil %>
+
+        <% @likes.each do |like| %>
+
+          <%= image_tag like.user.avatar, height: 85, width: 85 %>
+
+          <!-- user link -->
+          <%= link_to (users_tweets_path(like.user)) do %>
+            <h5>@<%= like.user.name %></h5>
+          <% end %>
+
+          <p><%= like.description %></p>
+
+          <hr>
+
+        <% end %>
+
+      <% end %>
+    </div>
+
+
+  </div>
+</div>
