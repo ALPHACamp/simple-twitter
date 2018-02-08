@@ -3,7 +3,7 @@
     <%= render partial: "shared/intro", locals: {user: @tweet.user} %>
   
     <h3>Tweets</h3>
-    <div class="col-xs-12 col-md-8">
+    <div class="col-xs-12 col-md-9">
       <div class="media tweet-box">
         <div class="media-left">
           <%= image_tag @tweet.user.avatar if @tweet.user.avatar?%>
