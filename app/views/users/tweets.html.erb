@@ -4,7 +4,7 @@
       <%= image_tag @user.avatar, class: "avatar-styled" %>
       <h2><%= @user.name %></h2>
       <p><%= @user.introduction %></p>
-      <h2>Tweet</h2>
+      <h2><%= link_to "Tweet  #{@user.tweets_count}", tweets_user_path(@user) %></h2>
       <h2>Following</h2>
       <h2>Follower</h2>
       <h2>Like</h2>
@@ -24,6 +24,7 @@
             <div class="col-md-9">
               <p><%= link_to "@#{tweet.user.name}", tweets_user_path(tweet.user) %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M")  %></p> 
               <p><%= tweet.description%></p>
+              <%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet), class: "reply-font" %>
             </div>
           </div>
         <% end %>
