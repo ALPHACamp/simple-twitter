@@ -32,7 +32,7 @@
                 <%= link_to render(partial:"shared/like", locals:{tweet: t, like: false}), like_tweet_path(t), {method: :post, class:"btn btn-info"} %>
                 <%end%>
 
-                <%= link_to render(partial:"shared/tocomment", locals:{tweet: t}), replies_tweet_path(t), {class:"btn btn-secondary"} %>
+                <%= link_to render(partial:"shared/tocomment", locals:{tweet: t}), tweet_replies_path(t), {class:"btn btn-secondary"} %>
                 <button class="btn btn-secondary"><i class="fa fa-share-square-o fa-lg"></i></button>
               </div>
             </form>

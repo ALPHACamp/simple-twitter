@@ -5,15 +5,15 @@ Rails.application.routes.draw do
   # 請依照專案指定規格來設定路由
   root"tweets#index"
   resources :tweets, only: [:index, :show, :create] do
+      get :replies ,:to => "replies#index"
+      post :replies ,:to => "replies#create"
   	member do
-  		get :replies ,:to => "replies#index"
-  		post :replies ,:to => "replies#create"
   		post :like
   		post :unlike
   	end
   end
 
-  resources :users, only: [] do
+  resources :users, only: [:edit, :update] do
   	member do
   		get :tweets
   		get :followings

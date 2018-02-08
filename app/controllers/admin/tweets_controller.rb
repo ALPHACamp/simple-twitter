@@ -11,7 +11,7 @@ class Admin::TweetsController < Admin::BaseController
     @tweet = Tweet.find(params[:id])
     if @tweet.destroy
       flash[:notice] = "刪除成功"
-      redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: admin_root_path)
     else
       flash.now[:alert] = "刪除失敗"
       render :index
@@ -22,7 +22,7 @@ class Admin::TweetsController < Admin::BaseController
   	@reply = Reply.find(params[:id])
     if @reply.destroy
       flash[:notice] = "刪除成功"
-      redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: admin_root_path)
     else
       flash.now[:alert] = "刪除失敗"
       render :show
