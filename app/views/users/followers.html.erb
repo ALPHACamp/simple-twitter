@@ -6,8 +6,8 @@
   <div>
     <h3>Follower</h3>
     <div class="user-follow-page">
-      <% @inverse_followships.each do |inverse_followship| %>
-        <%= render partial: "shared/users", locals: { user: inverse_followship.user } %>
+      <% @followers.each do |follower| %>
+        <%= render partial: "shared/users", locals: { user: follower.user } %>
       <% end %>
     </div>
   </div>

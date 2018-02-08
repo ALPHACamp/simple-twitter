@@ -23,11 +23,11 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followships = @user.followships.order(created_at: :desc)
+    @followings = @user.followships.order(created_at: :desc)
   end
 
   def followers
-    @inverse_followships = @user.inverse_followships.order(created_at: :desc)
+    @followers = @user.inverse_followships.order(created_at: :desc)
   end
 
   def likes

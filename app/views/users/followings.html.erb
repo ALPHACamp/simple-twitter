@@ -6,8 +6,8 @@
   <div>
     <h3>Following</h3>
     <div class="user-follow-page">
-      <% @followships.each do |followship| %>
-        <%= render partial: "shared/users", locals: { user: followship.following } %>
+      <% @followings.each do |following| %>
+        <%= render partial: "shared/users", locals: { user: following.following } %>
       <% end %>
     </div>
   </div>
