@@ -27,6 +27,7 @@ namespace :dev do
         user.tweets.create!(
           description: FFaker::Lorem.sentence(10)
         )
+        user.tweets_count = user.tweets.length
       end
     end
     puts "now you have #{Tweet.count} tweets"
