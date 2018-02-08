@@ -85,6 +85,7 @@ nav.navbar {
 .address-link {
   color: black;
   font-size: 3em;
+  padding: 5px;
 
 }
 .reply-item >.address {
@@ -104,5 +105,13 @@ textarea.text {
 .inline{
   display: inline-block;
 }
-
+.following {
+  border: 2px solid #888888;
+  padding: 10px;
+  margin-bottom: 15px;
+  margin-right: 15px;
+  float: left;
+  width :45%;
+  
+  }
 
