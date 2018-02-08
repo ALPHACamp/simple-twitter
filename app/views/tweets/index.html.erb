@@ -39,7 +39,14 @@
           <div class="col-md-9">
             <h4><%= link_to user.name, tweets_user_path(user)%></h4>
             <p><%= truncate(user.introduction, length:100 ) %></p> 
-            <%= link_to "Follow", followships_path(following_id: user), method: :post ,:class => 'btn btn-primary' %>
+            <% if user != current_user %>
+              <% if current_user.is_following?(user) %>
+                <%= link_to "Unfollow", followship_path(user), method: :delete ,:class => 'btn btn-default' %>
+              <% else %>
+                <%= link_to "Follow", followships_path(following_id: user), method: :post ,:class => 'btn btn-primary' %>
+              <% end %>
+            
+            <% end %>
           </div> 
         </div>  
     <% end %>
