@@ -57,6 +57,14 @@ namespace :dev do
     end
     puts "have created fake likes"
     puts "now you have #{Like.count} like data"
-  end  
+  end 
+
+  task fake_follow: :environment do
+    20.times do |i|
+      Followship.create(user_id:User.all.sample.id, following_id:User.all.sample.id)
+    end
+    puts "have created fake followships"
+    puts "now you have #{Followship.count} followship data"
+  end
 
 end
