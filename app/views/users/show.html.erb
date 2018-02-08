@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+
+      <!-- page-header 裡面顯示個人檔案資料 -->
+      <div class="page-header">
+
+        <div class="col-md-3 col-sm-4">
+          <div class="text-center">
+            <%= image_tag @user.avatar, class: "img-responsive img-rounded" %>
+          </div>
+        </div>
+
+        <div class="col-md-9 col-sm-8">
+          <h2><%= @user.name %></h2>
+          <p><strong><%= @user.email %></strong></p>
+          <p><strong><%= @user.introduction %></strong></p>
+          <!-- inline & unstyled 的 list -->
+          <ul class="list-unstyled list-inline">
+
+          </ul>
+          <div><%= simple_format @user.introduction %></div>
+          <% if @user.email == current_user.email %>
+            <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
+          <% end %>
+        </div>
+        <div class="clearfix"></div>
+
+      </div>
+
+      <br>
+
+      <div class="col-md-4">
+        <!-- 顯示followings的清單，panel包一個list-group  -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+
+          </div>
+
+          <ul class="list-group">
+            
+          </ul>
+        </div>
+
+        <!-- 顯示followers的清單，panel包一個list-group  -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"></strong> </h3>
+          </div>
+
+          <ul class="list-group">
+            
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-8">
+
+        <!-- 顯示已評論餐廳的清單，panel包一個panel-body裡面使用row>col的layouts來顯示評論 -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+          </div>
+          <div class="panel-body">
+            
+          </div>
+        </div>
+
+        <!-- 顯示收藏的餐廳的清單，panel包一個panel-body裡面簡單顯示餐廳圖片和name -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+           
+          </div>
+
+          <div class="panel-body">
+            
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+</div>
