@@ -28,7 +28,7 @@
         </div>
 
         <div class="col-md-9 col-sm-9 col-lg-9">
-          <h4><%= @tweet.user.name %> <small><%= @tweet.created_at %></small></h4>
+          <h4><%= @tweet.user.name %> <small><%= @tweet.created_at.strftime('%F') %>, <%= @tweet.created_at.strftime('%H:%M') %></small></h4>
           <p><%= simple_format @tweet.description %></p>
           <a href="#reply"><h5 style="color:blue;">回覆數(<% @tweet.count_replies %><%= @tweet.replies_count %>)</h5></a>
         </div>

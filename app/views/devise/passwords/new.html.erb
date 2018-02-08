@@ -3,13 +3,13 @@
     <div style="text-align:center">
 
 
-      <h2>忘記密碼</h2>
+      <h2 style="color:lightgray">忘記密碼</h2>
       <br>
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
         <%= devise_error_messages! %>
 
         <div class="field">
-          <%= f.label :email %><br />
+          <%= f.label :email, :style=>"color:lightgray" %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         </div>
         <br>

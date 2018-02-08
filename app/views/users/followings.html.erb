@@ -4,18 +4,18 @@
         <%= image_tag @user.avatar, class: "img-responsive center-block" %>
 
         <h1><%= @user.name %></h1>
-        <h4><%= @user.email %></h4>
+        <h4 style="color:lightgray"><%= @user.email %></h4>
         <hr>
 
         <% if @user.introduction == nil %>
-          <p>未新增自我介紹</p>
+          <p style="color:lightgray">未新增自我介紹</p>
         <% else %>
-          <p><%= @user.introduction %></p>   
+          <p style="color:lightgray"><%= @user.introduction %></p>   
         <% end %>
         <br>
         <h4><%= link_to "Tweet #{@user.tweets.length}", tweets_user_path(@user), :style=>"color:grey" %></h4>
-        <h4 style="color:grey;">Following <%= @user.followships.length %></h4>
-        <h4><%= link_to "Follower #{@user.inverse_followships.length}", followers_user_path, :style=>"color:grey" %></h4>
+        <h4 style="color:gray;">Following <%= @user.followships.length %></h4>
+        <h4><%= link_to "Follower #{@user.inverse_followships.length}", followers_user_path, :style=>"color:gray;" %></h4>
         <h4><%= link_to "Like #{@user.likes.length}", likes_user_path, :style=>"color:grey" %></h4>
         <br>
         <% if @user==current_user %>

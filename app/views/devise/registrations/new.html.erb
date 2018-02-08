@@ -2,31 +2,31 @@
   <div class="row">
     <div style="text-align:center">      
 
-      <h2>註冊帳戶</h2>
+      <h2 style="color:lightgray">註冊帳戶</h2>
       <br>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= devise_error_messages! %>
         
         <div class="field">
-          <%= f.label :name, '使用者名稱' %><br />
+          <%= f.label :name, '使用者名稱', :style=>"color:lightgray" %><br />
           <%= f.text_field :name, autofocus: true %>
         </div>
         <br>
         <div class="field">
-          <%= f.label :email %><br />
+          <%= f.label :email, 'Email', :style=>"color:lightgray" %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         </div>
         <br>
         <div class="field">
-          <%= f.label :password, '密碼' %>
+          <%= f.label :password, '密碼', :style=>"color:lightgray" %>
           <% if @minimum_password_length %>
-          <em>(至少<%= @minimum_password_length %>個字母)</em>
+          <em style="color:lightgray">(至少<%= @minimum_password_length %>個字母)</em>
           <% end %><br />
           <%= f.password_field :password, autocomplete: "off" %>
         </div>
         <br>
         <div class="field">
-          <%= f.label :password_confirmation, '密碼確認' %><br />
+          <%= f.label :password_confirmation, '密碼確認', :style=>"color:lightgray" %><br />
           <%= f.password_field :password_confirmation, autocomplete: "off" %>
         </div>
         <br>

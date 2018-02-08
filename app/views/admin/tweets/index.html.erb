@@ -1,18 +1,18 @@
 <div class="container">
-  <h1>推特後台</h1>
+  <h1>後台</h1>
+  <br>
   <div>
-    <%= link_to '推文總覽', admin_root_path %> | <%= link_to '使用者總覽', admin_users_path %>
+    <%= link_to 'Po文總覽', admin_root_path, :class=>"btn btn-info" %> | <%= link_to '使用者總覽', admin_users_path, :style=>"color:white" %>
   </div>  
-
+  <br>
   <div class="row">
 
     <div class="col-md-12">
 
-      <table class="table table-striped table-bordered">
+      <table class="table table-bordered table-striped table-hover" style="background-color:lightgray;opacity: 0.9;">
         <thead>
           <tr>
-            <th>#</th>
-            <th>發佈時間</th>
+            <th>發佈日期時間</th>
             <th>推播內容</th>
             <th>發布者</th>
             <th>回覆數</th>
@@ -22,8 +22,7 @@
         <tbody>
           <% @tweets.each do |tweet| %>
           <tr>
-            <th scope="row"><%= tweet.id %></th>
-            <td><%= tweet.created_at %></td>
+            <td><%= tweet.created_at.strftime('%F') %>，<%= tweet.created_at.strftime('%H:%M') %></td>
             <td><%= tweet.description %></td>
             <td><%= tweet.user.name %></td>
             <td><% tweet.count_replies %><%= tweet.replies_count %></td>
