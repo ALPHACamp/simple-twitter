@@ -34,7 +34,7 @@
                 <p>
                   <%= truncate(tweet.description, length: 80) %>
                 </p>
-
+<%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet), class: "links" %>
               </div>
 
 
