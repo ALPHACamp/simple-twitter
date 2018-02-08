@@ -17,7 +17,7 @@ class TweetsController < ApplicationController
     else
       flash[:alert] = "Tweet was failed to create.  #{@tweet.errors.full_messages.to_sentence}"
     end
-    redirect_to root_path
+    redirect_to tweets_path
   end
 
   def update
