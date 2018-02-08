@@ -2,15 +2,35 @@
   <div class="row">
     <div class="col-xs-12 col-md-8">
       <%= form_for @tweet do |f| %>
-      <div class="form-group">
-        <%= f.text_area :description, class: "form-control", placeholder:"What's on your mind?" %>
-        <br/>
-        <em><%= f.submit "Tweet" , class: 'button-style navbar-right' %></em>
-      </div>
+        <div class="form-group">
+          <%= f.text_area :description, class: "form-control ", placeholder:"What's on your mind?" , style: 'height: 100px'%>
+          <br/>
+          <em><%= f.submit "Tweet" , class: 'button-style navbar-right' %></em>
+          <br/>
+        </div>
+      <% end %>
+      <br/>
+      <% @recent_tweets.each do |tweet| %>
+        <div class="col-xs-12 col-md-12">
+          <div class="media tweet-box">
+            <div class="media-left">
+              <%= image_tag tweet.user.avatar, class:"" if tweet.user.avatar?%>
+                <%= image_tag "http://via.placeholder.com/60x60", class: ""  unless tweet.user.avatar?%>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">
+                <%= link_to tweet.user.name, tweets_user_path(tweet.user) %> , 
+                <%= tweet.created_at %>
+              </h4>
+              <p><%= tweet.description %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
     <div class="col-xs-6 col-md-4">
       
     </div>
-    <% end %>
+
   </div>
 </div>
