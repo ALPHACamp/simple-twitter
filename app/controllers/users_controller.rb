@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     if current_user != @user
-      redirect_to root_path
+      redirect_to tweets_user_path(@user)
       flash[:alert] = "你不是本人"
     end
   end
