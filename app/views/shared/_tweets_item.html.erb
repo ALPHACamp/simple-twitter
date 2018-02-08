@@ -13,7 +13,7 @@
 
         <div class="col-rigth">
           <div class="caption">
-            <p><%= tweet.user.name %>,<%= tweet.created_at.strftime('%F') %>,<%= tweet.created_at.strftime('%H:%M') %></p>
+            <p><%= link_to "#{tweet.user.name},#{tweet.created_at.strftime('%F')},#{tweet.created_at.strftime('%H:%M')  }", tweets_user_path(tweet.user) %></p>
             <p><%= tweet.description %></p>
             <p>
               Replye(<%= tweet.replies_count %>)
