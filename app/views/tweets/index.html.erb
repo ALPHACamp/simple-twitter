@@ -37,8 +37,22 @@
       <% end %>
     </div>
     <div class="col-xs-6 col-md-4">
-      
+      <h3>Popular</h3>
+      <% @users.each do |user| %>
+        <div class="media tweet-box">
+          <div class="media-left">
+            <%= image_tag user.avatar if user.avatar?%>
+              <%= image_tag "http://via.placeholder.com/60x60" unless user.avatar?%>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">
+              <%= link_to user.name, tweets_user_path(user) %>
+            </h4>
+            <p><%= truncate(user.introduction, length: 100) %></p>
+            <%= render partial: "shared/follow", locals: {user: user} %>
+          </div>
+        </div>
+      <% end %>
     </div>
-
   </div>
 </div>
