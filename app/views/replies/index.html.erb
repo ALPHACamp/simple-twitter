@@ -1,0 +1,28 @@
+<div>
+  <%= @user.name %>
+  <%= @user.introduction %>
+  <%= @user.avatar %>
+  <%= link_to 'Edit', edit_user_path(@user) %>
+</div>
+
+<hr />
+<h3>Tweets</h3>
+<div>
+  <%= @tweet.description %>
+</div>
+
+<hr />
+<h3>Replies</h3>
+<div>
+  <ul>
+    <% @replies.each do |reply| %>
+      <li><%= reply.comment %></li>
+    <% end %>
+  </ul>
+
+</div>
+
+<%= form_for [@tweet, @reply] do |f| %>
+  <%= f.text_area :comment %>
+  <%= f.submit %>
+<% end %>

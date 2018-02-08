@@ -12,6 +12,7 @@ class User < ApplicationRecord
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
 
   has_many :tweets
+  has_many :replies
 
   def admin?
     self.role == "admin"
