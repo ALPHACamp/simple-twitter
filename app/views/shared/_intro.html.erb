@@ -9,6 +9,9 @@
   <%= link_to tweets_user_path(user) do %>
     <h4><strong>Tweets  &nbsp;<%= user.tweets.count %></strong></h4>
   <% end %>
+  <%= link_to followings_user_path(user) do %>
+    <h4><strong>Following  &nbsp;<%= user.followings.count %></strong></h4>
+  <% end %>
   <%= link_to likes_user_path(user) do %>
     <h4><strong>Likes  &nbsp;<%= user.likes.count %></strong></h4>
   <% end %>
