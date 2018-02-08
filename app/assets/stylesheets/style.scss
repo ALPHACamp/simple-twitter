@@ -89,6 +89,7 @@ header .container-fluid {
   position: relative;
   max-height: 50px;
   margin-bottom: unset;
+  letter-spacing: 1.5px;
 }
 
 .navbar-default .navbar-brand {
@@ -278,7 +279,8 @@ header .container-fluid {
 }
 
 .username {
-  font-size: 16px;
+  font-size: 18px;
+  letter-spacing: 0.5px;
 }
 
 .tweetheader {
@@ -416,7 +418,7 @@ header .container-fluid {
 .reply-head {
   font-size: 28px;
   color: #337ab7;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   margin-bottom: 30px;
 }
 
@@ -430,6 +432,35 @@ header .container-fluid {
 .admin-index .container {
   padding: 5px 0;
 }
+
+
+.userlist {
+  border: 3px outset;
+  margin-bottom: 10px;
+}
+
+.userlist .container {
+  width: 100%;
+  padding: 5px 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+}
+
+.userlist-avatar {
+  width: 100%;
+  height: auto;
+  margin: auto; 
+}
+
+.userlist-avatar img {
+  max-width: 100%;
+  /* height: auto; */
+  display: block;
+}
+
+
 
 
 /* ------- viewport ------- */
