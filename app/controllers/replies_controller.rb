@@ -12,7 +12,7 @@ class RepliesController < ApplicationController
     @reply.user = current_user
 
     @reply.save
-    redirect_to tweet_replies(@tweet)
+    redirect_to tweet_replies_path(@tweet)
 
   end
 
