@@ -171,3 +171,14 @@ i.fa, i.fab, i.far {
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
+
+
+.profile-blocks-container{
+  display: inline-flex;
+   flex-wrap: wrap;
+}
+
+.profile-flexblock{
+  width: 45%;
+  margin-right: 15px;
+}
