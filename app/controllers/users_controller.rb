@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update,:tweets,:likes, :followings, :followers]
   def tweets
-    @tweets = @user.tweets.order(created_at: :desc)
+    @tweets = @user.tweets.order("tweets.created_at desc")
   end
 
   def edit
      if @user != current_user 
-      redirect_to root_path
+      redirect_to tweets_user_path(@user)
     end
 
   end
@@ -35,7 +35,8 @@ class UsersController < ApplicationController
     private
 
   def set_user
-    @user = User.find(params[:id])
+   @user = User.find(params[:id])
+     
   end
 
   def user_params

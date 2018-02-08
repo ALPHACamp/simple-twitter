@@ -4,7 +4,7 @@
   <div class="user-introd"><%= user.introduction %></div>
 
   <div class="side-bar">
-    <%= link_to "Tweets #{user.tweets.size}",tweets_user_path(user),class: "address address-link"%><br>
+    <%= link_to "Tweets #{user.tweets.count}",tweets_user_path(user),class: "address address-link"%><br>
     <%= link_to "Following #{user.followings.size}",followings_user_path(user),class: "address address-link"%><br>
     <%= link_to "Follower #{user.followers.size}",followers_user_path(user),class: "address address-link"%><br>
     <%= link_to "Liks #{user.likes.size}",likes_user_path(user),class: "address address-link"%><br>
