@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= image_tag @user.avatar, class: "avatar-styled" %>
+      <h2><%= @user.name %></h2>
+      <p><%= @user.introduction %></p>
+      <h2>Tweet</h2>
+      <h2>Following</h2>
+      <h2>Follower</h2>
+      <h2>Like</h2>
+      <hr>
+      <% if @user == current_user %>
+        <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
+      <% else %>
+      <% end %>  
+    </div>
+    <div class="col-md-8 col-md-offset-1">
+      <div class="col-md-12">
+        <% @tweets.each do |tweet| %>
+          <div class="tweets-items row">
+            <div class="col-md-3">
+              <%= image_tag tweet.user.avatar, class: "avatar-styled" if tweet.user.avatar? %>      
+            </div>
+            <div class="col-md-9">
+              <p><%= link_to "@#{tweet.user.name}", tweets_user_path(tweet.user) %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M")  %></p> 
+              <p><%= tweet.description%></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
