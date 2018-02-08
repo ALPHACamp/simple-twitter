@@ -17,7 +17,7 @@
         <%= image_tag @tweet.user.avatar, height: 75, width: 75 %>
         <p>@<%= @user.name %>, <%= @tweet.created_at %></p>
         <%= @tweet.description %>
-        <h5>Reply(<%= @tweet.replies.count %>) Like(<%= @tweet.likes_count %>)</h5>
+        <h5>Reply(<%= @tweet.replies.count %>) Like(<%= @tweet.likes_count %>)</h5><!-- 文章被讚總數 -->
 
         <!-- like / unlike button -->
         <%= render partial: "shared/like", locals: {tweet: @tweet} %>
