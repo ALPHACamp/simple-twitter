@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  validates_uniqueness_of :name, :case_sensitive => false ,message: "已有人註冊相同名稱"
+  validates_uniqueness_of :name, :case_sensitive => false
   validates_presence_of :name
 
   devise :database_authenticatable, :registerable,
