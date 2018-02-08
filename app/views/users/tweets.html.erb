@@ -23,9 +23,16 @@
                 <%= tweet.created_at %>
               </h4>
               <p><%= tweet.description %></p>
-              <%= link_to tweet_replies_path(tweet) do  %>
-                <h4 class="reply-style">Reply (<%= tweet.replies_count %>)</h4>
-              <% end %>
+              <ul class="list-unstyled list-inline">
+                <li>
+                  <%= link_to tweet_replies_path(tweet) do  %>
+                    <h4 class="reply-style">Reply (<%= tweet.replies_count %>)</h4>
+                  <% end %>
+                </li>
+                <li>
+                  <%= render partial: "shared/like", locals: {tweet: tweet} %>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

@@ -19,10 +19,11 @@
             </div>
             <div class="media-body">
               <h4 class="media-heading">
-                <%= link_to tweet.user.name, tweets_user_path(tweet.user) %> , 
+                <%= link_to tweet.user.name, tweets_user_path(tweet.user) %> 
                 <%= tweet.created_at %>
               </h4>
               <p><%= tweet.description %></p>
+              <%= render partial: "shared/like", locals: {tweet: tweet} %>
             </div>
           </div>
         </div>
