@@ -1,1 +1,33 @@
-<h1>admin user index</h1>
+<h1>歡迎來到管理區</h1>
+<div class="container">
+  <div class="row">
+    <ul class="nav nav-tabs">
+      <li role="presentation">
+        <%= link_to '所有的推特', admin_root_path %>
+      </li>
+      <li role="presentation" class="active">
+        <%= link_to '所有的使用者', admin_users_path %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<% @users.each do |user| %>
+  <div class="col-sm-6 col-md-4 all-tweets">
+    <div class="single-tweet">
+      <%= image_tag(user.avatar, height: '32', width: '32') %>
+        <p>
+          <%= user.name %>
+          <em>
+            <% if user.admin? %>
+              <li>
+                <%= image_tag('admin-logo', class: "admin-logo") %>
+              </li>
+            <% end %>
+          </em>
+        </p>
+        <p><%= user.introduction %></p>
+        <p><%= link_to 'Delete', admin_users_path(user), method: :delete, data: {confirm:"Are you sure?"} %></p>
+    </div>
+  </div>
+  <% end %>

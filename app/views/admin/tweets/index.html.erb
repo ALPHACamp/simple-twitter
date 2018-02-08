@@ -1,9 +1,22 @@
-<h1>Back-End</h1>
-<ul>
+<h1>歡迎來到管理區</h1>
+<div class="container">
+  <div class="row">
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active">
+        <%= link_to '所有的推特', admin_root_path %>
+      </li>
+      <li role="presentation">
+        <%= link_to '所有的使用者', admin_users_path %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<ol>
   <% @tweets.each do |tweet| %>
   <li>
     <%= tweet.description %>
-    <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %>
+    <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"}, class: "btn btn-primary ctweet" %>
   </li>
   <% end %>
-</ul>
+</ol>

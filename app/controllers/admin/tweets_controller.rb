@@ -7,12 +7,12 @@ class Admin::TweetsController < Admin::BaseController
 
   #刪除該則tweet
   def destroy
-    set_tweets
+    set_tweet
   end
 
   private
 
-  def set_tweets
+  def set_tweet
     @tweet = Tweet.find(params[:id])
   end
 end
