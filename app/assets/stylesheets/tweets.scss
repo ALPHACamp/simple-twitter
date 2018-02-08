@@ -46,10 +46,15 @@
 			// border: 1px solid rgb(1, 1, 3);
 			margin-top: 3px;
 			width: 87%;
+			height: 135px;
 			float: right;
 			padding-left: 10px;
-			overflow: hidden;
-  		text-overflow: ellipsis;
+			.description{
+				overflow: hidden;
+		  		text-overflow: ellipsis;
+				height: 80px;
+				// border: 1px solid rgb(1, 1, 3);
+			}
 		}
 		.likes{
 			color: rgb(216, 37, 37);
@@ -79,6 +84,7 @@
 			// border: 1px solid rgb(1, 1, 3);
 			margin-top: 3px;
 			width: 75%;
+			height: 80px;
 			float: right;
 			padding-left: 10px;
 			overflow: hidden;
@@ -136,8 +142,12 @@
 			width: 87%;
 			float: right;
 			padding-left: 10px;
-			overflow: hidden;
-  		text-overflow: ellipsis;
+			.description{
+				overflow: hidden;
+		  		text-overflow: ellipsis;
+				height: 80px;
+				// border: 1px solid rgb(1, 1, 3);
+			}
 		}
 		.likes{
 			color: rgb(216, 37, 37);
