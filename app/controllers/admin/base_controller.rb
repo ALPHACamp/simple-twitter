@@ -7,7 +7,7 @@ class Admin::BaseController < ApplicationController
 
   def authenticate_admin
     unless current_user.admin?
-      flash[:alert] = "並未具有admin權限！Not Allow!"
+      flash[:alert] = "您並未具有admin權限！Not Allow!"
       redirect_to tweets_path
     end
   end
