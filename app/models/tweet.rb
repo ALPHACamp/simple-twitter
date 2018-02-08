@@ -4,4 +4,6 @@ class Tweet < ApplicationRecord
 
   has_many :replies, dependent: :destroy
 
+  belongs_to :tweet, counter_cache: true
+
 end

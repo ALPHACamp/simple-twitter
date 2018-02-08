@@ -9,6 +9,8 @@
         <h2><%= @tweet.user.name %></h2>
         <p><strong><%= @tweet.user.email %></strong></p>
         <div><%= simple_format @tweet.user.introduction %></div>
+        <p><strong>Reply: <%= @tweet.replies.count %></strong></p>
+        
         <% if @tweet.user.email == current_user.email %>
           <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-info" %>
           <% end %>
