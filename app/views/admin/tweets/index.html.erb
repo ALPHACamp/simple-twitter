@@ -1,18 +1,11 @@
 <h3>back</h3>
 <div class="container">
-  <ul>
-    <% @users.each do |user| %>
-    <li>
-      <%= user.name %>
-    </li>
-    <% end %>
-  </ul>
 
   <ul>
     <% @tweets.each do |tweet| %>
     <li>
       <%= tweet.description %>
-      <%= link_to 'Delete', admin_tweet_path(user), method: :delete, data: {confirm:"Are you sure?"} %>
+
     </li>
     <% end %>
   </ul>

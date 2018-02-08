@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
 namespace :admin do
   resources :tweets, only: [:index, :destroy]
+  resources :users, only: [:index]
   root "tweets#index"
 end
 
