@@ -1,11 +1,52 @@
-<h2>followings</h2>
+<div class="col-md-4">
 
 <ul>
-  <% @followings.each do |following| %>
-    <li>
-      <%= following.name %>
-      <%= following.avatar %>
-      <%= following.created_at %>
-    </li>
-  <% end %>
+  
+    <img class="img-circle" src="http://via.placeholder.com/120x120">
+    <h2><%= @user.name %></h2>
+    <%= @user.introduction %>
+    
+    <h3><%= link_to "Tweets #{@user.tweets.count}", tweets_user_path(@user) %></h3>
+    <h3><%= link_to "like #{@user.likes.count}", likes_user_path(@user) %></h3>
+    <h3><%= link_to "Followings #{@user.followings.count}", followings_user_path(@user) %></h3>
+    <h3><%= link_to "Followers #{@user.followers.count}", followers_user_path(@user) %></h3>
+
+    <% if @user.email == current_user.email %>
+      <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
+    <% else %>
+      <% if current_user.following?(@user)%>
+        <!-- 會用 DELETE 動作導向 http://localhost:3000/followships/{user.id} -->
+        <%= link_to 'Unfollow', followship_path(@user), method: :delete ,class: "btn btn-info" %>
+      <% else %>
+        <!-- 會用 POST 動作導向 http://localhost:3000/followships?following_id={user.id} -->
+        <%= link_to 'Follow', followships_path(following_id: @user), method: :post , class: "btn btn-primary" %>
+      <% end %>
+    <% end %>
+  
 </ul>
+
+</div>
+
+<div class="col-md-6">
+
+  <h2>followings</h2>
+
+  
+    <% @followings.each do |following| %>
+    <div class="col-sm-6 col-md-4">
+      <div class="item">
+        <img class="img-circle" src="http://via.placeholder.com/60x60">
+        <%= link_to following.name, tweets_user_path(following)  %>
+        <p><%= following.introduction %></p>
+        <% if current_user.following?(following)%>
+          <!-- 會用 DELETE 動作導向 http://localhost:3000/followships/{user.id} -->
+          <%= link_to 'Unfollow', followship_path(following), method: :delete ,class: "btn btn-info" %>
+        <% else %>
+          <!-- 會用 POST 動作導向 http://localhost:3000/followships?following_id={user.id} -->
+          <%= link_to 'Follow', followships_path(following_id: following), method: :post , class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+  
+</div>

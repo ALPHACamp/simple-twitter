@@ -2,12 +2,13 @@
   <% @users.each do |user| %>
     <li>
       <img class="img-circle" src="http://via.placeholder.com/60x60">
-      <%= link_to user.name, tweets_user_path(user), class: "btn btn-primary" %>
+      <%= link_to user.name, tweets_user_path(user) %>
       推播數<%= user.tweets.count %>
       關注人數<%= user.followings.count %>
       跟隨者人數<%= user.followers.count %>
       推播被like的數量<%= user.liked_tweets.count %>
 
     </li>
+    <br>
   <% end %>
 </ul>
