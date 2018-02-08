@@ -39,6 +39,7 @@
   <div class="form-group">
     <%= form_for [:tweet,@reply] do |r|%>
       <%= r.text_area :comment , class: "form-control text-area"%>
+      <br/>
       <div class="text-right">
         <%= r.submit class: "btn btn-primary"%>
       </div>
