@@ -25,8 +25,21 @@ namespace :dev do
         description: FFaker::Lorem.sentence,
         user: User.all.drop(1).sample
       )
-      puts "500 tweets created!"
     end
+    puts "500 fake tweets created!"
+  end
+
+  task fake_reply: :environment do
+    Tweet.all.each do |tweet|
+      2.times do
+        tweet.replies.create!(
+          comment: FFaker::Lorem.sentence,
+          user: User.all.drop(1).sample
+        )
+      end
+    end
+    puts "have created 2 fake replies for every tweet"
+    puts "now you have #{Reply.count} fake replies"
   end
 
 end
