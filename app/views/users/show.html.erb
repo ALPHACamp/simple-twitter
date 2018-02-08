@@ -29,7 +29,7 @@
         <div class="panel-body">
           <% @tweets.each do |tweet| %>
             <div>
-              <h4><%= link_to tweet.user.name, tweet_path(tweet) %> Tweet</h4>
+              <h4><%= link_to tweet.user.name, tweet_replies_path(tweet.id) %> Tweet</h4>
               <p><%= truncate(tweet.description, length: 140) %></p>
             </div>
             <hr>
