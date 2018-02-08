@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    
+      <%= form_for @user do |f| %>
+        <div class="col-xs-4 center">
+            <% if @user.avatar.present? %>
+              <%= image_tag @user.avatar, class: "img-circle big-img " %>
+            <% else %>
+              <%= image_tag "default.jpg", class: "img-circle big-img " %>
+            <% end %>
+            <br>
+            <br>
+          
+            <%= f.file_field :avatar, title: "Please choose file", class: "file-picker" %>
+        
+        </div>
+      
+        
+        <div class="col-xs-8">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <%= f.text_field :name, class: "form-control holder",placeholder: "You name.." %>
+            </div>
+              
+            <div class="form-group">
+              <%= f.text_area :introduction, rows: 4, class: "form-control holder",placeholder: "Introduct you self.." %>
+            </div>
+            <div class="form-group">
+              <%= f.submit class: "btn btn-primary"%>
+            </div>
+          </form>
+        </div>
+      <% end %>
+    </div>
+  </div>
