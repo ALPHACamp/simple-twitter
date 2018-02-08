@@ -1,5 +1,17 @@
 <%if follow==false%>
-<div title="按讚！"><i class="fa fa-thumbs-o-up fa-lg"></i><%=user.followers_count%></div>
+<div title="按讚！" class="popem"><i class="fa fa-thumbs-o-up fa-lg"></i><%=user.followers_count%> <span></span></div>
 <%else%>
-<div title="收回讚"><i class="fa fa-thumbs-o-up fa-lg"></i><%=user.followers_count%></div>
+<div title="收回讚" class="popem"><i class="fa fa-thumbs-o-up fa-lg"></i><%=user.followers_count%> <span></span></div>
 <%end%>
+
+<script>
+	$(document).ready(function(){
+  $(".popem").hover(function() {
+    $(this).children("span").animate({opacity: "show"}, "slow");
+    var hoverText = $(this).attr("title");
+      $(this).children("span").text(hoverText);
+  }, function() {
+    $(this).children("span").animate({opacity: "hide"}, "fast");
+  });
+});
+</script>

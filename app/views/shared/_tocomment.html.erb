@@ -1,3 +1,13 @@
-<div title="留言"><i class="fa fa-commenting-o fa-lg"></i><%=tweet.replies_count%></div>
+<div title="留言" class="popem"><i class="fa fa-commenting-o fa-lg"></i><%=tweet.replies_count%> <span></span></div>
 
-
+<script>
+	$(document).ready(function(){
+  $(".popem").hover(function() {
+    $(this).children("span").animate({opacity: "show"}, "slow");
+    var hoverText = $(this).attr("title");
+      $(this).children("span").text(hoverText);
+  }, function() {
+    $(this).children("span").animate({opacity: "hide"}, "fast");
+  });
+});
+</script>
