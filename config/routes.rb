@@ -6,7 +6,11 @@ Rails.application.routes.draw do
 
   # =======前台=======
   root "tweets#index"
-  resources :users, only: [:edit, :update]
+  resources :users, only: [:edit, :update] do
+    member do
+      get :tweets
+    end
+  end
   resources :tweets, only: [:new, :create]
 
   # =======後台=======

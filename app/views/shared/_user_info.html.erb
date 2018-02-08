@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+
+    <%= image_tag @user.avatar, class: "img-rounded", width: "200px", hight: "200px",
+    onerror: 'this.error=null;this.src="https://d30y9cdsu7xlg0.cloudfront.net/png/17241-200.png"' %>
+    <h1><%= @user.name %></h1>
+    <p><%= @user.introduction %></p>
+    <p>Tweets <%= @user.tweets.count %></p>
+    <p>Following ??</p>
+    <p>Follower ??</p>
+    <p>Like <%= @user.likes_count %></p>
+    <button>Follow</button>
+
+  </div>
+</div>
