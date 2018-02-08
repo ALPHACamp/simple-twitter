@@ -10,7 +10,7 @@
 
 <% @tweets.each do |tweet| %>
   <div>
-    <h4><%= tweet.user.name %></h4>
+    <h4><%=link_to tweet.user.name, tweets_user_path(tweet.user) %></h4>
     <p><%= simple_format tweet.description %></p>
   </div>
 <% end %>

@@ -10,7 +10,11 @@
       <li>Follower</li>
       <li>Like</li>
     </ul>
-    <%= link_to('Edit Profile', edit_user_path(current_user)) %>
+    <% if @user == current_user %>
+      <%= link_to('Edit Profile', edit_user_path(current_user)) %>
+    <% else %>
+      <button>Follow</button>
+    <% end %>
   </div>
 
   <div class="col-md-8">
