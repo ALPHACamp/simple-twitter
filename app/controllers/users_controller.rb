@@ -9,6 +9,9 @@ class UsersController < ApplicationController
 
   def edit
     # set_user
+    if current_user != @user
+      redirect_to tweets_user_path(@user)
+    end
   end
 
   def update
