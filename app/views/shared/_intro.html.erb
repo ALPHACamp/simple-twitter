@@ -13,11 +13,5 @@
     <h4><strong>Likes  &nbsp;<%= user.likes.count %></strong></h4>
   <% end %>
   <%= link_to "Edit Profile", edit_user_path(user) , class:'btn button-style' %>
-  <% if user != current_user %>
-      <% if current_user.following?(user)%>
-        <%= link_to 'Unfollow', followship_path(user), method: :delete %>
-      <% else %>
-        <%= link_to "Follow",  followships_path(following_id: user), class:'btn button-style', method: :post %>
-      <% end %>
-  <% end %>
+  <%= render partial: "shared/follow" , locals: { user: user } %>
 </div>
