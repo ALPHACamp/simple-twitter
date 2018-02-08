@@ -13,7 +13,7 @@
       <div class="container-fluid">
         <ul class="nav navbar-nav navbar-right">
           <% if current_user %>
-            <li class="navbar-brand">Hi, <%= current_user.name %></li>
+            <li><%= link_to (image_tag current_user.avatar, width:'75px'), tweets_user_path(current_user)%></li>
             <% if current_user&.admin?%>
               <% if current_page?(root_path)%>
                 <li class="nav-item"><%= link_to '管理後台', admin_tweets_path, :class => 'nav-link'%></li>
@@ -22,7 +22,6 @@
               <% end %>
             <% end %>
             <li class="nav-item"><%= link_to('登出', destroy_user_session_path, method: :delete, :class => 'nav-link') %></li>
-            <li class="nav-item"><%= link_to('修改個人資料', edit_user_path(current_user), :class => 'nav-link') %></li>
             <li class="nav-item"><%= link_to('修改密碼', edit_user_registration_path, :class => 'nav-link') %></li>
           <% else %>
             <li class="nav-item"><%= link_to('註冊', new_user_registration_path, :class => 'nav-link') %></li>
