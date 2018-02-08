@@ -36,7 +36,7 @@
               <%= image_tag current_user.avatar, width: '55px' ,heitht: '55px', class: "" %>
                 <% end %>
                 </li>
-
+                <li class="nav-btn"><%= link_to('Hi,@'+current_user.name, tweets_user_path(current_user) ) %></li>
                 <li class="nav-btn"><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
                 <li class="nav-btn"><%= link_to('Edit User Information', edit_user_path(current_user)) %></li>
                 <li class="nav-btn"><%= link_to('Edit Password', edit_user_registration_path) %></li>
