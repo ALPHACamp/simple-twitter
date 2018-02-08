@@ -48,7 +48,7 @@
             <!-- tweet description -->
             <div class="tweettext"><%= @tweet.description %></div>
 
-            <!-- reply & like link -->
+            <!-- reply ,like & admin destroy link /start -->
             <div>
               <%= link_to replies_path(@tweet), class: "replylink" do %>
                 Reply <%= content_tag :span, @tweet.replies_count, class: "badge" %>
@@ -64,7 +64,8 @@
                 Like <%= content_tag :span, @tweet.likes_count, class: "badge" %>
                 <% end %>
               <% end %>
-            </div>
+
+            </div> <!-- reply ,like & admin destroy link /end -->
 
           </div>
           <!-- Right: user description / end -->
