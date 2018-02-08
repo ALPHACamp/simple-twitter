@@ -24,7 +24,14 @@
 		<div class="col-md-4">
 			<h3>All Users</h3>
 			<% @users.each do |user|%>
-				<%= render partial: "shared/followships.html.erb", locals: {user: user}%>
+				<div class="thumbnail user-profile admin">
+					<%= image_tag user.avatar, width:'100px', id:"tweet-avatar" %>
+					<h3><%= user.name%></h3>
+					<%= link_to(tweets_user_path(user), class: "btn btn-light") do %>Tweets <%= user.tweets.count%><%end%>
+					<%= link_to(followings_user_path(user), class: "btn btn-light") do %>Followings <%= user.followings.count%><%end%>
+					<%= link_to(followers_user_path(user), class: "btn btn-light") do %>Followers <%= user.followers.count%><%end%>
+					<%= link_to(likes_user_path(user), class: "btn btn-light") do %>Likes <%= user.liked_tweets.count%><%end%>
+				</div>
 			<%end%>
 		</div>
 	</div>

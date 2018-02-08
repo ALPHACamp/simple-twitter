@@ -4,7 +4,7 @@ class Admin::TweetsController < Admin::BaseController
 
   def index
     @tweets = Tweet.order(created_at: :desc)
-    @users = User.order(followers_count: :desc)
+    @users = User.left_joins(:tweets).group(:id).order('COUNT(tweets.id) DESC')
   end
 
   def destroy
