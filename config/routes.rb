@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   # 設置admin
   namespace :admin do
     resources :tweets, only: [:index, :destroy]
+    resources :users, only: [:index]
     root 'tweets#index'
   end
 
