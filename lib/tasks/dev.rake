@@ -23,7 +23,7 @@ namespace :dev do
   task fake_tweets: :environment do
     Tweet.destroy_all
 
-    150.times do |i|
+    100.times do |i|
       Tweet.create!(
         description: FFaker::Lorem.sentence,
         user: User.all.sample
@@ -35,7 +35,7 @@ namespace :dev do
   task fake_replies: :environment do
     Reply.destroy_all
 
-    200.times do |i|
+    233.times do |i|
       Reply.create!(
         comment: FFaker::Lorem.sentence,
         tweet: Tweet.all.sample,
@@ -49,7 +49,7 @@ namespace :dev do
     Followship.destroy_all
     
     User.all.each do |user| 
-      10.times do |i|
+      13.times do |i|
         following = User.all.sample
         if not user.following?(following)
           user.followships.create(
@@ -61,5 +61,24 @@ namespace :dev do
       puts "#{Followship.count} followships have been created"
     end
   end
+
+  task fake_likes: :environment do
+    Like.destroy_all
+    
+    Tweet.all.each do |tweet| 
+      7.times do |i|
+        user = User.all.sample
+        if not tweet.liked_by_user?(user)
+          tweet.likes.create(
+            user: user
+          )
+          user.increment!(:likes_count)
+          tweet.increment!(:likes_count)
+        end
+      end
+      puts "#{Like.count} likes have been created"
+    end
+  end
+
 
 end
