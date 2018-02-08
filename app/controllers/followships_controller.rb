@@ -3,7 +3,7 @@ class FollowshipsController < ApplicationController
     @followship = Followship.new(user_id: current_user.id, following_id: params[:following_id])
     @following = User.find(params[:following_id])
     if @followship.save
-      @following.followers_count += 1
+      @following.followers_count = Followship.where(following_id: params[:following_id]).count
       @following.save
       redirect_back(fallback_location: root_path)
     else
@@ -16,7 +16,7 @@ class FollowshipsController < ApplicationController
     @following = User.find(params[:following_id])
     @followship = current_user.followships.where(params[:following_id]).first
     @followship.destroy
-    @following.followers_count -= 1
+    @following.followers_count = Followship.where(following_id: params[:following_id])
     @following.save
     redirect_back(fallback_location: root_path)
   end
