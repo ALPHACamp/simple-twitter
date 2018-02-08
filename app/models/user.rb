@@ -13,7 +13,7 @@ class User < ApplicationRecord
   validates_uniqueness_of :name
 
   # 一個user可以有很多則tweet
-  has_many :tweets
+  has_many :tweets, dependent: :destroy
 
   # 一個user可以有很多條回覆的comment
   has_many :replies, through: :tweets

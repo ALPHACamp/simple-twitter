@@ -3,7 +3,7 @@ class Tweet < ApplicationRecord
 
   # 設定關聯
   belongs_to :user
-  has_many :replies
-  has_many :likes
+  has_many :replies, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
 end
