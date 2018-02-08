@@ -47,14 +47,15 @@ namespace :dev do
 
   task fake_follows: :environment do
     Followship.destroy_all
-
+    
     User.all.each do |user| 
       10.times do |i|
         following = User.all.sample
         if not user.following?(following)
-          user.followships.create!(
+          user.followships.create(
             following: following
           )
+          user.increment!(:followers_count)
         end
       end
       puts "#{Followship.count} followships have been created"
