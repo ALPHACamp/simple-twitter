@@ -9,11 +9,17 @@ Rails.application.routes.draw do
   resources :tweets, only: [:index, :show, :create] do
     # 回覆推播
     resources :replies, only: [:create, :index]
+      post :like, :on => :member
+      post :unlike, :on => :member
   end
   
   # # 個人資訊
-  resources :users, only: [:index, :edit, :update] do
+  resources :users, only: [:edit, :update] do
+    #客製化功能route
     get :tweets, :on => :member
+    get :followings, :on => :member
+    get :followers, :on => :member
+    get :likes, :on => :member
 
   end
   root "tweets#index"
