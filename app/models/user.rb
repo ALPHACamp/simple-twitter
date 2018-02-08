@@ -13,8 +13,6 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :likes_tweets, through: :likes, source: :tweet
 
-  mount_uploader :avatar, AvatarUploader
-
   # 需要 app/views/devise 裡找到樣板，加上 name 屬性
   # 並參考 Devise 文件自訂表單後通過 Strong Parameters 的方法
   validates_presence_of :name
