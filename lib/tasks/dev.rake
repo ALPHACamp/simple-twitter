@@ -45,4 +45,18 @@ namespace :dev do
     end
     puts " #{Reply.count} Reply data"
   end
+
+  task fake_followship: :environment do
+    Followship.destroy_all
+    puts " create fake Followship data ..."
+    User.all.each do |user|
+      @users = User.where.not(id: user.id).shuffle
+      3.times do
+        user.followships.create!(
+          following: @users.pop,
+        )      
+      end 
+    end
+    puts " #{Followship.count} Followship data"
+  end
 end
