@@ -1,9 +1,7 @@
 <% if flash.any? %>
   <% flash_msgs.each do |key, value| %>
     <div class="alert alert-dismissable alert-<%= flash_class(key) %>">
-      <button class="close" data-dismiss="alert">
-        <i class="fa fa-times" aria-hidden="true"></i>
-      </button>
+      <button class="close" data-dismiss="alert">&times;</button>
       <%= value %>
     </div>
   <% end %>

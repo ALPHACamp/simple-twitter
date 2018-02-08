@@ -6,14 +6,12 @@ Rails.application.routes.draw do
     member do
       get :tweets
     end
-
   end
 
   # 請依照專案指定規格來設定路由
   resources :tweets, only: [:index, :create] do
     resources :replies, only: [:index, :create]
   end
-  
   root 'tweets#index'
 
   namespace :admin do

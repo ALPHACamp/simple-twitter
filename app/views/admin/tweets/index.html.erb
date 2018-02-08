@@ -25,7 +25,7 @@
             <td><%= time_ago_in_words(tweet.created_at) %> ago</td>
             <td><%= tweet.user.name %></td>
             <td>
-              <%= link_to fa_icon("comments-o lg"), admin_tweet_path(tweet) %> &nbsp;
+              <%= link_to fa_icon("comments-o lg"), tweet_replies_path(tweet) %> &nbsp;
               <%= link_to fa_icon("trash-o lg"), admin_tweet_path(tweet), method: :delete, data: { confirm: "Are you sure?" } %>
             </td>
           </tr>
