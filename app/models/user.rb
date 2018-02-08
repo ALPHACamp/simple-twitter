@@ -37,5 +37,9 @@ class User < ApplicationRecord
     likes.where(tweet: tweet).exists?
   end
 
+  def self.order_tweets
+    all.sort { |x,y| x.tweets.size <=> y.tweets.size }.reverse
+  end
+
 
 end
