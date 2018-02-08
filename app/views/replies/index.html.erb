@@ -8,7 +8,7 @@
       <h5>Tweets : <%= @user.tweets.count %></h5>
       <h5>Following : <%= @user.followings.count %></h5>
       <h5>Follower : <%= @user.followers_count %></h5>
-      <h5>Like : <%= @user.tweets.count %></h5> <!-- 待 like -->
+      <h5>Like : <%= @user.tweets.count %></h5> <!-- 被讚文章總數 -->
     </div>
 
     <div class="col-md-8">
@@ -17,7 +17,7 @@
         <%= image_tag @tweet.user.avatar, height: 75, width: 75 %>
         <p>@<%= @user.name %>, <%= @tweet.created_at %></p>
         <%= @tweet.description %>
-        <h5>Reply(<%= @tweet.replies.count %>) Like(<%= @tweet.likes.count %>)</h5>
+        <h5>Reply(<%= @tweet.replies.count %>) Like(<%= @tweet.likes_count %>)</h5>
 
         <!-- like / unlike button -->
         <%= render partial: "shared/like", locals: {tweet: @tweet} %>
