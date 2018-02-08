@@ -17,9 +17,7 @@ namespace :dev do
 
     20.times do |i|
       name = FFaker::Name::first_name
-      # file = File.open("#{Rails.root}/public/avatar/user#{i+1}.jpg")
-      # 這組路徑在 Heroku 上無法使用，同學可跳過 Heroku 上圖片顯示的問題
-      # 若特別想攻克的同學可參考 Filestack 說明 => https://lighthouse.alphacamp.co/units/1110
+      file = File.open("#{Rails.root}/public/avatar/user#{i+1}.jpg")
 
       user = User.new(
         name: name,
