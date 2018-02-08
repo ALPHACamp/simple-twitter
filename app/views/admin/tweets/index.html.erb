@@ -1,1 +1,48 @@
+<div class="container">
+  <h1 class="title">後台管理</h1>
 
+  <div class="row">
+
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active">
+        <%= link_to "All Tweets", admin_tweets_path %>
+      </li>
+      <li role="presentation">
+        <%= link_to "All Users", admin_users_path %>
+      </li>
+    </ul>
+
+    <br>
+    <table class="table table-striped table-hover .table-sm">
+      <thead class="thead-inverse">
+        <tr>
+          <th>user</th>
+          <th>content</th>
+          <th>tweet time</th>
+          <th>likes</th>
+          <th>replies</th>
+          <th>delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tweets.each do |t| %>
+          <tr>
+            <th scope="row"><%= t.user.name %></th>
+            <td><%= t.description %></td>
+            <td><%= t.created_at.strftime("%Y-%m-%d") %></td>
+            <td><%= t.likes_count %></td>
+            <td>
+              <!-- <ul>
+                <% t.replies.each do |r| %>
+                  <li><%= r.comment %></li>
+                <% end %>
+              </ul> -->
+            </td>
+            <td>
+
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
