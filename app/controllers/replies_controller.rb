@@ -1,14 +1,14 @@
 class RepliesController < ApplicationController
 
   def index
-  	@tweet = Tweet.find(params[:id])
+  	@tweet = Tweet.find(params[:tweet_id])
     @replies = @tweet.replies
   	@reply = Reply.new
     @user = @tweet.user
   end
 
 	def create
-    @tweet = Tweet.find(params[:id])
+    @tweet = Tweet.find(params[:tweet_id])
     @reply = Reply.new(comment_params)
     @reply.tweet = @tweet
     @reply.user = current_user
