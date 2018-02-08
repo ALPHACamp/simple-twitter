@@ -7,7 +7,7 @@
             <%= f.text_area :description, placeholder: "寫些什麼吧～", class: "form-control", maxlength: 140, rows: 4, style: 'resize: none'%>
           </div>
           <div class="form-group">
-            <%= f.submit 'Tweet it!', class: "btn btn-primary pull-right" %>
+            <%= f.submit 'Tweet it!', class: "btn btn-primary pull-right brand-text"%>
           </div>
         <% end %>
         <div class="clearfix"></div>    
@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="col-md-4 col-sm-5">         
-      <h2>Popular</h2>
+      <h2 class="brand-text text-center">POPULAR</h2>
         <% @users.each do |user| %>
           <div class="row well">        
             <div class="col-md-4 col-sm-4 col-xs-4">

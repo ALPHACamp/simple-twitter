@@ -11,13 +11,12 @@
     color: white !important;      
 }
 .navbar-nav li a:hover{      
-    color: #e8b687 !important;      
+    color: #4682B4 !important;      
 }
-
-$bgDefault      : #f47804;
-$bgHighlight    : #5c9cf2;
-$colDefault     : #f6fbfa;
-$colHighlight   : #f6fbfa;
+$bgDefault      : #afeeee;
+$bgHighlight    : #87cefa;
+$colDefault     : #4682B4;
+$colHighlight   : #4682B4;
 $dropDown       : false;
 .navbar {
   background-color: $bgDefault;
@@ -26,7 +25,11 @@ $dropDown       : false;
     &:hover, &:focus {
       color: $colHighlight; }}
   .navbar-text {
-    color: $colDefault; }
+    color: $colDefault; 
+    a {
+      color: $colHighlight;
+      &:hover, &:focus {
+        color: $colHighlight; }}}
   .navbar-nav {
     .nav-link {
       color: $colDefault;
