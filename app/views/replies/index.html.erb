@@ -21,7 +21,7 @@
           <div class="card-block">
             <div class="card-tittle"><h4>Leave your reply</h4></div>
             <%= form_for @reply, :url=> replies_tweet_path, class: "my-form" do |f| %>
-                <%= f.text_area :comment, :class => "form-control", :style => "padding: 0 0; height: 100px;", :placeholder=> "Update your status" %>
+                <%= f.text_area :comment, :class => "form-control", :style => "padding: 0 0; height: 100px;", :placeholder=> "Put your reply here" %>
                 <%= f.submit "Reply", :class => "btn btn-success pull-right" %>
             <% end %>
           </div>
