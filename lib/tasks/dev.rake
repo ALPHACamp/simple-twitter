@@ -29,7 +29,7 @@ namespace :dev do
     )
     puts "default admin user created"
   end
-  
+
   task fake_tweet: :environment do
     Tweet.destroy_all
 
