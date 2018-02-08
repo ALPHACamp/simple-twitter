@@ -91,6 +91,11 @@ hr {border-color:#ececec;margin-top: 10px;margin-bottom: 10px;}
   left: 20px;
   z-index: 1;
 }
+
+.profile-avatar{
+  width:100%;
+  padding: 10px 10px;
+}
  
 .profile-block-avatar{
   position: absolute;
