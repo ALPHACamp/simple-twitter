@@ -173,8 +173,13 @@
   color:  #444444;
 }
 
-.user-content > div {
+.user-content .followship {
   float: right;
+}
+
+.user-content .user-status span {
+  line-height: 30px;
+  font-size: 13px;
 }
 
 

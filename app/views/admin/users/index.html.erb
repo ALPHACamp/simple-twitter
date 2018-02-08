@@ -14,10 +14,13 @@
 
     <br>
 
-    <div class="col-md-8 col-md-offset-2"> 
-      <div class="col-md-12">   
-         
-      </div>   
+    <div class="col-md-10 col-md-offset-1">      
+      <% @users.each do |user| %>
+        <div class="col-md-6">   
+          <%= render partial: "shared/user_list", locals: {object: user, admin: true} %>
+          <br>
+        </div>
+      <% end %>       
     </div>
 
   </div>
