@@ -12,9 +12,10 @@
     </ul>
     <div class="card-body">
       <% if @user != current_user %>
-        <%= link_to "Follow",followships_path(id: current_user, following_id: @user.id), :method => "post",class: "btn btn-primary"  %>
+        <%= render partial: "shared/follow", locals:{user: @user}%>
       <%else%>
         <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-primary" %>
       <% end%>
     </div>
   </div>
+

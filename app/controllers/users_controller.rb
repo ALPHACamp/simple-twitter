@@ -13,12 +13,8 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    if @user.update_attributes(user_params)
-      flash[:notice] = "Profile Updated"
-      redirect_to tweets_user_path
-    else
-      flash[:notice] = @user.errors.full_messages
-    end
+    @user.update(user_params)
+    redirect_to tweets_user_path
   end
 
   def followings
