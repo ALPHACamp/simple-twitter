@@ -23,7 +23,8 @@ namespace :dev do
   task fake_tweet: :environment do
     Tweet.destroy_all
     User.all.each do |i|
-      2.times do |j|
+
+      rand(6).times do |j|
         tweet = Tweet.new(
           user: i,
           description: FFaker::Lorem::sentence(10)
@@ -34,4 +35,32 @@ namespace :dev do
     end
     puts "Finished!"
   end
+
+  tast fake_online_user: :environment do
+    User.all.each do |i|
+      if i.role != "admin"
+        i.destroy
+      end
+    end
+
+    url = "https://uinames.com/api/?ext&region=england"
+
+    20.times do |i|
+      response = RestClient.get(url)
+      data = JSON.parse(response.body)
+
+      user = User.create!(
+        name: data["name"],
+        email: data["email"],
+        password: "123456",
+        introduction: FFaker::Lorem::sentence(30),
+        avatar: data["photo"]
+      )
+
+      puts "created user #{user.name}"
+    end
+
+    puts "created #{User.count} users"
+  end
+
 end
