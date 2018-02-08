@@ -3,28 +3,19 @@
   <head>
     <title>SimpleTwitter</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <% if current_user %>
-      <!-- FIXME: 暫時加入 id 方便觀看-->
-      <li><%= link_to tweets_user_path(current_user.id) do %>
-            <%= current_user.id %>
-            <%= current_user.name %>
-          <% end %>
-      </li>
-      <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
-      <li><%= link_to('修改個人資料', edit_user_path(current_user)) %></li>
-      <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
-    <% else %>
-      <li><%= link_to('註冊', new_user_registration_path) %></li>
-      <li><%= link_to('登入', new_user_session_path) %></li>
-    <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+   
+    <%= render(partial: "shared/navbar", locals: { look: 'default' })%>
+    <%= render(partial: "shared/notice")%>
+    <%= render(partial: "shared/alert")%>
+    
+    <div class="container">
+      <%= yield %>
+    </div>
+    
   </body>
 </html>
