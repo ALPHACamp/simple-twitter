@@ -1,0 +1,97 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <!-- form & tweets list /start -->
+    <div class="col-xs-12 col-md-8">
+  
+      <!-- form for creating tweet / start -->
+      <div class="tweetform" >
+        <div class="form-group">
+          <br />
+          <%= form_for @tweet do |f| %>
+            <div class="field">
+              <%= f.text_area :description, class: "form-control", placeholder: "有什麼新鮮事想推播呢？(Description輸入上限140字元)", rows: "5", maxlength: "140" %>
+            </div>
+
+            <!-- tweet -->
+            <div class="action text-right">
+              <%= f.submit "Tweet", class: "btn btn-primary" %>            
+            </div>
+
+          <% end %> <!-- form_for -->
+
+        </div> <!-- /.form-group -->
+      </div> <!-- /.tweetform -->
+      <!-- form for creating tweet / end -->
+      
+      <!-- tweets list /start-->
+      <%= render partial: "shared/tweets", locals: {tweets: @tweets} %>
+      <!-- tweets list /end-->
+
+    </div><!-- form & tweets list /end -->
+
+    <!-- top 10 users list rank by number of followers /start -->
+    <div class="col-xs-12 col-md-4">
+      <h2 class="usercard-head"><strong>Popular</strong></h2>
+
+      <!-- @user.each 呼叫出各個user card/start -->
+      <% @users.each do |user| %>
+        <div class="usercard clearfix">
+          <div class="container">
+            <div class="container">
+              <!-- Left: user avartar /start -->
+              <div class="col-xs-2">
+                <div class="usercard-avatar">
+                  <% if user.avatar? %>
+                    <%= image_tag(user.avatar, width: '60', height: '60',class: 'center-block') %>
+                  <% else %>
+                    <%= image_tag("http://via.placeholder.com/60x60",class: 'center-block') %>
+                  <% end %>
+                </div>
+              </div>
+              <!-- Left: user avartar /end -->
+
+              <!-- Right: user info & introduction /start -->
+              <div class="col-xs-10">
+                
+                <!-- user info -->
+                <div class="tweetheader">
+                  <%= link_to tweets_user_path(user) do  %>
+                    <strong class="username">@<%= content_tag :span, user.name %></strong>
+                  <% end %>
+                </div>
+
+                <!-- user introduction -->
+                <div class="userintro"><%= user.introduction %></div>
+
+              </div>
+              <!-- Right: user info & introduction /end -->
+            </div> <!-- /.container  -->
+
+            <!-- Bottom: Follow/Unfollow button /start -->
+            <div class="follow-button text-right">
+              
+              <!-- 未完成：判斷followship，顯示follow/unfollow -->
+              <% if user != current_user %>
+                <% if current_user.is_following?(user) %>
+                  <%= link_to "Unfollow", followship_path(user) ,method: :delete, class: "btn btn-danger" %>
+                <% else %>
+                  <%= link_to "Follow", followships_path(following_id: user),method: :post, class: "btn btn-primary" %>
+                <% end %>
+              <% else %>
+                <%= link_to "Follow", followships_path(following_id: user),method: :post, class: "btn btn-primary disabled" %>
+              <% end %>
+
+            </div>
+            <!-- Bottom: Follow/Unfollow button /end -->
+
+          </div> <!-- /.container  -->
+        </div> <!-- /.usercard  -->
+      <% end %>
+      <!-- @user.each 呼叫出各個user card/end -->
+
+    </div>
+    <!-- top 10 users list rank by number of followers /end -->
+
+  </div> <!-- /.row -->
+</div> <!-- /.container -->
