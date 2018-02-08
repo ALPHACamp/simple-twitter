@@ -22,6 +22,10 @@ Rails.application.routes.draw do
     get :likes, :on => :member
 
   end
+
+  # 追蹤達人
+  resources :followships, only: [:create, :destroy]
+  
   root "tweets#index"
 
 
