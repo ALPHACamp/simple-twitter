@@ -8,7 +8,8 @@ namespace :dev do
       file = File.open("#{Rails.root}/public/avatar/user#{i+1}.jpg")
 
       user = User.new(
-        name: name,
+        # name: name,
+        name: "user#{i}",
         email: "user#{i}@mail.co",
         password: "000000",
         # email: "#{name}@mail.co",
@@ -26,8 +27,11 @@ namespace :dev do
     Tweet.destroy_all
     @users = User.all
     @users.each do |user|
-      (rand(20)+1).times do |variable|
-        user.tweets.create!(description: FFaker::Tweet.body)
+      # (rand(20)+1).times do |variable|
+      #   user.tweets.create!(description: FFaker::Tweet.body)
+      # end
+      (user.id+1).times do |i|
+        user.tweets.create!(description: "user#{user.id}, tweet#{i}")
       end
       puts "#{user.name} has #{user.tweets.count} tweets!"
     end
@@ -50,12 +54,16 @@ namespace :dev do
     Followship.destroy_all
     puts "creating fake followship..." 
     User.all.each do |u|
-      # @users = User.where.not(id: u.id).shuffle
-      # (rand(20)).times do
-      #   u.followships.create!(
-      #   following: @users.pop,
-      #   )      
-      # end     
+      @users = User.where.not(id: u.id).shuffle
+      (rand(20)).times do
+        u.followships.create!(
+        following: @users.pop,
+        )      
+      end 
+      # (u.id+1).times do |i|
+      #   Followship.create(following: u, user: @users.pop)
+      # end   
+      # puts "#{u.name} has #{u.followers_count} followers!" 
     end
     puts "now you have #{Followship.count} followship"
   end
