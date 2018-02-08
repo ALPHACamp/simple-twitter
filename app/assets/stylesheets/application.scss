@@ -17,8 +17,21 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+* {
+  box-sizing: border-box;
+}
+
+#content {
+  position: relative;
+  top: 78px;
+}
+
 textarea.text-area {
   font-size: 25px;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 .tweets-items {
@@ -72,4 +85,24 @@ textarea.text-area {
 
 .reply-font {
   font-size: 17px;
+}
+
+h1 {
+  color: #00a3cc;
+}
+
+.tweet-title, .user-introduction {
+  color: #3399ff;
+}
+
+.gray-link {
+  color: #737373;
+}
+
+.like-red {
+  color: red;
+} 
+
+.like-red:hover {
+  color: #ff8080;
 }

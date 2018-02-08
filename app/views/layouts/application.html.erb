@@ -10,7 +10,9 @@
 
   <body style: "padding-top: 50px;">
     <%= render "common/navbar" %>
-    <%= yield %>
-    <%= render "common/footer" %>
+    <div id="content">
+      <%= yield %>
+      <%= render "common/footer" %>
+    </div>
   </body>
 </html>
