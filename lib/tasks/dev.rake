@@ -53,7 +53,7 @@ namespace :dev do
       2.times do |i|
         user.replies.create!(
           tweet: Tweet.all.sample,
-          comment: FFaker::Lorem::sentence(30)
+          comment: FFaker::Lorem::sentence(20)
         )
       end
     end
