@@ -1,1 +1,27 @@
-123
+<h1>Tweets Background</h1>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Tweeter</th>
+      <th>Tweet's description</th>
+      <th>Controller</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tweets.each do |tweet| %>
+    <tr class="admin-table">
+      <th scope="row"><%= tweet.id %></th>
+      <td><%= link_to tweet.user.name, tweets_user_path(tweet.user) %></td>
+      <td><%= tweet.description %></td>
+      <td>
+        <%= link_to 'Show', tweet_replies_path(tweet) %>
+        <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: { confirm: "Are you sure?"} %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="text-center">
+  <%= paginate @tweets %>
+</div>

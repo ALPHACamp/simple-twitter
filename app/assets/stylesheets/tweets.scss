@@ -161,7 +161,7 @@
 			float: right;
 			padding-left: 10px;
 			overflow: hidden;
-  		text-overflow: ellipsis;
+  			text-overflow: ellipsis;
 		}
 	}
 	.input{
@@ -181,5 +181,11 @@
 			bottom: 5px;
 			position: absolute;
 		}
+	}
+}
+.admin-table{
+	td{
+		overflow: hidden;
+  		text-overflow: ellipsis;
 	}
 }
