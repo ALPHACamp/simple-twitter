@@ -1,4 +1,8 @@
 <div class="container">
+  <ul class="nav nav-pills nav-admin">
+    <li role="presentation"><%= link_to "所有推播與回覆", admin_tweets_path %></li>
+    <li role="presentation" class="active"><%= link_to "使用者清單", admin_users_path %></li>
+  </ul>
   <table class="table">
     <thead>
       <tr>
@@ -13,7 +17,7 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td><%= user.name %></td>
+          <td><%= link_to user.name, tweets_user_path(user) %></td>
           <td><%= user.tweets.length %></td>
           <td><%= user.followings.length %></td>
           <td><%= user.followers.length %></td>

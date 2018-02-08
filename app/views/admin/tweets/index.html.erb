@@ -1,5 +1,9 @@
 <div class="container">
-  <div class="tweet-index">
+  <ul class="nav nav-pills nav-admin">
+    <li role="presentation" class="active"><%= link_to "所有推播與回覆", admin_tweets_path %></li>
+    <li role="presentation"><%= link_to "使用者清單", admin_users_path %></li>
+  </ul>
+  <div class="admin-tweet">
     <% @tweets.each do |tweet| %>
       <div class="tweet-block">
         <% for img_id in 0..26 %>
