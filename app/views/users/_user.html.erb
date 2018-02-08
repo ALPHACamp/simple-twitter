@@ -1,0 +1,18 @@
+<div class="avatar-md">
+  <img src="http://via.placeholder.com/150x150"></a>
+</div>
+  <h3><%= user.name %></h3>
+  <p><%= user.introduction %></p>
+  <ul>
+    <li>Tweet </li>
+    <li>Following</li>
+    <li>Follower</li>
+    <li>like</li>
+  </ul>
+    
+  <% if user.email == current_user.email %>
+    <%= link_to 'Edit Profile', edit_user_path(user), class: "btn btn-primary" %>
+  <% else %>
+    <!--follow-->
+    <%= render partial: "shared/follow", locals: {user: @user}  %>
+  <% end %> 
