@@ -26,7 +26,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
   	get "/", :to => "tweets#index"
-  	resources :tweets, only: [:index, :destroy]
+  	resources :tweets, only: [:index, :destroy, :show] do
+      member do
+        post :delete_reply
+      end
+    end
   	resources :users, only: [:index, :destroy]
   end
 
