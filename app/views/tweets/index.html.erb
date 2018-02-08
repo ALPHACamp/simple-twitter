@@ -53,8 +53,15 @@
                   <h4><%= link_to user.name, user_path(user)%></h4>
                   <!-- truncate 可截斷文字限定字數。simple_format 可讓文字自動換行 -->
                   <P><%= truncate(user.introduction, length: 50) %></P>
-                    <%= link_to '取消追蹤', followship_path(user), method: :delete, class: "btn btn-primary" %>
-                    <%= link_to '追蹤', followships_path(following_id: user), method: :post, class: "btn btn-primary" %>
+                  <% if user != current_user %>
+                    <% if current_user.following?(user)%>
+                     <!-- 會用 DELETE 動作導向 http://localhost:3000/followships/{user.id} -->
+                      <%= link_to '取消追蹤', followship_path(user), method: :delete, class: "btn btn-primary" %>
+                    <% else %>
+                    <!-- 會用 POST 動作導向 http://localhost:3000/followships?following_id={user.id} -->
+                      <%= link_to '追蹤', followships_path(following_id: user), method: :post, class: "btn btn-primary" %>
+                    <% end %>
+                  <% end %>
               </div>
             </div>
             <hr>
