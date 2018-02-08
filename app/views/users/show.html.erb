@@ -10,6 +10,14 @@
         <h2><%= @user.name %></h2>
         <p><strong><%= @user.email %></strong></p>
         <div><%= simple_format @user.introduction %></div>
+        <p>
+          <strong>followings: <%= @followings.count %></strong>
+        </p>
+        <p>
+          <strong>followers: <%= @followers.count %></strong>
+        </p>
+
+
         <% if @user.email == current_user.email %>
           <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-info" %>
           <% end %>
@@ -17,6 +25,10 @@
         </div>
       <div class="col-md-9 col-sm-8">
         
+            
+            
+
+          </div>
       </div>
       </div>
 

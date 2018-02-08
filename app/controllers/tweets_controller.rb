@@ -17,12 +17,6 @@ class TweetsController < ApplicationController
     
   end
 
-  def favorite
-    @restaurant = Restaurant.find(params[:id])
-    @restaurant.favorites.create!(user: current_user)
-    @restaurant.count_favorites
-    redirect_back(fallback_location: root_path)  # 導回上一頁   
-  end
 
   def create
     @tweet = Tweet.new(tweet_params)
@@ -43,9 +37,16 @@ class TweetsController < ApplicationController
   # end
 
   def like
+    @tweet = Tweet.find(params[:id])
+    @tweet.likes.create!(user: current_user)
+    redirect_back(fallback_location: root_path)  # 導回上一頁 
   end
 
   def unlike
+    @tweet = Tweet.find(params[:id])
+    like = Like.where(restaurant: @tweet, user: current_user)
+    like.destroy_all
+    redirect_back(fallback_location: root_path)
   end
 
   private

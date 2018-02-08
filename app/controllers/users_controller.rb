@@ -3,12 +3,16 @@ class UsersController < ApplicationController
   before_action :set_user,only:[:show, :edit, :update]
 
   def tweets
+    @tweets = Tweet.all
     
   end
 
   def show
+    
     @user = User.find(params[:id])
     @repled_tweets = @user.tweets
+    @followings = @user.followings
+    @followers = @user.followers
   end
 
   def edit

@@ -22,6 +22,8 @@
             </h5>
             <p><%= truncate(tweet.description, length: 80) %></p>
             
+            
+
           </div>
       <% end %>
     </div>
@@ -45,12 +47,15 @@
               <%= link_to 'Follow', followships_path(following_id: user), method: :post, class: "btn btn-info" %>
             <% end %>
           <% end %>
+
+          
           
           
         </div>
 
       <% end %>
     
+
 
     </div>
     

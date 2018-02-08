@@ -10,6 +10,10 @@
         <p><strong><%= @tweet.user.email %></strong></p>
         <div><%= simple_format @tweet.user.introduction %></div>
         <p><strong>Reply: <%= @tweet.replies.count %></strong></p>
+        <p><strong>like: <%= @tweet.likes.count %></strong></p>
+        
+
+       
         
         <% if @tweet.user.email == current_user.email %>
           <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-info" %>
@@ -21,7 +25,10 @@
         <h2>Tweets</h2>
         <div class="seinbg">
             <%= image_tag (@tweet.user.avatar if @tweet.user.avatar?),height: 100,class: "img-circle" %>
-            <h4><%= @tweet.user.name %></h4>
+            <h4><%= @tweet.user.name %>
+             <em><%= @tweet.created_at %> </em>
+            </h4>
+            
             <%= @tweet.description %><br>
         </div>
 
@@ -30,6 +37,7 @@
         <div class="seinbg">
           <% @tweet.replies.each do |reply| %>
           <div>
+
             <h4><%= reply.user.name %></h4>
             <p><%= simple_format reply.comment %></p>
             <p class="text-muted">

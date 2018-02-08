@@ -4,6 +4,11 @@ Rails.application.routes.draw do
 
   resources :tweets, only: [:index, :show, :create, :destroy] do
     resources :replies, only: [:create, :destroy]
+
+    member do
+      post :like
+      post :unlike
+    end
     
   end
 
@@ -12,12 +17,14 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, :edit, :update]
 
+  resources :followships, only: [:create, :destroy]  
+
   namespace :admin do
     resources :tweets
     root "tweets#index"
   end
   # 請依照專案指定規格來設定路由
 
-  resources :followships, only: [:create, :destroy]
+
 
 end
