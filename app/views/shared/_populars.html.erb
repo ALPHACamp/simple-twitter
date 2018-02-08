@@ -7,7 +7,9 @@
     <%= link_to tweets_user_path(user) do %>
       <h4><%= user.name %></h4>
     <% end %>
-    <p><%= truncate(user.introduction, length: 50) %></p>
+    <span>
+      <p><%= truncate(user.introduction, length: 50) %></p>
+    </span>
   </div>
   <div class="action">
     <% if current_user != user %>
