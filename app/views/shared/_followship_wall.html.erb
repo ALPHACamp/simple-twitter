@@ -9,13 +9,7 @@
       <p>Followers <%= user.followers.count %></p>
       <div class="follow-btn">
         <% if user != current_user %>
-          <% if current_user.following?(user) %>
-            <%= link_to "Unfollow", followship_path(user), 
-                                    method: :delete,  class: "btn btn-primary" %>
-          <% else %>
-            <%= link_to "Follow", followships_path(following_id: user), 
-                                  method: :post, class: "btn btn-primary" %>
-          <% end %>
+          <%= render partial: "shared/follow_btn", locals: {user: user} %>
         <% end %>
       </div>
     </div>
