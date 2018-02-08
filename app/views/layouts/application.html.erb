@@ -39,8 +39,8 @@
             <!-- 暫時移除編輯個人資料連結 id = 1 -->
             <!-- 移除修改個人密碼的連結 id = 2 -->
             <% else %>
-            <li><%= link_to('註冊', new_user_registration_path) %></li>
-            <li><%= link_to('登入', new_user_session_path) %></li>
+            <li><%= link_to image_tag('sign_up.png'), new_user_registration_path, :alt => "RegistrationPage", class: "logo" %></li>
+            <li><%= link_to image_tag('sign_in.png'), new_user_session_path, :alt => "SignInPage", class: "logo" %></li>
             <% end %>
           </ul>
         </div>
