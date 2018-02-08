@@ -1,1 +1,21 @@
 <h1>Tweet Front End<h1>
+
+<h1>Tweet wall<h1>
+
+<ul>
+  <% @tweets.each do |tweet| %>
+  <li>
+    <%= tweet.description %>
+  </li>
+  <% end %>
+</ul>
+
+<h1>Popular users<h1>
+
+<ul>
+  <% @users.each do |user| %>
+  <li>
+    <%= user.name %>
+  </li>
+  <% end %>
+</ul>

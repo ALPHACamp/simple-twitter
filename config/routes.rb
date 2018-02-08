@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     end 
   end
 
-  resources :tweets, only:[:create] do
+  resources :tweets, only:[:create, :index] do
     member do
       get :replies
     end
