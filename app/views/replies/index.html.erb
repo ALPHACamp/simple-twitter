@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= image_tag @user.avatar, class: "avatar-styled" %>
+      <h2><%= @user.name %></h2>
+      <p><%= @user.introduction %></p>
+      <h2><%= link_to "Tweet  #{@user.tweets_count}", tweets_user_path(@user) %></h2>
+      <h2>Following</h2>
+      <h2>Follower</h2>
+      <h2>Like</h2>
+      <hr>
+      <% if @user == current_user %>
+        <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
+      <% else %>
+      <% end %>  
+    </div>
+    <div class="col-md-8 col-md-offset-1">
+      <h1>Tweets</h1>
+      <div class="col-md-12">
+        <div class="tweets-items row">
+          <div class="col-md-3">
+            <%= image_tag @tweet.user.avatar, class: "avatar-styled" if @tweet.user.avatar? %>
+          </div>
+          <div class="col-md-9">
+            <p><%= link_to "@#{@tweet.user.name}", tweets_user_path(@tweet.user) %>, <%= @tweet.created_at.strftime("%Y-%m-%d, %H:%M")  %></p> 
+            <p><%= @tweet.description%></p>
+            <%= link_to "Reply(#{@tweet.replies_count})", tweet_replies_path(@tweet), class: "reply-font" %>
+          </div>
+        </div>
+      </div>
+      <h1>Replies</h1>
+      <div class="col-md-12">
+        <% @replies.each do |reply| %>
+          <div class="tweets-items row">
+            <div class="col-md-3">
+              <%= image_tag reply.user.avatar, class: "avatar-styled" if reply.user.avatar? %>
+            </div>
+            <div class="col-md-9">
+              <p><%= link_to "@#{reply.user.name}", tweets_user_path(reply.user) %>, <%= reply.created_at.strftime("%Y-%m-%d, %H:%M")  %></p> 
+              <p><%= reply.comment%></p>
+            </div>  
+          </div>            
+        <% end %>
+      </div>
+      <%= form_for [@tweet, @reply] do |f| %>
+        <div class="form-group">
+          <%= f.text_area :comment, class: "form-control", rows: "5" %>
+        </div>
+        <div class="form-group btn-right">
+          <%= f.submit "Reply", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
