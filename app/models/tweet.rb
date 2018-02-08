@@ -16,6 +16,15 @@ class Tweet < ApplicationRecord
   def is_liked?(user)
     self.liked_users.include?(user)
   end
+
+  def like_at(user)
+    if self.liked_users.include?(user)
+      like = self.likes.find_by(user_id: user.id)
+      return like.created_at
+    else
+      return "no like"
+    end
+  end
 end
 
 

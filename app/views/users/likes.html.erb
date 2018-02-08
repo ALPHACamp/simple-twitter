@@ -10,7 +10,12 @@
   <div class="col-sm-8">
     <h2>Like</h2>
     <!-- user tweetswall -->
-    <%=render partial: "common/tweetswall",locals:{tweets: @likes}%>
+    <div class="tweetswall">
+      <%@likes.each do |like| %>
+      <%= render partial: "common/tweet_item", locals:{tweet: like.tweet} %>
+      <%end%> 
+
+    </div>
   </div>
 
 </div>
