@@ -2,7 +2,10 @@
 <h2><%= user.name %></h2>
 <p>introduction: <%= user.introduction %></p>
 <ul>
-  <li>Tweets <%= user.tweets.count %></li>
+  <li>
+    <%= link_to "Tweets", tweets_user_path(user) %>
+    <%= user.tweets.count %>
+  </li>
   <li>Following</li>
   <li>Follower</li>
   <li>
