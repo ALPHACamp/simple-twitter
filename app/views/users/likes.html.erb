@@ -6,21 +6,7 @@
     <div class="col-md-9">
       <h1>Like</h1>
       <div class="col-md-12">
-         <% @likes.each do |tweet| %>
-          <div class="col-md-12">
-            <div class="tweet-detail">
-              <div class="col-md-3">
-                <%= image_tag tweet.user.avatar , size: "100", class: "img-responsive center-block" if tweet.user.avatar?%>
-              </div>
-              <div class="col-md-9">
-                <p class="description"><%= tweet.user.name  %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></p>
-                <p class="description"><%= tweet.description  %></p>
-                <p class="description"><%= link_to "Reply(#{tweet.replies.count})" , tweet_replies_path(tweet) %></p>
-                <p class="description"><%= link_to "Like(#{tweet.likes.count})" , likes_user_path(tweet.likes) %></p>
-              </div>
-            </div>
-          </div>
-        <% end %>
+         <%= render partial: "shared/tweet_detail", locals: {tweets: @likes} %>
     </div>
   </div>
 </div>

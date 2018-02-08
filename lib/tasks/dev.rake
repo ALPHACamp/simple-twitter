@@ -59,4 +59,19 @@ namespace :dev do
     end
     puts " #{Followship.count} Followship data"
   end
+
+  # like
+  task fake_like: :environment do
+    Like.destroy_all
+    puts " create fake like data..." 
+    User.all.each do |user|
+      5.times do
+      user.likes.create!(
+        tweet: Tweet.all.sample,
+        )      
+      end     
+    end
+    puts " #{Like.count} liked tweets"
+  end  
+
 end
