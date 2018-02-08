@@ -22,9 +22,6 @@ class TweetsController < ApplicationController
   def like
     @like = current_user.likes.build(tweet_id: params[:id])
     if @like.save
-      @liked_tweet = Tweet.find(params[:id])
-      @liked_tweet.likes_count = @liked_tweet.likes.length
-      @liked_tweet.save
       flash[:notice] = "成功Like該則推播！"
       redirect_back(fallback_location: root_path)
     else
@@ -36,9 +33,6 @@ class TweetsController < ApplicationController
   def unlike
     @like = current_user.likes.where(tweet_id: params[:id]).first
     @like.destroy
-    @liked_tweet = Tweet.find(params[:id])
-    @liked_tweet.likes_count = @liked_tweet.likes.length
-    @liked_tweet.save
     flash[:notice] = "成功Unlike該則推播！"
     redirect_back(fallback_location: root_path)
   end
