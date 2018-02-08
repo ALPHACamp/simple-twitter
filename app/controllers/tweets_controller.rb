@@ -17,8 +17,8 @@ class TweetsController < ApplicationController
       flash[:notice] = "tweet was successfully created"
       redirect_to root_path
     else
-      flash.now[:alert] = "tweet was failed to create"
-      render :new
+      flash[:notice] = "tweet was failed to create"
+      redirect_to root_path
     end
   end
 
