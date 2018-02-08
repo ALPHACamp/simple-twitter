@@ -29,7 +29,7 @@
              <th>Tweets</th>
              <th>Followings</th>
              <th>Followers</th>
-             <th>Replies</th>
+             <!-- <th>Replies</th> -->
              <th>Likes</th>
 
            </tr>
@@ -44,8 +44,8 @@
              <td><%= user.tweets.count %></td>
              <td><%= user.followings.count %></td>
              <td><%= user.followers.count %></td>
-             <td><%= user.replies.count %></td>
-             <td><%= user.likes.count %></td>
+
+             <td><%= user.liked_tweets_count %></td>
 
 
 
