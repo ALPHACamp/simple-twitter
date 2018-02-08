@@ -14,8 +14,8 @@
         <div >
           <div id="reply" class="inline">
             <%= link_to "Reply(#{message.replies_count})", tweet_replies_path(message), class: "btn btn-info" %>
-      </div>
-      <%= render partial: "shared/like", locals: {tweet: message} %>
+          </div>
+        <%= render partial: "shared/like", locals: {tweet: message} %>
 
     </div>
   <% end %>

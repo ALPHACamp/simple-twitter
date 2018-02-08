@@ -31,4 +31,6 @@ class User < ApplicationRecord
     self.followings.include?(user)
   end
 
+
+
 end

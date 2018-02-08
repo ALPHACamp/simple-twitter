@@ -29,7 +29,7 @@
           <ul class="pull-right text-right nav navbar-nav">
             <% if current_user %>
               <% if current_user&.admin? %>
-                <li><%= link_to 'Admin Control Panel', admin_root_path %></li>
+                <li><%= link_to 'Admin Control Panel', admin_users_path %></li>
               <% end %>
                 <li><%= link_to tweets_user_path(current_user) do%>
 
@@ -37,12 +37,12 @@
                 <% end %>
                 </li>
 
-                <li class="nav-btn"><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
-                <li class="nav-btn"><%= link_to('修改個人資料', edit_user_path(current_user)) %></li>
-                <li class="nav-btn"><%= link_to('修改密碼', edit_user_registration_path) %></li>
+                <li class="nav-btn"><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+                <li class="nav-btn"><%= link_to('Edit User Information', edit_user_path(current_user)) %></li>
+                <li class="nav-btn"><%= link_to('Edit Password', edit_user_registration_path) %></li>
               <% else %>
-                <li class="nav-btn"><%= link_to('註冊', new_user_registration_path) %></li>
-                <li class="nav-btn"><%= link_to('登入', new_user_session_path) %></li>
+                <li class="nav-btn"><%= link_to('Registration', new_user_registration_path) %></li>
+                <li class="nav-btn"><%= link_to('Login', new_user_session_path) %></li>
               <% end %>
               </ul>
         </div>
