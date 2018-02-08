@@ -2,9 +2,7 @@
   <%= render partial: "shared/info", locals: {user: @user} %>
   <div class="row">
     <div class="follow col-sm-8"">
-      <%= @followings.each do |following| %>
-        <%= render partial: "shared/followcard", locals: {user: following} %>
-      <% end %>
+      <%= render partial: "shared/followcard", locals: {users: @followings} %>
     </div>
   </div>
 </div>   
