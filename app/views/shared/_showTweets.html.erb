@@ -10,7 +10,11 @@
 			</h5>
 			<p><%= simple_format f.description %></p>
 			<%= link_to "Replies", tweet_replies_path(f.id) %>
-			<%= link_to "like", like_tweet_path(f.id), method: :post %>
+			<% if not f.liked_by_user?(current_user)%>
+				<%= link_to "like", like_tweet_path(f.id), method: :post %>
+			<%else%>
+				something else
+			<%end%>
 		</div>
 	</div>
 <% end %>
