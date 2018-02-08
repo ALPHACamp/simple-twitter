@@ -9,11 +9,13 @@
 				<%= f.created_at %>
 			</h5>
 			<p><%= simple_format f.description %></p>
-			<%= link_to "Replies", tweet_replies_path(f.id) %>
-			<% if not f.liked_by_user?(current_user)%>
-				<%= link_to "like", like_tweet_path(f.id), method: :post %>
-			<%else%>
-				<%= link_to "Unlike", unlike_tweet_path(f.id), method: :delete %>
+			<%= link_to(tweet_replies_path(f.id), class: "btn btn-light") do %>Replies <%= f.replies.count%><%end%>
+			<% if not f.user == current_user %>
+				<% if not f.liked_by_user?(current_user)%>
+					<%= link_to(like_tweet_path(f.id), class: "btn btn-light") do %>Likes <%= f.liked_users.count%><%end%>
+				<%else%>
+					<%= link_to "Unlike", unlike_tweet_path(f.id), method: :delete %>
+				<%end%>
 			<%end%>
 		</div>
 	</div>
