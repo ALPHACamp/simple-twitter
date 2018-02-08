@@ -19,13 +19,12 @@
           <p><%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %></p>
           <p><%= link_to('修改個人資料', edit_user_path(current_user), class: "btn btn-primary") %></p>
         <%end%>
-
       </div>
 
       <!-- 右邊 -->
       <div class="col-md-7">
         
-        <!-- Tweet -->
+        <!-- 右邊上版面 Tweet -->
         <div class="tweet col-xs-12">
           <h3>Tweet</h3>
           <div class="panel panel-default">          
@@ -37,16 +36,18 @@
         </div>
         
 
-        <!-- replies -->
+        <!--右邊下版面 replies & reply_form -->
         <div class="reply_list col-xs-12">
           <h3>Replies</h3>
           <div class="panel panel-default">          
             <div class="panel-body">
-
-              <% @replies.each do |reply| %>
+              
+              <!-- 右邊下版面 replies -->
+              <div class="replies">
+                <% @replies.each do |reply| %>
                 <div class="row">
                   <div class="col-sm-3">
-                    <img src="http://via.placeholder.com/90x90" class="img-responsive img-rounded">
+                    <img src="http://via.placeholder.com/70x70" class="img-responsive img-rounded">
                   </div>
                   <div class="col-sm-8">
                     <h5><%= link_to reply.user.name, tweet_replies_path(@tweet.id) %>, <%= @tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></h5>
@@ -54,22 +55,26 @@
                   </div>   
                 </div>    
                 <hr>
-              <% end %>
+                <% end %>
+              </div>
+
+              <!-- 右邊下版面 reply_form -->
+              <div class="reply_form">
+                 <%= form_for [@tweet, @reply] do |t|%>
+                  <div class="form-group">
+                    <%= t.text_area :comment, placeholder: "推你的回覆 ",  class: "form-control" %>
+                  </div>
+                  <div class="form-group">
+                    <%= t.submit "Tweet", class: "pull-right btn btn-primary" %>
+                  </div>      
+                <% end %>  
+              </div>
 
             </div>
           </div>
-        </div>
-        
-        
-
-
-
-        <!-- reply form -->
-        <h4>3. Reply form</h4>
-
+        </div>    
 
       </div>
-
 
     </div>
   </div>
