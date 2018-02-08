@@ -5,13 +5,13 @@
 
     <ul class="nav nav-tabs">
       <li role="presentation">
-        <%= link_to 'Index', root_path %>
+        <%= link_to 'Index', admin_root_path %>
       </li>
       <li role="presentation">
-        <%= link_to 'Tweets', tweets_path %>
+        <%= link_to 'Tweets', admin_tweets_path %>
       </li>
       <li role="presentation" class="active">
-        <%= link_to 'Users', users_path %>
+        <%= link_to 'Users', admin_users_path %>
       </li>
     </ul>
 
@@ -28,6 +28,9 @@
 
     </li>
   <% end %>
+</ul>
+
+<ul>
   <% @replies.each do |reply| %>
     <li>
       <%= reply.tweet_id %>

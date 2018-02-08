@@ -5,13 +5,13 @@
 
     <ul class="nav nav-tabs">
       <li role="presentation">
-        <%= link_to 'Index', root_path %>
+        <%= link_to 'Index', admin_root_path %>
       </li>
       <li role="presentation">
-        <%= link_to 'Tweets', tweets_path %>
+        <%= link_to 'Tweets', admin_tweets_path %>
       </li>
       <li role="presentation" class="active">
-        <%= link_to 'Users', users_path %>
+        <%= link_to 'Users', admin_users_path %>
       </li>
     </ul>
 
@@ -27,5 +27,5 @@
       <td><%= link_to 'Profile', edit_user_path(user) %></td>
       <td><%= link_to 'Destroy', user_path(user), method: :delete, data:{ confirm: "Are you sure?" } %></td>
     </li>
-    <% end %>
+  <% end %>
 </ul>
