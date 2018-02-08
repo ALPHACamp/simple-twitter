@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user ,only: [:tweets, :edit, :update, :followings, :followers, :likes]
 
   def tweets
-    @tweets = @user.tweets.order('created_at desc').page(params[:page]).per(10)
+    @tweets = @user.tweets
   end
 
   def edit
