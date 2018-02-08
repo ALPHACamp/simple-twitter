@@ -32,17 +32,32 @@
             <td><%= t.created_at.strftime("%Y-%m-%d") %></td>
             <td><%= t.likes_count %></td>
             <td>
-              <!-- <ul>
-                <% t.replies.each do |r| %>
-                  <li><%= r.comment %></li>
-                <% end %>
-              </ul> -->
+              <button type="button" class="btn" data-toggle="modal" data-target="#myModal">reply</button>
+
+              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                      <ul>
+                        <% t.replies.each do |r| %>
+                          <li><%= r.comment %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </td>
             <td>
-
+              <%= link_to "Delete", admin_tweet_path(t), method: :delete,data: { confirm: "Are you sure?"}, class: "btn" %>
             </td>
           </tr>
         <% end %>
       </tbody>
     </table>
-</div>
+  </div>
