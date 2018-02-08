@@ -5,21 +5,8 @@
 		</div>
 		<div class="col-md-10">
 			<h3>Followers</h3>
-			<%- @followers.each do |f| %>
-				<div class="thumbnail followships">
-					<%= image_tag f.avatar, width:'100px', id:"tweet-avatar followships" %>
-					<div class="caption">
-						<h3><%= f.name%></h3>
-						<p><%= f.introduction%></p>
-						<% if not f == current_user %>
-							<% if not current_user.following?(f)%>
-								<%= link_to "Follow", followships_path(following_id: f), method: :post %>
-							<% else %>
-								<%= link_to "Unfollow", followship_path(following_id: f), method: :delete %>
-							<% end %>
-						<% end %>
-					</div>
-				</div>
+			<%- @followers.each do |follower| %>
+				<%= render partial: "shared/followships.html.erb", locals: {user: follower}%>
 			<% end %>
 		</div>
 	</div>

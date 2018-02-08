@@ -1,14 +1,22 @@
-<%= image_tag user.avatar, width:'100px', id:"tweet-avatar" %>
-<h3><%= user.name%></h3>
-<p><%= user.introduction%></p>
-<% if user == current_user %>
-	<%= link_to "Edit Profile", edit_user_path(current_user) %>
-<% else %>
-	<% if not current_user.following?(user)%>
-		<%= link_to "Follow", followships_path(following_id: user), method: :post %>
+<div class="user-profile">
+	<%= image_tag user.avatar, width:'100px', id:"tweet-avatar" %>
+	<h3><%= user.name%></h3>
+	<p><%= user.introduction%></p>
+
+	<%= link_to(tweets_user_path(user), class: "btn btn-light") do %>Tweets <%= user.tweets.count%><%end%>
+
+	<%= link_to(followings_user_path(user), class: "btn btn-light") do %>Followings <%= user.followings.count%><%end%>
+	<%= link_to(followers_user_path(user), class: "btn btn-light") do %>Followers <%= user.followers.count%><%end%>
+
+	<% if user == current_user %>
+		<%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-light" %>
 	<% else %>
-		<%= link_to "Unfollow", followship_path(following_id: user), method: :delete %>
+		<% if not current_user.following?(user)%>
+			<%= link_to "Follow", followships_path(following_id: user), method: :post, class: "btn btn-light" %>
+		<% else %>
+			<%= link_to "Unfollow", followship_path(following_id: user), method: :delete, class: "btn btn-light" %>
+		<% end %>
 	<% end %>
-<% end %>
-<%= link_to "Followings", followings_user_path(user)%>
-<%= link_to "Followers", followers_user_path(user)%>
+</div>
+
+

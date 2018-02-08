@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:update, :edit, :tweets, :followings, :followers]
 
   def tweets
-    @tweets = Tweet.where('user_id' => params[:id])
+    @tweets = Tweet.where('user_id' => params[:id]).order(created_at: :desc)
   end
 
   def edit
@@ -25,11 +25,11 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings = @user.followings
+    @followings = @user.followings.order(created_at: :desc)
   end
 
   def followers
-    @followers = @user.followers
+    @followers = @user.followers.order(created_at: :desc)
   end
 
   def likes
