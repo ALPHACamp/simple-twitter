@@ -17,8 +17,23 @@
        <%= link_to('註冊', new_user_registration_path) %> |
        <%= link_to('登入', new_user_session_path) %>
     <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+
+    <!-- Alert -->
+    <div class="container">
+      <% if notice %>
+        <div class="alert alert-success alert-dismissible text-center" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><p aria-hidden="true">&times;</p></button>
+          <%= notice %>
+        </div>
+      <% end %>
+      <% if alert %>
+        <div class="alert alert-danger alert-dismissible text-center" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <%= alert %>
+        </div>
+      <% end %>
+    </div>
+
     <%= yield %>
   </body>
 </html>
