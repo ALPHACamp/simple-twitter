@@ -29,4 +29,10 @@ class User < ApplicationRecord
   def admin?
     self.role == "admin"
   end
+
+  # 是否已追蹤 
+  def following?(user)
+    self.followings.include?(user)
+  end
+  
 end

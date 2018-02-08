@@ -6,7 +6,7 @@
     <div class="col-md-6">
       <p class="description"><%= link_to follow.name , tweets_user_path(follow) %></p>
       <p class="description"><%= truncate(follow.introduction, length: 80)  %></p>
-      <button>Follow/Unfollow</button>
+      <%= render partial: "shared/follow", locals: {user: follow} %>
     </div>
   </div>
 </div>
