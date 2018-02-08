@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       get :tweets
       get :likes
       get :followings
+      get :followers
     end
   end
 
