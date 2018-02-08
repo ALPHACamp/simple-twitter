@@ -3,7 +3,7 @@ class Admin::TweetsController < Admin::BaseController
   before_action :find_tweet, only: [:delete]
 
   def index
-    @tweets = Tweet.all
+    @tweets = Tweet.order(created_at: :desc)
   end
 
 
