@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-xs-3">
+    <%= render partial: "shared/user_profile",locals: { user: current_user} %>
+  </div>
+
+  <div class="col-xs-8 col-xs-offset-1 ">
+    <div class="speak  col-xs-12" >
+      <h1>Follower</h1>
+     
+      <% @followers.each do |user| %>
+        <div class="  following">
+          <div class="col-xs-3">
+             <%= render partial: "shared/avatar", locals: {avatar: user.avatar} ,size: "200"if user.avatar? %>
+             
+          </div>
+
+          <div class="col-xs-9">
+            <p>
+              <%= link_to user.name,tweets_user_path(user) %> 
+              <%= user.created_at.strftime("%Y-%m-%d, %H:%M") %>
+              
+
+            </p>
+            <p> <%= user.introduction%></p>
+          
+            
+          </div>
+      
+            <% if user == current_user %>
+              <%= link_to "Edit Profile",edit_user_path(current_user), class: "btn btn-default my-btn address" %>
+              
+            <% else %>
+              <% if current_user.following?(user) %>
+               <%= link_to 'Unfollow', followship_path(user), method: :delete , class: " btn btn-default my-btn address"%>
+               <% else %>
+               <%= link_to 'Follow', followships_path(following_id: user.id), method: :post , class: " btn btn-default my-btn address"%>
+               
+               <% end %>
+            <% end %>
+              
+        </div>
+
+      <% end %>
+   
+    </div>
+
+                <div class="clearfix"></div>
+
+
+
+</div>

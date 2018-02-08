@@ -1,0 +1,29 @@
+
+
+<div class="row">
+
+
+  <%= form_for @user do |f| %>
+    <div class="col-xs-4">
+      <%= image_tag @user.avatar,width: "100%" if @user.avatar? %><br>
+      <%= f.file_field :avatar %>
+      
+    </div>
+    <div class="col-xs-8">
+      <div class="form-group">
+      
+       <%= f.text_field :name,  placeholder: "Name",class: "form-control form-color" %>
+      </div>
+      <div class="form-group">
+       <%= f.text_area :introduction,placeholder: "Type anything about you here....", rows: 8,cols: 95, class: "form-control
+       form-color" %>
+       
+      </div>
+      <div class="form-group">
+       <%= f.submit "Update", class: "my-btn btn-lg" %>
+      </div>
+    </div> 
+  <% end %>
+
+
+</div>
