@@ -1,0 +1,25 @@
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>使用者名稱</th>
+        <th>推播數量</th>
+        <th>關注人數</th>
+        <th>追蹤者人數</th>
+        <th>喜愛的推播數</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.tweets.length %></td>
+          <td><%= user.followings.length %></td>
+          <td><%= user.followers.length %></td>
+          <td><%= user.likes_count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

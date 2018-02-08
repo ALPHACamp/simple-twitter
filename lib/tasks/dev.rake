@@ -56,6 +56,9 @@ namespace :dev do
         )
       end
     end
+    User.all.each do |user|
+      user.followers_count = user.followers.length
+    end
     puts "now you have #{Followship.count} followships"
   end
 
@@ -67,6 +70,7 @@ namespace :dev do
         user.likes.create!(
           tweet: tweet[i]
         )
+        user.likes_count = user.likes.length
       end
     end
     puts "now you have #{Like.count} likes"
