@@ -22,7 +22,7 @@
         <% @users.each do |user| %>
           <tr>
             <td><%= user.id %></td>
-            <td><%= user.name %></td>
+            <td><%= link_to user.name, tweets_user_path(user) %></td>
             <td><%= user.tweets.size %></td>
             <td></td>
             <td></td>

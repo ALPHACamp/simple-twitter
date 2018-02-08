@@ -2,14 +2,14 @@ class UsersController < ApplicationController
 
   def tweets
     @user = User.find(params[:id])
-    @tweets = @user.tweets
+    @tweets = @user.tweets.order(created_at: :desc)
   end
 
   def edit
     @user = User.find(params[:id])
     unless @user == current_user
       flash.alert = "只能修改自己的資料喔！"
-      redirect_to root_path
+      redirect_to tweets_user_path(@user)
     end
   end
 
