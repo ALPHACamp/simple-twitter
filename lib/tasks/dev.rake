@@ -58,4 +58,18 @@ namespace :dev do
     puts "have created fake replies"
     puts "now you have #{Reply.count} replies data"
   end
+
+  task fake_following: :environment do
+    Followship.destroy_all
+
+    User.all.each do |user|
+      rand(1..10).times do
+        user.followships.create(
+          following_id: User.where.not(id: user.id).sample.id
+        )
+      end
+    end
+    puts "have created fake followings"
+    puts "now you have #{Followship.count} followings data"
+  end
 end
