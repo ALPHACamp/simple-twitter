@@ -1,4 +1,4 @@
-<div class="container">
+<div id="admin" class="container">
   <h1 class="title">後台管理</h1>
 
   <div class="row">
@@ -23,7 +23,7 @@
           <th>likes</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="user">
         <% @users.each do |u| %>
           <tr>
             <th scope="row"><%= u.name %></th>
