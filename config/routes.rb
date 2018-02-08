@@ -14,10 +14,13 @@ Rails.application.routes.draw do
       get :tweets
       get :followings
       get :followers
+      get :likes
     end
   end
 
   resources :followships, only: [:create, :destroy]
+
+  resources :likes, only: [:create, :destroy]
 
   
   # Admin
