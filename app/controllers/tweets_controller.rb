@@ -13,6 +13,9 @@ class TweetsController < ApplicationController
     @tweet = @user.tweets.build(tweet_params)
     if@tweet.save
       flash[:notice] = "The tweet was posted."
+      redirect_to tweets_path
+    elsif @tweet.description.length <=140
+      flash[:alert] = @tweet.errors.full_messages.to_sentence
       redirect_back(fallback_location: root_path)
     else
       @tweets = Tweet.order(created_at: :desc).page(params[:page]).per(10)
@@ -32,7 +35,7 @@ class TweetsController < ApplicationController
   def unlike
     like = Like.where(tweet: @tweet, user: current_user).first
     like.destroy
-    redirect_back(fallback_location: root_path)
+    redirect_to tweets_path
   end
 
   private
