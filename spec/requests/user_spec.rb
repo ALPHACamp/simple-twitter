@@ -81,11 +81,11 @@ RSpec.describe 'User', type: :request do
 
     before do
       user_with_tweets
-      Followship.create(user_id: user_with_tweets.id, following_id: user.id, created_at: 1.days.ago)
-      Followship.create(user_id: user_with_tweets.id, following_id: user2.id, created_at: 2.days.ago)
-      Followship.create(user_id: user_with_tweets.id, following_id: user3.id, created_at: 3.days.ago)
-      Followship.create(user_id: user_with_tweets.id, following_id: user4.id, created_at: 4.days.ago)
-      Followship.create(user_id: user2.id, following_id: user.id, created_at: 10.days.ago)
+      Followship.create(user_id: user_with_tweets.id, following_id: user.id, updated_at: 1.days.ago, created_at: 1.days.ago)
+      Followship.create(user_id: user_with_tweets.id, following_id: user2.id, updated_at: 2.days.ago, created_at: 2.days.ago)
+      Followship.create(user_id: user_with_tweets.id, following_id: user3.id, updated_at: 3.days.ago, created_at: 3.days.ago)
+      Followship.create(user_id: user_with_tweets.id, following_id: user4.id, updated_at: 4.days.ago, created_at: 4.days.ago)
+      Followship.create(user_id: user2.id, following_id: user.id, updated_at: 10.days.ago, created_at: 10.days.ago)
       sign_in(user_with_tweets)
     end
 
@@ -110,11 +110,11 @@ RSpec.describe 'User', type: :request do
     before do
       user
       user_with_tweets
-      Like.create(user_id: user.id, tweet_id: tweet.id, created_at: 1.days.ago)
-      Like.create(user_id: user.id, tweet_id: tweet2.id, created_at: 2.days.ago)
-      Like.create(user_id: user.id, tweet_id: tweet3.id, created_at: 3.days.ago)
-      Like.create(user_id: user.id, tweet_id: tweet4.id, created_at: 4.days.ago)
-      Like.create(user_id: user.id, tweet_id: tweet5.id, created_at: 5.days.ago)
+      Like.create(user_id: user.id, tweet_id: tweet.id, updated_at: 1.days.ago, created_at: 1.days.ago)
+      Like.create(user_id: user.id, tweet_id: tweet2.id, updated_at: 2.days.ago, created_at: 2.days.ago)
+      Like.create(user_id: user.id, tweet_id: tweet3.id, updated_at: 3.days.ago, created_at: 3.days.ago)
+      Like.create(user_id: user.id, tweet_id: tweet4.id, updated_at: 4.days.ago, created_at: 4.days.ago)
+      Like.create(user_id: user.id, tweet_id: tweet5.id, updated_at: 5.days.ago, created_at: 5.days.ago)
       sign_in(user)
     end
 
