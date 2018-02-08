@@ -1,27 +1,105 @@
 <h1>tweets index (working...)</h1>
-<div class="container">
-<div class="container">
+  <div class="container-fluid">
+  <div class="row">
+  
+    
+<div class="col-md-7 col-lg-7 container">
     <div class="row">
+      <form> 
         <div class="form-group">
         <%= form_for @tweet  do |f| %>   
-        <%= f.text_area :description, placeholder: "140 character...", maxlength: 140, class:"form-control" %>
+        <%= f.text_area :description, placeholder: "140 character...", maxlength: 140, class:"form-control",id:"message" %>
         </div>
-        <div class ="form-group">
-        <%= f.submit "Tweet"  ,class:"btn btn-primary" %> 
-        </div>
+        
+        <%= f.submit "Tweet"  ,class:"btn btn-primary btn-right" %> 
+       
         <% end %>
+        </form>
     </div>
+
+
+<div class="row">
+
+<div class="form-group">
+  <% @tweets.each do |tweet| %>
+   <div id="tweets-list" >
+  
+    <div id="user-pic" class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+    <%= image_tag tweet.user.avatar ,class:"img-circle img-responsive img-profile"%>
+    </div>
+    
+    <div class="col-xs-12 col-sm-7 col-md-8 col-lg-10">
+    <h4><%= link_to "@#{tweet.user.name}" , tweets_user_path(tweet.user)%>, <%= tweet.created_at.strftime("%F")%>, <%=tweet.created_at.strftime(" %H:%M ")%></h4>
+      <p><%= truncate(tweet.description, length: 300)%></p>
+     <div> <a class="btn btn-link" href="#">Replay(2)</a>
+      <a class="btn btn-link like" href="#">Like(2)</a>
+              </div>
+    </div>
+
+  </div>
+  <% end %>
+</div>
+</div>
 </div>
 
-
-<% @tweets.each do |tweet| %>
-<div class="container">
-  <div class="col-md-12">
-  <h4><%= link_to "@#{tweet.user.name}" , tweets_user_path(tweet.user)%>, <%= tweet.created_at.strftime("%F")%>, <%=tweet.created_at.strftime(" %H:%M ")%></h4>
-  <p><%= truncate(tweet.description, length: 300)%></p>
- 
+   <!--Popular-->
+<div class=" col-md-3 col-lg-3 container">
+  <div class="row">
+    <H2>Popular</H2>
+    <div class="form-group">
+          <div id="popular" >
+            <div id="user-pic" class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+              <img src="img/myPic.jpg" class="img-circle img-responsive" alt="my-avater">
+            </div>
+            <div>
+              <h4>@Zarek </h4>
+              <p>快要做不完啦!!!!!</p> 
+               <button type="submit" class="btn btn-primary btn-right">Follow</button>
+            </div>
+          </div>
+      </div> 
+      <div class="form-group">
+          <div id="popular" >
+             <div id="user-pic" class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+              <img src="img/myPic.jpg" class="img-circle img-responsive" alt="my-avater">
+            </div>
+            <div >
+              <h4>@Zarek</h4>
+              <p>快要做不完啦!!!!!</p> 
+              <button type="submit" class="btn btn-primary btn-right">Follow</button>
+            </div>
+          </div>
+      </div> 
+      <div class="form-group">
+          <div id="popular" >
+             <div id="user-pic" class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+              <img src="img/myPic.jpg" class="img-circle img-responsive" alt="my-avater">
+            </div>
+            <div >
+              <h4>@Zarek</h4>
+              <p>快要做不完啦!!!!!</p>
+              <button type="submit" class="btn btn-primary btn-right">Follow</button> 
+            </div>
+          </div>
+      </div> 
+      <div class="form-group">
+          <div id="popular" >
+             <div id="user-pic" class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+              <img src="img/myPic.jpg" class="img-circle img-responsive" alt="my-avater">
+            </div>
+            <div >
+              <h4>@Zarek</h4>
+              <p>快要做不完啦!!!!!</p> 
+              <button type="submit" class="btn btn-primary btn-right">Follow</button>
+            </div>
+          </div>
+      </div> 
   </div>
 </div>
-<% end %>
 </div>
+
+
+</div>
+
+
 

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_restaurant, only: [:edit, :update]
+  before_action :set_tweet, only: [:tweets,:edit, :update]
   def tweets
     @user_tweets = User.find(params[:id]).tweets
   end
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
   private
 
-  def set_restaurant
+  def set_tweet
     @users = User.find(params[:id])    
   end
 

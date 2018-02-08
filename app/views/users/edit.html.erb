@@ -1,22 +1,49 @@
-<div class="container">
- <h1>Edit Profile</h1>
- <%= form_for  [@users] do |f| %>
- <table>
-     <tr>
-         <td>Name :</td>
-         <td><%= f.text_field :name %></td>
-     </tr>
-     <tr>
-         <td>自我介紹 :</td>
-         <td><%= f.text_area :introduction %></td>
-     </tr>
-     <tr>
-         <td>Photo: </td>
-         <td><%= image_tag @users.avatar,width:'300px' if @users.avatar?%>
-             <%= f.file_field :avatar %>
-         </td>
-     </tr>
- </table>
-    <%= f.submit%>
-    <% end %>
+<!--content-->
+  <div class="container-fluid">
+  <div class="row">
+  <div > 
+
+
+<!--person info-->
+  <%= form_for  [@users] do |f| %>
+<div class=" col-md-2 col-lg-2 container">
+  <div class="row">
+  
+    <div id="profile-pic" >
+              <%= image_tag @users.avatar,class:" img-responsive" if @users.avatar?%>
+    </div>
+      <div class="form-group">
+         
+            <div>
+              <h4><%= f.text_field :name %></h4>
+
+              <%= f.file_field :avatar  ,
+              label: 'Bowse Files'%>  
+            </div>
+        
+      </div> 
+  </div>
 </div>
+
+   <!--tweets-->
+  <div class="col-md-8 col-lg-8 container">
+    <div class="row">
+      <h1>Edit Profile</h1>
+        <form> 
+           <div class="form-group"> 
+            <%= f.text_field :name ,class:"form-control"%>
+          </div> 
+          <div class="form-group">
+            <%= f.text_area :introduction,class:"form-control" ,id:"message", rows:"5" %>
+          </div> 
+          
+        <%= f.submit  class:"btn btn-primary btn-right"%> 
+          
+        </form>
+    </div> 
+  </div>
+
+ <% end %>
+  </div>
+ </div>
+ </div>
