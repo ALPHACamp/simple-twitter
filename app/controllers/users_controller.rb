@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user,only:[:show, :edit, :update]
 
   def tweets
-    # @tweets = Tweet.all
+    @tweets = Tweet.all
     
   end
 
@@ -14,6 +14,8 @@ class UsersController < ApplicationController
     @repled_tweets = @user.tweets
     @followings = @user.followings
     @followers = @user.followers
+    @likes = @user.likes
+    @tweets = @user.tweets
   end
 
   def edit
@@ -28,15 +30,18 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings # 基於測試規格，必須講定變數名稱
+    @followings = Following.all 
+    # 基於測試規格，必須講定變數名稱
   end
 
   def followers
-    # @followers # 基於測試規格，必須講定變數名稱
+    @followers = Follower.all  
+    # 基於測試規格，必須講定變數名稱
   end
 
   def likes
-    # @likes # 基於測試規格，必須講定變數名稱
+    @likes = Like.all
+    # 基於測試規格，必須講定變數名稱
   end
 
   private
