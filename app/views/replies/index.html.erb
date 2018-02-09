@@ -14,7 +14,7 @@
       <br>
 
       <h2 class="sub-title">Replies</h2>
-      <% @tweet.replies.each do |reply| %>
+      <% @replies.each do |reply| %>
         <div class="tweet-item clearfix">
           <div class="tweet-image">
             <%= link_to tweets_user_path(reply.user) do %>
