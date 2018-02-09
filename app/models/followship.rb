@@ -3,6 +3,6 @@ class Followship < ApplicationRecord
 
   belongs_to :user
   belongs_to :following, class_name: "User", counter_cache: true
-  
 
+  #  counter_cache: :followers_count
 end

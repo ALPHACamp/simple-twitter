@@ -45,4 +45,14 @@ class User < ApplicationRecord
     likes_count = self.likes_count
     liked_tweets_count = self.tweets.sum(:likes_count)
   end
+
+  # def liked_tweets.user
+  #   liked_tweets.user = self.liked_tweets.user
+  # end
+
+
+  # def followships_count
+  #   followships_count = self.followings.conut
+  # end
+
 end
