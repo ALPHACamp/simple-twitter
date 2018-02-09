@@ -19,7 +19,7 @@ namespace :dev do
       puts user.name
     end
 
-    2.time do |i|
+    2.times do |i|
       name = FFaker::Name::first_name
       file = File.open("#{Rails.root}/public/avatar/user#{i+1}.jpg")
 
