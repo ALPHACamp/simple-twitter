@@ -10,9 +10,9 @@ class User < ApplicationRecord
   # 並參考 Devise 文件自訂表單後通過 Strong Parameters 的方法
 
   # validates :name, presence: true
-  validates_presence_of :name, length: { maximum: 20 }  
+  validates_presence_of :name, length: { maximum: 20 }
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
-  validates_presence_of :uniqueness
+  validates :name, uniqueness: true
 
   has_many :tweets, dependent: :restrict_with_error
 
@@ -40,11 +40,14 @@ class User < ApplicationRecord
   end
 
   def liked_tweets_count
+    self.liked_tweets_count = self.tweets.joins(:likes).count
+    self.save
     # tweets_count = self.tweets.count
     # followings_count = self.followings.count
     # followers_count = self.followers.count
-    likes_count = self.likes_count
-    liked_tweets_count = self.tweets.sum(:likes_count)
+    # likes_count = self.likes_count
+    # liked_tweets_count = self.tweets.sum(:likes_count)
+
   end
 
   # def liked_tweets.user
@@ -52,8 +55,5 @@ class User < ApplicationRecord
   # end
 
 
-  # def followships_count
-  #   followships_count = self.followings.conut
-  # end
 
 end
