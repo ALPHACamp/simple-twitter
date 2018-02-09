@@ -10,9 +10,8 @@ default: &default
   timeout: 5000
 
 development:
-  adapter: postgresql
-  database: simpletwitter
-  pool: 5
+  <<: *default
+  database: db/development.sqlite3
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
