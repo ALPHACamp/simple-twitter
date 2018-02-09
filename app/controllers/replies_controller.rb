@@ -13,7 +13,7 @@ class RepliesController < ApplicationController
   	@reply.user = current_user
   	@reply.save!
     @tweet.increment!(:replies_count)
-  	redirect_back(fallback_location: root_path)
+  	redirect_to tweet_replies_path
   end
 
   private

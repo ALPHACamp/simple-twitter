@@ -22,10 +22,10 @@ class TweetsController < ApplicationController
       flash[:notice] = "Successfully liked"
       current_user.increment!(:likes_count)
       @tweet.increment!(:likes_count)
-      redirect_back(fallback_location: root_path)
+      redirect_to tweets_path
     else
       flash[:alert] = @like.errors.full_messages.to_sentence
-      redirect_back(fallback_location: root_path)
+      redirect_to tweets_path
     end
   end
 
@@ -37,7 +37,7 @@ class TweetsController < ApplicationController
       current_user.decrement!(:likes_count)
       @tweet.decrement!(:likes_count)
       flash[:notice] = "Successfully unliked"
-      redirect_back(fallback_location: root_path)
+      redirect_to tweets_path
     end
   end
 

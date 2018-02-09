@@ -17,8 +17,8 @@ class FollowshipsController < ApplicationController
   end
 
   def destroy
-    @following = User.find(params[:following_id])
-  	@followship = current_user.followships.where(following_id: params[:following_id])
+    @following = User.find(params[:id])
+  	@followship = current_user.followships.where(following_id: params[:id])
   	if @followship
   		@followship.destroy_all()
       @following.decrement!(:followers_count)
