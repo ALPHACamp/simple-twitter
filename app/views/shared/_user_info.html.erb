@@ -17,6 +17,6 @@
     </div> 
    <!-- user's action button -->
     <%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-primary" if @user == current_user%> 
-    <%= render partial: "shared/followship", locals: {user: @user} %>  
+    <%= render partial: "shared/followship", locals: {user: user} %>  
   </div>
 </div>

@@ -15,9 +15,9 @@
 
       <table >
         <tbody>
-          <%= form_for @user do |f| %>
           <tr>
             <th scope="row">
+            <%= form_for @user do |f| %>
               <%= f.label :avatar, "上傳大頭照" %>
               <br>
               <%= image_tag @user.avatar, width: '150px' if @user.avatar? %>
@@ -40,8 +40,8 @@
                 <%= f.button 'cancel', type: :reset, class: "btn btn-default" %>
               </div>            
             </td>
-          </tr>
-          <% end %>
+            <% end %>
+          </tr>          
         </tbody> 
       </table>  
 
