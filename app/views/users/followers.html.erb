@@ -16,9 +16,9 @@
               <div class="help-block"><%= @users.introduction %></div> 
               <div>
                <%= link_to "Tweets : #{@users.tweets.count}" , tweets_user_path(@users),class:"help-block"%>
-              <div class="help-block">Following : <%= @users.followings.count%></div> 
-              <div class="help-block">Follower :<%= @users.followers_count%></div> 
-              <%= link_to "likes : #{@users.likes_count}" , likes_user_path(@users),class:"navbar-brand"%> 
+              <%= link_to "Following : #{@users.followings.count}" , followings_user_path(@users),class:"help-block"%> 
+              <%= link_to "Follower : #{@users.followers_count}" , followers_user_path(@users),class:"help-block"%>
+              <%= link_to "likes : #{@users.likes_count}" , likes_user_path(@users),class:"help-block"%> 
               </div>
               <div>
    <%= link_to "Edit Profile" , edit_user_path(current_user),class:"btn btn-primary"%>  

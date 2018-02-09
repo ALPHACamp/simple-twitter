@@ -16,7 +16,7 @@
               <div>
                <%= link_to "Tweets : #{@user_tweets.count}" , tweets_user_path(@users),class:"help-block"%>
               <%= link_to "Following : #{@users.followings.count}" , followings_user_path(@users),class:"help-block"%> 
-              <div class="help-block">Follower :<%= @users.followers_count%></div> 
+              <%= link_to "Follower : #{@users.followers_count}" , followers_user_path(@users),class:"help-block"%>
               <%= link_to "likes : #{@users.likes_count}" , likes_user_path(@users),class:"help-block"%>
               </div>
               

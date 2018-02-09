@@ -19,7 +19,6 @@
       </ul>
      
     </div>
-
     <!-- Collect the nav links, forms, and other content for toggling -->
      <% if current_user %>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -55,7 +54,8 @@
     </div>
     <% end %>
   </nav>
-
+<p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     
     <%= yield %>
   </body>
