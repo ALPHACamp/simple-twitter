@@ -30,16 +30,7 @@
               </h4>
               <p><%= tweet.description %></p> <br>
 
-              <p>
-                <%= link_to fa_icon("reply 2x"), tweet_replies_path(tweet) %>
-                <span class="lead"> <%= tweet.replies_count %> </span> &nbsp;
-                <% if tweet.is_liked?(current_user) %>
-                  <%= link_to fa_icon("heart 2x"), unlike_tweet_path(tweet), method: :post  %>
-                <% else %>
-                  <%= link_to fa_icon("heart-o 2x"), like_tweet_path(tweet), method: :post %>
-                <% end %> 
-                <span class="lead"> <%= tweet.likes_count %> </span>
-              </p>
+              <p><%= render "shared/social", tweet: tweet %></p>
 
             </div>
           </div>

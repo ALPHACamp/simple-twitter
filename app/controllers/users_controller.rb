@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     unless @user == current_user
-      flash.warning = "只能修改自己的資料喔！"
+      flash.alert = "只能修改自己的資料喔！"
       redirect_to tweets_user_path(@user)
     end
   end
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
   def likes
     @user = User.find(params[:id])
-    @likes = @user.liked_tweets.order(created: :desc)
+    @liked_tweets = @user.liked_tweets.order(created_at: :desc)
     # 基於測試規格，必須講定變數名稱
   end
 

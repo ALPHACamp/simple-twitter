@@ -20,7 +20,7 @@ namespace :dev do
   end
 
   task fake_tweet: :environment do
-    500.times do |i|
+    500.times do
       Tweet.create!(
         description: FFaker::Lorem.sentence,
         user: User.all.drop(1).sample
