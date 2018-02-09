@@ -77,12 +77,6 @@ namespace :dev do
     end
     puts "now you have #{Followship.count} Followship data"
 
-    tweets = Tweet.all
-    tweets.each do |tweet|
-       tweet.update_count
-    end
-    puts "now all tweets count were ready"
-
     users = User.all
     users.each do |user|
        user.update_count

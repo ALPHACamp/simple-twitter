@@ -1,5 +1,4 @@
 class FollowshipsController < ApplicationController
-  after_action :update_count , only: [:create, :destroy]
 
   def create
     @following = User.find(params[:following_id])
@@ -22,13 +21,6 @@ class FollowshipsController < ApplicationController
       flash[:alert] = "Followship destroyed"
     end
     redirect_back(fallback_location: root_path)
-  end
-
-  private
-
-  def update_count
-    @following.update_count
-    current_user.update_count
   end
 
 end
