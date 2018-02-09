@@ -1,3 +1,22 @@
-<div id="reply-<%=reply.id %>">
-  <%= reply.comment %>
+<div id="reply-<%=reply.id %>" class="reply">
+  <div class="row">
+    <div class="col-2">
+      <%= link_to(tweets_user_path(reply.user)) do %>
+        <% if reply.user.avatar.url %>
+          <%= image_tag reply.user.avatar.url, class: "img-fluid img-thumbnail rounded-circle"  %>
+        <% else %>
+          THere is no photo
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="col-10">
+      <h6>
+        <%= link_to reply.user.name, tweets_user_path(reply.user) %>, <%= reply.created_at %>
+      </h6>
+      <p> 
+        <%= reply.comment %>
+      </p>
+    </div>
+  </div>
 </div>

@@ -1,8 +1,8 @@
-<div class="border rounded">
+<div class="tweet_list">
   <div class="row">
-    <div class="col-3">
+    <div class="col-2">
       <% if tweet.user.avatar.url %>
-        <%= image_tag tweet.user.avatar.url, class: "img-fluid img-thumbnail" %>
+        <%= image_tag tweet.user.avatar.url, class: "img-fluid img-thumbnail tweet_list_image" %>
       <% else %>
         THere is no photo
       <% end %>

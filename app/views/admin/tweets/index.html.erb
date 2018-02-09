@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container admin_tweets_index">
   <ul class="nav nav-pills">
     <li class="nav-item">
       <%= link_to "Tweet's edit", admin_tweets_path, class: "nav-link active" %>
@@ -24,10 +24,34 @@
             <th scope="row"><%= tweet.id %></th>
             <td><%= tweet.description %></td>
             <th><%= tweet.user.name %></th>
-            <td><%= tweet.replies_count %></td>
+            <td class="admin_tweet_replies" >
+              <%= tweet.replies_count %>
+              <ul class="list-group hidden" >
+                <% tweet.replies.each do |reply| %>
+                  <li class="list-group-item"><%= reply.user.name %>:<%= reply.comment %></li>
+                <% end %>
+              </ul>
+
+              
+            </td>
             <td><%= link_to "Destroy", admin_tweet_path(tweet), method: :delete, remote: true %></td>
           </tr>
         <% end %>
+
+          <style type="text/css">
+            .hidden{
+              display: none;
+            }
+          </style>
+
+          <script type="text/javascript">
+            const $admin_tweet_replies =  document.querySelectorAll(".admin_tweet_replies");
+            $admin_tweet_replies.forEach(admin_tweet => admin_tweet.addEventListener("click", toggleReplies ) )
+            function toggleReplies(){
+              this.querySelector('ul').classList.toggle('hidden');
+              console.log(this.querySelector("ul"))
+            }
+          </script>
       </tbody>
     </table>
   </div>

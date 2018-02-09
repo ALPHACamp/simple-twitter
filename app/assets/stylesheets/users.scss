@@ -1,3 +1,119 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user_tweets{
+  margin-top:50px;
+  
+
+  .user_profile{
+    padding:8px;
+    .profile_image{
+      margin-bottom:10px;
+    }
+
+    .profile_name{
+      letter-spacing:0.08em;
+      font-weight:bold;
+    }
+  }
+
+  .tweet_list{
+    margin-bottom: 10px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px #a9a9a9;
+    padding:8px;
+
+    .tweet_list_image{
+      width:90px;
+      text-align:center;
+    }
+  }
+ 
+}
+
+.user_followings{
+  margin-top:50px;
+
+  .user_profile{
+    padding:8px;
+    .profile_image{
+      margin-bottom:10px;
+    }
+
+    .profile_name{
+      letter-spacing:0.08em;
+      font-weight:bold;
+    }
+  }
+
+  .tweet_user_list{
+    margin-top:15px;
+    padding:8px;
+    background:#fff;
+    box-shadow: 1px 1px 1px #a9a9a9;
+  } 
+}
+
+.user_followers{
+  margin-top:50px;
+
+  .user_profile{
+    padding:8px;
+    .profile_image{
+      margin-bottom:10px;
+    }
+
+    .profile_name{
+      letter-spacing:0.08em;
+      font-weight:bold;
+    }
+  }
+
+  .tweet_user_list{
+    margin-top:15px;
+    padding:8px;
+    background:#fff;
+    box-shadow: 1px 1px 1px #a9a9a9;
+  }
+}
+
+.user_likes{
+  margin-top:50px;
+  
+
+  .user_profile{
+    padding:8px;
+    .profile_image{
+      margin-bottom:10px;
+    }
+
+    .profile_name{
+      letter-spacing:0.08em;
+      font-weight:bold;
+    }
+  }
+
+  .tweet_list{
+    margin-bottom: 10px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px #a9a9a9;
+    padding:8px;
+
+    .tweet_list_image{
+      width:90px;
+      text-align:center;
+    }
+  }
+}
+
+.user_edit{
+  margin-top:50px;
+  height:70vh;
+
+  .edit_submit{
+    margin-top:8px;
+  }
+}

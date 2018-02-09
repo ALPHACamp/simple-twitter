@@ -1,4 +1,4 @@
-<div id="user-<%= user.id %>" class="container border rounded">
+<div id="user-<%= user.id %>" class="container border rounded tweet_user_list">
   <div class="row">
     <div class="col-3">
       <% if user.avatar.url %>
@@ -11,7 +11,8 @@
     <div class="col-9">
       <h5><%= link_to user.name, tweets_user_path(user) %></h5>
       <p>
-        <%= user.introduction %>
+        <%= truncate(user.introduction, length: 75) %>
+        <span class="user_intro_more"><%= link_to "more", tweets_user_path(user) %></span>
       </p>
       <span id="follow-<%= user.id %>">
         <%= render :partial => "shared/follow_list", locals:{user: user} %>

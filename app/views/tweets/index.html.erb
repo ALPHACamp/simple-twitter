@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container tweets_index">
   <div class="row">
-    <div class="col-8">
+    <div class="col-7">
       <%= form_for :tweet,html: {id: "tweet_form"}, remote: true do |tweet| %>
         <div class="form-group">
-          <%= tweet.text_area :description,rows: "5", class: "form-control", placeholder: "What's on your mind?"  %>
+          <%= tweet.text_area :description,rows: "5", class: "form-control tweet_text_area", placeholder: "What's on your mind?"  %>
         <%= tweet.submit "tweet", class: "btn btn-primary offset-lg-10 col-2" %>
         </div>
       <% end %>
@@ -16,9 +16,9 @@
 
     </div>
 
-    <div class="col-4">
+    <div class="col-4 offset-lg-1">
       <h2>Popular</h2>
-      <div class="border">
+      <div class="all_users">
         <% @users.each do |user| %>
           <%= render :partial => "shared/user_list", locals: {user: user} %>
         <% end %>

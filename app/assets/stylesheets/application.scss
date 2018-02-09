@@ -14,3 +14,67 @@
  *= require_self
  */
  @import "bootstrap";
+
+#body{
+  background-color:#E9EBEE;
+
+  .header_bar{
+    background:#4267B2;
+    height: 40px;
+    line-height:45px;
+    box-shadow: 1px 1px 1px 1px gray;
+    letter-spacing:0.12em;
+    font-weight:bold;
+    transition:all 0.5s;
+
+    a{
+      color:#fff;
+      padding:3px 5px;
+      border-radius:5px;
+
+    }
+    a:hover{
+      text-decoration:none;
+      background:#2952a3;
+      color:#c5c5c5;
+    }
+  }
+
+  .form{
+    margin-top:20px;
+  }
+}
+
+.footer{
+  background:#4267B2;
+  margin-top:30px;
+  height:40px;
+  
+  text-align:center;
+  color:#fff;
+  box-shadow: 0 1px 1px 1px gray;
+
+  a{
+    color:red;
+  }
+
+  h6{
+    line-height:40px;
+  }
+}
+
+.admin_tweets_index{
+  margin-top:50px;
+
+  table{
+    margin-top:15px;
+  }
+}
+
+.admin_users_index{
+  margin-top:50px;
+
+  table{
+    margin-top:15px;
+  }
+}

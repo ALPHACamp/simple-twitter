@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container reply_index">
   <div class="row">
     <div class="col-3">
       <%= render :partial => "shared/profile", locals: {user: @tweet.user} %>
@@ -10,16 +10,16 @@
         <%= render :partial => "shared/tweet_list", locals: {tweet: @tweet} %>
 
         <h3>Reply</h3>
-        <div id="replies">
+        <div id="replies" class="replies_list">
           <% @replies.each do |reply| %>
             <%= render :partial => "shared/reply_list", locals:{ reply: reply } %>
           <% end %>
         </div>
+
         <%= form_for :reply, html: {id: "reply_form"}, remote: true do |reply| %>
           <div class="form-group">
             <%= reply.hidden_field :tweet_id, :value => @tweet.id %>
             <%= reply.text_field :comment,class: "form-control", placeholder: "Comment" %>
-            <%= reply.submit "Comment", class: "btn btn-primary" %>
           </div>  
         <% end %>
       </div>
