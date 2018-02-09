@@ -14,6 +14,7 @@
         <li><%= link_to 'Admin Panel', admin_root_path %></li>
       <% end %>
       <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
+
       <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
 
       <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
