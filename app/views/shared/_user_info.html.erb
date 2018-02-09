@@ -1,15 +1,14 @@
 <div class="container">
   <div class="row">
 
-    <%= image_tag @user.avatar, class: "img-rounded", width: "200px", hight: "200px",
+    <%= image_tag user.avatar, class: "img-rounded", width: "200px", hight: "200px",
     onerror: 'this.error=null;this.src="https://d30y9cdsu7xlg0.cloudfront.net/png/17241-200.png"' %>
-    <h1><%= @user.name %></h1>
-    <p><%= @user.introduction %></p>
-    <p> <%= link_to "Tweets #{@user.tweets.count}", tweets_user_path(@user) %></p>
+    <h1><%= user.name %></h1>
+    <p><%= user.introduction %></p>
+    <p> <%= link_to "Tweets #{user.tweets.count}", tweets_user_path(user) %></p>
     <p>Following ??</p>
     <p>Follower ??</p>
-    <p>Like <%= @user.likes_count %></p>
-    <button>Follow</button>
+    <p>Like <%= user.likes_count %></p>
 
   </div>
 </div>

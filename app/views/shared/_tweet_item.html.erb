@@ -12,7 +12,7 @@
       <p><%= link_to "#{tweet.user.name},#{tweet.created_at.strftime('%F')},#{tweet.created_at.strftime('%H:%M')  }", tweets_user_path(tweet.user) %></p>
       <p><%= tweet.description %></p>
       <p>
-        Replye(<%= tweet.replies_count %>)
+        <%= link_to "Replye(#{tweet.replies_count})", tweet_replies_path(tweet.id) %>
         <% if current_user != tweet.user %>
           Like(<%= tweet.likes_count %>)
         <% end %>

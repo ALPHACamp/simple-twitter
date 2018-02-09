@@ -1,9 +1,9 @@
 <!-- User info -->
 <div class="col-md-4">
-  <%= render partial: "shared/user_info" %>
+  <%= render partial: "shared/user_info", locals: {user: @user} %>
 </div>
 
 <!-- User Tweets -->
 <div class="col-md-8">
-  <%= render partial: "shared/tweets_item" %>
+  <%= render partial: "shared/tweets_item", locals: {tweets: @tweets} %>
 </div>
