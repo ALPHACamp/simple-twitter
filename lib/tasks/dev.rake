@@ -22,7 +22,7 @@ namespace :dev do
 
   task fake_tweet: :environment do
     Tweet.destroy_all
-    10.times do |i|
+    15.times do |i|
       tweet = Tweet.new(
         description: FFaker::Lorem::sentence(10),
         user: User.all.sample,
@@ -34,15 +34,21 @@ namespace :dev do
 
   task fake_like: :environment do
     Like.destroy_all
-    Tweet.all.each do |tweet|
-      tweet.likes.create!(user: User.all.sample)
+    20.times do |i|
+      user = User.all.shuffle
+      Like.create!(user: user.pop, tweet: Tweet.all.sample)
     end
     puts "successful"
   end
 
   task fake_follow: :environment do
-    User.all.each do |user|
-      user.followships.create!(following: User.where('id !=? ', user).sample)
+    Followship.destroy_all
+    users = User.all
+    users.each do |user|
+      others = User.where.not(id: user.id).shuffle
+      5.times do |i|
+        user.followships.create!(following: others.pop)
+      end
     end
     puts "successful"
   end
