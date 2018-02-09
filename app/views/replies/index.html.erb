@@ -16,6 +16,15 @@
         </li>
         <% end %>
       </ul>
+      <%= form_for [@tweet, @reply], as: :x do |f| %>
+        <div class="form-group"> 
+          <%= f.text_area :comment, placeholder: "回覆內容", class: "form-control", rows: "5" %>
+        </div>
+        <div class="form-group">
+          <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+          <%= f.submit class: "btn btn-primary" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
