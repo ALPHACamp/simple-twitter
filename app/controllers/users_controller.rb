@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   #個別user的推播與簡介
   def tweets
-    @tweets = @user.tweets.order(created_at: :desc)
+    @tweets = @user.tweets
   end
 
   def edit
