@@ -15,7 +15,7 @@
     </div>
     <p><%= object.description %></p>
 
-    <%= link_to "Reply(#{object.replies_count})", replies_path(object), class: "reply-btn" %>
+    <%= link_to "Reply(#{object.replies_count})", tweet_replies_path(object), class: "reply-btn" %>
     <%= render partial: "shared/like", locals: {object: object} %>
 
     <% if current_user.admin? && flag %>

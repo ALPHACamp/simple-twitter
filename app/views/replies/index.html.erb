@@ -34,7 +34,7 @@
         <br>
       <% end %>
 
-      <%= form_for @reply do |f| %>
+      <%= form_for [@tweet, @reply] do |f| %>
         <div class="form-group">
           <%= f.text_area :comment, placeholder: "Write some comment!", class: "form-control", id: "reply-new" %>
         </div>
