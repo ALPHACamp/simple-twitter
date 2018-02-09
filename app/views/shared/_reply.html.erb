@@ -1,0 +1,13 @@
+    <% @replies.each do |r| %>
+      <div class="media">
+        <%= image_tag r.user.avatar , class: "align-self-center mr-3 avatar rounded"%>
+        <div class="media-body">
+          <h5 class="mt-0">
+            <%= link_to  "#{r.user.name} #{r.created_at}",tweets_user_path(r.user_id)%>
+          </h5>
+          <p>
+            <%= r.comment %>
+          </p>
+        </div>
+      </div>
+    <%end%>
