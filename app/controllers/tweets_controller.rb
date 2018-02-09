@@ -18,6 +18,7 @@ class TweetsController < ApplicationController
     else
       flash.now[:alert] = @tweet.errors.full_messages.to_sentence if @tweet.errors.any?
       @tweets = Tweet.all
+      @users = User.order(followers_count: :desc).limit(10)
       render :index
     end
   end
