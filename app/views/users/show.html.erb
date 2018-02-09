@@ -11,14 +11,15 @@
       <div >  
         <h3><%= @user.name %></h3>
         <div><%= simple_format @user.introduction %></div>
-        <p><strong>tweet 32</strong></p>
+        <p><strong><%= @tweets.count %> Tweet</strong></p>
         <p><strong><%= @followings.count %> Followings</strong></p>
         <p><strong><%= @followers.count %> follower</strong></p>
-        <p><strong>like 23</strong></p>
+        <p><strong>like </strong></p>
       </div>  
       <% if @user.email == current_user.email %>
         <p><%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %></p>
-        <p><%= link_to('修改個人資料', edit_user_path(current_user), class: "btn btn-primary") %></p>
+        <% else %>
+        <p><%= render partial: "shared/follow", locals: {user: @user} %></p>
       <%end%>
     </div>
 

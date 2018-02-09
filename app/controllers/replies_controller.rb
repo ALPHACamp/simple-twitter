@@ -5,6 +5,9 @@ class RepliesController < ApplicationController
     @reply = Reply.new
     @user = @tweet.user
     @replies = @tweet.replies
+    @tweets = Tweet.all.order(created_at: :desc).limit(10)
+    @followings = @user.followings
+    @followers = @user.followers
   end
 
   def create
