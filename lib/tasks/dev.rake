@@ -18,6 +18,7 @@ namespace :dev do
       user.save!
       puts user.name
     end
+    puts " #{User.count} User data"
   end
 
   task fake_tweet: :environment do
@@ -74,4 +75,22 @@ namespace :dev do
     puts " #{Like.count} liked tweets"
   end  
 
+  task fake_all: :environment do
+    # Rake::Task['db:drop'].execute
+    #Rake::Task['db:migrate'].execute
+    #Rake::Task['db:seed'].execute
+    Rake::Task['dev:fake_user'].execute
+    Rake::Task['dev:fake_tweet'].execute
+    Rake::Task['dev:fake_reply'].execute
+    Rake::Task['dev:fake_followship'].execute
+    Rake::Task['dev:fake_like'].execute
+  end
+
+  task fake_clean: :environment do
+    Like.destroy_all
+    Followship.destroy_all
+    Reply.destroy_all
+    Tweet.destroy_all
+    User.destroy_all
+  end
 end
