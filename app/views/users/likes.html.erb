@@ -9,7 +9,7 @@
 
     <div class="col-md-8">
       <h2>Like</h2>
-      <% @liked_tweets.each do |tweet| %>
+      <% @likes.each do |tweet| %>
       <div class="tweets">
         <ul class="list-inline">
           <li class="list-inline-item"><h4><%= link_to "#{tweet.user.name}" , tweets_user_path(tweet.user)%></h4></li>
