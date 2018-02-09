@@ -28,9 +28,9 @@
               <h3><%= link_to "#{user.name}" %></h3>
               <h4><%= truncate user.introduction, length: 100 %></h4>
             </div>
-<!--             <div class="user-item-follow">
-              <%#= render partial: "shared/follow", locals: {user: user}%>
-            </div> -->
+            <div class="user-item-follow">
+              <%= render partial: "shared/follow", locals: {user: user}%>
+            </div>
           </div>
         <% end %>
     </div>
