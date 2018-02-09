@@ -31,7 +31,7 @@ class TweetsController < ApplicationController
     tweet.user.count_likes
     if like
       like.destroy
-      redirect_back(fallback_location: root_path)
+      redirect_to tweets_path
     end
   end
   

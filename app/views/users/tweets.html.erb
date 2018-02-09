@@ -5,7 +5,10 @@
     <div class="col-md-4">
       <div><%= @user.name %></div>
       <div><%= @user.introduction %></div>
-      <div>Tweets 32</div>
+      <div>
+        <%= link_to tweets_user_path(@user), method: :get do %>tweet <%= @user.tweets.count %>
+        <% end %>
+      </div>
       <div>
         <%= link_to followings_user_path(@user), method: :get do %>following <%= @user.followings.count %>
         <% end %> 
