@@ -52,9 +52,10 @@
                 <p><%= truncate(user.introduction, length: 50) %></p>
               <% end %>
 
-              <% if @user==current_user %>
-              <% else %>
+              <% if user !=current_user %>
                 <%= render partial: "shared/follow", locals: {user: user} %>
+              <% else %>
+              
               <% end %>
             </div>
           </div>
