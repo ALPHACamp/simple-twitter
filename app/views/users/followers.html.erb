@@ -5,15 +5,12 @@
   <%= link_to "Tweets(#{@user.tweets.count})", tweets_user_path(@user) %>
   <%= link_to "Following(#{@user.followings.count})", followings_user_path(@user) %>
   <%= link_to "Follower(#{@user.followers.count})", followers_user_path(@user) %>
+  
+  <h2>Followers</h2>
 
-  <ul>
-  <% @tweets.each do |tweet|%>
-  <li>
-  Tweets: <%= tweet.description %> <br>
-  </li>
-  <% end %>
- <% if current_user.following?(@user)%>
-    <%=  link_to "Unfollow", followship_path(@user), method: :delete %>
-  <% else %>
-    <%=  link_to "Follow", followships_path(following_id: @user), method: :post %>
-  <% end %>
+  <% @followers.each do |follower| %>
+    <%= link_to tweets_user_path(follower) do %>
+      <img src="http://via.placeholder.com/50x50" class="img-responsive img-rounded">
+      <%= follower.name %>
+    <% end %>
+  <% end %> 

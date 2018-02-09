@@ -16,7 +16,15 @@ class User < ApplicationRecord
   end
 
 
-  has_many :tweets, dependent: :delete_all
-  has_many :replies, dependent: :delete_all
+  has_many :tweets
+  has_many :replies
 
+  has_many :followships, dependent: :destroy
+  has_many :followings, through: :followships
+  has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
+  has_many :followers, through: :inverse_followships, source: :user
+
+  def following?(user)
+    self.followings.include?(user)
+  end
 end

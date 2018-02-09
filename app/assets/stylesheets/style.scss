@@ -1,0 +1,142 @@
+* {
+  font-family: Times New Roman, Georgia, serif;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h4 {
+
+  font-size: 20px;
+}
+
+.form-group {
+  font-size: 20px;
+}
+
+
+a:hover {
+  text-decoration: none;
+}
+
+
+
+nav.navbar {
+  background-color: #88c4ce;
+}
+
+.navbar-brand {
+  font-size: 32px;
+  margin: 15px;
+}
+
+.navbar-nav {
+  li {
+    a.nav-avatar {
+      padding: 10px;
+    }
+    a {
+      padding: 30px 10px;
+      font-size: 20px;
+    }
+  }
+}
+
+.navbar-text {
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.nav-tabs {
+  margin-bottom: 20px;
+}
+
+
+.tweets-form {
+  margin-bottom: 20px;
+}
+.tweet-item {
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding: 3px;
+  margin-bottom: 10px;
+}
+
+.tweet-item .avatar {
+  width: 150px;
+  height: 150px;
+
+}
+
+.tweet p {
+  font-size: 20px;
+}
+
+.tweet .reply {
+  font-size: 20px;
+}
+
+.follow-item {
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.user-item {
+  border: 2px solid lightgray;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+.user-name {
+  text-align: left;
+  font-size: 25px;
+  color:lightblue;
+}
+
+.my-btn {
+  background-color: #71a6d0;
+}
+
+.my-btn:hover {
+  background-color: lightblue;
+}
+
+.link-items {
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.links {
+ font-size: 1.2em;
+}
+.links-red {
+  color: red;
+}
+.links-red:hover {
+  color: red;
+}
+.links-black {
+  color: gray;
+  font-size: 22px;
+}
+
+.intro {
+  font-size: 20px;
+
+}
+
+textarea.text-area {
+  font-size: 1.5em;
+  height: 8em;
+  border-radius: 20px;
+  padding: 20px;
+  border-color: #b6d6e4;
+}
+
+.text-field {
+  font-size: 1.5em;
+  border-radius: 5px;
+  border-color: #b6d6e4;
+} 

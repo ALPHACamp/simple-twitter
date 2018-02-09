@@ -1,18 +1,16 @@
 <h1>Profile</h1>
 <%= form_for @user do |f| %>
   <div class="form-group">
-    <%= f.label :name, "Name" %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="form-group">
-    <%= f.label :introduction, "Introduction" %><br />
-    <%= f.text_area :introduction %>
-  </div>
-  <div class="form-group">
-    <%= f.label :avatar, "Avatar" %><br />
+    <%= image_tag @user.avatar, size: "100" if @user.avatar? %><br />
     <%= f.file_field :avatar %>
   </div>
   <div class="form-group">
-    <%= f.submit :disable_with => 'Submiting...' %>
+    <%= f.text_field :name, placeholder: "Name" %>
+  </div>
+  <div class="form-group">
+<%= f.text_area :introduction, placeholder: "Type anything about you here.." %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "Update", :disable_with => 'Submiting...' %>
   </div>
 <% end %>

@@ -1,0 +1,21 @@
+<div class="profile">
+   <%= render partial: "shared/avatar", locals: {avatar: user.avatar} if user.avatar? %>
+   <p></p>
+   <div class="intro">
+     <%= user.introduction %>
+   </div>
+   <div class="items">
+     <%= link_to "Tweets #{user.tweets.size}", tweets_user_path(user) %>
+
+    <%= link_to "Following #{user.followings.size}", followings_user_path(user) %>
+     <p>Follower</p>
+     <%= link_to "like #{user.likes_count}", likes_user_path(user) %>
+   </div>
+   <div class="button">
+     <% if user == current_user %>
+       <%= link_to "Edit Profile", user_path(user) %>
+     <% else %>
+       <%= render partial: "shared/follow", locals: {user: user} %>
+     <% end %>
+   </div>
+</div>
