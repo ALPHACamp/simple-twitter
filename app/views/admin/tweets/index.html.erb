@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row">
+
+  <h1>TWEET後台</h1>
+  
+    <!-- 使用 Bootstrap components 的 Nav Tabs -->
+    <!-- https://getbootstrap.com/docs/3.3/components/#nav-tabs -->
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active">
+         <%= link_to 'Tweets', admin_tweets_path %>
+      </li>
+      <li role="presentation">
+        <%= link_to 'Users', admin_users_path %>
+      </li>
+     
+    </ul>
+
+  </div>
+</div>
+<br>
+  
+  <div class="container">
+
+  <div class="row">
+ <% @tweets.each do |tweet| %>
+    <div class='col-xs-6 tweet-box'>
+      <div class="col-xs-3 text-center">
+        <%= image_tag tweet.user.avatar, class: "img-responsive img-rounded center-block" %>
+         <br>
+          <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger "%>
+      </div>
+      <div class="col-xs-9">
+
+
+        <div class="caption">
+         
+            <p>
+              <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
+                <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %>
+            </p>
+            <p>
+              <%= truncate(tweet.description, length: 80) %>
+            </p>
+            <%= link_to "Reply(#{tweet.replies.count})", tweet_replies_path(tweet), class: "links" %>
+
+              <% if tweet.is_liked?(current_user) %>
+
+                <%= link_to "unlike(#{tweet.likes.count})", unlike_tweet_path(tweet), remote: true, method: :post, class: "btn-danger" %>
+
+                  <% else %>
+
+                    <%= link_to "likes(#{tweet.likes.count})", like_tweet_path(tweet), remote: true, method: :post, class: "btn-danger" %>
+
+                      <% end %>
+                      
+                        
+
+        </div>
+
+      </div>
+      
+    </div>
+    
+<% end %>
+  </div>
+</div>
