@@ -2,10 +2,10 @@ class TweetsController < ApplicationController
 before_action :authenticate_user!
   def index
     @tweet = Tweet.new
-    @tweets= Tweet.all
+    @tweets= Tweet.order(created_at: :desc)
     @tweet_order = Tweet.order(created_at: :desc).limit(10)
     @user_all= User.all
-    @users= User.order(created_at: :desc)
+    @users= User.order(followers_count: :desc)
     @user_followers_count = User.order(followers_count: :desc)
   end
 

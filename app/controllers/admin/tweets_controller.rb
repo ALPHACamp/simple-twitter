@@ -1,6 +1,6 @@
 class Admin::TweetsController < Admin::BaseController
   def index
-  @tweets = Tweet.all
+  @tweets = Tweet.order(created_at: :desc)
   @reply_all = Reply.all
   end
 

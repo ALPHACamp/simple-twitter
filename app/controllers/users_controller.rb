@@ -27,16 +27,17 @@ class UsersController < ApplicationController
   end
   def followings
     @user_id = User.find(params[:id])
-    @followings = @user_id.followships.order(created_at: :desc)
+    @followings = @user_id
   end
 
   def followers
     @user_id = User.find(params[:id])
-    @followers = @user_id.inverse_followships.order(created_at: :desc)
+    @followers = @user_id
   end
 
   def likes
     @user_id = User.find(params[:id])
+    @like = Like.order(created_at: :desc).limit(10)
     @likes = Like.order(created_at: :desc).limit(10)
   end
 
