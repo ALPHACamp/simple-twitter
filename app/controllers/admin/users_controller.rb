@@ -3,7 +3,7 @@ class Admin::UsersController < Admin::BaseController
 
   def index
     
-    @users = User.page(params[:page]).per(9)
+    @users = User.left_joins(:tweets).group(:user_id).order('count(tweets.id) DESC').page(params[:page]).per(9)
 
   end
 
