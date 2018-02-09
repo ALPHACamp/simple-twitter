@@ -8,7 +8,23 @@
   <div class="following">
     <div class="row">
       <p>Following</p>
-      <p>list of following</p>
+      <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= @followings.count %></strong> followings</h3>
+          </div>
+          <ul class="list-group">
+            <% @followings.each do |following| %>
+            <li class="list-group-item">
+              <%= link_to user_path(following) do %>
+              <%= image_tag(following.avatar, height: 30, width: 30, class: "img-circle") %>
+              <%= following.name %>
+              <% end %>
+              <p><%= following.introduction %></p>
+              <%= link_to  "Unfollow", followship_path(following), method: :delete, class: "btn btn-primary ctweet" %>
+            </li>
+            <% end %>
+          </ul>
+        </div>
     </div>
   </div>
 </div>

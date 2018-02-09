@@ -29,8 +29,8 @@ class User < ApplicationRecord
   has_many :followings, through: :followships
 
   #處理followers的關聯
-  #has_many :inberse_followships, class_name: "Followship", foreign_key: "following_id"
-  #has_many :followerss, throught: :inverse_followships, source: :user
+  has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
+  has_many :followers, through: :inverse_followships, source: :user
 
   #確認是管理者
   def admin?

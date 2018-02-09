@@ -19,7 +19,9 @@ class UsersController < ApplicationController
 
   #我在追蹤誰
   def followings
-    @followings # 基於測試規格，必須講定變數名稱
+    # 基於測試規格，必須講定變數名稱
+    @followings = @user.followings
+    @followers = @user.followers
     @user = User.find(params[:id])
   end
 
