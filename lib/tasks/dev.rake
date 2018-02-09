@@ -110,4 +110,14 @@ namespace :dev do
     end
     puts "Now, All users understand who are following themselves."
   end
+
+  task fake_updatereplies_count: :environment do
+    Tweet.all.each do |tweet|
+      tweet.update!(
+        replies_count: Reply.where(:tweet_id => tweet.id).length
+      )
+      tweet.save!
+    end
+    puts "Now, All tweets understand how many replies."
+  end
 end

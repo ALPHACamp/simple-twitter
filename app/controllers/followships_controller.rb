@@ -12,7 +12,6 @@ class FollowshipsController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
   end
-  end
 
   #取消追蹤
   def destroy
@@ -20,6 +19,5 @@ class FollowshipsController < ApplicationController
     @followship.destroy
     flash[:alert] = "Followship destroyed"
     redirect_back(fallback_location: root_path)
-  end
   end
 end
