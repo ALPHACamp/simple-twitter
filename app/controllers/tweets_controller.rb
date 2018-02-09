@@ -1,7 +1,7 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:like, :unlike]
   def index
-    @tweets = Tweet.order(created_at: :desc)
+    @tweets = Tweet.all.order(created_at: :desc)
     @users = User.order(followers_count: :desc).limit(10)
     @tweet = Tweet.new
   end
@@ -10,22 +10,22 @@ class TweetsController < ApplicationController
     @tweet = current_user.tweets.build(tweet_params)
     if @tweet.save
       flash[:notice] = "Tweet successfully!!!"
-      redirect_to root_path
+      redirect_to tweets_path
     else
       flash[:alert] = "Your tweet is more than 140 characters!!!Please simplify your tweet."
-      render :index
+      redirect_to tweets_path
     end
   end
 
   def like
     @tweet.likes.create!(user: current_user)
-    redirect_back fallback_location: root_path
+    redirect_back fallback_location: tweets_path
   end
 
   def unlike
     like = Like.where(tweet: @tweet, user: current_user)
     like.destroy_all
-    redirect_back fallback_location: root_path
+    redirect_back fallback_location: tweets_path
   end
 
   private

@@ -2,10 +2,17 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:tweets, :edit, :update, :followings, :followers, :likes]
 
   def tweets
-    @tweets = @user.tweets.order(created_at: :desc)
+    if @user == current_user
+      @tweets = current_user.tweets.order(created_at: :desc)
+    else
+      @tweets = @user.tweets.order(created_at: :desc)
+    end
   end
 
   def edit
+    if current_user != @user
+      tweets_user_path(current_user)
+    end
   end
 
   def update

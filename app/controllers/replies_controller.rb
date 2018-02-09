@@ -10,8 +10,11 @@ class RepliesController < ApplicationController
     @tweet = Tweet.find(params[:tweet_id])
     @reply = @tweet.replies.build(reply_params)
     @reply.user = current_user
-    @reply.save!
-    redirect_to root_path
+    if @reply.save!
+      redirect_to tweet_replies_path(@tweet)
+    else
+      render :index
+    end
   end
 
 private
