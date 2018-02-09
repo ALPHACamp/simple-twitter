@@ -1,0 +1,26 @@
+<img src="http://via.placeholder.com/200x200" alt="avatar">
+<h2><%= user.name %></h2>
+<p>introduction: <%= user.introduction %></p>
+<ul>
+  <li>
+    <%= link_to "Tweets", tweets_user_path(user) %>
+    <%= user.tweets.count %>
+  </li>
+  <li>
+    <%= link_to "Following", followings_user_path(user) %>
+    <%= user.followings.count %>
+  </li>
+  <li>
+    <%= link_to "Follower", followers_user_path(user) %>
+    <%= user.followers.count %>
+  </li>
+  <li>
+    <%= link_to "Like", likes_user_path(user) %>
+    <%= user.likes.count %>
+  </li>
+</ul>
+<% if user == current_user %>
+  <%= link_to('Edit Profile', edit_user_path(current_user)) %>
+<% else %>
+  <button>Follow</button>
+<% end %>

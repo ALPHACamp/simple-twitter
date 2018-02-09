@@ -1,0 +1,7 @@
+<div class="col-md-4">
+  <%= render partial: "shared/user-profile", locals: {user: @user} %>
+</div>
+<div class="col-md-8">
+  <h1>Like</h1>
+  <%= render partial: "shared/tweet", locals: {tweets: @likes}%>
+</div>

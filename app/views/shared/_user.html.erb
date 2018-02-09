@@ -1,0 +1,22 @@
+<% users.each do |user| %>
+  <div class="user clearfix">
+    <div class="avatar">
+      <img src="http://via.placeholder.com/40x40" alt="avatar">
+    </div>
+
+    <div class="text">
+      <h4><%=link_to user.name, tweets_user_path(user) %></h4>
+      <p><%= user.introduction %></p>
+    </div>
+
+    <div class="pull-right">
+      <% if user!= current_user %>
+        <% if current_user.following?(user) %>
+          <%= link_to "Unfollow", followship_path(user), method: :delete, class:"btn btn-danger" %>
+        <% else %>
+          <%= link_to "Follow", followships_path(following_id: user), method: :post, class:"btn btn-primary" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
