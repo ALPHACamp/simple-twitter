@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     member do
       get :tweets
       get :followings
+      get :followers
     end
   end
   root "tweets#index"
