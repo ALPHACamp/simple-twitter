@@ -8,6 +8,7 @@ class RepliesController < ApplicationController
   end
 
   def create
+    # when reply created, it'll store at everybody
     @reply = @tweet.replies.build(reply_params)
     @reply.user = current_user
     @reply.save

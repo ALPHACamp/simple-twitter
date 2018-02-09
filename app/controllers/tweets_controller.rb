@@ -23,6 +23,7 @@ class TweetsController < ApplicationController
   end
 
   def unlike
+    # unlike crash
     tweet = Tweet.find(params[:id])
     like = Like.where(tweet: tweet, user: current_user)
     like.destroy_all
