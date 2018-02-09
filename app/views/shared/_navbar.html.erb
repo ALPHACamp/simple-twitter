@@ -24,11 +24,9 @@
           <!-- end of 新增 Admin 後台 -->
           <li><p class="navbar-text">
             <%= link_to tweets_user_path(current_user.id) do %>
-              <%= current_user.id %>
               <%= current_user.name %>
             <% end %></p>
           </li>
-          <li><%= link_to "Profile", edit_user_path(current_user) %></li>
           <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
           <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
         <% else %>
