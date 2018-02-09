@@ -31,7 +31,7 @@
   /* ###### Tweet ###### */
   .tweet-wall {
     border: 1px solid #ccc;
-    border-radius: 10px;
+    border-radius: 7px;
     margin: 5px;
   }
 
@@ -64,7 +64,7 @@
   /* ###### Followship ###### */
   .follow-wall {
     border: 1px solid #ccc;
-    border-radius: 10px;
+    border-radius: 7px;
     margin: 5px;
     padding: 8px;
   }
@@ -79,13 +79,28 @@
   }
 
   /* ###### Profile ###### */
-.profile-form {
-  margin-top: 40px;
-}
+  .profile-form {
+    margin-top: 40px;
+  }
 
   /* ###### Follow-wall6 ###### */
   .follow-wall6 .col-md-6 {
     padding: 0;
+  }
+
+  /* ###### Replied-wall ###### */
+  .replied-list {
+    margin: 0;
+  }
+
+  .replied-list .tweet-wall {
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    margin: 5px 0;
+  }
+
+  .replied-wall {
+    margin: 5px;
   }
 
 

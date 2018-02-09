@@ -14,6 +14,9 @@ class User < ApplicationRecord
   # likes
   has_many :likes, dependent: :destroy
   has_many :liked_tweets, through: :likes, source: :tweet
+  # replies
+  has_many :replies, dependent: :destroy
+  has_many :replied_tweets, through: :replies, source: :tweet
 
   
   mount_uploader :avatar, AvatarUploader

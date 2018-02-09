@@ -6,6 +6,8 @@ Rails.application.routes.draw do
       post :like
       post :unlike
     end
+
+    resources :replies, only: [:index, :create]
   end
   
   resources :followships, only: [:create, :destroy]

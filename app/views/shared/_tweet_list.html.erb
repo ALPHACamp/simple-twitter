@@ -12,6 +12,7 @@
       <% else %>
         <%= link_to "Like", like_tweet_path(tweet), method: :post, class: "btn btn-primary" %>
       <% end %>
+      <%= link_to "Reply", tweet_replies_path(tweet) %>
     </div>
   </div>
 <% end %>
