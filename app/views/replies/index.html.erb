@@ -23,10 +23,13 @@
       <%= image_tag @user.avatar, :size => "100x100", class: "img-responsive img-rounded" %>
       <%= @user.name %>
       <%= @user.introduction %>
-      <%= link_to 'Tweets', tweets_user_path(@user) %>
-      <%= link_to 'Followings', followings_user_path(@user) %>
-      <%= link_to 'Followers', followers_user_path(@user) %>
-      <%= link_to 'Likes', likes_user_path(@user) %>
+      <%= 'Tweets' %>
+        <% if @user.tweets.count > 0 %>
+          (<%= @user.tweets.count %>)
+        <% end %>
+      <%= 'Following' %>
+      <%= 'Follower' %>
+      <%= 'Like' %>
 
     <% if @user == current_user %>
       <%= link_to 'Edit Profile', edit_user_path(@user) %>
@@ -42,6 +45,7 @@
 
       <li>
         <%= image_tag @tweet.user.avatar, :size => "100x100", class: "img-responsive img-rounded" %>
+        <%= link_to @tweet.user.name, tweets_user_path(@tweet.user.id) %>
         <%= @tweet.updated_at %>
         <%= @tweet.description %>
         <%= link_to 'Reply', tweet_replies_path(@tweet) %>
@@ -61,7 +65,6 @@
   <ul>
     <% @replies.each do |reply| %>
       <li>
-        <%= reply.id %>
         <%= image_tag reply.user.avatar, :size => "100x100", class: "img-responsive img-rounded" %>
         <%= reply.user.name %>
         <%= reply.updated_at %>

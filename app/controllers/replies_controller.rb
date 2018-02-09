@@ -2,9 +2,10 @@ class RepliesController < ApplicationController
 
   def index
     @tweet = Tweet.find(params[:tweet_id])
-    @user = User.find(@tweet.user_id)
-    @replies = @user.replies.where(tweet_id: @tweet.id)
-    
+    # @user = User.find(@tweet.user_id)
+    @user = current_user
+    @replies = @tweet.replies.order(id: :desc).all
+
     @reply = current_user.replies.new
   end
 
