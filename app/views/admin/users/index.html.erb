@@ -23,7 +23,7 @@
             <td class="col-md-2"><%= user.name %></td>
             <td class="col-md-2"><%= user.tweets.count %></td>
             <td class="col-md-2"><%= user.followings.count %></td>
-            <td class="col-md-2"><%= user.followers_count %></td>
+            <td class="col-md-2"><%= user.followers.count %></td>
             <td class="col-md-2"><%= user.likes_count %></td>
             <td class="col-md-2"><%= link_to admin_user_path(user), method: :delete, data: { confirm: "Are you sure?"}, 'title' => '刪除', 'data-toggle' => 'tooltip' do %>刪除使用者<% end %>
             </td>
