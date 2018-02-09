@@ -1,5 +1,5 @@
 <div class="col-md-3">
-  <%= image_tag user.avatar, class: "avatar-styled" %>
+  <%= image_tag user.avatar, class: "avatar-styled" if current_user.avatar? %>
   <h1><%= user.name %></h1>
   <p class="user-introduction"><%= user.introduction %></p>
   <h2><%= link_to "Tweet  #{user.tweets_count}", tweets_user_path(user), class: "gray-link" %></h2>
