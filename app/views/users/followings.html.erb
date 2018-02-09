@@ -1,25 +1,27 @@
 <div class="container">
 
 
-  <ul>
+
     <!-- user profile -->
-    <div class ="col-md-5" >
+    <div class ="users col-md-5" >
       <%=render partial: "/shared/profile", locals:{user: @user}%>
     </div>
-      <div class ="col-md-7" >
+      <div class ="tweets col-md-7" >
       <h1>Followings</h1>
-
+      <div class =" col-x2-2" >
         <% @followings.each do |user| %>
           <%= render partial:"shared/avatar", locals:{avatar: user.avatar} if user.avatar? %>
           <%= link_to user.name, tweets_user_path(user) %>
           <%= truncate user.introduction, length: 140 %>
+           </br>
           <%= render partial: "shared/follow", locals: { user: user } %>
+        </br>
         <%end%>
-
+      </div>
 
       </div>
 
-  </ul>
+
 
 
 </div>

@@ -2,20 +2,26 @@ class TweetsController < ApplicationController
   before_action :set_tweet, only: [:like, :unlike]
 
   def index
-    @users = User.all.order(followers_count: :desc).limit(10)# 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
-    @tweets = Tweet.all.order(created_at: :desc)
+    @tweets = Tweet.includes(:user, :like_users).order("id desc")
+
+    # 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
+    @users = User.order(followers_count: :desc).limit(10)
     @tweet = Tweet.new
   end
 
   def create
-     @tweet = current_user.tweets.build(tweet_params)
-     if @tweet.save
+    @tweet = Tweet.new(tweet_params)
+    @tweet.user = current_user
+    if @tweet.save
+      flash[:notice] = "Tweet was c reated"
       redirect_to tweets_path
-     else
-       flash[:alert] = @tweet.errors.full_messages.to_sentence
-       @tweets = Tweet.all.order(created_at: :desc)
-       render :index
-     end
+
+    else
+      flash.now[:alert] = "Something is wrong?"
+      @users = User.order(followers_count: :desc).limit(10)
+      @tweets = Tweet.order(created_at: :desc)
+      redirect_to(assigns(:tweets))
+    end
   end
 
   def like
