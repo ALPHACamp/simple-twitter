@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-4">
+      <%= image_tag @user.avatar, height: 100, width: 100 %>
+      <h3><%= @user.name %></h3>
+      <p><%= @user.introduction %></p>
+
+      <!-- user link -->
+      <%= link_to (users_tweets_path(@user)) do %>
+        <h5>Tweets  <%= @user.tweets.count %></h5>
+      <% end %>
+
+      <!-- followings -->
+      <%= link_to (following_user_path(@user)) do %>
+        <h5>Following  <%= @user.followings.count %></h5>
+      <% end %>
+
+      <!-- followers -->
+      <%= link_to (user_follower_path(@user)) do %>
+        <h5>Follower  <%= @user.followers_count %></h5>
+      <% end %>
+
+      <!-- like 按過讚的推特數 -->
+      <%= link_to (user_likes_path(@user)) do %>
+        <h5>Like  <%= @user.liked_tweets.count %></h5>
+      <% end %>
+      <br>
+      <div class="button-group">
+        <%= render partial: "shared/edit", locals: {user: @user} %>
+      </div>      
+
+    </div>
+
+
+    <div class="col-md-8">
+      <!-- Tweets -->
+      <% @tweets.each do |tweet| %>
+
+        <div class="tweets clearfix">
+
+          <div class="col-left">
+            <div class="avatar">
+              <%= image_tag tweet.user.avatar, width: 75, height: 75 %>
+            </div>
+          </div>
+
+          <div class="col-right">
+
+            <div class="name">@<%= tweet.user.name %>, <%= tweet.created_at %></div>
+
+            <div class="description"><%= tweet.description %></div>
+
+            <div class="tweets-bottom">
+              <div class="reply">
+                <%= link_to replies_user_path(tweet) do %>
+                  Reply(<%= tweet.replies.count %>)
+                <% end %>
+              </div>
+              <div class="like">Like(<%= tweet.likes_count %>)</div>
+            </div>
+          </div>
+
+        </div>
+
+      <% end %>
+    </div>
+
+  </div>
+</div>

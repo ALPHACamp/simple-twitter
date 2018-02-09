@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-4">
+      <%= image_tag @user.avatar, height: 100, width: 100 %>
+      <h3><%= @user.name %></h3>
+      <p><%= @user.introduction %></p>
+
+      <!-- user link -->
+      <%= link_to (users_tweets_path(@user)) do %>
+        <h5>Tweets : <%= @user.tweets.count %></h5>
+      <% end %>
+
+      <!-- followings -->
+      <%= link_to (following_user_path(@user)) do %>
+        <h5>Following : <%= @user.followings.count %></h5>
+      <% end %>
+
+      <!-- followers -->
+      <%= link_to (user_follower_path(@user)) do %>
+        <h5>Follower : <%= @user.followers_count %></h5>
+      <% end %>
+
+      <!-- like -->
+      <%= link_to (user_likes_path(@user)) do %>
+        <h5>Like : <%= @user.likes_count %></h5>
+      <% end %>
+      
+      <div class="button-group">
+        <%= render partial: "shared/edit", locals: {user: @user} %>
+      </div>
+
+    </div>
+
+    <!-- likes -->
+    <div class="col-md-8">
+      <h2>Like</h2>
+      <% if @likes != nil %>
+
+        <% @likes.each do |like| %>
+          <div class="tweets clearfix">
+            <div class="col-left">
+
+              <div class="avatar">
+                <%= image_tag like.user.avatar, height: 85, width: 85 %>
+              </div>
+            </div>
+
+            <div class="col-right">
+              <div class="name">
+                <!-- user link -->
+                <%= link_to (users_tweets_path(like.user)) do %>
+                  @<%= like.user.name %>
+                <% end %>
+                <%= like.created_at %><!-- editing -->
+              </div>
+              <div class="description"><%= like.description %></div>
+            </div>
+
+          </div>
+        <% end %>
+
+      <% end %>
+    </div>
+
+
+  </div>
+</div>

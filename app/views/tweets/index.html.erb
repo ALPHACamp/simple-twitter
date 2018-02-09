@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-8">
+      <!-- 當前使用者推特發文區 -->
+      <div class="tweet-area">
+        <%= form_for Tweet.new do |f| %>
+          <div class="form-group">
+            <%= f.text_field :description, placeholder: "Tweet something!", :size=>"50", class: "form-control" %>
+            <%= f.hidden_field :user_id, :value => current_user.id %>
+          </div>
+          <%= f.submit 'Tweet', class: "btn btn-primary" %>
+        <% end %>
+      </div>
+
+      <br>
+
+      <!-- All Tweets  -->
+      <% if @tweets != nil %>
+        <% @tweets.each do |tweet| %>
+
+          <div class="tweets clearfix">
+            <div class="col-left">
+              <div class="aratar">
+                <%= image_tag tweet.user.avatar, height: 85, width: 85 %>
+              </div>
+            </div>
+
+            <div class="col-right">
+              <div class="name">
+                <%= link_to users_tweets_path(tweet.user) do %>
+                  @<%= tweet.user.name %>
+                <% end %>
+              </div>
+              <div class="description"><%= tweet.description %></div>
+              <div class="tweets-buttom">
+                <div class="reply">
+                  <%= link_to (replies_user_path(tweet)) do %>
+                    <h5>Reply(<%= tweet.replies.count %>)</h5>
+                  <% end %>
+                </div>
+                <div class="like">Like(<%= tweet.likes.count %>)</div>
+              </div>
+            </div>
+          </div>
+
+        <% end %>
+      <% end %>
+
+    </div>
+
+
+
+
+    <div class="col-md-4">
+      <h1>Popular</h1>
+
+      <% @users.each do |user| %>
+        <div class="populars clearfix">
+          <div class="col-md-4">
+            <div class="avatar">
+              <%= image_tag user.avatar, height: 85, width: 85 %>
+            </div>
+          </div>
+
+          <div class="col-md-8">
+            <div class="name">
+              <!-- user link -->
+              <%= link_to (users_tweets_path(user)) do %>
+                <h5>@<%= user.name %></h5>
+              <% end %>
+            </div>
+            <div class="introduction"><%= truncate(user.introduction, length: 20) %></div>
+
+            <div class="button-popular">
+              <%= render partial: "shared/tweets-follow", locals: {user: user} %>
+            </div>
+
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>
