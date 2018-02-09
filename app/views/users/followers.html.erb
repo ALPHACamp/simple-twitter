@@ -6,12 +6,13 @@
 
 
 <div class="col-md-9">
-  <div class='col-xs-6 col-md-6'>
+  <div class='row'>
   <h2>Followers</h2>
+  
   <% @followers.each do |follower| %>
      
           <%= render partial: "shared/userlist", locals: {follow: follower} %>
-       
+     
     <% end %>
   </div>
 </div>
