@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="admin-wall">
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active">
+        <%=link_to 'Tweets', admin_tweets_path %> 
+      </li>
+      <li role="presentation">
+        <%=link_to 'Users', admin_users_path, class: "nav-link" %>
+      </li>
+    </ul>
+    <table class="tweets-table table table-hover table-sm">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">User</th>
+          <th scope="col">Description</th>
+          <th scope="col">Replies</th>
+          <th scope="col">Likes</th>
+          <th scope="col">Method</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @tweets.each do |tweet| %>
+        <tr>
+          <th scope="row"><%= tweet.id %></th>
+          <td><%= tweet.user.name %></td>
+          <td><p><%= tweet.description %></p></td>
+          <td><%= link_to tweet.replies_count, tweet_replies_path(tweet) %></td>
+          <td><%= tweet.likes_count %></td>
+          <td><%= link_to '', admin_tweet_path(tweet), method: :delete, data: {confirm: "Are you sure to delete the tweet(#{tweet.id})?"}, class: "glyphicon glyphicon-trash"%></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="text-center">
+      <%= paginate @tweets, window: 2 %>
+    </div>
+  </div>
+</div>

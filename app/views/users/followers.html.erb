@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="index">
+    <%= render partial: "share/user_item", locals: {user: @user, tweet_class: '', following_class: '', follower_class: 'active', like_class: ''} %>
+    <div class="follow-wall">
+      <h2>Follower</h2>
+      <% @followers.each do |user| %>
+        <%= render partial: "share/user_item_sm", locals: {user: user} %>
+      <% end %>
+    </div>
+  </div>
+</div>
