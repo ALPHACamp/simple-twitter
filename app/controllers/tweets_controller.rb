@@ -11,10 +11,10 @@ class TweetsController < ApplicationController
     respond_to do |format|
       if @tweet.save
         format.js
-        # redirect_to tweets_path
+        format.html { redirect_to tweets_path }
       else
         flash[:alert] = @tweet.errors.full_messages.to_sentence
-        format.html {redirect_to tweets_path}
+        format.html { redirect_to tweets_path }
       end
     end
   end
@@ -22,14 +22,20 @@ class TweetsController < ApplicationController
   def like
     @tweet.likes.create!(user: current_user)
     @tweet = Tweet.find(params[:id])
-    # redirect_back fallback_location: root_path
+    respond_to do |format|
+      format.html { redirect_back fallback_location: root_path }
+      format.js
+    end
   end
 
   def unlike
     @like = Like.where(user: current_user, tweet: @tweet).first
     @like.destroy
     @tweet = Tweet.find(params[:id])
-    # redirect_back fallback_location: root_path
+    respond_to do |format|
+      format.html { redirect_back fallback_location: root_path }
+      format.js
+    end
   end
 
   private

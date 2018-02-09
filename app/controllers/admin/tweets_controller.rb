@@ -6,6 +6,9 @@ class Admin::TweetsController < Admin::BaseController
   def destroy
     @tweet = Tweet.find(params[:id])
     @tweet.destroy
-    # redirect_to admin_root_path
+    respond_to do |format|
+      format.html { redirect_to admin_root_path }
+      format.js
+    end
   end
 end
