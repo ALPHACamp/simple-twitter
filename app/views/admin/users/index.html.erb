@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-12">
+    
+    <div>
+      <%= link_to fa_icon("commenting-o lg" ,text: "推播清單"), admin_tweets_path, class: "btn btn-default" %>
+    </div>
+    
+    <br>
+
+    <table class="table table-bordered text-center">
+      <thead class="table-head">
+        <tr>
+          <th>ID</th>
+          <th>使用者名稱</th>
+          <th>推播數量</th>
+          <th>關注人數</th>
+          <th>跟隨者人數</th>
+          <th>喜愛推播數</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= link_to user.name, tweets_user_path(user) %></td>
+            <td><%= user.tweets.size %></td>
+            <td><%= user.followings.size %></td>
+            <td><%= user.followers.size %></td>
+            <td><%= user.likes.size %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>

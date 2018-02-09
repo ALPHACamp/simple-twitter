@@ -1,0 +1,25 @@
+<div class="row">
+
+  <div class="col-md-8">
+    <%= form_for @tweet do |f| %>
+      <div class="form-group">
+        <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control input-lg", rows: "6" %> 
+      </div>
+      <div class="form-group text-right">
+        <%= f.submit "Tweet", class: "btn btn-primary btn-lg" %> 
+      </div>
+    <% end %>
+    
+    <% @tweets.each do |tweet| %>
+      <%= render "shared/media", tweet: tweet %>
+    <% end %>
+  </div>
+
+  <div class="col-md-4">
+    <h2>Popular</h2>
+    <% @users.each do |user| %>
+      <%= render "shared/persona", user: user %>
+    <% end %>
+  </div>
+
+</div>

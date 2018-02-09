@@ -1,0 +1,40 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+
+    <div class="media">
+      <div class="media-left">
+        <% if user.avatar? %>
+          <%= image_tag user.avatar, class: "media-object", width: "100px" %>
+        <% else %>
+          <img src="https://api.fnkr.net/testimg/100x100/d3d3d3/FFF/?">
+        <% end %>    
+      </div>
+
+      <div class="media-body">
+        <h4 class="media-heading">
+          <%= link_to user.name, tweets_user_path(user) %> &nbsp;
+        </h4>
+
+        <div class="form-group user-intro">
+          <%= truncate(user.introduction, length: 140) %>
+        </div>
+
+        <div class="btn-group">
+          <%= fa_icon("users 2x") %>
+          <span class="lead"><%= user.followers.size %></span> &nbsp; 
+        </div>
+        
+        <div class="btn-group">
+          <% unless user == current_user %>
+            <% if current_user.following?(user) %>
+              <%= link_to "Unfollow", followship_path(user), method: :delete, class: "btn btn-primary" %>
+            <% else %>
+              <%= link_to "Follow", followships_path(following_id: user), method: :post, class: "btn btn-default" %>
+            <% end %>
+          <% end %>         
+        </div>
+      </div> 
+    </div>
+  
+  </div>
+</div>
