@@ -1,8 +1,8 @@
-<div class="container">
+<div class="left col-sm-4">
   <%= render partial: "shared/info", locals: {user: @user} %>
-  <div class="row">
-    <div class="follow col-sm-8"">
-      <%= render partial: "shared/followcard", locals: {users: @followers} %>
-    </div>
+</div>
+<div class="right col-sm-8">
+  <div class="follower">
+    <%= render partial: "shared/follow_card", locals: {users: @followers} %>
   </div>
-</div>   
+</div>

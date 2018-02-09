@@ -1,12 +1,14 @@
 <div class="container">
-  <%= render partial: "shared/info", locals: {user: @user} %>
+  <div class="left col-sm-4">
+    <%= render partial: "shared/info", locals: {user: @user} %>
+  </div>
 
-  <h4>Tweets</h4>
-  <%= render partial: "shared/post", locals: {tweets: [@tweet]} %>
+  <div class="right col-sm-8">
+    <h4>Tweets</h4>
+    <%= render partial: "shared/tweet_card", locals: {tweets: [@tweet]} %>
 
-  <h4>Replies</h4>
-  <%= @replies.each do |reply| %>
-    <div class="col-sm-6" >
+    <h4>Replies</h4>
+    <% @replies.each do |reply| %>
       <div class="thumbnail">
           <%= render partial: "shared/pic", locals: {user: reply.user } %>
         <div class="caption">
@@ -17,23 +19,20 @@
           <p><%= reply.comment %></p>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
 
 
-
-  <%= form_for [@tweet, @reply] do |f| %>
-    <div class="form-group">
-      <%= f.text_area :comment, placeholder: "Messages", class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.submit "Reply", class: "btn btn-primary" %>
-      <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
-    </div>
-  <% end %>    
-  <div class="clearfix"></div>  
-
-
-
+    
+    <%= form_for [@tweet, @reply] do |f| %>
+      <div class="form-group">
+        <%= f.text_area :comment, placeholder: "Messages", class: "form-control", rows: "4"  %>
+      </div>
+      <div class="form-group right">
+        <%= f.submit "Reply", class: "btn btn-primary" %>
+        <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+      </div>
+    <% end %>
+    <div class="clearfix"></div>  
+  </div>
 
 </div>

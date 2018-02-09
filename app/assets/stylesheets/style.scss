@@ -1,8 +1,29 @@
 .card {
-  border :1px solid blue;
   border-radius : 8px;
   margin : 10px;
 }
 
+.following .card, .follower .card {
+  display:inline-block;
+  width :45%;
+}
 
+.info h4 {
+  text-align: center;
+}
 
+textarea {
+  resize: none;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.picture {
+  margin: 10px;
+ }

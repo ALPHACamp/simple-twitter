@@ -1,11 +1,7 @@
 <h1><%=  @user.name %></h1>
-
-<div class="container">
+<div class="left col-sm-4">
   <%= render partial: "shared/info", locals: {user: @user} %>
-
-
-  <div class="row">
-    <%= render partial: "shared/post", locals: {tweets: @tweets} %>
-  </div>
-
+</div>  
+<div class="right col-sm-8">
+  <%= render partial: "shared/tweet_card", locals: {tweets: @tweets} %>
 </div>    

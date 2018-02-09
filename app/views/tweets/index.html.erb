@@ -1,32 +1,26 @@
 <h1>user site</h1>
 
-<div class="container">
-  <div class="row">
+<div class="left col-sm-8">
+  <%= form_for(@tweet) do |f| %>
+    <div class="form-group" >
+      <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control", rows: "5" %>
+    </div>
+    <div class="form-group right ">
+      <%= f.submit "Tweet", class: "btn btn-primary" %>
+      <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+    </div>
+  <% end %>    
+  <div class="clearfix"></div>
+  <hr>
 
-
-    <%= form_for(@tweet) do |f| %>
-      <div class="form-group" style="width: 40rem;">
-        <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control" %>
-      </div>
-      <div class="form-group right">
-        <%= f.submit "Tweet", class: "btn btn-primary" %>
-        <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
-      </div>
-    <% end %>    
-    <div class="clearfix"></div>
-
-    <hr>
-
-
-
-    <%= render partial: "shared/post", locals: {tweets: @tweets} %>
-
-    <%= render partial: "shared/followcard", locals: {users: @users} %>
- 
-
-    <br>
-
- 
-      
-  </div>
+  <%= render partial: "shared/tweet_card", locals: {tweets: @tweets} %>
 </div>
+
+<div class="right col-sm-4">
+  <h3>Popular</h3>
+  <%= render partial: "shared/follow_card", locals: {users: @users} %>
+</div>
+
+
+
+ 
