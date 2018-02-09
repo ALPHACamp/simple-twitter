@@ -23,7 +23,8 @@ class User < ApplicationRecord
 
   #Following Follower
   has_many :followships, dependent: :destroy
-  has_many :followings, through: :followships
+  has_many :followings, through: :followships, uniqueness: {scope: :followee_id}
+  validate :cant_follow_yourself
   
   has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
   has_many :followers, through: :inverse_followships, source: :user
@@ -50,4 +51,11 @@ class User < ApplicationRecord
   end
   #<%= @user.tweet_reply_count %>
 
+
+  private
+
+    def cant_follow_yourself
+      return if followee_id != follower_id
+      # add an appropriate error message here...
+    end
 end
