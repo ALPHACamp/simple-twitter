@@ -13,7 +13,7 @@
     <%= form_for @user do |f| %>
       <div class="col-md-4">
         <div class="form-group">
-          <%= f.label :avatar, "Photo" %>
+          <%= f.label :avatar, "Photo", :style=>"color:lightgray" %>
           <%= image_tag @user.avatar, width: '300px' if @user.avatar? %>
           <%= f.file_field :avatar %>
         </div>
@@ -21,11 +21,11 @@
       
       <div class="col-md-8">
         <div class="form-group">        
-          <%= f.label :name, "Name" %>
+          <%= f.label :name, "Name", :style=>"color:lightgray" %>
           <%= f.text_field :name, class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :introduction, "Introduction" %>
+          <%= f.label :introduction, "Introduction", :style=>"color:lightgray" %>
           <%= f.text_area :introduction, class: "form-control" %>
         </div>
 
