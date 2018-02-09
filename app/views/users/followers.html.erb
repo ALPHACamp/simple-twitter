@@ -9,6 +9,28 @@
     <div class="row">
       <p>Follower</p>
       <p>list of followers</p>
+      <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= @followers.count %></strong> followers</h3>
+          </div>
+          <ul class="list-group">
+            <% @followers.each do |follower| %>
+            <li class="list-group-item">
+              <%= link_to tweets_user_path(follower) do %>
+              <%= image_tag(follower.avatar, height: 30, width: 30, class: "img-circle") %>
+              <%= "@#{follower.name}" %>
+              <% end %>
+              <p><%= follower.introduction %></p>
+              <% if current_user.following?(follower) %>
+                <%= link_to  "Unfollow", followship_path(follower), method: :delete, class: "btn btn-primary ctweet" %>
+                <% else %>
+                <%= link_to  "Follow", followships_path(following_id: follower), method: :post , class: "btn btn-primary ctweet"%>
+              <% end %>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>
