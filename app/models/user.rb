@@ -42,6 +42,11 @@ class User < ApplicationRecord
     self.save
   end
 
+   def count_tweets
+    self.tweets_count = self.tweets.size
+    self.save
+  end
+
   def count_followers
     self.followers_count = self.followers.size
     self.save

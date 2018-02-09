@@ -32,6 +32,11 @@ namespace :dev do
     end
       puts "have created fake Tweet"
       puts "now you have #{Tweet.count} Tweet data"
+
+      User.all.each do |user|
+        user.count_tweets  
+      end
+      puts "now you have reset user tweet_count data"
   end
 
    task fake_reply: :environment do
@@ -49,8 +54,8 @@ namespace :dev do
       puts "now you have #{Reply.count} Reply data"
       Tweet.all.each do |tweet|
         tweet.count_replies  
-        puts "now you have #{tweet.replies.size} Reply data"
       end
+      puts "now you have count_replies data"
       
   end
 end
