@@ -13,8 +13,7 @@ class TweetsController < ApplicationController
     @tweet.user = current_user;
     if @tweet.save
       flash[:notice] = "Nice Tweet!"
-      current_user.tweets_count += 1
-      current_user.save
+      current_user.count_tweets
       redirect_to tweets_path
     else
       if @tweet.errors.present?
@@ -31,8 +30,7 @@ class TweetsController < ApplicationController
   def like
     @tweet = Tweet.find(params[:id])
     current_user.likes.create(tweet: @tweet)
-    @tweet.user.likes_count += 1 # tweet author's "likes_count" plus 1 
-    @tweet.user.save
+    @tweet.user.count_likes(true)
     redirect_back(fallback_location: tweets_path)
   end
 
@@ -40,8 +38,7 @@ class TweetsController < ApplicationController
     @tweet = Tweet.find(params[:id])
     @like = Like.where(user: current_user, tweet: @tweet)
     @like.destroy_all
-    @tweet.user.likes_count -= 1
-    @tweet.user.save
+    @tweet.user.count_likes(false)
     redirect_back(fallback_location: tweets_path)
   end
 

@@ -32,4 +32,18 @@ class User < ApplicationRecord
   def following?(user)
     self.followings.include?(user)
   end
+
+  def count_tweets
+    self.tweets_count = self.tweets.size
+    self.save
+  end
+
+  def count_likes(status)
+    if status
+      self.likes_count += 1
+    else
+      self.likes_count -= 1
+    end
+    self.save
+  end
 end

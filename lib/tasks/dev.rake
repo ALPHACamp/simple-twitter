@@ -33,8 +33,7 @@ namespace :dev do
         description: FFaker::Lorem::paragraph[1..rand(1..140)],
         user: author
       )
-      author.tweets_count += 1
-      author.save
+      author.count_tweets
     end
     puts "now there are #{Tweet.count} tweets"
   end
@@ -57,8 +56,7 @@ namespace :dev do
         user: User.all.sample,
         tweet: post
       )
-      post.user.likes_count += 1
-      post.user.save
+      post.user.count_likes(true)
     end
     puts "now there are #{Like.count} likes"
   end  
