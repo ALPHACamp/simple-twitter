@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h1>Followrs page</h1>
+
     <div class="col-md-4">
       <%= image_tag @user.avatar, height: 100, width: 100 %>
       <h3><%= @user.name %></h3>
@@ -26,34 +26,42 @@
         <h5>Like : <%= @user.likes_count %></h5>
       <% end %>
       
-      <%= render partial: "shared/edit", locals: {user: @user} %>
-
-      <hr>
+      <div class="button-group">
+        <%= render partial: "shared/edit", locals: {user: @user} %>
+      </div>
     </div>
 
     <!-- followings -->
     <div class="col-md-8">
-      <h2>Followrs</h2>
+      <h2>Followr</h2>
       <% if @followers != nil %>
-
         <% @followers.each do |follower| %>
 
-          <%= image_tag follower.avatar, height: 85, width: 85 %>
+          <div class="followings">
+            <div class="col-md-4">
+              <div class="avatar">
+                <%= image_tag follower.avatar, height: 85, width: 85 %>
+              </div>
+            </div>
 
-          <!-- user link -->
-          <%= link_to (users_tweets_path(follower)) do %>
-            <h5>@<%= follower.name %></h5>
-          <% end %>
+            <div class="col-md-8">
+              <div class="name">
+                <!-- user link -->
+                <%= link_to (users_tweets_path(follower)) do %>
+                  <h5>@<%= follower.name %></h5>
+                <% end %>
+              </div>
 
-          <p><%= follower.introduction %></p>
+              <div class="introduction"><%= truncate(follower.introduction, length: 50) %></div>
 
-          <!-- follow / unfollow partial -->
-          <%= render partial: "shared/tweets-follow", locals: {user: follower} %>
+              <div class="button-right">
+                <%= render partial: "shared/tweets-follow", locals: {user: follower} %>
+              </div>
+            </div>
 
-          <hr>
+          </div>
 
         <% end %>
-
       <% end %>
     </div>
 
