@@ -28,28 +28,14 @@
           (<%= @user.tweets.count %>)
         <% end %>
       <%= link_to 'Following', followings_user_path(@user) %>
-        <% if @user.followings.count > 0 %>
-          (<%= @user.followings.count %>)
-        <% end %>
       <%= link_to 'Follower', followers_user_path(@user) %>
-        <% if @user.followers_count > 0 %>
-          (<%= @user.followers_count %>)
-        <% end %>
       <%= link_to 'Like', likes_user_path(@user) %>
 
     <% if @user == current_user %>
       <%= link_to 'Edit Profile', edit_user_path(@user) %>
       <h2>My Tweets</h2>
     <% else %>
-
-      <% if @user != current_user %>
-        <% if current_user.following?(@user)%>
-          <%= link_to 'Unfollow', followship_path(@user), method: :delete, class: "btn btn-default" %>
-        <% else %>
-          <%= link_to 'Follow', followships_path(following_id: @user), method: :post, class: "btn btn-warning" %>
-        <% end %>
-      <% end %>
-      
+      <%= link_to 'Follow' %>
       <h2>His Tweets</h2>
     <% end %>
     </li>
