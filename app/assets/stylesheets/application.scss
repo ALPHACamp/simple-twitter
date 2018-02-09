@@ -7,7 +7,22 @@
 
 ul, li {
   list-style: none;
+  margin-bottom: 5px;
+  padding: 5px;
 }
+
+
+h3{
+  padding: 0px;
+  margin-bottom: 15px;
+  color: #4ea1d3
+}
+
+h5,p{
+  padding:5px;
+  margin-left:5px;
+}
+
 
 .avatar {
   float: left;
@@ -17,3 +32,48 @@ ul, li {
 .clearfix{
   clear: both;
 }
+
+.my-nav{
+  background-color: #d6ecfa;
+}
+
+.my-nav li{
+  margin: 0px;
+  padding: 0px;
+}
+
+.my-tweet{
+  margin-bottom: 30px;
+}
+.tweet-form{
+  border: 2px solid #d6ecfa;
+  padding: 20px;
+}
+
+a, a:hover, a:focus {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+}
+
+.tweet-list{
+  border: 1px solid #c9d6de;
+  margin-bottom: 15px;
+}
+
+.tweet-link li{
+  display: inline-block;
+  margin-bottom: 0px;
+}
+
+.avatar{
+  width: 80px;
+  height: 80px;
+}
+
+.user-profile{
+  border: 1px solid #c9d6de;
+  margin-bottom: 15px;
+  padding: 5px 5px 20px 5px;
+}
+

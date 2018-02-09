@@ -12,32 +12,36 @@
   <div class="col-left col-sm-7 col-md-8">
     <div class="my-tweet">
       <%= form_for @tweet do |f| %>
-      <%= f.text_area :description, placeholder: "What's on your mind?" %>
-      <%= f.submit 'Tweet', class: "btn btn-primary"%>
+      <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control tweet-form" %>
+      <br>
+      <%= f.submit 'Tweet', class: "btn btn-primary pull-right"%>
       <% end %>
       </div>
     <br>
     
     <!--tweet-->
-      <%= render partial: "tweets/tweet"%>
+      <%= render partial: "tweets/tweet", class: "pull-right"%>
 
  
   </div>
 
   <div class="col-right col-sm-5 col-md-4">
     <h3>Popular</h3>
+      <div class="user-list">
         <% @users.each do |user| %>
           <div class="user-profile">
-            <div class="avatar"></div>
+            <div class="avatar">
+              <%= image_tag user.avatar, class: "img-responsive img-rounded" %>
+            </div>
             <div class="user-intro">
               <h5><%= user.name %></h5>
-              <p><%= truncate(user.introduction, length: 80) %></p>
-              <%= render partial: "shared/follow", locals: {user: @user} %>
+              <p><%= truncate(user.introduction, length: 50) %></p>
+              <div><%= render partial: "shared/follow", locals: {user: @user} %></div>
             </div>
             <br>
-            </div>
           </div>
         <% end %>
+      </div>
   </div>
 
 

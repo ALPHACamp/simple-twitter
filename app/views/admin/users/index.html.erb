@@ -7,12 +7,15 @@
   <br>
     <% @users.each do |user| %>
     <div class="user-profile">
-      <div class="avatar"></div>
+      <div class="avatar">
+        <%= image_tag user.avatar, class: "img-responsive img-rounded" %>
+      </div>
       <div class="user-intro">
         <h5><%= user.name %></h5>
         <p><%= truncate(user.introduction, length: 80) %></p>
       </div>
     </div>
+    <div class="clearfix"></div>
   <% end %>
 
 

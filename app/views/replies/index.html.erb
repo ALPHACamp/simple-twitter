@@ -16,7 +16,7 @@
          </ul>
     
         <% if @tweet.user.email == current_user.email %>
-          <%= link_to 'Edit Profile', edit_user_path(user), class: "btn btn-primary" %>
+          <%= link_to 'Edit Profile', edit_user_path(@tweet.user), class: "btn btn-primary" %>
         <% else %>
          <!--follow-->
           <%= render partial: "shared/follow", locals: {user: @user}  %>
