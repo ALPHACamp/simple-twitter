@@ -19,8 +19,11 @@
         <% end %> 
       </div>
       <div>
-        <%= link_to likes_user_path(@user), method: :get do %>like <%= @user.likes.count %>
-        <% end %>      
+        <% if @user.likes.count == 0 %>
+          <%= link_to tweets_user_path(@user), method: :get do %>like <%= @user.likes.count %>
+        <% else %>
+          <%= link_to likes_user_path(@user), method: :get do %>like <%= @user.likes.count %>
+        <% end %>
       </div>
       <% if current_user != @user %>
         <% if current_user.following?(@user) %>
