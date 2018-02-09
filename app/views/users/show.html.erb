@@ -23,6 +23,13 @@
           <strong>likes: <%= @likes.count %></strong>
         </p>
         
+        <% if @user != current_user %>
+            <% if current_user.following?(@user)%>
+              <%= link_to 'Unfollow', followship_path(@user), method: :delete, class: "btn btn-default" %>
+            <% else %>
+              <%= link_to 'Follow', followships_path(following_id: @user), method: :post, class: "btn btn-info" %>
+            <% end %>
+          <% end %>
 
         <% if @user.email == current_user.email %>
           <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-info" %>
