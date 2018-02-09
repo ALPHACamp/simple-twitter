@@ -5,7 +5,7 @@
      
     </div>
     <div class="col-md-9">
-     <div class='container'>
+     <div class='col-xs-6'>
       <h2>Followings</h2>
         <% @followings.each do |following| %>
           <%= render partial: "shared/userlist", locals: {follow: following} %>

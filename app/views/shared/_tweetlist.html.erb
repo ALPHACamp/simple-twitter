@@ -18,11 +18,11 @@
 
         <% if tweet.is_liked?(current_user) %>
          
-            <%= link_to "unlike(#{tweet.likes.count})", unlike_tweet_path(tweet), remote: true, method: :post, class: "links btn-danger" %>
+            <%= link_to "unlike(#{tweet.likes.count})", unlike_tweet_path(tweet), remote: true, method: :post, class: "btn-danger" %>
          
           <% else %>
            
-              <%= link_to "likes(#{tweet.likes.count})", like_tweet_path(tweet), remote: true, method: :post, class: "links btn-danger" %>
+              <%= link_to "likes(#{tweet.likes.count})", like_tweet_path(tweet), remote: true, method: :post, class: "btn-danger" %>
            
             <% end %>
     </div>
