@@ -25,8 +25,8 @@ class TweetsController < ApplicationController
 
   def unlike
     @tweet = Tweet.find(params[:id])
-    like = Like.where(tweet: @tweet, user: current_user)
-    like.destroy_all
+    @like = Like.where(tweet: @tweet, user: current_user)
+    @like.destroy_all
     redirect_to tweets_path
   end
 
