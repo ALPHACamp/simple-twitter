@@ -54,6 +54,9 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'rails-controller-testing'
+end
+
+group :development, :test do
   gem 'sqlite3'
 end
 
@@ -72,7 +75,7 @@ group :development do
 end
 
 group :production do
-  gem 'pg'
+  gem 'pg', '~> 0.21'
   gem 'rails_12factor'
 end
 
