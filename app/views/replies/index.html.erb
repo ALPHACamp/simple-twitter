@@ -9,15 +9,18 @@
 
     <h4>Replies</h4>
     <% @replies.each do |reply| %>
-      <div class="thumbnail">
+      <div class="thumbnail ">
+        <div class="col-sm-6">
           <%= render partial: "shared/pic", locals: {user: reply.user } %>
-        <div class="caption">
+        </div>  
+        <div class="caption col-sm-6">
           <small class="text-muted">
             <%= link_to "#{ reply.user.name}", tweets_user_path( reply.user ) %>,
             <%= reply.created_at.to_formatted_s(:db)%>
           </small>    
           <p><%= reply.comment %></p>
         </div>
+        <div class="clearfix"></div>
       </div>
     <% end %>
 
