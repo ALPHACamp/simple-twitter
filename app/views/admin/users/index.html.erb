@@ -28,7 +28,7 @@
             <h1 class="text-center"><span class="glyphicon glyphicon-user"></span></h1>
           <% end %>
         </th>
-        <td><%= user.name %></td>
+        <td><%= link_to user.name, tweets_user_path(user) %></td>
         <td><%= user.tweets.size %></td>
         <td><%= user.likes_count %></td>
         <td><%= user.followings.size %></td>
