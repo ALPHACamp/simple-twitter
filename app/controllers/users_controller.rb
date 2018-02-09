@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:tweets, :edit, :update, :followings, :followers, :likes]
 
   def tweets
-    @tweets = @user.tweets.order(created_at: :desc)
+    @tweets = @user.tweets.order(updated_at: :desc)
   end
 
   def edit
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
   def followings
     # 基於測試規格，必須講定變數名稱
-    @followings = @user.followings.all.order(created_at: :desc)
+    @followings = @user.followings.all.order('followships.updated_at DESC')
   end
 
   def followers
