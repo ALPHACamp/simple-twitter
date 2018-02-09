@@ -29,8 +29,6 @@
         <td>
           <%= link_to tweets_user_path(tweet.user) do %><h4>@<%= tweet.user.name %></h4><% end %>
           <p><%= tweet.description %></p>
-
-          
           <!-- replay link -->
           <%= link_to tweet_replies_path(tweet), class: "btn btn-link" do %>
             Reply <span class="badge badge-pill badge-primary"><%= tweet.replies_count %></span>
@@ -38,7 +36,7 @@
          
           <!-- like action button -->
           <%= render partial: "shared/like", locals: {tweet: tweet} %>
-          
+               
         </td>
         <td></td>
         <td>
