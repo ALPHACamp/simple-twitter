@@ -88,6 +88,8 @@ GEM
       railties (>= 3.0.0)
     ffaker (2.8.1)
     ffi (1.9.21)
+    font-awesome-sass (5.0.6)
+      sass (>= 3.2)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     i18n (0.9.3)
@@ -243,6 +245,7 @@ DEPENDENCIES
   devise
   factory_bot_rails
   ffaker
+  font-awesome-sass
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
