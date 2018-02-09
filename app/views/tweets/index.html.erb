@@ -12,14 +12,15 @@
           <%= @tweet.errors.full_messages.to_sentence %>
         <% end %>
       </div>
-        <div class="col-sm-offset-10">
-          <%= f.submit "create", class: "btn btn-primary" %>
+        <div class="col-sm-offset-11 col-md-2">
+          <%= f.submit "Tweet", class: "btn btn-primary" %>
         </div>
       <% end %>
     </div>
 
     <br />
-
+    <br />
+    <br />
     <!-- 使用者能瀏覽所有的推播 (tweet) -->
     <%= render partial: "shared/tweets" %>
   </div>

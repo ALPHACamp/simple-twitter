@@ -6,7 +6,7 @@
   <div class="col-md-8 user-intro">
     <h3><%= link_to "@#{user.name}", tweets_user_path(user) %></h3>
     <h4><%= user.introduction %></h4>
-    <div class="user-button">
+    <div class="col-md-offset-7 col-md-2 user-button">
       <%= render partial: "shared/follow_button", locals: {user: user} %>
     </div>
   </div>
