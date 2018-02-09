@@ -12,10 +12,10 @@ class TweetsController < ApplicationController
     @tweet.user = current_user
     if @tweet.save
       flash[:notice] = "推播成功！"
-      redirect_back(fallback_location: root_path)
+      redirect_to tweets_path
     else
       flash[:alert] = "推播不可以空白!!"
-      redirect_back(fallback_location: root_path)
+      redirect_to tweets_path
     end
   end
 
