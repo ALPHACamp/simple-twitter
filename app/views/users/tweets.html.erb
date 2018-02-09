@@ -1,6 +1,8 @@
 hello, this is <%= @user.name %>
 <%= render partial: "shared/follow", locals: {user: @user} %>
 <br>
+i have <%= @user.followings.count %> followings, <%= @user.followers.count %> followers
+<br>
 <% @user.tweets.each do |tweet| %>
   <%= tweet.description %>
   <br>
