@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:tweets, :edit, :update]
+  before_action :set_user, only: [:tweets, :edit, :update, :followings, :followers]
 
   def tweets
     @tweets = @user.tweets.order(created_at: :desc).page(params[:page]).per(10)
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   end
 
   def followers
-    @followers = @user.followers.order(followers_count: :desc).limit(10)
+    @followers = @user.followers.order(created_at: :desc).limit(10)
   end
 
   def likes

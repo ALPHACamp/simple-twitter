@@ -32,7 +32,7 @@
   .tweet-wall {
     border: 1px solid #ccc;
     border-radius: 10px;
-    margin: 10px;
+    margin: 5px;
     max-height: 122px; 
   }
 
@@ -66,8 +66,8 @@
   .follow-wall {
     border: 1px solid #ccc;
     border-radius: 10px;
-    margin: 10px;
-    padding: 10px;
+    margin: 5px;
+    padding: 8px;
   }
 
   .name {
@@ -83,6 +83,11 @@
 .profile-form {
   margin-top: 40px;
 }
+
+  /* ###### Follow-wall6 ###### */
+  .follow-wall6 .col-md-6 {
+    padding: 0;
+  }
 
 
 

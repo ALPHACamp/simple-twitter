@@ -4,11 +4,9 @@
       <%= render partial: "shared/profile", locals: {user: @user} %>
     </div>
     <div class="col-md-8">
-      <%= render partial: "shared/tweet_list", locals: {tweets: @tweets} %>
-
-      <div class="text-center">
-        <%= paginate @tweets %>
-      </div>
+      <h1>Followings</h1>
+      
+      <%= render partial: "shared/follow_wall6", locals: {objs: @followings} %>
     </div>
   </div>
 </div>

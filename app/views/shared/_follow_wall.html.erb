@@ -6,7 +6,6 @@
     <div class="tweet-item">
       <p class="name"><%= link_to user.name, tweets_user_path(user) %></p>
       <p class="wrap"><%= truncate(user.introduction, length: 100) %></p>
-      <p>Followers <%= user.followers.count %></p>
       <div class="follow-btn">
         <% if user != current_user %>
           <%= render partial: "shared/follow_btn", locals: {user: user} %>
