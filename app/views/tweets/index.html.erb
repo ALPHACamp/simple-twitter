@@ -8,7 +8,7 @@
        <%= form_for [@tweet] do |f| %>  
       <form> 
         <div class="form-group"> 
-        <%= f.text_area :description, placeholder: "140 character...", maxlength: 140, class:"form-control",id:"message" %>
+        <%= f.text_area :description, placeholder: "140 character...", maxlength: 140,rows: 5, class:"form-control",id:"message" %>
         </div>   
         <%= f.submit "Tweet"  ,class:"btn btn-primary btn-right" %> 
         </form>
@@ -16,11 +16,13 @@
     </div>
 
 
-<div class="row">
 
+<% @tweets.each do |tweet| %>
+<div id="tweets-list" >
+<div class="row">
 <div class="form-group">
-  <% @tweets.each do |tweet| %>
-   <div id="tweets-list" >
+  
+   
   
     <div id="user-pic" class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
     <%= image_tag tweet.user.avatar ,class:"img-circle img-responsive img-profile"%>
@@ -37,64 +39,35 @@
     </div>
 
   </div>
-  <% end %>
+  
 </div>
+
 </div>
+<% end %>
 </div>
 
    <!--Popular-->
-<div class=" col-md-3 col-lg-3 container">
+<div class=" col-md-4 col-lg-4 ">
+   <H2>Popular</H2>
+   <% @users.each do |user| %>
+   <div id="popular" >
   <div class="row">
-    <H2>Popular</H2>
-    <div class="form-group">
-          <div id="popular" >
-            <div id="user-pic" class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
-              <img src="img/myPic.jpg" class="img-circle img-responsive" alt="my-avater">
+    <div class="container-fluid"> 
+            <div id="user-pic" class=" col-md-2 col-lg-2">
+                <%= image_tag user.avatar ,class:"img-circle img-responsive img-profile"%>
             </div>
-            <div>
-              <h4>@Zarek </h4>
-              <p>快要做不完啦!!!!!</p> 
-               <button type="submit" class="btn btn-primary btn-right">Follow</button>
+            <div class="col-md-8 col-lg-8">
+              <h4><%= "@#{user.name}" %></h4>
+              <p><%= truncate(user.introduction, length: 300)%></p>
+               <%= render partial: "shared/follow", locals: {users: user}%>
             </div>
           </div>
       </div> 
-      <div class="form-group">
-          <div id="popular" >
-             <div id="user-pic" class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
-              <img src="img/myPic.jpg" class="img-circle img-responsive" alt="my-avater">
-            </div>
-            <div >
-              <h4>@Zarek</h4>
-              <p>快要做不完啦!!!!!</p> 
-              <button type="submit" class="btn btn-primary btn-right">Follow</button>
-            </div>
-          </div>
-      </div> 
-      <div class="form-group">
-          <div id="popular" >
-             <div id="user-pic" class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
-              <img src="img/myPic.jpg" class="img-circle img-responsive" alt="my-avater">
-            </div>
-            <div >
-              <h4>@Zarek</h4>
-              <p>快要做不完啦!!!!!</p>
-              <button type="submit" class="btn btn-primary btn-right">Follow</button> 
-            </div>
-          </div>
-      </div> 
-      <div class="form-group">
-          <div id="popular" >
-             <div id="user-pic" class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
-              <img src="img/myPic.jpg" class="img-circle img-responsive" alt="my-avater">
-            </div>
-            <div >
-              <h4>@Zarek</h4>
-              <p>快要做不完啦!!!!!</p> 
-              <button type="submit" class="btn btn-primary btn-right">Follow</button>
-            </div>
-          </div>
-      </div> 
+     
+ 
   </div>
+  <%end%>
+</div>
 </div>
 </div>
 

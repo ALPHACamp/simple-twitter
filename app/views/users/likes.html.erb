@@ -32,11 +32,14 @@
 
 <!--like tweets-->
   <div class="col-md-8 col-lg-8 container">
+    <h3>Tweets</h3>
+     <% @likes.each do |tweet| %>
+     <div id="tweets-list" >
     <div class="row">
-      <h3>Tweets</h3>
+      
 <div class="form-group">
-  <% @likes.each do |tweet| %>
-   <div id="tweets-list" >
+ 
+   
   
     <div id="user-pic" class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
     <%= image_tag tweet.user.avatar ,class:"img-circle img-responsive img-profile"%>
@@ -51,10 +54,10 @@
     </div>
 
   </div>
-  <% end %>
+  
 </div>
     </div>   
-
+<% end %>
  </div>
  </div>
 

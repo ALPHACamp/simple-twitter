@@ -30,32 +30,31 @@
 </div>
 
 <!--followings tweets-->
-   <div class="col-sm-8 col-md-8 col-lg-8 container">
+   <div class="col-lg-8 container">
   
       <h3>following</h3>
-        <div class="row">
-
-
-  <% @followings.each do |following| %>
-    <div class= "col-xs-4 col-sm-4 col-md-4 col-lg-4">
-      <div class=" tweets-item">
+      <% @followings.each do |following| %>
+      <div class= " col-md-6 col-lg-6">
+      <div id="popular" >
+      <div class="row">
+   
+            <div id="user-pic" class="col-md-2 col-lg-2">
+            <%= image_tag following.avatar ,class:"img-circle img-responsive img-profile"%>
+            </div>
   
-    <div id="user-pic" class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-    <%= image_tag following.avatar ,class:"img-circle img-responsive img-profile"%>
-    </div>
-    
-    <div>
+    <div class=" col-md-8 col-lg-8">
     <h4><%= "@#{following.name}" %></h4>
       <p><%= truncate(following.introduction, length: 300)%></p>
-    
+    <%= render partial: "shared/follow", locals: {users: following}%>
     </div>
- <%= render partial: "shared/follow", locals: {users: following}%>
-  </div>
+ 
+ 
+</div>
+
 
 </div>
-  <% end %>
     </div>   
-
+<% end %>
  </div>
 
 

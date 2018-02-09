@@ -31,11 +31,13 @@
 
 <!--tweets-->
   <div class="col-md-8 col-lg-8 container">
+    <h3>Tweet</h3>
+    <div id="tweets-list" >
     <div class="row">
-      <h3>Tweet</h3>
+      
 <div class="form-group">
   <% tweet = @tweet %>
-   <div id="tweets-list" >
+   
   
     <div id="user-pic" class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
     <%= image_tag tweet.user.avatar ,class:"img-circle img-responsive img-profile"%>
@@ -50,12 +52,16 @@
     </div>
 
   </div>
+    </div> 
 </div>
       
     <h3>Replies</h3>
+      <% @tweet.replies.each do |reply| %>
+      <div id="tweets-list" >
+        <div class="row">
     <div class="form-group">
-  <% @tweet.replies.each do |reply| %>
-   <div id="tweets-list" >
+
+   
   
     <div id="user-pic" class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
     <%= image_tag reply.user.avatar ,class:"img-circle img-responsive img-profile"%>
@@ -68,15 +74,16 @@
     </div>
 
   </div>
-  <% end %>
+  </div>
 </div>
+<% end %>
 
 <div class="form-group">
        <%= form_for(@replies, url:  replies_new_tweet_path(@tweet))  do |f| %> 
         <form> 
         <div class="form-group">
     
-        <%= f.text_area :comment, placeholder: "140 character...", maxlength: 140, class:"form-control",id:"message" %>
+        <%= f.text_area :comment, placeholder: "140 character...", maxlength: 140,rows: 5, class:"form-control",id:"message" %>
         </div>
         
         <%= f.submit "Reply"  ,class:"btn btn-primary btn-right" %> 

@@ -37,11 +37,15 @@ body {
   width:50px;
 }
 
- #tweets-list, #popular{
-  height: 110px;
+ #tweets-list,  #popular{
+ 
   border: 1px solid #C0C0C0;
   margin-bottom: 3%;
  }
+ #popular{
+ margin-left: 3%;
+ }
+
 #user-pic{
   margin-top: 1%;
   width:120px;
