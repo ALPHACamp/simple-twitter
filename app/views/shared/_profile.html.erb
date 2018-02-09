@@ -1,0 +1,39 @@
+<div>
+  <% if user.avatar? %>
+    <%= image_tag user.avatar, width: "260px" %>
+  <% else %>
+    <img src="https://api.fnkr.net/testimg/260x260/d3d3d3/FFF/?">
+  <% end %>
+   
+  <h2 class="text-center"><%= user.name %></h2>
+
+  <p><%= user.introduction %></p>
+
+  <%= link_to tweets_user_path(user) do %>
+    <h4>Tweets <span class="badge"><%= user.tweets.count %></span></h4>
+  <% end %>
+
+  <%= link_to followings_user_path(user) do %>
+    <h4>Following <span class="badge"><%= user.followings.count %></span></h4>
+  <% end %>
+  
+  <%= link_to followers_user_path(user) do  %>
+    <h4>Followers <span class="badge"><%= user.followers.count %></span></h4>
+  <% end %>
+
+  <%= link_to likes_user_path(user) do %>
+    <h4>Like <span class="badge"><%= user.likes_count %></span></h4>
+  <% end %>
+
+  <div class="button-group text-center">
+    <% if user == current_user %>
+      <%= link_to "Edit Profile", edit_user_path(user), class: "btn btn-primary btn-lg btn-block" %>
+    <% else %>
+      <% if current_user.following?(user) %>
+        <%= link_to "Unfollow", followship_path(user), method: :delete, class: "btn btn-primary btn-lg btn-block" %>
+      <% else %>
+        <%= link_to "Follow", followships_path(following_id: user), method: :post, class: "btn btn-default btn-lg btn-block" %>
+      <% end %>   
+    <% end %> 
+  </div>
+</div>

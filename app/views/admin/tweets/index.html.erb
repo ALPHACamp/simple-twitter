@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-12">
+
+    <div>
+      <%= link_to fa_icon("address-card-o lg", text: "使用者清單"), admin_users_path, class: "btn btn-default" %>
+    </div>
+
+    <br>
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th class="text-center">推播ID</th>
+          <th>推播內容</th>
+          <th>推播時間</th>
+          <th>使用者名稱</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tweets.each do |tweet| %>
+          <tr>
+            <td class="text-center"><%= tweet.id %></td>
+            <td><%= truncate(tweet.description, length: 80) %></td>
+            <td><%= time_ago_in_words(tweet.created_at) %> ago</td>
+            <td><%= tweet.user.name %></td>
+            <td>
+              <%= link_to fa_icon("comments-o lg"), tweet_replies_path(tweet) %> &nbsp;
+              <%= link_to fa_icon("trash-o lg"), admin_tweet_path(tweet), method: :delete, data: { confirm: "Are you sure?" } %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    
+  </div>
+</div>
