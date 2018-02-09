@@ -1,5 +1,5 @@
 class Tweet < ApplicationRecord
-  validates_length_of :description, maximum: 140, :message => "超過字數限制"
+  validates_length_of :description, maximum: 140
 
   # 設定關聯
   belongs_to :user, counter_cache: true
