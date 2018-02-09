@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :followers, through: :inverse_followships, source: :user
   has_many :likes, dependent: :destroy
   has_many :liked_tweets, through: :likes, source: :tweet
+  has_many :replies, dependent: :destroy
+  has_many :replied_tweets, through: :replys, source: :tweet
   mount_uploader :avatar, AvatarUploader
 
   # 需要 app/views/devise 裡找到樣板，加上 name 屬性 （完成）

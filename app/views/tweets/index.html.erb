@@ -26,6 +26,7 @@
               <li><%= truncate(tweet.description, length: 140) %>
               </li>
               <%= render partial: "shared/like", locals: {tweet: tweet} %>
+              <%= link_to "replies", tweet_replies_path(tweet) %>
           </div>
         </div>    
       </div>
