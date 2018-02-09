@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <h1>使用者列表</h1>
+    <hr>
+    <% @users.each do |user| %>
+      <div class="col-md-3 col-sm-4 col-xs-6  text-center">
+        <img src="http://via.placeholder.com/150x150" alt="placeholder" class="img-responsive center-block">
+        <h4 class="text-center"><%= user.name%></h4>
+        <ul class="unstyled-list">
+          <li><strong><%= user.email %></strong></li>
+          <li><strong>Followers <%= user.followers_count %></strong></li>
+          <li><strong>Followings <%= user.followings.count %></strong></li>
+        </ul>
+      </div>      
+    <% end %>
+  </div>
+</div>
