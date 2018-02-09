@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-xs-8">
+      <!-- tweet form  -->
+      <div class="tweets-area col-xs-12">
+        <%= form_for @tweet do |t|%>
+          <div class="form-group">
+            <%= t.text_area :description, placeholder: "What's on your mind?",  class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= t.submit "Tweet", class: "pull-right btn btn-primary" %>
+          </div>
+        <% end %>  
+      </div>
+      <!-- Tweet list -->
+      <div class="tweets-list col-xs-12">
+        <div class="panel panel-default">          
+          <div class="panel-body">
+            <% @tweets.each do |tweet| %>
+              
+              <div class="row">
+                <div class="col-sm-3">
+                  <img src="http://via.placeholder.com/90x90" class="img-responsive img-rounded">
+                </div>
+                <div class="col-sm-8">
+                  <h4><%= tweet.user.name%>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></h4>
+                  <p><%= tweet.description %></p> 
+                  <h4><%= link_to "Reply", tweet_replies_path(tweet.id) %></h4>
+                </div>
+              </div>          
+          
+              <hr>
+            <%end%>  
+          </div>    
+        </div>
+      </div>
+
+    </div>
+  
+    <!-- Popular -->
+    <div class="col-xs-4">
+      <div class="popular-user col-xs-12">
+      <h2>Popular</h2>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <% @users.each do |user|%>
+            <div class="row">
+              <div class="col-sm-3">
+                <img src="http://via.placeholder.com/90x90" class="img-responsive img-rounded">
+              </div>
+              <div class="col-sm-8">
+                <h4><%= link_to user.name, user_path(user)%></h4>
+                <!-- truncate 可截斷文字限定字數。simple_format 可讓文字自動換行 -->
+                <P><%= truncate(user.introduction, length: 50) %></P>
+                <%= render partial: "shared/follow", locals: {user: user} %>
+              </div>
+            </div>
+            <hr>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    </div>
+      
+
+  </div>
+</div>
