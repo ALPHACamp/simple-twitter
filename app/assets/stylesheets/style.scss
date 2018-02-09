@@ -1,0 +1,312 @@
+.clearfix::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.sub-title {
+  color: #006666;
+}
+
+.home-img img {
+  width: 500px;
+  height: 500px;
+}
+
+/* --------------- navbar --------------- */
+
+.my-nav {
+  background: #00BFFF;
+  height: 60px;
+}
+
+.navbar-header {
+  margin-top: 9px;
+}
+
+#logo > img {
+  height: 30px;
+  width: 30px;
+  margin-top: -9px;
+  margin-left: 5px;
+}
+
+#nav-title {
+  color: #FFFFFF;
+  font-size: 27px;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: bold;
+}
+
+#nav-link > li > p{
+  color: #FFFFFF;
+  font-size: 19px;
+  font-family: 'Alegreya', serif;
+}
+
+#nav-link > li > a {
+  color: #FFFFFF;
+  font-size: 19px;
+  font-family: 'Alegreya', serif;
+  margin-top: 3.5px;
+}
+
+#nav-link > li > a > img {
+  margin-top: -15px;
+  border-radius: 5px;
+  width: 50px;
+  height: 50px;
+}
+
+.nav-user a {
+  margin-right: -20px;
+}
+
+
+/* --------------- tweet list --------------- */
+
+
+#tweet-new {
+  border: 2px solid #8ab7dc;
+  border-radius: 12px;
+  height: 150px;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.tweet-button {
+  float: right;
+  font-size: 15px;
+}
+
+.tweet-item {
+  border: 1.5px solid #d9edf7; /* gray: #ddddddbd */
+  padding: 10px;
+}
+
+.tweet-item .tweet-image {
+  float: left;
+  width: 20%;
+  padding-right: 15px;
+}
+
+.tweet-item .tweet-image img {
+  border-radius: 5px;
+  width: 80px;
+  height: 80px;
+}
+
+.tweet-item .tweet-content {
+  float: right;
+  width: 80%;
+  font-size: 16px;
+}
+
+.tweet-info {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #3084cc;
+}
+
+.tweet-item .tweet-content p {
+  color:  #444444;
+}
+
+.tweet-item .tweet-content link {
+  font-weight: bold;
+}
+
+.reply-btn {
+  font-weight: bold;
+  color: #69b2f1;
+}
+
+.like-btn {
+  margin-left: 10px;
+  font-weight: bold;
+  color: #AAAAAA;
+}
+
+.unlike-btn {
+  margin-left: 10px;
+  font-weight: bold;
+  color: #FA8072;
+}
+
+.delete-btn {
+  float: right;
+  font-size: 14px;
+  color: red;
+  border-color: red;
+}
+
+/* --------------- user list --------------- */
+
+.sub-title#popular {
+  color: #006666;
+  font-weight: bold;
+}
+
+.user-item {
+  border: 1.5px solid #d9edf7; /* gray: #ddddddbd */
+  padding: 10px;
+}
+
+.user-item .user-image {
+  float: left;
+  width: 30%;
+  padding-right: 15px;
+  margin-top: 8px;
+}
+
+.user-item .user-image img {
+  border-radius: 5px;
+  width: 80px;
+  height: 80px;
+}
+
+.user-item .user-content {
+  float: left;
+  width: 67%;
+  padding-left: 15px;
+}
+
+.user-content h4 {
+  color: #3084cc;
+}
+
+.user-content p {
+  color:  #444444;
+}
+
+.user-content .followship {
+  float: right;
+}
+
+.user-content .user-status span {
+  line-height: 30px;
+  font-size: 13px;
+}
+
+
+/* --------------- admin index --------------- */
+
+#admin_panel_title {
+  color: #006666;
+  text-align: center;
+  font-weight: bold;
+}
+
+#admin_index_nav {
+  font-size: 16px;
+}
+
+
+/* --------------- reply index --------------- */
+
+
+#reply-new {
+  border: 2px solid #8ab7dc;
+  border-radius: 12px;
+  height: 100px;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.tweet-reply {
+  padding-left: 50px;
+}
+
+
+
+/* --------------- user info --------------- */
+
+
+.personal-info {
+  margin-top: 30px;
+}
+
+.personal-info img {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+}
+
+.personal-info p {
+  padding: 10px 30px 10px 30px;
+  color: #3084cc;
+}
+
+.personal-info .link a {
+  padding-left: 35px;
+  font-size: 23px;
+  line-height: 35px;
+  color: #666666;
+}
+
+.link.active a {
+  font-weight: bold;
+}
+
+.user-edit-btn {
+  font-weight: bold;
+  margin-left: 30px;
+  margin-top: 10px;
+  border-color: #17a2b8;
+  color: #17a2b8;
+}
+
+.follow-btn {
+  margin-left: 35px;
+  margin-top: 10px;
+  border-color: #ef4e6c;
+  color: #ef4e6c;
+}
+
+.followed-btn {
+  margin-left: 35px;
+  margin-top: 10px;
+  border-color: #ef4e6c;
+  background-color: #ef4e6c;
+  color: white;
+}
+
+
+/* --------------- udit profile --------------- */
+
+
+.edit-title {
+  color: #286090;
+  font-size: 18px;
+}
+
+#edit-avatar {
+  width: 250px;
+  height:250px;
+}
+
+#edit-name {
+  border: 2px solid #8ab7dc;
+  border-radius: 12px;
+  height: 50px;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+#edit-intro {
+  border: 2px solid #8ab7dc;
+  border-radius: 12px;
+  height: 150px;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+
+/* --------------- user followship --------------- */
+
+
+.followship-block {
+  float: left;
+  width: 50%;
+  padding-right: 15px;
+}

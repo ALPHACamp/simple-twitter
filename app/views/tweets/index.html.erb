@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="col-md-7">
+      <%= form_for @tweet do |f| %>
+        <div class="form-group">
+          <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control", id: "tweet-new" %>
+        </div>
+        <div class="form-group clearfix">
+          <%= f.submit 'Tweet', class: "btn btn-primary tweet-button" %>
+        </div>
+      <% end %>
+      
+      <% @tweets.each do |tweet| %>
+        <%= render partial: "shared/tweet_list", locals: {object: tweet, flag: false} %>
+        <br>
+      <% end %>
+    </div>
+
+    <div class="col-md-5">
+      <h2 class="sub-title" id="popular">Popular</h2><br>
+      <% @users.each do |user| %>
+        <%= render partial: "shared/user_list", locals: {object: user, admin: false} %>
+        <br>
+      <% end %>
+    </div>
+  </div>
+</div>

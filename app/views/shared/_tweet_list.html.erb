@@ -1,0 +1,26 @@
+<div class="tweet-item clearfix">
+  <div class="tweet-image">
+    <%= link_to tweets_user_path(object.user) do %>
+      <% if object.user.avatar? %>
+        <%= image_tag object.user.avatar %>
+      <% else %>
+        <img src="http://via.placeholder.com/80x80">
+      <% end %>
+    <% end %>
+  </div>
+          
+  <div class="tweet-content">
+    <div class="tweet-info">
+      <%= link_to object.user.name, tweets_user_path(object.user) %>, <%= object.created_at.strftime("%Y-%m-%d, %H:%M") %>
+    </div>
+    <p><%= object.description %></p>
+
+    <%= link_to "Reply(#{object.replies_count})", replies_path(object), class: "reply-btn" %>
+    <%= render partial: "shared/like", locals: {object: object} %>
+
+    <% if current_user.admin? && flag %>
+      <%= link_to 'Delete', admin_tweet_path(object), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-sm delete-btn" %>
+    <% end %>
+  </div>
+</div>
+  
