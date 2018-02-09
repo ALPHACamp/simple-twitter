@@ -6,17 +6,24 @@
 
     <%= render partial: "share/userdetails", locals: {user: @user} %>
     <div class="col-sm-8"> 
-
       <% @followers.each do |follower| %>
-        <div class="tweet-item">
-         <div class="tweet-item">
-            <%= image_tag follower.avatar, class: "img-responsive center-block" %>
-            <div class="caption">
-              <h3><%= link_to follower.name, tweets_user_path(follower) %></h3>
+        <div class="row">
+          <div class="tweet-item">
+            <div class="col-sm-4">
+              <%= image_tag follower.avatar, class: "img-responsive center-block" %>
+            </div>
+            <div class="col-sm-8">
+              <div class="caption">
+                <h3><%= link_to follower.name, tweets_user_path(follower) %></h3>
+                <h4><%= truncate(follower.introduction, lenght:10) %></h4>
+                <%= render partial: "share/follow", locals: {user: follower} %>
+              </div>
             </div>
           </div>
         </div>
       <% end %>
+    </div> 
+
     </div> 
 
 
@@ -25,3 +32,7 @@
       
   </div>
 </div>
+
+
+
+
