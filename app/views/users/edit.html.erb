@@ -1,0 +1,87 @@
+<div class="container text-center">
+  <!-- 使用者只能進入自己的profile編輯頁面 -->
+  <% if current_user == @user %>
+    <h2>修改個人資料</h2>
+
+    <!-- errors msg /start-->
+    <% if @user.errors.present? %>
+      <br /><hr>
+
+      <ul class="container-fluid">
+        <% @user.errors.each do |error, message| %>
+          <div class="alert alert-danger" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <li><strong>WARNING</strong> : <%= "#{error.capitalize} #{message}" %></li>
+          </div>
+        <% end %>
+      </ul>
+    <% end %>
+    <!-- errors msg /end -->
+
+    <hr>
+    
+    <!-- avatar & form 設置 -->
+    <div class="useredit">
+      <div class="row">
+        <!-- form /start -->
+        <%= form_for @user do |f| %>
+          <!-- avatar form-left/start -->
+          <div class="col-md-4">
+            <!-- 判別@user.avatar是否為nil -->
+            <% if @user.avatar? %>
+              <%= image_tag(@user.avatar, width: '360px', height: '350px') %>
+            <% else %>
+              <%= image_tag("http://via.placeholder.com/300x350") %>
+            <% end %>
+            
+            <!-- update avatar -->
+            <div class="field">
+              <%= f.label :avatar %>
+              <%= f.file_field :avatar, class: "form-control" %>
+            </div>
+
+          </div><!-- avatar form-left/end -->
+
+          <!-- form-right/start -->
+          <div class="col-md-8">
+            <%= form_for @user do |f| %>
+              
+              <form class="form-group" role="form">
+                <div class="field">
+                  <%= f.label :email %>
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Enter Email" %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :name %>
+                  <%= f.text_field :name, class: "form-control", placeholder: "Enter Name" %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :introduction %>
+                  <%= f.text_area :introduction, class: "form-control", placeholder: "Enter Introduction", rows: "15" %>
+                </div>
+
+                <!-- submit -->
+                <br />
+                <div class="actions">
+                  <%= f.submit "更新個人資料", class: "btn btn-primary" %> | 
+                  <%= f.button "取消變更", type: :reset, class: "btn btn-default" %>
+                </div>
+
+              </form>
+            <% end %>
+          </div> <!-- form-right/end -->
+
+        <% end %><!-- form /end -->
+        
+      </div> <!-- /.row -->
+    </div>
+
+    
+  <% else %>
+    <h2>非使用者本人，無法修改此使用者的個人資料</h2><br />
+  <% end %>
+  <hr>
+  <%= link_to "回上一頁", :back, class: "btn btn-primary"  %>
+</div>
