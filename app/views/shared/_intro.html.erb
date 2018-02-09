@@ -7,16 +7,16 @@
   <div><%= simple_format user.introduction %></div>
   <br/>
   <%= link_to tweets_user_path(user) do %>
-    <h4 class="intro"><strong><i class="glyphicon glyphicon-comment" aria-hidden="true"></i>&nbsp; Tweets  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= user.tweets.count %></strong></h4>
+    <h4 class="intro"><strong><i class="glyphicon glyphicon-comment" aria-hidden="true"></i>&nbsp; Tweets  &nbsp;<%= user.tweets.count %></strong></h4>
   <% end %>
   <%= link_to followings_user_path(user) do %>
-    <h4 class="intro"><strong><i class="glyphicon glyphicon-search" aria-hidden="true"></i>&nbsp; Following  &nbsp;&nbsp;&nbsp;<%= user.followings.count %></strong></h4>
+    <h4 class="intro"><strong><i class="glyphicon glyphicon-search" aria-hidden="true"></i>&nbsp; Following  &nbsp;<%= user.followings.count %></strong></h4>
   <% end %>
   <%= link_to followers_user_path(user) do %>
-    <h4 class="intro"><strong><i class="glyphicon glyphicon-user" aria-hidden="true"></i>&nbsp; Follower  &nbsp;&nbsp;&nbsp;<%= user.followers_count %></strong></h4>
+    <h4 class="intro"><strong><i class="glyphicon glyphicon-user" aria-hidden="true"></i>&nbsp; Follower &nbsp;<%= user.followers_count %></strong></h4>
   <% end %>
   <%= link_to likes_user_path(user) do %>
-    <h4 class="intro"><strong><i class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></i>&nbsp; Like  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= user.likes.count %></strong></h4>
+    <h4 class="intro"><strong><i class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></i>&nbsp; Like  &nbsp;<%= user.likes.count %></strong></h4>
   <% end %>
   <br/>
   <% if user == current_user %>
