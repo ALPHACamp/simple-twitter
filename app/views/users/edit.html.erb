@@ -18,7 +18,7 @@
 
   <div class="field">
   <%= f.label :avatar, "上傳頭相" %>
-  <%= image_tag @tweet.avatar, width:'300px' if @tweet.avatar? %>
+  <%= image_tag @user.avatar, width:'300px' if @user.avatar? %>
   <%= f.file_field :avatar, options = {style:"width: 250px;", class: 'form-control'} %>
   </div>
   <hr>
