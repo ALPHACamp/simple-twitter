@@ -20,7 +20,7 @@
   <% end %>
   <br/>
   <% if user == current_user %>
-    <%= link_to "Edit Profile", edit_user_path(user) , class:'btn button-style' %>
+    <%= link_to "Edit Profile", edit_user_path(user) , class:'btn button-tweet' %>
   <% end %>
 
   <%= render partial: "shared/follow" , locals: { user: user } %>

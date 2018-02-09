@@ -2,6 +2,6 @@
     <% if current_user.following?(user)%>
       <%= link_to 'Unfollow', followship_path(user), class:'btn unfollow-style', method: :delete %>
     <% else %>
-      <%= link_to "Follow",  followships_path(following_id: user), class:'btn button-style', method: :post %>
+      <%= link_to "Follow",  followships_path(following_id: user), class:'btn button-tweet', method: :post %>
     <% end %>
 <% end %>
