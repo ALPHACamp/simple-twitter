@@ -22,7 +22,11 @@
             <div class="panel-body">
               <div class="media">
                 <div class="media-left">
-                  <%= image_tag reply.user.avatar, class: "media-object", width: "100px" %>
+                  <% if reply.user.avatar? %>
+                    <%= image_tag reply.user.avatar, class: "media-object", width: "100px" %>
+                  <% else %>
+                    <img src="https://api.fnkr.net/testimg/100x100/d3d3d3/FFF/?">
+                  <% end %>
                 </div>
                 <div class="media-body">
                   <h4 class="media-heading">
