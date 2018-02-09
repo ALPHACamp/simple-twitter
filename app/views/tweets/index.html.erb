@@ -13,6 +13,14 @@
   </div>
 
   <div class="col-md-4">
-    <h1>popular user</h1>
+    <h1>all user</h1>
+    <ul>
+      <% @users.each do |user| %>
+        <li>
+          <%= user.name %>
+          <%= link_to "Follow", followships_path(following_id: user), method: :post %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </div>
