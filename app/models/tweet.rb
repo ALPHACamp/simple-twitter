@@ -1,6 +1,6 @@
 class Tweet < ApplicationRecord
   validates_length_of :description, maximum: 140
-  default_scope { order(created_at: :desc) }
+  #default_scope { order(created_at: :desc) }
   belongs_to :user, counter_cache: true
   #tweet只能有一個作者
 
@@ -19,7 +19,7 @@ class Tweet < ApplicationRecord
 
   def like_at(user)
     if self.liked_users.include?(user)
-      like = self.likes.find_by(user_id: user.id)
+      like = self.likes.find_by(user_id: user.id字)
       return like.created_at
     else
       return "no like"

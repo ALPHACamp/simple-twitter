@@ -40,11 +40,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @likes = @user.likes.order(created_at: :desc)
     #@likes_tweet = @user.liked_tweets.order('likes.updated_at DESC')
-    #原本的寫法會錯, 產生的query是
-    #SELECT  "tweets".* FROM "tweets" INNER JOIN 
-    #"likes" ON "tweets"."id" = "likes"."tweet_id" 
-    #WHERE "likes"."user_id" = ? ORDER BY "tweets"."created_at" DESC, likes.updated_at DESC
-    # 會把tweets.id拉進來排序
+
   end
 
   private 
