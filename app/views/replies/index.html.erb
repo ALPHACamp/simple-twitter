@@ -1,8 +1,34 @@
-<h6>這是 reply 的首頁</h6>
 <div class="container">
   <div class="row">
     <div class="col-md-4">
-      <%= @user.name %>
+      <%= image_tag @tweet.user.avatar, width: '300px' if @tweet.user.avatar? %>
+      <div><%= @tweet.user.name %></div>
+      <div><%= @tweet.user.introduction %></div>
+      <div>
+        <%= link_to tweets_user_path(@tweet.user), method: :get do %>tweet <%= @tweet.user.tweets.count %>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to followings_user_path(@tweet.user), method: :get do %>following <%= @tweet.user.followings.count %>
+        <% end %> 
+      </div>
+      <div>
+        <%= link_to followers_user_path(@tweet.user), method: :get do %>follower <%= @tweet.user.followers.count %>
+        <% end %> 
+      </div>
+      <div>
+        <%= link_to likes_user_path(@tweet.user), method: :get do %>like <%= @tweet.user.likes.count %>
+        <% end %>      
+      </div>
+      <% if current_user != @tweet.user %>
+        <% if current_user.following?(@tweet.user) %>
+          <%= link_to 'Unfollow', followship_path(@tweet.user), method: :delete, class: "btn btn-danger" %>
+        <% else %>
+          <%= link_to "Follow", followships_path(following_id: @tweet.user.id), method: :post, class: "btn btn-primary" %>
+        <% end %>
+      <% else %>
+        <%= link_to "Edit Profile", edit_user_path(@tweet.user), method: :get, class: "btn btn-primary" %>
+      <% end %>     
     </div>
     
     <div class="col-md-8">
