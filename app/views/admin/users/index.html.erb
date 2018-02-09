@@ -25,26 +25,25 @@
       <!-- <table class="table table-bordered"> -->
         <thead>
           <tr>
-            <th>#</th>
             <th>Name</th>
+            <th>Tweets</th>
+            <th>Followings</th>
+            <th>Follower</th>
+            <th>Likes</th>
           </tr>
         </thead>
         <tbody>
-         
-        
         <% @users.each do |user| %>
-          <tr>
-            <th scope="row"><%= user.id %></th>
+          <tr>          
             <td><%= user.name%></td>
+            <td><%= user.tweets.count%></td>
+            <td><%= user.followings.count %></td>
+            <td><%= user.followers.count%></td>
+            <td><%= user.likes.count%></td>
           </tr>
           <% end %>
         </tbody>
       </table>
-
-      <div class="text-center">
-        <%= paginate @users %>
-      </div>
-
     </div>
 
 </div>
