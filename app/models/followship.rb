@@ -1,6 +1,6 @@
 class Followship < ApplicationRecord
   validates :following_id, uniqueness: { scope: :user_id }
-  validates :follow_self
+  validate :follow_self
   
   belongs_to :user
   belongs_to :following, class_name: "User" 
