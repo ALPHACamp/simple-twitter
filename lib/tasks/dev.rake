@@ -93,6 +93,20 @@ namespace :dev do
          end
        end
     end
-    #
+
+
+  #   task fake_followship: :environment do
+  #   Followship.destroy_all
+  #   puts "creating fake followship..."
+  #   User.all.each do |u|
+  #     @users = User.where.not(id: u.id).shuffle
+  #     (rand(20)).times do
+  #       u.followships.create!(
+  #       following: @users.pop,
+  #       )
+  #     end
+  #   end
+  #   puts "now you have #{Followship.count} followship"
+  # end
 
 end
