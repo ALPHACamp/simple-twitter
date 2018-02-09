@@ -4,7 +4,12 @@
       <%= image_tag @user.avatar, class: "img-responsive img-rounded" %>
       <h2><%= @user.name %></h2>
       <div><%= @user.introduction %></div>
-      <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-primary" %>
+      <% if @user == current_user %>
+        <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-primary" %>
+      <% else %>
+        <%= link_to 'Follow', followships_path(following_id: @user), method: :post, class: "btn btn-primary" %>
+      <% end %>
+
     </div>
   </div>
   <div class="col-xs-9">
