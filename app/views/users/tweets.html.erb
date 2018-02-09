@@ -20,9 +20,9 @@
       </div>
       <div>
         <% if @user.likes.count == 0 %>
-          <%= link_to tweets_user_path(@user), method: :get do %>like <%= @user.likes.count %>
+          <%= link_to tweets_user_path(@user), method: :get do %>like <%= @user.likes.count %><% end %>
         <% else %>
-          <%= link_to likes_user_path(@user), method: :get do %>like <%= @user.likes.count %>
+          <%= link_to likes_user_path(@user), method: :get do %>like <%= @user.likes.count %><% end %>
         <% end %>
       </div>
       <% if current_user != @user %>
