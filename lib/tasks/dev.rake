@@ -33,4 +33,16 @@ namespace :dev do
     puts "have created fake tweets"
     puts "now you have #{Tweet.count} tweets data"
   end
+  task fake_followship: :environment do
+    Followship.destroy_all
+    User.all.each do |user|
+      5.times do |i|
+        user.followships.create!(
+          following: User.all.sample
+          )
+      end
+    end
+    puts "have created fake followships"
+    puts "now you have #{Followship.count} followships data"
+  end
 end
