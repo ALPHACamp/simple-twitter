@@ -4,3 +4,4 @@
 <div><%= "Tweets " %><%= @user.tweets.size %></div>
 <div><%= "Following " %><%= link_to @user.followings.size, followings_user_path(@user) %></div>
 <div><%= "Follower " %><%= link_to @user.followers.size, followers_user_path(@user) %></div>
+<div><%= "like " %><%= link_to @user.likes.size, likes_user_path(@user) %></div>
