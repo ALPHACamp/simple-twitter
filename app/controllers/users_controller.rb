@@ -13,8 +13,19 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(user_params)
-    redirect_to edit_user_path(@user)
+    if @user != current_user
+      flash.now[:alert] = 'Not able to edit other\'s profile!'
+      redirect_back(fallback_location: root_path)
+    end
+
+    if @user.update(user_params)
+      flash[:notice] = "User porfile was successfully update"
+      redirect_to edit_user_path(current_user)
+    else
+      flash.now[:alert] = 'Update failed!'
+      render :edit
+    end
+
   end
 
   def followings
