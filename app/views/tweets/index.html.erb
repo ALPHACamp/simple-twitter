@@ -1,9 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8">
-      <%= form_for @tweet, as: :x do |f| %>    
-        <%= f.text_area :description %>
-        <%= f.submit %>    
+    <div class="col-md-8">     
+      <%= form_for @tweet, as: :x do |f| %>
+      <div class="form-group"> 
+        <%= f.text_area :description, placeholder: "說些事情吧...", class: "form-control", rows: "5" %>
+      </div>
+      <div class="form-group">  
+        <%= f.submit class: "btn btn-primary" %>
+        <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+      </div>
       <% end %>
       <ul>
         <% @tweets.each do |tweet| %>
