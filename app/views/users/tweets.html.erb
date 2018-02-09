@@ -19,7 +19,7 @@
         
         <h4>Followers <span class="badge"><%= @user.followers_count %></span></h4>
         
-        <h4>Like <span class="badge"><%=  %></span></h4>
+        <h4>Like <span class="badge"><%= @user.likes_count %></span></h4>
       
       <div class="text-center">
         <% if @user == current_user %>
@@ -61,4 +61,5 @@
       </div>
     <% end %>
   </div>
+
 </div>
