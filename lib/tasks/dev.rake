@@ -22,6 +22,8 @@ namespace :dev do
     end
   end
 
+
+  # 產生80筆Tweet  
   task fake_tweet: :environment do
     Tweet.destroy_all
 
@@ -33,6 +35,25 @@ namespace :dev do
     end
     puts "have created fake tweets"
     puts "now you have #{Tweet.count} tweets data"
+  end
+
+
+  # 每筆Tweet產生3則reply
+  task fake_reply: :environment do
+    Reply.destroy_all
+
+    Tweet.all.each do |tweet|
+      3.times do |i|
+        tweet.replies.create!(
+          comment: FFaker::Lorem.sentence,
+          user: User.all.sample
+          )
+      end
+    end
+    puts "Have created fake replies."
+    puts "Now you have #{Reply.count} reply data."
+
+
   end
 
 end
