@@ -5,7 +5,16 @@
   <li><%= @user.introduction %></li>
   <li>tweets <%=@user.tweets.size %></li>
 </ul>
-
+<% if @user == current_user %>
+  <%= link_to "Edit Profile",edit_user_path(current_user) %>
+<% else %>
+  <% if current_user.following?(@user) %>
+   <%= link_to 'Unfollow', followship_path(@user), method: :delete %>
+   <% else %>
+   <%= link_to 'Follow', followships_path(following_id: @user.id), method: :post %>
+   <% end %>
+<% end %>
+</div>
 
 <% @tweets.each do |tweet| %>
 <ul>
