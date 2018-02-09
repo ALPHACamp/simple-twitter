@@ -43,6 +43,13 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'jquery-rails'
 
+
+
+group :production do
+  gem 'pg'
+end
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -55,9 +62,8 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'sqlite3'
 end
-group :production do
-  gem 'pg'
-end
+
+
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
