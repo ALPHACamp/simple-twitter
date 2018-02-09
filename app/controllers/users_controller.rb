@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     unless @user.id == current_user.id
       flash[:notice] = "你沒有權限";
       # redirect_to user_path(@user)
-      redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: tweets_user_path(current_user))
     end
   end
   
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       #redirect_to user_path(@user.id)
-      redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: tweets_user_path(@user))
       flash[:notice] = "user was successfully updated"
     else
       render :edit
