@@ -20,8 +20,8 @@ before_action :set_user, only: [:tweets, :edit, :update, :likes, :followings, :f
 
 
   def tweets
-    @tweet = @user.tweets.page(params[:page]).per(10).order(created_at: :desc)
-
+    @tweets = @user.tweets.page(params[:page]).per(10).order(created_at: :desc)
+    @users = User.all
   end
 
 
@@ -46,20 +46,22 @@ before_action :set_user, only: [:tweets, :edit, :update, :likes, :followings, :f
 
    def likes
      # @likes # 基於測試規格，必須講定變數名稱
-    #  @likes = @user.tweets.joins(:likes).page(params[:page]).per(10).order("likes.created_at DESC")
-     @likes = @user.like_tweets.page(params[:page]).per(10).order("likes.created_at DESC")
+     @likes = @user.tweets.joins(:likes).page(params[:page]).per(10).order("likes.created_at DESC")
+    #  @likes = @user.liked_tweets.page(params[:page]).per(10).order("likes.created_at DESC")
+    # @likes = @user.likes.order(created_at: :desc)
+    #@likes_tweet = @user.liked_tweets.order('likes.updated_at DESC')
    end
 
 
   def followings
     # @followings # 基於測試規格，必須講定變數名稱
-    @followings = @user.followings.page(params[:page]).per(10).order("followings.created_at DESC")
+    @followings = @user.followings.order('followships.created_at DESC')
 
   end
 
   def followers
     # @followers # 基於測試規格，必須講定變數名稱
-    @followers = @user.followers.page(params[:page]).per(10).order("followers.created_at DESC")
+    @followers = @user.followers.order('followships.created_at DESC')
 
   end
 
