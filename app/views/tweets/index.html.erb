@@ -16,6 +16,7 @@
 			</div>
 		</div>
 		<div class="col-md-4">
+			<h3>Popular</h3>
 			<% @users.each do |user|%>
 				<%= render partial: "shared/followships.html.erb", locals: {user: user}%>
 			<%end%>

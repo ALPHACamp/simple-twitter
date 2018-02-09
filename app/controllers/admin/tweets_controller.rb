@@ -3,7 +3,7 @@ class Admin::TweetsController < Admin::BaseController
   before_action :authenticate_admin
 
   def index
-    @tweets = Tweet.order(created_at: :desc)
+    @tweets = Tweet.all.order(created_at: :desc)
     @users = User.left_joins(:tweets).group(:id).order('COUNT(tweets.id) DESC')
   end
 

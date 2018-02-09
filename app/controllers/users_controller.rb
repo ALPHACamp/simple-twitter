@@ -6,8 +6,8 @@ class UsersController < ApplicationController
   end
 
   def edit
-    if @user != current_user
-      redirect_to edit_user_path(current_user)
+    if @user != current_user 
+      redirect_to tweets_user_path(@user)
       flash[:alert] = "You cannot edit other users"
     end
   end
@@ -25,7 +25,8 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings = @user.followings.order(created_at: :desc)
+    @followings = @user.followings.order("followships.created_at: :desc")
+    
   end
 
   def followers
