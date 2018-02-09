@@ -1,0 +1,28 @@
+<section class="edit-block">
+  <div class="user_avatar_upload">
+    <%= form_for @user do |f| %>
+      <div class="col-sm-3">
+        <div class="thumbnail">
+          <%= image_tag f.object.avatar.large.url %>
+        </div>
+        <div class="form-group">
+          <%= f.label :avatar, 'Browse files', class: "btn btn-primary",style: "width: 100%" %>
+          <%= f.file_field :avatar %>
+          <%= f.hidden_field :avatar_cache %>
+        </div>
+      </div>
+      <div class="col-sm-9">
+        <div class="form-group">
+          <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.text_area :introduction, placeholder: "Type anything about you here...", resize: false, size: "30x10", class: "form-control" %>
+        </div>
+        
+        <div class="action">
+          <%= f.submit "Update", class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>

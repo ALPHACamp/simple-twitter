@@ -1,0 +1,11 @@
+<section>
+  <div class="col-md-4">
+    <%= render 'shared/user_stats', user: @user %>
+  </div>
+  <div class="col-md-8 follow">
+    <h3><%= @title %></h3>
+    <% if @follow.any? %>
+      <%= render 'shared/follow', follows: @follow %>
+    <% end %>
+  </div> 
+</section>

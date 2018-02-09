@@ -1,0 +1,10 @@
+<section class="tweet-static">
+  <div class="col-md-4">
+    <%= render 'shared/user_stats', user: @user %>
+  </div>
+  <div class="col-md-8">
+    <% @tweets.each do |tweet| %>
+      <%= render 'shared/tweets',  t: tweet %>
+    <% end %>    
+  </div> 
+</section>
