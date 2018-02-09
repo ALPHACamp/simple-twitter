@@ -23,6 +23,18 @@
             </div>
           </div>
         <% end %>
+        <div class="col-md-12">
+        <!-- 回覆-->
+          <%= form_for [@tweet,@reply] do |f| %>
+          <div class="form-group">
+            <%= f.text_area :comment, placeholder: "留個言吧", class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.submit "Reply" ,class: "btn btn-primary" %>
+          </div>
+          <% end %>
       </div>
+      </div>
+      
   </div>
 </div>
