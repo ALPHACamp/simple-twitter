@@ -1,0 +1,23 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="media">
+      <div class="media-left">
+        <% if user.avatar? %>
+          <%= image_tag user.avatar, class: "media-object", width: "100px" %>
+        <% else %>
+          <img src="https://api.fnkr.net/testimg/100x100/d3d3d3/FFF/?">
+        <% end %>    
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">
+          <%= link_to user.name, tweets_user_path(user) %> &nbsp;
+        </h4>
+        <p>
+          <%= truncate(user.introduction, length: 120) %>
+        </p>
+        <%= fa_icon("users 2x") %>
+        <span class="lead"><%= user.followers_count %></span>
+      </div>  
+    </div>
+  </div>
+</div>
