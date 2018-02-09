@@ -21,9 +21,15 @@
     <h4>Like <span class="badge"><%= user.likes_count %></span></h4>
   <% end %>
 
-  <div class="text-center">
+  <div class="button-group text-center">
     <% if user == current_user %>
       <%= link_to "Edit Profile", edit_user_path(user), class: "btn btn-primary btn-lg btn-block" %>
+    <% else %>
+      <% if current_user.following?(user) %>
+        <%= link_to "Unfollow", followship_path(user), method: :delete, class: "btn btn-primary btn-lg btn-block" %>
+      <% else %>
+        <%= link_to "Follow", followships_path(following_id: user), method: :post, class: "btn btn-default btn-lg btn-block" %>
+      <% end %>   
     <% end %> 
   </div>
 </div>
