@@ -11,14 +11,16 @@
   <body>
     <nav class="navbar navbar-default">
       <div class="container-fluid">
-        <ul class="nav navbar-nav nav-right">
-          <li><%= link_to "Simple Tweeter", root_path%></li>
+        <ul class="nav navbar-nav navbar-left">
+          <h1><%= link_to "Simple Tweeter", root_path%></h1>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
           <% if current_user %>
-            <li><%= link_to (image_tag current_user.avatar, width:'75px'), tweets_user_path(current_user)%></li>
+            <li><%= link_to (image_tag current_user.avatar, width:'50px'), tweets_user_path(current_user)%></li>
             <% if current_user&.admin?%>
-              <% if current_page?(root_path)%>
+              <% if not current_page?(controller: 'admin/tweets')%>
                 <li class="nav-item"><%= link_to '管理後台', admin_tweets_path, :class => 'nav-link'%></li>
-              <% elsif current_page?(admin_tweets_path) %>
+              <% else %>
                 <li class="nav-item"><%= link_to '管理前台', root_path, :class => 'nav-link'%></li>
               <% end %>
             <% end %>
@@ -31,9 +33,34 @@
       </div>
       
     </nav>
-    
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if flash[:notice]%>
+  <div class="container">
+    <div class= "row">
+      <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">
+            &times;
+          </span>
+        </button>
+        <%=  notice %></div>
+    </div>
+  </div>
+  <%end%>
+
+  <% if flash[:alert]%>
+  <div class="container">
+    <div class= "row">
+      <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">
+            &times;
+          </span>
+        </button>
+        <%=  alert %>
+      </div>
+    </div>
+  </div>
+  <%end%>
     <%= yield %>
   </body>
 </html>
