@@ -1,0 +1,6 @@
+<%= image_tag @user.avatar, class: "img-responsive img-rounded" %>
+<h2><%= @user.name %></h2>
+<div><%= @user.introduction %></div>
+<div><%= "Tweets " %><%= @user.tweets.size %></div>
+<div><%= "Following " %><%= @user.followings.size %></div>
+<%= render partial: "shared/follow" %>
