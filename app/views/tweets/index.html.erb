@@ -45,7 +45,7 @@
               <%= user.introduction %>
             </p>
             <p>
-              等等新增follow按鈕
+              <%= link_to  "Follow", followships_path(following_id: user), method: :post %>
             </p>
           </div>
           <% end %>
