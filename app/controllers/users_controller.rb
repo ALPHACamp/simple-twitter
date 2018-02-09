@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     # 基於測試規格，必須講定變數名稱
     @tweets = @user.liked_tweets.order(created_at: :desc)
     # Like：該使用者 like 過的推播清單，排序依 like 紀錄成立的時間，愈新的在愈前面
-    @likes = @user.liked_tweets.order(created_at: :desc)
+    @likes = @user.liked_tweets.includes(:likes).order("likes.created_at desc")
   end
 
   private
