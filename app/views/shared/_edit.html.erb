@@ -3,5 +3,5 @@
   <%= render partial: "shared/follow", locals: {user: @user} %>
 <% else %>
   <!-- Edit Profile -->
-  <%= link_to 'Edit Profile', { :controller => 'users', :action => 'edit'} %>
+  <%= link_to 'Edit Profile', { :controller => 'users', :action => 'edit'}, class: "btn btn-primary" %>
 <% end %>

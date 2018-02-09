@@ -8,27 +8,26 @@
 
       <!-- user link -->
       <%= link_to (users_tweets_path(@user)) do %>
-        <h5>Tweets : <%= @user.tweets.count %></h5>
+        <h5>Tweets  <%= @user.tweets.count %></h5>
       <% end %>
 
       <!-- followings -->
       <%= link_to (following_user_path(@user)) do %>
-        <h5>Following : <%= @user.followings.count %></h5>
+        <h5>Following  <%= @user.followings.count %></h5>
       <% end %>
 
       <!-- followers -->
       <%= link_to (user_follower_path(@user)) do %>
-        <h5>Follower : <%= @user.followers_count %></h5>
+        <h5>Follower  <%= @user.followers_count %></h5>
       <% end %>
 
       <!-- like 按過讚的推特數 -->
       <%= link_to (user_likes_path(@user)) do %>
-        <h5>Like : <%= @user.liked_tweets.count %></h5>
+        <h5>Like  <%= @user.liked_tweets.count %></h5>
       <% end %>
-      
+      <br>
       <%= render partial: "shared/edit", locals: {user: @user} %>
 
-      <hr>
     </div>
 
 
@@ -36,15 +35,22 @@
       <!-- Tweets -->
       <% @tweets.each do |tweet| %>
 
-        <div class="tweets">
-          <%= image_tag tweet.user.avatar, height: 75, width: 75 %>
+        <div class="tweets clearfix">
+          <div class="avatar">
+            <%= image_tag tweet.user.avatar, width: 75, height: 75 %>
+          </div>
+
           <p>@<%= tweet.user.name %>, <%= tweet.created_at %></p>
           <%= tweet.description %>
-          <h5>Reply(<%= tweet.replies.count %>) Like(<%= tweet.likes_count %>)</h5>
+
+          <div class="tweets-bottom">
+            <div class="reply">Reply(<%= tweet.replies.count %>)</div>
+            <div class="like">Like(<%= tweet.likes_count %>)</div>
+          </div>
+
 
           <!-- like / unlike button -->
 
-          <hr>
         </div>
 
       <% end %>
