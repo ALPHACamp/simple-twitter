@@ -15,7 +15,7 @@
           <th>推播數量</th>
           <th>關注人數</th>
           <th>跟隨者人數</th>
-          <th>按讚推播數</th>
+          <th>喜愛推播數</th>
         </tr>
       </thead>
       <tbody>
@@ -24,9 +24,9 @@
             <td><%= user.id %></td>
             <td><%= link_to user.name, tweets_user_path(user) %></td>
             <td><%= user.tweets.size %></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td><%= user.followings.size %></td>
+            <td><%= user.followers.size %></td>
+            <td><%= user.likes.size %></td>
           </tr>
         <% end %>
       </tbody>

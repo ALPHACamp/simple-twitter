@@ -1,5 +1,6 @@
 <div class="panel panel-default">
   <div class="panel-body">
+
     <div class="media">
       <div class="media-left">
         <% if user.avatar? %>
@@ -8,15 +9,16 @@
           <img src="https://api.fnkr.net/testimg/100x100/d3d3d3/FFF/?">
         <% end %>    
       </div>
+
       <div class="media-body">
         <h4 class="media-heading">
           <%= link_to user.name, tweets_user_path(user) %> &nbsp;
         </h4>
-        <p><%= truncate(user.introduction, length: 120) %></p>
+        <p><%= truncate(user.introduction, length: 100) %></p>
 
         <div class="btn-group">
           <%= fa_icon("users 2x") %>
-          <span class="lead"><%= user.followers.count %></span> &nbsp; 
+          <span class="lead"><%= user.followers.size %></span> &nbsp; 
         </div>
         
         <div class="btn-group">
@@ -28,8 +30,8 @@
             <% end %>
           <% end %>         
         </div>
-
-      </div>  
+      </div> 
     </div>
+  
   </div>
 </div>
