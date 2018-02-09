@@ -12,11 +12,9 @@
     <div id="profile-pic" >
               <%= image_tag @users.avatar,class:" img-responsive" if @users.avatar?%>
     </div>
-      <div class="form-group">
-         
+      <div class="form-group">   
             <div>
-              <h4><%= f.text_field :name %></h4>
-
+              <h4><%= @users.name %></h4>
               <%= f.file_field :avatar  ,
               label: 'Bowse Files'%>  
             </div>

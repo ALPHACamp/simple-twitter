@@ -16,6 +16,8 @@ class User < ApplicationRecord
   #關聯
   has_many :tweets,dependent: :destroy 
 
+  has_many :replies, dependent: :restrict_with_error
+  has_many :tweet_replies, through: :replies
   def admin?
     self.role == "admin"
   end  

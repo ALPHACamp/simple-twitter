@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_tweet, only: [:tweets,:edit, :update]
   def tweets
-    @user_tweets = User.find(params[:id]).tweets
+    @user_tweets = User.find(params[:id]).tweets.order(updated_at: :desc)
   end
 
   def update
