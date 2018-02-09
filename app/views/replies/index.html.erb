@@ -35,8 +35,7 @@
     <h3>Tweets</h3>
     <div class="form-group">
       <div class="avatar"><%= image_tag(@tweet.user.avatar, height: '32', width: '32') %></div>
-      <p>
-        @<%= @tweet.user.name %>
+      <p><%= link_to "@#{@tweet.user.name}", tweets_user_path(@tweet.user), :alt => "Who is this?" %>
         <em>, <%= @tweet.created_at.strftime("%Y-%m-%d") %>, <%= @tweet.created_at.strftime("%I:%M%p") %></em>
       </p>
       <p><%= @tweet.description %></p>
@@ -62,7 +61,7 @@
           <%= image_tag(reply.user.avatar, height: '32', width: '32') %>
         </div>
         <h4>
-          @<%= reply.user.name %>
+          <%= link_to "@#{reply.user.name}", tweets_user_path(reply.user), :alt => "Who is this?" %>
           <em>,
             <%= reply.created_at.strftime("%Y-%m-%d") %>,
               <%= reply.created_at.strftime("%I:%M%p") %>
