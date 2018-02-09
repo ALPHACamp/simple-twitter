@@ -1,29 +1,29 @@
-<h6>看見某一使用者的推播牆，以及該使用者簡介</h6>
 <div class="container">
   <div class="row">
    
     <div class="col-md-4">
       <%= image_tag @user.avatar, width: '300px' if @user.avatar? %>
-      <div><%= @user.name %></div>
-      <div><%= @user.introduction %></div>
+      <div class="c-name"><h4><%= @user.name %></h4></div>
+      <div class="c-intro"><%= @user.introduction %></div>
       <div>
+        <h5>
         <%= link_to tweets_user_path(@user), method: :get do %>tweet <%= @user.tweets.count %>
-        <% end %>
+          <% end %></h5>
       </div>
-      <div>
+      <div><h5>
         <%= link_to followings_user_path(@user), method: :get do %>following <%= @user.followings.count %>
-        <% end %> 
+        <% end %></h5>
       </div>
-      <div>
+      <div><h5>
         <%= link_to followers_user_path(@user), method: :get do %>follower <%= @user.followers.count %>
-        <% end %> 
+        <% end %></h5> 
       </div>
-      <div>
+      <div><h5>
         <% if @user.likes.count == 0 %>
           <%= link_to tweets_user_path(@user), method: :get do %>like <%= @user.likes.count %><% end %>
         <% else %>
           <%= link_to likes_user_path(@user), method: :get do %>like <%= @user.likes.count %><% end %>
-        <% end %>
+        <% end %></h5>
       </div>
       <% if current_user != @user %>
         <% if current_user.following?(@user) %>

@@ -33,12 +33,14 @@
     
     <div class="col-md-8">
       <h2>Tweets</h2>
+        <%= image_tag @tweet.user.avatar, width: '50' if @tweet.user.avatar? %>
         <%= link_to @tweet.user.name, tweets_user_path(@tweet.user.id) %>
         <%= @tweet.description %>
       <h2>Replies</h2>
       <ul>
         <% @replies.each do |reply| %>
         <li>
+          <%= image_tag reply.user.avatar, width: '50' if reply.user.avatar? %>
           <%= reply.comment %>
         </li>
         <% end %>
