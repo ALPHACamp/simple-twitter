@@ -44,7 +44,7 @@
 
      <%= form_for [@tweet, @reply] do |f| %>
         <div class="form-group">
-          <%= f.text_area :comment, class: "form-control " , style: 'height: 100px'%>
+          <%= f.text_area :comment, class: "form-control form-style" , style: 'height: 100px'%>
           <br/>
           <em><%= f.submit "Reply" , class: 'button-tweet navbar-right' %></em>
           <br/>
