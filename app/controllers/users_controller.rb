@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:tweets, :edit, :update, :followings]
+  before_action :set_user, only: [:tweets, :edit, :update, :followings, :followers, :likes]
 
   def tweets
     @tweets = @user.tweets.order(created_at: :desc)
@@ -7,7 +7,8 @@ class UsersController < ApplicationController
 
   def edit
     if @user != current_user
-      redirect_back(fallback_location: root_path)
+      #redirect_back(fallback_location: root_path)
+      redirect_to tweets_user_path(params[:id])
     end
   end
 

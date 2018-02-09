@@ -1,7 +1,20 @@
-<li><%= image_tag user.avatar, class: "media-object" %></li>
-<li><h3><%= user.name %></h3></li>
-<li><p><%= user.introduction %></p></li>
-<li><h5><%= link_to "Tweets #{user.tweets.count}", tweets_user_path(user) %></h5></li>
-<li><h5><%= link_to "Following #{user.followings.count}", followings_user_path(user) %></h5></li>
-<li><h5><%= link_to "Follower #{user.followers_count}", followers_user_path(user) %></h5></li>
-<li><h5><%= link_to "Like #{user.likes.count}", likes_user_path(user) %></h5></li>
+<ul>
+  <li><%= image_tag user.avatar, class: "media-object" %></li>
+  <li><h3><%= user.name %></h3></li>
+  <li><p><%= user.introduction %></p></li>
+  <li><h5><%= link_to "Tweets #{user.tweets.count}", tweets_user_path(user) %></h5></li>
+  <li><h5><%= link_to "Following #{user.followings.count}", followings_user_path(user) %></h5></li>
+  <li><h5><%= link_to "Follower #{user.followers_count}", followers_user_path(user) %></h5></li>
+  <li><h5><%= link_to "Like #{user.likes.count}", likes_user_path(user) %></h5></li>
+  <li>
+    <% if user == current_user %>
+      <%= link_to "Edit Profile", edit_user_path(user), class: "btn btn-primary btn-md" %>
+    <% else %>
+      <% if current_user.is_following?(user) %>
+        <%= link_to 'Unfollow', followship_path(user), method: :delete, class: "btn btn-info btn-md" %>
+      <% else %>
+        <%= link_to 'Follow', followships_path(following_id: user.id), method: :post, class: "btn btn-primary btn-md" %>
+      <% end %>
+    <% end %>
+  </li>
+</ul>
