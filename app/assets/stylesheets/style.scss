@@ -168,7 +168,7 @@ header {
 
 .button-right  a {
   float: right;
-  width: 75%;
+  width: 65%;
   display: block;
   color: #000;
   border: 1px solid #333;
@@ -180,7 +180,7 @@ header {
 
 .button-right  a:hover {
   float: right;
-  width: 75%;
+  width: 65%;
   background: #000;
   color: #fff;
   -webkit-transition: all .4s linear;
@@ -188,4 +188,35 @@ header {
   -ms-transition: all .4s linear;
   -o-transition: all .4s linear;
   transition: all .4s linear;
+}
+
+/*------ replies setting ------*/
+
+.button-reply  a {
+  float: left;
+  width: 24%;
+  display: block;
+  color: #000;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 0 12px;
+  margin-buttom: 10px;
+  text-transform: capitalize;
+}
+
+.button-reply  a:hover {
+  float: left;
+  width: 24%;
+  background: #000;
+  color: #fff;
+  -webkit-transition: all .4s linear;
+  -moz-transition: all .4s linear;
+  -ms-transition: all .4s linear;
+  -o-transition: all .4s linear;
+  transition: all .4s linear;
+}
+
+.reply-area {
+  width: 100%;
+  margin-left: 15px;
 }

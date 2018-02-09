@@ -13,42 +13,64 @@
 
     <div class="col-md-8">
       <h1>Tweets</h1>
-      <div class="tweets">
-        <%= image_tag @tweet.user.avatar, height: 75, width: 75 %>
-        <p>@<%= @user.name %>, <%= @tweet.created_at %></p>
-        <%= @tweet.description %>
-        <h5>Reply(<%= @tweet.replies.count %>) Like(<%= @tweet.likes_count %>)</h5><!-- 文章被讚總數 -->
 
-        <!-- like / unlike button -->
-        <%= render partial: "shared/like", locals: {tweet: @tweet} %>
+      <div class="tweets clearfix">
 
-        
+        <div class="col-left">
+          <div class="avatar">
+            <%= image_tag @tweet.user.avatar, height: 75, width: 75 %>
+          </div>
+        </div>
 
-        <hr>
+        <div class="col-right">
+          <%= link_to users_tweets_path(@user) do %>
+            <div class="name">@<%= @user.name %>, <%= @tweet.created_at %></div>
+          <% end %>
+
+          <div class="description"><%= @tweet.description %></div>
+
+          <div class="tweets-buttom">
+            <div class="reply">Reply(<%= @tweet.replies.count %>)</div>
+            <div class="like">Like(<%= @tweet.likes_count %>)</div><!-- 文章被讚總數 -->
+            <div class="button-reply">
+              <%= render partial: "shared/like", locals: {tweet: @tweet} %>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <h1>Replise</h1>
       <% @replies.each do |reply| %>
 
-        <div class="tweets"> <!-- each do 內包或外包待測試-->
-          <%= image_tag reply.user.avatar, height: 75, width: 75 %>
-          <h3>@<%= reply.user.name %>, <%= reply.created_at %></h3>
-          <p><%= reply.comment %></p>
+        <div class="tweets clearfix">
+          <div class="col-left">
+            <div class="avatar">
+              <%= image_tag reply.user.avatar, height: 75, width: 75 %>
+            </div>
+          </div>
+          <div class="col-right">
+            <div class="name">
+              <%= link_to users_tweets_path(reply.user) do %>
+                @<%= reply.user.name %>, <%= reply.created_at %>
+              <% end %>
+            </div>
+
+            <div class="description"><%= reply.comment %></div>
+          </div>
+
         </div>
-
-      <% end %>
-      <!-- Reply area 筆記 copy 過來 防字體錯誤 -->
-      <%= form_for Reply.new do |f| %>
-        <%= f.hidden_field :tweet_id, :value => @tweet.id %>
-        <%= f.hidden_field :user_id, :value => current_user.id %>
-        <%= f.text_field :comment, placeholder: "Reply here", :size=>"50", class: "form-control" %>
-        <%= f.submit 'Reply'%>
       <% end %>
 
-
-
-
-
+      <div class="reply-area">
+        <%= form_for Reply.new do |f| %>
+          <%= f.hidden_field :tweet_id, :value => @tweet.id %>
+          <%= f.hidden_field :user_id, :value => current_user.id %>
+          <%= f.text_field :comment, placeholder: "Reply here", class: "form-control" %>
+          <br>
+          <%= f.submit 'Reply', class: "btn btn-primary" %>
+        <% end %>
+      </div>
 
     </div>
 
