@@ -4,9 +4,9 @@ class TweetsController < ApplicationController
   before_action :set_tweet, only: [:like, :unlike]
 
   def index
-    @tweets = Tweet.order(created_at: :desc).limit(20)
+    @tweets = Tweet.order(created_at: :desc).limit(10)
     @tweet = Tweet.new
-    @users = User.all
+    @users = User.order(followers_count: :desc).limit(10) 
   end
 
   def create
