@@ -15,15 +15,16 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings = User.find(params[:id]).followings.order(created_at: :asc)# 基於測試規格，必須講定變數名稱
+    @followings = User.find(params[:id]).followings.order('followships.created_at desc')# 基於測試規格，必須講定變數名稱
   end
 
   def followers
-    @followers # 基於測試規格，必須講定變數名稱
+    # 基於測試規格，必須講定變數名稱
+    @followers = User.find(params[:id]).followers.order('followships.created_at desc')
   end
 
   def likes
-    @likes = User.find(params[:id]).liked_tweets.order(created_at: :asc) # 基於測試規格，必須講定變數名稱
+    @likes = User.find(params[:id]).liked_tweets.order('likes.created_at desc') # 基於測試規格，必須講定變數名稱
   end
 
 
