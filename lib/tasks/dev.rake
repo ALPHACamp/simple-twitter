@@ -28,12 +28,10 @@ namespace :dev do
     Tweet.destroy_all
 
     30.times do |i|
-      author = User.all.sample
       Tweet.create!(
         description: FFaker::Lorem::paragraph[1..rand(1..140)],
-        user: author
+        user: User.all.sample
       )
-      author.count_tweets
     end
     puts "now there are #{Tweet.count} tweets"
   end
