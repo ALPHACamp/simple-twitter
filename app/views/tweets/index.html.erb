@@ -17,14 +17,17 @@
           <%= tweet.created_at.to_s[0..15] %>
           <%= tweet.description %>
           <%= link_to tweet_replies_path(tweet.id) do %>
-          Relpy(<%= tweet.replies.count %>)
+            Relpy(<%= tweet.replies.count %>)
+          <% end %>                           
+          <% if tweet.is_liked?(current_user) %>
+            <%= link_to unlike_tweet_path(tweet.id), method: :post do %>
+              Unlike(<%= tweet.likes.count %>)
+            <% end %>
+          <% else %>
+            <%= link_to like_tweet_path(tweet.id), method: :post do %>
+              Like(<%= tweet.likes.count %>)
+            <% end %>
           <% end %>
-          <%= link_to like_tweet_path(tweet.id), method: :post do %>
-          Like(<%= tweet.likes.count %>)
-          <% end %>
-          <%= link_to unlike_tweet_path(tweet.id), method: :post do %>
-          Unlike(<%= tweet.likes.count %>)
-          <% end %>           
         </li>
         <% end %>
       </ul>  
