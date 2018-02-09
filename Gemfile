@@ -16,7 +16,7 @@ gem 'carrierwave'
 #for fake data
 gem 'ffaker'
 #because platform is win
-gem 'wdm', '>= 0.1.0'
+#gem 'wdm', '>= 0.1.0'
 #use bootstrap-sass
 gem 'bootstrap-sass', '~> 3.3.7'
 #use jquery-rails
