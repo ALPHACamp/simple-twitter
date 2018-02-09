@@ -6,9 +6,13 @@ class UsersController < ApplicationController
   end
 
   def edit
+    if @user != current_user
+      flash[:alert] = "You can not edit other user's profile"
+      redirect_to tweets_user_path(@user)
+    end
   end
 
-  def update
+  def update    
     if @user.update(user_params)
       flash[:notice] = "user profile has been updated successfully"
       redirect_to root_path
