@@ -9,6 +9,38 @@
     <div class="row">
       <p>Like</p>
       <p>list of liked tweets</p>
+
+       <div class="col-md-10 col-md-offset-1">
+
+      <div class="page-header">
+        <h1>Likes</h1>
+      </div>
+      <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><strong>Likes</strong></h3>
+          </div>
+
+          <div class="panel-body">
+            <% @likes.each do |like| %>
+              <div>
+                <div>
+                  <%= link_to tweet_replies_path(like.tweet) do %>
+                    <%= image_tag like.tweet.user.avatar, width: '300px', class: "img-responsive img-rounded" %>
+                  <% end %>
+                  <h5><%= like.tweet.description %></h5>
+                  <P>
+                    <%= link_to "Reply(#{Reply.where(:tweet_id => like.id).length})", tweet_replies_path(like.tweet), class: "btn btn-danger" %>
+                    <%= link_to "Unlike(#{Like.where(:tweet_id => like.id).length})", unlike_tweet_path(like.tweet), method: :post, class: "btn btn-info" %>
+                    
+                  </P>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+    </div>
+
     </div>
   </div>
 </div>
