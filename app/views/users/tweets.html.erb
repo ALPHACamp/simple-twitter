@@ -10,28 +10,8 @@
     </div>
       <div class="form-group">
         <div>
-         <h4><%=@users.name%></h4>
-          <div class="help-block"><%= @users.introduction %></div> 
-        <%if current_user.profile?(@users) %>      
-              <div>
-               <%= link_to "Tweets : #{@user_tweets.count}" , tweets_user_path(@users),class:"help-block"%>
-              <%= link_to "Following : #{@users.followings.count}" , followings_user_path(@users),class:"help-block"%> 
-              <%= link_to "Follower : #{@users.followers_count}" , followers_user_path(@users),class:"help-block"%>
-              <%= link_to "likes : #{@users.likes_count}" , likes_user_path(@users),class:"help-block"%>
-              </div>
-              
-   <%= link_to "Edit Profile" , edit_user_path(current_user),class:"btn btn-primary"%>  
-   <%else %>
-
-              <div>
-              <div class="help-block">Tweets : <%= @user_tweets.count%></div> 
-              <div class="help-block">Following : <%= @users.followings.count%></div> 
-              <div class="help-block">Follower :<%= @users.followers_count%></div> 
-              <div class="help-block">likes : <%= @users.likes_count%></div> 
-              </div>
-  
-     <%= render partial: "shared/follow", locals: {users: @users}%>
-  <% end %>
+           <%= render partial: "shared/userinfo", locals: {users: @users}%>
+        
              
             </div>
         

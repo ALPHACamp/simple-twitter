@@ -11,17 +11,7 @@
       <div class="form-group">
          
             <div>
-              <h4><%=current_user.name%></h4>
-              <div class="help-block"><%= current_user.introduction %></div> 
-              <div>
-              <div class="help-block">Tweets : <%= current_user.tweets.count%></div> 
-              <div class="help-block">Following : *34</div> 
-              <div class="help-block">Follower :<%= current_user.followers_count%></div> 
-              <div class="help-block">likes : <%= current_user.likes_count%></div> 
-              </div>
-             
-   <%= link_to "Edit Profile" , edit_user_path(current_user),class:"btn btn-primary"%>  
-   
+             <%= render partial: "shared/userinfo", locals: {users: current_user}%>
              
             </div>
         

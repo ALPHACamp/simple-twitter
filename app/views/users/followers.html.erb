@@ -12,17 +12,7 @@
       <div class="form-group">
          
             <div>
-              <h4><%=@users.name%></h4>
-              <div class="help-block"><%= @users.introduction %></div> 
-              <div>
-               <%= link_to "Tweets : #{@users.tweets.count}" , tweets_user_path(@users),class:"help-block"%>
-              <%= link_to "Following : #{@users.followings.count}" , followings_user_path(@users),class:"help-block"%> 
-              <%= link_to "Follower : #{@users.followers_count}" , followers_user_path(@users),class:"help-block"%>
-              <%= link_to "likes : #{@users.likes_count}" , likes_user_path(@users),class:"help-block"%> 
-              </div>
-              <div>
-   <%= link_to "Edit Profile" , edit_user_path(current_user),class:"btn btn-primary"%>  
-             </div>
+               <%= render partial: "shared/userinfo", locals: {users: @users}%>
             </div>
         
       </div> 
