@@ -12,8 +12,7 @@ module SimpleTwitter
     config.load_defaults 5.1
     config.time_zone = "Asia/Taipei"
     config.filestack_rails.api_key = "ARz3g0HLfR5i0KuobcdJmz"
-    config.filestack_rails.client_name = "itweets"
-    config.assets.initialize_on_precompile=false                                                  
+    config.filestack_rails.client_name = "itweets"                                                
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
