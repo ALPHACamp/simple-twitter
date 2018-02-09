@@ -1,0 +1,273 @@
+/* mixins, variables, etc. */
+
+$gray-medium-light: #eaeaea;
+
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+
+/* universal */
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  padding: 80px;
+  margin-bottom: 200px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+}
+
+* {
+  @include box-sizing;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0px;
+  padding: 0px;
+  line-height: 1;
+}
+
+ul, ol {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+
+
+.container {
+  max-width: 1170px;
+  position: relative;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+/* typography */
+
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $gray-light;
+}
+
+h3 {
+  margin-left: 28px;
+  margin-bottom: 20px;
+  font-size: 2em;
+  font-weight: normal;
+  color: #0088A8;
+}
+
+h4 {
+  margin-bottom: 10px;
+  font-weight: normal;
+  font-size: 1em;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.1em;
+  color: $gray-light;
+  letter-spacing: 1px;
+}
+
+.btn {
+  color: #000;
+  font-size: 1.2em;
+  font-weight: 500;
+  letter-spacing: 1px;
+  background-color: #009FCC;
+  border: 0;
+  padding: 8px 14px;
+}
+/* header */
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+
+/* tweets */
+.action {
+  text-align: right;
+}
+
+.tweet-info {
+  position: relative;
+  margin-bottom: 1em;
+  border: 1px solid #f2f3f3;
+  border-radius: 4px;
+  background-color: #fafafa;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125);
+  padding: 20px 30px; 
+}
+
+.info-item {
+  position: relative;
+  height: 130px;
+}
+
+.btn-group {
+  position: absolute;
+  bottom: 0;
+}
+/* popular */
+.popular-item h4{
+  font-size: 1.6em;
+}
+.popular-item {
+  border: 2px solid #AAAAAA;
+  margin: 10px 20px;
+  padding: 15px 8px;
+}
+
+.popular-item h3{
+  margin-top: 0;
+  font-size: 20px;
+  line-height: 10px;
+  letter-spacing: 2px; 
+}
+
+.popular-item p{
+  color: #767676;
+  line-height: 1em;
+}
+
+/* user side */
+
+.user-block {
+  width: 60%;
+}
+.user-info h1{
+  margin: 20px 0;
+  color: #0088A8;
+  letter-spacing: 1px;
+}
+
+.user-info p{
+  color: #4682b4;
+  line-height: 1.2em;
+}
+
+.user-item p{
+  color: #696969;
+  font-size: 2em;
+  font-weight: 500;
+}
+
+.user-item {
+  margin: 25px 0;
+}
+
+.edit-btn {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* follow */
+.follow {
+  padding: 0;
+}
+.follow-block {
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+  width: 45%;
+  height: 200px;
+  border: 2px solid  #767676;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-bottom: 20px;
+  margin-right: 12px;
+}
+
+.follow-item {
+  width: 100%;
+  height: 100%;
+}
+.follow-img, .follow-info{
+  display: inline-block;
+}
+
+.follow-img {
+  width: 40%;
+  vertical-align: top;
+}
+
+.follow-info {
+  width: 50%;
+  vertical-align: top;
+  padding-left: 10px;
+}
+
+.follow-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+/* avatar upload */
+.user_avatar_upload {
+  position: relative;
+}
+
+.user_avatar_upload input[type=file] {
+  visibility: hidden;
+  height: 0px;
+}
+
+/* like reply */
+.btn-like, .btn-reply {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 0.8em;
+  letter-spacing: 1px;
+  opacity: 0.6;
+}
+
+.btn-reply {
+  margin-right: 10px;
+}
+
+.btn-like {
+  color: #ff0000;
+}
