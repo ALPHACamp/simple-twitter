@@ -100,11 +100,10 @@ th {
 	.img-a {
 		padding: 0 10px;
 	}
-}
-
-.nav-img {
-	width: 50px;
-	height: 50px;
+	img {
+		width: 50px;
+		height: 50px;
+	}
 }
 
 .title {
@@ -128,30 +127,8 @@ th {
 	text-align: right;
 }
 
-input[type="file"] {
-    display: none;
-}
-
-.file-upload {
-	display: inline-block;
-	width: 100%;
-	margin-bottom: 0;
-	letter-spacing: 2px;
-	text-align: center;
-	vertical-align: middle;
-	touch-action: manipulation;
-	cursor: pointer;
-	background-color: #71A5D0;
-	border: 1px solid transparent;
-	white-space: nowrap;
-	padding: 6px 12px;
-	font-size: 20px;
-	line-height: 1.428571429;
-	border-radius: 4px;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
+.none {
+	display: none;
 }
 
 .tweet-msg {
@@ -248,6 +225,9 @@ input[type="file"] {
 #user-edit {
 	#user_name {
 		border: 2px solid #A8CDDF;
+	}
+	#unique-id {
+		width: 100%;
 	}
 	textarea.form-control {
 	    height: 150px;

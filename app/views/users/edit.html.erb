@@ -3,9 +3,9 @@
     <%= form_for @user do |f| %>
     <div class="col-md-3">
       <div class="form-group">
-        <%= image_tag @user.avatar, width: "300px" if @user.avatar? %>
-        <%= f.label :avatar, "Browse files...", class: "file-upload"%>
-        <%= f.file_field :avatar %>
+        <%= filestack_image @user.avatar, transform: filestack_transform.resize(width:300, height:300) if @user.avatar? %>
+        <%= f.label :avatar, class: "none"%>
+        <%= f.filestack_field :avatar ,"Browse Files...",pickerOptions: {accept: 'image/*'}, id: "unique-id", class: "btn"%>
       </div>
     </div>
     <div class="col-md-9">
