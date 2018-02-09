@@ -1,0 +1,15 @@
+<div class="media tweet-item">
+  <div class="media-left media-middle">
+    <%= image_tag tweet.user.avatar, class: "media-object" %>
+  </div>
+  <div class="media-body">
+    <h5 class="media-heading">
+      <%= link_to "@#{tweet.user.name}", tweets_user_path(tweet.user) %>
+      <%= time_ago_in_words(tweet.created_at) %> ago
+    </h5>
+    <p><%= tweet.description %></p>
+  
+    <%= render partial: "shared/reply", locals: {tweet: tweet} %>
+    <%= render partial: "shared/like", locals: {tweet: tweet} %>
+  </div>
+</div>
