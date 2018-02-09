@@ -12,7 +12,13 @@ Rails.application.routes.draw do
       get :likes
     end
 
+    member do
+      get :followings
+    end
+
   end
+
+  resources :followships, only: [:create, :destroy]
 
   # 請依照專案指定規格來設定路由
   resources :tweets, only: [:index, :create] do
