@@ -10,7 +10,10 @@
     <%= link_to "Following", followings_user_path(user) %>
     <%= user.followings.count %>
   </li>
-  <li>Follower</li>
+  <li>
+    <%= link_to "Follower", followers_user_path(user) %>
+    <%= user.followers.count %>
+  </li>
   <li>
     <%= link_to "Like", likes_user_path(user) %>
     <%= user.likes.count %>
