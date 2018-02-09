@@ -24,7 +24,7 @@
       </div>
 
     <h2>Replies</h2>
-      <% @tweet.replies.each do |reply| %>
+      <% @replies.each do |reply| %>
         <div class="panel panel-default twpanel">
           <%= image_tag (reply.user.avatar), class: "usertweet-avatar" %>
           <h5>@<%= reply.user.name %>,<%= reply.created_at.to_date %>,<%= reply.created_at.strftime("%k:%M") %></h5>
