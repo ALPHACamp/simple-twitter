@@ -21,15 +21,16 @@ class TweetsController < ApplicationController
   end
   
   def like
-    tweet = Tweet.find(params[:id])
-    tweet.likes.create!(user: current_user)
+    @tweet = Tweet.find(params[:id])
+    @tweet.likes.create!(user: current_user)
+    @tweet.user.count_likes
     redirect_back(fallback_location: tweets_path)  # 導回上一頁
   end
 
   def unlike
-    tweet = Tweet.find(params[:id])
-    like = Like.find_by("tweet_id" => tweet.id, "user_id" => current_user.id)
-    tweet.user.count_likes
+    @tweet = Tweet.find(params[:id])
+    like = Like.find_by("tweet_id" => @tweet.id, "user_id" => current_user.id)
+    @tweet.user.count_likes
     if like
       like.destroy
       #redirect_to tweets_path
