@@ -1,2 +1,8 @@
 index 頁面
 看見站內所有的推播，以及跟隨者最多的使用者（設為前台首頁）
+
+<ul class="">
+      <% @allTweets.each do |tweet| %>
+        <li ><%= tweet.description %></li>
+      <% end %>
+</ul>
