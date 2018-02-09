@@ -1,0 +1,31 @@
+<div class="tweets">
+  <div class="tweet-info clearfix">
+    <div class="col-sm-3 col-md-4">
+      <%= image_tag t.user.avatar.medium.url , class: "img-responsive center-block", size: "120x120" %>
+    </div>
+    <div class="col-sm-9 col-md-8">
+      <div class="info-item">
+        <%= link_to tweets_user_path(t.user) do %>
+          <h4><%= t.user.name %> , <%= time_tag(t.created_at) %></h4>
+        <% end %>
+        <span>
+          <p><%= t.description %></p>
+        </span>
+        <div class="btn-group">
+          <%= link_to tweet_replies_path(t, t.replies), class: "btn-reply" do %>
+            <b>Reply(<%= t.replies_count %>)</b>
+          <% end %>
+          <% if current_user.like?(t) %>
+            <%= link_to unlike_tweet_path(t), method: :post, class: "btn-like" do %>
+              <b>unlike</b>
+            <% end %>
+          <% else %>
+            <%= link_to like_tweet_path(t), method: :post, class: "btn-like" do %>
+              <b>like(<%= t.likes_count %>)</b>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
