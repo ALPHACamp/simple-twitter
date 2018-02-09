@@ -18,10 +18,10 @@
   <%= link_to likes_user_path(user) do %>
     <h4 class="intro"><strong><i class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></i>&nbsp; Like  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= user.likes.count %></strong></h4>
   <% end %>
-
+  <br/>
   <% if user == current_user %>
     <%= link_to "Edit Profile", edit_user_path(user) , class:'btn button-style' %>
   <% end %>
-  <br/>
+
   <%= render partial: "shared/follow" , locals: { user: user } %>
 </div>
