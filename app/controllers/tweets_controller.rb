@@ -11,8 +11,11 @@ class TweetsController < ApplicationController
   end
 
   def create
-
-   
+    @user = current_user
+    @tweet = @user.tweets.build(tweet_params)
+    @tweet.user = current_user
+    @tweet.save!
+    redirect_to tweets_path
   end
 
   def like
@@ -30,5 +33,9 @@ class TweetsController < ApplicationController
     # 新增方法若需使用,記得新增在before_action
   def set_tweet
     @tweet = Tweet.find(params[:id])
+  end
+
+  def tweet_params
+    params.require(:tweet).permit(:description)
   end
 end
