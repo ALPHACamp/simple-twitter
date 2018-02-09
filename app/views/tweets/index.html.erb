@@ -1,8 +1,20 @@
 index 頁面
 看見站內所有的推播，以及跟隨者最多的使用者（設為前台首頁）
 
-<ul class="">
+<ul class="">所有的tweet
       <% @allTweets.each do |tweet| %>
         <li ><%= tweet.description %></li>
+      <% end %>
+</ul>
+
+<ul class="">最多follower的人
+      <% @users.each do |user| %>
+        <li ><%= user.name %> <%= user.followers_count %></li>
+      <% end %>
+</ul>
+
+<ul class="">全部的人
+      <% @allusers.each do |user| %>
+        <li ><%= user.name %></li>
       <% end %>
 </ul>
