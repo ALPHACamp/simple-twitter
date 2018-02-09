@@ -73,9 +73,11 @@ namespace :dev do
         u.followships.create!(
         following: @users.pop,
         )        
-      end 
-      u.count_followers    
+      end     
     end
+    User.all.each do |i|
+      i.count_followers
+    end  
     puts "now you have #{Followship.count} followship"
   end
 

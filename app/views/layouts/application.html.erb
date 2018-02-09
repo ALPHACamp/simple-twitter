@@ -26,7 +26,7 @@
           <% end %>
 
           <li class="nav-item">
-            <p class="navbar-text">Hi, <%= current_user.email %></p>
+            <%= image_tag current_user.avatar, width: '50px', class: "rounded m-auto d-block" %>
           </li>
           <li class="nav-item">
             <%= link_to'登出', destroy_user_session_path, method: :delete, class: "nav-link" %>
