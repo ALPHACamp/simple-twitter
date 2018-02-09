@@ -1,3 +1,40 @@
 // Place all the styles related to the tweets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.tweet-item {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 4px;
+  margin-bottom: 20px;
+}
+
+.tweet-item-img {
+  
+}
+
+.tweet-item .caption {
+  padding: 0px, 10px;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  color: #337ab7;
+}
+
+.tweet-btn {
+  float: right;
+}
+
+.btn-primary {
+  color: #0b1b29;
+  
+}
+
+.tweet-form {
+  border: 1px solid #337ab7;
+  border-radius: 4px;
+}
+
+.navbar-default {
+  background-color: #d9edf7;
+}
