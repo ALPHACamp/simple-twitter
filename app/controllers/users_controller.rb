@@ -23,7 +23,9 @@ class UsersController < ApplicationController
   end
 
   def likes
-    @likes # 基於測試規格，必須講定變數名稱
+    #@likes = Tweet.find(params[:id]) # 基於測試規格，必須講定變數名稱
+    #@tweet.likes.create!(user: current_user)
+    #redirect_back(fallback_location: root_path)
   end
 
 

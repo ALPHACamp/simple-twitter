@@ -8,12 +8,16 @@ Rails.application.routes.draw do
      member do
       get :replies , :to => 'replies#index'
       post '/replies',:as => "replies_new", :to => 'replies#create'
+
+      post :like
+      post :unlike
     end
   end
 
   resources :users do
      member do
       get :tweets
+      get :likes
     end
   end
 
