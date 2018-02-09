@@ -7,7 +7,7 @@
         <br>
         <%= image_tag @user.avatar, width: '250px' if @user.avatar? %>
         <hr>
-        <label class="btn btn-info btn-group-justified">Browse files..<input type="file" hidden></label>
+        <%= f.file_field :avatar %>
       </div>
     </div>
     <div class="col-md-9">
