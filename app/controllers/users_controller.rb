@@ -26,15 +26,17 @@ class UsersController < ApplicationController
 
   def followings
     @followings = @user.followings.order(created_at: :desc)
-    
+    #todo: order by followship created date, not user created date
   end
 
   def followers
     @followers = @user.followers.order(created_at: :desc)
+    #todo: order by followship created date, not user created date
   end
 
   def likes
     @likes = @user.liked_tweets.order(created_at: :desc)
+    #todo: order by like created date, not tweet created date
   end
 
   private

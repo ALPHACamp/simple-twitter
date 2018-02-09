@@ -4,13 +4,13 @@ class FollowshipsController < ApplicationController
   def create
     @following = User.find(params[:following_id])
 
-    if not @following == current_user
-  	 @followship = current_user.followships.build(following_id: params[:following_id]) 
-    else
+    if @following == current_user
       flash[:alert] = "You cannot follow yourself"
       redirect_back(fallback_location: root_path)
     end
 
+    @followship = current_user.followships.build(following_id: params[:following_id]) 
+    
   	if @followship.save
   		flash[:notice] = "Successfully followed"
       @following.increment!(:followers_count)
