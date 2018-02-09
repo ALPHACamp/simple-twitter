@@ -6,6 +6,7 @@
 
     <%= render partial: "share/userdetails", locals: {user: @user} %>
     <div class="col-sm-8"> 
+      <h2>All Users</h2>
       <% @users.each do |user| %>
         <div class="row">
           <div class="tweet-item">
