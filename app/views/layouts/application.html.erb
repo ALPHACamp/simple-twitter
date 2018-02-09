@@ -36,9 +36,10 @@
         <% end %>
       </ul>
     </nav>
-    <% if flash[:notice]%>
+    <div class="container">
+              <% if flash[:notice]%>
       <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <%= notice %>
+        <%= flash[:notice] %>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -48,10 +49,9 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span>
         
         </button>
-        <%= alert %>
+        <%= flash[:alert] %>
       </div>
     <%end%>
-    <div class="container">
       <div class="row">
         <%= yield %>
       </div>

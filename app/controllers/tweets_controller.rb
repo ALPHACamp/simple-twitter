@@ -12,9 +12,10 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new(tweet_params)
     @tweet.user = current_user
     if @tweet.save
-    redirect_to tweets_path
+      redirect_back(fallback_location: tweets_path)
     else
-      flash[:notice]=" Tweet text maximum is 140 !"
+      flash[:alert]= " Tweet text maximum is 140 !"
+      redirect_back(fallback_location: tweets_path)
     end
   end
 

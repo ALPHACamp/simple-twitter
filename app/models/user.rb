@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validates_uniqueness_of :name
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)   V
   
-  validates_length_of :introduction, maximum: 200
+  
   
 
   has_many :replies, dependent: :destroy
