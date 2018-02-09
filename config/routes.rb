@@ -15,7 +15,12 @@ Rails.application.routes.draw do
 
   root "tweets#index"
 
-  resources :users, only: [:index, :show, :edit, :update]
+  resources :users, only: [:index, :show, :edit, :update]  do
+    member do
+      get :following_list
+    end
+    
+  end
 
   resources :followships, only: [:create, :destroy]  
 

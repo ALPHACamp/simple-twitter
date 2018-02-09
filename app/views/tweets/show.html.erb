@@ -16,14 +16,20 @@
          <strong>followers: <%= @tweet.user.followers.count %></strong>
         </p>
         <p><strong>like: <%= @tweet.likes.count %></strong></p>
-        
 
-       
+        <% if @user != current_user %>
+            <% if current_user.following?(@user)%>
+              <%= link_to 'Unfollow', followship_path(@user), method: :delete, class: "btn btn-default" %>
+            <% else %>
+              <%= link_to 'Follow', followships_path(following_id: @user), method: :post, class: "btn btn-info" %>
+            <% end %>
+          <% end %>
         
         <% if @tweet.user.email == current_user.email %>
           <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-info" %>
           <% end %>
-        <%= link_to 'Back to index', tweets_path %>
+          
+        <%= link_to 'Back to index', tweets_path, class: "btn btn-default" %>
         </div>
 
       <div class="col-md-8 col-sm-8">
