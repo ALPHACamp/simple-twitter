@@ -1,6 +1,8 @@
 class FollowshipsController < ApplicationController
   def create
-    @followship = current_user.followships.build(following_id: params[:following_id])
+    if @user != current_user
+      @followship = current_user.followships.build(following_id: params[:following_id])
+    end
 
     if @followship.save
       flash[:notice] = "Successfully followed"
