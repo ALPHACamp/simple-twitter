@@ -16,7 +16,7 @@ User.create(
   password: "qweqwe", 
   role: "admin", 
   introduction: "This is gourmet.",
-  avatar: File.open("#{Rails.root}/public/avatar/user#{14}.jpg"))
+  avatar: File.open("#{Rails.root}/public/avatar/user#{8}.jpg"))
 puts "Default admin created!"
 
 
@@ -28,7 +28,7 @@ User.create(
   password: "123123", 
   role: "normal", 
   introduction: "Just do it!",
-  avatar: File.open("#{Rails.root}/public/avatar/user#{9}.jpg"))
+  avatar: File.open("#{Rails.root}/public/avatar/user#{4}.jpg"))
 puts "Default user created!"
 
 

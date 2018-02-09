@@ -25,7 +25,7 @@ namespace :dev do
   # task fake_tweet: :environment do
     Tweet.destroy_all
     User.all.each do |user|
-      rand(20).times do |i|
+      (rand(20)+1).times do |i|
         user.tweets.create!(
           description: FFaker::Lorem::sentence(10)
           )
@@ -38,7 +38,7 @@ namespace :dev do
   # task fake_reply: :environment do
     Reply.destroy_all
     Tweet.all.each do |tweet|
-      rand(10).times do |i|
+      (rand(10)+1).times do |i|
         tweet.replies.create!(
           comment: FFaker::Lorem.paragraph,
           user: User.all.sample
