@@ -52,6 +52,7 @@
                 <%= link_to (users_tweets_path(like.user)) do %>
                   @<%= like.user.name %>
                 <% end %>
+                <%= like.created_at %><!-- editing -->
               </div>
               <div class="description"><%= like.description %></div>
             </div>

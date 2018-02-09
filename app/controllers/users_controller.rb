@@ -39,7 +39,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     # @likes = @user.liked_tweets.order(created_at: :desc) # 錯誤版
     #@likes = @user.liked_tweets.order(likes.created_at :desc) # 當機版
-    @likes = @user.liked_tweets.order(created_at: :desc) # 錯誤版
+    #@likes = @user.liked_tweets.order(created_at: :desc) # 錯誤版
+    @likes = @user.liked_tweets
   end
 
 
