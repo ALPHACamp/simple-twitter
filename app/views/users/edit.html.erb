@@ -5,6 +5,7 @@
   <%= form_for @user do |f| %>
 
   <div class="col-md-4">
+
     <div class="form-group">
       <% if @user.avatar? %>
         <%= image_tag @user.avatar, width: "300px" %>
@@ -12,9 +13,11 @@
         <img src="https://api.fnkr.net/testimg/300x300/d3d3d3/FFF/?">
       <% end %> 
     </div>
+
     <div class="form-group">
-      <%= f.file_field :avatar %> 
+      <%= f.file_field :avatar, class: "btn btn-lg" %>
     </div>
+
   </div>
 
   <div class="col-md-8">
