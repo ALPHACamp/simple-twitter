@@ -1,1 +1,40 @@
-tweets
+<div class="row">
+  <div class="col-md-6">
+    <div class="form-horizontal">
+      <%= form_for @tweet do |f| %>
+        <div class="form-group">
+          <%= f.text_area :description, size: "60x12" , placeholder: "What's on your mind?", class: "form-control text-area" %>
+        </div>
+        <div class="col-sm-offset-10">
+          <%= f.submit "Tweet", class: "pull-right btn btn-lg btn-primary" %>        
+        </div>
+      <% end %>
+    </div>
+    <br>
+    
+<!--     <div class="tweets col-xs-12" id="tweets">
+      <%#= render partial: "shared/tweets"%>
+    </div> -->
+  </div>
+
+  <div class="col-md-5">
+    <div class="popular col-xs-12">
+      <h3>Popular</h3>
+          <% @users.each do |user| %>
+          <div class="user-item row">
+            <div class="col-xs-4">
+              <%= image_tag user.avatar, class: "img-responsive img-rounded", width: "80%" %>
+            </div>
+            <div class="col-xs-8">
+              <h3><%= link_to "#{user.name}" %></h3>
+              <h4><%= truncate user.introduction, length: 100 %></h4>
+            </div>
+<!--             <div class="user-item-follow">
+              <%#= render partial: "shared/follow", locals: {user: user}%>
+            </div> -->
+          </div>
+        <% end %>
+    </div>
+  </div>
+
+</div> 
