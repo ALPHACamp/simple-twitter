@@ -10,7 +10,10 @@
         <%= link_to followings_user_path(@user), method: :get do %>following <%= @user.followings.count %>
         <% end %> 
       </div>
-      <div>Follower 10</div>
+      <div>
+        <%= link_to followers_user_path(@user), method: :get do %>follower <%= @user.followers.count %>
+        <% end %> 
+      </div>
       <div>
         <%= link_to likes_user_path(@user), method: :get do %>like <%= @user.likes.count %>
         <% end %>      
