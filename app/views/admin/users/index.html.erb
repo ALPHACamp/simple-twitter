@@ -21,13 +21,22 @@
           <em>
             <% if user.admin? %>
               <li>
-                <%= image_tag('admin-logo', class: "admin-logo") %>
+                <%= image_tag('admin-logo', width: '50px') %>
               </li>
             <% end %>
           </em>
         </p>
+        <p>Introduction:</p>
         <p><%= user.introduction %></p>
-        <p><%= link_to 'Delete', admin_users_path(user), method: :delete, data: {confirm:"Are you sure?"} %></p>
+        <br>
+        <p><%= "Tweet(#{Tweet.where(:user_id => user).length})" %></p>
+        <br>
+        <p><%= "Following(#{Followship.where(:user_id => user).length})" %></p>
+        <br>
+        <p><%= "Follower(#{Followship.where(:following_id => user).length})" %></p>
+        <br>
+        <p><%= "Like()" %></p>
+        <hr>
     </div>
   </div>
   <% end %>
