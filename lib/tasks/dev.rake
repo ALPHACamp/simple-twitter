@@ -50,4 +50,29 @@ namespace :dev do
 
   end
 
+  task fake_like: :environment do
+    Like.destroy_all
+
+    50.times do
+      Like.create!(
+        user: User.all.sample,
+        tweet: Tweet.all.sample
+      )
+    end
+    puts "have created fake likes"
+    puts "now you have #{Like.count} like data"
+  end
+
+  task fake_followship: :environment do
+    Followship.destroy_all
+
+    50.times do
+      Followship.create(
+        user: User.all.sample,
+        following: User.all.sample
+      )
+    end
+    puts "have created fake followships"
+    puts "now you have #{Followship.count} followship data"
+  end
 end
