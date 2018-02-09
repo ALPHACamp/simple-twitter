@@ -2,29 +2,33 @@
   <div class="row">
     <div class="col-md-4">
       <%= image_tag @tweet.user.avatar, width: '300px' if @tweet.user.avatar? %>
-      <div><%= @tweet.user.name %></div>
-      <div><%= @tweet.user.introduction %></div>
+      <div class="c-name"><h4><%= @tweet.user.name %></h4></div>
+      <div class="c-intro"><%= @tweet.user.introduction %></div>
       <div>
+        <h5>
         <%= link_to tweets_user_path(@tweet.user), method: :get do %>tweet <%= @tweet.user.tweets.count %>
-        <% end %>
+          <% end %></h5>
       </div>
-      <div>
+      <div><h5>
         <%= link_to followings_user_path(@tweet.user), method: :get do %>following <%= @tweet.user.followings.count %>
-        <% end %> 
+        <% end %></h5>
       </div>
-      <div>
+      <div><h5>
         <%= link_to followers_user_path(@tweet.user), method: :get do %>follower <%= @tweet.user.followers.count %>
-        <% end %> 
+        <% end %></h5> 
       </div>
-      <div>
-        <%= link_to likes_user_path(@tweet.user), method: :get do %>like <%= @tweet.user.likes.count %>
-        <% end %>      
+      <div><h5>
+        <% if @tweet.user.likes.count == 0 %>
+          <%= link_to tweets_user_path(@tweet.user), method: :get do %>like <%= @tweet.user.likes.count %><% end %>
+        <% else %>
+          <%= link_to likes_user_path(@tweet.user), method: :get do %>like <%= @tweet.user.likes.count %><% end %>
+        <% end %></h5>
       </div>
       <% if current_user != @tweet.user %>
         <% if current_user.following?(@tweet.user) %>
-          <%= link_to 'Unfollow', followship_path(@tweet.user), method: :delete, class: "btn btn-danger" %>
+          <%= link_to 'Unfollow', followship_path(following_id: @tweet.user), method: :delete, class: "btn btn-danger" %>
         <% else %>
-          <%= link_to "Follow", followships_path(following_id: @tweet.user.id), method: :post, class: "btn btn-primary" %>
+          <%= link_to "Follow", followships_path(following_id: @tweet.user), method: :post, class: "btn btn-primary" %>
         <% end %>
       <% else %>
         <%= link_to "Edit Profile", edit_user_path(@tweet.user), method: :get, class: "btn btn-primary" %>
