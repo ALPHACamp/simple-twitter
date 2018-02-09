@@ -16,6 +16,7 @@ class User < ApplicationRecord
   end
 
 
-  has_many :tweets
+  has_many :tweets, dependent: :delete_all
+  has_many :replies, dependent: :delete_all
 
 end
