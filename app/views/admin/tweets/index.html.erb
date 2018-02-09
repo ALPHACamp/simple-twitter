@@ -1,7 +1,8 @@
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-8">
-			<h3>All Tweets</h3>
+		<div class="col-md-12">
+			<%= link_to 'All Tweets', admin_tweets_path, class: "btn btn-light"%>
+			<%= link_to 'All Users', admin_users_path, class: "btn btn-light"%>
 			<div>
 				<%- @tweets.each do |f| %>
 					<div class="thumbnail">
@@ -20,19 +21,6 @@
 					</div>
 				<% end %>
 			</div>
-		</div>
-		<div class="col-md-4">
-			<h3>All Users</h3>
-			<% @users.each do |user|%>
-				<div class="thumbnail user-profile admin">
-					<%= image_tag user.avatar, width:'100px', id:"tweet-avatar" %>
-					<h3><%= user.name%></h3>
-					<%= link_to(tweets_user_path(user), class: "btn btn-light") do %>Tweets <%= user.tweets.count%><%end%>
-					<%= link_to(followings_user_path(user), class: "btn btn-light") do %>Followings <%= user.followings.count%><%end%>
-					<%= link_to(followers_user_path(user), class: "btn btn-light") do %>Followers <%= user.followers.count%><%end%>
-					<%= link_to(likes_user_path(user), class: "btn btn-light") do %>Likes <%= user.liked_tweets.count%><%end%>
-				</div>
-			<%end%>
 		</div>
 	</div>
 </div>
