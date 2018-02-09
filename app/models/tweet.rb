@@ -4,4 +4,7 @@ class Tweet < ApplicationRecord
   belongs_to :user
   has_many :replies, dependent: :delete_all
   
+  has_many :likes, dependent: :destroy
+  has_many :like_users, through: :likes, source: :user
+ 
 end
