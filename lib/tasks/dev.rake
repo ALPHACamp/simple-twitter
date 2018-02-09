@@ -72,8 +72,9 @@ namespace :dev do
       6.times do
         u.followships.create!(
         following: @users.pop,
-        )      
-      end     
+        )        
+      end 
+      u.count_followers    
     end
     puts "now you have #{Followship.count} followship"
   end
