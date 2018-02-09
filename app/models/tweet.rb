@@ -13,7 +13,7 @@ class Tweet < ApplicationRecord
   has_many :replies, class_name: "Reply", dependent: :destroy
 
   #處理like的關聯
-  has_many :likes, class_name: "Like", dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user
 
   def is_liked?(user)

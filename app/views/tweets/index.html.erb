@@ -27,6 +27,10 @@
                 <%= link_to  "Reply(#{Reply.where(:tweet_id => tweet.id).length})", tweet_replies_path(tweet) %>
                 <em><%= link_to  "like(#{Like.where(:tweet_id => tweet.id).length})", root_path %></em>
               </P>
+              <p>
+                <%= link_to 'Like', like_tweet_path(tweet), method: :post, class: "btn btn-primary" %>
+                <%= link_to 'Unlike', unlike_tweet_path(tweet), method: :post, class: "btn btn-info" %>
+              </p>
             </div>
           </div>  
         <% end %>
