@@ -1,0 +1,32 @@
+<%#為了通過測試...%>
+
+<div class="card" style="max-width: 800px;">
+  <div class="card-block">
+
+<%= form_for @tweet do |f| %>
+  <div class="field">
+    <%= f.label "你的名字" %><br />
+    <%= f.text_field :name, autofocus: true%>
+  </div>
+  <hr>
+
+  <div class="field">
+    <%= f.label :introduction, "自我介紹" %><br />
+    <%= f.text_area :introduction, options = {style:"width: 250px; ", class: 'form-control'}%>
+  </div>
+  <hr>
+
+  <div class="field">
+  <%= f.label :avatar, "上傳頭相" %>
+  <%= image_tag @tweet.avatar, width:'300px' if @tweet.avatar? %>
+  <%= f.file_field :avatar, options = {style:"width: 250px;", class: 'form-control'} %>
+  </div>
+  <hr>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+</div>
+</div>
