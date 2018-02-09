@@ -7,6 +7,8 @@ class UsersController < ApplicationController
 
   def show
     @tweets = Tweet.all.order(created_at: :desc).limit(10)
+    @followings = @user.followings
+    @followers = @user.followers
   end
 
   def edit
