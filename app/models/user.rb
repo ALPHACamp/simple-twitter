@@ -23,7 +23,8 @@ class User < ApplicationRecord
 
   #Following Follower
   has_many :followships, dependent: :destroy
-  has_many :followings, through: :followships, uniqueness: {scope: :followee_id}
+  has_many :followings, through: :followships
+  validate :followings, uniqueness: {scope: :followee_id}
   validate :cant_follow_yourself
   
   has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
