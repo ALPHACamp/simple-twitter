@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:tweets, :edit, :update, :followings, :followers, :likes]
 
   def tweets
-    @tweets = @user.tweets
+    @tweets = @user.tweets.order(Tweet.arel_table['created_at'].desc)
   end
 
   def edit
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def likes
-    @likes = @user.liked_tweets # 基於測試規格，必須講定變數名稱
+    @likes = @user.liked_tweets.order(Like.arel_table['created_at'].desc) # 基於測試規格，必須講定變數名稱 # 基於測試規格，必須講定變數名稱
   end
 
   private

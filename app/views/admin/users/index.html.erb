@@ -15,7 +15,7 @@
     </thead>
 
     <tbody>
-      <% @users.order(tweets_count: :desc).each do |user| %>
+      <% @users.each do |user| %>
         <tr>
           <td><%= link_to user.name, tweets_user_path(user) %></td>
           <td><%= user.tweets.length %></td>
