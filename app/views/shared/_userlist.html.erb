@@ -1,0 +1,13 @@
+
+      <div class='col-md-4'>
+        <%= image_tag follow.avatar, class: "img-responsive center-block"%>
+      </div>
+      <div class='col-md-8'>
+        <%= link_to follow.name, tweets_user_path(follow) %>
+          <br>
+          <%= truncate(follow.introduction, length: 100) %>
+            <br>
+            <%= render partial: "shared/follow", locals: {user: follow} %>
+      </div>
+  
+    

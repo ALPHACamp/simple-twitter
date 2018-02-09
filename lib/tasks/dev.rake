@@ -9,9 +9,9 @@ namespace :dev do
 
       user = User.new(
         name: name,
-        email: "#{name}@example.co",
+        email: "#{name}@example.com",
         password: "12345678",
-        introduction: FFaker::Lorem::sentence(30),
+        introduction: FFaker::Lorem::sentence(33),
         avatar: file
       )
 
@@ -19,5 +19,59 @@ namespace :dev do
       puts user.name
     end
   end
+
+  task fake_tweet: :environment do
+    Tweet.destroy_all
+    User.all.each do |user|
+      rand(20).times do
+        user.tweets.create(
+          description: FFaker::Lorem.paragraph
+        )
+      end
+    end
+    puts "create fake tweets"
+  end
+  
+    task fake_reply: :environment do
+    Reply.destroy_all
+    100.times do
+      user = User.all.sample
+      tweet = Tweet.all.sample
+      Reply.create(
+        user: user,
+        tweet: tweet,
+        comment: FFaker::Lorem.sentence
+      )
+    end
+    puts "create fake replies"
+  end
+
+ task fake_likes: :environment do
+    Like.destroy_all
+
+    User.all.each do |user|
+      20.times do 
+        user.likes.create(tweet_id: Tweet.all.sample.id)
+      end
+    end
+    puts "have created 400 fake follow"
+    
+end
+
+  task fake_follow: :environment do
+    Followship.destroy_all
+
+    User.all.each do |user|
+      followings = User.all.sample(rand(2..22))
+      if followings.include?(user)
+        followings.delete(user)
+      end
+      for following in followings
+        user.followships.create!(following: following)
+      end
+    end
+    puts "create fake_follow"
+end
+  
 
 end

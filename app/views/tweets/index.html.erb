@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="col-xs-7">
+        <div class="row">
+          <%= form_for @tweet do |f| %>
+            <div class="form-group">
+              <%= f.text_area :description, placeholder: "What's on your mind?", :cols => 55, :rows => 5,  class: "form-control" %>
+
+            </div>
+
+            <div class="form-group">
+              <%= f.submit class: "btn btn-info" , style: 'float: right' %>
+            </div>
+            <% end %>
+        </div>
+        <br>
+        <div class="row">
+          <% @tweets.each do |tweet| %>
+          <%= render partial: "shared/tweetlist", locals: {tweet: tweet} %>
+          <% end %>
+
+
+        </div>
+      </div>
+
+      <div class="col-xs-5">
+         <div class='col-xs-12'>
+          <h2>Popular</h2>
+         <% @users.each do |followuser| %>
+     <div class="user-list-box col-sm-12 col-md-12">
+          <%= render partial: "shared/userlist", locals: {follow: followuser} %>
+           </div>  
+        <% end %>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

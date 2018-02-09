@@ -10,6 +10,29 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "tweets";
+
+.tweet-box {
+  border: 1px solid lightgray;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.user-list-box {
+  border: 1px solid lightgray;
+  padding: 10px;
+  margin: 7px;
+  height: 200px;
+}
+
+.user-item {
+  margin-bottom: 15px;
+}
+
+.user-item img {
+  width: 128px;
+  height: 128px;
+}
