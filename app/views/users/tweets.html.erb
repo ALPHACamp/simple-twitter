@@ -6,11 +6,14 @@
       <div><%= @user.name %></div>
       <div><%= @user.introduction %></div>
       <div>Tweets 32</div>
-      <div>Following 14</div>
+      <div>
+        <%= link_to followings_user_path(@user), method: :get do %>following <%= @user.followings.count %>
+        <% end %> 
+      </div>
       <div>Follower 10</div>
       <div>
-      <%= link_to likes_user_path(@user), method: :get do %>like <%= @user.likes.count %>
-      <% end %>      
+        <%= link_to likes_user_path(@user), method: :get do %>like <%= @user.likes.count %>
+        <% end %>      
       </div>
       <% if current_user != @user %>
         <% if current_user.following?(@user) %>
