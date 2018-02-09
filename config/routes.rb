@@ -16,12 +16,17 @@ Rails.application.routes.draw do
   end
 
   resources :tweets, only:[:create, :index] do
+    
     member do
       get :replies
     end
+
+    resource :replies, only:[:create]
   end
 
   resources :followships, only: [:create, :destroy]
+
+
 
   namespace :admin do
     resources :tweets, only:[:destroy]

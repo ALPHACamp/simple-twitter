@@ -23,6 +23,7 @@ class TweetsController < ApplicationController
   def replies
     @tweet=Tweet.find(params[:id])
     @replies=Tweet.find(params[:id]).reply
+    @reply=Reply.new
   end
 
   private
