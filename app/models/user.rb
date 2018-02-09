@@ -22,6 +22,15 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_tweets, through: :likes, source: :tweet
   
+  def count_followers
+    self.followers_count = self.followers.size
+    self.save
+  end
+  
+  def count_likes
+    self.likes_count = self.likes.size
+    self.save
+  end
   
   def admin?
     self.role == "admin"

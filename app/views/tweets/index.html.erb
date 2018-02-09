@@ -19,7 +19,12 @@
           <%= link_to tweet_replies_path(tweet.id) do %>
           Relpy(<%= tweet.replies.count %>)
           <% end %>
-          <span>like</span>
+          <%= link_to like_tweet_path(tweet.id), method: :post do %>
+          Like(<%= tweet.likes.count %>)
+          <% end %>
+          <%= link_to unlike_tweet_path(tweet.id), method: :post do %>
+          Unlike(<%= tweet.likes.count %>)
+          <% end %>           
         </li>
         <% end %>
       </ul>  
