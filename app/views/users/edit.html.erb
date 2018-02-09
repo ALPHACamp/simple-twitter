@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <%= form_for @user do |f| %>
+    <div class="col-md-3">
+      <div class="form-group">
+        <%= f.label :avatar, "照片上傳" %>
+        <br>
+        <%= image_tag @user.avatar, width: '250px' if @user.avatar? %>
+        <hr>
+        <%= f.file_field :avatar %>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="form_group">
+        <%= f.label :name, "Name"%>
+        <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
+        <br>
+      </div>
+      <div class="form_group">
+        <%= f.label :introduction %>
+        <%= f.text_area :introduction, placeholder: "Type anything about you here...", rows: "6", class: "form-control" %>
+        <br>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Update", class: "btn btn-primary pull-right" %>
+      </div>
+    </div>
+
+    <%end%>
+  </div>
+</div>

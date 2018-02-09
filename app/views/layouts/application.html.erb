@@ -9,18 +9,33 @@
   </head>
 
   <body>
-    <% if current_user %>
-      <% if current_user&.admin? %>
-        <li><%= link_to 'Admin Panel', admin_restaurants_path %></li>
-      <% end %>
-      <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
-      <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
-      <li><%= link_to('修改個人資料', edit_user_path(current_user)) %></li>
-      <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
-    <% else %>
-      <li><%= link_to('註冊', new_user_registration_path) %></li>
-      <li><%= link_to('登入', new_user_session_path) %></li>
-    <% end %>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <%= link_to "Twitter", tweets_path, class: "navbar-brand" %>
+        </div>
+        <div class="navbar-right">
+          <% if current_user %>
+            <a class="navbar-brand">Hi, <%= current_user.name %></a>
+            <div class="nav navbar-nav">
+              <% if current_user&.admin?%>
+                <% if current_page?(tweets_path)%>
+                  <li class="nav-item"><%= link_to '管理後台', admin_tweets_path, :class => 'nav-link'%></li>
+                <% elsif current_page?(admin_tweets_path) %>
+                  <li class="nav-item"><%= link_to '管理前台', tweets_path, :class => 'nav-link'%></li>
+                <% end %>
+              <% end %>
+              <li><%= link_to 'Profile', tweets_user_path(current_user) %></li>
+              <li class="nav-item"><%= link_to('Log out', destroy_user_session_path, method: :delete, :class => 'nav-link') %>
+              </li>
+            </div>
+          <% else %>
+            <li><%= link_to('註冊', new_user_registration_path) %></li>
+            <li><%= link_to('登入', new_user_session_path) %></li>
+          <% end %>
+        </div>
+      </div>
+    </nav>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
