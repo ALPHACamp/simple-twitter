@@ -10,8 +10,9 @@ class User < ApplicationRecord
   # 並參考 Devise 文件自訂表單後通過 Strong Parameters 的方法
 
   # validates :name, presence: true
-  validates_presence_of :name, length: { maximum: 20 }, :uniqueness => { case_sensitive: false }
+  validates_presence_of :name, length: { maximum: 20 }  
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
+  validates_presence_of :uniqueness
 
   has_many :tweets, dependent: :restrict_with_error
 
