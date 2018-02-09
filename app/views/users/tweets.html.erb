@@ -52,7 +52,11 @@
             <div class="description"><%= tweet.description %></div>
 
             <div class="tweets-bottom">
-              <div class="reply">Reply(<%= tweet.replies.count %>)</div>
+              <div class="reply">
+                <%= link_to replies_user_path(tweet) do %>
+                  Reply(<%= tweet.replies.count %>)
+                <% end %>
+              </div>
               <div class="like">Like(<%= tweet.likes_count %>)</div>
             </div>
           </div>
