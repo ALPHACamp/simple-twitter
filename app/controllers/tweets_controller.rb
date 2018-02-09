@@ -19,11 +19,6 @@ class TweetsController < ApplicationController
     
   end
   
-  def likes
-    user = User.find(params[:id])
-    @tweets = user.liked_tweets
-  end
-
   def like
     tweet = Tweet.find(params[:id])
     tweet.likes.create!(user: current_user)

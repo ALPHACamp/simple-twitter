@@ -9,7 +9,7 @@
       <div>Following 14</div>
       <div>Follower 10</div>
       <div>
-      <%= link_to likes_tweet_path(@user), method: :get do %>like <%= @user.likes.count %>
+      <%= link_to likes_user_path(@user), method: :get do %>like <%= @user.likes.count %>
       <% end %>      
       </div>
       <% if current_user != @user %>
