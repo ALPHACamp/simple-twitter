@@ -8,7 +8,7 @@ class FollowshipsController < ApplicationController
       @followship = current_user.followships.build(following_id: params[:following_id])
       @followship.save
 
-      user.count_followers
+      # user.count_followers  rspec創造Followship的方式未經過此create method，故不會重新計算follower。而count_cache在model設定中所以會重新計算。
     end     
     redirect_back(fallback_location: root_path)
   end
@@ -18,7 +18,7 @@ class FollowshipsController < ApplicationController
     @followships.destroy_all
 
     user = User.find(params[:id])
-    user.count_followers
+    # user.count_followers   rspec創造Followship的方式未經過此create method，故不會重新計算follower。而count_cache在model設定中所以會重新計算。
     redirect_back(fallback_location: root_path)
   end
 end
