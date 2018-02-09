@@ -1,6 +1,6 @@
 class FollowshipsController < ApplicationController
   def create
-    @user = User.find(params[:folloing_id])
+    @user = User.find(params[:following_id])
     unless @user == current_user
       @followship = current_user.followships.build(following_id: params[:following_id])
     else
