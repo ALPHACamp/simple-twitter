@@ -1,12 +1,27 @@
-<div class="content col-md-12">
-  <% @users.each do |u|%>
-    <div class="media small-profile col-md-4 float-left">
-      <%= image_tag u.avatar, class: "align-self-center mr-3 avatar rounded" %>
-      <div class="media-body">
-        <h5 class="mt-0">
-          <%= link_to "#{u.name}",tweets_user_path(u) %></h5>
-          <p><%= truncate(u.introduction,:length => 60)%></p>
-      </div>
-    </div>
-  <%end%>
-</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Avatar</th>
+      <th scope="col">Name</th>
+      <th scope="col">Tweet</th>
+      <th scope="col">Following</th>
+      <th scope="col">Follower</th>
+      <th scope="col">Like</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% num = 0 %>
+      <% @users.each do |u|%>
+        <tr>
+          <th><%= num += 1%></th>
+            <td><%= image_tag u.avatar, class: "align-self-center mr-3 avatar rounded"%></td>
+            <td><%= u.name%></td>
+            <td><%= u.tweets.size%></td>
+            <td><%= u.followships.size%></td>
+            <td><%= u.followers_count%></td>
+            <td><%= u.likes.size%></td>
+        </tr>
+      <%end%>
+  </tbody>
+</table>
