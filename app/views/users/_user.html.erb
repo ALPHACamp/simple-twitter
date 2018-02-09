@@ -4,10 +4,10 @@
   <h3><%= user.name %></h3>
   <p><%= user.introduction %></p>
   <ul>
-    <li>Tweet </li>
-    <li>Following</li>
-    <li>Follower</li>
-    <li>like</li>
+    <li><%= link_to 'Tweet', user_path(user) %> <%= @tweets.count %>  </li>
+    <li><%= link_to 'Following', followings_user_path(user) %> <%= @followings.count %></li>
+    <li><%= link_to 'Follower', followers_user_path(user) %> <%= @followers.count %></li>
+    <li><%= link_to 'Likes', likes_user_path(user) %> <%= @likes.count %></li>
   </ul>
     
   <% if user.email == current_user.email %>

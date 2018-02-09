@@ -24,6 +24,9 @@ class User < ApplicationRecord
   has_many :followships, dependent: :destroy
   has_many :followings, through: :followships
 
+  has_many :inversed_followships, class_name: "Followship", foreign_key: "following_id"
+  has_many :followers, through: :inversed_followships, source: :user
+
   def admin?
     self.role == "admin"
   end
@@ -31,5 +34,6 @@ class User < ApplicationRecord
   def following?(user)
     self.followings.include?(user)
   end
+
 
 end

@@ -3,12 +3,12 @@
     <div class="col-md-10 col-md-offset-1">
 
       <div class="col-left col-sm-4 col-md-3">
-        <%= render partial: "users/user", locals: {user: @user}  %>
+        <%= render partial: "users/user", locals: {user: @user} %>
       </div>
 
       <div class="col-right col-sm-8 col-md-9">
-        <% @user.tweets.each do |tweet| %>
-        <div class="tweet-list">
+        <h3>Like</h3>
+        <% @liked_tweets.each do |tweet| %>
   <div class="tweet-list">
   <h5><%= link_to tweet.user.name, user_path(tweet.user) %> <em>,<%=time_ago_in_words(tweet.created_at) %> ago </em></h5>
   <li><%= tweet.description %></li>
@@ -18,10 +18,7 @@
   <br>
   </div>
         <% end %>
-
-        
       </div>
-
 
     </div>
   </div>

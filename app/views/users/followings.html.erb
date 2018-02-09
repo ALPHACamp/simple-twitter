@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+
+      <div class="col-left col-sm-4 col-md-3">
+        <%= render partial: "users/user", locals: {user: @user} %>
+      </div>
+
+      <div class="col-right col-sm-8 col-md-9">
+        <h3>Followings</h3>
+        <% @followings.each do |following| %>
+        <div class="user-list col-md-6">
+          <div class="user-profile">
+            <div class="avatar"></div>
+            <div class="user-intro">
+              <h5><%= following.name %></h5>
+              <p><%= truncate(following.introduction, length: 80) %></p>
+              <%= render partial: "shared/follow", locals: {user: @user} %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

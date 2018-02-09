@@ -1,13 +1,21 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :followings, :followers, :likes]
+  before_action :set_count, only: [:show, :tweets, :followings, :followers, :likes]
+  
 
   def tweets
+    @tweets = @user.tweets
+    
   end
 
   def edit
     if !@user == current_user
       redirect_to user_path(@user)
     end
+  end
+
+  def show
+
   end
 
 
@@ -17,21 +25,32 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings # 基於測試規格，必須講定變數名稱
+    @followings = @user.followings
+
+    
   end
 
   def followers
-    @followers # 基於測試規格，必須講定變數名稱
+    @followers = @user.followers
   end
 
   def likes
-    @likes # 基於測試規格，必須講定變數名稱
+    @likes = @user.likes
+    @liked_tweets = @user.liked_tweets
   end
 
   private
   def set_user
     @user = User.find(params[:id])
   end
+
+  def set_count
+    @tweets = @user.tweets
+    @followings = @user.followings
+    @followers = @user.followers
+    @likes = @user.likes
+  end
+
 
   def user_params
     params.require(:user).permit(:name, :introduction, :avatar)
