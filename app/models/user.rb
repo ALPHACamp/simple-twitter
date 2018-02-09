@@ -28,6 +28,10 @@ class User < ApplicationRecord
   has_many :followships, class_name: "Followship", dependent: :destroy
   has_many :followings, through: :followships
 
+  #處理followers的關聯
+  #has_many :inberse_followships, class_name: "Followship", foreign_key: "following_id"
+  #has_many :followerss, throught: :inverse_followships, source: :user
+
   #確認是管理者
   def admin?
     self.role == "admin"
@@ -37,4 +41,8 @@ class User < ApplicationRecord
   def following?(user)
     self.followings.include?(user)
   end
+
+  #def likes_count
+  #  self.likes_count = Like.all.where(:user_id => self.id).length
+  #end
 end

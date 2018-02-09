@@ -1,0 +1,24 @@
+<div class="portfolio">
+  <%= image_tag @user.avatar, width: '300px' if @user.avatar? %>
+    <h3 id="user-name">
+      <%= @user.name %>
+    </h3>
+    <p id="user-introduction">
+      <%= @user.introduction %>
+    </p>
+    <p>
+      <%= link_to "Tweets (#{Tweet.all.where(:user_id => @user.id).length})", tweets_user_path %>
+    </p>
+    <p>
+      <%= link_to "Following (#{Followship.all.where(:following_id => @user.id).length})", followings_user_path %>
+    </p>
+    <p>
+      <%= link_to "Follower (#{Followship.all.where(:user_id => @user).length})", followers_user_path %>
+    </p>
+    <p>
+      <%= link_to "Like (#{Like.all.where(:user_id => @user).length})", likes_user_path %>
+    </p>
+    <p>
+      <%= link_to "Edit", edit_user_path, class: "btn btn-primary ctweet" %>
+    </p>
+</div>
