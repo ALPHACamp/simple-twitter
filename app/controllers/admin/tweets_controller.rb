@@ -8,6 +8,6 @@ class Admin::TweetsController < Admin::BaseController
     @tweet.destroy;
     @tweet.user.tweets_count -= 1
     @tweet.user.save
-    redirect_to admin_tweets_path
+    redirect_to admin_root_path
   end
 end

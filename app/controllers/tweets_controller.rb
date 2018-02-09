@@ -33,7 +33,7 @@ class TweetsController < ApplicationController
     current_user.likes.create(tweet: @tweet)
     @tweet.user.likes_count += 1 # tweet author's "likes_count" plus 1 
     @tweet.user.save
-    redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: tweets_path)
   end
 
   def unlike
@@ -42,7 +42,7 @@ class TweetsController < ApplicationController
     @like.destroy_all
     @tweet.user.likes_count -= 1
     @tweet.user.save
-    redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: tweets_path)
   end
 
   private
