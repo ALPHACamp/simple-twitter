@@ -21,6 +21,11 @@
               <em><%= tweet.created_at %> </em>
             </h5>
             <p><%= truncate(tweet.description, length: 80) %></p>
+            <p><strong>
+              Reply: <%= @tweet.replies.count %>
+              like: <%= @tweet.likes.count %>
+            </strong></p>
+        
             
             
 

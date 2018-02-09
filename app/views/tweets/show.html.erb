@@ -9,7 +9,6 @@
         <h2><%= @tweet.user.name %></h2>
         <p><strong><%= @tweet.user.email %></strong></p>
         <div><%= simple_format @tweet.user.introduction %></div>
-        <p><strong>Reply: <%= @tweet.replies.count %></strong></p>
         <p><strong>like: <%= @tweet.likes.count %></strong></p>
         
 
@@ -30,6 +29,11 @@
             </h4>
             
             <%= @tweet.description %><br>
+            <p><strong>
+              Reply: <%= @tweet.replies.count %>
+              like: <%= @tweet.likes.count %>
+            </strong></p>
+        
         </div>
 
         <h2>Reply</h2>
