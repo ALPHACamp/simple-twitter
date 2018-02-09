@@ -12,10 +12,10 @@
           <h2><%= @user.name %></h2>
           <div><%= simple_format @user.introduction %></div>
           <div class="tweet-row">
-            <p>Tweets</p>
-            <p>Following</p>
-            <p>Follower</p>
-            <p>Likes</p>
+            <p><%= link_to "Tweets (#{@user.tweets.size})", tweets_user_path(@user) %></p>
+            <p><%= link_to "Following (#{@user.followings.size})", followings_user_path(@user) %></p>
+            <p><%= link_to "Follower (0)", followers_user_path(@user) %></p>
+            <p><%= link_to "Likes (0)", likes_user_path(@user) %></p>
           </div>
           <% if @user.email == current_user.email %>
             <%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-primary" %>
