@@ -10,7 +10,7 @@
   <h4> <%= link_to "Follower #{@user.followers.count}",followers_user_path(@user) %></h4>
   <h4> <%= link_to "like #{@user.likes.count}",likes_user_path(@user) %></h4>
   <br>
-  <%= render partial: "shared/follow", locals: {user: @user} %>
+  <%= render partial: "shared/follow_button", locals: {user: @user} %>
 
 </div>
 <div class="clearfix"></div>
