@@ -16,6 +16,7 @@ class RepliesController < ApplicationController
         format.js
       else
         format.html { redirect_to tweet_replies_path(@tweet) }
+      end
     end
 
   end
