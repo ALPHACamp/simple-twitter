@@ -3,7 +3,7 @@ class Admin::TweetsController < Admin::BaseController
 
 
     def index
-      
+
       @tweets = Tweet.page(params[:page]).per(30).order(created_at: :desc)
 
     end
@@ -11,7 +11,7 @@ class Admin::TweetsController < Admin::BaseController
     def destroy
       @tweet = Tweet.find(params[:id])
       @tweet.destroy
-      redirect_to admin_tweets_path
+      redirect_to admin_root_path
       flash[:alert] = "tweet was deleted"
     end
 
