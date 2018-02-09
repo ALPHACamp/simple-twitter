@@ -1,7 +1,65 @@
-<ul>
-  <% @followings.each do |following| %>
-  <li>
-    <%= following.name %>
-  </li>
-  <% end %>
-</ul>
+
+<div class="container">
+  <div class="row">
+   
+    <div class="col-md-4">
+      <%= image_tag @user.avatar, width: '300px' if @user.avatar? %>
+      <div class="c-name"><h4><%= @user.name %></h4></div>
+      <div class="c-intro"><%= @user.introduction %></div>
+      <div>
+        <h5>
+        <%= link_to tweets_user_path(@user), method: :get do %>tweet <%= @user.tweets.count %>
+          <% end %></h5>
+      </div>
+      <div><h5>
+        <%= link_to followings_user_path(@user), method: :get do %>following <%= @user.followings.count %>
+        <% end %></h5>
+      </div>
+      <div><h5>
+        <%= link_to followers_user_path(@user), method: :get do %>follower <%= @user.followers.count %>
+        <% end %></h5> 
+      </div>
+      <div><h5>
+        <% if @user.likes.count == 0 %>
+          <%= link_to tweets_user_path(@user), method: :get do %>like <%= @user.likes.count %><% end %>
+        <% else %>
+          <%= link_to likes_user_path(@user), method: :get do %>like <%= @user.likes.count %><% end %>
+        <% end %></h5>
+      </div>
+      <% if current_user != @user %>
+        <% if current_user.following?(@user) %>
+          <%= link_to 'Unfollow', followship_path(following_id: @user), method: :delete, class: "btn btn-danger" %>
+        <% else %>
+          <%= link_to "Follow", followships_path(following_id: @user), method: :post, class: "btn btn-primary" %>
+        <% end %>
+      <% else %>
+        <%= link_to "Edit Profile", edit_user_path(@user), method: :get, class: "btn btn-primary" %>
+      <% end %>     
+    </div>
+     
+    <div class="col-md-8">
+
+        <% @followings.each do |following| %>
+        <div>
+          <%= image_tag following.avatar, width: '50px' if following.avatar? %>
+          <%= link_to following.name, tweets_user_path(following.id) %>
+          <div>
+          <%= following.introduction %></div>
+          <div class=text-right>
+          <% if current_user != following %>
+            <% if current_user.following?(following) %>
+              <%= link_to 'Unfollow', followship_path(following.id), method: :delete, class: "btn btn-danger btn-sm" %>
+            <% else %>
+              <%= link_to "Follow", followships_path(following_id: following.id), method: :post, class: "btn btn-primary btn-sm" %>
+            <% end %>
+          <% end %></div>
+        </div>
+        <br />
+        <% end %>    
+    
+    
+    </div>
+    
+  </div>
+</div> 
+ 

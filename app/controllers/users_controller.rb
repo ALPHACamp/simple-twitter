@@ -45,7 +45,7 @@ class UsersController < ApplicationController
       redirect_back(fallback_location: tweets_user_path(@user))
       flash[:notice] = "user was successfully updated"
     else
-      render :edit
+      redirect_back(fallback_location: tweets_user_path(@user))
       flash[:alert] = "user was failed to update"
     end
   end
