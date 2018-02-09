@@ -20,12 +20,12 @@ class TweetsController < ApplicationController
 
   def like
     current_user.likes.create!(tweet: @tweet)
-    redirect_back(fallback_location: root_path)
+    redirect_to tweets_path
   end
 
   def unlike
     current_user.likes.where(tweet: @tweet).destroy_all
-    redirect_back(fallback_location: root_path)
+    redirect_to tweets_path
   end
 
   private
