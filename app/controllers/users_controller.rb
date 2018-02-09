@@ -38,8 +38,11 @@ class UsersController < ApplicationController
 
   def likes
     @user = User.find(params[:id])
-    @likes = @user.likes.order(created_at: :desc)
-    #@likes_tweet = @user.liked_tweets.order('likes.updated_at DESC')
+    #@likes = @user.likes.order(created_at: :desc)
+    #用這個是回傳likes
+
+    #回傳tweets
+    @likes = @user.liked_tweets.order('likes.updated_at DESC')
 
   end
 
