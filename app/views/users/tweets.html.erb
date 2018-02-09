@@ -8,6 +8,7 @@
         <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-primary" %>
       <% else %>
         <%= link_to 'Follow', followships_path(following_id: @user), method: :post, class: "btn btn-primary" %>
+        <%= link_to 'Unfollow', followship_path(@user), method: :delete, class: "btn btn-primary" %>
       <% end %>
 
     </div>
