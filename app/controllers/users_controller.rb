@@ -21,16 +21,19 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings = @user.followings.all # 基於測試規格，必須講定變數名稱
+    # 基於測試規格，必須講定變數名稱 
+    @followings = @user.followings.includes(:followships).order('followships.created_at desc')
   end
 
   def followers
-    @followers =  @user.followers.all # 基於測試規格，必須講定變數名稱
+    # 基於測試規格，必須講定變數名稱
+    @followers = @user.followers.includes(:followships).order('followships.created_at desc')    
   end
 
   def likes
-    @likes = @user.liked_tweets.page(params[:page]).per(10) # 基於測試規格，必須講定變數名稱
-  end
+    # 基於測試規格，必須講定變數名稱
+    @likes = @user.liked_tweets.includes(:likes).order('likes.created_at desc')
+  end  
 ##############3
   private
   def set_user

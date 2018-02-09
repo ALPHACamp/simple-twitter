@@ -5,8 +5,7 @@ class TweetsController < ApplicationController
     @users = User.order(followers_count: :DESC).limit(10) 
     @tweets = Tweet.includes(:replies, :likes).order(created_at: :desc)
     @tweet = Tweet.new
-    end  
-  end
+  end  
 
   def create
     @tweet = Tweet.new(tweet_params)
@@ -37,4 +36,4 @@ class TweetsController < ApplicationController
   def tweet_params
     params.require(:tweet).permit(:description)
   end  
-
+end
