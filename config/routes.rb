@@ -16,12 +16,13 @@ Rails.application.routes.draw do
     collection do
       # 瀏覽所有餐廳的最新動態
       # GET users/tweets
-      get :tweets
+      
       get :followings
       get :followers
     end
     member do
       get :like
+      get :tweets
       #post :unfavorite
     end
   end
