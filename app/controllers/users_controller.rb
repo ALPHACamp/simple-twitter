@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   #個別user的推播與簡介
   def tweets
-    @tweets = @user.tweets
+    @tweets = @user.tweets.order(created_at: :desc)
   end
 
   def edit
@@ -30,17 +30,17 @@ class UsersController < ApplicationController
 
   def followings
     # 基於測試規格，必須講定變數名稱
-    @followings = @user.followings.order(created_at: :desc)
+    @followings = @user.followings
   end
 
   def followers
-    @followers = @user.followers.order(created_at: :desc)
+    @followers = @user.followers
     # 基於測試規格，必須講定變數名稱
   end
 
   def likes
     # 基於測試規格，必須講定變數名稱
-    @likes = @user.liked_tweets.order(created_at: :desc)
+    @likes = @user.liked_tweets
   end
 
   private 
