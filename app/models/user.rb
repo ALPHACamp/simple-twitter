@@ -22,6 +22,13 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_tweets, through: :likes, source: :tweet
 
+  has_many :followships, dependent: :destroy
+  has_many :followings, through: :followships
+
+  #新增一組user to following_id的foreign_key
+  has_many :inverse_followships, class_name: "Followship" , foreign_key: "following_id"
+  has_many :followers, through: :inverse_followships, source: :user
+
   def admin?
     self.role == "admin"
   end  
@@ -33,6 +40,15 @@ class User < ApplicationRecord
   def count_likes
     self.likes_count = self.likes.size
     self.save
+  end
+
+  #def count_followers(user)
+  #  user.followers_count = user.inverse_followships.size
+  #  user.save
+  #end
+
+  def following?(user)
+    self.followings.include?(user)    
   end
   
 end

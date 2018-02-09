@@ -5,6 +5,7 @@
 <!--person info-->
 <div class=" col-md-2 col-lg-2 container">
   <div class="row">
+    <% @users = current_user%>
     <div id="profile-pic" >
               <%= image_tag @users.avatar ,class:" img-responsive "%>
     </div>
@@ -20,9 +21,7 @@
               <%= link_to "likes : #{@users.likes_count}" , likes_user_path(@users),class:"navbar-brand"%> 
               </div>
               <div>
-             
    <%= link_to "Edit Profile" , edit_user_path(current_user),class:"btn btn-primary"%>  
-  
              </div>
             </div>
         
@@ -30,33 +29,34 @@
   </div>
 </div>
 
-<!--like tweets-->
-  <div class="col-md-8 col-lg-8 container">
-    <div class="row">
-      <h3>Tweets</h3>
-<div class="form-group">
-  <% @likes.each do |tweet| %>
-   <div id="tweets-list" >
+<!--followings tweets-->
+   <div class="col-sm-8 col-md-8 col-lg-8 container">
   
-    <div id="user-pic" class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
-    <%= image_tag tweet.user.avatar ,class:"img-circle img-responsive img-profile"%>
+      <h3>following</h3>
+        <div class="row">
+
+
+  <% @followings.each do |following| %>
+    <div class= "col-xs-4 col-sm-4 col-md-4 col-lg-4">
+      <div class=" tweets-item">
+  
+    <div id="user-pic" class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+    <%= image_tag following.avatar ,class:"img-circle img-responsive img-profile"%>
     </div>
     
-    <div class="col-xs-12 col-sm-7 col-md-8 col-lg-10">
-    <h4><%= link_to "@#{tweet.user.name}" , tweets_user_path(tweet.user)%>, <%= tweet.created_at.strftime("%F")%>, <%=tweet.created_at.strftime(" %H:%M ")%></h4>
-      <p><%= truncate(tweet.description, length: 300)%></p>
-     <div> <%= link_to "Replay(#{tweet.replies_count})" , replies_tweet_path(tweet),class:"btn btn-link"%>
-      <%= render partial: "shared/like", locals: {tweet: tweet} %> 
-              </div>
+    <div>
+    <h4><%= "@#{following.name}" %></h4>
+      <p><%= truncate(following.introduction, length: 300)%></p>
+    
     </div>
-
+ <%= render partial: "shared/follow", locals: {users: following}%>
   </div>
-  <% end %>
+
 </div>
+  <% end %>
     </div>   
 
  </div>
- </div>
 
- </div>
- </div>
+
+ </div></div></div>

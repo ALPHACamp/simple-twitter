@@ -18,9 +18,12 @@ Rails.application.routes.draw do
      member do
       get :tweets
       get :likes
+      get :followings
+      get :followers
     end
   end
-
+ resources :followships, only: [:create, :destroy]
+ 
   namespace :admin do
     root "tweets#index" 
     resources :tweets, only: [:index, :destroy]
