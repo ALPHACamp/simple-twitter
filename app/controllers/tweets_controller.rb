@@ -5,9 +5,7 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new
     # 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
     @users = User.order(followers_count: :desc).limit(10)
-    if(current_user.role == "admin")
-      redirect_to admin_tweets_path
-    end
+    
   end
 
 
