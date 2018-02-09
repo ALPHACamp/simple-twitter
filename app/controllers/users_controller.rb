@@ -32,6 +32,9 @@ class UsersController < ApplicationController
 
   end
 
+  def edit
+    redirect_to tweets_user_path(@user) if @user != current_user
+  end
   def index
     @users = User.all
   end

@@ -1,12 +1,12 @@
 <div class="row justify-content-md-center">
-  <div class="col-md-7">
+  <div class="col-md-8">
 
     <%= form_for(@tweet) do |f| %>
       <div class="form-group">
-        <%= f.text_area :description, placeholder: "What's on your mind?" %>
+        <%= f.text_area :description, placeholder: "What's on your mind?" ,class: "form-control", rows: 4 %>
       </div>
-      <div class="form-group">
-        <%= f.submit "Tweet", :disable_with => 'Tweeting...' %>
+      <div class="form-group" >
+        <%= f.submit "Tweet" ,class: "btn btn-lg btn-info", :disable_with => 'Tweeting...' %>
         </div>
       <% end %>
 
@@ -18,14 +18,22 @@
   </div>
 
   </div>
-  <div class="popular col-md-5">
-        <h1>Popular</h1>
+  <div class="popular col-md-4 text-center">
+
+        <h1>Popular </h1>
         <% @users.each do |user| %>
-          <%= render partial:"shared/avatar", locals:{avatar: user.avatar} if user.avatar?  %>
+
+          <div class="text-center">
+            <%= render partial:"shared/avatar", locals:{avatar: user.avatar} if user.avatar?  %>
+          </div>
+          <div class="text-center">
           <%= link_to user.name, tweets_user_path(user) %>
+          <br>
           <%= truncate user.introduction, length: 140 %>
+          <br>
           <%= render partial: "shared/follow", locals: { user: user } %>
         <%end%>
+          </div>
   </div>
 
 
