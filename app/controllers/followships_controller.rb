@@ -1,8 +1,8 @@
 class FollowshipsController < ApplicationController
   def create
     @followship = current_user.followships.build(following_id: params[:following_id])
-    unless params[:following_id] == current_user.id
-      respond_to do |format|
+    respond_to do |format|
+      unless params[:following_id] == current_user.id
         if @followship.save
           @user = User.find(@followship.following_id)
           format.html { redirect_back fallback_location: root_path }
