@@ -1,9 +1,36 @@
-<h1>後台 - users</h1>
-<ul>
-  <% @users.each do |user| %>
-  <li>
-    <%= user.name %>
-    <%= link_to admin_user_path(user), method: :delete, data: { confirm: "Are you sure?"}, 'title' => '刪除', 'data-toggle' => 'tooltip' do %>刪除<% end %>
-  </li>
-  <% end %>
-</ul>
+<div class="container">
+  
+  <h1>後台 - users</h1>
+  
+  <div class="row">
+   
+    <div class="col-md-9">
+  
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>使用者名稱</th>
+            <th>推播數量</th>
+            <th>關注人數</th>
+            <th>跟隨者人數</th>
+            <th>like 過的推播數</th>
+            <th>功能</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+            <td class="col-md-2"><%= user.name %></td>
+            <td class="col-md-2"><%= user.tweets.count %></td>
+            <td class="col-md-2"><%= user.followings.count %></td>
+            <td class="col-md-2"><%= user.followers_count %></td>
+            <td class="col-md-2"><%= user.likes_count %></td>
+            <td class="col-md-2"><%= link_to admin_user_path(user), method: :delete, data: { confirm: "Are you sure?"}, 'title' => '刪除', 'data-toggle' => 'tooltip' do %>刪除使用者<% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

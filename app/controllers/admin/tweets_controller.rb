@@ -2,6 +2,7 @@ class Admin::TweetsController < Admin::BaseController
   
   def index
     @tweets = Tweet.all
+    @users = User.all
   end
   
   def destroy
