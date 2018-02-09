@@ -4,8 +4,8 @@
   </div>
   <div class="col-md-8 follow">
     <h3><%= @title %></h3>
-    <% if @followings.any? %>
-      <%= render 'shared/follow', follows: @followings %>
+    <% if @follow.any? %>
+      <%= render 'shared/follow', follows: @follow %>
     <% end %>
   </div> 
 </section>

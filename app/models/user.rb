@@ -12,16 +12,16 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
 
-  has_many :tweets, dependent: :destroy
+  has_many :tweets, -> { order(created_at: :desc) }, dependent: :destroy
 
-  has_many :followships, dependent: :destroy
+  has_many :followships, -> { order(created_at: :desc)}, dependent: :destroy
   has_many :followings, through: :followships
 
-  has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id", dependent: :destroy
+  has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
   has_many :followers, through: :inverse_followships, source: :user
 
-  has_many :likes, dependent: :destroy
-  has_many :like_tweets, through: :likes, source: :tweet
+  has_many :likes, -> { order(created_at: :desc) }, dependent: :destroy
+  has_many :liked_tweets, through: :likes, source: :tweet
 
   has_many :replies, dependent: :destroy
 

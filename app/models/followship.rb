@@ -7,6 +7,8 @@ class Followship < ApplicationRecord
   validates :following, presence: true
   validate :not_following_himself
 
+  private
+  
   def not_following_himself
     if following_id == user_id 
       errors.add :user_id

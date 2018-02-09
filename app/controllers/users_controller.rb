@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
 
   def tweets
-    @tweets = @user.tweets.order(created_at: :desc)
+    @tweets = @user.tweets
   end
 
   def edit
@@ -21,20 +21,22 @@ class UsersController < ApplicationController
 
   def followings
     @title = "Followings"
-    @followings = @user.followings.order(created_at: :desc) # 基於測試規格，必須講定變數名稱
-    render 'show_followings'  
+    @followings = @user.followings # 基於測試規格，必須講定變數名稱
+    @follow = @followings 
+    render 'follow_list'
   end
 
   def followers
     @title = "Followers"
-    @followers = @user.followers.order(created_at: :desc) # 基於測試規格，必須講定變數名稱
-    render 'show_followers'
+    @followers = @user.followers # 基於測試規格，必須講定變數名稱
+    @follow = @followers
+    render 'follow_list'
   end
 
   def likes
     @title = "Likes"
-    @likes = @user.like_tweets.order(created_at: :desc) # 基於測試規格，必須講定變數名稱
-    render 'show_like'  
+    @likes = @user.liked_tweets # 基於測試規格，必須講定變數名稱
+    render 'like_list'  
   end
 
   private
