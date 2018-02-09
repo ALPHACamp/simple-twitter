@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings = @user.followings.order("followships.created_at: :desc")
+    @followings = @user.followings.order(created_at: :desc)
     
   end
 
