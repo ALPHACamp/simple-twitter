@@ -46,7 +46,7 @@ before_action :set_user, only: [:tweets, :edit, :update, :likes, :followings, :f
 
    def likes
      # @likes # 基於測試規格，必須講定變數名稱
-     @likes = @user.tweets.joins(:likes).page(params[:page]).per(10).order("likes.created_at DESC")
+     @likes = @user.tweets.joins(:likes).page(params[:page]).per(10).order("likes.created_at desc")
     #  @likes = @user.liked_tweets.page(params[:page]).per(10).order("likes.created_at DESC")
     # @likes = @user.likes.order(created_at: :desc)
     #@likes_tweet = @user.liked_tweets.order('likes.updated_at DESC')
@@ -55,13 +55,13 @@ before_action :set_user, only: [:tweets, :edit, :update, :likes, :followings, :f
 
   def followings
     # @followings # 基於測試規格，必須講定變數名稱
-    @followings = @user.followings.order('followships.created_at DESC')
+    @followings = @user.followings.order('followships.created_at desc')
 
   end
 
   def followers
     # @followers # 基於測試規格，必須講定變數名稱
-    @followers = @user.followers.order('followships.created_at DESC')
+    @followers = @user.followers.order('followships.created_at desc')
 
   end
 

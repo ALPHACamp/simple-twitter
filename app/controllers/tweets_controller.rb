@@ -3,7 +3,7 @@ before_action :set_tweet, only: [:like, :unlike]
 # :edit, :update, :destroy,
 
   def index
-    @users = User.all.order(followers_count: :desc).limit(10) # 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
+    @users = User.order(followers_count: :desc).limit(10) # 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
 
 
     @tweets = Tweet.new
@@ -15,9 +15,11 @@ before_action :set_tweet, only: [:like, :unlike]
 
 
   def create
+
     @tweet = current_user.tweets.build(tweet_params)
        if @tweet.save
-         redirect_to root_path
+         flash[:notice] = 'tweet was successfully created'
+         redirect_to tweets_path
        else
          flash[:alert] = @tweet.errors.full_messages.to_sentence
          @tweets = Tweet.page(params[:page]).per(20).order(created_at: :desc)
@@ -59,14 +61,16 @@ before_action :set_tweet, only: [:like, :unlike]
   def like
 
     @tweet.likes.create!(user: current_user)
-    redirect_back(fallback_location: tweets_user_path)
+    @tweet.user.liked_tweets_count
+    redirect_to tweets_path
   end
 
   def unlike
 
     like = Like.where(tweet: @tweet, user: current_user)
     like.destroy_all
-    redirect_back(fallback_location: tweets_user_path)
+    @tweet.user.liked_tweets_count
+    redirect_to tweets_path
   end
 
 
