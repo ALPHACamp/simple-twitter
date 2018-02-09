@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     member do
       post :like
       post :unlike
+      # 看見某一使用者按過 like 的推播
+      get :likes
     end
   end
   

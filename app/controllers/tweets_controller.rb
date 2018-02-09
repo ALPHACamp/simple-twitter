@@ -18,6 +18,11 @@ class TweetsController < ApplicationController
     end    
     
   end
+  
+  def likes
+    user = User.find(params[:id])
+    @tweets = user.liked_tweets
+  end
 
   def like
     tweet = Tweet.find(params[:id])
