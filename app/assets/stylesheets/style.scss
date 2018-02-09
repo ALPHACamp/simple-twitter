@@ -13,6 +13,12 @@ color: darkblue;
 border: 1px solid #ddd;
 }
 
+.form-style{
+border:2px powderblue solid;
+border-radius: 20px;
+font-family:monospace;
+}
+
 .edit_user {
 margin: 10px;
 }
@@ -51,6 +57,15 @@ margin: 10px;
   margin-right: 10px;
   background-color:lightslategray; 
   color: white;
+}
+
+.button-tweet{
+  border-radius: 5px;
+  padding: 5px 15px;
+  margin-right: 10px;
+  background-color: cornflowerblue; 
+  color: darkblue; 
+  font-family:monospace;
 }
 
 .intro{

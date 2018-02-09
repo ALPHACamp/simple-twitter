@@ -1,15 +1,17 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-md-8">
+      <div class="col-xs-12 col-md-12">
       <%= form_for @tweet do |f| %>
         <div class="form-group">
-          <%= f.text_area :description, class: "form-control ", placeholder:"What's on your mind?" , style: 'height: 100px'%>
+          <%= f.text_area :description, class: "form-control form-style", placeholder:"What's on your mind?" , style: 'height: 150px'%>
           <br/>
-          <em><%= f.submit "Tweet" , class: 'button-style navbar-right' %></em>
+          <%= f.submit "Tweet" , class: 'navbar-right button-tweet' %>
           <br/>
         </div>
       <% end %>
       <br/>
+      </div>
       <% @recent_tweets.each do |tweet| %>
         <div class="col-xs-12 col-md-12">
           <div class="media tweet-box">
