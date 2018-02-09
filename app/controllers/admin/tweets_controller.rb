@@ -2,6 +2,7 @@ class Admin::TweetsController < Admin::BaseController
   def index
     # 看見所有推播
     @tweets = Tweet.all
+    @users = User.order(followers_count: :desc).limit(10)
   end
 
 
