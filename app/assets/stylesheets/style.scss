@@ -20,7 +20,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6, p {
-  margin: 5px;
+  margin: 8px;
   padding: 0px;
 }
 
@@ -35,16 +35,6 @@ a, a:hover, a:focus {
   padding: 0px;
   text-decoration: none;
 }
-
-
-/*----- logo圖變小了
-img {
-  max-width: 25%;
-  height: auto;
-  display: block;
-}
------*/
-
 
 .container {
   width: 85%;
@@ -110,7 +100,7 @@ header {
   color: #1E90FF;
 }
 
-.description {
+.description, .introduction {
   color: #767676;
 }
 
@@ -140,6 +130,57 @@ header {
 }
 
 .button-group  a:hover {
+  background: #000;
+  color: #fff;
+  -webkit-transition: all .4s linear;
+  -moz-transition: all .4s linear;
+  -ms-transition: all .4s linear;
+  -o-transition: all .4s linear;
+  transition: all .4s linear;
+}
+
+/*------ followings setting ------*/
+
+.followings {
+  border: 1px solid gray;
+  border-radius: 5px;
+  width: 42%;
+  display: inline-block;
+  padding: 3px;
+  margin: 8px;
+}
+
+
+
+.col-1 {
+  width: 33.3333333%;
+  padding-left: 3px;
+  display: inline-block;
+}
+
+.col-2 {
+  width: 66.6666666%;
+  padding-left: 3px;
+  display: inline-block
+}
+
+
+
+.button-right  a {
+  float: right;
+  width: 75%;
+  display: block;
+  color: #000;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 3px 12px;
+  margin-buttom: 10px;
+  text-transform: capitalize;
+}
+
+.button-right  a:hover {
+  float: right;
+  width: 75%;
   background: #000;
   color: #fff;
   -webkit-transition: all .4s linear;
