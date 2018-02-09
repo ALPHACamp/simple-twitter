@@ -90,4 +90,24 @@ namespace :dev do
     puts "have created fake followships"
     puts "now you have #{Followship.count} followships data"
   end
+
+  task fake_updatelikescount: :environment do
+    User.all.each do |user|
+      user.update!(
+        likes_count: Like.all.where(:user_id => user.id).length
+      )
+      user.save!
+    end
+    puts "Now, All users understand how many likes they haved"
+  end
+
+  task fake_updatefollowerscount: :environment do
+    User.all.each do |user|
+      user.update!(
+        followers_count: Followship.all.where(:user_id => user.id).length
+      )
+      user.save!
+    end
+    puts "Now, All users understand who are following themselves."
+  end
 end
