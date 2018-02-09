@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="col-md-4 ">
+    <%= render partial: "shared/user_intro", locals: {user: @tweet.user}%>
+
+  </div>
+  
+  <div class="col-md-8">
+    <h1>Tweets</h1>
+    <br>
+    
+    <div class="tweet-item">
+      <div class="col-md-3">
+        <%= link_to tweets_user_path(@tweet.user) do%>
+          <%if !@tweet.user.avatar?%>
+            <%= image_tag "https://openclipart.org/download/247319/abstract-user-flat-3.svg", class:"img-responsive img-rounded " %>
+          <% else%>
+            <%= image_tag @tweet.user.avatar, class:"img-responsive img-rounded" %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="col-md-9">
+          <h4>
+            <%= link_to tweets_user_path(@tweet.user) do%>
+            <%= @tweet.user.name %>
+            <% end %>
+          </h4>
+          
+          <p><%= truncate(@tweet.description, length: 200)%></p>
+         
+          <%= link_to "Reply(#{@tweet.replies_count})","#reply" %>
+          <%= link_to "Like(#{@tweet.likes_count})", like_tweet_path(@tweet)%>
+         
+        </div>
+        <div class="clearfix"></div>
+    </div> 
+
+    <h1>Replies</h1>
+    <br>
+    
+
+    <% @replies.each do |reply| %>
+      <div class="tweet-item">
+        <div class="col-md-3">
+          <%= link_to tweets_user_path(reply.user) do%>
+            <%if !reply.user.avatar?%>
+              <%= image_tag "https://openclipart.org/download/247319/abstract-user-flat-3.svg", class:"img-responsive img-rounded " %>
+            <% else%>
+              <%= image_tag reply.user.avatar, class:"img-responsive img-rounded" %>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="col-md-9">
+          <h4>
+            <%= link_to tweets_user_path(reply.user) do%>
+            <%= reply.user.name %>
+            <em><%= reply.created_at %> </em>
+            <% end %>
+          </h4>
+          
+          <p><%= truncate(reply.comment, length: 200)%></p>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    <% end %>
+    
+    <%= form_for [@tweet,@reply] do |f| %>
+    <div class="form-group" id="reply">
+      <%= f.text_area :comment, placeholder: "What's on your mind?", rows: "5",class: "form-control" %>
+    </div>
+    <div class="form-group ">
+      <%= f.submit "Reply",class: "btn btn-primary " %>   
+    </div>
+    <% end %>
+
+
+  </div>
+</div>

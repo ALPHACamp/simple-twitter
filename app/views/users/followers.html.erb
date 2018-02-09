@@ -1,0 +1,41 @@
+<div class="container">
+
+  <div class="col-md-4">
+    <%= render partial: "shared/user_intro", locals: {user: @user}%>
+  </div>
+  <div class="col-md-8">
+       
+    <h2>粉絲</h2>
+    <hr>
+    <% @followers.each do |follow|%>
+      <div class="col-md-6">
+        <div class="follow-item">
+          <div class="col-md-3">
+            <%= link_to tweets_user_path(follow) do%>
+              <%if !follow.avatar?%>
+                <%= image_tag "https://openclipart.org/download/247319/abstract-user-flat-3.svg", class:"img-responsive img-rounded " %>
+              <% else%>
+                <%= image_tag follow.avatar, class:"img-responsive img-rounded" %>
+              <% end %>
+            <% end %>
+          </div>
+          
+
+          <div class="col-md-9">
+            <h4>
+              <%= link_to tweets_user_path(follow) do%>
+              <%= follow.name %>
+              <% end %>
+            </h4>
+            
+            <p><%= truncate(follow.introduction, length: 200)%></p>
+            <div class="text-right">
+              <%= render partial: "shared/follow", locals: {user: follow}%>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>      
+    <% end %>
+  </div>
+</div>
