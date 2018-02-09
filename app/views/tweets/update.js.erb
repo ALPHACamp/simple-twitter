@@ -1,0 +1,7 @@
+
+var id = '#tweet-<%= @tweet.id %>'
+var html = '<%= j render partial: 'share/description', locals: { tweet: @tweet } %>'
+$('#tweet-wall').children(id).find('.edit-tweet-form').css('display', 'none');
+$('#tweet-wall').children(id).find('.show-area').css('display', 'grid');
+console.log($('#tweet-wall').children(id).find('p'));
+$('#tweet-wall').children(id).find('p').html(html);

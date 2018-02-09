@@ -1,0 +1,61 @@
+<div class="container">
+  <div id="reply-index">
+    <%= render partial: "share/user_item", locals: {user: @tweet.user, tweet_class: '', following_class: '', follower_class: '', like_class: ''} %>
+    <div id="tweet-wall">
+      <h2>Tweet</h2>
+      <div class="tweet-item" id="tweet-<%= @tweet.id %>">
+        <%= render partial: "share/tweet_item", locals: {tweet: @tweet} %>
+      </div>
+      <%= form_for [@tweet, @reply] do |f| %>
+        <div class="tweet-form form-group">
+          <div class="avatar-xs">
+            <%= link_to tweets_user_path(current_user) do %>
+              <%= image_tag(current_user.avatar, class: "img-circle") %>
+            <% end %>
+          </div>
+          <div>
+            <%= f.text_area :comment, placeholder: "Reply something...", maxlength: 140, class: "tweet-form-textarea form-control"%>
+          </div>
+          <%= f.submit 'Reply', class: "tweet-btn btn btn-primary" %>
+        </div> 
+      <% end %>
+      <h2>Replies</h2>
+      <% @replies.each do |reply| %>
+        <div class="tweet-item" id="reply-<%= reply.id %>">
+          <div class="avatar-sm">
+          <%= link_to tweets_user_path(reply.user) do %>
+            <%= image_tag(reply.user.avatar, class: "") %>
+          <% end %>
+          </div>
+          <div class="tweet-info">
+            <h4><%= link_to "@#{reply.user.name}", tweets_user_path(reply.user)%><em><%= reply.created_at.strftime("%Y-%m-%d %I:%M") %></em></h4>
+            <% if reply.user == current_user %>
+              <div class="edit-tweet-form">
+                <%= form_for [@tweet, reply], remote: true do |f| %>
+                  <div class="form-group">
+                    <div>
+                      <%= f.text_area :comment, placeholder: "Reply something...", maxlength: 140, class: "tweet-form-textarea form-control"%>
+                    </div>
+                  </div>
+                  <%= f.submit 'Update', style: "margin: 0 0 0 5px", class: "tweet-btn btn btn-primary btn-sm pull-right" %> 
+                  <button class="btn btn-danger btn-sm pull-right">Cancel</button>
+                <% end %>
+              </div>
+            <% end %>
+            <div class="show-area">
+              <%= render partial: 'share/comment', locals: {reply: reply} %> 
+              <div class="edit-delete-btn">
+                <% if reply.user == current_user %>
+                  <em><%= link_to ' delete', tweet_reply_path(@tweet, reply), method: :delete, data: {confirm: "Are you sure?"} %>
+                  </em>
+                  <em>&nbsp;&nbsp;|&nbsp;&nbsp;</em>
+                  <em><a href="#" class="edit-tweet-btn">edit</a></em>
+                <% end %>
+              </div> 
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

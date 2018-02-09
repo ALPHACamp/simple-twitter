@@ -12,4 +12,39 @@
 //
 //= require rails-ujs
 //= require turbolinks
-//= require_tree .
+//= require_tree 
+
+//= require jquery
+//= require bootstrap-sprockets
+
+$(document).on('turbolinks:load', function() {
+
+  $('button.following-state').hover(function(){
+    $(this).css('background', 'red');
+    $(this).text('Unfollow');
+    }, function(){
+    $(this).css('background', 'var(--mblue)');
+    $(this).text('Following');
+  }); // end following button hover
+
+  $('.tweet-info .edit-tweet-btn').on('click', function(e) {
+    e.preventDefault();
+    $(this).parents('.show-area').css('display', 'none');
+    $(this).parents('.tweet-info').children('.edit-tweet-form').css('display', 'block');
+  });
+
+  $('.edit-tweet-form .btn-danger').on('click', function(e) {
+    e.preventDefault();
+    $(this).parents('.tweet-info').children('.show-area').css('display', 'grid')
+    $(this).parents('.edit-tweet-form').css('display', 'none');
+  });
+
+  $('.edit-tweet-form textarea').keyup(function(){
+    var textarea = $(this).val();
+    if (textarea.length == 0) {
+      $(this).parents('.tweet-item').find('.btn-primary').attr('disabled', true);
+    } else {
+      $(this).parents('.tweet-item').find('.btn-primary').attr('disabled', false);
+    } 
+  });
+});

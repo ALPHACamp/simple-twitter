@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="admin-wall">
+    <ul class="nav nav-tabs">
+      <li role="presentation">
+        <%=link_to 'Tweets', admin_tweets_path %> 
+      </li>
+      <li role="presentation" class="active">
+        <%=link_to 'Users', admin_users_path, class: "nav-link" %>
+      </li>
+    </ul>
+    <table class="users-table table table-hover table-sm">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Tweets</th>
+          <th scope="col">Following</th>
+          <th scope="col">Follower</th>
+          <th scope="col">Be Liked</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @users.each_with_index do |user, i| %>
+        <tr>
+          <th scope="row"><%= user.id %></th>
+          <td><%= link_to user.name, tweets_user_path(user) %></td>
+          <td><%= user.tweets.count %></td>
+          <td><%= user.followings.count %></td>
+          <td><%= user.followers.count %></td>
+          <td><%= @be_liked_count[i] %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="text-center">
+      <%= paginate @users, window: 2 %>
+    </div>
+  </div>
+</div>

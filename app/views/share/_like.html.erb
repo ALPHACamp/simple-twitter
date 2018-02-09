@@ -1,0 +1,15 @@
+        <% if tweet.is_liked?(current_user) %>
+          <span class="heart">
+            <%= link_to unlike_tweet_path(tweet),remote: true, method: :post do %>
+              <%= fa_icon 'heart' %>
+              <span> <%= tweet.likes_count %></span>
+            <% end %>
+          </span>
+        <% else %>
+          <span class="heart-o">
+             <%= link_to like_tweet_path(tweet),remote: true, method: :post do %>
+              <%= fa_icon 'heart-o' %>
+              <span> <%= tweet.likes_count %></span>
+            <% end %> 
+          </span>
+        <% end %>
