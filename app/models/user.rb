@@ -29,5 +29,10 @@ class User < ApplicationRecord
   def profile?(user)
     self.name.include?(user.name)    
   end
+
+  def count_likes
+    self.likes_count = self.likes.size
+    self.save
+  end
   
 end

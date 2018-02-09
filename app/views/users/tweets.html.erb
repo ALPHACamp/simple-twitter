@@ -9,19 +9,26 @@
               <%= image_tag @users.avatar ,class:" img-responsive "%>
     </div>
       <div class="form-group">
-         
-            <div>
-              <h4><%=@users.name%></h4>
-              <div class="help-block"><%= @users.introduction %></div> 
+        <div>
+         <h4><%=@users.name%></h4>
+          <div class="help-block"><%= @users.introduction %></div> 
+        <%if current_user.profile?(@users) %>      
+              <div>
+               <%= link_to "Tweets : #{@user_tweets.count}" , tweets_user_path(@users),class:"help-block"%>
+              <div class="help-block">Following : *34</div> 
+              <div class="help-block">Follower :<%= @users.followers_count%></div> 
+              <%= link_to "likes : #{@users.likes_count}" , likes_user_path(@users),class:"help-block"%>
+              </div>
+              
+   <%= link_to "Edit Profile" , edit_user_path(current_user),class:"btn btn-primary"%>  
+   <%else %>
+
               <div>
               <div class="help-block">Tweets : <%= @user_tweets.count%></div> 
               <div class="help-block">Following : *34</div> 
               <div class="help-block">Follower :<%= @users.followers_count%></div> 
               <div class="help-block">likes : <%= @users.likes_count%></div> 
               </div>
-              <%if current_user.profile?(@users) %>
-   <%= link_to "Edit Profile" , edit_user_path(current_user),class:"btn btn-primary"%>  
-   <%else %>
     <%= link_to "Follow*" , root_path,class:"btn btn-primary" %> 
   <% end %>
              

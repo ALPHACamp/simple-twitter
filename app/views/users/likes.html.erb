@@ -1,0 +1,61 @@
+ <!--content-->
+  <div class="container-fluid">
+  <div class="row">
+  <div > 
+<!--person info-->
+<div class=" col-md-2 col-lg-2 container">
+  <div class="row">
+    <div id="profile-pic" >
+              <%= image_tag @users.avatar ,class:" img-responsive "%>
+    </div>
+      <div class="form-group">
+         
+            <div>
+              <h4><%=@users.name%></h4>
+              <div class="help-block"><%= @users.introduction %></div> 
+              <div>
+               <%= link_to "Tweets : #{@users.tweets.count}" , tweets_user_path(@users),class:"help-block"%>
+              <div class="help-block">Following : *34</div> 
+              <div class="help-block">Follower :<%= @users.followers_count%></div> 
+              <%= link_to "likes : #{@users.likes_count}" , likes_user_path(@users),class:"navbar-brand"%> 
+              </div>
+              <div>
+              <%if current_user.profile?(@users) %>
+   <%= link_to "Edit Profile" , edit_user_path(current_user),class:"btn btn-primary"%>  
+   <%else %>
+    <%= link_to "Follow*" , root_path,class:"btn btn-primary" %> 
+  <% end %>
+             </div>
+            </div>
+        
+      </div> 
+  </div>
+</div>
+
+<!--like tweets-->
+  <div class="col-md-8 col-lg-8 container">
+    <div class="row">
+      <h3>Tweets</h3>
+<div class="form-group">
+  <% @likes.each do |tweet| %>
+   <div id="tweets-list" >
+  
+    <div id="user-pic" class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+    <%= image_tag tweet.user.avatar ,class:"img-circle img-responsive img-profile"%>
+    </div>
+    
+    <div class="col-xs-12 col-sm-7 col-md-8 col-lg-10">
+    <h4><%= link_to "@#{tweet.user.name}" , tweets_user_path(tweet.user)%>, <%= tweet.created_at.strftime("%F")%>, <%=tweet.created_at.strftime(" %H:%M ")%></h4>
+      <p><%= truncate(tweet.description, length: 300)%></p>
+     <div> <%= link_to "Replay(#{tweet.replies_count})" , replies_tweet_path(tweet),class:"btn btn-link"%>
+      <%= render partial: "shared/like", locals: {tweet: tweet} %> 
+              </div>
+    </div>
+
+  </div>
+  <% end %>
+</div>
+    </div>   
+
+ </div>
+ </div>
