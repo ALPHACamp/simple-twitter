@@ -28,12 +28,11 @@
               <% if current_user.admin? %>
                 <li><%#= link_to 'Admin Panel', admin_tweets_path %></li>
               <% end %>
-              <li><%= link_to 'Profile', user_path(current_user) %></li>
-              <li><%= link_to('sign out', destroy_user_session_path, method: :delete) %></li>
-              <li><%#= link_to('change password', edit_user_registration_path) %></li>
+              <li><%= link_to 'Profile_Edit', edit_user_registration_path(current_user) %></li>
+              <li><%= link_to('Sign_Out', destroy_user_session_path, method: :delete) %></li>
             <% else %>
-              <li><%= link_to('sign up', new_user_registration_path) %></li>
-              <li><%= link_to('sign in', new_user_session_path) %></li>
+              <li><%= link_to('Sign_Up', new_user_registration_path) %></li>
+              <li><%= link_to('Sign_In', new_user_session_path) %></li>
             <% end %>
           </ul>
         </div>
