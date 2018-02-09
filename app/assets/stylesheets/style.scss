@@ -37,9 +37,9 @@ a, a:hover, a:focus {
 }
 
 
-/*-----
+/*----- logo圖變小了
 img {
-  width: 100%;
+  max-width: 25%;
   height: auto;
   display: block;
 }
@@ -92,13 +92,35 @@ header {
   width: 100%;
 }
 
-.avatar {
+.col-left {
   float: left;
-  margin: 8px;
+  width: 25%;
+}
+
+.col-right {
+  float: left;
+  width: 75%;
+}
+
+.avatar {
+  padding: 5px 5px 5px 0;
+}
+
+.name {
+  color: #1E90FF;
+}
+
+.description {
+  color: #767676;
+}
+
+.tweets-bottom {
+  position: relative;
+  bottom: 0;
 }
 
 .reply {
-  color: #1E90FF;
+  color: #00BFFF;
   display: inline-block;
   margin-right: 8px;
 }
@@ -108,7 +130,21 @@ header {
   display: inline-block;
 }
 
-.tweets-bottom {
-  position: relative;
-  bottom: 0;
+.button-group  a {
+  display: block;
+  color: #000;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 10px 38px;
+  text-transform: capitalize;
+}
+
+.button-group  a:hover {
+  background: #000;
+  color: #fff;
+  -webkit-transition: all .4s linear;
+  -moz-transition: all .4s linear;
+  -ms-transition: all .4s linear;
+  -o-transition: all .4s linear;
+  transition: all .4s linear;
 }
