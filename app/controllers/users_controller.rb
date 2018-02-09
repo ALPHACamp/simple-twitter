@@ -1,19 +1,17 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:tweets, :edit, :update, :followings, :followers, :likes]
 
   def tweets
-    @user = User.find(params[:id])
     @tweets = Tweet.where(user: @user)
   end
 
   def edit
-    @user = User.find(params[:id])
     unless @user == current_user
       redirect_to tweets_user_path(@user)
     end     
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "User was successfully updated"
       redirect_to tweets_user_path(@user)
@@ -24,17 +22,14 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @user = User.find(params[:id])
     @followings = @user.followings.order(created_at: :desc)
   end
 
   def followers
-    @user = User.find(params[:id])
     @followers = @user.followers.order(created_at: :desc)
   end
 
   def likes
-    @user = User.find(params[:id])
     @likes  =  @user.liked_tweets.order(created_at: :desc)
   end
 
