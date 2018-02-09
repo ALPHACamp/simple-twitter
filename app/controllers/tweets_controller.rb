@@ -12,7 +12,7 @@ class TweetsController < ApplicationController
     @tweet.user = current_user
     if @tweet.save
       flash[:notice] = "您的推特已成功推送"
-      redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: tweets_path)
     else
       flash.now[:alert] = "長度太長囉～"
       @users = User.all.order("followers_count DESC").limit(10)
@@ -25,14 +25,14 @@ class TweetsController < ApplicationController
   def like
     @tweet = Tweet.find(params[:id])
     @tweet.likes.create!(user: current_user)
-    redirect_back(fallback_location: root_path)  # 導回上一頁
+    redirect_back(fallback_location: tweets_path)  # 導回上一頁
   end
 
   def unlike
     @tweet = Tweet.find(params[:id])
     like = Like.where(tweet: @tweet, user: current_user)
     like.destroy_all
-    redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: tweets_path)
   end
 
   private

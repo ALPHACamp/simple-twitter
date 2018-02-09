@@ -14,9 +14,10 @@ class RepliesController < ApplicationController
     @reply.user = current_user
     if @reply.save
       flash[:notice] = "成功回覆"
-      redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: tweet_replies_path(@tweet))
     else
-      redirect_to request.referrer, alert: "Comment不得為空白"
+      flash.now[:alert] = "回覆失敗"
+      render :index
     end
   end
 
