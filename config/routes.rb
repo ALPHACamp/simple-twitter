@@ -11,7 +11,10 @@ Rails.application.routes.draw do
       get :tweets
     end
   end
-  resources :tweets, only: [:new, :create]
+
+  resources :tweets, only: [:new, :create] do
+    resources :replies, only: [:index]
+  end
 
   # =======後台=======
   namespace :admin do

@@ -15,6 +15,10 @@ class User < ApplicationRecord
   #使用者的tweets
   has_many :tweets
 
+  # 使用者的replies
+  has_many :replies, dependent: :destroy
+  has_many :reply_tweets, through: :replies, source: :tweet
+
   def admin?
     self.role == "admin"
   end
