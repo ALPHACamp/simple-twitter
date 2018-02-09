@@ -36,9 +36,10 @@ namespace :dev do
   task fake_followship: :environment do
     Followship.destroy_all
     User.all.each do |user|
+      followings = User.all.sample(5)
       5.times do |i|
         user.followships.create!(
-          following: User.all.sample
+          following: followings[i-1]
           )
       end
     end
