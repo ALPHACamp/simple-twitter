@@ -2,30 +2,7 @@
 
   <div class="col-md-3">
     <div>
-      <% if current_user.avatar? %>
-        <%= image_tag current_user.avatar, width: "260px" %>
-      <% else %>
-        <img src="https://api.fnkr.net/testimg/260x260/d3d3d3/FFF/?">
-      <% end %>      
-       
-      <h2 class="text-center"><%= current_user.name %></h2>
-
-      <p><%= current_user.introduction %></p>
-
-      <%= link_to tweets_user_path(current_user) do %>
-        <h4>Tweets <span class="badge"><%= current_user.tweets.count %></span></h4>
-      <% end %>
-
-        <h4>Following <span class="badge"><%=  %></span></h4>
-        
-        <h4>Followers <span class="badge"><%= current_user.followers_count %></span></h4>
-        
-        <h4>Like <span class="badge"><%=  %></span></h4>
-      
-      <div class="text-center">
-        <%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-primary btn-lg btn-block" %>
-      </div>
-
+      <%= render "shared/profile", user: current_user %>
     </div>
   </div>
 
@@ -34,29 +11,7 @@
     <h2>Tweets</h2>
 
       <div class="col-md-12">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="media">
-              <div class="media-left">
-                <% if @tweet.user.avatar? %>
-                  <%= image_tag @tweet.user.avatar, class: "media-object", width: "100px" %>
-                <% else %>
-                  <img src="https://api.fnkr.net/testimg/100x100/d3d3d3/FFF/?">
-                <% end %>               
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading">
-                  <%= link_to @tweet.user.name, tweets_user_path(@tweet.user) %> &nbsp;
-                  <%= @tweet.created_at %> 
-                </h4>
-                <p><%= @tweet.description %></p> <br>
-        
-                <p><%= render "shared/social", tweet: @tweet %></p>
-        
-              </div>
-            </div>
-          </div>
-        </div>
+        <%= render "shared/media", tweet: @tweet %>
       </div>
 
     <h2>Replies</h2>

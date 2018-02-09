@@ -13,29 +13,7 @@
       
     
     <% @tweets.each do |tweet| %>
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="media">
-            <div class="media-left">
-              <% if tweet.user.avatar? %>
-                <%= image_tag tweet.user.avatar, class: "media-object", width: "100px" %>
-              <% else %>
-                <img src="https://api.fnkr.net/testimg/100x100/d3d3d3/FFF/?">
-              <% end %>         
-            </div>
-            <div class="media-body">
-              <h4 class="media-heading">
-                <%= link_to tweet.user.name, tweets_user_path(tweet.user) %> &nbsp;
-                <%= tweet.created_at %> 
-              </h4>
-              <p><%= tweet.description %></p> <br>
-
-              <p><%= render "shared/social", tweet: tweet %></p>
-
-            </div>
-          </div>
-        </div>
-      </div>
+      <%= render "shared/media", tweet: tweet %>
     <% end %>
 
   </div>
