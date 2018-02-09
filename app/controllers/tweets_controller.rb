@@ -44,7 +44,6 @@ class TweetsController < ApplicationController
   end
 
   def update_count
-    @tweet.update_count
     @tweet.user.update_count
     current_user.update_count
   end
