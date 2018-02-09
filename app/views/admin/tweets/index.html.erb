@@ -1,1 +1,11 @@
 <h1>後台</h1>
+
+
+<ul>
+  <% @tweets.each do |tweet|%>
+  <li>
+  Name: <%= tweet.user_id %> <br>
+  Tweets: <%= tweet.description %> <br>
+  </li>
+  <% end %>
+</ul>
