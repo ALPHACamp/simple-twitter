@@ -23,4 +23,4 @@ test:
 production:  
   adapter: postgresql
   encoding: Unicode
-
+  reconnect: true
