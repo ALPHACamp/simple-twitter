@@ -8,10 +8,12 @@ class RepliesController < ApplicationController
   end
 
   def create
-    @tweet = Tweet.find(params[:tweet_id])
-    @reply = @tweet.replies.new(reply_params)
-    @reply.user = current_user
-    @reply.save!
+    Tweet.transaction do
+      @tweet = Tweet.find(params[:tweet_id])
+      @reply = @tweet.replies.new(reply_params)
+      @reply.user = current_user
+      @reply.save!
+    end
     redirect_to tweet_replies_path(@tweet)
   end
 

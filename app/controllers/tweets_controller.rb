@@ -2,11 +2,10 @@ class TweetsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @users = User.includes(:tweets)
+    @users = User.popular_ten
     # 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
     @tweets = Tweet.order(created_at: :desc).page(params[:page]).per(7)
     @tweet = Tweet.new
-    @popular_tweeters = @users.popular_ten
   end
 
   def show
@@ -17,29 +16,35 @@ class TweetsController < ApplicationController
   end
 
   def create
-    @tweet = Tweet.new(tweet_params)
-    @tweet.user = current_user
-    user = @tweet.user.increment(:tweets_count, 1)
-    user.save
-    @tweet.save
+    Tweet.transaction do
+      @tweet = Tweet.new(tweet_params)
+      @tweet.user = current_user
+      user = @tweet.user.increment(:tweets_count, 1)
+      user.save
+      @tweet.save
+    end
     redirect_to tweets_path
   end
 
   def like
-    @tweet = Tweet.find(params[:id])
-    @tweet.likes.create!(user: current_user)
-    user = @tweet.user.increment(:likes_count, 1)
-    user.save
-    redirect_back(fallback_location: root_path)
+    Tweet.transaction do
+      tweet = Tweet.find(params[:id])
+      Like.create!(user: current_user, tweet: tweet)
+      user = current_user.increment(:likes_count, 1)
+      user.save
+    end
+    redirect_to tweets_path
   end
 
   def unlike
-    @tweet = Tweet.find(params[:id])
-    likes = Like.where(tweet: @tweet, user: current_user).first
-    likes.destroy
-    user = @tweet.user.decrement(:likes_count, 1)
-    user.save
-    redirect_back(fallback_location: root_path)
+    Tweet.transaction do
+      tweet = Tweet.find(params[:id])
+      likes = Like.where(tweet: tweet, user: current_user).first
+      likes.destroy
+      user = current_user.decrement(:likes_count, 1)
+      user.save
+    end
+    redirect_to tweets_path
   end
 
   private

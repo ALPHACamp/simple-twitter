@@ -1,10 +1,12 @@
 <div class="followship col-sm-6">
 	<div>
-		<%= image_tag following.avatar, class: "avatar" %>
+		<%= filestack_image following.avatar, transform: filestack_transform.resize(width:100, height:100), class: "avatar" %>
 	</div>
 	<div class="intro">
 		<%= link_to "@#{following.name}", tweets_user_path(following) %><br>
-		<%= following.introduction %><br>
+		<div class="text">
+			<%= following.introduction%><br>
+		</div>
 	</div>
 	<div class="button"><%= render partial: "shared/followbutton", locals: {user: following} %></div>
 </div>

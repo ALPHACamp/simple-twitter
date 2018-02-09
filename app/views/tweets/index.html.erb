@@ -17,16 +17,16 @@
 </div>
 <div class = "popular-tweet">
 	<h1>Popular</h1>
-	<% @popular_tweeters.each do |tweeter| %>
+	<% @users.each do |user| %>
 		<div class="tweet">
 			<div>
-				<%= filestack_image tweeter.avatar, transform: filestack_transform.resize(width:100, height:100), class: "avatar" %>
+				<%= filestack_image user.avatar, transform: filestack_transform.resize(width:100, height:100), class: "avatar" %>
 			</div>
 			<div class="intro">
-				<%= link_to "@#{tweeter.name}", tweets_user_path(tweeter) %><br>
-				<%= tweeter.introduction %><br>
+				<%= link_to "@#{user.name}", tweets_user_path(user) %><br>
+				<%= user.introduction %><br>
 			</div>
-			<div class="button"><%= render partial: "shared/followbutton", locals: {user: tweeter} %></div>
+			<div class="button"><%= render partial: "shared/followbutton", locals: {user: user} %></div>
 		</div>
 	<% end %>
 </div>

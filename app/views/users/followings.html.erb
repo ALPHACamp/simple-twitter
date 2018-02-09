@@ -1,8 +1,10 @@
 <%= render partial: "shared/userprofile", locals: {user: @user} %>
 <div class="followship-detial">
   <h1>Following</h1>
-	<% @followings.each do |following| %>
-		<%= render partial: "shared/followship", locals: {following: following} %>
-	<% end %>
-	<div class="kar"><%= paginate @followings %></div>
+		<% @followings.each do |following| %>
+			<%= render partial: "shared/followship", locals: {following: following} %>
+		<% end %>
+	<div class="followship-kar">
+		<div class="kar"><%= paginate @followings %></div>
+	</div>
 </div>

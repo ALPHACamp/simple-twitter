@@ -8,9 +8,6 @@
 	position: absolute;
 	width: 75%;
 	right: 5px;
-	.kar{
-		text-align: center;
-	}
 	.followship{
 		border: 2px solid rgb(129, 129, 151);
 		padding: 10px;
@@ -30,13 +27,21 @@
 			width: 75%;
 			float: right;
 			padding-left: 10px;
-			overflow: hidden;
-  		text-overflow: ellipsis;
+			.text{
+				overflow: hidden;
+				text-overflow: ellipsis;
+				height: 80px;
+			}
 		}
 		.button{
 			position: absolute;
 			right: 5px;
 			bottom: 5px;
+		}
+	}
+	.followship-kar{
+		.kar{
+			text-align: center;
 		}
 	}
 }
