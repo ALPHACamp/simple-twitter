@@ -9,6 +9,12 @@
         <h2><%= link_to @tweet.user.name, tweet_path(@tweet) %></h2>
         <p><strong><%= @tweet.user.email %></strong></p>
         <div><%= simple_format @tweet.user.introduction %></div>
+        <p>
+          <strong>followings: <%= @tweet.user.followings.count %></strong>
+        </p>
+        <p>
+         <strong>followers: <%= @tweet.user.followers.count %></strong>
+        </p>
         <p><strong>like: <%= @tweet.likes.count %></strong></p>
         
 

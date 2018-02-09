@@ -15,7 +15,8 @@ class TweetsController < ApplicationController
   def show
     @tweet = Tweet.find(params[:id])
     @reply = Reply.new
-    
+    @followings = @tweet.user.followings
+    @followers = @tweet.user.followers
     
   end
 
@@ -36,6 +37,11 @@ class TweetsController < ApplicationController
   #   @tweet.user = current_user
   #   @tweet.save!
   #   redirect_to tweet_path(@tweet)
+  # end
+
+  # def followings
+  #   @followings = Following.all 
+  #   # 基於測試規格，必須講定變數名稱
   # end
 
   def like

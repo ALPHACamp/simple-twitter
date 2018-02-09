@@ -13,4 +13,5 @@ class Tweet < ApplicationRecord
     self.liked_users.include?(user)
   end
 
+
 end
