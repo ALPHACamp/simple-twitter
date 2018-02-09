@@ -2,6 +2,7 @@
   <div class="col-xs-3">
     <div class="user-item">
       <%= render partial: "shared/user_files" %>
+      <%= render partial: "shared/follow", locals: {user: @user} %>
     </div>
   </div>
   <div class="col-xs-9">
