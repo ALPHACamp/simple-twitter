@@ -22,6 +22,7 @@
               <li><%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
                 <%= time_ago_in_words(tweet.created_at) %> ago
               </li>
+              <li><%= tweet.likes_count %> likes</li>
               <li><%= truncate(tweet.description, length: 140) %>
               </li>
               <%= render partial: "shared/like", locals: {tweet: tweet} %>
