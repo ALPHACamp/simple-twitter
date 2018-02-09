@@ -49,7 +49,15 @@
         <% if tweet.replies_count > 0 %>
           (<%= tweet.replies_count %>)
         <% end %>
-      <%= link_to 'Like', likes_tweet_path(tweet) %>
+      <% if tweet.user != current_user %>
+        <% if tweet.is_liked?(current_user) %>
+          <%= link_to 'Liked', unlike_tweet_path(tweet), method: :post, class: "btn btn-info" %>
+        <% else %>
+          <%= link_to 'Like', like_tweet_path(tweet), method: :post, class: "btn btn-primary" %>
+        <% end %>
+      <% else %>
+        <%= 'Like' %>
+      <% end %>
         <% if tweet.likes_count > 0 %>
           (<%= tweet.likes_count %>)
         <% end %>
@@ -68,9 +76,15 @@
       </td>
       <td><%= link_to user.name, tweets_user_path(user) %></td>
       <td><%= user.introduction %></td>
-    <% if @user != current_user %>
-      <td><%= link_to 'Follow' %></td>
-    <% end %>
+
+      <% if user != current_user %>
+        <% if current_user.following?(user)%>
+          <%= link_to 'Unfollow', followship_path(user), method: :delete, class: "btn btn-default" %>
+        <% else %>
+          <%= link_to 'Follow', followships_path(following_id: user), method: :post, class: "btn btn-warning" %>
+        <% end %>
+      <% end %>
+      
     </li>
   <% end %>
 </ul>

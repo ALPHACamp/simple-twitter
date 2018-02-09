@@ -23,21 +23,17 @@
       <%= image_tag @user.avatar, :size => "100x100", class: "img-responsive img-rounded" %>
       <%= @user.name %>
       <%= @user.introduction %>
-      <%= 'Tweets' %>
-        <% if @user.tweets.count > 0 %>
-          (<%= @user.tweets.count %>)
-        <% end %>
-      <%= 'Following' %>
-      <%= 'Follower' %>
-      <%= 'Like' %>
-
-    <% if @user == current_user %>
+      <%= link_to 'Tweets', tweets_user_path(@user) %>
+        (<%= @user.tweets.count %>)
+      <%= link_to 'Following', followings_user_path(@user) %>
+        (<%= @user.followings.count %>)
+      <%= link_to 'Follower', followers_user_path(@user) %>
+        (<%= @user.followers_count %>)
+      <%= link_to 'Like', likes_user_path(@user) %>
+        (<%= @user.likes_count %>)
       <%= link_to 'Edit Profile', edit_user_path(@user) %>
+
       <h2>Tweets</h2>
-    <% else %>
-      <%= link_to 'Follow' %>
-      <h2>Tweets</h2>
-    <% end %>
     </li>
   </ul>
 
@@ -52,10 +48,18 @@
           <% if @tweet.replies_count > 0 %>
             (<%= @tweet.replies_count %>)
           <% end %>
-        <%= link_to 'Like', likes_tweet_path(@tweet) %>
-          <% if @tweet.likes_count > 0 %>
-            (<%= @tweet.likes_count %>)
+        <% if @tweet.user != current_user %>
+          <% if @tweet.is_liked?(current_user) %>
+            <%= link_to 'Liked', unlike_tweet_path(@tweet), method: :post, class: "btn btn-info" %>
+          <% else %>
+            <%= link_to 'Like', like_tweet_path(@tweet), method: :post, class: "btn btn-primary" %>
           <% end %>
+        <% else %>
+          <%= 'Like' %>
+            <% if @tweet.likes_count > 0 %>
+              (<%= @tweet.likes_count %>)
+            <% end %>
+        <% end %>
       </li>
 
   </ul>

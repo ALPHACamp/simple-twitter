@@ -18,23 +18,56 @@
   </div>
 </div>
 
+<ul><h2>All Tweets</h2></ul>
 <ul>
   <% @tweets.each do |tweet| %>
-    <li>
-      <%= tweet.id %>  
-      <%= tweet.updated_at %>
-      <%= tweet.description %>
-      <%= tweet.replies_count %>
-      <%= link_to 'Destroy', admin_tweet_path(tweet), method: :delete, data:{ confirm: "Are you sure?" } %>
-    </li>
+    <li><%= link_to 'Destroy', admin_tweet_path(tweet), method: :delete, data:{ confirm: "Are you sure?" } %></li>
+    <ul>
+      <li>
+        <%= 'Tweet ID' %> <%= tweet.id %>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <%= tweet.user.name %>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <%= tweet.updated_at %>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <%= tweet.description %>
+      </li>
+    </ul>
   <% end %>
 </ul>
 
+<ul><h2>All Replies</h2></ul>
 <ul>
   <% @replies.each do |reply| %>
-    <li>
-      <%= reply.tweet_id %>
-      <%= reply.comment %>
-    </li>
+
+      <li>
+        <%= 'Reply to Tweet ID' %> <%= reply.tweet_id %>
+      </li>
+
+    <ul>
+      <li>
+        <%= reply.user.name %>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <%= reply.updated_at %>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <%= reply.comment %>
+      </li>
+    </ul>
+
   <% end %>
 </ul>

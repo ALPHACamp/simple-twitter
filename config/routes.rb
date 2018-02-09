@@ -8,15 +8,20 @@ Rails.application.routes.draw do
     member do
       get :likes
 
+      post :like
+      post :unlike
     end
   end
 
-  resources :users, only: [:index, :edit, :update] do
+  resources :users, only: [:edit, :update] do
     member do
       get :tweets
       get :followings
       get :followers
       get :likes
+
+      post :like
+      post :unlike
     end
   end
 

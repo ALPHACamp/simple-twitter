@@ -23,33 +23,29 @@
       <%= image_tag @user.avatar, :size => "100x100", class: "img-responsive img-rounded" %>
       <%= @user.name %>
       <%= @user.introduction %>
+ 
       <%= link_to 'Tweets', tweets_user_path(@user) %>
-        <% if @user.tweets.count > 0 %>
-          (<%= @user.tweets.count %>)
-        <% end %>
+        (<%= @user.tweets.count %>)
       <%= link_to 'Following', followings_user_path(@user) %>
-        <% if @user.followings.count > 0 %>
-          (<%= @user.followings.count %>)
-        <% end %>
+        (<%= @user.followings.count %>)
       <%= link_to 'Follower', followers_user_path(@user) %>
-        <% if @user.followers_count > 0 %>
-          (<%= @user.followers_count %>)
-        <% end %>
+        (<%= @user.followers_count %>)
       <%= link_to 'Like', likes_user_path(@user) %>
+        (<%= @user.likes_count %>)
 
-    <% if @user == current_user %>
+    <% if @user == current_user %> 
       <%= link_to 'Edit Profile', edit_user_path(@user) %>
       <h2>My Tweets</h2>
     <% else %>
 
-      <% if @user != current_user %>
-        <% if current_user.following?(@user)%>
-          <%= link_to 'Unfollow', followship_path(@user), method: :delete, class: "btn btn-default" %>
-        <% else %>
-          <%= link_to 'Follow', followships_path(following_id: @user), method: :post, class: "btn btn-warning" %>
-        <% end %>
+
+
+      <% if current_user.following?(@user)%>
+        <%= link_to 'Unfollow', followship_path(@user), method: :delete, class: "btn btn-default" %>
+      <% else %>
+        <%= link_to 'Follow', followships_path(following_id: @user), method: :post, class: "btn btn-warning" %>
       <% end %>
-      
+
       <h2>His Tweets</h2>
     <% end %>
     </li>
@@ -66,7 +62,15 @@
           <% if tweet.replies_count > 0 %>
             (<%= tweet.replies_count %>)
           <% end %>
-        <%= link_to 'Like', likes_tweet_path(tweet) %>
+        <% if tweet.user != current_user %>
+          <% if tweet.is_liked?(current_user) %>
+            <%= link_to 'Liked', unlike_tweet_path(tweet), method: :post, class: "btn btn-info" %>
+          <% else %>
+            <%= link_to 'Like', like_tweet_path(tweet), method: :post, class: "btn btn-primary" %>
+          <% end %>
+        <% else %>
+          <%= 'Like' %>
+        <% end %>
           <% if tweet.likes_count > 0 %>
             (<%= tweet.likes_count %>)
           <% end %>
