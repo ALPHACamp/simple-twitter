@@ -26,13 +26,13 @@ class UsersController < ApplicationController
     # 基於測試規格，必須講定變數名稱
     # @followings = Followship.where(user_id: params[:id]).order(created_at: :desc)
     # Following：該使用者的關注清單，排序依照追蹤紀錄成立的時間，愈新的在愈前面
-    @followings = @user.followings.order(created_at: :desc)
+    @followings = @user.followings.includes(:followships).order("followships.created_at desc")
   end
 
   def followers
     # 基於測試規格，必須講定變數名稱
     # Follower：該使用者的跟隨者清單，排序依照追蹤紀錄成立的時間，愈新的在愈前面
-    @followers = @user.followers.order(created_at: :desc)
+    @followers = @user.followers.includes(:followships).order("followships.created_at desc")
   end
 
   def likes
