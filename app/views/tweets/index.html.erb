@@ -17,7 +17,7 @@
 
   <div class="col-md-4">
     <h2>Popular</h2>
-    <% @popular_users.each do |user| %>
+    <% @users.each do |user| %>
       <%= render "shared/persona", user: user %>
     <% end %>
   </div>

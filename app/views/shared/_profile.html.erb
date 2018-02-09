@@ -16,9 +16,11 @@
   <%= link_to followings_user_path(user) do %>
     <h4>Following <span class="badge"><%= user.followings.count %></span></h4>
   <% end %>
+  
+  <%= link_to followers_user_path(user) do  %>
+    <h4>Followers <span class="badge"><%= user.followers.count %></span></h4>
+  <% end %>
 
-    <h4>Followers <span class="badge"><%= user.followers_count %></span></h4>
-    
   <%= link_to likes_user_path(user) do %>
     <h4>Like <span class="badge"><%= user.likes_count %></span></h4>
   <% end %>
