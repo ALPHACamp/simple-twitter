@@ -36,7 +36,9 @@
                   <% if !current_user.avatar.nil? %>
                     <a href="<%= tweets_user_path(current_user.id) %>"><%= image_tag(current_user.avatar, style: 'width: 20px; height: 20px', class: 'img-circle') %></a>
                   <% else %>
-                    <% link_to '個人資料', tweets_user_path(current_user.id) %>
+                    <%= link_to tweets_user_path(current_user.id) do %>
+                       <i class="fas fa-user fa-lg"></i>
+                    <% end %>
                   <% end %> 
                 </p>                
               </li>
