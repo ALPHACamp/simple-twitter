@@ -1,6 +1,6 @@
 class FollowshipsController < ApplicationController
   def create
-    if params[:following_id] == current_user.id
+    if current_user == User.find(params[:following_id])
       flash[:alert] = "You can't follow yourself!"
       redirect_back(fallback_location: root_path)
     else
