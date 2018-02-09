@@ -20,8 +20,11 @@
           <div class="col-md-11">
             <ul class="list-unstyled">   
               <li><%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
-              <%= time_ago_in_words(tweet.created_at) %> ago</li>
-              <li><%= truncate(tweet.description, length: 140) %></li>
+                <%= time_ago_in_words(tweet.created_at) %> ago
+              </li>
+              <li><%= truncate(tweet.description, length: 140) %>
+              </li>
+              <%= render partial: "shared/like", locals: {tweet: tweet} %>
           </div>
         </div>    
       </div>
