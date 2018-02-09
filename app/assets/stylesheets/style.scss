@@ -1,8 +1,13 @@
-.tweet {
+.tweet, .user {
   border: 1px solid black;
   margin-bottom: 15px;
 }
 .tweet > .avatar, .text {
+  float: left;
+  padding: 15px;
+}
+
+.user > .avatar, .text {
   float: left;
   padding: 15px;
 }

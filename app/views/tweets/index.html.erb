@@ -14,19 +14,6 @@
 
   <div class="col-md-4">
     <h1>all user</h1>
-    <ul>
-      <% @users.each do |user| %>
-        <li>
-          <%= user.name %>
-          <% if user!= current_user %>
-            <% if current_user.following?(user) %>
-              <%= link_to "Unfollow", followship_path(user), method: :delete %>
-            <% else %>
-              <%= link_to "Follow", followships_path(following_id: user), method: :post %>
-            <% end %>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
+    <%= render partial: "shared/user", locals: {users: @users} %>
   </div>
 </div>
