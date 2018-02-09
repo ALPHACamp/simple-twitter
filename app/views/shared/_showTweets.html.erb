@@ -12,7 +12,7 @@
 			<%= link_to(tweet_replies_path(f.id), class: "btn btn-light") do %>Replies <%= f.replies.count%><%end%>
 			<% if not f.user == current_user %>
 				<% if not f.liked_by_user?(current_user)%>
-					<%= link_to(like_tweet_path(f.id), class: "btn btn-light") do %>Likes <%= f.liked_users.count%><%end%>
+					<%= link_to(like_tweet_path(f.id), class: "btn btn-light", method: :post) do %>Likes <%= f.liked_users.count%><%end%>
 				<%else%>
 					<%= link_to "Unlike", unlike_tweet_path(f.id), method: :delete %>
 				<%end%>

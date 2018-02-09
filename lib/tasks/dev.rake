@@ -21,7 +21,7 @@ namespace :dev do
   end
 
   task fake_tweets: :environment do
-    Tweet.destroy_all
+    Tweet.destroy_all()
 
     100.times do |i|
       Tweet.create!(
@@ -33,7 +33,7 @@ namespace :dev do
   end
 
   task fake_replies: :environment do
-    Reply.destroy_all
+    Reply.destroy_all()
 
     233.times do |i|
       Reply.create!(
@@ -46,7 +46,7 @@ namespace :dev do
   end
 
   task fake_follows: :environment do
-    Followship.destroy_all
+    Followship.destroy_all()
     
     User.all.each do |user| 
       13.times do |i|
@@ -63,7 +63,7 @@ namespace :dev do
   end
 
   task fake_likes: :environment do
-    Like.destroy_all
+    Like.destroy_all()
     
     Tweet.all.each do |tweet| 
       7.times do |i|

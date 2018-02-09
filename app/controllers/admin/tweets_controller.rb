@@ -11,6 +11,6 @@ class Admin::TweetsController < Admin::BaseController
   	@tweet = Tweet.find(params[:id])
   	@tweet.destroy
   	flash[:notice] = "Successfully remove tweet"
-  	redirect_back(fallback_location: root_path)
+  	redirect_back(fallback_location: admin_root_path)
   end
 end
