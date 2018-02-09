@@ -1,0 +1,25 @@
+  @import "bootstrap-sprockets";
+  @import "bootstrap";
+  @import "tweets";
+  @import "users";
+
+  .my-btn {
+  margin: 5px;
+  }
+
+  * {
+  font-family: serif;
+  font-size: medium;
+  }
+
+  .my-navbar {
+    background-color: black;
+  }
+
+  .holder {
+    font-size: 2em;
+  }
+
+
+
+
