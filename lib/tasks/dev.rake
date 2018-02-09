@@ -9,7 +9,7 @@ namespace :dev do
     User.create(
       name: "Admin",
       email: "admin@example.com",
-      password: "123",
+      password: "123456",
       role: "admin",
       introduction: FFaker::Lorem::sentence(30),
     )
