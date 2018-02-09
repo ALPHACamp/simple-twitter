@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
 
   def tweets
-    @tweets = @user.tweets.order("created_at DESC")
+    @tweets = @user.tweets.order("tweets.created_at DESC")
   end
 
   def edit
@@ -18,17 +18,17 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings = @user.followings.order("created_at DESC")
+    @followings = @user.followings.order("followships.created_at DESC")
     # 基於測試規格，必須講定變數名稱
   end
 
   def followers
-    @followers = @user.followers.order("created_at DESC")
+    @followers = @user.followers.order("followships.created_at DESC")
     # 基於測試規格，必須講定變數名稱
   end
 
   def likes
-    @likes = @user.liked_tweets.order("created_at DESC")
+    @likes = @user.liked_tweets.order("likes.created_at DESC")
     # 基於測試規格，必須講定變數名稱
   end
 
