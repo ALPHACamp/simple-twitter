@@ -18,7 +18,8 @@
         <% if current_user %>
           <!-- start of 新增 Admin 後台 -->
           <% if current_user.admin? %>
-            <li><%= link_to 'Admin後台', admin_tweets_path %></li>
+            <li><%= link_to '後台 - tweets', admin_tweets_path %></li>
+            <li><%= link_to '後台 - users', admin_users_path %></li>
           <% end %>
           <!-- end of 新增 Admin 後台 -->
           <li><p class="navbar-text">

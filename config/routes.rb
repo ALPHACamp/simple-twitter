@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root "tweets#index"
     resources :tweets, only: [:index, :destroy]
+    resources :users, only: [:index, :destroy]
   end
 
   # 追蹤／取消追蹤

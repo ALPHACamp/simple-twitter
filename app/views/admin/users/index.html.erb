@@ -1,0 +1,9 @@
+<h1>後台 - users</h1>
+<ul>
+  <% @users.each do |user| %>
+  <li>
+    <%= user.name %>
+    <%= link_to admin_user_path(user), method: :delete, data: { confirm: "Are you sure?"}, 'title' => '刪除', 'data-toggle' => 'tooltip' do %>刪除<% end %>
+  </li>
+  <% end %>
+</ul>
