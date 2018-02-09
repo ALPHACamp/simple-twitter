@@ -10,10 +10,11 @@ class TweetsController < ApplicationController
     @tweet = current_user.tweets.build(tweet_params)
     if @tweet.save
       flash[:notice] = "tweet created successfully"
+      redirect_to tweets_path
     else
       flash[:alert] = @tweet.errors.full_messages.to_sentence
+      redirect_to tweets_path
     end
-    redirect_to root_path
   end
 
  def like
@@ -24,9 +25,9 @@ class TweetsController < ApplicationController
 
   def unlike
     @tweet = Tweet.find(params[:id])
-    like = Like.where(tweet: @tweet, user: current_user).first
-    like.destroy
-    redirect_back(fallback_location: root_path)
+    like = Like.where(tweet: @tweet, user: current_user)
+    like.destroy_all
+    redirect_to tweets_path
   end
 
   private
