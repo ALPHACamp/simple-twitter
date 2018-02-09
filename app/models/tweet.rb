@@ -1,7 +1,7 @@
 class Tweet < ApplicationRecord
   validates_length_of :description, maximum: 140
   validates_presence_of :description
-  validates_presence_of :name
+  
   belongs_to :user,counter_cache: :tweets_count
   has_many :replies
 
