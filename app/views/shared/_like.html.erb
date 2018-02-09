@@ -1,0 +1,5 @@
+<% if tweet.is_liked?(current_user) %>
+   <a class="links links-red"><%= "likes(#{tweet.likes_count})" %></a>
+ <% else %>
+  <%= link_to "unlike(#{tweet.likes_count})", unlike_tweet_path(tweet), method: :post, class: "links links-red" %>
+ <% end %>

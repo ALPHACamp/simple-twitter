@@ -1,0 +1,10 @@
+<div class="col-md-3">
+   <%= image_tag @user.avatar, width: "100%"  if @user.avatar? %>
+ </div>
+ <div class="col-md-9">
+    <p>
+      <%= reply.user.name %>
+      <%= reply.created_at.strftime("%Y-%m-%d, %H:%M") %>
+   </p>
+   <p><%= simple_format(reply.comment) %></p>
+ </div>

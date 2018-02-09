@@ -1,0 +1,27 @@
+
+
+
+
+   <div class="tweets row">
+       <h2><%= user_title %></h2>
+       <% users.each_with_index do |user, index| %>
+
+        <% if index.odd? %>
+          <div class="col-xs-6 follow-item row pull-right">
+        <% else %>
+          <div class="col-xs-6 follow-item row pull-left">
+        <% end %>
+           <div class="col-xs-4">
+             <%= image_tag @user.avatar, width: "200%"  if @user.avatar? %>
+           </div>
+          <div class="col-xs-8">
+            <%= link_to user.name, tweets_user_path(user) %><br/>
+            <%= truncate user.introduction, length: 200 %>
+          </div>
+          <%= render partial: "shared/followship", locals: { user: user } %>
+        </div>
+        <% if index % 2 == 1 %>
+          <div class="clearfix"></div>
+        <% end %>
+      <% end %>
+    </div>
