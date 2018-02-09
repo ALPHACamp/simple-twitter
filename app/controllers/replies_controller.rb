@@ -1,17 +1,21 @@
 class RepliesController < ApplicationController
 
   def index
-     @tweet= Tweet.find(params[:id])
-     @reply = Reply.new
-     @reply_all = Reply.order(created_at: :desc).limit(10)
+     @tweet= Tweet.find(params[:tweet_id])
+     @replyy = Reply.new
+     @replies = Reply.order(created_at: :desc)
+     @reply = Reply.all
   end
 
   def create
-     @tweet= Tweet.find(params[:id])
+     @tweet= Tweet.find(params[:tweet_id])
      @replies = @tweet.replies.build(replies_params)
      @replies.user = current_user
     if @replies.save
-      redirect_to replies_path(Tweet.find(params[:id]))
+        redirect_to tweet_replies_url
+
+else
+  redirect_to tweet_replies_path(@replies.tweet_id)
    end
   end
 

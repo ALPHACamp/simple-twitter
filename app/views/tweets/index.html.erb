@@ -1,5 +1,5 @@
 <div class="tweetcommit">
-  <%=  form_for @tweets do |f| %>
+  <%=  form_for @tweet do |f| %>
     <%= f.text_area :description ,class:"form-control",rows:"4",placeholder: "what's on your mind" %><br>
     <%= f.submit value:"Create Tweet",class:"btn btn-primary" %>
   <% end %>
@@ -20,7 +20,7 @@
             <%=tweeto.created_at.strftime("%Y-%m-%d,%H:%M:%S")%><br><br>
             <p><%=tweeto.description%></p>
            </h4><br>
-            <%= link_to "Reply (#{tweeto.replies.count})",replies_path(tweeto.id), class: "btn btn-primary"%>
+            <%= link_to "Reply (#{tweeto.replies.count})",tweet_replies_path(tweeto.id), class: "btn btn-primary"%>
             <% if tweeto.user != current_user %>
               <% if tweeto.is_likes?(current_user) %>
               <%= link_to "UnLike (#{tweeto.likes.count})", unlike_tweet_path(tweeto), method: :post, class: "btn btn-info" %>
@@ -46,13 +46,15 @@
         <div class="media-body">
           <h4>
            <%= link_to usertop.name ,tweets_user_path(usertop.id)%>
-           <p><%=truncate(usertop.introduction,length:70)%></p>
+           <p><%=usertop.introduction%></p>
           </h4><br>
             <div class="align_right">
-          <% if current_user.following?(usertop.id)%>
-          <%= link_to 'Unfollow', followship_path(usertop.id), method: :delete , class:"btn btn-primary" %>
-          <% else %>
-          <%= link_to 'Follow', followships_path(following_id: usertop.id), method: :post ,class:"btn btn-primary"%>
+              <% if current_user != usertop %>
+              <% if current_user.following?(usertop)%>
+              <%= link_to 'Unfollow', followship_path(usertop), method: :delete , class:"btn btn-primary" %>
+              <% else %>
+              <%= link_to 'Follow', followships_path(following_id: usertop), method: :post ,class:"btn btn-primary"%>
+              <% end %>
           <% end %>
             </div>
         </div>

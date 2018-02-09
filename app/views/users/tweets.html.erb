@@ -20,8 +20,7 @@
 </div>
 
 <div class="all_right_div">
-  <% @tweet_all.each do |tweet| %>
-    <% if tweet.user_id == @user_id.id %>
+  <% @tweets.each do |tweet| %>
       <div class="media-left media-middle">
         <a href="#">
           <%= image_tag User.find(tweet.user_id).avatar,class:"media-object" ,style:"width:120px;height:120px"  %>
@@ -32,7 +31,7 @@
         <%=tweet.created_at.strftime("%Y-%m-%d,%H:%M:%S") %><br>
       </h4>
         <h4><%=tweet.description %></h4><br>
-          <%= link_to "Reply (#{tweet.replies.count})",replies_path(tweet.id), class: "btn btn-primary" %>
+          <%= link_to "Reply (#{tweet.replies.count})",tweet_replies_path(tweet.id), class: "btn btn-primary" %>
           <% if current_user == @user_id %>
           <%= link_to "Delete", user_path(tweet), method: :delete , data: { confirm: "確認刪除?" } , class: "btn btn-primary"  %>
           <%else%>
@@ -44,6 +43,5 @@
           <% end %>
       </div>
      <br>
-    <% end %>
   <% end %>
 </div>

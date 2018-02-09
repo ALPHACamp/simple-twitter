@@ -1,15 +1,17 @@
 class UsersController < ApplicationController
 
   def tweets
-    @tweet_all  = Tweet.all
-    @user_all = User.all
     @user_id = User.find(params[:id])
+    @tweets  = @user_id.tweets
     @followings = @user_id.followings
     @followers = @user_id.followers
   end
 
   def edit
     @user = User.find(params[:id])
+    if (current_user != @user)
+    redirect_to tweets_user_path(@user)
+  end
   end
 
   def update

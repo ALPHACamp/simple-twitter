@@ -22,7 +22,7 @@
       <div class="media-body">
         <h4><%= link_to User.find(@tweet.user_id).name,tweets_user_path(@tweet.user_id)%></h4>
         <h4><%= @tweet.description %></h4><br>
-        <%= link_to "Reply (#{@tweet.replies.count})",replies_path(@tweet.id), class: "btn btn-primary" %>
+        <%= link_to "Reply (#{@tweet.replies.count})",tweet_replies_path(@tweet.id), class: "btn btn-primary" %>
         <% if User.find(@tweet.user_id) != current_user %>
           <% if @tweet.is_likes?(current_user) %>
             <%= link_to "UnLike (#{@tweet.likes.count})", unlike_tweet_path(@tweet), method: :post, class: "btn btn-info" %>
@@ -36,8 +36,8 @@
 
 <h1>Replies</h1><br>
 <div class="media">
-  <% @reply_all.each do |reply| %>
-    <% if Tweet.find(params[:id]).id == reply.tweet_id %>
+  <% @replies.each do |reply| %>
+    <% if @tweet.id == reply.tweet_id %>
       <div class="media-left media-middle">
         <a href="#">
           <%= image_tag User.find(reply.user_id).avatar,class:"media-object" ,style:"width:120px;height:120px"  %>
@@ -52,7 +52,8 @@
     <% end %>
   <% end %>
 </div>
-<%= form_for @reply do |f| %>
+
+<%= form_for @replyy , url: {action: "create"} do |f| %>
   <%= f.text_area :comment ,class:"form-control",rows:"4",placeholder: "what's on your mind" %><br>
   <div class="align_right">
     <%= f.submit value:"Create Tweet",class:"btn btn-primary" %>

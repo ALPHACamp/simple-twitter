@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users
-
+  get '/tweets/:tweet_id/replies' => 'replies#index', :as => "reply"
   resources :tweets, only: [:index, :create] do
+  resources :replies, only: [:index, :create]
   member do
-      resources :replies, only: [:index, :create]
         post :like
         post :unlike
   end

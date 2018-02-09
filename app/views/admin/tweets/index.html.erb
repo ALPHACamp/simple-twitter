@@ -1,4 +1,4 @@
-
+    <% first = {:tweet_id=> 0}%>
 <div>
   <h3>
     <%= link_to 'Tweet |',  admin_tweets_path %>
@@ -7,7 +7,8 @@
 </div>
 
 <div class="tweetdynamic">
-  <% @tweet_order.each do |tweet_order| %>
+  <% @tweets.each do |tweet_order| %>
+    <% first=tweet_order %>
      <div class="media">
        <div class="media-left media-middle">
          <a href="#">
@@ -37,14 +38,15 @@
 
 
 <div class="usertweet">
-  <h1>Replies</h1><br>
-    <% @reply_all.each do |reply| %>
-      <% if reply.tweet_id == $whole_area_tweet_id.id %>
-         <p class="user_tweet_text_line_height">
+<h1>Replies</h1><br>
+  <% @reply_all.each do |reply| %>
+    <% if reply.tweet_id == $whole_area_tweet_id.id%>
+    <p class="user_tweet_text_line_height">
       <%= User.find(reply.user_id).name + ":"%><br>
-          <%= reply.comment %><br>
-              <%= User.find(reply.user_id).created_at.strftime("%Y-%m-%d,%H:%M:%S")%><br><br>
-            </p>
-    <% end %>
-      <% end %>
+      <%= reply.comment %><br>
+      <%= User.find(reply.user_id).created_at.strftime("%Y-%m-%d,%H:%M:%S")%><br><br>
+    </p>
+  <% end %>
+<% end %>
 </div>
+    <% $whole_area_tweet_id = first%>
