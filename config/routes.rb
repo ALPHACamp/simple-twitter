@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # 請依照專案指定規格來設定路由
   resources :tweets, only: [:index, :create] do
-    resources :replies, only: [:index, :create, :destroy]
+    resources :replies
     member do
       get :likes
 
@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   end
 
   resources :followships, only: [:create, :destroy]
+  resources :replies
 
   root "tweets#index"
   get "/users/", :to => "tweets#index"

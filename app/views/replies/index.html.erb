@@ -30,10 +30,10 @@
 
     <% if @user == current_user %>
       <%= link_to 'Edit Profile', edit_user_path(@user) %>
-      <h2>My Tweets</h2>
+      <h2>Tweets</h2>
     <% else %>
       <%= link_to 'Follow' %>
-      <h2>His Tweets</h2>
+      <h2>Tweets</h2>
     <% end %>
     </li>
   </ul>
@@ -55,3 +55,27 @@
       </li>
 
   </ul>
+
+  <ul><h2>Replies</h2></ul>
+
+  <ul>
+    <% @replies.each do |reply| %>
+      <li>
+        <%= reply.id %>
+        <%= image_tag reply.user.avatar, :size => "100x100", class: "img-responsive img-rounded" %>
+        <%= reply.user.name %>
+        <%= reply.updated_at %>
+        <%= reply.comment %>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= form_for @reply do |f| %>
+  <div class="form-group">
+    <ul>
+      <%= f.hidden_field :tweet_id, :value => @tweet.id %>
+      <%= f.text_area :comment, :size => "80x8", class: "form-control" %>
+      <%= f.submit "Reply", class: "btn btn-primary" %>  
+    </ul>
+  </div>
+  <% end %>

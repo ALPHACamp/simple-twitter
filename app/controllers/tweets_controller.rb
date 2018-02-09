@@ -10,7 +10,6 @@ class TweetsController < ApplicationController
   def create
     @tweet = current_user.tweets.new(tweet_params)
     @tweet.save
-    flash[:alert] = "Tweet description is too long (maximum is 140 character)"
     redirect_to root_path
   end
 
