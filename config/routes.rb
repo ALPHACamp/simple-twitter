@@ -16,4 +16,9 @@ Rails.application.routes.draw do
       post :unlike
     end
   end
+  namespace :admin do
+    resources :tweets, only: [:index, :destroy]
+    resources :users, only: [:index]
+    root "tweets#index"
+  end
 end
