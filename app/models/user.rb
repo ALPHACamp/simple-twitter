@@ -10,6 +10,7 @@ class User < ApplicationRecord
   # 並參考 Devise 文件自訂表單後通過 Strong Parameters 的方法
   validates_presence_of :name
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
+  validates :name, uniqueness: true
 
   # User 若有推播，就不允許刪除帳號（刪除時拋出 Error）
   has_many :tweets, dependent: :restrict_with_error

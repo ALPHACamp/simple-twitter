@@ -29,9 +29,12 @@
               <% if current_user.admin? %>
                 <li><%= link_to 'Admin後台', admin_tweets_path %></li>
               <% end %>
-            <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
+            <li>
+              <%= link_to tweets_user_path(current_user), class: "nav-avatar-link" do %>
+                    <%= image_tag current_user.avatar , size: "50" if current_user.avatar?%>
+              <% end %>
+            </li>
             <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
-            <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
             <% else %>
             <li><%= link_to('註冊', new_user_registration_path) %></li>
             <li><%= link_to('登入', new_user_session_path) %></li>

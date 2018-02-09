@@ -7,5 +7,5 @@
     <%= link_to 'Follow', followships_path(following_id: user), method: :post, class: "btn btn-primary" %>
   <% end %>
  <% else %>
-    <%= link_to 'Edit Profile', followship_path(user), method: :delete, class: "btn btn-primary" %>  
+    <%= link_to 'Edit Profile', edit_user_path(user), method: :get, class: "btn btn-primary" %>  
 <% end %>
