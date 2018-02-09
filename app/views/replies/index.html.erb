@@ -49,14 +49,19 @@
           <% end %>
         <% end %>
       <h2>Replies</h2>
-      <ul>
+      
         <% @replies.each do |reply| %>
-        <li>
+        <div>
           <%= image_tag reply.user.avatar, width: '50' if reply.user.avatar? %>
+          <%= link_to reply.user.name, tweets_user_path(reply.user.id) %>,
+          <%= reply.created_at.to_s[0..10] %>, <%= reply.created_at.to_s[11..15] %>
+          <div>
           <%= reply.comment %>
-        </li>
+          </div>
+        </div>
+        <br />
         <% end %>
-      </ul>
+      
       <%= form_for [@tweet, @reply] do |f| %>
         <div class="form-group"> 
           <%= f.text_area :comment, placeholder: "回覆內容", class: "form-control", rows: "5" %>

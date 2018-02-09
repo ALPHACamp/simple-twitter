@@ -7,21 +7,21 @@ class UsersController < ApplicationController
   
   def followings
     @followings # 基於測試規格，必須講定變數名稱
-    user = User.find(params[:id])
-    @followings = user.followings
+    @user = User.find(params[:id])
+    @followings = @user.followings
   end
   
   def followers
     @followers # 基於測試規格，必須講定變數名稱
-    user = User.find(params[:id])
-    @followers = user.followers
+    @user = User.find(params[:id])
+    @followers = @user.followers
   end
   
   def likes
     @likes # 基於測試規格，必須講定變數名稱
-    user = User.find(params[:id])
-    @likes = Like.where(user: user)
-    @tweets = user.liked_tweets
+    @user = User.find(params[:id])
+    @likes = Like.where(user: @user)
+    @tweets = @user.liked_tweets
   end 
     
   def edit
