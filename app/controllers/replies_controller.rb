@@ -14,12 +14,13 @@ class RepliesController < ApplicationController
     redirect_to tweet_replies_path(@tweet)
   end
 
-  private
+private
   def set_tweet
-    @tweet = Tweet.find_by(params[:id])
+    @tweet = Tweet.find(params[:tweet_id])
   end
 
   def reply_params
     params.require(:reply).permit(:comment)
   end
 end
+
