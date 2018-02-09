@@ -43,7 +43,7 @@
         </li>
         <% end %>
       </ul>
-      <%= form_for [@tweet, @reply], as: :x do |f| %>
+      <%= form_for [@tweet, @reply] do |f| %>
         <div class="form-group"> 
           <%= f.text_area :comment, placeholder: "回覆內容", class: "form-control", rows: "5" %>
         </div>

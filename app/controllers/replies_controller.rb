@@ -18,7 +18,7 @@ class RepliesController < ApplicationController
   private
   
   def reply_params
-    params.require(:x).permit(:comment)
+    params.require(:reply).permit(:comment)
   end
 
 end
