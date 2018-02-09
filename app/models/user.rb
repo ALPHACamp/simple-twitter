@@ -13,6 +13,10 @@ class User < ApplicationRecord
 
   has_many :tweets
   has_many :replies
+  #has_many :followships, class_name: "Followship", primary_key: "id", foreign_key: "user_id"
+  has_many :followships, dependent: :destroy
+  #has_many :followings, through: :followships, source: :following
+  has_many :followings, through: :followships
 
   def admin?
     self.role == "admin"
