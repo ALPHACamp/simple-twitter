@@ -13,8 +13,7 @@
             </div>
             <div class="media-body">
               <h4 class="media-heading">
-
-                <%= tweet.created_at %>
+                <%= tweet.created_at.localtime.to_s(:db) %>
                 <%= link_to '<i class="glyphicon glyphicon-trash" aria-hidden="true"></i> Delete'.html_safe, admin_tweet_path(tweet), class:'btn button-delete navbar-right', method: :delete, data: {confirm: "Are you sure？"} %>
               </h4>
               <hr>

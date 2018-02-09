@@ -10,8 +10,8 @@
             </div>
             <div class="media-body">
               <h4 class="media-heading">
-                <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
-                <%= tweet.created_at %>
+                <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>  ,
+                <%= tweet.created_at.localtime.to_s(:db) %>
               </h4>
               <p><%= tweet.description %></p>
               <ul class="list-unstyled list-inline">
