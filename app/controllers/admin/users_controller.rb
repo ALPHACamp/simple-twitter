@@ -7,7 +7,7 @@ class Admin::UsersController < Admin::BaseController
   def destroy
     user = User.find(params[:id])
     user.destroy
-    redirect_to admin_users_path
+    redirect_to admin_root_path
     flash[:alert] = "user was delete"
   end
   
