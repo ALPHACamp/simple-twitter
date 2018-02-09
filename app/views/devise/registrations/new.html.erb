@@ -4,8 +4,15 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :user_name %><br />
+    <%= f.text_field :name, autofocus: true, placeholder: "User Name" %>
+ </div>
+
+
+
+  <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autocomplete: "email" %>
   </div>
 
   <div class="field">
@@ -19,6 +26,13 @@
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+
+  <div class="field">
+  <%= f.label :avatar, "Avatar" %>
+   <%= image_tag @user.avatar, width: '300px' if @user.avatar? %>
+   <%= f.file_field :avatar %>
   </div>
 
   <div class="actions">

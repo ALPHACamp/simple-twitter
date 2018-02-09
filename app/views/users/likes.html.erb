@@ -1,0 +1,17 @@
+<div class="row">
+   <!-- user profile -->
+
++  <div class="col-xs-12 col-sm-3">
+     <%= render partial: "shared/profile", locals: { user: @user} %>
+   </div>
+   <div class="col-xs-12 col-sm-9 likes-col">
+
+     <div class="tweets col-md-12">
+       <h3>Likes</h3>
+       <% @likes.each do |like| %>
+         <%= render partial: "shared/tweet", locals: {tweet: @tweet} %>
+       <% end %>
+       <div class="text-center"><%= paginate @likes %></div>
+     </div>
+   </div>
+ </div>
