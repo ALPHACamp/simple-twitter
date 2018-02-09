@@ -13,8 +13,8 @@ class User < ApplicationRecord
   # 使用者的名稱不能重覆，若有重覆會跳出錯誤
   validates :name, uniqueness: { case_sensitive: true, message: "has already been taken"}
   # 
-  validates :followings, uniqueness: {scope: :followee_id}
-  validate :cant_follow_yourself
+  # validates :followings, uniqueness: {scope: :followee_id}
+  # validate :cant_follow_yourself
 
   #reply
   has_many :tweets, dependent: :destroy
@@ -55,10 +55,10 @@ class User < ApplicationRecord
   #<%= @user.tweet_reply_count %>
 
 
-  private
+  # private
 
-    def cant_follow_yourself
-      return if followee_id != follower_id
-      # add an appropriate error message here...
-    end
+  #   def cant_follow_yourself
+  #     return if followee_id != follower_id
+  #     # add an appropriate error message here...
+  #   end
 end
