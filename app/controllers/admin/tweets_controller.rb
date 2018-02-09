@@ -6,6 +6,8 @@ class Admin::TweetsController < Admin::BaseController
   end
 
   def show
+    @tweet = Tweet.find(params[:id])
+    @replies = @tweet.replies.all
   end
 
   def destroy

@@ -29,24 +29,7 @@
           <h2>Replies</h2>
 
           <div class="replied-list">
-            <% @replies.each do |reply| %>
-              <div class="tweet-wall clearfix">
-                <div class="tweet-avatar">
-                  <%= image_tag reply.user.avatar %>
-                </div>
-                <div class="tweet-item">
-                  <%= link_to reply.user.name, tweets_user_path(reply.user) %>,
-                  <%= time_tag reply.created_at %>
-                  <p class="wrap"><%= reply.comment %></p>
-                  <% if @tweet.is_liked?(current_user) %>
-                    <%= link_to "Unlike", unlike_tweet_path(@tweet), method: :post, class: "btn btn-info" %>
-                  <% else %>
-                    <%= link_to "Like", like_tweet_path(@tweet), method: :post, class: "btn btn-primary" %>
-                  <% end %>
-                  <%= link_to "Reply", tweet_replies_path(@tweet) %>
-                </div>
-              </div>
-            <% end %>
+            <%= render partial: "shared/reply_list", locals: {replies: @replies} %>
           </div>
 
           <div class="replied-form clearfix">
