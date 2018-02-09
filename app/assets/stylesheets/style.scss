@@ -216,7 +216,41 @@ header {
   transition: all .4s linear;
 }
 
-.reply-area {
+.reply-area, .tweet-area {
   width: 100%;
   margin-left: 15px;
+}
+
+/*------ populars setting ------*/
+
+.populars {
+  border: 1px solid gray;
+  border-radius: 5px;
+  width: 100%;
+  display: inline-block;
+  padding: 3px;
+  margin: 8px;
+}
+
+.button-popular  a {
+  width: 50%;
+  float: right;
+  display: block;
+  color: #000;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 5px 5px;
+  text-transform: capitalize;
+}
+
+.button-popular  a:hover {
+  width: 50%;
+  float: right;
+  background: #000;
+  color: #fff;
+  -webkit-transition: all .4s linear;
+  -moz-transition: all .4s linear;
+  -ms-transition: all .4s linear;
+  -o-transition: all .4s linear;
+  transition: all .4s linear;
 }
