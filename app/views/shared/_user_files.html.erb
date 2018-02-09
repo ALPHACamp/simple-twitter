@@ -4,4 +4,4 @@
 <div><%= "Tweets " %><%= @user.tweets.size %></div>
 <div><%= "Following " %><%= link_to @user.followings.size, followings_user_path(@user) %></div>
 <div><%= "Follower " %><%= @user.followers.size %></div>
-<%= render partial: "shared/follow" %>
+<%= render partial: "shared/follow", locals: {user: @user} %>
