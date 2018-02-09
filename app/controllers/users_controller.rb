@@ -13,13 +13,15 @@ class UsersController < ApplicationController
   def update
     if @user == current_user
       if @user.update(user_params)
-        redirect_to root_path, notice: "Profile Updated "
+        flash[:notice] = "Profile updated"
+        redirect_to root_path
       else
         flash[:alert] = @user.errors.full_messages.to_sentence
         render :edit
       end
     else
-      redirect_to root_path, alert: "Can't edit other's profile"
+      flash[:alert] = "Can't edit other's profile"
+      redirect_to root_path
     end
   end
 
