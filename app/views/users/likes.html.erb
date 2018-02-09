@@ -1,0 +1,37 @@
+<div class="row">
+  
+  <div class="col-md-3">
+    <div>
+      <% if @user.avatar? %>
+        <%= image_tag @user.avatar, width: "260px" %>
+      <% else %>
+        <img src="https://api.fnkr.net/testimg/260x260/d3d3d3/FFF/?">
+      <% end %>
+       
+      <h2 class="text-center"><%= @user.name %></h2>
+
+      <p><%= @user.introduction %></p>
+
+      <%= link_to tweets_user_path(@user) do %>
+        <h4>Tweets <span class="badge"><%= @user.tweets.count %></span></h4>
+      <% end %>
+
+        <h4>Following <span class="badge"><%=  %></span></h4>
+        
+        <h4>Followers <span class="badge"><%= @user.followers_count %></span></h4>
+        
+        <h4>Like <span class="badge"><%=  %></span></h4>
+      
+      <div class="text-center">
+        <% if @user == current_user %>
+          <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-primary btn-lg btn-block" %>
+        <% end %> 
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-8 col-md-offset-1">
+    
+  </div>
+  
+</div>
