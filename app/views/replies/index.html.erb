@@ -29,7 +29,7 @@
           <h3>Tweet</h3>
           <div class="panel panel-default">          
             <div class="panel-body">
-              <h4><%= link_to @tweet.user.name, tweet_replies_path(@tweet.id) %>, <%= @tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></h4>
+              <h4><%= link_to @user.name, user_path(@user.id) %>, <%= @tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></h4>
               <p><%= truncate(@tweet.description, length: 140) %></p>  
             </div>    
           </div>
@@ -41,7 +41,7 @@
           <h3>Replies</h3>
           <div class="panel panel-default">          
             <div class="panel-body">
-              
+
               <!-- 右邊下版面 replies -->
               <div class="replies">
                 <% @replies.each do |reply| %>
