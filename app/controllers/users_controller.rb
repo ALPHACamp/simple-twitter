@@ -6,17 +6,16 @@ class UsersController < ApplicationController
   end
 
   def edit
-    if current_user == @user
+    if current_user != @user
 
-      session[:return_to] ||= request.referer
-    else
+     
       redirect_to tweets_user_path(@user)
     end
   end
 
   def update
     if @user.update(user_params)
-      redirect_to session.delete(:return_to)
+      redirect_to tweets_user_path
       flash[:notice] = "User profile was successfully updated"
     else
       
@@ -26,13 +25,19 @@ class UsersController < ApplicationController
   end
 
   def followings
-    
-    @followings = @user.followings.order(created_at: :desc)# 基於測試規格，必須講定變數名稱
+    @followships = @user.followships.order(created_at: :desc)
+    @followings = Array.new# 基於測試規格，必須講定變數名稱
+    @followships.each do |followship|
+      @followings << User.find(followship.following_id)
+    end
   end
 
   def followers
-    
-    @followers = @user.followers.order(updated_at: :desc) # 基於測試規格，必須講定變數名稱
+    @followships = @user.inverse_followships.order(created_at: :desc)
+    @followers = Array.new # 基於測試規格，必須講定變數名稱
+    @followships.each do |followship|
+      @followers << User.find(followship.user_id)
+    end
   end
 
   def likes
