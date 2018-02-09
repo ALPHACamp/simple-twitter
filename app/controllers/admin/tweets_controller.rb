@@ -2,6 +2,7 @@ class Admin::TweetsController < Admin::BaseController
   def index
     @user = current_user
     @tweets = Tweet.all
+    @replies = Reply.all
   end
 
   def destroy

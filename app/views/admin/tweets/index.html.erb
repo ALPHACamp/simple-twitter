@@ -1,11 +1,5 @@
-<div class="content col-md-4">
-  <%= render partial: "shared/profile" %>
-  <div class="card-body">
-    <%= link_to "Front End",tweets_path, class: "btn btn-primary" %>
-  </div>
-</div>
-<div class="conten col-md-8">
-  <h4>Admin</h4>
+<div class="conten col-md-6">
+  <h5>Tweet</h5>
   <% @tweets.each do |t| %>
    <div class="media">
     <%= image_tag t.user.avatar, class: "align-self-center mr-3 avatar rounded" %>
@@ -13,4 +7,8 @@
     <%= link_to "Delete",admin_tweet_path(t), method: :delete, data:{confirm:'Are you sure?'}, class: "btn btn-primary"%>
     </div>
   <%end%>
+</div>
+<div class="content col-md-6">
+  <h5>Replies</h5>
+  <%= render partial: "shared/reply" %>
 </div>
