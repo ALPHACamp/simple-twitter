@@ -1,6 +1,7 @@
 class RepliesController < ApplicationController
 
   def index
+    @tweet = Tweet.find(params[:id])
     @replies = @tweet.replies
     @user = current_user
     @reply = Reply.new
@@ -8,8 +9,10 @@ class RepliesController < ApplicationController
   end
 
   def create
+    @tweet = Tweet.find(params[:id])
     @user = current_user
-    @reply = current_user.replies.build(reply_params)
+    @reply = @tweet.replies.build(reply_params)
+    @reply.user = current_user
 
     if @reply.save
       flash[:notice] = "Reply was successfully created"
@@ -22,7 +25,7 @@ class RepliesController < ApplicationController
 
   private
     def reply_params
-      params.require(:tweet).permit(:comment, :user_id, :tweet_id, :created_at, :updated_at)
+      params.require(:reply).permit(:comment, :user_id, :tweet_id, :created_at, :updated_at)
     end
 
 end

@@ -59,14 +59,14 @@ class TweetsController < ApplicationController
       redirect_to restaurants_path
       flash[:alert] = "您無編輯權限！"
       end
-  end
+    end
 
-  def set_tweet
-    @tweet = Tweet.find(params[:id])
-  end
+    def set_tweet
+      @tweet = Tweet.find(params[:id])
+    end
 
-  def tweet_params
-    params.require(:tweet).permit(:description, :user_id, :created_at, :updated_at)
-  end
+    def tweet_params
+      params.require(:tweet).permit(:description, :user_id, :created_at, :updated_at)
+    end
 
 end

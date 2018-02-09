@@ -17,7 +17,9 @@ Rails.application.routes.draw do
       post :like
       post :unlike   
       #post :create
-      get  :reply   
+      get  'replies'   => 'replies#index'
+      post 'reply'     => 'replies#create'
+      #post 'contact' => 'contact#create'
     end
   end
   root "tweets#index"
