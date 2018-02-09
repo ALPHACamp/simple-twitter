@@ -1,9 +1,10 @@
 class TweetsController < ApplicationController
 
   def index
+     #@tweets = Tweet.all.order(created_at: :desc)
      @tweets = Tweet.all
      @tweet = Tweet.new
-     @users = User.order(followers_count: :desc).limit(10) # 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
+     @users = User.all.order(followers_count: :desc).limit(10) # 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
   end
   
 
@@ -26,14 +27,14 @@ class TweetsController < ApplicationController
   def like
     @tweet= Tweet.find(params[:id])
     @tweet.likes.create!(user: current_user)
-    redirect_back(fallback_location: root_path)  # 導回上一頁
+    redirect_back(fallback_location: tweets_path)  # 導回上一頁
   end
   # POST /tweets/:id/unlike
   def unlike
     @tweet = Tweet.find(params[:id])
     likes = Like.where(tweet: @tweet, user: current_user)
     likes.destroy_all
-    redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: tweets_path)
   end
 
   private

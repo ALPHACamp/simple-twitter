@@ -13,11 +13,13 @@ class RepliesController < ApplicationController
      
     if @reply.save
       
-      @replies = @tweet.replies.all
+     # @replies = @tweet.replies.all
       flash[:notice] = "Successfully replied"
       redirect_to tweet_replies_url
+      
     else
       flash.now[:alert] = @reply.errors.full_messages.to_sentence if @reply.errors.any?
+      redirect_back(fallback_location: tweet_replies_url)  # 導回上一頁
       #@tweets = Tweet.all
       #render :index
     end  

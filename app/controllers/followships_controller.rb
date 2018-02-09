@@ -2,7 +2,8 @@ class FollowshipsController < ApplicationController
   def create
      # 需要設定前端的 link_to，在發出請求時送進 following_id
     @followship = current_user.followships.build(following_id: params[:following_id])
-
+   # @followship.count_followers
+   
     if @followship.save
       flash[:notice] = "Successfully followed"
       redirect_back(fallback_location: root_path)
