@@ -1,19 +1,18 @@
 class UsersController < ApplicationController
 
+  before_action :set_user, only: [:tweets, :edit, :update, :followings, :followers, :likes]
+
   def tweets
-    @user = User.find(params[:id])
     @tweets = @user.tweets.all.order(created_at: :desc)
   end
 
   def edit
-    @user = User.find(params[:id])
     unless @user == current_user
       redirect_to tweets_user_path(@user)
     end
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "Your profile was successfully updated"
       redirect_to tweets_user_path(@user)
@@ -24,21 +23,22 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @user = User.find(params[:id])
     @followings = @user.followings.order("followships.created_at DESC") # 基於測試規格，必須講定變數名稱
   end
 
   def followers
-    @user = User.find(params[:id])
     @followers = @user.followers.order("followships.created_at DESC") # 基於測試規格，必須講定變數名稱
   end
 
   def likes
-    @user = User.find(params[:id])
     @likes = @user.liked_tweets.all.order("likes.created_at DESC") # 基於測試規格，必須講定變數名稱
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:name, :introduction, :avatar)
