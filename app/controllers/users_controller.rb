@@ -8,14 +8,14 @@ class UsersController < ApplicationController
 
   def edit
     unless @user == current_user
-      redirect_to edit_user_path(@user)
+      redirect_to tweets_user_path(@user)
     end
   end
 
   def update
     if @user != current_user
       flash.now[:alert] = 'Not able to edit other\'s profile!'
-      redirect_back(fallback_location: root_path)
+      redirect_to tweets_user_path(@user)
     end
 
     if @user.update(user_params)
