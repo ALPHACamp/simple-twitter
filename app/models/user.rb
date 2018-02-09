@@ -16,13 +16,13 @@ class User < ApplicationRecord
 
   has_many :replies, through: :tweets
 
-  has_many :followships, dependent: :destroy
+  has_many :followships, -> { order("followships.created_at desc") }, dependent: :destroy
   has_many :followings, through: :followships
 
-  has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
+  has_many :inverse_followships, -> { order("followships.created_at desc") }, class_name: "Followship", foreign_key: "following_id"
   has_many :followers, through: :inverse_followships, source: :user
 
-  has_many :likes, dependent: :destroy
+  has_many :likes, -> { order("likes.created_at desc") }, dependent: :destroy
   has_many :liked_tweets, through: :likes, source: :tweet
 
   def admin?
