@@ -2,7 +2,7 @@ class Admin::UsersController < Admin::BaseController
   def index
     @users = User.left_joins(:tweets).group(:id).order('COUNT(tweets.id) DESC', created_at: :desc).page(params[:page]).per(10)
 
-    users =  User.left_joins(:tweets).group(:id).order('COUNT(tweets.id) DESC', created_at: :desc)
+    users =  User.left_joins(:tweets).group(:id).order('COUNT(tweets.id) DESC', created_at: :desc).page(params[:page]).per(10)
 
     be_liked_count = []
 
