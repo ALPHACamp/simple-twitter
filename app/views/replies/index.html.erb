@@ -1,28 +1,40 @@
-<div>
-  <%= @user.name %>
-  <%= @user.introduction %>
-  <%= @user.avatar %>
-  <%= link_to 'Edit', edit_user_path(@user) %>
-</div>
+<div class="container">
+  <div class="col-xs-3">
+    <div class="user-item">
+      <%= image_tag @user.avatar, class: "img-responsive img-rounded" %>
+      <h2><%= @user.name %></h2>
+      <div><%= @user.introduction %></div>
+      <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-primary" %>
+    </div>
+  </div>
+  <div class="col-xs-9">
+    <h3>Tweets</h3>
+    <div>
+      <%= @tweet.description %>
+    </div>
 
-<hr />
-<h3>Tweets</h3>
-<div>
-  <%= @tweet.description %>
-</div>
+    <h3>Replies</h3>
+    <div>
+      <% @replies.each do |reply| %>
+        <div class="row">
+          <div class="col-xs-2">
+            <%= image_tag reply.user.avatar, class: "img-responsive img-rounded" %>
+          </div>
+          <div class="col-xs-10">
+            <h4><%= "@"+reply.user.name+","%><%= reply.created_at %></h4>
+            <div><%= reply.comment %></div>
+          </div>
+        </div>
+      <% end %>
+    </div>
 
-<hr />
-<h3>Replies</h3>
-<div>
-  <ul>
-    <% @replies.each do |reply| %>
-      <li><%= reply.comment %></li>
+    <%= form_for [@tweet, @reply] do |f| %>
+      <div class="form-group">
+        <%= f.text_area :comment, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary " %>
+      </div>
     <% end %>
-  </ul>
-
+  </div>
 </div>
-
-<%= form_for [@tweet, @reply] do |f| %>
-  <%= f.text_area :comment %>
-  <%= f.submit %>
-<% end %>

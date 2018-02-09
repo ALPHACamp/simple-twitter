@@ -2,6 +2,7 @@
   <%= form_for [@user] do |f| %>
     <div class="col-xs-4">
       <%= image_tag @user.avatar, class: "img-responsive img-rounded" %>
+      <%= f.file_field :avatar %>
     </div>
     <div class="col-xs-8">
       <div class="form-group">

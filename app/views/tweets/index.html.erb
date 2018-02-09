@@ -10,11 +10,10 @@
         </div>
 
       <% end %>
-      <h3>tweets</h3>
       <div>
         <ul>
           <% @tweets.each do |tweet| %>
-            <%= image_tag @user.avatar, class: "img-responsive img-rounded" %>
+            <%= image_tag tweet.user.avatar, class: "img-responsive img-rounded" %>
             <li><%= tweet.updated_at %></li>
             <li><%= tweet.description %></li>
             <li><%= link_to "Reply", tweet_replies_path(tweet)%></li>
