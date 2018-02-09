@@ -1,25 +1,42 @@
 <div class="container">
-  <ul>
-    <% @users.each do |user| %>
-      <% if user != current_user %>
-        <h3><%= link_to user.name, tweets_user_path(user) %></h3>
-        <%= render partial: "shared/follow", locals: {user: user} %>
-      <% end %>    
-    <% end %>
-  </ul>
   <div class="row">
-    <%= form_for [@tweet] do |f| %>
+    <div class="col-md-8">
+      <%= form_for [@tweet] do |f| %>
       <div class="form-group">
         <%= f.text_area :description, placeholder: "Whats on your mind?", class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= f.submit "Tweet", class: "btn btn-primary" %>
+        <%= f.submit "Tweet", class: "btn btn-primary pull-right" %>
       </div>
     <% end %>
+    <div class="clearfix"></div>
 
     <% @tweets.reverse.each do |tweet| %>
-      <h3><%= link_to tweet.user.name, tweets_user_path(tweet.user) %></h3>
-        <p class="label label-default"><%= tweet.description %><p>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-1">          
+            <img src="http://via.placeholder.com/90x90" alt="placeholder" class="img-circle">
+          </div>
+          <div class="col-md-11">
+            <ul class="list-unstyled">   
+              <li><%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
+              <%= time_ago_in_words(tweet.created_at) %> ago</li>
+              <li><%= truncate(tweet.description, length: 140) %></li>
+          </div>
+        </div>    
+      </div>
     <% end %>  
+
+    </div>
+    <div class="col-md-4">
+      <ul>
+        <% @users.each do |user| %>
+          <% if user != current_user %>
+            <h3><%= link_to user.name, tweets_user_path(user) %></h3>
+            <%= render partial: "shared/follow", locals: {user: user} %>
+          <% end %>    
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>
