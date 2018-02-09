@@ -5,18 +5,18 @@ namespace :dev do
     User.destroy_all
     20.times do |i|
       name = FFaker::Name::first_name
-      filelink = ''
-      Dir.glob("#{Rails.root}/public/avatar/user#{i+1}.jpg").map do |pic|
-        client = FilestackClient.new('AdXNwEl0bRuyww64RxwQNz')
-        filelink = client.upload(filepath: pic)
-      end
+      # filelink = ''
+      # Dir.glob("#{Rails.root}/public/avatar/user#{i+1}.jpg").map do |pic|
+      #   client = FilestackClient.new('AdXNwEl0bRuyww64RxwQNz')
+      #   filelink = client.upload(filepath: pic)
+      # end
 
       user = User.new(
         name: name,
         email: "#{name}@example.co",
         password: "12345678",
         introduction: FFaker::Lorem::sentence(30),
-        avatar: filelink.url
+        # avatar: filelink.url
       )
 
       user.save!
