@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <%= render partial: "shared/intro", locals: {user: @user} %>
+    <% @tweets.each do |tweet| %>
+        <div class="col-xs-12 col-md-9">
+          <div class="media tweet-box">
+            <div class="media-left">
+              <%= image_tag @user.avatar if @user.avatar?%>
+                <%= image_tag "http://via.placeholder.com/60x60"  unless @user.avatar?%>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">
+                <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>  ,
+                <%= tweet.created_at.localtime.to_s(:db) %>
+              </h4>
+              <p><%= tweet.description %></p>
+              <ul class="list-unstyled list-inline">
+                <li>
+                  <%= render partial: "shared/reply", locals: {tweet: tweet} %>
+                </li>
+                <li>
+                  <%= render partial: "shared/like", locals: {tweet: tweet} %>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    <% end %>
+
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <%= render partial: "shared/intro", locals: {user: @user} %>
+    <div class="col-xs-12 col-md-9">
+      <h3>Follower</h3>
+      <% @followers.each do |follower| %>
+        <div class="col-xs-12 col-md-6">
+          <div class="media tweet-box">
+            <div class="media-left">
+              <%= image_tag follower.avatar if follower.avatar?%>
+                <%= image_tag "http://via.placeholder.com/60x60" unless follower.avatar?%>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">
+                <%= link_to follower.name, tweets_user_path(follower) %>
+              </h4>
+              <p><%= truncate(follower.introduction, length: 140) %></p>
+              <%= render partial: "shared/follow", locals: {user: follower} %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

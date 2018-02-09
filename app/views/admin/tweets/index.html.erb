@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+    <h1 class="text-center">Tweets</h1>
+    <hr>
+      <% @tweets.each do |tweet| %>
+        <div class="col-xs-12 col-md-12">
+          <div class="media tweet-box">
+            <div class="media-left">
+              <%= image_tag tweet.user.avatar, class:"img-circle" if tweet.user.avatar?%>
+                <%= image_tag "http://via.placeholder.com/60x60", class: "img-circle"  unless tweet.user.avatar?%>
+                <h4 class="text-center"><%= link_to tweet.user.name, tweets_user_path(tweet.user) %></h4>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">
+                <%= tweet.created_at.localtime.to_s(:db) %>
+                <%= link_to '<i class="glyphicon glyphicon-trash" aria-hidden="true"></i> Delete'.html_safe, admin_tweet_path(tweet), class:'btn button-delete navbar-right', method: :delete, data: {confirm: "Are you sure？"} %>
+              </h4>
+              <hr>
+              <p><%= tweet.description %></p>
+              <ul class="list-unstyled list-inline">
+                <li>
+                  <%= render partial: "shared/reply", locals: {tweet: tweet} %>
+                </li>
+                <li>
+                  <%= render partial: "shared/like", locals: {tweet: tweet} %>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

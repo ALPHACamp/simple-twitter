@@ -1,0 +1,83 @@
+.unfollow-style{
+border-radius: 5px;
+padding: 5px 15px;
+background-color: white; 
+color: darkblue;
+border: 1px solid #ddd;
+margin-right: 10px;
+font-family:monospace;
+}
+
+.form-style{
+border:2px powderblue solid;
+border-radius: 20px;
+font-family:monospace;
+}
+
+.edit_user {
+margin: 10px;
+}
+
+.tweet-box{
+  margin: 10px;
+  border: 1px solid #ddd;
+  padding: 10px 10px;
+}
+
+.tweet-box img{
+  height: 100px;
+  width: 100px;
+  margin: 0px 10px;
+}
+
+.tweet-box h5{
+  color: steelblue;
+}
+
+.reply-style{
+  color: skyblue;
+}
+
+.unlike-style{
+  color: lightpink;
+}
+
+.like-style{
+  color: skyblue;
+}
+
+ .button-delete{
+  border-radius: 5px;
+  padding: 5px 15px;
+  margin-right: 10px;
+  background-color:lightslategray; 
+  color: white;
+}
+
+.button-tweet{
+  border-radius: 5px;
+  padding: 5px 15px;
+  margin-right: 10px;
+  background-color: cornflowerblue; 
+  color: darkblue; 
+  font-family:monospace;
+}
+
+.intro{
+   color: lightslategray;
+}
+
+.navbar-style {
+   background-color: powderblue;
+   height: 52px;
+ }
+
+
+ .navbar-nav > li > a.avatar-style {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+.index-follow{
+  margin-right: 0px;
+}
