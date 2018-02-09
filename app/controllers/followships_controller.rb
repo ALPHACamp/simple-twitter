@@ -3,7 +3,9 @@ class FollowshipsController < ApplicationController
   end
   def create
     @following = User.find(params[:following_id])
-  	@followship = current_user.followships.build(following_id: params[:following_id]) 
+    if not @following == current_user
+  	 @followship = current_user.followships.build(following_id: params[:following_id]) 
+    end
   	if @followship.save
   		flash[:notice] = "Successfully followed"
       @following.increment!(:followers_count)
