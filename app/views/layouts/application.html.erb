@@ -26,7 +26,7 @@
           <ul class="pull-right text-right nav navbar-nav">
             <% if current_user %>
               <% if current_user.admin? %>
-                <li><%#= link_to 'Admin Panel', admin_tweets_path %></li>
+                <li><%= link_to 'Admin Panel', admin_tweets_path %></li>
               <% end %>
               <li><%= link_to 'Profile_Edit', edit_user_registration_path(current_user) %></li>
               <li><%= link_to('Sign_Out', destroy_user_session_path, method: :delete) %></li>

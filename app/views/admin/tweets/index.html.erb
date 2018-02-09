@@ -1,0 +1,39 @@
+<h2>餐廳後台</h2>
+
+<ul class="nav nav-tabs">
+  <li role="presentation" class=<%= "active" if current_page? admin_tweets_path %>>
+    <%= link_to "Tweets", admin_tweets_path %>
+  </li>
+  <li role="presentation" class=<%= "active" if current_page? admin_users_path %>>
+    <%= link_to "Users", admin_users_path %>
+  </li>
+</ul>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Tweeter</th>
+      <th>Description</th>
+      <th>Replies count</th>
+      <th>Replies</th>
+      <th>#</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @tweets.each do |tweet|%>
+      <tr id="twee-id-<%= tweet.id %>">
+        <td><%= tweet.id %></td>
+        <td><%= tweet.user.name %></td>
+        <td><%= tweet.description %></td>
+        <td><%= tweet.replies_count %></td>
+        <td><% tweet.replies.each do |reply| %>
+          <li><%= reply.comment %></li>
+        <% end %>
+        </td>
+        <td><%= link_to 'delete', admin_tweet_path(tweet), method: :delete, data: { confirm: "Are you sure?"} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
