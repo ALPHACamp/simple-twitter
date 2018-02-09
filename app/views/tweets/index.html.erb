@@ -33,6 +33,7 @@
         <% @users.each do |user| %>
           <% if user != current_user %>
             <h3><%= link_to user.name, tweets_user_path(user) %></h3>
+            <h4><%= user.followers_count %>人正在追蹤</h4>
             <%= render partial: "shared/follow", locals: {user: user} %>
           <% end %>    
         <% end %>
