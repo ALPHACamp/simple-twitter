@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :tweets]
 
   def index
     @users = User.all
   end
 
   def tweets
+    #看見某一使用者的推播牆，以及該使用者簡介
+    @tweets = Tweet.where(user: @user)
   end
 
   def edit

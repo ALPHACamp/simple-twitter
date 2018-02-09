@@ -1,0 +1,7 @@
+#看見某一使用者的推播牆，以及該使用者簡介
+
+<ul class="">所有的tweet
+      <% @tweets.each do |tweet| %>
+        <li ><%= tweet.description %></li>
+      <% end %>
+</ul>
