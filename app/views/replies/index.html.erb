@@ -36,6 +36,18 @@
         <%= image_tag @tweet.user.avatar, width: '50' if @tweet.user.avatar? %>
         <%= link_to @tweet.user.name, tweets_user_path(@tweet.user.id) %>
         <%= @tweet.description %>
+        <%= link_to tweet_replies_path(@tweet.id) do %>
+          Relpy(<%= @tweet.replies.count %>)
+        <% end %>                           
+        <% if @tweet.is_liked?(current_user) %>
+          <%= link_to unlike_tweet_path(@tweet.id), method: :post do %>
+            Unlike(<%= @tweet.likes.count %>)
+          <% end %>
+        <% else %>
+          <%= link_to like_tweet_path(@tweet.id), method: :post do %>
+            Like(<%= @tweet.likes.count %>)
+          <% end %>
+        <% end %>
       <h2>Replies</h2>
       <ul>
         <% @replies.each do |reply| %>
