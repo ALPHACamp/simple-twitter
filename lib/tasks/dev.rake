@@ -2,6 +2,9 @@ namespace :dev do
   # 請先執行 rails dev:fake，可以產生 20 個資料完整的 User 紀錄
   task fake: :environment do
     User.destroy_all
+    User.create(email: "xxx@xxx.com", password: "12345678", role: "admin", name: "hdadpdja")
+
+    puts "Default admin created!"
     20.times do |i|
       name = FFaker::Name::first_name
       file = File.open("#{Rails.root}/public/avatar/user#{i+1}.jpg")
