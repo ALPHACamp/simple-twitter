@@ -1,4 +1,5 @@
 class Admin::UsersController < Admin::BaseController
-  def index
+  def index 
+    @users = User.all
   end
 end
