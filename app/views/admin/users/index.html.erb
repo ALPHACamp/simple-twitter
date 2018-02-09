@@ -5,11 +5,13 @@
     <li role="presentation" class= "active"><%= link_to "Users", admin_users_path %></li>
   </ul>
   <br>
-  <% @users.each do |user| %>
-    <div class="user-list">
-    <li><%= link_to user.name, user_path(user) %></li>
-    <li><%= user.introduction %></li>
-    <hr>
+    <% @users.each do |user| %>
+    <div class="user-profile">
+      <div class="avatar"></div>
+      <div class="user-intro">
+        <h5><%= user.name %></h5>
+        <p><%= truncate(user.introduction, length: 80) %></p>
+      </div>
     </div>
   <% end %>
 

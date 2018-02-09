@@ -5,6 +5,7 @@ class RepliesController < ApplicationController
     @tweet = Tweet.find(params[:tweet_id])
     @replies = Reply.order(created_at: :desc)
     @reply = Reply.new
+
   end
 
   def create

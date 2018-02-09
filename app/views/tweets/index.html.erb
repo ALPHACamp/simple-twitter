@@ -9,7 +9,7 @@
   </ul>
   <% end %>
 
-  <div class="col-left">
+  <div class="col-left col-sm-7 col-md-8">
     <div class="my-tweet">
       <%= form_for @tweet do |f| %>
       <%= f.text_area :description, placeholder: "What's on your mind?" %>
@@ -24,8 +24,20 @@
  
   </div>
 
-  <div class="col-right">
-    
+  <div class="col-right col-sm-5 col-md-4">
+    <h3>Popular</h3>
+        <% @users.each do |user| %>
+          <div class="user-profile">
+            <div class="avatar"></div>
+            <div class="user-intro">
+              <h5><%= user.name %></h5>
+              <p><%= truncate(user.introduction, length: 80) %></p>
+              <%= render partial: "shared/follow", locals: {user: @user} %>
+            </div>
+            <br>
+            </div>
+          </div>
+        <% end %>
   </div>
 
 
