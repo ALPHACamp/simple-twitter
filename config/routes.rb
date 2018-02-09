@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users
-  resources :users, only: [:edit, :update] do
+  resources :followships, only: [:create, :destroy]
+  resources :users, only: [:index, :edit, :update] do
     member do
       get :tweets
+      get :followings
+      get :followers
     end
   end
   resources :tweets, only: [:index, :create] do
