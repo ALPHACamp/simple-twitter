@@ -1,2 +1,43 @@
-<h1>這是使用者的編輯頁面</h1>
-<p></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+
+    <% if @user.errors.any? %>
+      <h4>We have some errors here !</h4>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+      <hr>
+    <% end %>
+
+    <%= form_for @user do |f| %>
+    <div class="form-row">  
+
+
+      <div class="form-group">
+        <%= f.label :name, "Name" %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :introduction, "Intro" %>
+        <%= f.text_area :introduction, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :avatar, "Avatar" %>
+        <%= image_tag @user.avatar, width: '300px' if @user.avatar? %>
+        <%= f.file_field :avatar %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary" %>
+        <%= link_to "Cancel", user_path(@user), class: "btn btn-default" %>
+      </div>
+    <% end %>
+    </div>
+    </div>
+  </div>
+</div>

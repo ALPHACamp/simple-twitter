@@ -33,14 +33,16 @@ class UsersController < ApplicationController
     
     unless @user.id == current_user.id
       flash[:notice] = "你沒有權限";
-      redirect_to user_path(@user)
+      # redirect_to user_path(@user)
+      redirect_back(fallback_location: root_path)
     end
   end
   
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to user_path(@user.id)
+      #redirect_to user_path(@user.id)
+      redirect_back(fallback_location: root_path)
       flash[:notice] = "user was successfully updated"
     else
       render :edit
@@ -54,7 +56,7 @@ class UsersController < ApplicationController
     params.
       require(:user).
       permit(:name, 
-        :intro, 
+        :introduction, 
         :avatar)
   end
 
