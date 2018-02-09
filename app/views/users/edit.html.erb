@@ -4,7 +4,7 @@
       <%= image_tag "http://via.placeholder.com/350x350", class: "img-responsive img-rounded"  unless @user.avatar?%>
       <%= form_for current_user do |f| %>
       <div class="form-group">
-        <%= image_tag @user.avatar if @user.avatar? %>
+        <%= image_tag @user.avatar ,width: '300px 'if @user.avatar? %>
         <%= f.file_field :avatar, class: 'edit_user'%>
       </div>
 

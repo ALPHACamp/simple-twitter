@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-style">
        <div class="container-fluid">
          <div class="navbar-header">
            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -23,15 +23,29 @@
  
          <!-- Collect the nav links, forms, and other content for toggling -->
          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-           <ul class="pull-right text-right nav navbar-nav">
-              <% if current_user %>
+           <ul class="pull-right nav navbar-nav">
+             <% if current_user %>      
+              <li>
+                <strong><p class="navbar-text">Hi, &nbsp; <%= current_user.name %></p></strong>
+              </li>
                 <% if current_user.admin? %>
-                  <li><%= link_to '<i class="glyphicon glyphicon-inbox" aria-hidden="true"></i> '.html_safe, admin_root_path %></li>
+                  <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                      <i class="glyphicon glyphicon-inbox" aria-hidden="true"></i> 後台管理 <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><%= link_to '<i class="glyphicon glyphicon-comment" aria-hidden="true"></i> &nbsp; All Tweets'.html_safe, admin_root_path %></li>
+                      <li><%= link_to '<i class="glyphicon glyphicon-user" aria-hidden="true"></i> &nbsp; User List'.html_safe, admin_users_path %></li>
+                    </ul>
+                  </li>
                 <% end %>
-              <li><p class="navbar-text">Hi, <%= current_user.name %></p></li>
-              <li><%= link_to '<i class="glyphicon glyphicon-user" aria-hidden="true"></i> '.html_safe, tweets_user_path(current_user) %></li>
-              <li><%= link_to('<i class="glyphicon glyphicon-log-out" aria-hidden="true"></i> '.html_safe, destroy_user_session_path, method: :delete) %></li>
-              <li><%= link_to('<i class="glyphicon glyphicon-wrench" aria-hidden="true"></i> '.html_safe, edit_user_registration_path) %></li>
+              <li>
+                <%= link_to tweets_user_path(current_user) ,class:"avatar-style" do %>
+                <%= image_tag current_user.avatar ,class:"img-responsive" , style: 'height: 50px', width:'50px' if current_user.avatar?%>
+                  <%= image_tag "http://via.placeholder.com/50x50", class: "img-responsive avatar-style"  unless current_user.avatar?%>
+                  <% end %>
+              </li>
+              <li><%= link_to('<i class="glyphicon glyphicon-log-out" aria-hidden="true"></i> 登出'.html_safe, destroy_user_session_path, method: :delete) %></li>
               <% else %>
               <li><%= link_to('<i class="glyphicon glyphicon-new-window" aria-hidden="true"></i>&nbsp; 註冊'.html_safe, new_user_registration_path) %></li>
               <li><%= link_to('<i class="glyphicon glyphicon-log-in" aria-hidden="true"></i>&nbsp; 登入 '.html_safe, new_user_session_path) %></li>
