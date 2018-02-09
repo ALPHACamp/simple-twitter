@@ -1,7 +1,7 @@
 class Admin::TweetsController < Admin::BaseController
 
   def index
-    @tweets = Tweet.page(params[:page]).per(10)
+    @tweets = Tweet.order(created_at: :desc)
   end
 
   def destroy

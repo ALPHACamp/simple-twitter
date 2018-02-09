@@ -18,35 +18,9 @@
 <div class="container">
  <br>
   <div class="row">
-
     <div class="col-md-12">
-
-      <table class="table table-hover table-bordered">
-      <!-- <table class="table table-bordered"> -->
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Description</th>
-            <th>#</th>
-          </tr>
-        </thead>
-        <tbody>
-         
-        
-        <% @tweets.each do |tweet| %>
-          <tr>
-            <th scope="row"><%= tweet.id %></th>
-            <td>[<%= tweet.description%>]</td>
-            <td> <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-
-      <div class="text-center">
-        <%= paginate @tweets %>
-      </div>
-
+      <% @tweets.each do |tweet| %>
+        <%= render partial: "shared/tweet_detail", locals: {tweet: tweet} %>
+      <% end %>
     </div>
-
 </div>
