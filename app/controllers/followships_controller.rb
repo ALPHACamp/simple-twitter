@@ -2,6 +2,7 @@ class FollowshipsController < ApplicationController
   
   def create
     @followship = current_user.followships.build(following_id: params[:following_id])
+    current_user.count_followers
     
     if @followship.save
       flash[:notice] = "追蹤成功"
@@ -14,6 +15,7 @@ class FollowshipsController < ApplicationController
 
   def destroy
     @followship = current_user.followships.find_by(following_id: params[:id])
+    current_user.count_followers
     if @followship
       @followship.destroy
       flash[:notice] = "追蹤已取消"
