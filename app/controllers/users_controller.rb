@@ -20,17 +20,17 @@ class UsersController < ApplicationController
 
   def followings
     # 基於測試規格，必須講定變數名稱    
-    @followings = Followship.where(:user_id => params[:id])
+    @followings = Followship.where(:user_id => params[:id]).order(:created_at => :desc)
   end
 
   def followers
     # 基於測試規格，必須講定變數名稱
-    @followers = Followship.where(:following_id => params[:id])
+    @followers = Followship.where(:following_id => params[:id]).order(:created_at => :desc)
   end
 
   def likes
     # 基於測試規格，必須講定變數名稱    
-    @likes = Like.where(:user_id => params[:id])
+    @likes = Like.where(:user_id => params[:id]).order(:created_at => :desc)
 
   end
 
