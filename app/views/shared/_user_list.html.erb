@@ -9,7 +9,7 @@
     <div class="col-xs-10">
       <div class="caption">
         <h5><%= link_to user.name, tweets_user_path(user) %></h5>
-        <p><%= simple_format truncate(user.introduction, length: 70) %></p>
+        <p><%= simple_format truncate(user.introduction, length: 20) %></p>
         <div class="follow-btn">
           <%= render partial: "shared/follow_btn", locals: {user: user} %>
         </div>
