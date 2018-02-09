@@ -12,7 +12,7 @@ class TweetsController < ApplicationController
     tweet.user_id = current_user.id
     if tweet.save
       flash[:notice] = "tweet was successfully created"
-      redirect_to tweets_path
+      redirect_back(fallback_location: tweets_path)  # 導回上一頁
     else
       flash.now[:alert] = "tweet was failed to create"
       redirect_to tweets_path
