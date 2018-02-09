@@ -26,8 +26,13 @@
               <% if current_user&.admin? %>
                 <li><%= link_to 'Admin Panel', admin_tweets_path %></li>
               <% end %>
-              <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
-              <li><%= link_to('Profile', tweets_user_path(current_user)) %></li>
+              <li>
+                <%= link_to(tweets_user_path(current_user)) do %>
+                  <div>
+                    <%= image_tag current_user.avatar, class: "img-responsive img-rounded", size: 100 %>
+                  </div>
+                <% end %>
+              </li>
               <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
             <% else %>
               <li><%= link_to('註冊', new_user_registration_path) %></li>
