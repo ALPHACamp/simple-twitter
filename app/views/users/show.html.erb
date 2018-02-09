@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10">
+
       <div class="">
         
-        <div class="col-md-3 col-sm-4">
+        <div class="col-md-4 col-sm-4">
           <div class="text-center">
             <%= image_tag (@user.avatar if @user.avatar?),height: 200 %>
           </div>
@@ -23,15 +23,43 @@
           <% end %>
 
         </div>
-      <div class="col-md-9 col-sm-8">
+      <div class="col-md-8 col-sm-8">
+        
+            <h2>Tweets</h2>
+        
+        <% @tweets.each do |tweet| %>
+          <div class="seinbg">
+            <%= image_tag(@user.avatar, height: 60, width: 60, class: "img-circle") %>
+            <h4><%= link_to @user.name, tweet_path(@tweet) %></h4>
+            <h5>
+              <em><%= tweet.created_at %> </em>
+            </h5>
+            <p><%= truncate(tweet.description, length: 80) %></p>
+            <p><strong>
+              Reply: <%= @tweet.replies.count %>
+              like: <%= @tweet.likes.count %>
+            </strong></p>
         
             
             
 
           </div>
+      <% end %>
+
       </div>
       </div>
 
-    </div>
+
   </div>
 </div>
+
+<style>
+  .seinbg{
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-color: #eee;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+  }
+</style>

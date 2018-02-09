@@ -22,8 +22,8 @@
             </h5>
             <p><%= truncate(tweet.description, length: 80) %></p>
             <p><strong>
-              Reply: <%= @tweet.replies.count %>
-              like: <%= @tweet.likes.count %>
+              Reply: <%= link_to @tweet.replies.count, tweet_path(tweet) %>
+              / like: <%= @tweet.likes.count %>
             </strong></p>
         
             
@@ -40,7 +40,7 @@
       <% @users.each do |user| %>
         <div class="seinbg">
           <%= image_tag(user.avatar, height: 60, width: 60, class: "img-circle") %>
-          <h4><%= user.name %></h4>
+          <h4><%= link_to user.name, user_path(user) %></h4>
           <p><%= truncate(user.introduction, length: 80) %></p>
           
             

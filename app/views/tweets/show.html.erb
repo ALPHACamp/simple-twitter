@@ -6,7 +6,7 @@
           <div class="text-center">
             <%= image_tag (@tweet.user.avatar if @tweet.user.avatar?),height: 200 %>
           </div>
-        <h2><%= @tweet.user.name %></h2>
+        <h2><%= link_to @tweet.user.name, tweet_path(@tweet) %></h2>
         <p><strong><%= @tweet.user.email %></strong></p>
         <div><%= simple_format @tweet.user.introduction %></div>
         <p><strong>like: <%= @tweet.likes.count %></strong></p>
@@ -24,7 +24,7 @@
         <h2>Tweets</h2>
         <div class="seinbg">
             <%= image_tag (@tweet.user.avatar if @tweet.user.avatar?),height: 100,class: "img-circle" %>
-            <h4><%= @tweet.user.name %>
+            <h4><%= link_to @tweet.user.name, tweet_path(@tweet) %>
              <em><%= @tweet.created_at %> </em>
             </h4>
             
@@ -42,7 +42,7 @@
           <% @tweet.replies.each do |reply| %>
           <div>
 
-            <h4><%= reply.user.name %></h4>
+            <h4><%= link_to reply.user.name, tweet_path(@tweet) %></h4>
             <p><%= simple_format reply.comment %></p>
             <p class="text-muted">
               <em><%= time_ago_in_words(reply.created_at) %> </em>
