@@ -10,5 +10,27 @@ class User < ApplicationRecord
   # 並參考 Devise 文件自訂表單後通過 Strong Parameters 的方法
   validates_presence_of :name
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
+  validates_uniqueness_of :name
 
+  has_many :tweets
+  has_many :replies
+
+  has_many :followships, dependent: :destroy
+  has_many :followings, through: :followships
+
+  has_many :likes, dependent: :destroy
+  has_many :liked_tweets, through: :likes, source: :tweet
+
+  def admin?
+    self.role == 'admin'
+  end
+
+  def is_following?(user)
+    self.followings.include?(user)
+  end
+
+  def count_followers
+    self.followers_count = Followship.where(following_id: self.id).size
+    self.save
+  end
 end

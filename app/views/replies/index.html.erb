@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-3 user-profile">
+      <%= render partial: "shared/user_profile", locals: {user: current_user} %>
+    </div>
+
+    <div class="col-md-8">
+
+      <h3>Tweets</h3>
+
+      <%= render partial: "shared/tweet", locals: {tweet: @tweet} %>
+
+      <h3>Replies</h3>
+
+      <% @replies.each do |reply| %>
+        <div class="media tweet-item">
+          <div class="media-left media-middle">
+            <%= image_tag reply.user.avatar, class: "media-object" %>
+          </div>
+          <div class="media-body">
+            <h5 class="media-heading">
+              <%= link_to "@#{reply.user.name}", tweets_user_path(reply.user) %>
+              <%= time_ago_in_words(reply.created_at) %> ago
+            </h5>
+            <p><%= reply.comment %></p>
+          </div>
+        </div>
+      <% end %>
+
+      <% if !current_user&.admin? %>
+        <%= form_for [@tweet, @reply] do |f| %>
+          <div class="form-group">
+            <%= f.text_area :comment, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.submit class: "btn btn-primary btn-md pull-right" %>
+          </div>
+        <% end %>
+      <% end %>
+
+    </div>
+
+  </div>
+</div>

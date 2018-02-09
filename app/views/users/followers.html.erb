@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-3 user-profile">
+      <%= render partial: "shared/user_profile", locals: {user: @user} %>
+    </div>
+
+    <div class="col-md-8">
+
+      <h2>Follower</h2>
+      <% @followers.each do |follower| %>
+        <div class="col-md-6">
+          <div class="media user-item user-media">
+            <div class="media-left media-top">
+              <%= image_tag follower.avatar, class: "media-object" %>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">
+                <%= link_to "@#{follower.name}", tweets_user_path(follower) %>
+              </h4>
+              <p><%= truncate(follower.introduction, length: 200) %></p>
+            </div>
+            <div>
+              <%= render partial: "shared/follow", locals: {user: follower} %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+
+  </div>
+</div>

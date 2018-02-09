@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+
+    <%= form_for @user do |f| %>
+
+      <div class="col-md-3 user-profile">
+        <div class="form-group">
+          <%= image_tag @user.avatar if @user.avatar? %>
+          <%= f.file_field :avatar %>
+        </div>
+      </div>
+      
+      <div class="col-md-8">
+        <div class="form-group">
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        
+        <div class="form-group">
+          <%= f.text_area :introduction, rows: 8, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit "Update", class: "btn btn-primary pull-right btn-lg" %>
+        </div>
+      </div>
+
+    <% end %>
+
+  </div>
+</div>
