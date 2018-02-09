@@ -3,8 +3,8 @@ class FollowshipsController < ApplicationController
     @user_id = User.find(params[:following_id])
     @followship = current_user.followships.build(following_id: params[:following_id])
     if @followship.save
-        @user_id.followers_count = @user_id.followers.count
-        @user_id.save
+        # @user_id.followers_count = @user_id.followers.count
+        # @user_id.save
         flash[:notice] = "Successfully followed"
         redirect_back(fallback_location: root_path)
     else
