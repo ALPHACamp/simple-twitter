@@ -3,4 +3,5 @@
 <div><%= @user.introduction %></div>
 <div><%= "Tweets " %><%= @user.tweets.size %></div>
 <div><%= "Following " %><%= @user.followings.size %></div>
+<div><%= "Follower " %><%= @user.followers.size %></div>
 <%= render partial: "shared/follow" %>
