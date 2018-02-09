@@ -10,14 +10,16 @@
       <ul class="nav navbar-nav navbar-right stnavbar-menu">
         <% if current_user %>
           <% if current_user.admin? %>
-            <li>
-              <%= link_to('瀏覽前台', root_path) %>
-            </li>
-          <% else %>
-            <li>
-              <%= link_to('管理後台', admin_tweets_path) %>
-            </li>
-          <% end %>            
+            <%if params[:controller] == "admin/tweets" || params[:controller] == "admin/users"%>
+              <li>
+                <%= link_to('瀏覽前台', root_path) %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to('管理後台', admin_tweets_path) %>
+              </li>
+            <% end %>
+          <% end %>               
           <li class="nav-profile">
             <%= link_to tweets_user_path(current_user) do %>
             <%= image_tag current_user.avatar, class: "nav-img" if current_user.avatar? %>
