@@ -1,0 +1,12 @@
+<h3>back</h3>
+<div class="container">
+
+  <ul>
+    <% @tweets.each do |tweet| %>
+    <li>
+      <%= tweet.description %>
+
+    </li>
+    <% end %>
+  </ul>
+</div>

@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="col-xs-3">
+    <div class="user-item">
+      <%= render partial: "shared/user_files" %>
+      <%= render partial: "shared/follow", locals: {user: @user} %>
+    </div>
+  </div>
+  <div class="col-xs-9">
+    <h3>Followings</h3>
+
+    <% @followers.each do |follower| %>
+      <div class="row">
+        <div class="col-xs-4">
+          <% if follower.avatar? %>
+            <%= image_tag follower.avatar, class: "img-responsive img-rounded" %>
+          <% else %>
+            <img src="http://via.placeholder.com/128x128", class="img-rounded">
+          <% end %>
+        </div>
+        <div class="col-xs-8">
+          <h4><%= link_to "@"+follower.name, tweets_user_path(follower) %></h4>
+          <div><%= follower.introduction %></div>
+        </div>
+        <%= render partial: "shared/follow", locals: {user: follower}%>
+      </div>
+    <% end%>
+  </div>
+</div>

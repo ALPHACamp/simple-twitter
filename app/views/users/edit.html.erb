@@ -1,0 +1,21 @@
+<div class="container">
+  <%= form_for [@user] do |f| %>
+    <div class="col-xs-4">
+      <%= image_tag @user.avatar, class: "img-responsive img-rounded" %>
+      <%= f.file_field :avatar %>
+    </div>
+    <div class="col-xs-8">
+      <div class="form-group">
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.text_area :introduction, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>

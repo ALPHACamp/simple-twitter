@@ -1,0 +1,7 @@
+<%= image_tag @user.avatar, class: "img-responsive img-rounded" %>
+<h2><%= @user.name %></h2>
+<div><%= @user.introduction %></div>
+<div><%= "Tweets " %><%= link_to @user.tweets.size, tweets_user_path(@user) %></div>
+<div><%= "Following " %><%= link_to @user.followings.size, followings_user_path(@user) %></div>
+<div><%= "Follower " %><%= link_to @user.followers.size, followers_user_path(@user) %></div>
+<div><%= "like " %><%= link_to @user.likes.size, likes_user_path(@user) %></div>
