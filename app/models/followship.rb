@@ -1,5 +1,6 @@
 class Followship < ApplicationRecord
   validates :following_id, uniqueness: { scope: :user_id }
+  validates :follow_self
   
   belongs_to :user
   belongs_to :following, class_name: "User" 
@@ -11,6 +12,10 @@ class Followship < ApplicationRecord
   def update_to_user
     self.following.followers_count!
   end
-
+  def follow_self
+    if user_id==following_id
+      errors[:user_id]<<"不准follow自己"
+    end
+  end
 
 end
