@@ -1,12 +1,26 @@
-<div>
-  <%= @user.name %>
-  <%= @user.introduction %>
-  <%= @user.avatar %>
-  <%= link_to 'Edit', edit_user_path(@user) %>
-</div>
-<hr />
-<div>
-  <% @tweets.each do |tweet| %>
-    <%= tweet.description %>
-  <% end %>
+<div class="container">
+  <div class="col-xs-3">
+    <div class="user-item">
+      <%= image_tag @user.avatar, class: "img-responsive img-rounded" %>
+      <h2><%= @user.name %></h2>
+      <div><%= @user.introduction %></div>
+      <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-primary" %>
+    </div>
+  </div>
+  <div class="col-xs-9">
+    <div>
+      <% @tweets.each do |tweet| %>
+        <div class="row">
+          <div class="col-xs-2">
+            <%= image_tag @user.avatar, class: "img-responsive img-rounded" %>
+          </div>
+          <div class="col-xs-10">
+            <h4><%= "@"+@user.name+","%><%= tweet.updated_at %></h4>
+            <div><%= tweet.description %></div>
+            <div><%= link_to "Reply", tweet_replies_path(tweet)%></div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

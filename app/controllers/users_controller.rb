@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   def update
     #@user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to root_path
+      redirect_to tweets_user_path
       flash[:notice] = "user was successfully updated"
     else
       render :edit
