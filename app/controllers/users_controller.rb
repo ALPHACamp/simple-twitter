@@ -4,13 +4,22 @@ class UsersController < ApplicationController
     @tweets = @user.tweets.includes(:like_users).order(created_at: :desc)
   end
 
-  def update
-    if @user.update(user_params)
-      redirect_to root_path, notice: "Profile Updated "
-    else
-      flash[:alert] = @user.errors.full_messages.to_sentence
+  def edit
+    unless @user == current_user
+      redirect_to root_path, alert: "Can't edit other's profile"
+    end
+  end
 
-      render :edit
+  def update
+    if @user == current_user
+      if @user.update(user_params)
+        redirect_to root_path, notice: "Profile Updated "
+      else
+        flash[:alert] = @user.errors.full_messages.to_sentence
+        render :edit
+      end
+    else
+      redirect_to root_path, alert: "Can't edit other's profile"
     end
   end
 

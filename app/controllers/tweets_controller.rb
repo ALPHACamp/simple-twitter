@@ -23,7 +23,7 @@ class TweetsController < ApplicationController
     @tweet.likes.create!(user: current_user)
     @tweet = Tweet.find(params[:id])
     respond_to do |format|
-      format.html { redirect_back fallback_location: root_path }
+      format.html { redirect_to tweets_path }
       format.js
     end
   end
@@ -33,7 +33,7 @@ class TweetsController < ApplicationController
     @like.destroy
     @tweet = Tweet.find(params[:id])
     respond_to do |format|
-      format.html { redirect_back fallback_location: root_path }
+      format.html { redirect_to tweets_path }
       format.js
     end
   end
