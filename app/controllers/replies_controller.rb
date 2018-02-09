@@ -10,12 +10,12 @@ class RepliesController < ApplicationController
     @reply = current_user.replies.build(reply_params)
     @reply.tweet = @tweet
     if @reply.save
-      redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: replies_path(@tweet))
     else
       @reply.errors.each do |error, message|
         flash[:alert] = "#{error.capitalize} #{message}"
       end
-      redirect_to replies_path
+      redirect_to replies_path(@tweet)
     end
   end
 
