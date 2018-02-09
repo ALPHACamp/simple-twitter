@@ -6,6 +6,9 @@
     </div>
     
     <div class="col-md-8">
+      <h2>Tweets</h2>
+        <%= @tweet.description %>
+      <h2>Replies</h2>
       <ul>
         <% @replies.each do |reply| %>
         <li>
