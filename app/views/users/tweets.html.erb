@@ -1,4 +1,5 @@
 hello, this is <%= @user.name %>
+<%= render partial: "shared/follow", locals: {user: @user} %>
 <br>
 <% @user.tweets.each do |tweet| %>
   <%= tweet.description %>
