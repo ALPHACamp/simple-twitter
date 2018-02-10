@@ -18,19 +18,19 @@ class TweetsController < ApplicationController
       redirect_to tweets_path
     else
       flash.now[:alert] = "tweet was failed to create"
-      redirect_to tweets_path
+      redirect_to root_path
     end
   end
 
   def like
     @tweet.likes.create!(user: current_user)
-    redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: tweets_path)
   end
 
   def unlike
     likes = Like.where(tweet: @tweet, user: current_user)
     likes.destroy_all
-    redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: tweets_path)
   end
 
   private

@@ -7,8 +7,8 @@ class UsersController < ApplicationController
   end
 
   def edit
-    unless @user === current_user
-      redirect_to root_path 
+    unless @user == current_user
+      redirect_to tweets_user_path(@user)
     end
   end
 
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
   def followings
     # 基於測試規格，必須講定變數名稱
-    @followings = @user.followings.all.order('followships.updated_at DESC')
+    @followings = @user.followings.all.order('followships.created_at DESC')
   end
 
   def followers
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   def likes
     # 基於測試規格，必須講定變數名稱
     @tweets = @user.liked_tweets
-    @likes = @tweets.all.order(created_at: :desc)
+    @likes = @tweets.all.order(updated_at: :desc)
   end
 
   private

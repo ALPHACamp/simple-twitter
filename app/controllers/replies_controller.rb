@@ -3,9 +3,10 @@ class RepliesController < ApplicationController
   before_action :set_reply_tweet, only: [:index, :create]
 
   def index
-    @replies = @tweet.replies.all
-    @reply = Reply.new
     @user = @tweet.user
+    @replies = @tweet.replies.all.order(updated_at: :desc)
+    @reply = Reply.new
+    
   end
 
   def create
