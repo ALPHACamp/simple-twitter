@@ -51,7 +51,7 @@
             <td class="horizontal-center"><%= tweet.created_at.strftime('%F') %>, <%= tweet.created_at.strftime('%R') %>
             </td>
             <td>
-              <%= link_to replies_tweet_path(tweet.id) do %>
+              <%= link_to tweet_replies_path(tweet.id) do %>
                 <i class="btn btn-default btn-lg far fa-search" aria-hidden="true"></i>
               <% end %>
             </td>
