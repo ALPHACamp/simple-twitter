@@ -10,21 +10,24 @@ class TweetsController < ApplicationController
   def create
     @tweet = Tweet.new(tweet_params)
     @tweet.user = current_user
-    @tweet.save!
-    redirect_to root_path
+    if @tweet.save!
+      redirect_to tweets_path
+    else
+      redirect_to tweets_path
+    end   
   end
 
   def like
     #set_tweet
     @tweet.likes.create!(user_id: current_user.id)
-    redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: tweets_path)
   end
 
   def unlike
     #set_tweet
     like = Like.where(tweet: @tweet, user: current_user).first
     like.destroy
-    redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: tweets_path)
   end
 
 #################
