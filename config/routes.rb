@@ -8,9 +8,12 @@ Rails.application.routes.draw do
   #tweets routes
   resources :tweets, only: [:index, :create] do
 
-    member do 
+    resources :replies, only: [:index, :create] do
       get :replies , :controller => 'replies', :action => 'index'
       post :replies, :controller => 'replies', :action => 'create'
+    end
+
+    member do       
       post :like
       post :unlike
     end

@@ -12,7 +12,7 @@
       <p><%= tweet.description %></p>
       <div class="row">
         <div class="col-md-6 col-sm-6 col-xs-6">
-          <%= link_to replies_tweet_path(tweet.id) do %>
+          <%= link_to tweet_replies_path(tweet.id) do %>
           <i class="btn btn-default far fa-envelope" aria-hidden="true">(<%= tweet.replies_count %>)</i>
           <% end %>    
         </div>                  
