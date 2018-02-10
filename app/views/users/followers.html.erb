@@ -16,7 +16,7 @@
           <h4><%= truncate follower.introduction,length: 150  %></h4> 
 
           <div class="float-right">
-            <%= render partial: "shared/follow", locals: {user:follower}%> 
+            <%= render partial: "shared/follow", locals: {user:@followers}%> 
           </div>       
         </div>
         <div class="clearfix"></div>
