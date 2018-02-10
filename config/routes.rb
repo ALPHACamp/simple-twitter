@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   #admin routes
   namespace :admin do
     root "tweets#index"
+    get "/", :to => "tweets#index", :as => :root_path
     resources :tweets, only: [:index, :destroy]     
     resources :users, only: [:index]
   end
