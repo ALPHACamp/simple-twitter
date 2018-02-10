@@ -1,0 +1,43 @@
+<div class="row">
+<!-- left===================================== -->
+<div class="col-md-8">
+  <div class="comment">
+    <%= form_for(@tweet) do |f| %>
+      <%= f.text_area :description,placeholder: "What's on your mind?",html: {maxlength: 140},class: "newtweet-content" %>
+      <%= f.submit "Tweet", class: "btn-submit" %>
+    <% end %>
+  </div>
+  <% @tweets.each do |tweet| %>
+
+  <div class="row tweets">
+    <div class="col-md-3">
+      <img src="<%= tweet.user.avatar %>" alt="" class="avatar">
+    </div>
+    <div class="col-md-9">
+      <div class="tweet_usr">
+        <%= link_to users_tweets_path(tweet.user) do %>
+          <h3><%= tweet.user.name %>
+          ,
+          <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %>
+        </h3>
+        <% end %>
+      </div>
+      <p class="tweet_descr"><%= tweet.description %></p>
+      <div class="tweet_RL">
+        <%= link_to replies_path(tweet.user), class: "tweet_reply" do %>
+          Reply(<%= tweet.replies_count %>)
+        <% end %>
+        <span class="tweet_like">Like(<%= tweet.likes_count %>)</span>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div> <!-- col-md-8 end-->
+
+<!-- right===================================== -->
+<div class="col-md-4">
+  <h3>Popular</h3>
+
+</div> <!-- col-md-4 end-->
+
+</div>
