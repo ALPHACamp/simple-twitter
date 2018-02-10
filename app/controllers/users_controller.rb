@@ -5,6 +5,9 @@ class UsersController < ApplicationController
   end
 
   def edit
+    if current_user != @user
+      redirect_to tweets_user_path(@user)
+    end  
   end
 
   def update
@@ -34,7 +37,7 @@ class UsersController < ApplicationController
     # 基於測試規格，必須講定變數名稱
     @likes = @user.liked_tweets.includes(:likes).order('likes.created_at desc')
   end  
-##############3
+  ##############3
   private
   def set_user
     @user = User.find(params[:id])
