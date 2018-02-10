@@ -17,8 +17,11 @@ class User < ApplicationRecord
   has_many :followships, dependent: :destroy
   has_many :followings, through: :followships
 
- has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
- has_many :followers, through: :inverse_followships, source: :user
+  has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
+  has_many :followers, through: :inverse_followships, source: :user
+
+  has_many :likes, dependent: :destroy
+  has_many :liked_tweets, through: :likes, source: :tweet
 
   def admin?
     self.role == "admin"
@@ -26,4 +29,8 @@ class User < ApplicationRecord
   def following?(user)
   self.followings.include?(user)
   end
+  def is_liked?(user)
+    self.liking_users.include?(user)
+  end
+
 end

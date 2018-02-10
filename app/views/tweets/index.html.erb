@@ -15,6 +15,14 @@
     <%= tweet.created_at.strftime("%Y-%m-%d, %T") %>
     <%= tweet.description %>
     <%= link_to "Reply(#{tweet.replies.size})", tweet_replies_path(tweet) %>
+    <% if @user != current_user %>
+      <% if tweet.is_liked?(current_user) %>
+        <%= link_to 'Unlike', unlike_tweet_path(tweet), method: :delete %>
+      <% else %>
+        <%= link_to 'Like', like_tweet_path(tweet), method: :post %>
+      <% end %>
+    <% end %>
+
   </ul>
   <% end %>
 <div>
