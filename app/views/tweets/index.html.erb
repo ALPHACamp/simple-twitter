@@ -1,30 +1,77 @@
-index 頁面
-看見站內所有的推播，以及跟隨者最多的使用者（設為前台首頁）
 
-<ul class="">所有的tweet
-      <% @allTweets.each do |tweet| %>
-        <li ><%= tweet.description %></li>
-      <% end %>
-</ul>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="row">
+						<div class="col-md-12">
+							<form role="form">
+								<div class="form-group">
+									 
+									<label for="exampleInputEmail1">
+										
+									</label>
+									<input type="textaera" class="form-control" id="exampleInputEmail1" />
+								</div>
+							</form> 
+							<button type="button" class="btn btn-primary">
+								tweet
+							</button>
+						</div>
+					</div>
+					<div class="row" style="margin-top:50px">
+						<div class="col-md-12">
+							<div class="row" style="margin-top:15px">
+								<div class="col-md-2">
+									<img alt="Bootstrap Image Preview" src="asdfasdasd" class="img-thumbnail" />
+								</div>
+								<div class="col-md-10">
+									<h3 class="text-primary">
+										@dsofhdsjfjsdiof
+									</h3>
+									<p>
+										Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+									</p>
+									<div class="row">
+										<div class="col-md-4">
+											 <a href="#" class="btn" type="button">Reply(2)</a>
+										</div>
+										<div class="col-md-4">
+                       <a href="#" class="btn" type="button">Like(7)</a>
+										</div>
+										<div class="col-md-4">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-4">
+									<img alt="Bootstrap Image Preview" src="sdfgsdfgsdfsdf" class="img-thumbnail" />
+								</div>
+								<div class="col-md-8">
+									<h3>
+										@username
+									</h3>
+									<p>
+                    這是@user的敘述
+									</p>
+									<p>
+										<a class="btn" href="#">View details »</a>
+									</p> <a href="#" class="btn" type="button">Follower</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
-<ul class="">最多follower的人
-      <% @users.each do |user| %>
-        <li ><%= user.name %> <%= user.followers_count %></li>
-      <% end %>
-</ul>
-
-<ul class="">全部的人
-      <% @allusers.each do |user| %>
-        <li ><%= user.name %></li>
-      <% end %>
-</ul>
-<%= current_user.id %>
-<%= form_for(@tweet) do |f| %>
-    <div class="form-group">
-      <%= f.text_area :description, placeholder: "留個言吧", class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.submit class: "btn btn-primary" %>
-      <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
-    </div>
-    <% end %>
+		</div>
+	</div>
+</div>
