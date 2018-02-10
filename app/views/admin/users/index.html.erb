@@ -37,7 +37,13 @@
                 <%= (index+1)+(params[:page].to_i-1)*10 %>
               <% end %>
             </td>
-            <td><%= image_tag(user.avatar, :class => 'img-responsive') %></td>
+            <td>
+              <% if !user.avatar.nil? %>
+                <%= image_tag(user.avatar, :class => 'img-responsive') %>
+              <% else %>  
+                尚未上傳
+              <% end %>
+            </td>
             <td class="horizontal-center"><%= link_to user.name, tweets_user_path(user.id) %></td>
             <td><%= user.introduction %></td>
             <td class="horizontal-center">

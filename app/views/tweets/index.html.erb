@@ -24,6 +24,8 @@
             <div class="col-md-4 col-sm-4 col-xs-4">
               <% if !user.avatar.nil? %>
               <%= image_tag(user.avatar, :class => 'img-resposive img-circle', :width => '100%') %>    
+              <% else %>
+                尚未上傳
               <% end %>            
             </div>                    
             <div class="col-md-7 col-sm-7 col-xs-7">

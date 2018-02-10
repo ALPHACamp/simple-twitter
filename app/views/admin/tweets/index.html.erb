@@ -41,7 +41,13 @@
             <td class="horizontal-center">
               <%= link_to tweet.user.name, tweets_user_path(tweet.user.id) %>
             </td>
-            <td><%= image_tag(tweet.user.avatar, :class => 'img-responsive') %></td>
+            <td>
+              <% if !tweet.user.avatar.nil? %>
+                <%= image_tag(tweet.user.avatar, :class => 'img-responsive') %>
+              <% else %>
+                尚未上傳  
+              <% end %>
+            </td>
             <td class="horizontal-center"><%= tweet.created_at.strftime('%F') %>, <%= tweet.created_at.strftime('%R') %>
             </td>
             <td>
