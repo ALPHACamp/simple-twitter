@@ -1,6 +1,8 @@
 class TweetsController < ApplicationController
-
   def index
+    if authenticate_user!
+      redirect_to(new_user_session_path)
+    end
     @users = User.order(followers_count: :desc).limit(10)
     @allusers = User.all
      # 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
