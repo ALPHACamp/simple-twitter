@@ -10,7 +10,15 @@ class UsersController < ApplicationController
     @tweets = Tweet.where(user: @user)
     if @user.id == current_user.id
       @is_own_profile = true
+    else
+      @is_own_profile = false
     end
+    @user = User.find(params[:id])
+    @tweet_count = @user.tweet_count
+    @following_count = @user.following_count
+    @follower_count = @user.followers_count
+    @like_count = @user.likes_count
+
   end
 
   def edit
