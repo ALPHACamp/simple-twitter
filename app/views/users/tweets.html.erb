@@ -44,15 +44,17 @@
 									<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" class="img-thumbnail" />
 								</div>
 								<div class="col-md-10">
+								<a href="<%= tweets_user_url(tweet.user) %>">
 									<h3 class="text-primary">
 										<%= tweet.user.name %>
 									</h3>
+									</a>
 									<p>
 										<%= tweet.description %>
 									</p>
 									<div class="row">
 										<div class="col-md-4">
-											 <a href="#" class="btn" type="button">Reply(<%= tweet.replies_count %>)</a>
+											 <a href="<%= replies_tweet_url(tweet.id) %>" class="btn" type="button">Reply(<%= tweet.replies_count %>)</a>
 										</div>
 										<div class="col-md-4">
                        <a href="#" class="btn" type="button">Like(<%= tweet.likes_count %>)</a>
