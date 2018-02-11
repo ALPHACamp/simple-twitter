@@ -1,7 +1,59 @@
-#看見某一使用者的推播牆，以及該使用者簡介
 
-<ul class="">所有的tweet
-      <% @tweets.each do |tweet| %>
-        <li ><%= tweet.description %></li>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-3">
+			<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" class="img-thumbnail" /> 
+            
+			<p><a>
+				username
+			</a></p>
+			<ul>
+				<li>
+					tweets
+				</li>
+				<li>
+					following
+				</li>
+                <li>
+					follower
+				</li>
+                <li>
+					like
+				</li>
+				
+			</ul> <a href="#" class="btn" type="button">edit profile</a>
+		</div>
+ 
+		<div class="col-md-9" style="padding-top:50px">
+    <% @tweets.each do |tweet| %>
+			<div class="row">
+						<div class="col-md-12">
+							<div class="row" style="margin-top:15px">
+								<div class="col-md-2">
+									<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" class="img-thumbnail" />
+								</div>
+								<div class="col-md-10">
+									<h3 class="text-primary">
+										<%= tweet.user.name %>
+									</h3>
+									<p>
+										<%= tweet.description %>
+									</p>
+									<div class="row">
+										<div class="col-md-4">
+											 <a href="#" class="btn" type="button">Reply(2)</a>
+										</div>
+										<div class="col-md-4">
+                       <a href="#" class="btn" type="button">Like(7)</a>
+										</div>
+										<div class="col-md-4">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+			</div>
       <% end %>
-</ul>
+		</div>
+	</div>
+</div>
