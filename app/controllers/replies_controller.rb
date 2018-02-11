@@ -1,6 +1,10 @@
 class RepliesController < ApplicationController
 
   def index
+    @tweet_id = :id
+    @user = User.find(@tweet.user.id)
+    @tweet = Tweet.where(@tweet_id)
+    @replies = @tweet.comment
   end
 
   def create
