@@ -5,27 +5,37 @@
 			<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" class="img-thumbnail" /> 
             
 			<p><a>
-				username
+				<%= @user.name %>
 			</a></p>
 			<ul>
 				<li>
-					tweets
+					tweets(<%= @tweet_count %>)
 				</li>
 				<li>
-					following
+					following(<%= @following_count %>)
 				</li>
                 <li>
-					follower
+					follower(<%= @follower_count %>)
 				</li>
                 <li>
-					like
+					like(<%= @like_count %>)
 				</li>
 				
-			</ul> <a href="#" class="btn" type="button">edit profile</a>
+			</ul> <% if @is_own_profile %>
+			 <a href=<%= edit_user_url %> class="btn" type="button">edit profile</a>
+			 <%else%>
+			 <% if current_user.following?(@user) %>
+    	 							<%= link_to 'Unfollow', followship_path(@user), method: :delete, class: "btn btn-default" %>
+									
+  									<% else %>
+   	 								<%= link_to 'Follow', followships_path(following_id: @user), method: :post, class: "btn btn-default" %>
+									
+  									<% end %>
+			 <%end%>
 		</div>
  
 		<div class="col-md-9" style="padding-top:50px">
-   
+    <% @followers.each do |follower| %>
 			<div class="row">
 						<div class="col-md-12">
 							<div class="row" style="margin-top:15px">
@@ -34,26 +44,17 @@
 								</div>
 								<div class="col-md-10">
 									<h3 class="text-primary">
-										username
+										<%= follower.user.name %>
 									</h3>
 									<p>
-										descioenwfwefwf
+										<%= follower.user.name %>
 									</p>
-									<div class="row">
-										<div class="col-md-4">
-											 <a href="#" class="btn" type="button">unfollow</a>
-										</div>
-										<div class="col-md-4">
-                      
-										</div>
-										<div class="col-md-4">
-										</div>
-									</div>
+									
 								</div>
 							</div>
 						</div>
 			</div>
-      
+      <% end %>
 		</div>
 	</div>
 </div>

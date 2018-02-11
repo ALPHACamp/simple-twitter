@@ -33,11 +33,21 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings # 基於測試規格，必須講定變數名稱
+    @followings = Followship.where(user_id:params[:id])
+    @user = User.find(params[:id])
+    @tweet_count = @user.tweet_count
+    @following_count = @user.following_count
+    @follower_count = @user.followers_count
+    @like_count = @user.likes_count
   end
 
   def followers
-    @followers # 基於測試規格，必須講定變數名稱
+    @followers = Followship.where(following_id:params[:id])
+    @user = User.find(params[:id])
+    @tweet_count = @user.tweet_count
+    @following_count = @user.following_count
+    @follower_count = @user.followers_count
+    @like_count = @user.likes_count
   end
 
   def likes
