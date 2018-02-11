@@ -4,21 +4,21 @@
 		<div class="col-md-3">
 			<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" class="img-thumbnail" /> 
             
-			<p><a>
+			<p><a href="<%= tweets_user_url(@user) %>">
 				<%= @user.name %>
 			</a></p>
 			<ul>
 				<li>
-					tweets(<%= @tweet_count %>)
+					<a href="<%= tweets_user_url(@user) %>">tweets(<%= @tweet_count %>)</a>
 				</li>
 				<li>
-					following(<%= @following_count %>)
+					<a href="<%= followings_user_url(@user) %>">following(<%= @following_count %>)</a>
 				</li>
                 <li>
-					follower(<%= @follower_count %>)
+					<a href="<%= followers_user_url(@user) %>">follower(<%= @follower_count %>)</a>
 				</li>
                 <li>
-					like(<%= @like_count %>)
+					<a href="<%= followers_user_url(@user) %>">like(<%= @like_count %>)</a>
 				</li>
 				
 			</ul> <% if @is_own_profile %>

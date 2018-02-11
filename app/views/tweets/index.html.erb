@@ -27,11 +27,11 @@
 									<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" class="img-thumbnail" />
 								</div>
 								<div class="col-md-10">
-							
+							<a href="<%= tweets_user_url(tweet.user) %>">
 									<h3 class="text-primary">
 										<%= tweet.user.name %>
 									</h3>
-									
+									</a>
 									<p>
 										<%= tweet.description %>
 									</p>
@@ -60,9 +60,10 @@
 									<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" class="img-thumbnail" />
 								</div>
 								<div class="col-md-8">
+								<a href="<%= tweets_user_url(user) %>">
 									<h3>
 										<%= user.name %>
-									</h3>
+									</h3></a>
 									<p>
                     <%= user.introduction %>
 									</p>
