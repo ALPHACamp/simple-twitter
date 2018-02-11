@@ -49,7 +49,13 @@
 									<p>
 										<%= follower.user.name %>
 									</p>
+									<% if current_user.following?(follower.user) %>
+    	 							<%= link_to 'Unfollow', followship_path(follower.user), method: :delete, class: "btn btn-default" %>
 									
+  									<% else %>
+   	 								<%= link_to 'Follow', followships_path(follower.user), method: :post, class: "btn btn-default" %>
+									
+  									<% end %>
 								</div>
 							</div>
 						</div>
