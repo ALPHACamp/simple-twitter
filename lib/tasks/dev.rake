@@ -45,16 +45,18 @@ namespace :dev do
       puts "have created fake followship"
       puts "now you have #{Followship.count} followship data"   
     end
+
   task fake_tweet: :environment do
     Tweet.destroy_all
 
       20.times do
-        @ntw=Tweet.new(
-          description: '4444',
+        ntw=Tweet.new(
+          description: FFaker::Lorem.sentence,
           user: User.all.sample
           )
-        @ntw.save!
-      end
+        ntw.save!     
+      end   
+
       puts "have created fake tweet"
       puts "now you have #{Tweet.count} tweet data"   
   end

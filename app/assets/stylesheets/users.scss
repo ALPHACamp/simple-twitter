@@ -9,7 +9,7 @@ label {
   margin-top: 10px;
 }
 
-input {
+input,textarea {
   width: 100%;
   padding: 5px 10px;
   border-radius: 5px;
@@ -26,4 +26,72 @@ input {
 
 .signup-btn {
   width: 200px;
+}
+
+div.user-prof{
+  padding: 0 4vw;
+  img{
+    padding: 3vh 0px;
+    width: 80%;
+  }
+  a{
+    display: inline-block;
+    padding: .3em 0px;
+    h2{
+      margin: 0;
+    }
+  }
+  p{
+    font-size: 18px;
+    line-height: 26px;
+  }
+  .social{
+    a{
+      font-size: 20px;
+      padding: 1px;
+      margin-bottom: 8px;
+    }
+  }
+}
+div.tweets{
+  p{
+    font-size: 18px;
+    line-height: 30px;
+    word-break: break-all;    
+    margin-top: 0;
+  }
+}
+.two-row-usr{
+  border:1px solid #ccc;
+  margin: 5px 2px;
+  overflow: hidden;
+  .col-md-3{
+    img{
+      width: 80%;height: auto;line-height: 0;vertical-align: middle;
+
+    }
+  }
+}
+.submit-btn{
+  display: inline-block;
+  padding: 5px 10px !important;
+  border-radius: 5px;
+  background-color: #48aae6;
+  margin: 10px 0;
+  font-size: 20px;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  &:hover, &:active, &:focus {
+    background-color: #1b95e0;
+    cursor: pointer;
+  }
+}
+.pre-img{
+  width: 80%;
+}
+#user_introduction{
+  height: 100%;
+  min-height: 5vh;
+  max-height: 30vh;
 }

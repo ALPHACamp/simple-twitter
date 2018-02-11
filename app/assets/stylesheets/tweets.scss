@@ -6,7 +6,8 @@
   overflow: hidden;
   .newtweet-content{
     width: 100%;
-    height: 20vh;
+    height: 15vh;
+    min-height: 3vh;
     border-radius: 10px;
     border: 1px solid  #55acee;
     padding: 10px;
@@ -17,10 +18,14 @@
     float: right;
   }
 }
+h2{
+  display: block;
+  width: 100%;
+}
 
-.tweets{
+.tweets,.popular{
   height: 100%;
-  padding: 8px 5px;
+  padding: 8px 5px ;
   border:1px solid #ccc;
   margin: 5px 0;
   .col-md-3{
@@ -30,7 +35,7 @@
     }
   }
   .col-md-9{
-    .tweet_usr{
+    .tweet_usr,{
       a{
         display: inline-block;
         margin: 1em 0;
@@ -39,10 +44,23 @@
         }
       }
     }
-    .tweet_descr{
+    .popular_usr{
+      a{
+        display: inline-block;
+        h3{
+          margin: 0;
+        }      
+      }
+    }
+    p{
       font-size: 18px;
       line-height: 30px;
       word-break: break-all;
+      margin-top: 0;
+    }
+    .popular_intro{
+      margin: .3em 0px;
+      line-height: 26px;
     }
     .tweet_reply{
       margin-right: 10px;

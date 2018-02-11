@@ -10,7 +10,9 @@
 
   <body>
     <header>
-      <div class="logo"><h2>LOGO</h2></div>
+      <div class="logo"><%= link_to root_path do %>
+        <h2>LOGO</h2>
+        <% end %></div>
     <ul class="service">
       <% if current_user %>
 
@@ -18,7 +20,9 @@
           <li><%= link_to 'Admin Panel', admin_tweets_path %></li>
         <% end %>
 
-        <li><img src="<%= current_user.avatar %>" alt="" width="50px"></li>
+        <li><%= link_to users_tweets_path(current_user) do %>
+          <img src="<%= current_user.avatar %>" alt="" width="50px">
+          <% end %></li>
         <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
 
       <% else %>

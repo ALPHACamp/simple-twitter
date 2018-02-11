@@ -1,0 +1,25 @@
+<% if users.size ==0 %>
+  Not follow yet
+<% else %>
+<% users.each do |user| %>
+
+<div class="col-md-6 ">
+  <div class="two-row-usr">
+    <div class="col-md-3">
+      <img src="<%= user.avatar %>" alt="" class="avatar">
+    </div>
+    <div class="col-md-9">
+      <div class="popular_usr">
+        <%= link_to users_tweets_path(user) do %>
+          <h3><%= user.name %> </h3>
+        <% end %>
+      </div>
+      <p class="popular_intro"><%= user.introduction %></p>
+      <div class="popular-follow">
+        <%= render partial: "shared/follow",locals:{user:user} %>
+      </div>
+    </div>
+  </div> <!-- two-row-usr end -->
+</div>
+<% end %>
+<% end %>

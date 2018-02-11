@@ -13,6 +13,8 @@ class User < ApplicationRecord
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
   
 
+  has_many :tweets, dependent: :destroy #一個user可以有很多tweet
+
   has_many :likes, dependent: :destroy #一個user可以有很多like
   has_many :liked_tweets, through: :likes, source: :tweet 
   #一個user，被like的tweet，關聯昰tweet
@@ -30,6 +32,10 @@ class User < ApplicationRecord
   def admin?
    self.role == "admin"
   end
+  
+  def following?(user)
+    self.followings.include?(user)
+  end  
 
   @usrs=User.all
   @usrs.each do |user|

@@ -13,14 +13,16 @@ Rails.application.routes.draw do
   get "users/:id/tweets" , to: 'users#tweets', as: 'users_tweets'
   get "users/:id/followings" , to: 'users#followings', as: 'users_followings'
   get "users/:id/followers" , to: 'users#followers', as: 'users_followers'
+  get "users/:id/likes" , to: 'users#likes', as: 'users_likes'
 
   resources :followships,only: [:create,:destroy]
 
-  post "users/:id/likes" , to: 'users#likes', as: 'users_likes'
+  post "users/:id/like" , to: 'users#like', as: 'users_like'
 
   post "tweets/:id/unlike" , to: 'tweets#unlike', as: 'tweets_unlike'
 
   get "users/:id/edit" , to: 'users#edit', as: 'edit_user'
+  post "users/:id/edit" , to: 'users#update'
 
   namespace :admin do
     root "users#index"

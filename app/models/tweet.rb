@@ -1,5 +1,4 @@
 class Tweet < ApplicationRecord
-  attr_accessor :description
   validates_length_of :description, maximum: 140
   
   belongs_to :user, optional: true #一個tweet屬於一個使用者 
@@ -15,8 +14,10 @@ class Tweet < ApplicationRecord
   @tws=Tweet.all
   @tws.each do |tweet|
    @replies_count=tweet.replies.count
+   @tweet=Tweet.update(tweet.id,replies_count: @replies_count)
+   @tweet.save!
    @likes_count=tweet.likes.count
-   @tweet=Tweet.update(tweet.id,replies_count: @replies_count,tweet.id,likes_count: @likes_count)
+   @tweet=Tweet.update(tweet.id,likes_count: @likes_count)
    @tweet.save!
   end 
 end
