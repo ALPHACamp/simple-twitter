@@ -4,20 +4,20 @@
 			<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" class="img-thumbnail" /> 
             
 			<p><a>
-				username
+				<%= @user.name %>
 			</a></p>
 			<ul>
 				<li>
-					tweets
+					tweets(<%= @tweet_count %>)
 				</li>
 				<li>
-					following
+					following(<%= @following_count %>)
 				</li>
                 <li>
-					follower
+					follower(<%= @follower_count %>)
 				</li>
                 <li>
-					like
+					like(<%= @like_count %>)
 				</li>
 				
 			</ul> <a href="#" class="btn" type="button">edit profile</a>
@@ -33,17 +33,17 @@
 								</div>
 								<div class="col-md-10">
 									<h3 class="text-primary">
-										djanfoinadfnadf
+										<%= @user.name %>
 									</h3>
 									<p>
-										wqdknwkqlndqwnd
+										<%= @tweet.description %>
 									</p>
 									<div class="row">
 										<div class="col-md-4">
-											 <a href="#" class="btn" type="button">Reply(2)</a>
+											 <a href="#" class="btn" type="button">Reply(<%= @tweet.replies_count %>)</a>
 										</div>
 										<div class="col-md-4">
-                       <a href="#" class="btn" type="button">Like(7)</a>
+                       <a href="#" class="btn" type="button">Like(<%= @tweet.likes_count %>)</a>
 										</div>
 										<div class="col-md-4">
 										</div>
@@ -53,6 +53,7 @@
 						</div>
 			</div>
                     <h3>Replies</h3>
+					<% @replies.each do |reply| %>
 			<div class="row">
 						<div class="col-md-12">
 							<div class="row" style="margin-top:15px">
@@ -61,13 +62,32 @@
 								</div>
 								<div class="col-md-10">
 									<h3 class="text-primary">
-										djanfoinadfnadf
+									<%= User.find(@tweet.user.id).name %>   
+
+										
 									</h3>
 									<p>
-										wqdknwkqlndqwnd
+										<%= reply.comment %>
 									</p>
 									
 								</div>
+							</div>
+						</div>
+			</div>
+			<% end %>
+			<div class="row">
+						<div class="col-md-12">
+							<div class="row" style="margin-top:15px">
+								<%= form_for @newreplies, :url => url_for(:controller => "replies", :action => "create") do |f| %>
+     							<div class="form-group">
+     							  <%= f.text_area :comment, placeholder: "發個回覆", class: "form-control" %>
+								   <%= hidden_field_tag(:id, @tweet.id) %>
+     							</div>
+     							<div class="form-group">
+     							  <%= f.submit "Reply" , class: "btn btn-primary" %>
+							
+     							</div>
+    							<% end %>
 							</div>
 						</div>
 			</div>

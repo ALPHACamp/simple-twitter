@@ -10,7 +10,14 @@ class TweetsController < ApplicationController
   end
 
   def replies
-  
+   @tweet = Tweet.find(params[:id])
+   @user = User.find(@tweet.user.id)
+   @tweet_count = @user.tweet_count
+   @following_count = @user.following_count
+   @follower_count = @user.followers_count
+   @like_count = @user.likes_count
+   @replies = Reply.where(tweet_id:@tweet.id)
+   @newreplies = Reply.new
   end
 
   def create

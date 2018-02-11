@@ -8,15 +8,16 @@ class RepliesController < ApplicationController
   end
 
   def create
-    @tweet = Tweet.find(:id)
+    @tweet = Tweet.find(params[:id])
     @user = User.find(current_user.id)
-    @replies = @tweet.comment.build(replie_params)
+    @replies = @tweet.replies.build(replie_params)
+   
     @replies.user = current_user
     @replies.save!
     redirect_back(fallback_location: root_path)
   end
 
   def replie_params
-    params.require(:replies).permit(:comment)
+    params.require(:reply).permit(:comment)
   end
 end

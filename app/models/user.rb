@@ -24,4 +24,10 @@ class User < ApplicationRecord
   def following?(user)
     self.followings.include?(user)
   end
+  def tweet_count
+    return Tweet.where(user_id:self.id).count
+  end
+  def following_count
+    return Followship.where(user_id:self.id).count
+  end
 end
