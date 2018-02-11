@@ -23,7 +23,10 @@ class TweetsController < ApplicationController
 
   def like
     @like = Like.build(user_id: current_user.id,tweet_id: params[:tweet_id])
+    @tweet = Tweet.find(:tweet_id)
+    @tweet.likes_count ++
     if @like.save
+      @tweet.save
       redirect_to :back
     else
       # 驗證失敗時，Model 將錯誤訊息放在 errors 裡回傳
@@ -35,7 +38,10 @@ class TweetsController < ApplicationController
 
   def unlike
     @like = Like.where(user_id: current_user.id,tweet_id: params[:id]).first
+    @tweet = Tweet.find(:id)
+    @tweet.likes_count - 1
     @like.destroy
+    @tweet.save
     flash[:alert] = "like destroyed"
     redirect_to :back
   end
