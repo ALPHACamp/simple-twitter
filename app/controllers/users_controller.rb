@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def tweets
     #看見某一使用者的推播牆，以及該使用者簡介
-    @tweets = Tweet.where(user: @user)
+    @tweets = Tweet.where(user: @user).order(created_at: :desc)
     if @user.id == current_user.id
       @is_own_profile = true
     else
