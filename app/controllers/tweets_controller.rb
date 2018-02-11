@@ -22,9 +22,22 @@ class TweetsController < ApplicationController
   end
 
   def like
+    @like = Like.build(user_id: current_user.id,tweet_id: params[:tweet_id])
+    if @like.save
+      redirect_to :back
+    else
+      # 驗證失敗時，Model 將錯誤訊息放在 errors 裡回傳
+      # 使用 errors.full_messages 取出完成訊息集合(Array)，串接 to_sentence 將 Array 組合成 String
+      flash[:alert] = @like.errors.full_messages.to_sentence
+      redirect_to :back
+    end
   end
 
   def unlike
+    @like = Like.where(user_id: current_user.id,tweet_id: params[:id]).first
+    @like.destroy
+    flash[:alert] = "like destroyed"
+    redirect_to :back
   end
 
   def tweet_params
