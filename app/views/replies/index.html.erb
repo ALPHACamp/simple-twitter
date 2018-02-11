@@ -7,8 +7,8 @@
     <div class="col-12 col-sm-8">
     <!-- tweet -->
     
-    <%= render partial: "shared/tweet_in_table", locals: {tweet: @tweet} %>  
-    
+    <%= render partial: "shared/tweet_in_table", locals: {tweet: @tweet} %>
+   
     <!-- tweet.replies show -->
     <% @replies.each do |reply| %>
       <%= render partial: "shared/reply_in_table", locals: {reply: reply} %>  
@@ -16,7 +16,7 @@
     <!-- tweet.replies create form -->
     <%= form_for [@tweet, @reply] do |f| %>
       <div class="form_group">
-        <%= f.text_area :comment, placeholder: "Reply this tweet", class: "form-control", rows: "3" %>
+        <%= f.text_area :comment, placeholder: "Reply this tweet", class: "form-control", rows: "3", maxlength:"100" %>
       </div>
       <div class="form-group text-right">
         <%= f.button "Reply",type: :submit, class: "btn btn-primary mt-1" %>
