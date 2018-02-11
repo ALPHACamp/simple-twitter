@@ -1,9 +1,9 @@
 class FollowshipsController < ApplicationController
   def create
-
+    #raise "foo"
     @followship = current_user.followships.build(following_id: params[:following_id])
     
-    if current_user.id == @followship.user_id
+    if current_user.id == :following_id
       return
     end
 

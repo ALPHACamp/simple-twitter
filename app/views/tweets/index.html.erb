@@ -25,7 +25,7 @@
 						<div class="col-md-12">
 							<div class="row" style="margin-top:15px">
 								<div class="col-md-2">
-									<img alt="Bootstrap Image Preview" src="asdfasdasd" class="img-thumbnail" />
+									<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" class="img-thumbnail" />
 								</div>
 								<div class="col-md-10">
 									<h3 class="text-primary">
@@ -56,7 +56,7 @@
 						<div class="col-md-12">
 							<div class="row">
 								<div class="col-md-4">
-									<img alt="Bootstrap Image Preview" src="sdfgsdfgsdfsdf" class="img-thumbnail" />
+									<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" class="img-thumbnail" />
 								</div>
 								<div class="col-md-8">
 									<h3>
@@ -65,9 +65,14 @@
 									<p>
                     <%= user.introduction %>
 									</p>
-									<p>
-										<a class="btn" href="#">View details »</a>
-									</p> <a href="#" class="btn" type="button">Follower</a>
+									<% if current_user.following?(user) %>
+    	 							<%= link_to 'Unfollow', followship_path(user), method: :delete, class: "btn btn-default" %>
+									
+  									<% else %>
+   	 								<%= link_to 'Follow', followships_path(following_id: user), method: :post, class: "btn btn-default" %>
+									
+  									<% end %>
+
 								</div>
 							</div>
 						</div>
