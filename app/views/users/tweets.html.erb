@@ -23,7 +23,7 @@
 				
 			</ul>
 			<% if @is_own_profile %>
-			 <a href="#" class="btn" type="button">edit profile</a>
+			 <a href=<%= edit_user_url %> class="btn" type="button">edit profile</a>
 			 <%else%>
 			 <% if current_user.following?(@user) %>
     	 							<%= link_to 'Unfollow', followship_path(@user), method: :delete, class: "btn btn-default" %>
