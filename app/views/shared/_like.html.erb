@@ -1,0 +1,5 @@
+<% if tweet.liked_users.include?(current_user) %>
+  <%= link_to 'Unlike', tweets_unlike_path(tweet.id), method: :post %>
+<% else %>
+  <%= link_to 'Like', tweets_like_path(tweet.id), method: :post %>
+<% end %>

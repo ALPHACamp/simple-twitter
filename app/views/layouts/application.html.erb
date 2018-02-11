@@ -21,7 +21,11 @@
         <% end %>
 
         <li><%= link_to users_tweets_path(current_user) do %>
-          <img src="<%= current_user.avatar %>" alt="" width="50px">
+          <% if current_user.avatar.to_s == '' %>
+            <img src="http://fakeimg.pl/60x60/" alt="" width="50px">
+          <% else %>
+            <img src="<%= current_user.avatar %>" alt="" width="50px">
+          <% end %>
           <% end %></li>
         <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
 

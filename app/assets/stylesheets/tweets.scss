@@ -70,3 +70,11 @@ h2{
     }
   }
 }
+.tweet_like{
+  a{
+    color:#cd201f;
+    &:hover,&:focus,&:active{
+      border-bottom: 1px solid #cd201f;
+    }
+  }
+}

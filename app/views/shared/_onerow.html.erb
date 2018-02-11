@@ -18,7 +18,9 @@
         <%= link_to replies_path(tweet.id), class: "tweet_reply" do %>
           Reply(<%= tweet.replies_count %>)
         <% end %>
-        <span class="tweet_like">Like(<%= tweet.likes_count %>)</span>
+        <span class="tweet_like">
+          <%= render partial: "shared/like",locals:{tweet:tweet} %>
+          (<%= tweet.likes_count %>)</span>
       </div>
     </div>
   </div>

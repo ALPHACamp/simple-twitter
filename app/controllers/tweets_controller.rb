@@ -8,7 +8,6 @@ class TweetsController < ApplicationController
   end
 
   def create
-
     @tweet=Tweet.new(tweet_params)
     @tweet.user=current_user
     if @tweet.save
@@ -23,9 +22,35 @@ class TweetsController < ApplicationController
   end
 
   def like
+    @tweet=Tweet.find(params[:id])
+    @like=@tweet.likes.create!(user: current_user) 
+
+    @u_likes_count=current_user.likes.count
+    @user_like=User.update(current_user.id,likes_count: @u_likes_count)
+    @user_like.save
+
+    @t_likes_count=@tweet.likes.count
+    @tweet_like=Tweet.update(@tweet.id,likes_count: @t_likes_count)
+    @tweet_like.save!    
+
+    redirect_back(fallback_location: root_path)
   end
 
   def unlike
+    @tweet=Tweet.find(params[:id])
+    @tweet_l=Like.where(tweet_id: params[:id])
+
+    @unlike=@tweet_l.where(user_id: current_user.id).each{|uk| uk.destroy}
+
+    @likes_count=current_user.likes.count
+    @user_like=User.update(current_user.id,likes_count: @likes_count)
+    @user_like.save
+
+    @t_likes_count=@tweet.likes.count
+    @tweet_like=Tweet.update(@tweet.id,likes_count: @t_likes_count)
+    @tweet_like.save!      
+          
+    redirect_back(fallback_location: root_path)    
   end
 
   private

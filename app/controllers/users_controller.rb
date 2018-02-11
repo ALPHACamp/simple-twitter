@@ -10,13 +10,14 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user=User.find(params[:id])
     
-    if @user=User.update(usr_params)
+    if @user_up=User.update(usr_params)
       flash[:notice] = "更新成功"
       
-      redirect_back(fallback_location: root_path)
+      redirect_to users_tweets_path(@user)
     else
-      flash.now[:alert] =@user.errors.full_messages.each{|msg| msg.class}
+      flash.now[:alert] =@user_up.errors.full_messages.each{|msg| msg.class}
 
       render :edit
     end     

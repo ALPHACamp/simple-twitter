@@ -1,0 +1,33 @@
+<div class="container">
+<h2><%= link_to 'Tweet List', admin_root_path %> | User List</h2>
+  <% @users.each do |user| %>
+
+  <div class="row tweets">
+    <div class="col-md-3">
+      <img src="<%= user.avatar %>" alt="" class="avatar">
+    </div>
+    <div class="col-md-9">
+      <div class="tweet_usr">
+        <%= link_to users_tweets_path(user.id) do %>
+          <h3><%= user.name %>
+        </h3>
+        <% end %>
+      </div>
+      <div class="row social">
+        <%= link_to users_tweets_path(user) do %>
+          Tweets <%= user.tweets.count %>
+        <% end %><br>
+        <%= link_to users_followings_path(user) do %>
+          Following <%= user.followings.count %>
+        <% end %><br>
+        <%= link_to users_followers_path(user) do %>
+          Follower <%= user.followers_count %>
+        <% end %><br>
+        <%= link_to users_likes_path(user) do %>
+          Like <%= user.likes_count %>
+        <% end %>  
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
