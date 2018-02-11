@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   end
 
   def followers
-    @followers = Followship.where(following_id:params[:id])
+    @followers = Followship.where(following_id:params[:id]).order(created_at: :desc)
     @user = User.find(params[:id])
     @tweet_count = @user.tweet_count
     @following_count = @user.following_count
