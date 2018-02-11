@@ -3,18 +3,23 @@ class RepliesController < ApplicationController
   def index
     # set tweet
     @replies = @tweet.replies.order(created_at: :desc)
-    @reply = Reply.new
-  end
+    @reply = @tweet.replies.build
+  end   
 
   def create
     # seet tweet
     @reply = @tweet.replies.build(reply_params)
     @reply.user = current_user
-    @reply.save!
-    redirect_to tweet_replies_path(@tweet)
+    
+    if @reply.save(reply_params)
+      redirect_to tweet_replies_path(@tweet)
+    else
+      flash[:alert] = @reply.errors.full_messages.to_sentence
+      redirect_to tweet_replies_path(@tweet) 
+    end  
   end
 
-private
+  private
   def set_tweet
     @tweet = Tweet.find(params[:tweet_id])
   end
@@ -22,5 +27,6 @@ private
   def reply_params
     params.require(:reply).permit(:comment)
   end
+
 end
 
