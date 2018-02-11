@@ -9,6 +9,10 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new
   end
 
+  def replies
+  
+  end
+
   def create
     @user = User.find(current_user.id)
     @tweet = @user.tweets.build(tweet_params)

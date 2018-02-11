@@ -8,21 +8,23 @@ Rails.application.routes.draw do
   resources :tweets, only: [:index, :create, :like, :unlike] do
     member do
       post :like
+      get :replies
+      get :likes
     end
   end
 
   resources :replies, only: [:index, :create]
   resources :users, only: [:index, :show] do
     collection do
-      # 瀏覽所有餐廳的最新動態
       # GET users/tweets
-      
-      get :followings
-      get :followers
+
     end
     member do
       get :like
       get :tweets
+            
+      get :followings
+      get :followers
       #post :unfavorite
     end
   end
