@@ -1,27 +1,24 @@
-<h1>後台</h1>
-
-  <table class="table table-hover">
-    <thead>
+<div class="container">
+  
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Tweet</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>    
+      <% @tweets.each do |tweet| %>
       <tr>
-        <th>No</th>
-        <th>Tweet</th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <th scope="row"><%= tweet.id %></th>
+        <td><%= tweet.description %></td>  
+        <td><%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %></td>
       </tr>
-    </thead>    
-    <% @tweets.each do |tweet| %>
-    <tr>
-      <th scope="row"><%= tweet.id %></th>
-      <td><%= tweet.description %></td>
-
-      <td><%= link_to 'Show', admin_tweet_path(tweet) %></td>
-
-      <td><%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %></td>
-    </tr>
-    <% end %>
-    
-  </table>
+      <% end %>
+      
+    </table>
+</div>
 
 
     
