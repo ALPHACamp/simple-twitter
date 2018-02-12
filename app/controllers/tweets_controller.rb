@@ -19,11 +19,19 @@ class TweetsController < ApplicationController
   end
 
   def like
-    @tweet.likes.create!(user: current_user)
-    redirect_back(fallback_location: root_path)
+    @tweet = like.create!(user: current_user)
+    if @tweet.save
+      flash[:notice] = "Successfully liked"
+      redirect_back(fallback_location: root_path)
+    else
+      flash[:alert] = @tweet.errors.full_messages.to_sentence
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def unlike
+    @tweet = current_user.likes.where(liked_tweets_id: params[:id]).first
+    @tweet.destroy
     redirect_back(fallback_location: root_path)
   end
 
