@@ -24,8 +24,6 @@ class TweetsController < ApplicationController
   end
 
   def unlike
-    likes = Like.where(tweet: @tweett, user: current_user)
-    likes.destroy_all
     redirect_back(fallback_location: root_path)
   end
 

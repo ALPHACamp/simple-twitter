@@ -29,8 +29,6 @@ class User < ApplicationRecord
   def following?(user)
   self.followings.include?(user)
   end
-  def is_liked?(user)
-    self.liking_users.include?(user)
-  end
+
 
 end
