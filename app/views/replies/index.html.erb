@@ -1,0 +1,88 @@
+<h1>Simple Twitter前台</h1>
+
+<div class="container">
+  <div class="row">
+
+    <ul class="nav nav-tabs">
+      <li role="presentation">
+        <%= link_to 'Index', root_path %>
+      </li>
+      <li role="presentation">
+        <%= link_to 'Tweets', tweets_path %>
+      </li>
+      <li role="presentation" class="active">
+        <%= link_to 'Users', users_path %>
+      </li>
+    </ul>
+
+  </div>
+</div>
+
+  <ul>
+    <li>
+      <%= image_tag @user.avatar, :size => "100x100", class: "img-responsive img-rounded" %>
+      <%= @user.name %>
+      <%= @user.introduction %>
+      <%= link_to 'Tweets', tweets_user_path(@user) %>
+        (<%= @user.tweets.count %>)
+      <%= link_to 'Following', followings_user_path(@user) %>
+        (<%= @user.followings.count %>)
+      <%= link_to 'Follower', followers_user_path(@user) %>
+        (<%= @user.followers_count %>)
+      <%= link_to 'Like', likes_user_path(@user) %>
+        (<%= @user.likes_count %>)
+      <%= link_to 'Edit Profile', edit_user_path(@user) %>
+
+      <h2>Tweets</h2>
+    </li>
+  </ul>
+
+  <ul>
+
+      <li>
+        <%= image_tag @tweet.user.avatar, :size => "100x100", class: "img-responsive img-rounded" %>
+        <%= link_to @tweet.user.name, tweets_user_path(@tweet.user.id) %>
+        <%= @tweet.updated_at %>
+        <%= @tweet.description %>
+        <%= link_to 'Reply', tweet_replies_path(@tweet) %>
+          <% if @tweet.replies_count > 0 %>
+            (<%= @tweet.replies_count %>)
+          <% end %>
+        <% if @tweet.user != current_user %>
+          <% if @tweet.is_liked?(current_user) %>
+            <%= link_to 'Liked', unlike_tweet_path(@tweet), method: :post, class: "btn btn-info" %>
+          <% else %>
+            <%= link_to 'Like', like_tweet_path(@tweet), method: :post, class: "btn btn-primary" %>
+          <% end %>
+        <% else %>
+          <%= 'Like' %>
+            <% if @tweet.likes_count > 0 %>
+              (<%= @tweet.likes_count %>)
+            <% end %>
+        <% end %>
+      </li>
+
+  </ul>
+
+  <ul><h2>Replies</h2></ul>
+
+  <ul>
+    <% @replies.each do |reply| %>
+      <li>
+        <%= image_tag reply.user.avatar, :size => "100x100", class: "img-responsive img-rounded" %>
+        <%= reply.user.name %>
+        <%= reply.updated_at %>
+        <%= reply.comment %>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= form_for @reply do |f| %>
+  <div class="form-group">
+    <ul>
+      <%= f.hidden_field :tweet_id, :value => @tweet.id %>
+      <%= f.text_area :comment, :size => "80x8", class: "form-control" %>
+      <%= f.submit "Reply", class: "btn btn-primary" %>  
+    </ul>
+  </div>
+  <% end %>

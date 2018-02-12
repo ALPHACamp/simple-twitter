@@ -1,0 +1,7 @@
+<% if @tweet.errors.present? %>
+  <ul>
+    <% @tweet.errors.each do |error, message| %>
+      <li> <%= "#{error.capitalize}  #{message}" %></li>
+    <% end %>
+  </ul>
+<% end %>

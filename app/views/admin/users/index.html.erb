@@ -1,0 +1,29 @@
+<h1>Simple Twitter後台</h1>
+
+<div class="container">
+  <div class="row">
+
+    <ul class="nav nav-tabs">
+      <li role="presentation">
+        <%= link_to 'Index', admin_root_path %>
+      </li>
+      <li role="presentation">
+        <%= link_to 'Tweets', admin_tweets_path %>
+      </li>
+      <li role="presentation" class="active">
+        <%= link_to 'Users', admin_users_path %>
+      </li>
+    </ul>
+
+  </div>
+</div>
+
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <td><%= user.name %></td>
+      <%= image_tag user.avatar, :size => "100x100", class: "img-responsive img-rounded" %>
+      <td><%= link_to 'Destroy', admin_user_path(user), method: :delete, data:{ confirm: "Are you sure?" } %></td>
+    </li>
+  <% end %>
+</ul>
