@@ -1,6 +1,7 @@
 class FollowshipsController < ApplicationController
   def create
     @user_id = User.find(params[:following_id])
+    if current_user != @user_id
     @followship = current_user.followships.build(following_id: params[:following_id])
     if @followship.save
         # @user_id.followers_count = @user_id.followers.count
@@ -11,7 +12,7 @@ class FollowshipsController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
   end
-
+end
 
   def destroy
     @followship = current_user.followships.where(following_id: params[:id]).first
