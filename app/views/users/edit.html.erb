@@ -1,26 +1,27 @@
 <div class="container">
   <div class="row">
 
-
     <div class="col-md-4">
       <%= form_for @user do |f| %>
         <div class="form-group">
           <%= image_tag @user.avatar if @user.avatar? %>
           <%= f.file_field :avatar %>
         </div>
+      <% end %>
     </div>
       <div class="col-md-8">
+      <%= form_for @user do |f| %>
         <div class="form-group">
-          <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
+          <%= f.text_field :name, placeholder: "Name", class: "form-control"  %>
         </div>
         <div class="form-group">
-          <%= f.text_area :introduction, placeholder: "Type anything about you here....", class: "form-control", rows: "10" %>
+          <%= f.text_area :introduction, placeholder: "Type anything about you here....", class: "form-control" , rows: "10" %>
         </div>
         <div class="form-group">
           <%= f.submit "Update", class: "btn btn-primary btn-lg movebtn" %>
         </div>
       <% end %>
-     </div> 
+      </div>
 
   </div>
 </div>
