@@ -26,10 +26,10 @@
           <% end %>
 
           <li class="nav-item">
-            <% if user.avatar? %>
+            <% if current_user.avatar? %>
               <%= image_tag current_user.avatar, width: '50px', class: "rounded m-auto d-block" %>
             <% else %>
-            Hi, <%= user.name %>
+            Hi, <%= current_user.name %>
             <% end %>  
           </li>
           <li class="nav-item">
