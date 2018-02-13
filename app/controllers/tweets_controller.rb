@@ -23,7 +23,7 @@ class TweetsController < ApplicationController
   end
 
   def like
-    @tweet.likes.create!(user: current_user)
+    @tweet.likes.create!(tweet: @tweet, user: current_user)
     redirect_back(fallback_location: tweets_path)
   end
 
