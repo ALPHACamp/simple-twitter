@@ -17,7 +17,7 @@
         <tbody>
           <tr>
             <th scope="row">
-            <%= form_for @user do |f| %>
+            <%= form_for current_user do |f| %>
               <%= f.label :avatar, "上傳大頭照" %>
               <br>
               <%= image_tag @user.avatar, width: '150px' if @user.avatar? %>
