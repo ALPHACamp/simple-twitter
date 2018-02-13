@@ -12,7 +12,7 @@
       <tr>
         <th scope="col"></th>
         <th scope="col">Tweet Content</th>
-        <th scope="col"></th>
+        <th scope="col">Reply</th>
         <th scope="col">Delete</th>
       </tr>
     </thead>
@@ -33,12 +33,23 @@
           <%= link_to tweet_replies_path(tweet), class: "btn btn-link" do %>
             Reply <span class="badge badge-pill badge-primary"><%= tweet.replies_count %></span>
           <% end %>
-         
           <!-- like action button -->
-          <%= render partial: "shared/like", locals: {tweet: tweet} %>
-               
+          <%= render partial: "shared/like", locals: {tweet: tweet} %>     
         </td>
-        <td></td>
+        <td>
+          <ul class="list-group">
+          <% tweet.replies.each do |reply| %>
+            <li class="list-group-item">
+              <%= link_to tweets_user_path(reply.user) do %>
+                <p class="card-text">
+                  @<%= reply.user.name %><% end %>, 
+                  <%= reply.created_at.strftime("%Y-%m-%d, %H:%M") %>
+                  <br>     
+                  <%= reply.comment %>
+                </p>
+            </li>  
+          <% end %>    
+        </td>
         <td>
         <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data:{ confirm: "確定刪除此tweet?" }, class: "text-center" %>
         </td>

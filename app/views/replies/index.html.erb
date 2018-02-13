@@ -6,10 +6,11 @@
     </div>  
     <div class="col-12 col-sm-8">
     <!-- tweet -->
-    
+    <h2><strong>Tweet</strong></h2>
     <%= render partial: "shared/tweet_in_table", locals: {tweet: @tweet} %>
    
     <!-- tweet.replies show -->
+    <h2><strong>Replies</strong></h2>
     <% @replies.each do |reply| %>
       <%= render partial: "shared/reply_in_table", locals: {reply: reply} %>  
     <% end %> 

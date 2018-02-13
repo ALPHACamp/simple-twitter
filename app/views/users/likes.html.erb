@@ -6,6 +6,7 @@
     </div>  
     <div class="col-12 col-sm-8">
     <!-- user's data show area -->
+    <h2><strong>Likes</strong></h2>
     <% @likes.each do |tweet| %>
       <%= render partial: "shared/tweet_in_table", locals: {tweet: tweet} %>  
     <% end %>  
