@@ -19,7 +19,7 @@
       </tr>
     </thead>
     <tbody>
-    <% @twitters.each do |user| %>
+    <% @users.each do |user| %>
       <tr>
         <th scope="row">
           <% if user.avatar? %>
@@ -38,6 +38,6 @@
     </tbody>
   </table>  
   <div class="container pagination justify-content-center" >
-    <%= paginate @twitters, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm" %>
+    <%= paginate @users, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm" %>
   </div>
 </div>
