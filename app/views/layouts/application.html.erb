@@ -26,7 +26,11 @@
           <% end %>
 
           <li class="nav-item">
-            <%= image_tag current_user.avatar, width: '50px', class: "rounded m-auto d-block" %>
+            <% if user.avatar? %>
+              <%= image_tag current_user.avatar, width: '50px', class: "rounded m-auto d-block" %>
+            <% else %>
+            Hi, <%= user.name %>
+            <% end %>  
           </li>
           <li class="nav-item">
             <%= link_to'登出', destroy_user_session_path, method: :delete, class: "nav-link" %>
