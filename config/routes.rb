@@ -26,7 +26,9 @@ Rails.application.routes.draw do
   root "tweets#index"     # 前台入口
 
   namespace :admin  do    
-    resources :tweets, only: [:index, :destroy]
+    resources :tweets, only: [:index, :destroy] do
+      resources :replies, only: [:index]
+    end  
     resources :users, only: [:index] # 管理者可以瀏覽站內所有的使用者清單
     root "tweets#index"   # 後台入口
   end  
