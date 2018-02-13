@@ -32,7 +32,14 @@ h1,h2{
   display: block;
 }
 
-.avatar .avatar-list img{
+.avatar-user{
+  width: 120px;
+  float: left;
+  margin: 0px 0px 10px 0px;
+  // display: block;
+}
+
+.avatar .avatar-navi .avatar-user img{
   height: 100%;
   width: 100%;
   margin: auto;
@@ -82,7 +89,7 @@ h1,h2{
   opacity: 0.5;
 }
 
-.avatar-list {
+.avatar-navi {
   height: 40px;
   width: 40px;
   /*margin: 0px,80px,-40px,80px;*/
@@ -97,7 +104,7 @@ h1,h2{
 }
 
 .user-border{
-  height: 300px;
+  height: 200px;
   padding: 10px;
   text-align: left;
   border-style: solid;

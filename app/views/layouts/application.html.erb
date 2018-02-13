@@ -27,13 +27,13 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="pull-right text-right nav navbar-nav">
               <% if current_user %>
-                <% if current_user&.admin? %>
+                <% if current_user.admin? %>
                   <li><%= link_to 'Admin', admin_tweets_path %></li>
                 <% end %>
                 <!-- 使用者能創建帳號、登入、登出 -->
                 <li>
                   <%= link_to(tweets_user_path(current_user)) do %>
-                    <div class="avatar-list">
+                    <div class="avatar-navi">
                       <%= image_tag current_user.avatar, class: "img-responsive img-circle" %>
                     </div>
                   <% end %>

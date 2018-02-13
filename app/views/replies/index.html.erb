@@ -24,10 +24,10 @@
     <br />  
     
     <h2>Replies</h2>
-    <%#= render "shared/tweets", :@tweets => @replies, :description => @replies.comment %>
+    <%#= render "shared/tweets", :@tweets => @replies, :description => :comment %>
         <div class = "box">
           <% @replies.each do |reply| %>
-            <div class="box-board">
+            <div class="box-border">
               <div class="avatar">
                 <%= image_tag reply.user.avatar, class: "img-responsive img-circle" %>
               </div>
