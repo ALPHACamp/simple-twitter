@@ -41,6 +41,7 @@ class UsersController < ApplicationController
     @user_id = User.find(params[:id])
     @like = Like.order(created_at: :desc).limit(10)
     @likes = Like.order(created_at: :desc)
+    @users =Like.order(created_at: :desc).includes(:user)
   end
 
   private

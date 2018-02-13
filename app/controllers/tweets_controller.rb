@@ -5,8 +5,7 @@ before_action :authenticate_user!
     @tweets= Tweet.order(created_at: :desc)
     @tweet_order = Tweet.order(created_at: :desc).limit(10)
     @user_all= User.all
-    @users=Tweet.includes(:user)
-    @users= User.order(followers_count: :asc)
+    @users=User.order(followers_count: :desc)
     @user_followers_count = User.order(followers_count: :desc)
   end
 
