@@ -17,7 +17,7 @@
       <% end %>  
     </div>  
     <div class="col-xs-12 col-sm-4">   
-      <!-- user's data show area -->
+      <!-- popular users -->
       <h2><strong>Popular</strong></h2>
       <% @users.each do |user| %> 
         <%= render partial: "shared/user_in_table", locals: {user: user} %>        
