@@ -9,13 +9,16 @@ class TweetsController < ApplicationController
   end
 
   def create
+    @tweets = Tweet.all
+    @users = User.order(followers_count: :desc).limit(10)
     @tweet = Tweet.new(tweet_params)
+    @tweet.user = current_user
     if @tweet.save
-      flash[:success] = "Tweet successfully created"
-      redirect_to tweets_path
+      flash[:notice] = "Tweet successfully created"
+      redirect_to root_path
     else
-      flash[:error] = "Something went wrong"
-      render tweets_path
+      flash[:alert] = "Something went wrong"
+      render :index
     end
   end
   

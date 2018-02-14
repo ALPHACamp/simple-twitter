@@ -17,7 +17,7 @@ class User < ApplicationRecord
   has_many :tweets, class_name: "Tweet", foreign_key: "reference_id"
   
   #處理reply的關聯
-  has_many :replis, class_name: "Reply", foreign_key: "reference_id", dependent: :restrict_with_error
+  has_many :replis, class_name: "Reply", foreign_key: "user_id", dependent: :restrict_with_error
   has_many :tweets, through: :replies, source: :reply
 
   #處理like的關聯

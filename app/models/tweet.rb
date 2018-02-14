@@ -7,7 +7,7 @@ class Tweet < ApplicationRecord
   validates_length_of :description, maximum: 140
   
   #處理user的關聯
-  belongs_to :user, class_name: "User"
+  belongs_to :user, optional: true
 
   #處理reply的關聯
   has_many :replies, class_name: "Reply", dependent: :destroy
