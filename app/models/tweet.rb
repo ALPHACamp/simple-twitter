@@ -11,13 +11,5 @@ class Tweet < ApplicationRecord
   has_many :replied_users, through: :replies, source: :user 
   #一個user，被reply的user，關聯昰user 
 
-  @tws=Tweet.all
-  @tws.each do |tweet|
-   @replies_count=tweet.replies.count
-   @tweet=Tweet.update(tweet.id,replies_count: @replies_count)
-   @tweet.save!
-   @likes_count=tweet.likes.count
-   @tweet=Tweet.update(tweet.id,likes_count: @likes_count)
-   @tweet.save!
-  end 
+
 end
