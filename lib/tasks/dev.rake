@@ -35,7 +35,7 @@ namespace :dev do
   task fake_followship: :environment do
     Followship.destroy_all
 
-    until Followship.count == 20 do
+    until Followship.count == 40 do
     
       @sample_user=User.all.sample.id
       @sample_following=User.all.sample.id
