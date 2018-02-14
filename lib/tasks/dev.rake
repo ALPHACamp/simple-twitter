@@ -120,4 +120,14 @@ namespace :dev do
     end
     puts "Now, All tweets understand how many replies."
   end
+
+  task fake_updatetweets_count: :environment do
+    User.all.each do |user|
+      user.update!(
+        tweets_count: Tweet.where(:user_id => user.id).length
+      )
+      user.save!
+    end
+    puts "Now, All users understand they have how many tweets."
+  end
 end
