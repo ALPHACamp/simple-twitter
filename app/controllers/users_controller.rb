@@ -15,6 +15,13 @@ class UsersController < ApplicationController
   #編輯好自己的資料好，上傳
   def update
     @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:notice] = "user was successfully updated."
+      redirect_to tweets_user_path(@user)
+    else
+      flash[:alert] = "user was failed to updated."
+      render :edit
+    end
   end
 
   #我在追蹤誰
@@ -46,5 +53,9 @@ class UsersController < ApplicationController
        flash[:alert] = "Not allow!"
        redirect_to tweets_user_path(current_user)
      end
+  end
+
+  def user_params
+    params.require(:user).permit(:name, :introduction, :avatar)
   end
 end
