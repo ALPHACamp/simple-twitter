@@ -7,12 +7,10 @@ class Admin::TweetsController < Admin::BaseController
 
   #刪除該則tweet
   def destroy
-    set_tweet
-  end
-
-  private
-
-  def set_tweet
     @tweet = Tweet.find(params[:id])
+    @tweet.destroy
+    redirect_to admin_tweets_path
+    flash[:alert] = "tweet was deleted"
   end
+
 end
