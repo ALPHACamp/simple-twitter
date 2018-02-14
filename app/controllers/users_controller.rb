@@ -24,18 +24,18 @@ class UsersController < ApplicationController
 
   def followings
     # 基於測試規格，必須講定變數名稱
-    @followings = @user.followings.all.order('followships.created_at DESC')
+    @followings = @user.followings.all.order('followships.created_at desc')
   end
 
   def followers
     # 基於測試規格，必須講定變數名稱
-    @followers = @user.followers.all.order(created_at: :desc)
+    @followers = @user.followers.all.order('followships.created_at desc')
   end
 
   def likes
     # 基於測試規格，必須講定變數名稱
     @tweets = @user.liked_tweets
-    @likes = @tweets.all.order(updated_at: :desc)
+    @likes = @tweets.all.order('likes.created_at DESC')
   end
 
   private
