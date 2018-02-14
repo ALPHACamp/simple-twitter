@@ -42,6 +42,7 @@
             <%= image_tag user.avatar, class: "img-responsive center-block" %>
             <div class="caption">
               <h2>@<%= user.name %></h2>
+              <h4>Followers (<%= user.followers_count %>)</h4>
             </div>
             <p>
               <%= user.introduction %>
