@@ -24,6 +24,7 @@ namespace :dev do
       name: 'admin',
       email: "admin@example.co",
       password: "12345678",
+      role: 'admin',
       introduction: FFaker::Lorem::sentence(30),
       avatar: File.open("#{Rails.root}/public/avatar/user#{20}.jpg")
       )
