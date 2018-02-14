@@ -17,7 +17,7 @@
             <div class="single-tweet">
               <%= image_tag(tweet.user.avatar, height: '32', width: '32') %>
               <p>
-                <%= tweet.user.name %>
+                <%= link_to  "@#{tweet.user.name}", tweets_user_path(tweet.user.id), class:"class" %>
                 <em>, <%= tweet.created_at.strftime("%Y-%m-%d") %>, <%= tweet.created_at.strftime("%I:%M%p") %></em>
               </p>
               <p><%= tweet.description %></p>
