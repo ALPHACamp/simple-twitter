@@ -1,7 +1,7 @@
 <div class="pop-user">
   <div class="row">
     <div class="col-md-4">
-      <%= filestack_image user.avatar %>
+      <%= user_avatar user.avatar, "" %>
     </div>
     <div class="col-md-8">
       <%= link_to "@#{user.name}", tweets_user_path(user), class: "name" %>

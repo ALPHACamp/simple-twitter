@@ -30,7 +30,7 @@
             <% end %>
             <li class="nav-item">
                 <%= link_to tweets_user_path(current_user), class: "img-a" do %>
-                  <%= filestack_image current_user.avatar, class: "nav-img" %>
+                  <%= user_avatar current_user.avatar, "nav-img" %>
                 <% end %>
             </li>
             <li class="nav-item"><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
