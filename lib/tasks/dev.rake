@@ -28,7 +28,6 @@ namespace :dev do
       avatar: File.open("#{Rails.root}/public/avatar/user#{20}.jpg")
       )
     @admin.save!
-    puts user.name
     puts "now you have #{User.count} users data"
   end
 
