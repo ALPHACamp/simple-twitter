@@ -7,15 +7,13 @@
     <%= render partial: "shared/tweet_msg", locals: { tweet: @tweet} %>
     <h3 class="title">replies</h3>
     <% @replies.each do |t| %>
-      <div class="reply-msg">
-        <div class="row">
-          <div class="col-md-2">
-            <%= image_tag t.user.avatar %>
-          </div>
-          <div class="col-md-10">
-            <%= link_to "@#{t.user.name},#{t.created_at.to_s(:db)}", tweets_user_path(t.user) %>
-            <p><%= t.comment %></p>
-          </div>
+      <div class="reply-msg row">
+        <div class="col-md-2">
+          <%= user_avatar t.user.avatar, "" %>
+        </div>
+        <div class="col-md-10">
+          <%= link_to "@#{t.user.name},#{t.created_at.to_s(:db)}", tweets_user_path(t.user) %>
+          <p><%= t.comment %></p>
         </div>
       </div>
     <% end %>
