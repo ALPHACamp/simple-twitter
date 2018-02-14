@@ -26,8 +26,6 @@
             <% end %>
           </em>
         </p>
-        <p>Introduction:</p>
-        <p><%= user.introduction %></p>
         <br>
         <p><%= "Tweet(#{Tweet.where(:user_id => user).length})" %></p>
         <br>
