@@ -37,18 +37,4 @@ class User < ApplicationRecord
     self.followings.include?(user)
   end  
 
-  @usrs_ls=User.all
-  @usrs_ls.each do |user|
-   @likes_count=user.likes.count
-   @user_l=User.update(user.id,likes_count: @likes_count)
-   @user_l.save!
-  end
-
-  @usrs_fs=User.all
-  @usrs_fs.each do |user|
-   @followers_count=user.followers.count
-   @user_f=User.update(user.id,followers_count: @followers_count)
-   @user_f.save!
-  end  
-
 end
