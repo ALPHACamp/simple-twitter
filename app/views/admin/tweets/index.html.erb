@@ -11,14 +11,24 @@
     </ul>
   </div>
 </div>
-
-<ol>
-  <% @tweets.each do |tweet| %>
-  <li>
-    <%= tweet.description %>
-    <%= link_to  "Reply", tweet_replies_path(tweet), class: "btn btn-primary ctweet" %>
-    <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"}, class: "btn btn-primary ctweet" %>
-  </li>
-  <hr>
-  <% end %>
-</ol>
+<div class="container">
+  <div class="row">
+    <table>
+      <tr>
+        <th>#</th>
+        <th>Description</th>
+        <th>Reply</th>
+        <th>Delete</th>
+      </tr>
+      
+      <% @tweets.each do |tweet| %>
+        <tr>
+        <td><%= tweet.id %></td>
+        <td><%= tweet.description %></td>
+        <td><%= link_to  "Reply", tweet_replies_path(tweet), class: "btn btn-primary ctweet" %></td>
+        <td><%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"}, class: "btn btn-primary ctweet" %></td>
+        </tr>
+      <% end %>      
+    </table>
+  </div>
+</div>
