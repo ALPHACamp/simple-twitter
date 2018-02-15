@@ -1,46 +1,38 @@
-<h1>user likes</h1>
 <div class="container">
-  <div class="portfolio">
-    <div class="row">
-      <%= render partial: "shared/portfolio" %>
-    </div>
+  <div class="row">
+    <%= render partial: "shared/portfolio" %>
   </div>
-  <div class="like">
-    <div class="row">
-      <p>Like</p>
-      <p>list of liked tweets</p>
 
-       <div class="col-md-10 col-md-offset-1">
-
-      <div class="page-header">
-        <h1>Likes</h1>
-      </div>
-      <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title"><strong>Likes</strong></h3>
-          </div>
-
-          <div class="panel-body">
-            <% @likes.each do |like| %>
-              <div>
-                <div>
-                  <%= link_to tweet_replies_path(like.tweet) do %>
-                    <%= image_tag like.tweet.user.avatar, width: '300px', class: "img-responsive img-rounded" %>
-                  <% end %>
-                  <h5><%= like.tweet.description %></h5>
-                  <P>
-                    <%= link_to "Reply(#{Reply.where(:tweet_id => like.id).length})", tweet_replies_path(like.tweet), class: "btn btn-danger" %>
-                    <%= link_to "Unlike(#{Like.where(:tweet_id => like.id).length})", unlike_tweet_path(like.tweet), method: :post, class: "btn btn-info" %>
-                    
-                  </P>
-                </div>
+  <!-- 顯示該使用者的likes -->
+  <div class="pertweet">
+    <div class="col-sm-6 col-md-4 user-relative">
+      <h3><strong><%= @likes.count %></strong> Likes</h3>
+    </div>
+    <% @likes.each do |like| %>
+      <div class="col-sm-6 col-md-4 user-relative">
+        <div class="following-tweets">
+          <div class="single-tweet">
+            <div class="user-avatar">
+              <%= image_tag(like.tweet.user.avatar, height: '128', width: '128') %>
+            </div>
+            <div class="user-tweet">
+              <div class="user-name">
+                <strong>
+                  <%= link_to "@#{like.user.name}", tweet_replies_path(like.tweet), :alt => "Who is this?" %>
+                </strong>
               </div>
-            <% end %>
+              <div class="user-description">
+                <%= like.tweet.description.truncate(70) %>
+              </div>
+              <div class="user-re-li">
+                <%= link_to "Reply(#{Reply.where(:tweet_id => like.id).length})", tweet_replies_path(like.tweet), class: "btn btn-danger btn-group-xs" %>
+                <%= link_to "Unlike(#{Like.where(:tweet_id => like.id).length})", unlike_tweet_path(like.tweet), method: :post, class: "btn btn-info btn-group-xs" %>
+              </div>
+            </div>
           </div>
         </div>
-
-    </div>
-
-    </div>
+        <hr>
+      </div>
+      <% end %>
   </div>
 </div>
