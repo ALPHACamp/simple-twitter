@@ -9,6 +9,7 @@ h1, h2, h3, h4, h5 {
 
 hr {
   border-width: 20px;
+  border-radius: 10px;
 }
 
 .input-group {
@@ -105,6 +106,7 @@ div.portfolio {
 
 div.user-relative {
   box-sizing: content-box;
+  float: right;
   width: 60%;
   margin-right: 5px;
   border: 1px solid #000000;

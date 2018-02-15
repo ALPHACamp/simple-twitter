@@ -1,30 +1,34 @@
-<h1>user followings</h1>
 <div class="container">
-  <div class="portfolio">
-    <div class="row">
-      <%= render partial: "shared/portfolio" %>
-    </div>
+  <div class="row">
+    <%= render partial: "shared/portfolio" %>
   </div>
-  <div class="following">
-    <div class="row">
-      <p>Following</p>
-      <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title"><%= @followings.count %></strong> followings</h3>
+
+  <!-- 顯示該使用者的followings -->
+  <div class="pertweet">
+    <% @followings.each do |following| %>
+      <div class="col-sm-6 col-md-4 user-relative">
+        <div class="following-tweets">
+          <div class="single-tweet">
+            <div class="user-avatar">
+              <%= image_tag(following.avatar, height: '128', width: '128') %>
+            </div>
+            <div class="user-tweet">
+              <div class="user-name">
+                <strong>
+                  <%= link_to "@#{following.name}", tweets_user_path(following), :alt => "Who is this?" %>
+                </strong>
+              </div>
+              <div class="user-description">
+                <%= following.introduction.truncate(70) %>
+              </div>
+              <div class="user-re-li">
+                <%= link_to "Unfollow", followship_path(following), method: :delete, class: "btn btn-info btn-group-xs" %>
+              </div>
+            </div>
           </div>
-          <ul class="list-group">
-            <% @followings.each do |following| %>
-            <li class="list-group-item">
-              <%= link_to tweets_user_path(following) do %>
-              <%= image_tag(following.avatar, height: 30, width: 30, class: "img-circle") %>
-              <%= following.name %>
-              <% end %>
-              <p><%= following.introduction %></p>
-              <%= link_to  "Unfollow", followship_path(following), method: :delete, class: "btn btn-primary ctweet" %>
-            </li>
-            <% end %>
-          </ul>
         </div>
-    </div>
+        <hr>
+      </div>
+      <% end %>
   </div>
 </div>
