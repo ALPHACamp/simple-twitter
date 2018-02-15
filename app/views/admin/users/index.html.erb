@@ -39,7 +39,7 @@
           <td><%= "Tweet(#{Tweet.where(:user_id => user).length})" %></td>
           <td><%= "Following(#{Followship.where(:user_id => user).length})" %></td>
           <td><%= "Follower(#{Followship.where(:following_id => user).length})" %></td>
-          <td><%= "Like()" %></td>
+          <td><%= "Like(#{Tweet.where(:user_id => user).pluck(:likes_count).sum})" %></td>
         </tr>
       <% end %>      
     </table>
