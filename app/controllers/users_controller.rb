@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :checkid, except: [:tweets]
 
   #呈現用戶頁面，自己或他人
   def tweets
@@ -27,22 +26,22 @@ class UsersController < ApplicationController
   #我在追蹤誰
   def followings
     # 基於測試規格，必須講定變數名稱
-    @followings = @user.followings
     @user = User.find(params[:id])
+    @followings = @user.followings
   end
 
   #誰在追蹤我
   def followers
     # 基於測試規格，必須講定變數名稱
-    @followers = @user.followers
     @user = User.find(params[:id])
+    @followers = @user.followers
   end
 
   #tweet被喜歡的數量
   def likes
     # 基於測試規格，必須講定變數名稱
-    @likes = Like.all.where(:user_id => current_user)
     @user = User.find(params[:id])
+    @likes = Like.all.where(:user_id => current_user)
   end
   
   private
