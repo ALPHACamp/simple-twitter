@@ -65,8 +65,6 @@
       </div>
       <hr>
       <div class="following-tweets">
-        <h3>Replies</h3>
-        <br>
         <!-- 已回覆 -->
         <div class="replies">
           <% @tweet.replies.each do |reply| %>
@@ -91,6 +89,7 @@
             </div>
             <% end %>
         </div>
+        <hr>
         <!-- 輸入框 -->
         <div class="commentarea">
           <%= form_for [@tweet, @reply] do |f| %>
