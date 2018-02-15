@@ -9,7 +9,7 @@ h1, h2, h3, h4, h5 {
 
 hr {
   border-width: 20px;
-  border-radius: 10px;
+  margin: 0px;
 }
 
 .input-group {
@@ -70,7 +70,6 @@ div.all-tweets {
 div.single-tweet {
   box-sizing: content-box;
   border: 1px solid #e0e0e0;
-  margin-bottom: 20px;
   border-radius: 20px;
   height: 175px;
 }
