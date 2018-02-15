@@ -89,3 +89,17 @@ div.user-introduction {
 div.user-re-li {
   display: inline-block;
 }
+
+div.portfolio {
+  box-sizing: content-box;
+  width: 30%;
+  margin-right: 10px;
+  border: 1px solid #000000;
+}
+
+div.user-relative {
+  box-sizing: content-box;
+  width: 60%;
+  margin-right: 5px;
+  border: 1px solid #000000;
+}

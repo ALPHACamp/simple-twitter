@@ -1,86 +1,109 @@
 <div class="container">
   <div class="row">
-    <div class="portfolio">
-      <%= image_tag @tweet.user.avatar, width: '300px' if @tweet.user.avatar? %>
-        <h3 id="user-name">
-          <%= @tweet.user.name %>
-        </h3>
-        <p id="user-introduction">
-          <%= @tweet.user.introduction %>
-        </p>
-        <p>
-          <%= link_to "Tweets (#{Tweet.all.where(:user_id => @tweet.user.id).length})", tweets_user_path(@tweet.user) %>
-        </p>
-        <p>
-          <%= link_to "Following (#{Followship.all.where(:following_id => @tweet.user.id).length})", followings_user_path(@tweet.user) %>
-        </p>
-        <p>
-          <%= link_to "Follower (#{Followship.all.where(:user_id => @tweet.user).length})", followers_user_path(@tweet.user) %>
-        </p>
-        <p>
-          <%= link_to "Like (#{Like.all.where(:user_id => @tweet.user).length})", likes_user_path(@tweet.user) %>
-        </p>
+    <div class="col-xs-12 col-md-8 portfolio">
+      <div class="avatar">
+        <%= image_tag @tweet.user.avatar, width: '300px' if @tweet.user.avatar? %>
+      </div>
+      <div class="user-name">
+        <%= @tweet.user.name %>
+      </div>
+      <div class="introduction">
+        <%= @tweet.user.introduction %>
+      </div>
+      <div class="user-re-li">
+        <ul>
+          <li>
+            <%= link_to "Tweets (#{Tweet.all.where(:user_id => @tweet.user.id).length})", tweets_user_path(@tweet.user) %>
+          </li>
+          <li>
+            <%= link_to "Following (#{Followship.all.where(:following_id => @tweet.user.id).length})", followings_user_path(@tweet.user) %>
+          </li>
+          <li>
+            <%= link_to "Follower (#{Followship.all.where(:user_id => @tweet.user).length})", followers_user_path(@tweet.user) %>
+          </li>
+          <li>
+            <%= link_to "Like (#{Like.all.where(:user_id => @tweet.user).length})", likes_user_path(@tweet.user) %>
+          </li>
+        </ul>
+      </div>
+      <div class="editorfollow">
         <% if current_user == @tweet.user %>
-          <p>
-            <%= link_to "Edit", edit_user_path(@tweet.user), class: "btn btn-primary ctweet" %>
-         </p>
-        <% end %>
+          <%= link_to "Edit", edit_user_path(@tweet.user), class: "btn btn-primary ctweet" %>
+            <% end %>
+      </div>
     </div>
-  </div>
-</div>
-
-<!-- 選定的tweet -->
-<div class="container">
-  <div class="row">
-    <h3>Tweets</h3>
-    <div class="form-group">
-      <div class="avatar"><%= image_tag(@tweet.user.avatar, height: '32', width: '32') %></div>
-      <p><%= link_to "@#{@tweet.user.name}", tweets_user_path(@tweet.user), :alt => "Who is this?" %>
-        <em>, <%= @tweet.created_at.strftime("%Y-%m-%d") %>, <%= @tweet.created_at.strftime("%I:%M%p") %></em>
-      </p>
-      <p><%= @tweet.description %></p>
-      <P>
-        <%= link_to "Reply(#{Reply.where(:tweet_id => @tweet.id).length})", tweet_replies_path(@tweet), class: "btn btn-danger" %>
-        <% if @tweet.is_liked?(current_user) %>
-          <%= link_to "Unlike(#{Like.where(:tweet_id => @tweet.id).length})", unlike_tweet_path(@tweet), method: :post, class: "btn btn-info" %>
-          <% else %>
-          <%= link_to "Like(#{Like.where(:tweet_id => @tweet.id).length})", like_tweet_path(@tweet), method: :post, class: "btn btn-primary" %>
-        <% end %>
-      </P>
-    </div>
-  </div>
-</div>
-
-<!-- 已回覆的以及輸入框 -->
-<div class="container">
-  <div class="row">
-    <h3>Replies</h3>
-    <% @tweet.replies.each do |reply| %>
-      <div class="form-group">
-        <div class="avatar">
-          <%= image_tag(reply.user.avatar, height: '32', width: '32') %>
+    <!-- 選定的tweet -->
+    <div class="col-sm-6 col-md-4 user-relative">
+      <div class="following-tweets">
+        <div class="single-tweet">
+          <div class="user-avatar">
+            <%= image_tag(@tweet.user.avatar, height: '128', width: '128') %>
+          </div>
+          <div class="user-tweet">
+            <div class="user-name">
+              <strong>
+                <%= link_to "@#{@tweet.user.name}", tweets_user_path(@tweet.user), :alt => "Who is this?" %>
+              </strong>
+              <em>,
+                <%= @tweet.created_at.strftime("%Y-%m-%d") %>,
+                  <%= @tweet.created_at.strftime("%I:%M%p") %>
+              </em>
+            </div>
+            <div class="user-description">
+              <%= @tweet.description %>
+            </div>
+            <div class="user-re-li">
+              <%= link_to "Reply(#{Reply.where(:tweet_id => @tweet.id).length})", tweet_replies_path(@tweet), class: "btn btn-info btn-group-xs" %>
+                <% if @tweet.is_liked?(current_user) %>
+                  <%= link_to "Unlike(#{Like.where(:tweet_id => @tweet.id).length})", unlike_tweet_path(@tweet), method: :post, class: "btn btn-warning btn-group-xs" %>
+                    <% else %>
+                      <%= link_to "Like(#{Like.where(:tweet_id => @tweet.id).length})", like_tweet_path(@tweet), method: :post, class: "btn btn-danger btn-group-xs" %>
+                        <% end %>
+            </div>
+          </div>
         </div>
-        <h4>
-          <%= link_to "@#{reply.user.name}", tweets_user_path(reply.user), :alt => "Who is this?" %>
-          <em>,
-            <%= reply.created_at.strftime("%Y-%m-%d") %>,
-              <%= reply.created_at.strftime("%I:%M%p") %>
-          </em>
-        </h4>
-        <p><%= simple_format reply.comment %></p>
-        
       </div>
       <hr>
-    <% end %>
-
-    <%= form_for [@tweet, @reply] do |f| %>
-      <div class="form-group">
-        <%= f.text_area :comment, placeholder: "留個言吧", class: "form-control" %>
+      <div class="following-tweets">
+        <h3>Replies</h3>
+        <br>
+        <!-- 已回覆 -->
+        <div class="replies">
+          <% @tweet.replies.each do |reply| %>
+            <div class="single-tweet">
+              <div class="user-avatar">
+                <%= image_tag(reply.user.avatar, height: '128', width: '128') %>
+              </div>
+              <div class="user-tweet">
+                <div class="user-name">
+                  <strong>
+                    <%= link_to "@#{reply.user.name}", tweets_user_path(reply.user), :alt => "Who is this?" %>
+                  </strong>
+                  <em>,
+                    <%= reply.created_at.strftime("%Y-%m-%d") %>,
+                      <%= reply.created_at.strftime("%I:%M%p") %>
+                  </em>
+                </div>
+                <div class="user-description">
+                  <%= simple_format reply.comment %>
+                </div>
+              </div>
+            </div>
+            <% end %>
+        </div>
+        <!-- 輸入框 -->
+        <div class="commentarea">
+          <%= form_for [@tweet, @reply] do |f| %>
+            <div class="form-group">
+              <%= f.text_area :comment, placeholder: "留個言吧", rows: "5", cols: "80"  %>
+            </div>
+            <div class="form-group">
+              <%= f.submit class: "btn btn-primary" %>
+                <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+            </div>
+            <% end %>
+        </div>
       </div>
-      <div class="form-group">
-        <%= f.submit class: "btn btn-primary" %>
-          <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>
