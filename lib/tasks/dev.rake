@@ -28,6 +28,8 @@ namespace :dev do
           description: FFaker::Lorem.sentence,
           user: User.all.sample
         )
+        user.tweets_count=user.tweets.count
+        user.save
       end
     end
     puts "have created fake tweets"
@@ -61,10 +63,21 @@ namespace :dev do
 
   task fake_follow: :environment do
     20.times do |i|
-      Followship.create(user_id:User.all.sample.id, following_id:User.all.sample.id)
+      fler=User.all.sample
+      fling=User.all.sample
+      Followship.create(user_id:fler.id, following_id:fling.id)
     end
     puts "have created fake followships"
     puts "now you have #{Followship.count} followship data"
+  end
+
+  task counter: :environment do
+    User.all.each do |user|
+        user.tweets_count=user.tweets.count
+        user.followers_count=user.followers.count
+        user.save
+    end
+    puts "have counted tweets and followers"
   end
 
 end
