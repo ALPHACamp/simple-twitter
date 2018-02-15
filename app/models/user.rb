@@ -14,7 +14,7 @@ class User < ApplicationRecord
   validates_uniqueness_of(:name)
   
   #處理tweet的關聯
-  has_many :tweets, class_name: "Tweet", foreign_key: "reference_id"
+  has_many :tweets, class_name: "Tweet", foreign_key: "user_id"
   
   #處理reply的關聯
   has_many :replis, class_name: "Reply", foreign_key: "user_id", dependent: :restrict_with_error
