@@ -42,7 +42,24 @@ class User < ApplicationRecord
     self.followings.include?(user)
   end
 
-  #def likes_count
-  #  self.likes_count = Like.all.where(:user_id => self.id).length
-  #end
+  def count_likes
+    self.likes_count = self.likes.size
+    self.save
+  end
+
+  def count_followers
+    self.followers_count = self.followers.size
+    self.save
+  end
+
+  def count_tweets
+    self.tweets_count = self.tweets.size
+    self.save
+  end
+
+  def count_tweets
+    self.tweets_count = self.tweets.size
+    self.save
+  end
+
 end
