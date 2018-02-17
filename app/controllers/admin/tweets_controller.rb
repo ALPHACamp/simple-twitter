@@ -4,13 +4,16 @@ class Admin::TweetsController < Admin::BaseController
 
 
   def index
-    @tweets= Tweet.all
+    @tweets= Tweet.order(created_at: :desc)
     @user=current_user
   end
 
   def destroy
     @tweet = Tweet.find(params[:id])
     @tweet.destroy
+    @user=@tweet.user
+    @user.update(:tweets_count => @user.tweets.count)
+    @user.save!
     redirect_to admin_root_path
     flash[:alert] = "tweet was deleted"
   end
