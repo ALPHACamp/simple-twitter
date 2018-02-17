@@ -11,6 +11,8 @@ class TweetsController < ApplicationController
     @user = current_user
     @tweet = @user.tweets.build(tweet_params)
     @tweet.save!
+    @user.update(:tweets_count => @user.tweets.count)
+    @user.save!
     redirect_to root_path
   end
 
