@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   end
 
   def likes
-    @likes=@user.likes # 基於測試規格，必須講定變數名稱
+    @likes=@user.likes.order(created_at: :desc) # 基於測試規格，必須講定變數名稱
   end
 
   private
