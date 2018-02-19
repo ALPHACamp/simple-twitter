@@ -1,1 +1,10 @@
 <h1>後台入口</h1>
+
+<ul>
+	<% @tweets.each do |tweet| %>
+		<li>
+			<%= tweet.description %>
+			<%= link_to "Delete", "#" %>
+		</li>
+	<% end %>	
+</ul>
