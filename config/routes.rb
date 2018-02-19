@@ -6,4 +6,10 @@ Rails.application.routes.draw do
 
   # 設定前台路由
   	root "tweets#index"
+
+  # 設定後台路由
+  	namespace :admin do
+  		root "tweets#index"
+  	end	
+
 end
