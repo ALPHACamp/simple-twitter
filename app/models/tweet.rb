@@ -5,4 +5,7 @@ class Tweet < ApplicationRecord
   # 每一個推播都屬於特定的使用者
   belongs_to :user
 
+  # 在 Model 加入驗證程序
+  validates_presence_of :description
+
 end
