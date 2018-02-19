@@ -1,1 +1,37 @@
 <h1>前台入口</h1>
+
+<div class="container">
+	<div class="row">
+
+		<div class="col-xs-8">
+			<!-- 以下是顯示全部 Tweet 的內容 -->
+			<%= @tweets.each do |tweet| %>
+				<div class=" row tweet-item">
+					<!-- 以下是顯示照片 -->
+					<div class="col-xs-3">
+						<div class="row img">
+							<img src="http://via.placeholder.com/120x120">
+						</div>
+					</div>
+
+					<!-- 以下是 Tweet 的內容，有姓名、發文時間、發文內容 -->
+					<!-- 時間輸出轉換 to_s(:db)-->
+					<div class="col-xs-9">
+						<div class="row name">
+							<%= link_to tweet.user.name, "#" %>
+							<%= tweet.created_at.strftime ("%Y-%m-%d, %I-%M") %>
+						</div>
+						<div class="row desc">
+							<%= tweet.description %>
+						</div>
+						<div class="row reke">
+							<%= link_to "Reply", "#" %>
+							<%= link_to "Like", "#" %>
+						</div>
+					</div>
+				</div>
+			<% end %>	
+		</div>
+	
+	</div>
+</div>

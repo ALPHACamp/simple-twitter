@@ -1,0 +1,26 @@
+// 設定 Tweet 樣式
+.tweet-item {
+	border: 1px solid #ddd;
+	margin: 15px 0px 15px 0px ;
+	padding: 10px;
+}
+
+// 設定照片上下的間距
+.img {
+	margin: 10px 0px 10px 0px;
+}
+
+// 設定 Tweet 內姓名及發文時間字的大小
+.name {
+	font-size: 18px;
+}
+
+// 設定 Tweet 內發文以及使用者介紹字的大小
+.desc {
+	font-size: 15px;
+}
+
+// 設定 Replay & Like 往下
+.reke {
+	margin-top: 70px;
+}
