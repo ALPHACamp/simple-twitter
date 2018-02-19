@@ -13,6 +13,9 @@ class User < ApplicationRecord
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
   validates_uniqueness_of :name
 
+  # 一個使用者可以發表很多的推播
+  has_many :tweets
+
   # 建立管理者認證
   def admin?
   	self.role == "admin"
