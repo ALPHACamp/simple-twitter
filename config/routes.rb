@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # 這是使用 Devise 建立 User model 產生出來的，會產生使用者認證程序中，每個頁面需要的路由
   devise_for :users
 
   # 請依照專案指定規格來設定路由
@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   # 設定後台路由
   	namespace :admin do
+  		resources :tweets, only: [:index, :destroy]
   		root "tweets#index"
   	end	
 
