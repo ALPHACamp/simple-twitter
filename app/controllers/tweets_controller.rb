@@ -13,7 +13,7 @@ class TweetsController < ApplicationController
     	flash[:notice] = "發文成功"
     	redirect_to tweets_path
     else
-    	flash[:alert] = "發文失敗了"
+    	flash[:alert] = "發文失敗了，內容不可以空白不填喔"
     	redirect_to tweets_path
     end	
   end
