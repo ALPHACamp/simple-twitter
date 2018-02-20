@@ -3,10 +3,13 @@ Rails.application.routes.draw do
   devise_for :users
 
   # 請依照專案指定規格來設定路由
-
-  # 設定前台路由
-  	resources :tweets, only: [:index, :create]
+  # 設定前台首頁路由
     root "tweets#index"
+
+  # 設定前台路由 / 設定回覆路由
+  	resources :tweets, only: [:index, :create] do
+      resources :replies, only: [:index, :create]
+    end
  
   # 設定 user 的相關路由
     resources :users, only: [:edit, :update] do
@@ -15,7 +18,7 @@ Rails.application.routes.draw do
       end
     end    
 
-  # 設定後台路由
+  # 設定後台首頁路由
   	namespace :admin do
   		resources :tweets, only: [:index, :destroy]
   		root "tweets#index"
