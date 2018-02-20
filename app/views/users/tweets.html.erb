@@ -1,1 +1,39 @@
-<h1>測試</h1>
+<div class="container">
+	<div class="row">
+		
+		<!-- 以下是會顯示該為使用者的名字及描述 -->
+		<div class="col-xs-3">
+			<br>
+			<div>
+				<img src="http://via.placeholder.com/250x250">
+			</div>
+			<br>
+			<div class="center-size">
+				<%= @user.name %>
+			</div>
+			<div class="center-intro">
+				<%= @user.introduction %>
+			</div>
+			<div class="number">
+				<%= link_to "Tweets", "#" %>
+			</div>
+			<div class="number">
+				<%= link_to "Following", "#" %>
+			</div>
+			<div class="number">
+				<%= link_to "Follower", "#" %>
+			</div>
+			<div class="number">
+				<%= link_to "like", "#" %>
+			</div>
+			<br>
+			<!-- 以下是判斷該登入者是否為同一位使用者，是的話會秀出編輯按鈕 -->
+			<div class="center">
+				<% if @user.name == current_user.name %>
+					<%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-primary btn-lg" %>
+				<% end %>	
+			</div>
+		</div>
+
+	</div>
+</div>
