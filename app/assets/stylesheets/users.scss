@@ -26,5 +26,24 @@
  	height: 1.8em;
  	border-radius: 5px;
  	padding: 10px;
- }
+}
 
+// 設定使用者 Tweets & Replies 標題的設定
+.tit {
+	color: darkolivegreen;
+	margin: 10px 0px 0px -30px;
+}
+
+// 設定 Reply 輸入框的大小風格
+textarea.text-reply {
+ 	font-size: 1.5em;
+ 	height: 7em;
+ 	border-radius: 10px;
+ 	padding: 10px;
+ 	margin-top: 13px;
+}
+
+ .reply-button {
+ 	padding: 15px 40px 15px 40px;
+ 	margin-bottom: 30px;
+}

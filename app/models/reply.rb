@@ -5,4 +5,7 @@ class Reply < ApplicationRecord
 belongs_to :user
 belongs_to :tweet
 
+# 在 Model 加入驗證程序
+  validates_presence_of :comment
+
 end
