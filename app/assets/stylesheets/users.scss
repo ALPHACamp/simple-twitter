@@ -28,7 +28,14 @@
  	padding: 10px;
 }
 
-// 設定使用者 Tweets & Replies 標題的設定
+// 設定使用者 Tweets 標題的設定
+.tw {
+	color: darkolivegreen;
+	margin: 10px 0px 0px -30px;
+	padding: 10px;
+}
+
+// 設定使用者 Replies 標題的設定
 .tit {
 	color: darkolivegreen;
 	margin: 10px 0px 0px -30px;
@@ -43,7 +50,8 @@ textarea.text-reply {
  	margin-top: 13px;
 }
 
+ // 修改編輯和回覆的按鈕格式
  .reply-button {
  	padding: 15px 40px 15px 40px;
- 	margin-bottom: 30px;
+ 	margin: 0px 20px 30px 0px;;
 }
