@@ -17,6 +17,9 @@ class User < ApplicationRecord
   # 一個使用者可以發表很多的推播
   has_many :tweets
 
+  # 一個使用者可以有很多的回覆
+  has_many :replies
+
   # 建立管理者認證
   def admin?
   	self.role == "admin"
