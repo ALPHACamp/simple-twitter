@@ -19,6 +19,9 @@ class TweetsController < ApplicationController
   end
 
   def like
+    @tweet = Tweet.find(params[:id])
+    @tweet.likes.create!(user: current_user)
+    redirect_back(fallback_location: root_path) # 導回上一頁
   end
 
   def unlike

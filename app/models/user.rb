@@ -22,7 +22,7 @@ class User < ApplicationRecord
 
   # 「使用者喜歡很多推播」的多對多關聯
   has_many :likes, dependent: :destroy
-  has_many :liked_tweets, through: :likees, source: :tweet
+  has_many :liked_tweets, through: :likes, source: :tweet
 
 
   # 建立管理者認證

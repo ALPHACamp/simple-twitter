@@ -19,10 +19,10 @@
 				<%= tweet.description %>
 			</div>
 			<div class="row reke">
-				<p class="re"><%= link_to tweet_replies_path(tweet), class: "re" do %>
+				<%= link_to tweet_replies_path(tweet), class: "re" do %>
 					Reply(<%= tweet.replies.count %>)
 				<% end %>
-				<%= link_to "Like", "#" %></p>
+				<%= link_to "Like", "#", style: "color:red" %>
 			</div>
 		</div>
 	</div>

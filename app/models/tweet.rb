@@ -11,4 +11,8 @@ class Tweet < ApplicationRecord
   # 在 Model 加入驗證程序
   validates_presence_of :description
 
+  # 「使用者喜歡很多推播」的多對多關聯
+  has_many :likes, dependent: :destroy
+  has_many :liked_users, through: :likes, source: :user
+
 end
