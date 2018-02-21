@@ -10,12 +10,17 @@ Rails.application.routes.draw do
   # 設定在特定的推播下，可看見推播及新增(回覆)
   	resources :tweets, only: [:index, :create] do
       resources :replies, only: [:index, :create]
+      member do
+        post :like
+        post :unlike
+      end  
     end
  
   # 設定點擊使用者名字時，可以看見推播牆及編輯自己的資料路由
     resources :users, only: [:edit, :update] do
       member do
         get :tweets
+        get :likes # 可看該使用者 like 的推播清單
       end
     end    
 
