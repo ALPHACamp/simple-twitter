@@ -19,9 +19,11 @@
 				<%= tweet.description %>
 			</div>
 			<div class="row reke">
-				<%= link_to "Reply", tweet_replies_path(tweet.id) %>
-				<%= link_to "Like", "#" %>
+				<p class="re"><%= link_to tweet_replies_path(tweet), class: "re" do %>
+					Reply(<%= tweet.replies.count %>)
+				<% end %>
+				<%= link_to "Like", "#" %></p>
 			</div>
 		</div>
 	</div>
-<% end %>	
+<% end %>

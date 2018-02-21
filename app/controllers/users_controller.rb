@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:tweets, :edit, :update]
 
   def tweets
-    @tweets = @user.tweets.all
+    @tweets = @user.tweets
   end
 
   def edit
