@@ -20,6 +20,11 @@ class User < ApplicationRecord
   # 一個使用者可以有很多的回覆
   has_many :replies
 
+  # 「使用者喜歡很多推播」的多對多關聯
+  has_many :likes, dependent: :destroy
+  has_many :liked_tweets, through: :likees, source: :tweet
+
+
   # 建立管理者認證
   def admin?
   	self.role == "admin"
