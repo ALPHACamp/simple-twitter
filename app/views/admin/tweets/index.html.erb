@@ -1,10 +1,35 @@
-<h1>後台入口</h1>
-
-<ul>
-	<% @tweets.each do |tweet| %>
-		<li>
-			<%= tweet.description %>
-			<%= link_to "Delete", admin_tweet_path(tweet), method: :delete, data: {confirm: "Are you sure?"} %>
-		</li>
-	<% end %>	
-</ul>
+<div class="container">
+	<div class="row">
+		
+		<!--以下是顯示推播及回覆的內容，用表格呈現-->
+		<div class="col-xs-12">
+			<table class="table table-striped table-bordered">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Name</th>
+						<th>Description</th>
+						<th>Reply</th>
+						<th>#</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @tweets.each do |tweet| %>
+						<tr>
+							<th scope="row"><%= tweet.id %></th>
+							<td><%= tweet.user.name %></td>
+							<td><%= tweet.description %></td>
+							<td>
+								<% tweet.replies.each do |reply| %>
+									<li><%= reply.comment %></li>
+								<% end %>	
+							</td>
+							<td><%= link_to "Delete", admin_tweet_path(tweet), method: :delete, data: {confirm: "Are you sure?"} %></td>
+						</tr>
+					<% end %>	
+				</tbody>
+			</table>
+		</div>
+	
+	</div>
+</div>
