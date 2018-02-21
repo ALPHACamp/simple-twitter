@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def tweets
     @tweets = @user.tweets
+    @likes = @user.likes
   end
 
   def edit
