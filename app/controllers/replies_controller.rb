@@ -2,11 +2,11 @@ class RepliesController < ApplicationController
 
   before_action :set_tweet, only: [:index, :create]
 
-  # 在reply的首頁裡，看到某個特定編號的推播
-  # 設定推播下全部的回覆存進回覆這個變數
   def index
-  	@replies = @tweet.replies
-  	@reply = Reply.new
+  	@replies = @tweet.replies # 在reply的首頁裡，看到某個特定編號的推播
+  	@reply = Reply.new # 設定推播下全部的回覆存進回覆這個變數
+    @user = @tweet.user # 跟 replies/index.html.erb 的 Tweet.count 有關
+    @tweets = @user.tweets # 跟 replies/index.html.erb 的 Tweet.count 有關
   end
 
   def create
