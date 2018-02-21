@@ -60,7 +60,15 @@
             <p class="re"><%= link_to tweet_replies_path(@tweet), class: "re" do %>
               Reply(<%= @tweet.replies.count %>)
             <% end %>
-            <%= link_to "Like", "#" %>
+            <% if @tweet.is_liked?(current_user) %>
+              <%= link_to unlike_tweet_path(@tweet), method: :post , style: "color:red" do %>
+                like(<%= @tweet.likes.count %>)
+              <% end %>
+            <% else %>
+              <%= link_to like_tweet_path(@tweet), method: :post , style: "color:red" do %>
+                like(<%= @tweet.likes.count %>)
+              <% end %>
+            <% end %>        
           </div>
         </div>
       </div>
