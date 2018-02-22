@@ -7,6 +7,7 @@ class RepliesController < ApplicationController
   	@reply = Reply.new # 設定推播下全部的回覆存進回覆這個變數
     @user = @tweet.user # 跟 replies/index.html.erb 的 Tweet.count 有關
     @tweets = @user.tweets # 跟 replies/index.html.erb 的 Tweet.count 有關
+    @likes = @user.likes # like 的計數
   end
 
   def create
