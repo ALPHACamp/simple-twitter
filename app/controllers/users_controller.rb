@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:tweets, :edit, :update]
+  before_action :set_user, only: [:tweets, :edit, :update, :likes]
 
   def tweets
-    @tweets = @user.tweets
-    @likes = @user.likes
+    @tweets = @user.tweets # 跟 replies/index.html.erb 的 Tweet.count 有關
+    @likes = @user.likes # like 的計數
   end
 
   def edit
@@ -25,7 +25,9 @@ class UsersController < ApplicationController
   end
 
   def likes
-    @likes # 基於測試規格，必須講定變數名稱
+    @likes = @user.liked_tweets  # 基於測試規格，必須講定變數名稱
+    @tweets = @user.tweets # 跟 replies/index.html.erb 的 Tweet.count 有關
+    @likes = @user.likes # like 的計數
   end
 
   private
