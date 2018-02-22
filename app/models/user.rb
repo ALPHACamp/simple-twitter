@@ -24,6 +24,9 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_tweets, through: :likes, source: :tweet
 
+  has_many :followships, dependent: :destroy # 一個 User 擁有很多追蹤紀錄
+  has_many :followings, through: :followships # 透過追蹤紀錄，一個 User 追蹤很多其他 User (followings)
+
 
   # 建立管理者認證
   def admin?
