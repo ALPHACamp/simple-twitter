@@ -27,7 +27,6 @@ class UsersController < ApplicationController
   def likes
     @likes = @user.liked_tweets  # 基於測試規格，必須講定變數名稱
     @tweets = @user.tweets # 跟 replies/index.html.erb 的 Tweet.count 有關
-    @likes = @user.likes # like 的計數
   end
 
   private
