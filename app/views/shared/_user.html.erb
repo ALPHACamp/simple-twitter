@@ -32,4 +32,6 @@
 	<% if @user.name == current_user.name %>
 		<%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-primary btn-lg", style: "color:black" %>
 	<% end %>
+	<%= link_to "Follow", followships_path(following_id: user), method: :post %>
+	<%= link_to "Unfollow", followship_path(user), method: :delete %>
 </div>
