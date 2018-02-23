@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-xs-8">
+    <div class="col-xs-7">
       <!-- tweet form  -->
-      <div class="tweets-area col-xs-12">
+      <div class="col-xs-12 tweets-area">
         <%= form_for @tweet do |t|%>
           <div class="form-group">
             <%= t.text_area :description, placeholder: "What's on your mind?",  class: "form-control" %>
@@ -13,6 +13,7 @@
           </div>
         <% end %>  
       </div>
+      
       <!-- Tweet list -->
       <div class="tweets-list col-xs-12">
         <div class="panel panel-default">          
@@ -47,7 +48,7 @@
     </div>
   
     <!-- Popular -->
-    <div class="col-xs-4">
+    <div class="col-xs-5">
       <div class="popular-user col-xs-12">
       <h2>Popular</h2>
       <div class="panel panel-default">
