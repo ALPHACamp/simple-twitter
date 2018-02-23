@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
 
   before_action :set_user, only: [:tweets, :edit, :update, :likes]
+  before_action :set_followings, only: [:tweets, :likes]
 
   def tweets
     @tweets = @user.tweets # 跟 replies/index.html.erb 的 Tweet.count 有關
     @likes = @user.likes # like 的計數
-    @followings = @user.followings # following 的計數
   end
 
   def edit
@@ -31,6 +31,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def set_followings
+    @followings = @user.followings # following 的計數
+  end  
 
   def set_user
     @user = User.find(params[:id])
