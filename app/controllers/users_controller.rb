@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:tweets, :edit, :update, :likes]
-  before_action :set_followings, only: [:tweets, :likes]
+  before_action :set_user, only: [:tweets, :edit, :update, :likes, :followings]
+  before_action :set_followings, only: [:tweets, :likes, :followings]
+  before_action :set_tweets, only: [:tweets, :likes, :followings]
+  before_action :set_likes, only: [:tweets, :followings]
 
   def tweets
-    @tweets = @user.tweets # 跟 replies/index.html.erb 的 Tweet.count 有關
-    @likes = @user.likes # like 的計數
   end
 
   def edit
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings # 基於測試規格，必須講定變數名稱
+    @followings = @user.followings # 基於測試規格，必須講定變數名稱 / 顯示關注的使用者清單
   end
 
   def followers
@@ -27,18 +27,25 @@ class UsersController < ApplicationController
 
   def likes
     @likes = @user.liked_tweets  # 基於測試規格，必須講定變數名稱
-    @tweets = @user.tweets # 跟 replies/index.html.erb 的 Tweet.count 有關
   end
 
   private
 
+  def set_user
+    @user = User.find(params[:id]) # 尋找特定使用者
+  end
+
   def set_followings
     @followings = @user.followings # following 的計數
-  end  
-
-  def set_user
-    @user = User.find(params[:id])
   end
+
+  def set_tweets
+    @tweets = @user.tweets # 跟 replies/index.html.erb 的 Tweet.count 有關
+  end
+
+  def set_likes
+    @likes = @user.likes # like 的計數
+  end  
 
   def user_params
     params.require(:user).permit(:name, :introduction, :avatar)

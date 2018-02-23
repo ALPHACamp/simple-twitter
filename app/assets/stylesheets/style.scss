@@ -43,3 +43,20 @@ textarea.text-area {
 .re {
 	margin: 0px 15px 0px 0px;
 }
+
+// 設定 Following & Follower 的姓名位置及大小
+.follow {
+	font-size: 18px;
+	margin: 0px 40px;
+}
+
+// 設定 Following & Follower 的使用者描述位置及大小
+.follow-intro {
+	font-size: 15px;
+	margin: 0px 40px;
+}
+
+// 設定 Following & Follower Button 跟使用者描述的間距
+.foll-button {
+	margin-top: 20px;
+}
