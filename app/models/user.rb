@@ -31,6 +31,11 @@ class User < ApplicationRecord
   # 建立管理者認證
   def admin?
   	self.role == "admin"
-  end	
+  end
+
+  # 檢查是否追蹤紀錄已經存在 : following?
+  def following?(user)
+    self.followings.include?(user)
+  end  
 
 end
