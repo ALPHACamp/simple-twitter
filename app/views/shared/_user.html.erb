@@ -30,8 +30,12 @@
 <!-- 以下是判斷該登入者是否為同一位使用者，是的話會秀出編輯按鈕 -->
 <div class="center">
 	<% if @user.name == current_user.name %>
-		<%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-primary btn-lg", style: "color:black" %>
-	<% end %>
-	<%= link_to "Follow", followships_path(following_id: user), method: :post %>
-	<%= link_to "Unfollow", followship_path(user), method: :delete %>
+		<%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-primary btn-lg", style: "color:black" %>		
+	<% else %>
+		<% if current_user.following?(user) %>
+			<%= link_to "Unfollow", followship_path(user), method: :delete, class: "btn btn-primary btn-lg", style: "color:black" %>
+		<% else %>
+			<%= link_to "Follow", followships_path(following_id: user), method: :post, class: "btn btn-primary btn-lg", style: "color:black" %>
+		<% end %>
+	<% end %>	
 </div>
