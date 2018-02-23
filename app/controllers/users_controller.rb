@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-
-  before_action :set_user, only: [:tweets, :edit, :update, :likes, :followings]
-  before_action :set_followings, only: [:tweets, :likes, :followings]
-  before_action :set_tweets, only: [:tweets, :likes, :followings]
-  before_action :set_likes, only: [:tweets, :followings]
+  before_action :set_user, only: [:tweets, :edit, :update, :likes, :followings, :followers]
+  before_action :set_followings, only: [:tweets, :likes, :followings, :followers]
+  before_action :set_followers, only: [:tweets, :likes, :followings, :followers]
+  before_action :set_tweets, only: [:tweets, :likes, :followings, :followers]
+  before_action :set_likes, only: [:tweets, :followings, :followers]
 
   def tweets
   end
@@ -18,15 +18,13 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings = @user.followings # 基於測試規格，必須講定變數名稱 / 顯示關注的使用者清單
   end
 
   def followers
-    @followers # 基於測試規格，必須講定變數名稱
   end
 
   def likes
-    @likes = @user.liked_tweets  # 基於測試規格，必須講定變數名稱
+    @likes = @user.liked_tweets  # 基於測試規格，必須講定變數名稱 / 喜歡過的推播
   end
 
   private
@@ -36,8 +34,12 @@ class UsersController < ApplicationController
   end
 
   def set_followings
-    @followings = @user.followings # following 的計數
+    @followings = @user.followings # 基於測試規格，必須講定變數名稱 / ollowing 的計數
   end
+
+  def set_followers
+    @followers = @user.followers # 基於測試規格，必須講定變數名稱 / 追蹤自己的人
+  end  
 
   def set_tweets
     @tweets = @user.tweets # 跟 replies/index.html.erb 的 Tweet.count 有關
@@ -49,6 +51,5 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :introduction, :avatar)
-  end  
-
+  end
 end

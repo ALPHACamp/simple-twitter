@@ -21,7 +21,9 @@
 	<% end %>
 </div>
 <div class="number">
-	<%= link_to "Follower", "#" %>
+	<%= link_to followers_user_path(@user), style: "color:black" do %>
+		Follower <%= @followers.count %>
+	<% end %>
 </div>
 <div class="number">
 	<%= link_to likes_user_path(@user), style: "color:black" do %>
