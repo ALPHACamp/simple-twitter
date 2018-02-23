@@ -6,4 +6,11 @@ class Tweet < ApplicationRecord
 
   has_many :replies, dependent: :destroy
 
+  has_many :likes, dependent: :restrict_with_error
+  has_many :like_users, through: :likes, source: :user
+
+  def is_liked?(user)
+    self.like_users.include?(user)
+  end
+
 end

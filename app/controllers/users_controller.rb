@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @tweets = Tweet.all.order(created_at: :desc).limit(10)
     @followings = @user.followings
     @followers = @user.followers
+    @likes = @user.likes
   end
 
   def edit

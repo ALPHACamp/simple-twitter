@@ -14,7 +14,7 @@
         <p><strong><%= @tweets.count %> Tweet</strong></p>
         <p><strong><%= @followings.count %> Followings</strong></p>
         <p><strong><%= @followers.count %> follower</strong></p>
-        <p><strong>like </strong></p>
+        <p><strong><%= @likes.count %> like</strong></p>
       </div>  
       <% if @user.email == current_user.email %>
         <p><%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %></p>
