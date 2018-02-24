@@ -2,10 +2,9 @@ class TweetsController < ApplicationController
 
   before_action :set_tweet, only: [:like, :unlike]
 
-  # 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
   def index
-    @users = User.order(followers_count: :desc).limit(10)
-    @tweets = Tweet.all
+    @users = User.order(followers_count: :DESC).limit(10) # 請用此變數中存放關注人數 Top 10 的使用者資料
+    @tweets = Tweet.order(created_at: :DESC) # 依排序日期，最新的在前
     @tweet = Tweet.new # 把新增的動作放在index頁面
   end
 
@@ -16,7 +15,7 @@ class TweetsController < ApplicationController
     	flash[:notice] = "發文成功"
     	redirect_to tweets_path
     else
-    	flash[:alert] = "發文失敗了，內容不可以空白不填喔"
+    	flash[:alert] = "發文失敗了，內容請不要空白"
     	redirect_to tweets_path
     end	
   end

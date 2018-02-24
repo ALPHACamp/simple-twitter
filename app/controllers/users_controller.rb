@@ -17,14 +17,16 @@ class UsersController < ApplicationController
     redirect_to tweets_user_path
   end
 
-  def followings
+  def followings # 依追蹤時間，最新的在前
+    @followings = @user.followings.order("followships.created_at DESC")
   end
 
-  def followers
+  def followers # 依被追蹤時間，最新的在前
+    @followers = @user.followers.order("followships.created_at DESC")
   end
 
-  def likes
-    @likes = @user.liked_tweets  # 基於測試規格，必須講定變數名稱 / 喜歡過的推播
+  def likes # 基於測試規格，必須講定變數名稱 / 喜歡過的推播 / 依喜歡時間，最新的在前
+    @likes = @user.liked_tweets.order("likes.created_at DESC")
   end
 
   private
