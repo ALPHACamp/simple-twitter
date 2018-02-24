@@ -19,6 +19,35 @@
 			<!-- 以下是顯示全部 Tweet 的內容 -->
 			<%= render partial: "shared/tweet", locals: {tweet: @tweet} %>
 		</div>
+
+		<!-- 以下是顯示跟隨者數量排名前 10 的推薦者使用者名單 -->
+		<div class="col-xs-4">
+			<h1 class="po">Popular</h1>
+			<% @users.each do |user| %>
+				<div class="row tweet-item">
+					<div class="col-xs-3">
+						<div class="row img">
+							<img src="http://via.placeholder.com/120x120">
+						</div>
+					</div>
+					<div class="col-xs-9">
+						<div class="row follow">
+							<%= link_to user.name, tweets_user_path(user) %>
+						</div>
+						<div class="follow-intro">
+								<%= truncate(user.introduction, length: 100) %>
+						</div>
+						<div class="foll-button">
+							<% if current_user.following?(user) %>
+								<%= link_to "Unfollow", followship_path(user), method: :delete, class: "btn btn-primary btn-lg pull-right", style: "color:black" %>
+							<% else %>
+								<%= link_to "Follow", followships_path(following_id: user), method: :post, class: "btn btn-primary btn-lg pull-right", style: "color:black" %>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
 	
 	</div>
 </div>

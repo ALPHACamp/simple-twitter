@@ -40,6 +40,6 @@ class User < ApplicationRecord
   # 檢查是否追蹤紀錄已經存在 : following?
   def following?(user)
     self.followings.include?(user)
-  end  
+  end
 
 end
