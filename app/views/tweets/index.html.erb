@@ -38,10 +38,14 @@
 								<%= truncate(user.introduction, length: 100) %>
 						</div>
 						<div class="foll-button">
-							<% if current_user.following?(user) %>
-								<%= link_to "Unfollow", followship_path(user), method: :delete, class: "btn btn-primary btn-lg pull-right", style: "color:black" %>
+							<% if user.name == current_user.name %>
+								<%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-primary btn-lg pull-right", style: "color:black" %>		
 							<% else %>
-								<%= link_to "Follow", followships_path(following_id: user), method: :post, class: "btn btn-primary btn-lg pull-right", style: "color:black" %>
+								<% if current_user.following?(user) %>
+									<%= link_to "Unfollow", followship_path(user), method: :delete, class: "btn btn-primary btn-lg pull-right", style: "color:black" %>
+								<% else %>
+									<%= link_to "Follow", followships_path(following_id: user), method: :post, class: "btn btn-primary btn-lg pull-right", style: "color:black" %>
+								<% end %>
 							<% end %>
 						</div>
 					</div>
