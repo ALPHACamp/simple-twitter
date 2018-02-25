@@ -25,8 +25,11 @@
 				<thead>
 					<tr>
 						<th>Id</th>
-						<th>Name</th>
-						<th>Introduction</th>
+						<th>名字</th>
+						<th>推播數量</th>
+						<th>關注人數</th>	
+						<th>跟隨者人數</th>
+						<th>like 過的推播數</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -34,7 +37,10 @@
 						<tr>
 							<th scope="row"><%= user.id %></th>
 							<td><%= user.name %></td>
-							<td><%= user.introduction %></td>
+							<td><%= user.tweets.count %></td>
+							<td><%= user.followings.count %></td>
+							<td><%= user.followers.count %></td>
+							<td><%= user.likes.count %></td>
 						</tr>
 					<% end %>	
 				</tbody>

@@ -3,7 +3,7 @@ class Tweet < ApplicationRecord
   validates_length_of :description, maximum: 140
 
   # 每一個推播都屬於特定的使用者
-  belongs_to :user
+  belongs_to :user, counter_cache: true
 
   # 一個推播底下會有很多的回覆
   has_many :replies, dependent: :destroy
