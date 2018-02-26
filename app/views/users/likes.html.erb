@@ -3,51 +3,7 @@
 
     <!-- 以下是會顯示該為使用者的名字及描述 -->
     <div class="col-xs-3">
-      <br>
-      <div class="row img">
-        <img src="http://via.placeholder.com/250x250">
-      </div>
-      <br>
-      <div class="center-size">
-        <%= @user.name %>
-      </div>
-      <div class="center-intro">
-        <%= @user.introduction %>
-      </div>
-      <br>
-      <div class="number">
-        <%= link_to tweets_user_path(@user), style: "color:black" do %>
-          Tweets <%= @tweets.count %>
-        <% end %>
-      </div>
-      <div class="number">
-        <%= link_to followings_user_path(@user), style: "color:black" do %>
-          Following <%= @followings.count %>
-        <% end %>
-      </div>
-      <div class="number">
-        <%= link_to followers_user_path(@user), style: "color:black" do %>
-          Follower <%= @followers.count %>
-        <% end %>
-      </div>
-      <div class="number">
-        <%= link_to likes_user_path(@user), style: "color:black" do %>
-          like <%= @likes.count %>
-        <% end %>
-      </div>
-      <br>
-      <div  class="center">
-        <!-- 以下是判斷該登入者是否為同一位使用者，是的話會秀出編輯按鈕及 Following 按鈕 -->
-        <% if @user.name == current_user.name %>
-          <%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-primary btn-lg", style: "color:black" %>    
-        <% else %>
-            <% if current_user.following?(@user) %>
-              <%= link_to "Unfollow", followship_path(@user), method: :delete, class: "btn btn-primary btn-lg", style: "color:black" %>
-            <% else %>
-              <%= link_to "Follow", followships_path(following_id: @user), method: :post, class: "btn btn-primary btn-lg", style: "color:black" %>
-            <% end %>
-        <% end %>
-      </div>
+      <%= render partial: "shared/user", locals: {user: @user} %>
     </div>
 
     <!-- 顯示 like 所點選 Tweet 的推播 -->

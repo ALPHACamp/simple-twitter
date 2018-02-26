@@ -31,7 +31,7 @@
 	<% end %>	
 </div>
 <br>
-<!-- 以下是判斷該登入者是否為同一位使用者，是的話會秀出編輯按鈕 -->
+<!-- 以下是判斷該登入者是否為同一位使用者，是的話會秀出編輯按鈕及 Following 按鈕 -->
 <div class="center">
 	<% if user.name == current_user.name %>
 		<%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-primary btn-lg", style: "color:black" %>		
