@@ -17,7 +17,9 @@
 			</div>
 			
 			<!-- 以下是顯示全部 Tweet 的內容 -->
-			<%= render partial: "shared/tweet", locals: {tweet: @tweet} %>
+			<% @tweets.each do |tweet| %>
+				<%= render partial: "shared/tweet", locals: {tweet: tweet} %>
+			<% end %>
 		</div>
 
 		<!-- 以下是顯示跟隨者數量排名前 10 的推薦者使用者名單 -->

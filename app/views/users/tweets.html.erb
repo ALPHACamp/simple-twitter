@@ -9,7 +9,9 @@
 		<!-- 以下是可以看這個使用者的全部推播 -->
 		<div class="col-xs-8 col-xs-offset-1">
 			<br>
-			<%= render partial: "shared/tweet", locals: {tweet: @tweet} %>
+			<% @tweets.each do |tweet| %>
+				<%= render partial: "shared/tweet", locals: {tweet: tweet} %>
+			<% end %>
 		</div>
 
 	</div>
