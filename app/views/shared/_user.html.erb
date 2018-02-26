@@ -11,29 +11,29 @@
 </div>
 <br>
 <div class="number">
-	<%= link_to tweets_user_path(@user), style: "color:black" do %>
+	<%= link_to tweets_user_path(user), style: "color:black" do %>
 		Tweets <%= @tweets.count %>
 	<% end %>	
 </div>
 <div class="number">
-	<%= link_to followings_user_path(@user), style: "color:black" do %>
+	<%= link_to followings_user_path(user), style: "color:black" do %>
 		Following <%= @followings.count %>
 	<% end %>
 </div>
 <div class="number">
-	<%= link_to followers_user_path(@user), style: "color:black" do %>
+	<%= link_to followers_user_path(user), style: "color:black" do %>
 		Follower <%= @followers.count %>
 	<% end %>
 </div>
 <div class="number">
-	<%= link_to likes_user_path(@user), style: "color:black" do %>
+	<%= link_to likes_user_path(user), style: "color:black" do %>
 		like <%= @likes.count %>
 	<% end %>	
 </div>
 <br>
 <!-- 以下是判斷該登入者是否為同一位使用者，是的話會秀出編輯按鈕 -->
 <div class="center">
-	<% if @user.name == current_user.name %>
+	<% if user.name == current_user.name %>
 		<%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-primary btn-lg", style: "color:black" %>		
 	<% else %>
 		<% if current_user.following?(user) %>
