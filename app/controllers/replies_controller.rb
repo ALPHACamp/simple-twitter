@@ -9,6 +9,7 @@ class RepliesController < ApplicationController
     @tweets = @user.tweets # 跟 replies/index.html.erb 的 Tweet.count 有關
     @likes = @user.likes # like 的計數
     @followings = @user.followings # following 的計數
+    @followers = @user.followers # 追蹤自己的人
   end
 
   def create
