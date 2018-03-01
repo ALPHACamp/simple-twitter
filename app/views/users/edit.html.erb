@@ -5,8 +5,8 @@
 
   <%= form_for @user do |f| %>
     <div class="col-xs-4">
-      <%= image_tag @user.avatar,width: "100%" if @user.avatar? %><br>
-      <%= f.file_field :avatar %>
+      <%= f.filestack_field :avatar, 'Upload Your Avatar!',  pickerOptions: {accept: 'image/*'}, id: 'unique-id',width: "100%" if @user.avatar?  %> <br>
+      
       
     </div>
     <div class="col-xs-8">
