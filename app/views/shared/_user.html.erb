@@ -1,6 +1,11 @@
 <br>
 <div class="row img">
-	<img src="http://via.placeholder.com/250x250">
+	<!-- 使用blank?判斷avatar欄位為空值或nil時皆會回傳false -->
+	<% if user.avatar.blank? %>
+		<img src="http://via.placeholder.com/250x250">
+	<% else %>
+		<%= image_tag user.avatar, class: "img-rounded", size: "250x250" %>
+	<% end %>
 </div>
 <br>
 <div class="center-size">

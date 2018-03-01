@@ -2,7 +2,12 @@
 	<!-- 以下是顯示照片 -->
 	<div class="col-xs-3">
 		<div class="row img">
-			<img src="http://via.placeholder.com/120x120">
+			<!-- 使用blank?判斷avatar欄位為空值或nil時皆會回傳false -->
+			<% if tweet.user.avatar.blank? %>
+				<img src="http://via.placeholder.com/120x120">
+			<% else %>
+				<%= image_tag tweet.user.avatar, class: "img-rounded", size: "120x120" %>
+			<% end %>
 		</div>
 	</div>
 
