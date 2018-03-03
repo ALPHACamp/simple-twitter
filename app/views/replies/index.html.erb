@@ -27,7 +27,7 @@
       <% @replies.each do |reply| %>
         <div class="panel panel-default twpanel">
           <%= image_tag (reply.user.avatar), class: "usertweet-avatar" %>
-          <h5>@<%= reply.user.name %>,<%= reply.created_at.to_date %>,<%= reply.created_at.strftime("%k:%M") %></h5>
+          <h5>@<%= link_to reply.user.name, tweets_user_path(@user) %>,<%= reply.created_at.to_date %>,<%= reply.created_at.strftime("%k:%M") %></h5>
           <%= simple_format reply.comment, style: "color:#808080" %>
         </div>
       <% end %>
