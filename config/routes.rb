@@ -15,12 +15,11 @@ Rails.application.routes.draw do
       post :unlike
     end
 
-    member do
-      # /tweets/:id 與 /tweets/:tweet_id 不知有無差異，應爲其他資料表的外鍵
-      # GET /tweets/:tweet_id/replies 可以在這頁回覆特定 tweet，並看見 tweet 主人的簡介
-      # POST /tweets/:tweet_id/replies 將回覆內容寫入資料庫
-      resources :replies, only: [:index, :create]
-    end
+    # /tweets/:id 與 /tweets/:tweet_id 不知有無差異，:tweet_id 應爲其他資料表的外鍵
+    # GET /tweets/:tweet_id/replies 可以在這頁回覆特定 tweet，並看見 tweet 主人的簡介
+    # POST /tweets/:tweet_id/replies 將回覆內容寫入資料庫
+    # ...原來這時候不用 namespace 也不用 member，或是 resources path: "/:tweet_id/reply" 指定 路徑，會自動依賴 rails 慣例，將路徑 :id 改爲 :tweet_id？
+    resources :replies,  only: [:index, :create]
   end
 
   # 設 GET /tweets 爲前台首頁
