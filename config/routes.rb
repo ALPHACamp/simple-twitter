@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :replies,  only: [:index, :create]
   end
 
-  # 設 GET /tweets 爲前台首頁
+  # 設定 / 前台首頁 
   root "tweets#index"
 
   # 使用者編輯自己的介紹
@@ -51,7 +51,7 @@ Rails.application.routes.draw do
     # 看見站內所有的使用者
     resources :users, only: [:index]
 
-    # /admin/tweets 後台首頁
-    root "admin#tweets"
+    # 設定 /admin 後台首頁
+    root "tweets#index"
   end
 end
