@@ -50,5 +50,8 @@ Rails.application.routes.draw do
     resources :tweets, only: [:index, :destroy]
     # 看見站內所有的使用者
     resources :users, only: [:index]
+
+    # /admin/tweets 後台首頁
+    root "admin#tweets"
   end
 end
