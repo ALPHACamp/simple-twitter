@@ -17,4 +17,13 @@ class ApplicationController < ActionController::Base
     # 編輯帳號時，多允許一個參數更新
     devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
+
+  private
+  # for admin authentication check
+  def authenticate_admin
+    unless current_user.is_admin?
+      flash[:alert] = "NOT ALLOW!"
+      redirect_to root_path
+    end
+  end
 end
