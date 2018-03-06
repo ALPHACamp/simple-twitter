@@ -30,7 +30,7 @@ git pull upstream master
 
 和自動化測試有關的程式碼，都存放在 **/spec** 的專案目錄下，所有的 Model 和 Controller 文件都會有一個對應的 spec 檔案，使用 `rails generate model` 或 `rails generate controller` 指令時會自動覆寫到現有的 spec 檔案。
 
-因此，請你不要使用 `rails generate model` 或 `rails generate controller` 指令。
+因此，請你 **不要** 使用 `rails generate model` 或 `rails generate controller` 指令。
 
 相對的，在你下載的專案中，已經準備好對應的 Model 和 Controller 檔案。
 
