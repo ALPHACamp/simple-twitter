@@ -22,11 +22,11 @@ Rails.application.routes.draw do
     resources :replies,  only: [:index, :create]
   end
 
-  # 設定 / 前台首頁 
+  # 設定 / 前台首頁
   root "tweets#index"
 
   # 使用者編輯自己的介紹
-  resources :users, only: [:edit] do
+  resources :users, only: [:edit, :update] do
     member do
       # 看見某一個使用者的推播牆，以及該使用者簡介
       get :tweets

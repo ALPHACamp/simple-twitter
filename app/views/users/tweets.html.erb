@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>This is tweets.html.erb </h1>
+  
+  <% if @user == current_user %>
+    <%= link_to "Edit Profile", edit_user_path(current_user.id), class: "btn btn-primary" %>
+  <% end %>
+
+</div>
