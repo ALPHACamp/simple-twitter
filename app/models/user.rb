@@ -16,6 +16,8 @@ class User < ApplicationRecord
   # 這個是到 api.rubyonrails.org 查到的
   validates_uniqueness_of :name
 
+  has_many :tweets
+
   # 檢查是否爲網站管理員
   def is_admin?
     if self.role == "admin"
