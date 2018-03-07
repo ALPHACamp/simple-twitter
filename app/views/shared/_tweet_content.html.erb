@@ -13,9 +13,9 @@
 
       <!-- like/unlike button -->
       <% if current_user.is_liked?(tweet) %>
-        <%= link_to "unlike(#{tweet.likes_count})", unlike_tweet_path(tweet.id), method: :post, data: {disable_with: "unlike(#{tweet.likes_count})"}, class: "btn btn-link text-secondary" %>
+        <%= link_to "unlike(#{tweet.likes_count})", unlike_tweet_path(tweet.id), method: :post, data: {disable_with: "unlike(#{tweet.likes_count})"}, class: "text-secondary" %>
       <% else %>
-        <%= link_to "like(#{tweet.likes_count})", like_tweet_path(tweet.id), method: :post, data: {disable_with: "like(#{tweet.likes_count})"}, class: "btn btn-link text-secondary" %>
+        <%= link_to "like(#{tweet.likes_count})", like_tweet_path(tweet.id), method: :post, data: {disable_with: "like(#{tweet.likes_count})"}, class: "text-secondary" %>
       <% end %>
 
     </div>

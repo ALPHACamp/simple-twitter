@@ -18,9 +18,12 @@ class TweetsController < ApplicationController
 
     # 取得 FK: user_id 的值
     @tweet.user_id = current_user.id
-    @tweet.save!
 
-    redirect_to root_path
+    if @tweet.save
+      redirect_to tweets_path
+    else
+      redirect_to tweets_path
+    end
   end
 
   # 建立推文喜好記錄 tweets#like
@@ -29,7 +32,7 @@ class TweetsController < ApplicationController
 
     @like = Like.create!(user_id: current_user.id, tweet_id: @tweet.id)
 
-    redirect_back(fallback_location: root_path)
+    redirect_to tweets_path
   end
 
   # 刪除推文喜好記錄 tweets#unlike
@@ -39,7 +42,7 @@ class TweetsController < ApplicationController
     like = Like.where(user_id: current_user.id, tweet_id: @tweet.id)
 
     like.destroy_all
-    redirect_back(fallback_location: root_path)
+    redirect_to tweets_path
   end
 
   private
