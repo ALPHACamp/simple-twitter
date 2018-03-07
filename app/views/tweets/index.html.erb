@@ -18,25 +18,7 @@
 
       <hr>
       <!-- # 顯示 Tweets：排序依日期，最新的在前 -->
-
-        <% @tweets.each do |tweet| %>
-        <div class="row border tweet_content">
-          <div class="col-2">
-            <%= image_tag "https://picsum.photos/90/90/?random", class: "text-center" %>
-          </div>
-
-          <div class="col-10">
-            <%= link_to "#{tweet.user.name}", tweets_user_path(tweet.user) %>,
-            <%= tweet.created_at.strftime("%Y-%m-%d") %>,
-            <%= tweet.created_at.strftime("%H:%M") %>
-
-            <%= simple_format tweet.description %>
-          </div>
-
-        </div>
-        <% end %>
-
-
+      <%= render partial: "shared/tweet_content", locals: {tweets_object: @tweets} %>
     </div>
 
     <div class="col-4">
