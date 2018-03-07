@@ -1,37 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-4">
-      <ul class="list-unstyled">
-        <li><%= image_tag "https://picsum.photos/300/300/?random", class: "text-center" %></li>
-        <br>
-
-        <li><h3><%= @user.name %></h3></li>
-
-        <li class="text-info"><%= @user.introduction %></li>
-
-        <br>
-
-        <li>
-          <h5>Tweets <%= @user.tweets_count %></h5>
-        </li>
-
-        <li>
-          <h5>Following <%# @user.followings_count %></h5>
-        </li>
-
-        <li>
-          <h5>Follower <%# @user.followers_count %></h5>
-        </li>
-
-        <li>
-          <h5>like <%# @user.likes_count %></h5>
-        </li>
-
-        <br>
-        <li><% if @user == current_user %>
-          <%= link_to "Edit Profile", edit_user_path(current_user.id), class: "btn btn-primary" %>
-        <% end %></li>
-      </ul>
+      <%= render partial: "shared/user_data", locals: {user_object: @user} %>
     </div> <%# .col-4 %>
 
     <div class="col-8">

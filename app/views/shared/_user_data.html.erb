@@ -1,0 +1,31 @@
+<ul class="list-unstyled">
+  <li><%= image_tag "https://picsum.photos/300/300/?random", class: "text-center" %></li>
+  <br>
+
+  <li><h3><%= user_object.name %></h3></li>
+
+  <li class="text-info"><%= user_object.introduction %></li>
+
+  <br>
+
+  <li>
+    <h5>Tweets <%= user_object.tweets_count %></h5>
+  </li>
+
+  <li>
+    <h5>Following <%# user_object.followings_count %></h5>
+  </li>
+
+  <li>
+    <h5>Follower <%# user_object.followers_count %></h5>
+  </li>
+
+  <li>
+    <h5>like <%# user_object.likes_count %></h5>
+  </li>
+
+  <br>
+  <li><% if user_object == current_user %>
+    <%= link_to "Edit Profile", edit_user_path(current_user.id), class: "btn btn-primary" %>
+  <% end %></li>
+</ul>
