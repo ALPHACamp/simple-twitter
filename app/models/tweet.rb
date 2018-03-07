@@ -7,4 +7,7 @@ class Tweet < ApplicationRecord
   # 並把這個結果更新在關聯 Model 的欄位：{table_name}_count
   # 所以在這邊就會是：tweets_count
   belongs_to :user, counter_cache: true
+
+  # 一個推文可能有很多使用者喜歡
+  has_many :likes
 end
