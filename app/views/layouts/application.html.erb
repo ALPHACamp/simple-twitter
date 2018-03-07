@@ -33,7 +33,7 @@
                 <%= image_tag "https://picsum.photos/50/50/?random", class: "text-center" %>
               <% end %>
             </li>
-            <li class="nav-item"><%= link_to('登出', destroy_user_session_path, method: :delete, class: "nav-link") %></li>
+            <li class="nav-item"><%= link_to('Logout', destroy_user_session_path, method: :delete, class: "nav-link") %></li>
           <% else %>
             <li class="nav-item"><%= link_to('註冊', new_user_registration_path, class: "nav-link") %></li>
             <li class="nav-item"><%= link_to('登入', new_user_session_path, class: "nav-link") %></li>
@@ -43,8 +43,29 @@
       </div>
     </nav>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <br>
+
+    <div class="container">
+      <% if flash[:notice] %>
+        <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+
+          <%= notice %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div >
+      <% end %>
+
+      <% if flash[:alert] %>
+      <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+
+        <%= alert %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div >
+      <% end %>
+    </div>
 
     <%= yield %>
   </body>
