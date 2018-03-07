@@ -2,7 +2,7 @@
   <li>
     <%= image_tag "https://picsum.photos/300/300/?random", class: "text-center" %>
   </li>
-  
+
   <br>
 
   <li>
@@ -30,7 +30,9 @@
   </li>
 
   <li>
-    <h5>like <%# user_object.likes_count %></h5>
+    <%= link_to likes_user_path(current_user.id) do %>
+      <h5>like <%= user_object.likes_count %></h5>
+    <% end %>
   </li>
 
   <br>

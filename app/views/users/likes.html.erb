@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <%= render partial: "shared/user_data", locals: {user_object: @user} %>
+    </div> <%# .col-4 %>
+
+    <div class="col-8">
+      <!-- 顯示該 user 的推文 -->
+      <h2>Like</h2>
+      <%= render partial: "shared/tweet_content", locals: {tweets_object: @likes} %>
+    </div>
+  </div>
+</div>
