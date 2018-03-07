@@ -16,7 +16,14 @@ class User < ApplicationRecord
   # 這個是到 api.rubyonrails.org 查到的
   validates_uniqueness_of :name
 
+  # 使用者有很多推文
   has_many :tweets
+
+  # 使用者有很多追蹤記錄
+  has_many :followships
+
+  # 使用者能透過追蹤記錄找到很多被追蹤的人
+  has_many :followings, through: :followships
 
   # 檢查是否爲網站管理員
   def is_admin?

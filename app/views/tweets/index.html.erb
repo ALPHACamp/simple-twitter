@@ -19,7 +19,7 @@
       <hr>
       <!-- # 顯示 Tweets：排序依日期，最新的在前 -->
       <% @tweets.each do |tweet| %>
-        <%= link_to "#{tweet.user.name}", tweets_user_path(tweet.user) %>,  
+        <%= link_to "#{tweet.user.name}", tweets_user_path(tweet.user) %>,
         <%= tweet.created_at.strftime("%Y-%m-%d") %>,
         <%= tweet.created_at.strftime("%H:%M") %>
 
@@ -34,5 +34,4 @@
     </div>
 
   </div>
-
 </div>
