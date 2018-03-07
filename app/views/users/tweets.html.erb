@@ -12,23 +12,19 @@
         <br>
 
         <li>
-          <h5>Tweets</h5>
-
+          <h5>Tweets <%= @user.tweets_count %></h5>
         </li>
 
         <li>
-          <h5>Following</h5>
-
+          <h5>Following <%# @user.followings_count %></h5>
         </li>
 
         <li>
-          <h5>Follower</h5>
-
+          <h5>Follower <%# @user.followers_count %></h5>
         </li>
 
         <li>
-          <h5>like</h5>
-
+          <h5>like <%# @user.likes_count %></h5>
         </li>
 
         <br>
@@ -39,7 +35,8 @@
     </div> <%# .col-4 %>
 
     <div class="col-8">
-
+      <!-- 顯示該 user 的推文 -->
+      <%= render partial: "shared/tweet_content", locals: {tweets_object: @tweets} %>
     </div>
   </div>
 </div>

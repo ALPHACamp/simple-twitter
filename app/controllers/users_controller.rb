@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   def tweets
     # set_user
 
-    
+    # 顯示該使用者的推文
+    @tweets = @user.tweets
   end
 
   def edit
