@@ -9,5 +9,5 @@ class Tweet < ApplicationRecord
   belongs_to :user, counter_cache: true
 
   # 一個推文可能有很多使用者喜歡
-  has_many :likes
+  has_many :likes, counter_cache: true
 end

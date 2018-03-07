@@ -3,5 +3,5 @@ class Like < ApplicationRecord
   belongs_to :user, counter_cache: true
 
   # 喜好記錄屬於推文
-  belongs_to :tweet
+  belongs_to :tweet, counter_cache: true
 end

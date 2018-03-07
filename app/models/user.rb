@@ -37,4 +37,9 @@ class User < ApplicationRecord
       return true
     end
   end
+
+  # for liked tweet check
+  def is_liked?(tweet)
+    self.liked_tweets.include?(tweet)
+  end
 end
