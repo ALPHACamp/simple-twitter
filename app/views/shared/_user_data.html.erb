@@ -1,12 +1,17 @@
 <ul class="list-unstyled">
-  <li><%= image_tag "https://picsum.photos/300/300/?random", class: "text-center" %></li>
+  <li>
+    <%= image_tag "https://picsum.photos/300/300/?random", class: "text-center" %>
+  </li>
+  
   <br>
 
   <li>
       <h3><%= user_object.name %></h3>
   </li>
 
-  <li class="text-info"><%= user_object.introduction %></li>
+  <li class="text-info">
+    <%= user_object.introduction %>
+  </li>
 
   <br>
 
@@ -29,7 +34,9 @@
   </li>
 
   <br>
-  <li><% if user_object == current_user %>
-    <%= link_to "Edit Profile", edit_user_path(current_user.id), class: "btn btn-primary" %>
-  <% end %></li>
+  <li>
+    <% if user_object == current_user %>
+      <%= link_to "Edit Profile", edit_user_path(current_user.id), class: "btn btn-primary" %>
+    <% end %>
+  </li>
 </ul>
