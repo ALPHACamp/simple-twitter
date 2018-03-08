@@ -44,9 +44,15 @@ class UsersController < ApplicationController
   def likes
     # set_user
 
-    # Like：該使用者 like 過的推播清單，排序依 like 紀錄成立的時間，愈新的在愈前面
+    # Like：該使用者的喜愛記錄，排序依 like 紀錄成立的時間，愈新的在愈前面
     # 基於測試規格，必須講定變數名稱
-    @likes = current_user.liked_tweets.order(created_at: :desc)
+    @likes = @user.likes.order(created_at: :desc)
+
+    @tweets = []
+
+    @likes.each do |like|
+      @tweets << Tweet.find(like.tweet_id)
+    end
   end
 
   private
