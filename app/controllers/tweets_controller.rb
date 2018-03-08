@@ -9,7 +9,6 @@ class TweetsController < ApplicationController
     @tweets = Tweet.all.order(created_at: :desc).limit(20)
 
     @tweet = Tweet.new
-
   end
 
   # 在首頁新增推文
