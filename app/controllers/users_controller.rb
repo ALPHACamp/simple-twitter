@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     # set_user
 
     # 顯示該使用者的推文
-    @tweets = @user.tweets
+    @tweets = @user.tweets.order(created_at: :desc)
   end
 
   def edit
@@ -46,13 +46,15 @@ class UsersController < ApplicationController
 
     # Like：該使用者的喜愛記錄，排序依 like 紀錄成立的時間，愈新的在愈前面
     # 基於測試規格，必須講定變數名稱
-    @likes = @user.likes.order(created_at: :desc)
+    # @likes 表示該使用者喜歡過的文章，只要這個值不對，測試就不會過
+    @likes_record = @user.likes.order(created_at: :desc)
 
-    @tweets = []
+    @likes = []
 
-    @likes.each do |like|
-      @tweets << Tweet.find(like.tweet_id)
+    @likes_record.each do |like_record|
+      @likes << Tweet.find(like_record.tweet_id)
     end
+
   end
 
   private
