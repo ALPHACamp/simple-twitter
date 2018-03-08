@@ -25,6 +25,9 @@ class User < ApplicationRecord
   # 使用者有很多喜好的推文
   has_many :liked_tweets, through: :likes, source: :tweet
 
+  #
+  has_many :replies
+
   # 使用者有很多追蹤記錄
   has_many :followships
 
