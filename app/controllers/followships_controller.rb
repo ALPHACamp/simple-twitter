@@ -6,7 +6,7 @@ class FollowshipsController < ApplicationController
   end
 
   def destroy
-    @followship = Followship.find(params[:id])
+    @followship = current_user.followships.where(following_id: params[:id]).first
     @followship.destroy
 
     redirect_back(fallback_location: root_path)

@@ -44,7 +44,7 @@
     <% else %>
 
       <% if current_user.is_followed?(user_object) %>
-        <%= link_to "Unfollow", followship_path, method: :delete, class: "btn btn-warning", data: { disable_with: "Waiting..." } %>
+        <%= link_to "Unfollow", followship_path(user_object.id), method: :delete, class: "btn btn-warning", data: { disable_with: "Waiting..." } %>
       <% else %>
         <%= link_to "Follow", followships_path(following_id: user_object.id), method: :post, class: "btn btn-primary", data: { disable_with: "Waiting..." } %>
       <% end %>
