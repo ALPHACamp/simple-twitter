@@ -22,7 +22,9 @@
   </li>
 
   <li>
-    <h5>Following <%# user_object.followings_count %></h5>
+    <%= link_to followings_user_path(user_object.id) do %>
+      <h5>Following <%= user_object.followships_count %></h5>
+    <% end %>
   </li>
 
   <li>
@@ -30,7 +32,7 @@
   </li>
 
   <li>
-    <%= link_to likes_user_path(current_user.id) do %>
+    <%= link_to likes_user_path(user_object.id) do %>
       <h5>like <%= user_object.likes_count %></h5>
     <% end %>
   </li>
@@ -39,6 +41,14 @@
   <li>
     <% if user_object == current_user %>
       <%= link_to "Edit Profile", edit_user_path(current_user.id), class: "btn btn-primary" %>
+    <% else %>
+
+      <% if current_user.is_followed?(user_object) %>
+        <%= link_to "Unfollow", followship_path, method: :delete, class: "btn btn-warning", data: { disable_with: "Waiting..." } %>
+      <% else %>
+        <%= link_to "Follow", followships_path(following_id: user_object.id), method: :post, class: "btn btn-primary", data: { disable_with: "Waiting..." } %>
+      <% end %>
+
     <% end %>
   </li>
 </ul>

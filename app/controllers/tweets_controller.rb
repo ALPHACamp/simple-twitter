@@ -31,7 +31,7 @@ class TweetsController < ApplicationController
 
     @like = Like.create!(user_id: current_user.id, tweet_id: @tweet.id)
 
-    redirect_to tweets_path
+    redirect_back(fallback_location: root_path)
   end
 
   # 刪除推文喜好記錄 tweets#unlike
@@ -41,7 +41,7 @@ class TweetsController < ApplicationController
     like = Like.where(user_id: current_user.id, tweet_id: @tweet.id)
 
     like.destroy_all
-    redirect_to tweets_path
+    redirect_back(fallback_location: root_path)
   end
 
   private
