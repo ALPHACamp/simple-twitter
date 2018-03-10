@@ -8,7 +8,8 @@ class FollowshipsController < ApplicationController
 
     # 更新追蹤者的數量，注意是更新 following 的 followers_count 不是 current_user 的
     # 而且在 destroy 後不能透過關聯方法找那個記錄，所以要在 followship 建立或刪除前，先找出 following user
-    @user.count_followers
+    # @user.count_followers
+    # 最終因爲要因應 rspec 測試時建立 instance 不會透過 controller，因此在 model 階段就要對 @user.count_follower 進行處理
 
     redirect_back(fallback_location: root_path)
   end
@@ -22,7 +23,8 @@ class FollowshipsController < ApplicationController
     @followship.destroy
 
     # 更新追蹤者的數量
-    @user.count_followers
+    # @user.count_followers
+    # 最終因爲要因應 rspec 測試時建立 instance 不會透過 controller，因此在 model 階段就要對 @user.count_follower 進行處理
 
     redirect_back(fallback_location: root_path)
   end
