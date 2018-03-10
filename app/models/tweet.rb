@@ -9,7 +9,7 @@ class Tweet < ApplicationRecord
   belongs_to :user, counter_cache: true
 
   # 一個推文可能有很多使用者喜歡
-  has_many :likes
+  has_many :likes, dependent: :destroy
 
-  has_many :replies
+  has_many :replies, dependent: :destroy
 end
