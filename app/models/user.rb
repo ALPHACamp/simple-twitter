@@ -34,6 +34,13 @@ class User < ApplicationRecord
   # 使用者能透過追蹤記錄找到很多被追蹤的人
   has_many :followings, through: :followships
 
+  # 找出 user 被哪些使用者追蹤
+  # 現在是反過來記錄：following_id 被哪一位 user_id 追蹤了。
+  has_many :inverse_followships, class_name: "Followhship", foreign_key: "following_id"
+
+  # 找出追蹤者的資料
+  has_many :followers, through: :inverse_followships, source: :user
+
   # 檢查是否爲網站管理員
   def is_admin?
     if self.role == "admin"
