@@ -36,7 +36,7 @@ class User < ApplicationRecord
 
   # 找出 user 被哪些使用者追蹤
   # 現在是反過來記錄：following_id 被哪一位 user_id 追蹤了。
-  has_many :inverse_followships, class_name: "Followhship", foreign_key: "following_id"
+  has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
 
   # 找出追蹤者的資料
   has_many :followers, through: :inverse_followships, source: :user

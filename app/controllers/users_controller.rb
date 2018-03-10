@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update, :tweets, :likes, :followings]
+  before_action :set_user, only: [:edit, :update, :tweets, :likes, :followings, :followers]
 
   def tweets
     # set_user
@@ -46,8 +46,14 @@ class UsersController < ApplicationController
   end
 
   def followers
-    # 基於測試規格，必須講定變數名稱
-    @followers
+    # 基於測試規格，必須講定變數名稱 @followers
+    inverse_followships = @user.inverse_followships.order(created_at: :desc)
+
+    @followers = []
+
+    inverse_followships.each do |inverse_followship|
+      @followers << User.find(inverse_followship.user_id)
+    end
   end
 
   def likes
