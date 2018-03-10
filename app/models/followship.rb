@@ -7,6 +7,7 @@ class Followship < ApplicationRecord
   # 追蹤記錄屬於被追蹤的人
   belongs_to :following, class_name: "User"
 
-  # 對於同一個 user 建立的 followship，不能有重複的關係
-  validates :following_id, uniqueness: { scope: :user_id }
+  # 追蹤記錄也屬於追蹤 current_user 的人，以爲這樣能讓 followers_count 能用
+  # belongs_to :follower, class_name: "User", foreign_key: "user_id"
+
 end
