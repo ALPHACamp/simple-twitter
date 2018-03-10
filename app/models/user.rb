@@ -57,4 +57,10 @@ class User < ApplicationRecord
   def is_followed?(following)
     self.followings.include?(following)
   end
+
+  # 計算 followers 數量
+  def count_followers
+    self.followers_count = self.followers.size
+    self.save
+  end
 end
