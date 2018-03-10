@@ -34,8 +34,15 @@ class UsersController < ApplicationController
   def followings
     # before_action set_user @user
 
-    # 基於測試規格，必須講定變數名稱
-    @followings = @user.followings
+    # 基於測試規格，必須講定變數名稱 @followings
+    # 還需依追蹤記錄成立時間？
+    followships = @user.followships.order(created_at: :desc)
+
+    @followings = []
+
+    followships.each do |followship|
+      @followings << User.find(followship.following_id)
+    end
   end
 
   def followers
