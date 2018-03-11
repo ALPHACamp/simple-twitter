@@ -16,7 +16,7 @@ namespace :dev do
 
       user = User.new(
         name: FFaker::Name::first_name,
-        email: "#{name}@example.co",
+        email: "#{user.name}@example.co",
         password: "12345678",
         introduction: FFaker::Lorem::sentence(3),
         avatar: "https://cdn.filestackcontent.com/wlQFRRvtS5Sj7iMmawrb"
