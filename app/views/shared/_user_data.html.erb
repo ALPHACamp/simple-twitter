@@ -10,7 +10,7 @@
   </li>
 
   <li class="text-info">
-    <%= user_object.introduction %>
+    <%= simple_format user_object.introduction  if user_object.introduction %>
   </li>
 
   <br>
