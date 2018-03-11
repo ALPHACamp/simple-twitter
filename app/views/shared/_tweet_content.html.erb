@@ -25,7 +25,7 @@
 
       <!-- delete button -->
       <% if current_user.is_admin? %>
-        <%= link_to "Delete", admin_tweet_path(tweet.user), method: :delete, data: {disable_with: "waiting.."}, class: "btn btn-danger" %>
+        <%= link_to "Delete", admin_tweet_path(tweet.id), method: :delete, data: {disable_with: "waiting.."}, class: "btn btn-danger" %>
       <% end %>
 
     </div>
