@@ -19,7 +19,7 @@ namespace :dev do
         email: "#{name}@example.co",
         password: "12345678",
         introduction: FFaker::Lorem::sentence(3),
-        avatar: file
+        avatar: "https://cdn.filestackcontent.com/wlQFRRvtS5Sj7iMmawrb"
       )
 
       user.save!
