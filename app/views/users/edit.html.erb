@@ -13,13 +13,20 @@
 
     <div class="form-group">
       <%= f.label :avatar, "大頭貼" %>
-      <!-- 先保留，最後再弄，要換 GEM -->
+      <%= f.filestack_field :avatar, '選擇你的大頭貼照片',
+                  pickerOptions: {
+                    accept: 'image/*',
+                    fromSources: ['local_file_system', 'url'],
+                    maxFiles: 1,
+                    maxSize: 10240000
+                  } %>
+      <!-- <%= image_tag(@user.avatar) if @user.avatar %> -->
+      <%= image_tag @user.avatar, transform: filestack_transform.resize(width:50, height:50).enhance if @user.avatar %>
     </div>
 
     <div class="form-group">
       <%= f.submit "Update", class: "btn btn-primary" %>
       <%= link_to "Cancel", tweets_user_path(@user.id), class: "btn btn-light" %>
     </div>
-
   <% end %>
 </div>

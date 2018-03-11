@@ -4,7 +4,7 @@
       <div class="border follow_user_content">
         <div class="row">
           <div class="col-4">
-            <%= image_tag "https://picsum.photos/90/90/?random", class: "text-center" %>
+            <%= filestack_image follow_user.avatar, transform: filestack_transform.resize(width:100, height:100) %>
           </div>
 
           <div class="col-8">

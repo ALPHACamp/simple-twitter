@@ -10,7 +10,7 @@
       <!-- 顯示該 user 的推文 -->
       <div class="row border tweet_content">
         <div class="col-2">
-          <%= image_tag "https://picsum.photos/90/90/?random", class: "text-center" %>
+          <%= filestack_image @tweet.user.avatar, transform: filestack_transform.resize(width:100, height:100) %>
         </div>
 
         <div class="col-10">

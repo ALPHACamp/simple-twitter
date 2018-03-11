@@ -33,7 +33,7 @@
             <li class="nav-item"><%= link_to('帳戶管理', edit_user_registration_path, class: "nav-link") %></li>
             <li class=nav-item>
               <%= link_to tweets_user_path(current_user) do %>
-                <%= image_tag "https://picsum.photos/50/50/?random", class: "text-center" %>
+                <%= filestack_image current_user.avatar, transform: filestack_transform.resize(width:50, height:50) %>
               <% end %>
             </li>
             <li class="nav-item"><%= link_to('Logout', destroy_user_session_path, method: :delete, class: "nav-link") %></li>

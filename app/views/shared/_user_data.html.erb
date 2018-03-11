@@ -1,6 +1,9 @@
 <ul class="list-unstyled">
   <li>
-    <%= image_tag "https://picsum.photos/300/300/?random", class: "text-center" %>
+    <!-- <%= image_tag "https://picsum.photos/300/300/?random", class: "text-center" %> -->
+
+    <%= filestack_image user_object.avatar, transform: filestack_transform.resize(width:300, height:300) %>
+
   </li>
 
   <br>
