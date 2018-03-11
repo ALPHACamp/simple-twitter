@@ -14,6 +14,10 @@ gem 'carrierwave'
 
 gem 'ffaker'
 
+# ‘unirest’ is dependency of ‘filestack-rails’. You need to specify it in Gemfile. Otherwise, ‘filestack-rails’ will automatically install a insecure old version.
+gem "unirest", git: "https://github.com/Kong/unirest-ruby"
+gem 'filestack-rails', '~> 3.1'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use sqlite3 as the database for Active Record
