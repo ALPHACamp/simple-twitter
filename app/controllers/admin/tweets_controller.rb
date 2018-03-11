@@ -6,8 +6,12 @@ class Admin::TweetsController < Admin::BaseController
   def destroy
     @tweet = Tweet.find(params[:id])
 
-    @tweet.destroy
-
+    if @tweet.destroy
+      flash[:notice] = "Tweet was successfully destroyed."
+    else
+      flash[:warning] = "Tweet was failed to destroy."
+    end
+    
     redirect_back(fallback_location: admin_root_path)
   end
 end

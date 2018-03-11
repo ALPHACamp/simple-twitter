@@ -19,8 +19,10 @@ class TweetsController < ApplicationController
     @tweet.user_id = current_user.id
 
     if @tweet.save
+      flash[:notice] = "Tweet was created successfully."
       redirect_to tweets_path
     else
+      flash[:alert] = "Tweet was failed to create."
       redirect_to tweets_path
     end
   end

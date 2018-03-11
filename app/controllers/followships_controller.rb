@@ -3,7 +3,11 @@ class FollowshipsController < ApplicationController
     @user = User.find(params[:following_id])
 
     if current_user.id != params[:following_id].to_i
-      @followship = Followship.create(user_id: current_user.id, following_id: params[:following_id])
+      if @followship = Followship.create(user_id: current_user.id, following_id: params[:following_id])
+        flash[:notice] = "Followship was created successfully."
+      else
+        flash[:alert] = "Followship was failed to create."
+      end
     end
 
     # 更新追蹤者的數量，注意是更新 following 的 followers_count 不是 current_user 的
@@ -20,7 +24,11 @@ class FollowshipsController < ApplicationController
     @user = User.find(params[:id])
 
     @followship = current_user.followships.where(following_id: params[:id]).first
-    @followship.destroy
+    if @followship.destroy
+      flash[:notice] = "Followship was destroyed successfully."
+    else
+      flash[:alert] = "Followship was failed to destroy."
+    end
 
     # 更新追蹤者的數量
     # @user.count_followers

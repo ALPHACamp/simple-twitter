@@ -17,7 +17,11 @@ class RepliesController < ApplicationController
   def create
     @tweet = Tweet.find(params[:tweet_id])
 
-    @reply = Reply.create!(user_id: current_user.id, tweet_id: params[:tweet_id], comment: reply_params[:comment])
+    if @reply = Reply.create!(user_id: current_user.id, tweet_id: params[:tweet_id], comment: reply_params[:comment])
+      flash[:notice] = "Reply was created successfully."
+    else
+      flash[:alert] = "Reply was failed to create."
+    end
 
     # 已有 tweet_id 與
     # @reply = @tweet.replies.build(reply_params)
