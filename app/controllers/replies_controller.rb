@@ -1,9 +1,8 @@
 class RepliesController < ApplicationController
 
   def index
-    @tweets = Tweet.order(created_at: :desc)
     @tweet = Tweet.find(params[:tweet_id])
-    @replies = Reply.order(created_at: :desc)
+    @replies = @tweet.replies.all
     @reply = Reply.new
 
   end
@@ -21,5 +20,6 @@ class RepliesController < ApplicationController
   def replies_params
     params.require(:reply).permit(:comment)
   end
+
 
 end

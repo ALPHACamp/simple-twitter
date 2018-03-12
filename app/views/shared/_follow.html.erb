@@ -1,9 +1,9 @@
 <div class="my-btn">
 <% if user != current_user %>
   <% if current_user.following?(user) %>
-    <div><%= link_to 'Unfollow', followship_path(user), method: :delete, class: "btn btn-primary pull-right" %></div>
+    <%= link_to 'Unfollow', followship_path(user), method: :delete, class: "btn btn-primary pull-right" %>
       <% else %>
-    <div><%= link_to 'Follow', followships_path(following_id: user), method: :post, class: "btn btn-primary pull-right" %></div>
+    <%= link_to 'Follow', followships_path(following_id: user), method: :post, class: "btn btn-primary pull-right" %>
     <% end %>
 <% end %>
 </div>

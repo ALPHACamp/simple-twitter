@@ -26,7 +26,6 @@
       </td>
       <td><%= tweet.description %></td>
       <td><%= link_to 'replies', tweet_replies_path(tweet) %></td>
-      <td><%= link_to 'likes'  %></td>
       <td><%= link_to 'delete', admin_tweet_path(tweet), method: :delete, data: {confirm: "are you sure?"} %></td>
 <% end %>
       </tr>

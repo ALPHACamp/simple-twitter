@@ -3,34 +3,34 @@
     <div class="col-md-10 col-md-offset-1">
 
       <div class="col-left col-sm-4 col-md-3">
-        <div class="avatar-md">
-         <img src="http://via.placeholder.com/150x150"></a>
-        </div>
-        <h3><%= @tweet.user.name %></h3>
-        <p><%= @tweet.user.introduction %></p>
-        <ul>
-          <li><%= link_to 'Tweet', user_path(@tweet.user) %> </li>
-          <li><%= link_to 'Following', followings_user_path(@tweet.user) %> </li>
-          <li><%= link_to 'Follower', followers_user_path(@tweet.user) %></li>
-          <li><%= link_to 'Likes', likes_user_path(@tweet.user) %> </li>
-         </ul>
-    
-        <% if @tweet.user.email == current_user.email %>
-          <%= link_to 'Edit Profile', edit_user_path(@tweet.user), class: "btn btn-primary" %>
-        <% else %>
-         <!--follow-->
-          <%= render partial: "shared/follow", locals: {user: @user}  %>
-        <% end %> 
+        <%= render partial: "shared/profile", locals: {user: @tweet.user}  %>
       </div>
 
+
+
+
+
       <div class="col-right col-sm-8 col-md-9">
-        <!--Tweet lust-->
-      <%= render partial: "tweets/tweet" %>
+        <!--Tweet list-->
+        <div class="tweet-list">
+          <div class="avatar">
+            <%= image_tag @tweet.user.avatar, class: "img-responsive img-rounded" %>
+          </div>
+        <div class="tweet-content">
+          <h5><%= link_to @tweet.user.name, user_path(@tweet.user) %><em>, <%= time_ago_in_words(@tweet.created_at)%> ago</em></h5>
+          <p><%= @tweet.description %></p>
+          <ul class = "tweet-link">
+            <li><%= link_to 'replies', tweet_replies_path(@tweet) %></li>
+            <li>liked</li>
+          </ul>
+        </div>
+        </div>
+
 
         <!--reply list-->
         <div class="col-reply">
           <h3>Replies</h3>
-          <% @tweet.replies.each do |reply| %>
+          <% @replies.each do |reply| %>
           <div class="reply-list">
             <div class="avatar">
               <img src="http://via.placeholder.com/50x50"></a>

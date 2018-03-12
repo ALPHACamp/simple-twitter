@@ -40,4 +40,8 @@ class User < ApplicationRecord
     self.save
   end
 
+  def update_liked_tweets_count
+    self.update(liked_tweets_count: self.tweets.sum(:likes_count))
+  end
+
 end
