@@ -5,18 +5,32 @@
     <li role="presentation" class= "active"><%= link_to "Users", admin_users_path %></li>
   </ul>
   <br>
-    <% @users.each do |user| %>
-    <div class="user-profile">
-      <div class="avatar">
-        <%= image_tag user.avatar, class: "img-responsive img-rounded" %>
-      </div>
-      <div class="user-intro">
-        <h5><%= user.name %></h5>
-        <p><%= truncate(user.introduction, length: 80) %></p>
-      </div>
-    </div>
-    <div class="clearfix"></div>
-  <% end %>
+
+  <table class= "table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>User</th>
+        <th>Tweets</th>
+        <th>Followings</th>
+        <th>Followers</th>
+        <th>Likes</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each do |user| %>
+       <tr>
+        <td><%= user.id %></td>
+        <td><%= user.name %></td>
+        <td><%= user.tweets.count %></td>
+        <td><%= user.followings.count %></td>
+        <td><%= user.followers.count %></td>
+        <td><%= user.likes_count %></td>
+       </tr>
+      <% end %>
+    </tbody> 
+  </table>
 
 
 </div>

@@ -1,56 +1,50 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :followings, :followers, :likes]
-  before_action :set_count, only: [:show, :tweets, :followings, :followers, :likes]
-  
-
+  before_action :set_user, only: [:tweets, :show, :edit, :update, :followings, :followers, :likes]
+ 
   def tweets
-    @tweets = @user.tweets
+    @tweets = @user.tweets.includes(:liked_users).order(created_at: :desc)
     
   end
 
   def edit
     if !@user == current_user
-      redirect_to user_path(@user)
+      redirect_to tweets_user_path(@user)
     end
   end
 
-  def show
-
-  end
-
-
   def update
-    @user.update(user_params)
-    redirect_to user_path
+    if @user == current_user
+      if @user.update(user_params)
+        flash[:notice] = " Successfully updated"
+      redirect_to root_path
+      else
+        flash[:alert] = @user.errors.full_messages.to_sentence
+        render :edit
+      end
+    else 
+      flash[:alert] = "Not allowed"
+      redirect_to root_path
+    end
   end
 
   def followings
-    @followings = @user.followings
+    @followings = @user.followings.includes(:followships).order("followings.created_at: :desc")
 
     
   end
 
   def followers
-    @followers = @user.followers
+    @followers = @user.followers.includes(:followships).order("followings.created_at: :desc")
   end
 
   def likes
-    @likes = @user.likes
-    @liked_tweets = @user.liked_tweets
+    @liked_tweets = @user.liked_tweets.includes(:likes, :user, :liked_users).order("likes.created_at: :desc")
   end
 
   private
   def set_user
     @user = User.find(params[:id])
   end
-
-  def set_count
-    @tweets = @user.tweets
-    @followings = @user.followings
-    @followers = @user.followers
-    @likes = @user.likes
-  end
-
 
   def user_params
     params.require(:user).permit(:name, :introduction, :avatar)
