@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:tweets, :show, :edit, :update, :followings, :followers, :likes]
+  before_action :set_user, only: [:tweets, :edit, :update, :followings, :followers, :likes]
  
   def tweets
-    @tweets = @user.tweets.includes(:liked_users).order(created_at: :desc)
+    @tweets = @user.tweets.includes(:liked_users).order(created_at: :desc).page(params[:page]).per(10)
     
   end
 
@@ -28,17 +28,17 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings = @user.followings.includes(:followships).order("followings.created_at: :desc")
+    @followings = @user.followings.includes(:followships).order("followships.created_at desc")
 
     
   end
 
   def followers
-    @followers = @user.followers.includes(:followships).order("followings.created_at: :desc")
+    @followers = @user.followers.includes(:followships).order("followships.created_at desc")
   end
 
   def likes
-    @liked_tweets = @user.liked_tweets.includes(:likes, :user, :liked_users).order("likes.created_at: :desc")
+    @liked_tweets = @user.liked_tweets.includes(:likes, :user, :liked_users).order("likes.created_at desc")
   end
 
   private

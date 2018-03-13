@@ -4,15 +4,17 @@
   <h3><%= user.name %></h3>
   <p><%= user.introduction %></p>
   <ul>
-    <li><%= link_to "Tweet #{user.tweets.size}", user_path(user) %></li>
+    <li><%= link_to "Tweet #{user.tweets.size}", tweets_user_path(user) %></li>
     <li><%= link_to "Following #{user.followings.count}", followings_user_path(user) %></li>
     <li><%= link_to "Follower #{user.followers.count}", followers_user_path(user) %></li>
-    <li><%= link_to "Likes #{user.likes_count}", likes_user_path(user) %></li>
+    <li><%= link_to "Likes #{user.likes.count}", likes_user_path(user) %></li>
   </ul>
     
   <% if user.email == current_user.email %>
     <%= link_to 'Edit Profile', edit_user_path(user), class: "btn btn-primary" %>
   <% else %>
     <!--follow-->
+    <div class="text-center">
     <%= render partial: "shared/follow", locals: {user: @user}  %>
+    </div>
   <% end %> 

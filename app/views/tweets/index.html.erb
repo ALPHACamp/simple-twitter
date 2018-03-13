@@ -20,8 +20,11 @@
     <br>
     
     <!--tweet-->
-      <%= render partial: "tweets/tweet", class: "pull-right"%>
-
+    <%= @tweets.each do |tweet| %>
+    <div>
+      <%= render partial: "shared/tweet", locals: {tweet: tweet} %>
+    </div>
+    <% end %>
  
   </div>
 
@@ -36,7 +39,7 @@
             <div class="user-intro">
               <h5><%= user.name %></h5>
               <p><%= truncate(user.introduction, length: 50) %></p>
-              <div><%= render partial: "shared/follow", locals: {user: @user} %></div>
+              <div><%= render partial: "shared/follow", locals: {user: user} %></div>
             </div>
             <br>
           </div>

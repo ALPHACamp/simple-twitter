@@ -10,10 +10,13 @@ class TweetsController < ApplicationController
   end
 
   def create
-    @tweet = Tweet.new(tweet_params)
-    @tweet.user = current_user
-    @tweet.save!
-    redirect_to tweets_path
+    @tweet = current_user.tweets.build(tweet_params)
+    if @tweet.save!
+      redirect_to tweets_path
+    else
+      @tweet = Tweet.order(created_at: :desc)
+      render :index
+    end
 
   end
 

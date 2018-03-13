@@ -17,15 +17,16 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_tweets, through: :likes, source: :tweet
   
-
-
   has_many :replies, dependent: :restrict_with_error
-  has_many :replied_tweets, through: :replies, source: :tweet
 
+  #追蹤關係
   has_many :followships, dependent: :destroy
+  #我追蹤的人
   has_many :followings, through: :followships
 
+  #反向追蹤
   has_many :inversed_followships, class_name: "Followship", foreign_key: "following_id"
+  #追蹤我的人
   has_many :followers, through: :inversed_followships, source: :user
 
   def admin?
