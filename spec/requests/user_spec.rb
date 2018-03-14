@@ -122,7 +122,9 @@ RSpec.describe 'User', type: :request do
       it 'show users like tweets' do
         get likes_user_path(user)
         expect(assigns(:likes).count).to eq 5
-        expect(assigns(:likes).first.id).to eq tweet5.id
+
+        expect(assigns(:likes).first.id).to eq tweet.id
+
       end
     end
   end
