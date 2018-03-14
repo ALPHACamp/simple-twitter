@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+
+      <div class="col-left col-sm-4 col-md-3">
+        <%= render partial: "shared/profile", locals: {user: @tweet.user}  %>
+      </div>
+
+
+
+
+
+      <div class="col-right col-sm-8 col-md-9">
+        <!--Tweet list-->
+        <div class="tweet-list">
+          <div class="avatar">
+            <%= image_tag @tweet.user.avatar, class: "img-responsive img-rounded" %>
+          </div>
+        <div class="tweet-content">
+          <h5><%= link_to @tweet.user.name, user_path(@tweet.user) %><em>, <%= time_ago_in_words(@tweet.created_at)%> ago</em></h5>
+          <p><%= @tweet.description %></p>
+          <ul class = "tweet-link">
+            <li><%= link_to 'replies', tweet_replies_path(@tweet) %></li>
+            <li>liked</li>
+          </ul>
+        </div>
+        </div>
+
+
+        <!--reply list-->
+        <div class="col-reply">
+          <h3>Replies</h3>
+          <% @replies.each do |reply| %>
+          <div class="reply-list">
+            <div class="avatar">
+              <img src="http://via.placeholder.com/50x50"></a>
+            </div>
+            
+            <div class = "reply-content">
+              
+              <p><%= reply.comment %></p>
+              
+            </div>
+            <div class="clearfix"></div>
+            <br>
+            <% end %>
+          </div> 
+        <!--reply form-->
+          <div calss = "reply-form">
+          <%= form_for [@tweet, @reply] do |f| %>
+            <%= f.text_area :comment, class:"form-control reply-form" %>
+            <br>
+            <%= f.submit 'Reply', class: "btn btn-primary" %>
+          <% end %>
+          </div>
+        </div>
+
+
+    </div>
+  </div>
+</div>
