@@ -1,0 +1,6 @@
+
+<% if tweet.is_liked?(current_user) %>
+  <%= link_to 'Unlike', unlike_tweet_path(tweet),method: :post, class:"btn btn-default" %>
+<% else %>
+  <%= link_to 'like', like_tweet_path(tweet), method: :post, class:"btn btn-default" %>
+<% end %>

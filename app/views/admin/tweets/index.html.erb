@@ -1,0 +1,41 @@
+<div class="container">
+
+  <ul class = "nav nav-tabs">
+    <li role="presentation" class= "active"><%=link_to "Tweets", admin_tweets_path %></li>
+    <li role="presentation"><%= link_to "Users", admin_users_path %></li>
+  </ul>
+  <br>
+
+  <table class= "table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>User</th>
+        <th>Description</th>
+        <th>#</th>
+      </tr>
+    </thead>
+
+  <tbody>
+  <% @tweets.each do |tweet| %>
+    <tr>
+      <td class="avatar">
+        <%= image_tag tweet.user.avatar, class: "img-responsive img-rounded" %>
+      </td>
+      <td><%= link_to tweet.user.name, user_path(tweet.user) %> <em>,<%=time_ago_in_words(tweet.created_at) %> ago </em>
+      </td>
+      <td><%= tweet.description %></td>
+      <td><%= link_to 'replies', tweet_replies_path(tweet) %></td>
+      <td><%= link_to 'delete', admin_tweet_path(tweet), method: :delete, data: {confirm: "are you sure?"} %></td>
+<% end %>
+      </tr>
+    </tbody>
+
+  </table>
+
+
+
+
+
+
+</div>
