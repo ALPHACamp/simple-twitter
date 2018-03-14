@@ -8,7 +8,8 @@
       <ul class = "tweet-link">
         <li><%= render partial: "shared/like", locals: {tweet: tweet} %></li>
         <li><%= link_to "replies (#{tweet.replies.size})", tweet_replies_path(tweet) %></li>
-        <li>liked <%="(#{tweet.liked_users.size})" %></li>
+        <li>
+          <li> likes <%= tweet.likes_count%></li>
       </ul>
       <br>
     </div>

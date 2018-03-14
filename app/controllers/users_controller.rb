@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:tweets, :edit, :update, :followings, :followers, :likes]
  
   def tweets
-    @tweets = @user.tweets.includes(:liked_users).order(created_at: :desc).page(params[:page]).per(10)
+    @tweets = @user.tweets.includes(:liked_users).order(created_at: :desc)
     
   end
 
@@ -13,17 +13,17 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user == current_user
+    if !@user == current_user
+      flash[:alert] = "Not allowed"
+      redirect_back(fallback_loation: root_path)
+    else 
       if @user.update(user_params)
         flash[:notice] = " Successfully updated"
-      redirect_to root_path
+       redirect_to root_path
       else
         flash[:alert] = @user.errors.full_messages.to_sentence
         render :edit
       end
-    else 
-      flash[:alert] = "Not allowed"
-      redirect_to root_path
     end
   end
 

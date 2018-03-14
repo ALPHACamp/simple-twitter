@@ -22,7 +22,7 @@
       <td class="avatar">
         <%= image_tag tweet.user.avatar, class: "img-responsive img-rounded" %>
       </td>
-      <td><%= link_to tweet.user.name, user_path(tweet.user) %> <em>,<%=time_ago_in_words(tweet.created_at) %> ago </em>
+      <td><%= link_to tweet.user.name%> <em>,<%=time_ago_in_words(tweet.created_at) %> ago </em>
       </td>
       <td><%= tweet.description %></td>
       <td><%= link_to 'replies', tweet_replies_path(tweet) %></td>

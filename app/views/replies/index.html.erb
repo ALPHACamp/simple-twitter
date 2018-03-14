@@ -48,7 +48,8 @@
         <!--reply form-->
           <div calss = "reply-form">
           <%= form_for [@tweet, @reply] do |f| %>
-            <%= f.text_area :comment %>
+            <%= f.text_area :comment, class:"form-control reply-form" %>
+            <br>
             <%= f.submit 'Reply', class: "btn btn-primary" %>
           <% end %>
           </div>
