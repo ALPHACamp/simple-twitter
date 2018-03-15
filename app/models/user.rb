@@ -11,21 +11,20 @@ class User < ApplicationRecord
   # 並參考 Devise 文件自訂表單後通過 Strong Parameters 的方法
   validates_presence_of :name
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
-  validates_uniqueness_of(:name)
+  validates_uniqueness_of :name
   
   #處理tweet的關聯
-  has_many :tweets, class_name: "Tweet", foreign_key: "user_id"
+  has_many :tweets, dependent: :destroy
   
   #處理reply的關聯
-  has_many :replis, class_name: "Reply", foreign_key: "user_id", dependent: :restrict_with_error
-  has_many :tweets, through: :replies, source: :reply
+  has_many :replis, dependent: :restrict_with_error
 
   #處理like的關聯
-  has_many :likes, class_name: "Like", dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_many :liked_tweets, through: :likes, source: :tweet
 
   #處理followship的關聯
-  has_many :followships, class_name: "Followship", dependent: :destroy
+  has_many :followships, dependent: :destroy
   has_many :followings, through: :followships
 
   #處理followers的關聯
@@ -40,26 +39,6 @@ class User < ApplicationRecord
   #確認是否有追隨
   def following?(user)
     self.followings.include?(user)
-  end
-
-  def count_likes
-    self.likes_count = self.likes.size
-    self.save
-  end
-
-  def count_followers
-    self.followers_count = self.followers.size
-    self.save
-  end
-
-  def count_tweets
-    self.tweets_count = self.tweets.size
-    self.save
-  end
-
-  def count_tweets
-    self.tweets_count = self.tweets.size
-    self.save
   end
 
 end
