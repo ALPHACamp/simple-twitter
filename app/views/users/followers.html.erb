@@ -22,7 +22,7 @@
                 </strong>
               </div>
               <div class="user-description">
-                <%= follower.introduction.truncate(70) %>
+                <%= follower.introduction.truncate(70) if follower.introduction? %>
               </div>
               <div class="user-re-li">
                 <% if current_user.following?(follower) %>
