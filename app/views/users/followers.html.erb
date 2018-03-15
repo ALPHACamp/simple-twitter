@@ -5,37 +5,34 @@
 
   <!-- 顯示該使用者的followers -->
   <div class="pertweet">
-    <div class="col-sm-6 col-md-4 user-relative">
-      <h3><strong><%= @followers.count %></strong> followers</h3>
-    </div>
     <% @followers.each do |follower| %>
-      <div class="col-sm-6 col-md-4 user-relative">
-        <div class="following-tweets">
-          <div class="single-tweet">
-            <div class="user-avatar">
-              <%= image_tag(follower.avatar, height: '128', width: '128') %>
+    <div class="col-sm-12 col-md-8 user-relative">
+      <div class="following-tweets">
+        <div class="single-tweet">
+          <div class="user-avatar">
+            <%= image_tag(follower.avatar, height: '128', width: '128') %>
+          </div>
+          <div class="user-tweet">
+            <div class="user-name">
+              <strong>
+                <%= link_to "@#{follower.name}", tweets_user_path(follower), :alt => "Who is this?" %>
+              </strong>
             </div>
-            <div class="user-tweet">
-              <div class="user-name">
-                <strong>
-                  <%= link_to "@#{follower.name}", tweets_user_path(follower), :alt => "Who is this?" %>
-                </strong>
-              </div>
-              <div class="user-description">
-                <%= follower.introduction.truncate(70) if follower.introduction? %>
-              </div>
-              <div class="user-re-li">
-                <% if current_user.following?(follower) %>
-                  <%= link_to  "Unfollow", followship_path(follower), method: :delete, class: "btn btn-info btn-group-xs" %>
-                <% else %>
-                  <%= link_to  "Follow", followships_path(following_id: follower), method: :post, class: "btn btn-info btn-group-xs" %>
-                <% end %>
-              </div>
+            <div class="user-description">
+              <%= follower.introduction.truncate(70) if follower.introduction? %>
+            </div>
+            <div class="user-re-li">
+              <% if current_user.following?(follower) %>
+                <%= link_to  "Unfollow", followship_path(follower), method: :delete, class: "btn btn-info btn-group-xs" %>
+              <% else %>
+                <%= link_to  "Follow", followships_path(following_id: follower), method: :post, class: "btn btn-info btn-group-xs" %>
+              <% end %>
             </div>
           </div>
         </div>
-        <hr>
       </div>
-      <% end %>
+      <hr>
+    </div>
+    <% end %>
   </div>
 </div>

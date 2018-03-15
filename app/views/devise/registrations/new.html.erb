@@ -10,12 +10,14 @@
         <%= f.label :name, "Name" %><br />
         <%= f.text_field :name, autofocus: true, class: "form-control" %>
       </div>
-
+      <br>
+      <br>
       <div class="field">
         <%= f.label :email, "E-Mail" %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
       </div>
-
+      <br>
+      <br>
       <div class="field">
         <%= f.label :password %>
         <% if @minimum_password_length %>
@@ -23,17 +25,19 @@
         <% end %><br />
         <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
       </div>
-
+      <br>
+      <br>
       <div class="field">
         <%= f.label :password_confirmation %><br />
         <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
       </div>
-
+      <br>
+      <br>
       <div class="actions btn-group ">
         <%= f.submit "Sign up", class: "btn btn-info" %>
       </div>
     <% end %>
-      <br>
-    <%= render "devise/shared/links" %>
+      <hr class="hrlogin">
+    <%= link_to "Back to Log in", new_session_path(resource_name), class: "btn btn-success" %>
   </div>
 </div>

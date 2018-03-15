@@ -1,8 +1,7 @@
-<h1>user edit</h1>
 <div class="container">
+  <h1>user edit</h1>
   <div class="avatar">
     <div class="row">
-
       <% if @user.errors.any? %>
         <h4>We have some errors here !</h4>
         <ul>
@@ -12,30 +11,29 @@
         </ul>
         <hr>
       <% end %>
-
     </div>
   </div>
-  <div class="editing">
+  <div class="editing col-md-12">
     <div class="row">
       <%= form_for @user do |f| %>      
 
-        <div class="form-group">
+        <div class="form-group col-md-12">
           <% f.label :avatar, "Avatar" %>
             <%= image_tag @user.avatar, width: '300px' if @user.avatar? %>
               <%= f.file_field :avatar, class: "btn btn-primary" %>
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-md-12">
           <%= f.label :name, "Name" %>
             <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
         </div>
       
-        <div class="form-group">
+        <div class="form-group col-md-12">
           <%= f.label :introduction, "Introduction" %>
             <%= f.text_area :introduction, placeholder: "Type anything about you here...", class: "form-control" %>
         </div>
       
-        <div class="form-group">
+        <div class="form-group col-md-12">
           <%= f.submit "Update",class: "btn btn-primary" %>
         </div>
         <% end %>

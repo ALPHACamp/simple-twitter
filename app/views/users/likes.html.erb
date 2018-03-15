@@ -5,11 +5,8 @@
 
   <!-- 顯示該使用者的likes -->
   <div class="pertweet">
-    <div class="col-sm-6 col-md-4 user-relative">
-      <h3><strong><%= @likes.count %></strong> Likes</h3>
-    </div>
     <% @likes.each do |like| %>
-      <div class="col-sm-6 col-md-4 user-relative">
+    <div class="col-sm-12 col-md-8 user-relative">
         <div class="following-tweets">
           <div class="single-tweet">
             <div class="user-avatar">
@@ -32,8 +29,6 @@
                   <%= link_to "Like(#{Like.where(:tweet_id => like.tweet.id).length})", like_tweet_path(like.tweet), method: :post, class: "btn btn-danger btn-group-xs" %>
                 <% end %>
               </div>
-
-
             </div>
           </div>
         </div>

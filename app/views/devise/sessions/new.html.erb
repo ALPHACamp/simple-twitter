@@ -2,12 +2,15 @@
   <div class="input-group">
     <h2>歡迎回來</h2>
   </div>
+  <br>
   <div class="input-group">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
         <%= f.label :email, "E-Mail" %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
       </div>
+      <br>
+      <br>
       <br>
       <div class="field">
         <%= f.label :password %><br />
@@ -21,11 +24,14 @@
         </div>
       <% end -%>
       <br>
+      <hr class="hrlogin">
+      <br>
       <div class="actions btn-group">
         <%= f.submit "Log in", class: "btn btn-danger" %>
+        <%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-info" %><br />
       </div>
     <% end %>
-    <br>
-    <%= render "devise/shared/links" %>
+    <hr class="hrlogin">
+    <%= link_to "Forgot your password?", new_password_path(resource_name), class: "btn btn-success" %>    
   </div>
 </div>

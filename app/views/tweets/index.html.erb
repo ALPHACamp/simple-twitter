@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-md-8" id="left-col">
+    <div class="col-xs-12 col-md-8">
       <div class="tweet-field">
         <!-- 顯示錯誤訊息 -->
         <div class="row">
@@ -63,7 +63,7 @@
       </div>
     </div>
     <!-- 顯示追蹤數前10的使用者 -->
-    <div class="col-xs-12 col-md-8" id="right-col">
+    <div class="col-xs-12 col-md-4">
       <% @users.each do |user| %>
         <div class="single-tweet">
           <div class="user-avatar">
@@ -85,7 +85,7 @@
             <div class="user-re-li">
               <% if user != current_user %>
                 <% if current_user.following?(user) %>
-                  <%= link_to  "Unfollow", followship_path(user), method: :delete, class: "btn btn-primary ctweet" %>
+                  <%= link_to  "Unfollow", followship_path(user), method: :delete, class: "btn btn-warning ctweet" %>
                   <% else %>
                   <%= link_to  "Follow", followships_path(following_id: user), method: :post , class: "btn btn-primary ctweet"%>
                 <% end %>

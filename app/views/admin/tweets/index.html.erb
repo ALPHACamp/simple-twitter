@@ -25,8 +25,8 @@
         <tr>
         <td><%= tweet.id %></td>
         <td><%= tweet.description %></td>
-        <td><%= link_to  "Reply", tweet_replies_path(tweet), class: "btn btn-primary ctweet" %></td>
-        <td><%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"}, class: "btn btn-primary ctweet" %></td>
+        <td><%= link_to  "Reply", tweet_replies_path(tweet), class: "btn btn-info ctweet" %></td>
+        <td><%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"}, class: "btn btn-danger ctweet" %></td>
         </tr>
       <% end %>      
     </table>

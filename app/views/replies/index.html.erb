@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-md-8 portfolio">
+    <div class="col-xs-12 col-md-4">
       <div class="avatar">
         <%= image_tag @tweet.user.avatar, width: '300px' if @tweet.user.avatar? %>
       </div>
@@ -33,7 +33,7 @@
       </div>
     </div>
     <!-- 選定的tweet -->
-    <div class="col-sm-6 col-md-4 user-relative">
+    <div class="col-sm-12 col-md-8">
       <div class="following-tweets">
         <div class="single-tweet">
           <div class="user-avatar">
