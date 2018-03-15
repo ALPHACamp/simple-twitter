@@ -14,10 +14,10 @@
         <%= link_to "Tweets (#{Tweet.all.where(:user_id => @user.id).length})", tweets_user_path %>
       </li>
       <li>
-        <%= link_to "Following (#{Followship.all.where(:following_id => @user.id).length})", followings_user_path %>
+        <%= link_to "Following (#{Followship.all.where(:user_id => @user.id).length})", followings_user_path %>
       </li>
       <li>
-        <%= link_to "Follower (#{Followship.all.where(:user_id => @user).length})", followers_user_path %>
+        <%= link_to "Follower (#{Followship.all.where(:following_id => @user).length})", followers_user_path %>
       </li>
       <li>
         <%= link_to "Like (#{Like.all.where(:user_id => @user).length})", likes_user_path %>
