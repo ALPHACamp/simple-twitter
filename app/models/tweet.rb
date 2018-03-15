@@ -7,7 +7,7 @@ class Tweet < ApplicationRecord
   validates_length_of :description, maximum: 140
   
   #處理user的關聯
-  belongs_to :user, optional: true
+  belongs_to :user, counter_cache: true
 
   #處理reply的關聯
   has_many :replies, class_name: "Reply", dependent: :destroy
@@ -19,15 +19,4 @@ class Tweet < ApplicationRecord
   def is_liked?(user)
     self.liked_users.include?(user)
   end
-
-  def count_likes
-    self.likes_count = self.likes.size
-    self.save
-  end
-
-  def count_replies
-    self.replies_count = self.replies.size
-    self.save
-  end
-
 end
