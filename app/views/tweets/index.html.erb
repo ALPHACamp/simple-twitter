@@ -59,11 +59,15 @@
               </div>
             </div>
           </div>
+          <br>
           <% end %>
       </div>
     </div>
     <!-- 顯示追蹤數前10的使用者 -->
     <div class="col-xs-12 col-md-4">
+      <h1>Top 10 Users</h1>
+      <br>
+      <hr class="hrlogin">
       <% @users.each do |user| %>
         <div class="single-tweet">
           <div class="user-avatar">
@@ -95,6 +99,7 @@
             </div>
           </div>
         </div>
+        <br>
       <% end %>  
     </div>
   </div>
