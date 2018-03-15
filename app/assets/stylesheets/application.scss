@@ -27,6 +27,8 @@ h5,p{
 .avatar {
   float: left;
   margin-right: 15px;
+  width: 80px;
+  height: 80px;
 }
 
 .clearfix{
@@ -62,11 +64,6 @@ a, a:hover, a:focus {
 .tweet-link li{
   display: inline-block;
   margin-bottom: 0px;
-}
-
-.avatar{
-  width: 80px;
-  height: 80px;
 }
 
 .user-profile{

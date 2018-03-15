@@ -1,17 +1,15 @@
 <div class="container">
-  <div class="col-left col-md-4">
     <%= form_for @user do |f| %>
+  <div class="col-left col-md-4">
     <div class="avatar-lg">
       <%= image_tag @user.avatar, class: "img-responsive img-rounded" %>        
-      <%= f.label :avatar, "上傳大頭照" %>
-      <%= image_tag @user.avatar if @user.avatar?%>
-      <%= f.file_field :avatar %>
-      <% end %>
+      <%= f.label :avatar, "Avatar" %>
+      <%= image_tag @user.avatar, width: '100%' if @user.avatar? %><br>
+      <%= f.file_field :avatar, class: "form-control" %>
     </div>
   </div>
 
   <div class="col-right col-md-8">
-    <%= form_for @user do |f| %>
     
     <div class="form-group">
     <%= f.label :name, "name" %>
@@ -19,6 +17,7 @@
     </div>
 
     <div class="form-group">
+    <%= f.label :introduction, "introduction" %>
     <%= f.text_area :introduction, class: "form-control"%>
     </div>
 
