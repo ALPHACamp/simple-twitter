@@ -1,6 +1,5 @@
 class Like < ApplicationRecord
-  belongs_to :user, class_name: "User"
-  belongs_to :tweet, class_name: "Tweet"
+  belongs_to :user
   #如何知道被喜歡
 
   #counter_cache 計算關聯物件的數量
