@@ -63,11 +63,12 @@ namespace :dev do
 
   #製造假like
   task fake_like: :environment do
-    Tweet.all.each do |tweet|
-      rand(1..3).times do |i|
-        tweet.likes.create!(
-          user: User.all.sample
-        )
+    Like.destroy_all
+    500.times do
+      user = User.all.sample
+      tweet = Tweet.all.sample
+      unless tweet.likes.create(user: user)
+        return
       end
     end
     puts "have created fake likes"
@@ -99,46 +100,6 @@ namespace :dev do
       user.save!
     end
     puts "Now, All users understand how many likes they haved"
-  end
-
-  task fake_updatefollowerscount: :environment do
-    User.all.each do |user|
-      user.update!(
-        followers_count: Followship.all.where(:user_id => user.id).length
-      )
-      user.save!
-    end
-    puts "Now, All users understand who are following themselves."
-  end
-
-  task fake_updatereplies_count: :environment do
-    Tweet.all.each do |tweet|
-      tweet.update!(
-        replies_count: Reply.where(:tweet_id => tweet.id).length
-      )
-      tweet.save!
-    end
-    puts "Now, All tweets understand how many replies."
-  end
-
-  task fake_updatetweets_count: :environment do
-    User.all.each do |user|
-      user.update!(
-        tweets_count: Tweet.where(:user_id => user.id).length
-      )
-      user.save!
-    end
-    puts "Now, All users understand they have how many tweets."
-  end
-
-  task update_tweets_replies_count: :environment do
-    Tweet.all.each do |tweet|
-      tweet.update!(
-        replies_count: Reply.where(:tweet_id => tweet.id).length
-      )
-      tweet.save!
-    end
-    puts "Now, All tweet have ther replies count."
   end
   
 end
