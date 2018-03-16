@@ -3,20 +3,6 @@ namespace :dev do
   # 其他測試用的假資料請依需要自行撰寫
   # db:reset 用來清除schema的table，並執行seeds裡面預先載入的資料
 
-  task fake_main: :environment do
-    Rake::Task['db:migrate'].execute
-    Rake::Task['dev:fake_user'].execute
-    Rake::Task['dev:fake_admin'].execute
-  end
-
-  task fake_others: :environment do
-    Rake::Task['dev:fake_tweet'].execute
-    Rake::Task['dev:fake_reply'].execute
-    Rake::Task['dev:fake_like'].execute
-    Rake::Task['dev:fake_followship'].execute
-    Rake::Task['dev:fake_updatelikescount'].execute
-  end
-
   task fake_user: :environment do
     User.destroy_all
     20.times do |i|
@@ -73,6 +59,13 @@ namespace :dev do
     User.find(21).update(avatar: "https://cdn.filestackcontent.com/4rWsXje4QRKXNAXygM9h")
   end
 
+  task fake_others: :environment do
+    Rake::Task['dev:fake_tweet'].execute
+    Rake::Task['dev:fake_reply'].execute
+    Rake::Task['dev:fake_like'].execute
+    Rake::Task['dev:fake_followship'].execute
+    Rake::Task['dev:fake_updatelikescount'].execute
+  end
   
   #製造假tweet
   task fake_tweet: :environment do

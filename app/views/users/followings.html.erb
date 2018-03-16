@@ -1,38 +1,10 @@
 <div class="container">
   <div class="row">
-    <%= render partial: "shared/portfolio" %>
+    <%= render partial: "shared/portfolio", locals: { user: @user } %>
   </div>
 
   <!-- 顯示該使用者的followings -->
   <div class="pertweet">
-    <% @followings.each do |following| %>
-      <div class="col-sm-12 col-md-8 user-relative">
-        <div class="following-tweets">
-          <div class="single-tweet">
-            <div class="user-avatar">
-              <%= image_tag(following.avatar, height: '128', width: '128') %>
-            </div>
-            <div class="user-tweet">
-              <div class="user-name">
-                <strong>
-                  <%= link_to "@#{following.name}", tweets_user_path(following), :alt => "Who is this?" %>
-                </strong>
-              </div>
-              <div class="user-description">
-                <%= following.introduction.truncate(70) %>
-              </div>
-              <div class="user-re-li">
-                <% if current_user.following?(following) %>
-                  <%= link_to  "Unfollow", followship_path(following), method: :delete, class: "btn btn-info btn-group-xs" %>
-                <% else %>
-                  <%= link_to  "Follow", followships_path(following_id: following), method: :post, class: "btn btn-info btn-group-xs" %>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr>
-      </div>
-      <% end %>
+    <%= render partial: "shared/others", locals: { others: @followings } %>
   </div>
 </div>

@@ -1,7 +1,7 @@
 <div class="col-xs-12 col-md-4">
   <div class="avatar">
-    <% if @user.avatar? %>
-      <%= image_tag @user.avatar, width: '300px', class: "img img-responsive" %>
+    <% if user.avatar? %>
+      <%= image_tag user.avatar, width: '300px', class: "img img-responsive" %>
     <% else %>
       <%= image_tag current_user.avatar, width: '300px', class: "img img-responsive" %>
     <% end %>
@@ -9,12 +9,12 @@
     
   </div>
   <div class="user-name">
-    <h2>@<%= @user.name.capitalize %></h2>    
+    <h2>@<%= user.name.capitalize %></h2>    
   </div>
   <br>
   <div class="introduction">
-    <% if @user.introduction? %>
-    <p><%= @user.introduction %></p>
+    <% if user.introduction? %>
+    <p><%= user.introduction %></p>
     <% else %>
     <p>Tell everyone who is you!</p>
     <% end %>
@@ -23,29 +23,29 @@
   <div class="user-re-li">
     <ul>
       <li>
-        <%= link_to "Tweets (#{Tweet.all.where(:user_id => @user.id).length})", tweets_user_path %>
+        <%= link_to "Tweets (#{Tweet.all.where(:user_id => user.id).length})", tweets_user_path(user.id) %>
       </li>
       <li>
-        <%= link_to "Following (#{Followship.all.where(:user_id => @user.id).length})", followings_user_path %>
+        <%= link_to "Following (#{Followship.all.where(:user_id => user.id).length})", followings_user_path(user.id) %>
       </li>
       <li>
-        <%= link_to "Follower (#{Followship.all.where(:following_id => @user).length})", followers_user_path %>
+        <%= link_to "Follower (#{Followship.all.where(:following_id => user).length})", followers_user_path(user.id) %>
       </li>
       <li>
-        <%= link_to "Like (#{Like.all.where(:user_id => @user).length})", likes_user_path %>
+        <%= link_to "Like (#{Like.all.where(:user_id => user).length})", likes_user_path(user.id) %>
       </li>
     </ul>
   </div>
   <br>
   <hr class="hrlogin">
   <div class="editorfollow">
-    <% if current_user != @user %>
-      <% if current_user.following?(@user) %>
-        <%= link_to  "Unfollow", followship_path(@user), method: :delete, class: "btn btn-primary ctweet" %>
+    <% if current_user != user %>
+      <% if current_user.following?(user) %>
+        <%= link_to  "Unfollow", followship_path(user), method: :delete, class: "btn btn-danger ctweet" %>
         <% else %>
-        <%= link_to  "Follow", followships_path(following_id: @user), method: :post , class: "btn btn-primary ctweet"%>
+        <%= link_to  "Follow", followships_path(following_id: user), method: :post , class: "btn btn-info ctweet"%>
       <% end %>
       <% else %>
-      <%= link_to "Edit", edit_user_path, class: "btn btn-primary ctweet" %>
+      <%= link_to "Edit", edit_user_path(user.id), class: "btn btn-success ctweet" %>
     <% end %>
   </div>

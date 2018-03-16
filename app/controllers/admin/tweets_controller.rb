@@ -2,7 +2,7 @@ class Admin::TweetsController < Admin::BaseController
   
   #顯示所有的tweet
   def index
-    @tweets = Tweet.all.includes(:replies, :user).order(replies_count: :desc)
+    @tweets = Tweet.all
   end
 
   #刪除該則tweet

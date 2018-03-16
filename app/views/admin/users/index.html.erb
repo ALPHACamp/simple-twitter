@@ -30,7 +30,7 @@
         <tr>
           <td><%= user.id %></td>
           <td><%= image_tag(user.avatar, height: '32', width: '32') %></td>
-          <td><%= user.name %></td>
+          <td><%= link_to "#{user.name}", tweets_user_path(user.id) %></td>
           <td>
             <% if user.admin? %>
               <%= image_tag('admin-logo', height: '32', width: '32') %>
