@@ -20,7 +20,8 @@
         <div class="form-group col-md-12">
           <% f.label :avatar, "Avatar" %>
             <%= image_tag @user.avatar, width: '300px' if @user.avatar? %>
-              <%= f.file_field :avatar, class: "btn btn-primary" %>
+            <%= f.file_field :avatar, class: "btn btn-primary" %>
+          <%#= f.filestack_field :avatar, 'Upload Your Avatar!',  pickerOptions: {'fromSources': 'facebook'}, id: 'unique-id' %>
         </div>
 
         <div class="form-group col-md-12">

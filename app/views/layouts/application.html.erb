@@ -6,6 +6,9 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= filestack_js_include_tag %>
+    <%= filestack_js_init_tag %>
   </head>
 
   <body>
@@ -36,8 +39,6 @@
               <%= link_to image_tag(current_user.avatar), tweets_user_path(current_user), :alt => "Edit youself!", class: "head-shot" %>
             </li>
             <li><%= link_to(image_tag('logout.png'), destroy_user_session_path, method: :delete, class: "log-out") %></li>
-            <!-- 暫時移除編輯個人資料連結 id = 1 -->
-            <!-- 移除修改個人密碼的連結 id = 2 -->
             <% else %>
             <li><%= link_to image_tag('sign_up.png'), new_user_registration_path, :alt => "RegistrationPage", class: "logo" %></li>
             <li><%= link_to image_tag('sign_in.png'), new_user_session_path, :alt => "SignInPage", class: "logo" %></li>
