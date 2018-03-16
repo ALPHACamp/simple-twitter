@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   #呈現用戶頁面，自己或他人
   def tweets
-    @tweets = Tweet.where(:user_id => @user.id )
+    @tweets = Tweet.where(:user_id => @user.id ).order(created_at: :desc)
   end
 
   #編輯自己的資料
@@ -29,19 +29,19 @@ class UsersController < ApplicationController
   #我在追蹤誰
   def followings
     # 基於測試規格，必須講定變數名稱
-    @followings = @user.followings
+    @followings = @user.followings.order(created_at: :desc)
   end
 
   #誰在追蹤我
   def followers
     # 基於測試規格，必須講定變數名稱
-    @followers = @user.followers
+    @followers = @user.followers.order(created_at: :desc)
   end
 
   #tweet被喜歡的數量
   def likes
     # 基於測試規格，必須講定變數名稱
-    @likes = Like.all.where(:user_id => current_user)
+    @likes = Like.all.where(:user_id => current_user).order(created_at: :desc)
   end
   
   private
