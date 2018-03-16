@@ -1,12 +1,6 @@
 <div class="col-xs-12 col-md-4">
   <div class="avatar">
-    <% if user.avatar? %>
-      <%= image_tag user.avatar, width: '300px', class: "img img-responsive" %>
-    <% else %>
-      <%= image_tag current_user.avatar, width: '300px', class: "img img-responsive" %>
-    <% end %>
-    
-    
+    <%= image_tag user.avatar, width: '300px', class: "img img-responsive" %>
   </div>
   <div class="user-name">
     <h2>@<%= user.name.capitalize %></h2>    
