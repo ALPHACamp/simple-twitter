@@ -25,16 +25,14 @@ namespace :dev do
         email: "#{name}@example.co",
         password: "12345678",
         introduction: FFaker::Lorem::sentence(30),
-        avatar: file
+        #avatar: file
       )
 
       user.save!
       puts user.name
     end
-  end
 
-  #製造假Admin
-  task fake_admin: :environment do
+    # 製造假Admin
     User.create!(
       name: "homer",
       email: "admin@example.com",
@@ -44,7 +42,33 @@ namespace :dev do
       role: "admin"
     )
     puts "Admin Homer created!"
+
   end
+
+  task set_fake_avatars: :environment do
+    User.find(1).update(avatar: "https://cdn.filestackcontent.com/EFNFldaVSMyi9Zk3uJoJ")
+    User.find(2).update(avatar: "https://cdn.filestackcontent.com/x25ImlgLQjiOJzGjhQVI")
+    User.find(3).update(avatar: "https://cdn.filestackcontent.com/OvLwpGAhTIee3ATWvhZF")
+    User.find(4).update(avatar: "https://cdn.filestackcontent.com/SLWv5iHBT3y54IQyC6ei")
+    User.find(5).update(avatar: "https://cdn.filestackcontent.com/6156gf8SnKtse88EkvjA")
+    User.find(6).update(avatar: "https://cdn.filestackcontent.com/8QdkA1e4SqaerEehBm8A")
+    User.find(7).update(avatar: "https://cdn.filestackcontent.com/NgoFmfu4RtuqGHodjmS6")
+    User.find(8).update(avatar: "https://cdn.filestackcontent.com/tWCts2QKR2CEvzcQvsFl")
+    User.find(9).update(avatar: "https://cdn.filestackcontent.com/n2FNXS1fRuOu3qhSEruF")
+    User.find(10).update(avatar: "https://cdn.filestackcontent.com/Bh9OZUWhQHiBFl5kpFG0")
+    User.find(11).update(avatar: "https://cdn.filestackcontent.com/CaCgFrNSi21cDvEFiVfe")
+    User.find(12).update(avatar: "https://cdn.filestackcontent.com/zUMVqdDEQqeeIhQZDy5g")
+    User.find(13).update(avatar: "https://cdn.filestackcontent.com/PGUCGAn7Sgq9jCUtMu8s")
+    User.find(14).update(avatar: "https://cdn.filestackcontent.com/soVjhLrbTKmAEcRuB5YQ")
+    User.find(15).update(avatar: "https://cdn.filestackcontent.com/oY56ETZ0SICrezTFv1hA")
+    User.find(16).update(avatar: "https://cdn.filestackcontent.com/YnimFWyXR5mStxxBiMrP")
+    User.find(17).update(avatar: "https://cdn.filestackcontent.com/ClbS56KhTI6mnBFOAHMM")
+    User.find(18).update(avatar: "https://cdn.filestackcontent.com/POf9zfl0QMy2puPtQRvS")
+    User.find(19).update(avatar: "https://cdn.filestackcontent.com/L9goPhWTb6FmQl8XHJ2f")
+    User.find(20).update(avatar: "https://cdn.filestackcontent.com/N3PQpJW9RQOaQ81sgo3V")
+    User.find(21).update(avatar: "https://cdn.filestackcontent.com/4rWsXje4QRKXNAXygM9h")
+  end
+
   
   #製造假tweet
   task fake_tweet: :environment do
