@@ -3,10 +3,13 @@ namespace :dev do
   # 其他測試用的假資料請依需要自行撰寫
   # db:reset 用來清除schema的table，並執行seeds裡面預先載入的資料
 
-  task fake_all: :environment do
+  task fake_main: :environment do
     Rake::Task['db:migrate'].execute
     Rake::Task['dev:fake_user'].execute
     Rake::Task['dev:fake_admin'].execute
+  end
+
+  task fake_others: :environment do
     Rake::Task['dev:fake_tweet'].execute
     Rake::Task['dev:fake_reply'].execute
     Rake::Task['dev:fake_like'].execute
@@ -31,18 +34,19 @@ namespace :dev do
       user.save!
       puts user.name
     end
+  end
 
+  task fake_admin: :environment do
     # 製造假Admin
     User.create!(
       name: "homer",
       email: "admin@example.com",
       password: "123456",
       introduction: "Doh! Doh! Doh! Doh! Doh! Doh!",
-      avatar: File.open("#{Rails.root}/public/avatar/admin.png"),
+      #avatar: File.open("#{Rails.root}/public/avatar/admin.png"),
       role: "admin"
     )
     puts "Admin Homer created!"
-
   end
 
   task set_fake_avatars: :environment do
