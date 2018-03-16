@@ -23,11 +23,25 @@
       
       <% @tweets.each do |tweet| %>
         <tr>
-        <td><%= tweet.id %></td>
+        <td rowspan= "<%= tweet.replies_count + 2 %>"><%= tweet.id %></td>
         <td><%= tweet.description %></td>
         <td><%= link_to  "Reply", tweet_replies_path(tweet), class: "btn btn-info ctweet" %></td>
         <td><%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"}, class: "btn btn-danger ctweet" %></td>
         </tr>
+        <tr>
+          <th colspan="3" style="text-align:center;">
+            <% if tweet.replies_count == 0 %>
+              Nobody wants to reply
+            <% else %>
+              Replies:
+            <% end %>
+          </th>
+        </tr>
+        <% tweet.replies.each do |reply| %>
+        <tr>
+          <td colspan="3"><%= reply.comment %></td>
+        </tr>
+        <% end %>
       <% end %>      
     </table>
   </div>
