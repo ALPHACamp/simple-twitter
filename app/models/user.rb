@@ -17,7 +17,7 @@ class User < ApplicationRecord
   has_many :tweets, dependent: :destroy
   
   #處理reply的關聯
-  has_many :replis, dependent: :restrict_with_error
+  has_many :replies, dependent: :restrict_with_error
 
   #處理like的關聯
   has_many :likes, dependent: :destroy

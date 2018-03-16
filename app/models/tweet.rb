@@ -10,7 +10,7 @@ class Tweet < ApplicationRecord
   belongs_to :user, counter_cache: true
 
   #處理reply的關聯
-  has_many :replies, class_name: "Reply", dependent: :destroy
+  has_many :replies, dependent: :destroy
 
   #處理like的關聯
   has_many :likes, dependent: :destroy
