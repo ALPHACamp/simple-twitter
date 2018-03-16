@@ -40,6 +40,8 @@
         <%= link_to  "Follow", followships_path(following_id: user), method: :post , class: "btn btn-info ctweet"%>
       <% end %>
       <% else %>
-      <%= link_to "Edit", edit_user_path(user.id), class: "btn btn-success ctweet" %>
+      <%= link_to "Edit", edit_user_path(user.id), class: "btn btn-success ctweet" %> <br>
+      <br>
+      <%= link_to "Change Password", edit_user_registration_path(user.id), class: "btn btn-warning ctweet" %>
     <% end %>
   </div>
