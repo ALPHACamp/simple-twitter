@@ -8850,21 +8850,21 @@ a.admin-logo, a.head-shot, a.log-out {
 }
 
 /* line 48, C:/Users/Mini/Documents/ALPHA Camp/rails/test/test2-simple-twitter/app/assets/stylesheets/style.scss */
-a.logo img, a.head-shot img {
+a.logo img, a.admin-logo img, a.head-shot img {
   width: 100%;
 }
 
-/* line 61, C:/Users/Mini/Documents/ALPHA Camp/rails/test/test2-simple-twitter/app/assets/stylesheets/style.scss */
+/* line 52, C:/Users/Mini/Documents/ALPHA Camp/rails/test/test2-simple-twitter/app/assets/stylesheets/style.scss */
 a.log-out img {
   width: 120%;
 }
 
-/* line 65, C:/Users/Mini/Documents/ALPHA Camp/rails/test/test2-simple-twitter/app/assets/stylesheets/style.scss */
+/* line 56, C:/Users/Mini/Documents/ALPHA Camp/rails/test/test2-simple-twitter/app/assets/stylesheets/style.scss */
 div#nav {
   background-color: #28AAE1;
 }
 
-/* line 69, C:/Users/Mini/Documents/ALPHA Camp/rails/test/test2-simple-twitter/app/assets/stylesheets/style.scss */
+/* line 60, C:/Users/Mini/Documents/ALPHA Camp/rails/test/test2-simple-twitter/app/assets/stylesheets/style.scss */
 div.form-group textarea#tweet_description {
   resize: none;
   min-width: 100%;
@@ -8872,17 +8872,17 @@ div.form-group textarea#tweet_description {
   margin: auto;
 }
 
-/* line 76, C:/Users/Mini/Documents/ALPHA Camp/rails/test/test2-simple-twitter/app/assets/stylesheets/style.scss */
+/* line 67, C:/Users/Mini/Documents/ALPHA Camp/rails/test/test2-simple-twitter/app/assets/stylesheets/style.scss */
 div.form-group input.ctweet {
   margin-left: 75%;
 }
 
-/* line 80, C:/Users/Mini/Documents/ALPHA Camp/rails/test/test2-simple-twitter/app/assets/stylesheets/style.scss */
+/* line 71, C:/Users/Mini/Documents/ALPHA Camp/rails/test/test2-simple-twitter/app/assets/stylesheets/style.scss */
 div.all-tweets {
   min-width: 100%;
 }
 
-/* line 84, C:/Users/Mini/Documents/ALPHA Camp/rails/test/test2-simple-twitter/app/assets/stylesheets/style.scss */
+/* line 75, C:/Users/Mini/Documents/ALPHA Camp/rails/test/test2-simple-twitter/app/assets/stylesheets/style.scss */
 div.single-tweet {
   box-sizing: content-box;
   border: 1px solid #e0e0e0;
@@ -8890,32 +8890,32 @@ div.single-tweet {
   height: 175px;
 }
 
-/* line 91, C:/Users/Mini/Documents/ALPHA Camp/rails/test/test2-simple-twitter/app/assets/stylesheets/style.scss */
+/* line 82, C:/Users/Mini/Documents/ALPHA Camp/rails/test/test2-simple-twitter/app/assets/stylesheets/style.scss */
 div.user-avatar {
   float: left;
   margin-right: 20px;
 }
 
-/* line 96, C:/Users/Mini/Documents/ALPHA Camp/rails/test/test2-simple-twitter/app/assets/stylesheets/style.scss */
+/* line 87, C:/Users/Mini/Documents/ALPHA Camp/rails/test/test2-simple-twitter/app/assets/stylesheets/style.scss */
 div.user-description {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 24px;
   margin-bottom: 10px;
 }
 
-/* line 102, C:/Users/Mini/Documents/ALPHA Camp/rails/test/test2-simple-twitter/app/assets/stylesheets/style.scss */
+/* line 93, C:/Users/Mini/Documents/ALPHA Camp/rails/test/test2-simple-twitter/app/assets/stylesheets/style.scss */
 div.user-introduction {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 8;
   margin-bottom: 10px;
 }
 
-/* line 108, C:/Users/Mini/Documents/ALPHA Camp/rails/test/test2-simple-twitter/app/assets/stylesheets/style.scss */
+/* line 99, C:/Users/Mini/Documents/ALPHA Camp/rails/test/test2-simple-twitter/app/assets/stylesheets/style.scss */
 div.user-re-li {
   display: inline-block;
 }
 
-/* line 112, C:/Users/Mini/Documents/ALPHA Camp/rails/test/test2-simple-twitter/app/assets/stylesheets/style.scss */
+/* line 103, C:/Users/Mini/Documents/ALPHA Camp/rails/test/test2-simple-twitter/app/assets/stylesheets/style.scss */
 div.portfolio {
   box-sizing: content-box;
   width: 30%;
@@ -8923,7 +8923,7 @@ div.portfolio {
   border: 1px solid #e0e0e0;
 }
 
-/* line 119, C:/Users/Mini/Documents/ALPHA Camp/rails/test/test2-simple-twitter/app/assets/stylesheets/style.scss */
+/* line 110, C:/Users/Mini/Documents/ALPHA Camp/rails/test/test2-simple-twitter/app/assets/stylesheets/style.scss */
 div.user-relative {
   box-sizing: content-box;
   float: right;
@@ -8931,7 +8931,7 @@ div.user-relative {
   margin-right: 5px;
 }
 
-/* line 126, C:/Users/Mini/Documents/ALPHA Camp/rails/test/test2-simple-twitter/app/assets/stylesheets/style.scss */
+/* line 117, C:/Users/Mini/Documents/ALPHA Camp/rails/test/test2-simple-twitter/app/assets/stylesheets/style.scss */
 div.editorfollow {
   margin-left: 10px;
   padding: 0 50px;
