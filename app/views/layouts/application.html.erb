@@ -32,7 +32,7 @@
             <% if current_user %>
               <% if current_user&.admin? %>
                 <li>
-                  <%= link_to image_tag('admin-logo'), admin_tweets_path, :alt => "AdminPanel", class: "admin-logo" %>
+                  <%= link_to image_tag('admin-logo'), admin_tweets_path, :alt => "AdminPanel", width: '60px', class: "admin-logo" %>
                 </li>
               <% end %>
             <li>
