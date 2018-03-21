@@ -9,18 +9,45 @@
   </head>
 
   <body>
-    <% if current_user %>
-      <% if current_user&.admin? %>
-        <li><%= link_to 'Admin Panel', admin_restaurants_path %></li>
-      <% end %>
-      <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
-      <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
-      <li><%= link_to('修改個人資料', edit_user_path(current_user)) %></li>
-      <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
-    <% else %>
-      <li><%= link_to('註冊', new_user_registration_path) %></li>
-      <li><%= link_to('登入', new_user_session_path) %></li>
-    <% end %>
+    <nav class="navbar navbar-default " style="background-color: #e3f2fd;">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <%= link_to "Twitter", root_path,  class:  "navbar-brand" %> <!-- <a class="navbar-brand" href="#">Twitter</a> -->
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+           <ul class="pull-right text-right nav navbar-nav">
+             <!-- check user -->
+             <% if current_user %>
+              <% if current_user.admin? %>
+                <li><%= link_to 'Admin Panel', admin_restaurants_path %></li>
+              <% end %>
+              <li><p class="navbar-text">Hi, <%= current_user.name %></p></li>
+              <li><%= link_to "Profile", edit_user_path(current_user) %></li>
+              <form class="navbar-form navbar-right"> <!--form for button postion "center" -->
+                <button class="btn btn-default"><%= link_to('登出', destroy_user_session_path, method: :delete) %></button>
+                <button class="btn btn-default"><%= link_to('修改密碼', edit_user_registration_path) %></button>
+              </form>
+             <% else %>
+              <form class="navbar-form navbar-right">
+                <button class="btn btn-default"><%= link_to('註冊', new_user_registration_path) %></button>
+                <button class="btn btn-default"><%= link_to('登入', new_user_session_path) %></button>
+              </form>
+             <% end %><!-- /.end of check user -->
+           </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+    </nav>
+
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
