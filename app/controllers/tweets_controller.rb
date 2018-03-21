@@ -37,7 +37,7 @@ class TweetsController < ApplicationController
 
   def unlike
     @tweet = Tweet.find(params[:id])
-    likes = Like.where(user: current_user)
+    likes = Like.where(user: current_user, tweet_id:params[:id])
     likes.destroy_all
     @tweet.likes_count = @tweet.likes_count - 1
     @tweet.save
