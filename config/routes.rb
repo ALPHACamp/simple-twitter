@@ -3,5 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   # 請依照專案指定規格來設定路由
+  resources :tweets, only: [:index]
+
+  root "tweets#index"
 
 end
