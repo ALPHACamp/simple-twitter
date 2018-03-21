@@ -11,4 +11,8 @@ class User < ApplicationRecord
   validates_presence_of :name
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
 
+  # admin? 判斷單個user是否有 admin 角色，列如：current_user.admin?
+  def admin?
+    self.role == "admin"
+  end
 end
