@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :registrations => "users/registrations" }#20180321-01 add for devise because of strong parameter
 
   # 請依照專案指定規格來設定路由
-  resources :users, only: [:edit]
+  resources :users, only: [:edit, :update]
 
   resources :tweets, only: [:index]
 
