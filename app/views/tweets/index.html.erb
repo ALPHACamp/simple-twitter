@@ -16,17 +16,17 @@
 
 <div class="col-md-4 col-lg-4">  
   <h2><%= "Popular" %></h2>
-  <% @pop_tweets.each do |tweet| %>
+  <% @pop_users.each do |user| %>
       <div class="panel panel-default">
         <div class="panel-body">              
           <div>
-            <%= image_tag tweet.user.avatar, class: "avatar" %>
+            <%= image_tag user.avatar, class: "avatar" %>
             <div class="col-sm-4 col-md-4 pull-right">
-              <h4><%= tweet.user.email.split("@").first + ", " %><em><%= tweet.created_at %> </em>
-              </h4>  
-              <p><%= simple_format tweet.description %></p>
+              <h3><%= link_to user.name, tweets_user_path(user), class: "text-primary" %></h3>  
+              <h4><%= user.followers_count.to_s + " Followers" %></h4>
+              <div><%= truncate(user.introduction, :length => 50)  %></div>
               <p class="text-muted">
-                <em><%= time_ago_in_words(tweet.created_at) + " ago - "   %> </em>
+                <em><%=  %> </em>
               </p>
             </div>
           </div>                            

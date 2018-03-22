@@ -1,21 +1,45 @@
 class FollowshipsController < ApplicationController
+before_action :get_following_user, only: [:create, :destroy]
+#after_action :update_followers_count, only: [:create, :destroy]
+
   def create
     @followship = current_user.followships.build(following_id: params[:following_id])
 
     if @followship.save
-      flash[:notice] = "Successfully followed"
-      redirect_back(fallback_location: root_path)
+      @following_user.followers_count = @following_user.followers.count
+      @following_user.save
+      flash[:alert] = "Successfully followed"
     else
       flash[:alert] = @followship.errors.full_messages.to_sentence
-      redirect_back(fallback_location: root_path)
     end
+    redirect_back(fallback_location: user_path(@following_user))
   end
 
   def destroy
-    @followship = current_user.followships.where(following_id: params[:id]).first
+    @followship = current_user.followships.where(following_id: params[:following_id]).first
     @followship.destroy
+    @following_user.followers_count = @following_user.followers.count
+    @following_user.save
     flash[:alert] = "Followship destroyed"
-    redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: user_path(@following_user))
   end
+
+  private
+
+    def get_following_user
+      @following_user = User.find_by_id(params[:following_id])
+    end
+
+    def update_followers_count      
+      @following_user.followers_count = @following_user.followers.count
+      #flash[:notice] = @following_user.followers_count
+      #@following_user.save
+      if @following_user.save
+      flash[:notice] = "save"
+      else
+      flash[:notice] = "dont save"
+      end
+      redirect_back(fallback_location: user_path(@following_user))
+    end
 
 end
