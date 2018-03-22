@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :check_userself, :only => [:edit, :update]
 
   def tweets
-    @tweets = @user.tweets
+    @tweets = @user.tweets.order(likes_count: :desc).limit(10)
   end
 
   def edit

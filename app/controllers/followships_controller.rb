@@ -30,16 +30,14 @@ before_action :get_following_user, only: [:create, :destroy]
       @following_user = User.find_by_id(params[:following_id])
     end
 
-    def update_followers_count      
+    def update_followers_count   #暫時未使用     
       @following_user.followers_count = @following_user.followers.count
-      #flash[:notice] = @following_user.followers_count
-      #@following_user.save
       if @following_user.save
       flash[:notice] = "save"
       else
       flash[:notice] = "dont save"
       end
-      redirect_back(fallback_location: user_path(@following_user))
+      redirect_back(fallback_location: user_path(@following_user))      #啟用的話會出現redirect multiple times
     end
 
 end
