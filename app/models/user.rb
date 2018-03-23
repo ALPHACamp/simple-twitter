@@ -12,6 +12,8 @@ class User < ApplicationRecord
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
   validates_uniqueness_of :name, :case_sensitive => false
 
+  has_many :tweets, dependent: :destroy
+
   # admin? 判斷單個user是否有 admin 角色，列如：current_user.admin?
   def admin?
     self.role == "admin"

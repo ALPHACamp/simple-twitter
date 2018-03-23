@@ -6,6 +6,8 @@ class TweetsController < ApplicationController
   end
 
   def create
+    @tweet = current_user.tweets.build(tweet_params)
+    @tweet.save!
     puts " !!!!!!!!!!!~~~~~~~~~"
     redirect_back(fallback_location: root_path)
   end
