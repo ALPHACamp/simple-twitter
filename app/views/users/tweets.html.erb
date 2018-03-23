@@ -15,7 +15,7 @@
         <br>
         <%= link_to "Edit Profile", edit_user_path(@user) , class: "btn btn-primary" %>
       <% else %>
-        <p>Follow</p>
+        <%= render partial: "shared/follow", locals: {user: @user} %>
       <% end %>
     </div>
 
