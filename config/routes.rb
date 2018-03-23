@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :tweets, only: [:index, :create]
 
-
+  resources :followships , only: [:create, :destroy]
 
 
   root "tweets#index"
