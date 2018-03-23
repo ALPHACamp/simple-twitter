@@ -3,3 +3,39 @@
   width: 320px;
   
 }
+
+.tweet-content {
+  border:2px solid #6495ED;
+  border-radius: 10px;
+}
+
+.tweet-btn {
+  margin-left: 25px;
+}
+
+.tweet-item {
+  border: 1px solid #6495DD;
+  border-radius: 10px;
+  height: 140px;
+  margin-bottom: 15px;
+}
+
+
+.tweet-user-image {
+  float: left;
+  width: 75px;
+  height: 75px;
+  margin: 15px;
+  margin-top: 30px;
+}
+
+.tweet-user-image  img{
+  width: 70px;
+  height: 70px;
+}
+
+
+.caption {
+  margin-top: 15px;
+  margin-left: 15px;
+}

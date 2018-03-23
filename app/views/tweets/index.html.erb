@@ -1,37 +1,38 @@
 
-<h1>首頁</h1>
-
 <div class="container">
   <div class="row">
-    <div class = "col-md-5">
+    <div class = "col-md-6">
       <%= form_for [@tweet] do |f| %>
 
-        <div class="form-group">
-          <%= f.text_area :description ,class: "form-control", value: "What's on your mide?", size: "30x5" %>
+        <div class="form-group tweet-content">
+          <%= f.text_area :description ,class: "form-control", value: "What's on your mide?", size: "30x5", color:  "#e3f2fd" %>
         </div>
 
-        <div class="form-group">
-          <%= f.submit "Tweet", class: "btn-primary"  %>
+        <div class = "col-xs-offset-10 col-sm-offset-10 col-md-offset-10 col-lg-offset-10">
+          <div class="form-group tweet-btn">
+            <%= f.submit "Tweet", class: "btn-primary"  %>
+          </div>
         </div>
       <% end %>
+
+      <br>
 
       <% @tweets.each do |tweet| %>
         <div class="tweet-item">
           <div class="tweet-user-image">
             <% if tweet.user.avatar? %>
-               <%= image_tag tweet.user.avatar, class: "img-responsive center-block" %>
+               <%= image_tag tweet.user.avatar, class: "img-responsive  img-rounded" %>
             <% else %>
                <span class="glyphicon glyphicon-picture"></span>
             <% end %>
           </div>
           <div class="caption">
-            <p><%= tweet.user.name %></p>
-            <p><%= tweet.created_at %></p>
-            <p><%= tweet.description %></p>
+            <p><span><%= tweet.user.name %></span>, <span><%= tweet.created_at %></span></p>
+            <p><%= truncate(tweet.description, length: 140)%></p>
           </div>
         </div>
       <% end %>
-    </div><!-- col -->
+    </div> <!-- col -->
   
   </div> <!-- row -- >
 </div>  <!-- container -- >
