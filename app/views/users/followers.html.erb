@@ -8,7 +8,7 @@
       <div class="row clearfix">
         <% @followers.each do |f| %>
           <div class="col-md-6">
-            <%= render partial: "shared/user_follow", locals: { user: f.user} %>
+            <%= render partial: "shared/user_follow", locals: { user: f} %>
           </div>
         <% end %>
       </div>

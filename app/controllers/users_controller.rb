@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def edit
     if current_user != @user
-      tweets_user_path(current_user)
+      redirect_to tweets_user_path(@user)
     end
   end
 
@@ -21,15 +21,15 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings = @user.followships.order(created_at: :desc)
+    @followings = @user.followings.order('followships.created_at desc')
   end
 
   def followers
-    @followers = @user.inverse_followships.order(created_at: :desc)
+    @followers = @user.followers.order('followships.created_at desc')
   end
 
   def likes
-    @likes = @user.likes.order(created_at: :desc)
+    @likes = @user.liked_tweets.order(created_at: :desc)
   end
 
 private

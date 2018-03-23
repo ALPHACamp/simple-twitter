@@ -5,7 +5,7 @@
     </div>
     <div class="col-md-9">
       <% @likes.each do |l| %>
-        <%= render partial: "shared/tweet_msg", locals: { tweet: l.tweet} %>
+        <%= render partial: "shared/tweet_msg", locals: { tweet: l} %>
       <% end %>
     </div>
   </div>
