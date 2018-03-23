@@ -13,9 +13,25 @@
         <div class="form-group">
           <%= f.submit "Tweet", class: "btn-primary"  %>
         </div>
-
       <% end %>
-    </div>
+
+      <% @tweets.each do |tweet| %>
+        <div class="tweet-item">
+          <div class="tweet-user-image">
+            <% if tweet.user.avatar? %>
+               <%= image_tag tweet.user.avatar, class: "img-responsive center-block" %>
+            <% else %>
+               <span class="glyphicon glyphicon-picture"></span>
+            <% end %>
+          </div>
+          <div class="caption">
+            <p><%= tweet.user.name %></p>
+            <p><%= tweet.created_at %></p>
+            <p><%= tweet.description %></p>
+          </div>
+        </div>
+      <% end %>
+    </div><!-- col -->
   
   </div> <!-- row -- >
 </div>  <!-- container -- >
