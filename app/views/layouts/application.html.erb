@@ -30,7 +30,7 @@
               <% if current_user.admin? %>
                 <li><%= link_to 'Admin Panel', admin_restaurants_path %></li>
               <% end %>
-              <li><p class="navbar-text">Hi, <%= current_user.name %></p></li>
+              <li><p class="navbar-text">Hi, <%= link_to current_user.name, tweets_user_path(current_user) %></p></li>
               <li><%= link_to "Profile", edit_user_path(current_user) %></li>
               <form class="navbar-form navbar-right"> <!--form for button postion "center" -->
                 <button class="btn btn-default"><%= link_to('登出', destroy_user_session_path, method: :delete) %></button>
