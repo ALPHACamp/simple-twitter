@@ -14,6 +14,10 @@ class User < ApplicationRecord
 
   has_many :tweets, dependent: :destroy
 
+  has_many :followship, dependent: :destroy
+  has_many :followings, through: :followships
+
+
   # admin? 判斷單個user是否有 admin 角色，列如：current_user.admin?
   def admin?
     self.role == "admin"
