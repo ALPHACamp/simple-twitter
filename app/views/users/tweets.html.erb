@@ -1,1 +1,44 @@
 <h1>user's tweets</h1>
+
+<div class="container">
+  <div class="row">
+
+
+    <!-- user's info -->
+    <div class = "col-md-5">
+      <% if @user.avatar? %>
+        <%= link_to tweets_user_path(@user) do %>
+          <%= image_tag @user.avatar, class: "img-responsive  img-rounded" %>
+        <% end %>
+      <% end %>
+      <% if current_user == @user %>
+        <br>
+        <%= link_to "Edit Profile", edit_user_path(@user) , class: "btn btn-primary" %>
+      <% else %>
+        <p>Follow</p>
+      <% end %>
+    </div>
+
+
+    <!-- user's tweets -->
+    <div class = "col-md-6">
+      <% @tweets.each do |tweet| %>
+        <div class="tweet-item">
+          <div class="tweet-user-image">
+            <% if tweet.user.avatar? %>
+              <%= link_to tweets_user_path(tweet.user) do %>
+                <%= image_tag tweet.user.avatar, class: "img-responsive  img-rounded" %>
+              <% end %>
+            <% else %>
+               <span class="glyphicon glyphicon-picture"></span>
+            <% end %>
+          </div>
+          <div class="caption">
+            <p><span><%= link_to tweet.user.name, tweets_user_path(tweet.user) %></span>, <span><%= tweet.created_at %></span></p>
+            <p><%= truncate(tweet.description, length: 140)%></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
