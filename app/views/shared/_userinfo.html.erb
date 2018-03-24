@@ -7,6 +7,10 @@
       </div>
       <h3><%= user.name %></h3>
       <p><%= user.introduction %></p>
+      <p>Tweets</p>
+      <%=link_to "Following", followings_user_path(user) %>
+      <%=link_to "Follower (#{user.followers_count})", followers_user_path(user) %>
+      <p>Like</p>
       <% if current_user == user %>
         <br>
         <%= link_to "Edit Profile", edit_user_path(user) , class: "btn btn-primary" %>
