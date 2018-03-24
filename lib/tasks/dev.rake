@@ -30,6 +30,26 @@ namespace :dev do
         tweet = user.tweets.build(description: FFaker::Lorem.paragraph[0,138])
         tweet.save!
       end
-      puts "create 6 tweets"
+      puts "create 6 fake tweets"
   end
+
+  task fake_clean_followship: :environment do
+    Followship.destroy_all
+    puts "Clean all tweets"
+  end
+
+  task fake_followship: :environment do
+    User.all.each do |user|
+      User.all.sample(5).each do |following|
+        if user != following
+          unless user.following?(following)
+            followship = user.followships.build(following_id: following.id)
+            followship.save!
+          end
+        end
+      end
+    end
+    puts "create some fake followships"
+  end
+
 end
