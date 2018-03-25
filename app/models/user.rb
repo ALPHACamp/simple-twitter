@@ -13,7 +13,10 @@ class User < ApplicationRecord
   validates_uniqueness_of :name, :case_sensitive => false
 
   has_many :tweets, dependent: :destroy
+
   has_many :likes, dependent: :destroy
+  has_many :like_tweets, through: :likes, source: :tweet, dependent: :destroy
+
 
   has_many :followships, dependent: :destroy
   has_many :followings, through: :followships
@@ -30,6 +33,6 @@ class User < ApplicationRecord
   end
 
   def like?(tweet)
-    self.likes.include?(tweet)
+    self.like_tweets.include?(tweet)
   end
 end
