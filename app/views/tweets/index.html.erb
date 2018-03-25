@@ -17,24 +17,8 @@
 
       <br>
 
-      <% @tweets.each do |tweet| %>
-        <div class="tweet-item">
-          <div class="tweet-user-image">
-            <% if tweet.user.avatar? %>
-              <%= link_to tweets_user_path(tweet.user) do %>
-                <%= image_tag tweet.user.avatar, class: "img-responsive  img-rounded" %>
-              <% end %>
-            <% else %>
-               <span class="glyphicon glyphicon-picture"></span>
-            <% end %>
-          </div>
-          <div class="caption">
-            <p><span><%= link_to tweet.user.name, tweets_user_path(tweet.user) %></span>, <span><%= tweet.created_at %></span></p>
-            <p><%= truncate(tweet.description, length: 140)%></p>
-            <%= render partial: "shared/like", locals: {tweet: tweet} %>
-          </div>
-        </div>
-      <% end %>
+      <%= render partial: "shared/tweets", locals: {tweets: @tweets} %>
+
     </div> <!-- col -->
   
   </div> <!-- row -- >
