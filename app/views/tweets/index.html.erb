@@ -31,6 +31,7 @@
           <div class="caption">
             <p><span><%= link_to tweet.user.name, tweets_user_path(tweet.user) %></span>, <span><%= tweet.created_at %></span></p>
             <p><%= truncate(tweet.description, length: 140)%></p>
+            <%= render partial: "shared/like", locals: {tweet: tweet} %>
           </div>
         </div>
       <% end %>

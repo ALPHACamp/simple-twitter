@@ -5,6 +5,5 @@
   <% else %>
     <!-- 會用 POST 動作導向 http://localhost:3000/followships?following_id={user.id} -->
     <%= link_to "Follow", followships_path(following_id: user), method: :post, class: "btn btn-default"  %>
-
   <% end %>
 <% end %>
