@@ -8,8 +8,8 @@
       <h3><%= user.name %></h3>
       <p><%= user.introduction %></p>
       <p>Tweets</p>
-      <%=link_to "Following", followings_user_path(user) %>
-      <%=link_to "Follower (#{user.followers_count})", followers_user_path(user) %>
+      <div><%=link_to "Following", followings_user_path(user) %></div>
+      <div><%=link_to "Follower (#{user.followers_count})", followers_user_path(user) %></div>
       <p>Like</p>
       <% if current_user == user %>
         <br>
