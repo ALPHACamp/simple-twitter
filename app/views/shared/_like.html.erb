@@ -1,4 +1,3 @@
- 
 <% if current_user.like?(tweet) %>
   <%= link_to "Unlike", unlike_tweet_path(tweet), method: :post, class: "btn btn-link" %>
 <% else %>
