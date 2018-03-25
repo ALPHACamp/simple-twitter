@@ -31,4 +31,5 @@ class User < ApplicationRecord
 
   def like?(tweet)
     self.likes.include?(tweet)
+  end
 end
