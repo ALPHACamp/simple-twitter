@@ -27,7 +27,7 @@
       <br>
       <% @users.each do |user| %>
         <div class = "col-md-12">
-          <%= render partial: "shared/userblock", locals: {user: user} %>
+          <%= render partial: "shared/userblock", locals: {user: user, long_block: true} %>
         </div>
       <% end %>
     </div> <!-- col -->

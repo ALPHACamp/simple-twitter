@@ -13,7 +13,7 @@
     <div class = "col-md-6">
       <% @followings.each do |following| %>
         <div class = "col-md-6">
-          <%= render partial: "shared/userblock", locals: {user: following} %>
+          <%= render partial: "shared/userblock", locals: {user: following, long_block: false} %>
         </div>
       <% end %>
     </div>
