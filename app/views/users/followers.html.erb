@@ -8,5 +8,16 @@
     <div class = "col-md-5">
       <%= render partial: "shared/userinfo", locals: {user: @user} %>
     </div>
+
+    <!-- Other user's info -->
+    <h3>Follower</h3>
+    <br>
+    <div class = "col-md-6">
+      <% @followers.each do |follower| %>
+        <div class = "col-md-6">
+          <%= render partial: "shared/userblock", locals: {user: follower} %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
