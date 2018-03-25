@@ -19,7 +19,14 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings = @user.followings.all # 基於測試規格，必須講定變數名稱
+    @followings =  Array.new # 基於測試規格，必須講定變數名稱
+    @followships = @user.followships.all
+    puts "#{@followships.count} ~~~~~~~~"
+    @followships.order(created_at: :DESC).each do |followship|
+      puts "#{followship.following_id}"
+      @followings.push(followship.following)
+    end
+
   end
 
   def followers
