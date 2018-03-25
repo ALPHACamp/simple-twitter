@@ -1,0 +1,16 @@
+ <div class="user-item">
+  <div class="user-item-image">
+    <% if user.avatar? %>
+      <%= link_to tweets_user_path(user) do %>
+        <%= image_tag user.avatar, class: "img-responsive  img-rounded" %>
+      <% end %>
+    <% else %>
+       <span class="glyphicon glyphicon-picture"></span>
+    <% end %>
+  </div>
+  <div class="user-data">
+    <h4><%= link_to user.name, tweets_user_path(user) %></h4>
+    <p><%= truncate(user.introduction, length: 50) %></p>
+    <%= render partial: "shared/follow", locals: {user: user} %>
+  </div>
+</div>

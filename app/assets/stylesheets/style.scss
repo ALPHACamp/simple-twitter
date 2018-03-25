@@ -8,6 +8,26 @@
   width: 240px;
 }
 
+.user-item {
+  border: 1px solid #6495DD;
+  border-radius: 10px;
+  height: 160px;
+  margin-bottom: 15px;
+}
+
+.user-item-image {
+  float: left;
+  width: 75px;
+  height: 75px;
+  margin: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.user-item-image img{
+  width: 70px;
+  height: 70px;
+}
 
 .tweet-content {
   border:2px solid #6495ED;
