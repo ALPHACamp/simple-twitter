@@ -1,1 +1,16 @@
-<h1>likes</h1>
+<div class="container">
+  <div class="row">
+
+
+    <!-- user's info -->
+    <div class = "col-md-5">
+      <%= render partial: "shared/userinfo", locals: {user: @user} %>
+    </div>
+
+
+    <!-- likes tweets -->
+    <div class = "col-md-6">
+      <%= render partial: "shared/tweets", locals: {tweets: @likes} %>
+    </div>
+  </div>
+</div>
