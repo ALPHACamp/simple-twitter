@@ -10,7 +10,7 @@
       <p>Tweets</p>
       <div><%=link_to "Following", followings_user_path(user) %></div>
       <div><%=link_to "Follower (#{user.followers_count})", followers_user_path(user) %></div>
-      <p>Like</p>
+      <div><%=link_to "Like (#{user.likes_count})", likes_user_path(user) %></div>
       <% if current_user == user %>
         <br>
         <%= link_to "Edit Profile", edit_user_path(user) , class: "btn btn-primary" %>
