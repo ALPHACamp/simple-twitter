@@ -1,1 +1,13 @@
-<h1>Hello USERS</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-7">
+      <%= form_for @tweet do |f| %>
+        <%= f.text_area :description, placeholder: "Say it Out!!"%>
+        <%= f.submit "Tweet", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+    <div class="col-md-5">
+
+    </div>
+  </div>
+</div>
