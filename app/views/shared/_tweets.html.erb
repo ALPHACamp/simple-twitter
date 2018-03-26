@@ -1,4 +1,3 @@
-<% tweets.each do |tweet| %>
   <div class="tweet-item">
     <div class="tweet-user-image">
       <% if tweet.user.avatar? %>
@@ -16,4 +15,3 @@
       <%= render partial: "shared/like", locals: {tweet: tweet} %>
     </div>
   </div>
-<% end %>

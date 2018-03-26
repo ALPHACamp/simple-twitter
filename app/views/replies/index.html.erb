@@ -1,0 +1,18 @@
+
+<div class="container">
+  <div class="row">
+
+
+    <!-- user's info -->
+    <div class = "col-md-5">
+      <%= render partial: "shared/userinfo", locals: {user: @user} %>
+    </div>
+
+    <!-- tweets info -->
+    <h3>Tweets</h3>
+    <br>
+    <div class = "col-md-6">
+      <%= render partial: "shared/tweets", locals: {tweet: @tweet} %>
+    </div>
+  </div>
+</div>

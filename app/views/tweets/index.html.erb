@@ -16,8 +16,9 @@
       <% end %>
 
       <br>
-
-      <%= render partial: "shared/tweets", locals: {tweets: @tweets} %>
+      <% @tweets.each do |tweet| %>
+        <%= render partial: "shared/tweets", locals: {tweet: tweet} %>
+      <% end %>
 
     </div> <!-- col -->
 

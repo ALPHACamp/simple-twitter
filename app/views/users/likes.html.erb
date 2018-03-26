@@ -10,7 +10,9 @@
 
     <!-- likes tweets -->
     <div class = "col-md-6">
-      <%= render partial: "shared/tweets", locals: {tweets: @likes} %>
+      <% @likes.each do |tweet| %>
+        <%= render partial: "shared/tweets", locals: {tweet: tweet} %>
+      <% end %>
     </div>
   </div>
 </div>
