@@ -9,7 +9,7 @@
   <div clas="row">
     <% @tweets.each do |tweet| %>
       <div class = "col-md-6">
-        <%= render partial: "shared/tweets", locals: {tweet: tweet} %>
+        <%= render partial: "shared/tweets", locals: {tweet: tweet, admin: true} %>
       </div>
     <% end %>
   </div>
