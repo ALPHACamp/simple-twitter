@@ -9,9 +9,10 @@
       </div>
   <% end %>
   <br><br><br>
-  <% @recent_tweets.each do |tweet| %>
+  <% @tweets.each do |tweet| %>
       <%= render partial: "shared/tweet_template", locals: {tweet: tweet} %>
   <% end %> 
+  <%= paginate @tweets %>
 </div>
 
 <div class="col-md-4 col-lg-4">  

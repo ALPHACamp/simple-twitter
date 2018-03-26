@@ -16,6 +16,9 @@
                   <%= link_to 'Like('+ tweet.likes_count.to_s + ")", like_tweet_path(tweet), method: :post, class: "text-danger" %>
                 <% end %>
                 <%= link_to 'Reply('+ tweet.reply_ids.count.to_s + ")", replies_tweet_path(tweet), method: :get, class: "text-success" %>
+                <% if (current_user.role == "admin") %>
+                  <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, class: "text-warning" %>
+                <% end %>
               </p>
             </div>
           </div>                            

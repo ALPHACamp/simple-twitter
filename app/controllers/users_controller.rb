@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, :check_userself, :only => [:tweets, :edit, :update, :followings ]
+  before_action :set_user, :check_userself, :only => [:tweets, :edit, :update, :followings, :followers, :likes ]
   before_action :check_userself, :only => [:edit, :update]
 
   def tweets
@@ -20,17 +20,17 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @user = current_user
+    #@user = current_user
     @followings = @user.followings  # 基於測試規格，必須講定變數名稱
   end
 
   def followers
-    @user = current_user
+    #@user = current_user
     @followers = @user.followers # 基於測試規格，必須講定變數名稱
   end
 
   def likes
-    @user = current_user
+    #@user = current_user
     @likes = @user.likes_tweets  # 基於測試規格，必須講定變數名稱
   end
 
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 
     def check_userself
       if current_user!=@user
-      redirect_to restaurants_path
+      redirect_to tweets_user_path
       flash[:alert] = "您無編輯權限！"
       end
   end

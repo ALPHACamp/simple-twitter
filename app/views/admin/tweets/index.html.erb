@@ -1,0 +1,18 @@
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li role="presentation"><a href="/">Home</a></li>
+    <li role="presentation" class="active"><a href="/tweets">推特管理</a></li>
+    <li role="presentation"><a href="/users">用戶列表</a></li>
+  </ul>
+  <br>
+  
+
+    <ul class="nav nav-pills nav-pills-center">
+      <% @tweets.each do |tweet| %>
+        <div class="col-md-6 col-lg-6">  
+          <%= render partial: "shared/tweet_template", locals: {tweet: tweet} %>
+        </div>
+      <% end %> 
+    </ul>
+  <%= paginate @tweets %>
+</div>
