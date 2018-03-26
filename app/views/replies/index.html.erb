@@ -24,6 +24,29 @@
       <br>
       <h3>Replies</h3>
 
+
+      <!--  Replis -->
+      <div class = "col-md-11">
+      <% @replies.each do |reply| %>
+        <div class="reply-item">
+          <div class="tweet-user-image">
+            <% if reply.user.avatar? %>
+              <%= link_to tweets_user_path(reply.user) do %>
+                <%= image_tag reply.user.avatar, class: "img-responsive  img-rounded" %>
+              <% end %>
+            <% else %>
+               <span class="glyphicon glyphicon-picture"></span>
+            <% end %>
+          </div>
+          <div class="caption">
+            <p><span><%= link_to reply.user.name, tweets_user_path(reply.user) %></span>, <span><%= reply.created_at %></span></p>
+            <p><%= truncate(reply.comment, length: 140)%></p>
+          </div>
+        </div>
+      <% end %>
+      </div>
+
+      <!--  reply action -->
       <div class = "col-md-11">
         <%= form_for [@tweet, @reply] do |f| %>
           <div class="form-group tweet-content">
@@ -36,7 +59,8 @@
             </div>
           </div>
         <% end %>
-    </div>
+      </div>
 
+    </div>
   </div>
 </div>
