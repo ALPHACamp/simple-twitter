@@ -13,6 +13,8 @@ class User < ApplicationRecord
 
   has_many :tweets, dependent: :destroy
 
+  has_many :replies
+
 
   def admin?
     self.role == "admin"

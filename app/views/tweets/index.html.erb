@@ -13,26 +13,28 @@
           </div>
         <% end %>
       </div>
-        <div class="tweets-list">
-          <% @tweets.each do |tweet| %>
-              
-              <div class="row">
-                <div class="col-md-3">
-                  <img src="http://via.placeholder.com/90x90" class="img-responsive img-rounded">
-                </div>
-                <div class="col-md-8">
-                <ul>
-                  <li>name, create_time</li>
-                  <li>description</li>
-                  <li><button>reply</button> <button>unlike%like</button></li>
-                </ul>
+      <div class="tweets-list">
+        <% @tweets.each do |tweet| %>
+            
+            <div class="row">
+              <div class="col-md-3">
+                <img src="http://via.placeholder.com/90x90" class="img-responsive img-rounded">
+              </div>
+              <div class="col-md-8">
+              <ul>
+                <li><%= @users.name  %></li>
+                <li><%= tweet.description %></li>
+                <h4><%= link_to "Reply", tweet_replies_path(tweet.id) %>
                   
-                </div>
-              </div>          
-          
-              <hr>
-            <%end%>  
-        </div>  
+                </h4>
+              </ul>
+                
+              </div>
+            </div>          
+        
+            <hr>
+          <%end%>  
+      </div>  
       
     </div>
 
