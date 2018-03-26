@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    
+    <div class="col-md-7">
+      
+      <div class="tweeting">
+        <%= form_for @tweet do |t|%>
+          <div class="form-group tweet-input">
+            <%= t.text_area :description, placeholder: "What's on your mind?",  class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= t.submit "Tweet", class: "pull-right btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+        <div class="tweets-list">
+          <% @tweets.each do |tweet| %>
+              
+              <div class="row">
+                <div class="col-md-3">
+                  <img src="http://via.placeholder.com/90x90" class="img-responsive img-rounded">
+                </div>
+                <ul>
+                  <li>name</li>
+                  <li>description</li>
+                  <li>Reply unlike like</li>
+                </ul>
+                <div class="col-md-8">
+                  
+                </div>
+              </div>          
+          
+              <hr>
+            <%end%>  
+        </div>  
+      
+    </div>
+
+    <div class="col-md-5">
+      <h1>Popular</h1>
+      <% @users.each do |user| %>
+
+      <% end %>
+    </div>
+
+  </div>
+</div>
