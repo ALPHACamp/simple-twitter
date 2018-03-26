@@ -12,7 +12,7 @@ class RepliesController < ApplicationController
     @reply.user = current_user
     if @reply.save
        flash[:notice] = "Reply created!"
-       redirect_back(fallback_location: root_path)
+       redirect_to root_path
      else
       flash[:alert] = @reply.errors.full_messages.to_sentence
       redirect_back(fallback_location: root_path)
