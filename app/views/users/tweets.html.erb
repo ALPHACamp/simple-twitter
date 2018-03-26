@@ -12,7 +12,11 @@
             Followers.size: <br>
             likes.size: 
       </div>  
-        <p><%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-primary" %></p>
+        <p>
+          <% if @user.email == current_user.email %>
+            <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
+          <% end %>  
+        </p>
       
       
       
