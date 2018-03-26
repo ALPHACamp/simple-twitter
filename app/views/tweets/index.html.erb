@@ -5,9 +5,19 @@
         <%= f.text_area :description, placeholder: "Say it Out!!"%>
         <%= f.submit "Tweet", class: "btn btn-primary" %>
       <% end %>
+      <hr>
+      <% @tweets.each do |tweet|%>
+
+        <p><%= tweet.user.name %>, <%= tweet.created_at%></p>
+        <p><%= tweet.description %><p>
+      <% end %>
     </div>
     <div class="col-md-5">
-
+      <% @tweets.each do |tweet|%>
+      
+        <p><%= tweet.user.name %>, <%= tweet.created_at%></p>
+        <p><%= tweet.description %><p>
+      <% end %>
     </div>
   </div>
 </div>
