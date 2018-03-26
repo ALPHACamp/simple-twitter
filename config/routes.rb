@@ -8,12 +8,18 @@ Rails.application.routes.draw do
 
   root "tweets#index"
 
-  resources :users, only: [:edit, :update]
+  resources :users, only: [:edit, :update] do
+    member do
+      get :tweets
+      # 在要user modle 裡拿到推特 所以設定在 user model 裡
+    end
+  end
 
   namespace :admin do
     root "tweets#index"
     resources :tweets, only: [:index, :destroy]
     resources :users, only: [:index]
+    # admin 裡的user story 要求tweetlist跟userlist是分兩個頁面
   end
 
 
