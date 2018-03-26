@@ -22,7 +22,7 @@
               </div>
               <div class="col-md-8">
               <ul>
-                <li><%= @users.name  %></li>
+                <li><h5><%= link_to tweet.user.name, tweet_replies_path(tweet.id) %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></h5></li>
                 <li><%= tweet.description %></li>
                 <h4><%= link_to "Reply", tweet_replies_path(tweet.id) %>
                   
