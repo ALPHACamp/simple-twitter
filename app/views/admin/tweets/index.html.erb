@@ -4,4 +4,14 @@
     <%=link_to "Tweets", admin_tweets_path%> |
     <%=link_to "Users", admin_users_path%>
   </div>
+
+  <br>
+  <div clas="row">
+    <% @tweets.each do |tweet| %>
+      <div class = "col-md-6">
+        <%= render partial: "shared/tweets", locals: {tweet: tweet} %>
+      </div>
+    <% end %>
+  </div>
+
 </div>
