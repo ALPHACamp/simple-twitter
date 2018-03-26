@@ -2,17 +2,41 @@
 <div class="container">
   <div class="row">
 
-
     <!-- user's info -->
     <div class = "col-md-5">
       <%= render partial: "shared/userinfo", locals: {user: @user} %>
     </div>
 
     <!-- tweets info -->
-    <h3>Tweets</h3>
-    <br>
-    <div class = "col-md-6">
-      <%= render partial: "shared/tweets", locals: {tweet: @tweet} %>
+    <div class = "col-md-7">
+      <h3>Tweets</h3>
+      <div class = "col-md-11">
+        <%= render partial: "shared/tweets", locals: {tweet: @tweet} %>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <h3>Replies</h3>
+
+      <div class = "col-md-11">
+        <%= form_for [@tweet, @reply] do |f| %>
+          <div class="form-group tweet-content">
+            <%= f.text_area :comment ,class: "form-control", size: "30x5", color:  "#e3f2fd" %>
+          </div>
+
+          <div class = "col-xs-offset-10 col-sm-offset-10 col-md-offset-10 col-lg-offset-10">
+            <div class="form-group tweet-btn">
+              <%= f.submit "Reply", class: "btn-primary"  %>
+            </div>
+          </div>
+        <% end %>
     </div>
+
   </div>
 </div>
