@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only:[:tweets, :edit, :update, :followings ,:followers, :likes]
 
   def tweets
-    @tweets = @user.tweets
+    @tweets = @user.tweets.order(created_at: :DESC)
   end
 
   def edit
@@ -20,21 +20,27 @@ class UsersController < ApplicationController
 
   def followings
     @followings =  Array.new # 基於測試規格，必須講定變數名稱
-    @followships = @user.followships.all
-    puts "#{@followships.count} ~~~~~~~~"
-    @followships.order(created_at: :DESC).each do |followship|
-      puts "#{followship.following_id}"
+    @followships = @user.followships.order(created_at: :DESC)
+    @followships.each do |followship|
       @followings.push(followship.following)
     end
 
   end
 
   def followers
-    @followers = @user.followers.all # 基於測試規格，必須講定變數名稱
+    @followers = Array.new # 基於測試規格，必須講定變數名稱
+    @followships = @user.inverse_followships.order(created_at: :DESC)
+    @followships.each do |followship|
+      @followers.push(followship.user)
+    end
   end
 
   def likes
-    @likes = @user.like_tweets.all # 基於測試規格，必須講定變數名稱
+    @likes = Array.new # 基於測試規格，必須講定變數名稱
+    @likeships = @user.likes.order(created_at: :DESC)
+    @likeships.each do |like|
+      @likes.push(like.tweet)
+    end
   end
 
   private
