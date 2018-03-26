@@ -52,13 +52,41 @@
   margin-bottom: 15px;
 }
 
-.tweet-item {
-  border: 1px solid #6495DD;
-  border-radius: 10px;
-  height: 160px;
-  margin-bottom: 15px;
+@media screen and (min-width: 480px) {
+  .tweet-item-large {
+    border: 1px solid #6495DD;
+    border-radius: 10px;
+    height: 180px;
+    margin-bottom: 15px;
+  }
 }
 
+@media screen and (max-width: 480px) {
+  .tweet-item-large {
+    border: 1px solid #6495DD;
+    border-radius: 10px;
+    height: 210px;
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .tweet-item {
+    border: 1px solid #6495DD;
+    border-radius: 10px;
+    height: 160px;
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .tweet-item {
+    border: 1px solid #6495DD;
+    border-radius: 10px;
+    height: 200px;
+    margin-bottom: 15px;
+  }
+}
 
 .tweet-user-image {
   float: left;

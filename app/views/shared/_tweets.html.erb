@@ -1,23 +1,27 @@
-<div class="tweet-item">
-  <div class="tweet-user-image">
-    <% if tweet.user.avatar? %>
-      <%= link_to tweets_user_path(tweet.user) do %>
-        <%= image_tag tweet.user.avatar, class: "img-responsive  img-rounded" %>
+<% if admin %>
+  <div class="tweet-item-large">
+<% else %>
+  <div class="tweet-item">
+<% end %>
+    <div class="tweet-user-image">
+      <% if tweet.user.avatar? %>
+        <%= link_to tweets_user_path(tweet.user) do %>
+          <%= image_tag tweet.user.avatar, class: "img-responsive  img-rounded" %>
+        <% end %>
+      <% else %>
+         <span class="glyphicon glyphicon-picture"></span>
       <% end %>
-    <% else %>
-       <span class="glyphicon glyphicon-picture"></span>
-    <% end %>
+    </div>
+    <div class="caption">
+      <p><span><%= link_to tweet.user.name, tweets_user_path(tweet.user) %></span>, <span><%= tweet.created_at %></span></p>
+      <p><%= truncate(tweet.description, length: 140)%></p>
+      <%= link_to "Reply (#{tweet.replies_count})", tweet_replies_path(tweet_id: tweet.id), color: "#6495DD" %>
+      <% if admin %>
+        <div class="col-xs-offset-10 col-sm-offset-10 col-md-offset-10">
+          <%= link_to "Delete", admin_tweet_path(tweet), color: "#6495DD", method: :delete, data:{confirm: "Are you sure?"}, class: "btn btn-danger btn-xs" %>
+        </div>
+      <% else %>
+        <%= render partial: "shared/like", locals: {tweet: tweet} %>
+      <% end %>
+    </div>
   </div>
-  <div class="caption">
-    <p><span><%= link_to tweet.user.name, tweets_user_path(tweet.user) %></span>, <span><%= tweet.created_at %></span></p>
-    <p><%= truncate(tweet.description, length: 140)%></p>
-    <%= link_to "Reply (#{tweet.replies_count})", tweet_replies_path(tweet_id: tweet.id), color: "#6495DD" %>
-    <% if admin %>
-      <div class="col-xs-offset-10 col-sm-offset-10 col-md-offset-10">
-        <%= link_to "Delete", admin_tweet_path(tweet), color: "#6495DD", method: :delete, data:{confirm: "Are you sure?"}, class: "btn btn-danger btn-xs" %>
-      </div>
-    <% else %>
-      <%= render partial: "shared/like", locals: {tweet: tweet} %>
-    <% end %>
-  </div>
-</div>
