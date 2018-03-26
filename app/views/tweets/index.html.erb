@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     
-    <div class="col-md-7">
+    <div class="col-md-7 left">
       
       <div class="tweeting">
         <%= form_for @tweet do |t|%>
@@ -20,12 +20,12 @@
                 <div class="col-md-3">
                   <img src="http://via.placeholder.com/90x90" class="img-responsive img-rounded">
                 </div>
-                <ul>
-                  <li>name</li>
-                  <li>description</li>
-                  <li>Reply unlike like</li>
-                </ul>
                 <div class="col-md-8">
+                <ul>
+                  <li>name, create_time</li>
+                  <li>description</li>
+                  <li><button>reply</button> <button>unlike%like</button></li>
+                </ul>
                   
                 </div>
               </div>          
@@ -36,11 +36,22 @@
       
     </div>
 
-    <div class="col-md-5">
+    <div class="col-md-5 right">
       <h1>Popular</h1>
-      <% @users.each do |user| %>
-
-      <% end %>
+      <% @users.each do |user|%>
+            <div class="row">
+              <div class="col-md-3">
+                <img src="http://via.placeholder.com/90x90" class="img-responsive img-rounded">
+              </div>
+              <div class="col-md-8">
+                <h4><%= link_to user.name, user_path(user) %></h4>
+                <!-- truncate 可截斷文字限定字數。simple_format 可讓文字自動換行 -->
+                <P><%= truncate(user.introduction, length: 50) %></P>
+                <button>follow%unfollow</button>
+              </div>
+            </div>
+            <hr>
+          <% end %>
     </div>
 
   </div>
