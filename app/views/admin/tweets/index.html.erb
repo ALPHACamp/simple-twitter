@@ -1,1 +1,41 @@
-<h1>後台</h1>
+<div class="comtainer">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-2">
+
+      <ul class="nav nav-tabs">
+        <li role="presentation" class=<%= "active" if current_page? admin_tweets_path %>>
+          <%= link_to "Tweets", admin_tweets_path %>
+        </li>
+        <li role="presentation" class=<%= "active" if current_page? admin_users_path %>>
+          <%= link_to "Users", admin_users_path %>
+        </li>
+      </ul>
+
+      <hr>
+
+
+        <h3>Tweets list</h3>
+        <% @tweets.each do |tweet| %>   
+          <div class="row">
+            <div class="col-md-3">
+              <img src="http://via.placeholder.com/90x90" class="img-responsive img-rounded">
+            </div>
+            <div class="col-md-8">
+              <h5>name</h5>
+              <p><%= tweet.description %></p> 
+              <br> 
+              <p></p>
+              <h4>
+                reply,
+                like%unlike,
+                destroy
+              </h4>
+            </div>
+          </div>          
+          <hr>
+        <%end%>       
+      
+
+    </div>
+  </div>
+</div>
