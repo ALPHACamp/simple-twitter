@@ -28,7 +28,7 @@
              <!-- check user -->
              <% if current_user %>
               <% if current_user.admin? %>
-                <li><%= link_to 'Admin Panel', admin_restaurants_path %></li>
+                <li><%= link_to 'Admin Panel', admin_root_path %></li>
               <% end %>
               <li><p class="navbar-text">Hi, <%= link_to current_user.name, tweets_user_path(current_user) %></p></li>
               <li><%= link_to "Profile", edit_user_path(current_user) %></li>
