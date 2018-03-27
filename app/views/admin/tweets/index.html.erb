@@ -1,0 +1,9 @@
+<h1>後台 - tweets</h1>
+<ul>
+  <% @tweets.each do |tweet| %>
+  <li>
+    <%= tweet.description %>
+    <%= link_to admin_tweet_path(tweet), method: :delete, data: { confirm: "Are you sure?"}, 'title' => '刪除', 'data-toggle' => 'tooltip' do %>刪除<% end %>
+  </li>
+  <% end %>
+</ul>
