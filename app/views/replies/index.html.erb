@@ -1,0 +1,85 @@
+<div class="comtainer">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+
+      <!-- 左邊欄 個人資訊 -->
+      <div class="col-md-5">
+        <div class="">
+          <img src="http://via.placeholder.com/150x150" class="img-responsive img-rounded">
+        </div>
+        <div >  
+          <h3><%= @user.name %></h3>
+          <div><%= simple_format @user.introduction %></div>
+          <p><strong><%= @tweets.count %> Tweet</strong></p>
+          <p><strong><%= @followings.count %> Followings</strong></p>
+          <p><strong><%= @followers.count %> follower</strong></p>
+          <p><strong>like </strong></p>
+        </div>  
+        <% if @user.email == current_user.email %>
+          <p><%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %></p>
+        <%end%>
+      </div>
+
+      <!-- 右邊 -->
+      <div class="col-md-7">
+        
+        <!-- 右邊上版面 Tweet -->
+        <div class="tweet col-xs-12">
+          <h3>Tweet</h3>
+          <div class="panel panel-default">          
+            <div class="panel-body">
+              <h4><%= link_to @user.name, user_path(@user.id) %>, <%= @tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></h4>
+              <p><%= truncate(@tweet.description, length: 140) %></p>  
+            </div>    
+          </div>
+        </div>
+        
+
+        <!--右邊下版面 replies & reply_form -->
+        <div class="reply_list col-xs-12">
+          <h3>Replies</h3>
+          <div class="panel panel-default">          
+            <div class="panel-body">
+
+              <!-- 右邊下版面 replies -->
+              <div class="replies">
+                <% @replies.each do |reply| %>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <img src="http://via.placeholder.com/70x70" class="img-responsive img-rounded">
+                  </div>
+                  <div class="col-sm-8">
+                    <h5><%= link_to reply.user.name, tweet_replies_path(@tweet.id) %>, <%= @tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></h5>
+                    <p><%= reply.comment %></p>
+                  </div>   
+                </div>    
+                <hr>
+                <% end %>
+              </div>
+
+              <!-- 右邊下版面 reply_form -->
+              <div class="reply_form">
+                 <%= form_for [@tweet, @reply] do |t|%>
+                  <div class="form-group">
+                    <%= t.text_area :comment, placeholder: "推你的回覆 ",  class: "form-control" %>
+                  </div>
+                  <div class="form-group">
+                    <%= t.submit "Tweet", class: "pull-right btn btn-primary" %>
+                  </div>      
+                <% end %>  
+              </div>
+
+            </div>
+          </div>
+        </div>    
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+      
+        
+      
+
