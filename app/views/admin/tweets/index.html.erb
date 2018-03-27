@@ -26,9 +26,7 @@
               <br> 
               <p></p>
               <h4>
-                reply,
-                like%unlike,
-                destroy
+                <%= link_to 'Destory', admin_tweet_path(tweet), method: :delete, data: {confirm: "Are you sure?"} %>
               </h4>
             </div>
           </div>          
