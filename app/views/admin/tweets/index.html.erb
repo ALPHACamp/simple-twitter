@@ -1,0 +1,44 @@
+<div class="card">
+  <div class="card-block">
+  	<div style="margin-bottom: 15px;">
+		<%= link_to "Tweets", admin_tweets_path, class: "btn btn-secondary disabled"%>
+		<%= link_to "Users", admin_users_path, class: "btn btn-secondary"%>
+		</div>
+
+<table id="the_table" class="tablesorter table table-striped table-bordered table-hover "> 
+<thead> 
+<tr> 
+    <th>使用者</th> 
+    <th>建立時間</th> 
+    <th>推播內容</th>
+    <th>連結</th> 
+    <th>回覆數</th>
+    <th>按讚數</th> 
+    <th>動作</th> 
+</tr> 
+</thead> 
+<tbody>
+<% @tweets.each do |u| %> 
+<tr> 
+    <td><%= link_to u.user.name, tweets_user_path(u.user) %></td> 
+    <td><%= u.created_at.strftime("%F %H:%M")%></td> 
+    <td style="max-width: 400px;"><%= u.description%></td>
+    <td><%= link_to "Link", tweet_replies_path(u)%></td> 
+    <td><%= u.replies.size%></td> 
+    <td><%= u.likes.size%></td>
+    <td>
+    	<%=link_to "刪除推播", admin_tweet_path(u), method: :delete, data: { confirm: "Are you sure?"} %>
+    	<%=link_to "刪除回覆", admin_tweet_path(u)%> 
+    </td>
+</tr> 
+<%end%>
+</tbody> 
+</table> 
+
+  	
+  </div>
+</div>
+
+<script>
+    $(document).ready(function(){$("#the_table").tablesorter();}); 
+</script>

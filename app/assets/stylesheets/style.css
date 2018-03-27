@@ -1,0 +1,242 @@
+*{position: relative;}
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400);
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Permanent+Marker');
+body {
+  background-color:#e0e0e0;
+  font: normal 14px;
+  font-family: ‘Noto Sans TC’,Roboto,arial,sans-serif;
+}
+.navbar {background-color:#ffffff;border-width:0;z-index:5;}
+.btn,.form-control,.panel,.list-group,.well {border-radius:1px;box-shadow:0 0 0;}
+.form-control {border-color:#d7d7d7;}
+.btn-primary {border-color:transparent;}
+.btn-primary,.label-primary,.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {background-color:#4285f4;}
+.btn-plus {background-color:#ffffff;border-width:1px;border-color:#dddddd;box-shadow:1px 1px 0 #999999;border-radius:3px;color:#666666;text-shadow:0 0 1px #bbbbbb;}
+.well,.panel {border-color:#d2d2d2;box-shadow:0 1px 0 #cfcfcf;border-radius:3px;}
+.btn-success,.label-success,.progress-bar-success{background-color:#65b045;}
+.btn-info,.label-info,.progress-bar-info{background-color:#a0c3ff;border-color:#a0c3ff;}
+.btn-danger,.label-danger,.progress-bar-danger{background-color:#dd4b39;}
+.btn-warning,.label-warning,.progress-bar-warning{background-color:#f4b400;color:#444444;}
+
+@media (min-width: 1200px){
+  .container {
+      width: 1180px;
+      max-width: 100%;
+  }
+}
+
+.card{
+  border-color: #d2d2d2;
+  box-shadow: 0 1px 0 #cfcfcf;
+  border-radius: 3px;
+  margin-bottom: 15px;
+}
+.card:first-child{
+  margin-top: 15px;
+}
+.card .card-tittle {
+ background-color:#ffffff;
+ font-weight:700;
+ font-size:16px;
+ color:#262626;
+ border-color:#ffffff;
+}
+.card .card-tittle .time-log{
+ color: blue;
+ font-weight:400;
+ font-size:11px;
+}
+.card .img-circle {
+ width:50px;
+ height:50px;
+}
+
+hr {border-color:#ececec;margin-top: 10px;margin-bottom: 10px;}
+
+.navbar{
+  padding-left: 100px;
+  padding-right: 100px; 
+}
+.pull-right{float: right!important;}
+.pull-left{float: left!important;}
+
+.alert_mes{
+  display: inline-block;
+}
+.alert-dismissible .close{
+  padding-bottom: 2px;
+}
+.alert{
+  padding-bottom: 5px;
+}
+
+.margin-10-10{
+  margin: 10px 10px;
+}
+
+.tweeter-name{
+  margin-left: 62px;
+  display: inline-block;
+}
+ 
+.tweeter-name h5{
+  margin-bottom: 0;
+}
+ 
+.tweet-avatar{
+  width:54px;
+  position: absolute;
+  top:15px;
+  left: 20px;
+  z-index: 1;
+}
+
+.navbar-avatar{
+  width: 50px;
+  margin-right: 10px;
+}
+
+.profile-avatar{
+  width:100%;
+  padding: 10px 10px;
+}
+ 
+.profile-block-avatar{
+  position: absolute;
+  top:20px;
+  left: 20px;
+  width:27%;
+  max-width: 120px;
+  display: inline-block;
+}
+ 
+.card-pic-width{
+  width: 100%;
+  overflow: hidden;
+}
+ 
+.card-pic-height{
+  padding-top: 75%;
+  overflow: hidden;
+}
+ 
+.card-pic-position{
+  width: 100%;
+  height:100%;
+  position: absolute;
+  top:0;
+  left: 0;
+}
+ 
+.card-picture{
+  width: 100%;
+  height:100%;
+  object-fit: cover;
+}
+ 
+.card-text{
+  font-size: 16px;
+  padding: 0 10px;
+}
+ 
+.card-text p{
+  margin-bottom: 0;
+}
+ 
+.card-description{
+  width: 68%;
+  display: inline-block;
+  padding: 0 5px;
+}
+ 
+.text-align-right{
+  text-align: right!important;
+}
+ 
+.text-align-left{
+  text-align: left!important;
+}
+
+.divtitle{
+  padding: 20px 0;
+  font-family: 'Abril Fatface', cursive;
+}
+
+/*
+fix the icon missing issue
+https://stackoverflow.com/questions/21218359/why-are-my-font-awesome-icons-disappearing-on-page-loading
+*/
+
+i.fa, i.fab, i.far {
+  -webkit-animation: show 1s 1!important;
+  /* any other properties to override from FontAwesome's default .fa rule */
+}
+@-webkit-keyframes show {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* end here*/
+
+
+.profile-blocks-container{
+  display: inline-flex;
+   flex-wrap: wrap;
+}
+
+.profile-flexblock{
+  width: 45%;
+  margin-right: 15px;
+}
+
+.namelink{
+  color: black;
+}
+
+.namelink:link {
+    text-decoration: none;
+}
+
+/* table sorter css
+https://segmentfault.com/a/1190000004704829
+http://tablesorter.com/docs/#Introduction
+*/
+table.tablesorter {
+  font-family:arial;
+  background-color: #CDCDCD;
+  margin:10px 0pt 15px;
+  font-size: 8pt;
+  width: 100%;
+  text-align: left;
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+  background-color: #e6EEEE;
+  border: 1px solid #FFF;
+  font-size: 8pt;
+  padding: 4px;
+}
+table.tablesorter thead tr .header {
+  background-image: url(/tablesorter/bg.gif);
+  background-repeat: no-repeat;
+  background-position: center right;
+  cursor: pointer;
+}
+table.tablesorter tbody td {
+  color: #3D3D3D;
+  padding: 4px;
+  background-color: #FFF;
+  vertical-align: top;
+}
+table.tablesorter tbody tr.odd td {
+  background-color:#F0F0F6;
+}
+table.tablesorter thead tr .headerSortUp {
+  background-image: url(/tablesorter/asc.gif);
+}
+table.tablesorter thead tr .headerSortDown {
+  background-image: url(/tablesorter/desc.gif);
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+background-color: #8dbdd8;
+}

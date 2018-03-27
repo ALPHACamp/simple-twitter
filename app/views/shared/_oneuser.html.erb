@@ -1,0 +1,37 @@
+  <div class="card">
+    <div class="card-block text-align-right">
+
+      <div class="profile-block-avatar">
+        <div class="card-pic-width">
+          <div class="card-pic-height">
+            <div class="card-pic-position">
+              <%= link_to image_tag(user.avatar, {onerror:"this.src='/pic.jpg';", class:"card-picture"}), tweets_user_path(user)%>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-description text-align-left">
+        <div class="card-tittle">
+          <h5><%= link_to user.name, tweets_user_path(user), {class:"namelink"}%></h5>
+        </div>
+        <hr>
+                <%if not user==current_user %>
+                  <%if current_user.followings.exists?(:id => user.id) %>
+                    <%= link_to render(partial:"shared/follow", locals:{user: user, follow: true}), followship_path(user), {method: :delete, class:"btn btn-secondary"} %>
+                  <%else%>
+                    <%= link_to render(partial:"shared/follow", locals:{user: user, follow: false}), followships_path(following_id: user), {method: :post, class:"btn btn-info"} %>
+                  <%end%>
+                <% else %>
+                  <%= link_to "編輯", edit_user_registration_path, {method: :get, class:"btn btn-primary"} %>
+                <%end%>
+
+      </div>
+      <hr>
+      <div class="card-text text-align-left">
+        <p><%=user.introduction%></p>
+      </div>
+
+
+      </div>
+  </div>

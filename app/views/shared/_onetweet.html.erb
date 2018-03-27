@@ -1,0 +1,39 @@
+ 
+        <div class="card">
+          <div class="card-block">
+ 
+            <div class="tweet-avatar">
+              <div class="card-pic-width">
+                <div class="card-pic-height">
+                  <div class="card-pic-position">
+                    <%= link_to image_tag(t.user.avatar, {onerror:"this.src='/pic.jpg';", class:"card-picture"}), tweets_user_path(t.user)%>
+                  </div>
+                </div>
+              </div>
+            </div>
+ 
+            <div class="card-tittle">
+              <div class="tweeter-name"><h5><%= link_to t.user.name, tweets_user_path(t.user), {class:"namelink"}%></h5></div>
+              <p href="#" class="time-log pull-right"><%=time_ago_in_words t.updated_at %> ago</p>
+              <hr>
+            </div>
+ 
+           
+            <div class="card-text">
+              <p><%= t.description %></p>
+            </div>
+            <hr>
+            <form>
+              <div class="input-group">
+                <%if t.liked_users.include?(current_user) %>
+                <%= link_to render(partial:"shared/like", locals:{tweet: t, like: true}), unlike_tweet_path(t), {method: :post, class:"btn btn-secondary"} %>
+                <%else %>
+                <%= link_to render(partial:"shared/like", locals:{tweet: t, like: false}), like_tweet_path(t), {method: :post, class:"btn btn-info"} %>
+                <%end%>
+
+                <%= link_to render(partial:"shared/tocomment", locals:{tweet: t}), tweet_replies_path(t), {class:"btn btn-secondary"} %>
+                <button class="btn btn-secondary"><i class="fa fa-share-square-o fa-lg"></i></button>
+              </div>
+            </form>
+            </div>
+         </div>

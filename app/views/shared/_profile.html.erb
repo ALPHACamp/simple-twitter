@@ -1,0 +1,44 @@
+        <div class="card">
+          <div class="card-block">
+
+            <div>
+              <div class="profile-avatar">
+                <div class="card-pic-width">
+                  <div class="card-pic-height">
+                    <div class="card-pic-position">
+                      <%= link_to image_tag(user.avatar, {onerror:"this.src='/pic.jpg';", class:"card-picture"}), tweets_user_path(user)%>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="card-tittle">
+                <div class="profile-name" style="padding-left: 10px;"><h5><%= link_to user.name, tweets_user_path(user), {class:"namelink"}%></h5></div>
+                <hr>
+              </div>
+              <div class="card-text">
+                <p><%= user.introduction %></p>
+              </div>
+              <hr>
+            </div>
+
+            <div>
+              <%= link_to "Tweets (#{user.tweets.size})", tweets_user_path(user) %><br>
+              <%= link_to "Following (#{user.followings.size})", followings_user_path(user) %><br>
+              <%= link_to "Follower (#{user.followers_count})", followers_user_path(user) %><br>
+              <%= link_to "Likes (#{user.likes_count})", likes_user_path(user)%><br>
+                <%if not user==current_user %>
+                  <%if current_user.followings.exists?(:id => user.id) %>
+                    <%= link_to render(partial:"shared/follow", locals:{user: user, follow: true}), followship_path(user), {method: :delete, class:"btn btn-secondary"} %>
+                  <%else%>
+                    <%= link_to render(partial:"shared/follow", locals:{user: user, follow: false}), followships_path(following_id: user), {method: :post, class:"btn btn-info"} %>
+                  <%end%>
+                <% else %>
+                  <%= link_to "編輯", edit_user_registration_path, {method: :get, class:"btn btn-primary"} %>
+                <%end%>
+            </div>
+            
+            </div>
+         </div>
