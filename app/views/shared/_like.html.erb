@@ -1,5 +1,7 @@
 <% if current_user.like?(tweet) %>
-  <%= link_to "Unlike (#{tweet.likes_count})", unlike_tweet_path(tweet), method: :post, class: "btn btn-link" %>
+  <!-- unlike action -->
+  <%= link_to "Like (#{tweet.likes_count})", unlike_tweet_path(tweet), method: :post %><span class="glyphicon glyphicon-thumbs-up"></span>
 <% else %>
-  <%= link_to "Like (#{tweet.likes_count})", like_tweet_path(tweet), method: :post, class: "btn btn-default"  %>
+  <!-- like action -->
+  <%= link_to "Like (#{tweet.likes_count})", like_tweet_path(tweet), method: :post %>
 <% end %>
