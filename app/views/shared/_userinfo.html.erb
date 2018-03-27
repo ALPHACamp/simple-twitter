@@ -1,19 +1,24 @@
-     <div class="user-profile-image">
-        <% if user.avatar? %>
-          <%= link_to tweets_user_path(user) do %>
-            <%= image_tag user.avatar, class: "img-responsive  img-rounded" %>
-          <% end %>
-        <% end %>
-      </div>
-      <h3><%= user.name %></h3>
-      <p><%= user.introduction %></p>
-      <p>Tweets</p>
-      <div><%=link_to "Following", followings_user_path(user) %></div>
-      <div><%=link_to "Follower (#{user.followers_count})", followers_user_path(user) %></div>
-      <div><%=link_to "Like (#{user.likes_count})", likes_user_path(user) %></div>
-      <% if current_user == user %>
-        <br>
-        <%= link_to "Edit Profile", edit_user_path(user) , class: "btn btn-primary" %>
-      <% else %>
-        <%= render partial: "shared/follow", locals: {user: user} %>
+<div class="user-profile-info">
+  <div class="user-profile-image">
+    <% if user.avatar? %>
+      <%= link_to tweets_user_path(user) do %>
+        <%= image_tag user.avatar, class: "img-responsive  img-rounded" %>
       <% end %>
+    <% end %>
+  </div>
+  <div class="user-profile-content">
+    <h3><%= user.name %></h3>
+    <p><%= user.introduction %></p>
+    <div><%=link_to "Tweet", tweets_user_path(user) %></div>
+    <div><%=link_to "Following", followings_user_path(user) %></div>
+    <div><%=link_to "Follower (#{user.followers_count})", followers_user_path(user) %></div>
+    <div><%=link_to "Like (#{user.likes_count})", likes_user_path(user) %></div>
+    <br>
+    <% if current_user == user %>
+      <br>
+      <%= link_to "Edit Profile", edit_user_path(user) , class: "btn btn-primary btn-sm" %>
+    <% else %>
+      <%= render partial: "shared/follow", locals: {user: user} %>
+    <% end %>
+  </div>
+</div>
