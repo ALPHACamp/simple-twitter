@@ -11,6 +11,6 @@ class Admin::TweetsController < Admin::BaseController
     else
       flash[:alert] = "Tweet was successfully deleted"
     end
-    redirect_to admin_tweets_path
+    redirect_to(admin_root_path)
   end
 end
