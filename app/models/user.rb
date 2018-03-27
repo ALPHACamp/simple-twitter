@@ -15,9 +15,14 @@ class User < ApplicationRecord
 
   has_many :replies
 
+  has_many :likes, dependent: :restrict_with_error
+  has_many :like_tweets, through: :likes, source: :tweet
+  
+
 
   def admin?
     self.role == "admin"
   end
+
 
 end

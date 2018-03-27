@@ -36,8 +36,19 @@
               <ul>
                 <li><h5><%= link_to tweet.user.name, tweets_user_path(tweet.user) %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></h5></li>
                 <li><%= tweet.description %></li>
-                <h4><%= link_to "Reply", tweet_replies_path(tweet.id) %>
-                  
+                <h4>
+                  <%= link_to tweet_replies_path(tweet) do %>
+                      Reply(<%=tweet.replies.size%>)
+                    <%end%>
+                    <% if tweet.is_liked?(current_user) %>
+                      <%= link_to unlike_tweet_path(tweet), method: :post ,class:"like_link" do %>
+                        Unlike (<%=tweet.likes.size%>)
+                      <%end%>
+                    <% else %>
+                      <%= link_to like_tweet_path(tweet), method: :post,class:"like_link" do %>
+                        Like (<%=tweet.likes.size%>) 
+                      <%end%>
+                    <%end%>     
                 </h4>
               </ul>
                 
