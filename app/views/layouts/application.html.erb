@@ -30,16 +30,26 @@
               <% if current_user.admin? %>
                 <li><%= link_to 'Admin Panel', admin_root_path %></li>
               <% end %>
-              <li><p class="navbar-text">Hi, <%= link_to current_user.name, tweets_user_path(current_user) %></p></li>
-              <li><%= link_to "Profile", edit_user_path(current_user) %></li>
-              <form class="navbar-form navbar-right"> <!--form for button postion "center" -->
-                <button class="btn btn-default"><%= link_to('登出', destroy_user_session_path, method: :delete) %></button>
-                <button class="btn btn-default"><%= link_to('修改密碼', edit_user_registration_path) %></button>
+              <% if current_user.avatar?%>
+                <li>
+                  <div class="navbar-user-image">
+                    <%= link_to tweets_user_path(current_user) do %>
+                      <%= image_tag current_user.avatar %>
+                    <% end %>
+                  </div>
+                </li>
+              <% else %>
+                <li><p class="navbar-text"><%= link_to current_user.name, tweets_user_path(current_user) %></p></li>
+              <% end %>
+
+              <ul class="pull-right text-right nav navbar-nav">
+                <li><p class="navbar-text"><%= link_to('Logout', destroy_user_session_path, method: :delete) %></p></li>
+                <li><p class="navbar-text"><%= link_to('修改密碼', edit_user_registration_path) %></p></li>
               </form>
              <% else %>
-              <form class="navbar-form navbar-right">
-                <button class="btn btn-default"><%= link_to('註冊', new_user_registration_path) %></button>
-                <button class="btn btn-default"><%= link_to('登入', new_user_session_path) %></button>
+              <ul class="pull-right text-right nav navbar-nav">
+                <li><p class="navbar-text"><%= link_to('Sign up', new_user_registration_path) %></p></li>
+                <li><p class="navbar-text"><%= link_to('Login', new_user_session_path) %></p></li>
               </form>
              <% end %><!-- /.end of check user -->
            </ul>
