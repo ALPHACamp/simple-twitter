@@ -3,7 +3,7 @@
 
     <div class="col-md-4">
       <div class="">
-        <img src="http://via.placeholder.com/150x150" class="img-responsive img-rounded">
+        <%= image_tag @user.avatar, width: "100%" if @user.avatar? %><br />
       
         <h3> <%= @user.name %></h3><br>
         <p><%= @user.introduction %></p>
