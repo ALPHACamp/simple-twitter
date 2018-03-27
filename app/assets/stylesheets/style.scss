@@ -1,0 +1,62 @@
+// 設定推播及個人自傳輸入框的大小風格
+textarea.text-area {
+ 	font-size: 1.5em;
+ 	height: 10em;
+ 	border-radius: 10px;
+ 	padding: 10px;
+ 	margin-top: 13px;
+ }
+
+// 設定 Tweet 樣式
+.tweet-item {
+	border: 1px solid #ddd;
+	margin: 15px 0px 15px 0px ;
+	padding: 10px;
+}
+
+// 設定照片上下的間距
+.img {
+	margin: 10px 0px 10px 0px;
+}
+
+// 設定 Tweet 內姓名及發文時間字的大小
+.name {
+	font-size: 18px;
+}
+
+// 設定 Tweet 內發文以及使用者介紹字的大小
+.desc {
+	font-size: 15px;
+}
+
+// 設定 Replay & Like 往下
+.reke {
+	margin-top: 70px;
+}
+
+// 使用者編輯按鈕置中
+.center {
+	text-align: center;
+}
+
+// 設定 Reply 連結跟 Like 的間距
+.re {
+	margin: 0px 15px 0px 0px;
+}
+
+// 設定 Following & Follower 的姓名位置及大小
+.follow {
+	font-size: 18px;
+	margin: 0px 40px;
+}
+
+// 設定 Following & Follower 的使用者描述位置及大小
+.follow-intro {
+	font-size: 15px;
+	margin: 0px 40px;
+}
+
+// 設定 Following & Follower Button 跟使用者描述的間距
+.foll-button {
+	margin-top: 20px;
+}

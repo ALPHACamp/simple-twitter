@@ -20,4 +20,32 @@ namespace :dev do
     end
   end
 
+  # 以下是產生 Tweet 的假推播
+  task fake_tweet: :environment do
+    Tweet.destroy_all
+    User.all.each do |user|
+      2.times do |i|
+        user.tweets.create!(
+          description: FFaker::Lorem::sentence(8))
+      end  
+    end
+    puts "have created fake tweets"
+    puts "now you have #{Tweet.count} tweet data"
+  end
+
+# 以下是產生 Reply 的假推播
+  task fake_reply: :environment do
+    Reply.destroy_all
+    Tweet.all.each do |tweet|
+      3.times do |i|
+        tweet.replies.create!(
+          comment: FFaker::Lorem::sentence(8),
+          user: User.all.sample
+        )
+      end
+    end
+    puts "have created fake comments"
+    puts "now you have #{Reply.count} comment data"
+  end 
+
 end

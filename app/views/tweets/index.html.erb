@@ -1,0 +1,34 @@
+<div class="container">
+	<div class="row">
+
+		<div class="col-xs-8">
+			<div>
+				<!-- 以下是 Tweet 的輸入框 -->
+        		<%= form_for @tweet do |f| %>
+        			<!-- 用 form-group 包成一個群組，在 description 屬性套用了 text-area css風格-->
+        			<div class="form-group">
+        				<%= f.text_area :description, placeholder: "What's on your mind ?", class: "form-control text-area" %>
+        			</div>
+        			<!-- 在 Tweet 這個按鈕套用 btn btn-primary/造型 btn-lg/放大 pull-right/置右-->
+        			<div class="form-group tweet-button">
+        				<%= f.submit "Tweet", class: "btn btn-primary btn-lg pull-right", style: "color:black" %>
+        			</div>
+        		<% end %>	
+			</div>
+			
+			<!-- 以下是顯示全部 Tweet 的內容 -->
+			<% @tweets.each do |tweet| %>
+				<%= render partial: "shared/tweet", locals: {tweet: tweet} %>
+			<% end %>
+		</div>
+
+		<!-- 以下是顯示跟隨者數量排名前 10 的推薦者使用者名單 -->
+		<div class="col-xs-4">
+			<h1 class="po">Popular</h1>
+			<% @users.each do |user| %>
+				<%= render partial: "shared/follow", locals: {user: user} %>
+			<% end %>
+		</div>
+	
+	</div>
+</div>
