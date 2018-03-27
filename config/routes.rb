@@ -23,13 +23,15 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :followships, only: [:create, :destroy]
+
   namespace :admin do
     root "tweets#index"
     resources :tweets, only: [:index, :destroy]
     resources :users, only: [:index]
     # admin 裡的user story 要求tweetlist跟userlist是分兩個頁面
   end
-
+  
 
 
 
