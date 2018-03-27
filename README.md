@@ -36,5 +36,5 @@ git pull upstream master
 
 如果想在本地執行自動化測試，可以輸入指令
 ```
-$ rspec
+$ bundle exec rspec
 ```
