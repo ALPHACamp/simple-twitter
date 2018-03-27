@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <%= render partial: "shared/user_data", locals: {user_object: @user} %>
+    </div> <%# .col-4 %>
+
+    <div class="col-8">
+      <h2>Tweets</h2>
+
+      <!-- 顯示該 user 的推文 -->
+      <div class="row border tweet_content">
+        <div class="col-2">
+          <%= filestack_image @tweet.user.avatar, transform: filestack_transform.resize(width:100, height:100) %>
+        </div>
+
+        <div class="col-10">
+          <%= link_to "#{@tweet.user.name}", tweets_user_path(@tweet.user) %>,
+          <%= @tweet.created_at.strftime("%Y-%m-%d") %>,
+          <%= @tweet.created_at.strftime("%H:%M") %>
+
+          <%= simple_format @tweet.description %>
+
+          <!-- reply button -->
+          <%= link_to "Reply(#{@tweet.replies_count})", tweet_replies_path(@tweet.id), data: {disable_with: "Reply(#{@tweet.replies_count})"} %>
+
+          <!-- like/unlike button -->
+          <% if current_user.is_liked?(@tweet) %>
+            <%= link_to "unlike(#{@tweet.likes_count})", unlike_tweet_path(@tweet.id), method: :post, data: {disable_with: "unlike(#{@tweet.likes_count})"}, class: "text-secondary" %>
+          <% else %>
+            <%= link_to "like(#{@tweet.likes_count})", like_tweet_path(@tweet.id), method: :post, data: {disable_with: "like(#{@tweet.likes_count})"}, class: "text-secondary" %>
+          <% end %>
+
+          <br>
+        </div>
+      </div>
+
+      <h2>Replies</h2>
+      <% @replies.each do |reply| %>
+        <div class="row border tweet_content">
+
+          <div class="col-2">
+            <%= filestack_image reply.user.avatar, transform: filestack_transform.resize(width:90, height:90) %>
+
+          </div>
+
+          <div class="col-10">
+            <!-- 顯示該推文的回覆內容 -->
+            <%= link_to "#{reply.user.name}", tweets_user_path(reply.user) %>,
+            <%= reply.created_at.strftime("%Y-%m-%d") %>,
+            <%= reply.created_at.strftime("%H:%M") %>
+            <%= simple_format reply.comment %>
+          </div>
+        </div>
+      <% end %>
+
+      <!-- 輸入回覆內容 -->
+      <%= form_for [@tweet, @reply] do |f| %>
+        <div class="form-group">
+          <%= f.text_area :comment, placeholder: "What's on your mind?", class: "form-control" %>
+        </div>
+
+        <div class="form-group float-right">
+          <%= f.submit "Reply", class: "btn btn-primary" %>
+          <%= f.button "Clear", type: :reset, class: "btn btn-light" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="col">
+    <h1 class="float-left">Users List</h1>
+
+    <div class="float-right">
+      <%= link_to "Tweets List", admin_tweets_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+
+  <table class="table table-striped table-bordered table-hover table-sm">
+    <thead class="thead-light">
+      <tr>
+        <th><h3>User ID</h3></th>
+        <th><h3>Name</h3></th>
+        <th><h3>Tweet</h3></th>
+        <th><h3>Followship</h3></th>
+        <th><h3>Follower</h3></th>
+        <th><h3>Like</h3></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each do |user_object| %>
+        <tr>
+          <td><h3><%= user_object.id %></h3></td>
+
+          <td><h3><%= user_object.name %></h3></td>
+
+          <td>
+            <%= link_to tweets_user_path(user_object.id) do %>
+              <h5><%= user_object.tweets_count %></h5>
+            <% end %>
+          </td>
+
+          <td>
+            <%= link_to followings_user_path(user_object.id) do %>
+              <h5><%= user_object.followships_count %></h5>
+            <% end %>
+          </td>
+
+          <td>
+            <%= link_to followers_user_path(user_object.id) do %>
+              <h5><%= user_object.followers_count %></h5>
+            <% end %>
+          </td>
+
+          <td>
+            <%= link_to likes_user_path(user_object.id) do %>
+              <h5><%= user_object.likes_count %></h5>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

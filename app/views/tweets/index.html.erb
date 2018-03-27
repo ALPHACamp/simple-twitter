@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <!-- 新增推文 -->
+      <%= form_for @tweet do |f| %>
+        <div class="form-group">
+          <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control" %>
+        </div>
+
+        <div class="form-group float-right">
+          <%= f.submit "Tweet", class: "btn btn-primary" %>
+          <%= f.button "Clear", type: :reset, class: "btn btn-light" %>
+        </div>
+      <% end %>
+
+      <div class="clearfix"></div>
+
+      <hr>
+      <!-- # 顯示 Tweets：排序依日期，最新的在前 -->
+      <%= render partial: "shared/tweet_content", locals: {tweets_object: @tweets} %>
+    </div>
+
+    <div class="col-4">
+      <h1>Popular</h1>
+      <div class="row">
+      <% @users.each do |follow_user| %>
+        <div class="col-12">
+          <div class="border follow_user_content">
+            <div class="row">
+              <div class="col-4">
+                <%= filestack_image follow_user.avatar, transform: filestack_transform.resize(width:100, height:100) %>
+              </div>
+
+              <div class="col-8">
+                <%= link_to "#{follow_user.name}", tweets_user_path(follow_user.id) %>
+                <%= simple_format follow_user.introduction %>
+
+                <div class="float-right">
+                  <%= render partial: "shared/follow_button", locals: { follow_object: follow_user } %>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    </div>
+
+  </div>
+</div>

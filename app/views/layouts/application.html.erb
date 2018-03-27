@@ -6,23 +6,70 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= filestack_js_include_tag %>
+    <%= filestack_js_init_tag %>
   </head>
 
   <body>
-    <% if current_user %>
-      <% if current_user&.admin? %>
-        <li><%= link_to 'Admin Panel', admin_restaurants_path %></li>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+      <%= link_to "Simple Twitter", root_path, class:"navbar-brand" %>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <% if current_user %>
+            <span class="navbar-text">Hi, <%= current_user.name %></span>
+
+            <% if current_user.is_admin? %>
+              <li class="nav-item"><%= link_to 'Admin Panel', admin_root_path, class: "nav-link" %></li>
+            <% end %>
+
+            <li class="nav-item"><%= link_to('修改個人資料', edit_user_path(current_user), class: "nav-link") %></li>
+            <li class="nav-item"><%= link_to('帳戶管理', edit_user_registration_path, class: "nav-link") %></li>
+            <li class=nav-item>
+              <%= link_to tweets_user_path(current_user) do %>
+                <%= filestack_image current_user.avatar, transform: filestack_transform.resize(width:50, height:50) %>
+              <% end %>
+            </li>
+            <li class="nav-item"><%= link_to('Logout', destroy_user_session_path, method: :delete, class: "nav-link") %></li>
+          <% else %>
+            <li class="nav-item"><%= link_to('註冊', new_user_registration_path, class: "nav-link") %></li>
+            <li class="nav-item"><%= link_to('登入', new_user_session_path, class: "nav-link") %></li>
+
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+
+    <br>
+
+    <div class="container">
+      <% if flash[:notice] %>
+        <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+
+          <%= notice %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div >
       <% end %>
-      <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
-      <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
-      <li><%= link_to('修改個人資料', edit_user_path(current_user)) %></li>
-      <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
-    <% else %>
-      <li><%= link_to('註冊', new_user_registration_path) %></li>
-      <li><%= link_to('登入', new_user_session_path) %></li>
-    <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+
+      <% if flash[:alert] %>
+      <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+
+        <%= alert %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div >
+      <% end %>
+    </div>
+
     <%= yield %>
   </body>
 </html>

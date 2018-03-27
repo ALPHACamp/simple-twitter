@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <%= render partial: "shared/user_data", locals: {user_object: @user} %>
+    </div>
+
+    <!-- 顯示 follower user 資料 -->
+    <div class="col-md-8">
+      <h2>Follower</h2>
+      <%= render partial: "shared/follow_content", locals:{follow_users: @followers} %>
+    </div>
+  </div>
+</div>

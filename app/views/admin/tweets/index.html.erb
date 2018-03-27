@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="col">
+    <h1 class="float-left">Tweets List</h1>
+
+    <div class="float-right">
+      <%= link_to "Users List", admin_users_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+
+  <%= render partial: "shared/tweet_content", locals: {tweets_object: @tweets} %>
+
+</div>
