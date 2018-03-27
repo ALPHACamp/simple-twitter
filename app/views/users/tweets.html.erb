@@ -3,14 +3,22 @@
 
     <div class="col-md-4">
       <div class="">
-        <img src="http://via.placeholder.com/90x90" class="img-responsive img-rounded">
-      </div>
-      <div>  
-        <h3> name: </h3><br>
-        Tweets.size: <br>
-        Following.size: <br>
-        Followers.size: <br>
-        likes.size: 
+        <img src="http://via.placeholder.com/150x150" class="img-responsive img-rounded">
+      
+        <h3> <%= @user.name %></h3><br>
+        <p><%= @user.introduction %></p>
+        <%= link_to tweets_user_path(@user) do %>
+        <h3>Tweets <%=@user.tweets.size %></h3>
+        <%end%>
+
+        <h3>Following <%=@user.tweets.size %></h3>
+
+        <h3>Follower <%=@user.tweets.size %></h3>
+        
+        <%= link_to likes_user_path(@user) do %>
+        <h3>Likes <%= @user.likes.size %></h3>
+        <% end %>
+          
       </div>  
         <p>
           <% if @user.email == current_user.email %>
