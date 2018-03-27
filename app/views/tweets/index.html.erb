@@ -1,0 +1,51 @@
+<div class="container">
+
+  <% if @tweet.errors.any? %>
+  <h3>We have some errors here!</h3>
+  <ul>
+  <% @tweet.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+  <% end %>
+
+  <div class="col-left col-sm-7 col-md-8">
+    <div class="my-tweet">
+      <%= form_for @tweet do |f| %>
+      <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control tweet-form" %>
+      <br>
+      <%= f.submit 'Tweet', class: "btn btn-primary pull-right"%>
+      <% end %>
+      </div>
+    <br>
+    
+    <!--tweet-->
+    <%= @tweets.each do |tweet| %>
+    <div>
+      <%= render partial: "shared/tweet", locals: {tweet: tweet} %>
+    </div>
+    <% end %>
+ 
+  </div>
+
+  <div class="col-right col-sm-5 col-md-4">
+    <h3>Popular</h3>
+      <div class="user-list">
+        <% @users.each do |user| %>
+          <div class="user-profile">
+            <div class="avatar">
+              <%= image_tag user.avatar, class: "img-responsive img-rounded" %>
+            </div>
+            <div class="user-intro">
+              <h5><%= user.name %></h5>
+              <p><%= truncate(user.introduction, length: 50) %></p>
+              <div><%= render partial: "shared/follow", locals: {user: user} %></div>
+            </div>
+            <br>
+          </div>
+        <% end %>
+      </div>
+  </div>
+
+
+</div>

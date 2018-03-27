@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+
+      <div class="col-left col-sm-4 col-md-3">
+        <%= render partial: "shared/profile", locals: {user: @user}  %>
+      </div>
+      
+      <div class="col-right col-sm-8 col-md-9">
+        <% @user.tweets.each do |tweet| %>
+        <div class="tweet-list">
+          <h5><%= link_to tweet.user.name, user_path(tweet.user) %> <em>,<%=time_ago_in_words(tweet.created_at) %> ago </em></h5>
+          <p><%= tweet.description %></p>
+          <ul class="tweet-link">
+          <li><%= render partial: "shared/like", locals: {tweet: tweet} %></li>
+          <li><%= link_to 'replies', tweet_replies_path(tweet) %></li>
+          <li><%= link_to 'likes'  %></li>
+          </ul>
+        <br>
+        </div>
+        <% end %>
+
+
+      </div>
+    </div>
+  </div>
+</div>
