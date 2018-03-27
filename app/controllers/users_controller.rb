@@ -39,7 +39,6 @@ class UsersController < ApplicationController
 
   def likes
     @likes = User.find(params[:id]) # 基於測試規格，必須講定變數名稱
-    @likes = @user.liked_tweets.order('likes.updated_at DESC')
   end
 
   private

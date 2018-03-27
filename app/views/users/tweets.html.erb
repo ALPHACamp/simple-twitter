@@ -11,9 +11,9 @@
         <h3>Tweets <%=@user.tweets.size %></h3>
         <%end%>
 
-        <h3>Following <%=@user.tweets.size %></h3>
+        <h3>Following <%=@user.followings.size %></h3>
 
-        <h3>Follower <%=@user.tweets.size %></h3>
+        <h3>Follower <%=@user.followers_count %></h3>
         
         <%= link_to likes_user_path(@user) do %>
         <h3>Likes <%= @user.likes.size %></h3>
