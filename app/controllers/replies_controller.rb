@@ -12,10 +12,10 @@ class RepliesController < ApplicationController
     @reply.user = current_user
     if @reply.save
        flash[:notice] = "Reply created!"
-       redirect_to root_path
+       redirect_to tweet_replies_path(@tweet)
      else
       flash[:alert] = @reply.errors.full_messages.to_sentence
-      redirect_back(fallback_location: root_path)
+      redirect_to tweet_replies_path(@tweet)
     end
   end
 

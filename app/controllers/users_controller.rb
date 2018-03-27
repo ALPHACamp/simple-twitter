@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     unless @user == current_user
-      redirect_to tweets_user_path(current_user), alert: "Can't edit other's profile"
+      redirect_to tweets_user_path(@user), alert: "Can't edit other's profile"
     end
   end
 
