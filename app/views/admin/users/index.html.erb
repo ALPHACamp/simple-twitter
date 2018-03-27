@@ -23,8 +23,8 @@
       <% i = i+1 %>
       <td><%= i %></td>
       <td><%= link_to user.name,tweets_user_path(user) %></td>
-      <td><%= link_to "Tweet",tweets_user_path(user) %></td>
-      <td><%= link_to "Following", followings_user_path(user) %></td>
+      <td><%= link_to "#{user.tweets.count}",tweets_user_path(user) %></td>
+      <td><%= link_to "#{user.followships.count}", followings_user_path(user) %></td>
       <td><%= link_to "#{user.followers_count}", followers_user_path(user) %></td>
       <td><%= link_to "#{user.likes_count}", likes_user_path(user) %></td>
     </tr>
