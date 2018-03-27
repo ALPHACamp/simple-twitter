@@ -30,6 +30,7 @@
 .nav-item img{
   width: 30px;
   margin-top: 5px;
+  border-radius: 80%;
 }
 /* ---------------------------Tweet Index---------------------------*/
 .text-box{
@@ -50,7 +51,7 @@
   margin-bottom: 10px;
   padding: 3px;
 }
-img{
+.tweet-item .tweet-icon img{
   width: 50%;
   border-radius: 80%
 }
@@ -75,4 +76,16 @@ img{
 }
 .user-button h4{
   margin-top: 10px;
+}
+/* ---------------------------User Edit---------------------------*/
+.form-group{
+  margin-top: 20px;
+}
+.form-group img{
+  width:75%
+}
+
+#user_avatar{
+  margin-top: 10px;
+  font-size: 30px;
 }

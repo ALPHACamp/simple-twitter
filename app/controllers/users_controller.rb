@@ -1,13 +1,18 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:tweets]
+  before_action :set_user, only: [:tweets, :edit, :update]
   def tweets
     @tweets = @user.tweets
   end
 
   def edit
+    unless @user == current_user
+      redirect_to root_path
+    end
   end
 
   def update
+    @user.update(user_params)
+    redirect_to tweets_user_path(@user)
   end
 
   def followings
@@ -25,5 +30,8 @@ class UsersController < ApplicationController
 private
   def set_user
     @user = User.find(params[:id])
+  end
+  def user_params
+    params.require(:user).permit(:name, :introduction, :avatar)
   end
 end
