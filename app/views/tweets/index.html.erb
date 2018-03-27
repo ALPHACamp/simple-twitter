@@ -8,14 +8,15 @@
       <hr>
       <% @tweets.each do |tweet|%>
 
-        <p><%= tweet.user.name %>, <%= tweet.created_at%></p>
+        <p><%= link_to tweet.user.name, tweets_user_path(tweet.user) %>, <%= tweet.created_at.time.strftime("%Y-%m-%d %H:%M") %></p>
         <p><%= tweet.description %><p>
       <% end %>
     </div>
     <div class="col-md-5">
+      <h3>Popular</h3>
       <% @tweets.each do |tweet|%>
-      
-        <p><%= tweet.user.name %>, <%= tweet.created_at%></p>
+
+        <p><%= link_to tweet.user.name, tweets_user_path(tweet.user) %>, <%= tweet.created_at.time.strftime("%Y-%m-%d %H:%M") %></p>
         <p><%= tweet.description %><p>
       <% end %>
     </div>

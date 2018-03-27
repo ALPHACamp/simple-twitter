@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <h3><%= @user.name%></h3>
+      <p><%=@user.introduction%></p>
+      <h4>Tweets: </h4>
+      <h4>Following: </h4>
+      <h4>Followers: </h4>
+      <h4>Like: </h4>
+    </div>
+    <div class="col-md-9">
+      <% @tweets.each do |tweet|%>
+
+        <p><%= link_to tweet.user.name, tweets_user_path(tweet.user) %>, <%= tweet.created_at.time.strftime("%Y-%m-%d %H:%M") %></p>
+        <p><%= tweet.description %><p>
+      <% end %>
+    </div>
+  </div>
+</div>
