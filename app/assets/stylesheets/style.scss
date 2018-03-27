@@ -1,0 +1,23 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.avatar {
+  max-height: 180px;
+}
+
+.img-responsive {
+  max-width:  250px;
+}
+
+.colume {
+  display: inline-block;
+}
+
+p { 
+  word-wrap:break-word; 
+}
+
+.btn a{
+  color: white;
+}

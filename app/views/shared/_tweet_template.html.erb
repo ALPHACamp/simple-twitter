@@ -1,0 +1,23 @@
+      <div class="panel panel-default">
+        <div class="panel-body">              
+          <div>
+            <%= image_tag tweet.user.avatar, class: "avatar" %>
+            <div class="col-sm-7 col-md-7 pull-right">
+              <h4>
+              <%= link_to tweet.user.name, tweets_user_path(tweet.user), class: "text-primary" %>
+              <em><%= tweet.created_at %> </em>
+              </h4>  
+              <p><%= simple_format tweet.description %></p>
+              <p class="text-muted">
+                <em><%= time_ago_in_words(tweet.created_at) + " ago - "   %> </em>
+                <% if tweet.is_liked?(current_user) %>
+                  <%= link_to 'Unlike(' + tweet.likes_count.to_s + ")", unlike_tweet_path(tweet), method: :post, class: "text-primary" %>
+                <% else %>
+                  <%= link_to 'Like('+ tweet.likes_count.to_s + ")", like_tweet_path(tweet), method: :post, class: "text-danger" %>
+                <% end %>
+                <%= link_to 'Reply('+ tweet.reply_ids.count.to_s + ")", replies_tweet_path(tweet), method: :get, class: "text-success" %>
+              </p>
+            </div>
+          </div>                            
+        </div>      
+      </div>

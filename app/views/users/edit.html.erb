@@ -1,0 +1,36 @@
+<div class="form container">
+
+  <div class="col-sm-4 col-md-4">
+    <%= image_tag @user.avatar, class:  "img-responsive" %>
+    <h4><%= @user.email %></h4>
+  </div>
+
+  <div class="col-sm-8 col-md-8">
+    <%= form_for  [@user] do |f| %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name , class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "Introduce" %>
+      <%= f.text_field :introduction, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :role %> : <%= @user.role %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :avatar, "Photo" %>
+      <%= f.file_field :avatar %>
+    </div>
+    <br>
+    <%= f.submit %>
+    <% end %>
+    <br>
+  </div>
+
+</div>
+
+

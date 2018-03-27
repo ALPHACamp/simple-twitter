@@ -1,0 +1,36 @@
+
+<div class="col-md-7 col-lg-7">  
+  <%= form_for @tweet do |f| %>
+      <div class="form-group">
+            <%= f.text_area :description, placeholder: "What's on your mind", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary pull-right" %>          
+      </div>
+  <% end %>
+  <br><br><br>
+  <% @recent_tweets.each do |tweet| %>
+      <%= render partial: "shared/tweet_template", locals: {tweet: tweet} %>
+  <% end %> 
+</div>
+
+<div class="col-md-4 col-lg-4">  
+  <h2><%= "Popular" %></h2>
+  <% @pop_tweets.each do |tweet| %>
+      <div class="panel panel-default">
+        <div class="panel-body">              
+          <div>
+            <%= image_tag tweet.user.avatar, class: "avatar" %>
+            <div class="col-sm-4 col-md-4 pull-right">
+              <h4><%= tweet.user.email.split("@").first + ", " %><em><%= tweet.created_at %> </em>
+              </h4>  
+              <p><%= simple_format tweet.description %></p>
+              <p class="text-muted">
+                <em><%= time_ago_in_words(tweet.created_at) + " ago - "   %> </em>
+              </p>
+            </div>
+          </div>                            
+        </div>      
+      </div>
+  <% end %>
+</div>

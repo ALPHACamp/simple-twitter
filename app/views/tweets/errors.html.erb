@@ -1,0 +1,8 @@
+<% if @tweet.errors.any? %>
+  <h2>We have some errors here !</h2>
+  <ul>
+    <% @tweet.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>

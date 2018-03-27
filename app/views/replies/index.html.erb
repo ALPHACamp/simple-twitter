@@ -1,0 +1,57 @@
+<div class = "container">
+  <div class="col-md-4">
+      <%= image_tag @user.avatar, class: "img-responsive" %>
+      <h1><%= @user.name %></h1>
+      <br>
+      <strong>Role:</strong> <%= @user.role %>
+      <br>
+      <strong>Introduce:</strong> <%= @user.introduction %>     
+      <br><br>
+      <%= link_to 'Tweets ' + @user.tweets.count.to_s, tweets_user_path(@user), class: "text-primary" %><br>
+      <%= link_to 'Followiings ' + @user.followings.count.to_s, followings_user_path(@user), class: "text-primary" %><br>
+      <%= link_to 'Followers ' + @user.followers.count.to_s, followers_user_path(@user), class: "text-primary" %><br>
+      <%= link_to 'Likes ' + @user.likes.count.to_s, likes_user_path(@user), class: "text-primary" %><br>
+      <br>
+      <button type="button" class="btn btn-success"><%= link_to('Edit Profile', edit_user_path(@user)) %></button>  
+  </div>
+
+  <div class="col-md-8 col-lg-8">
+    <h1><%= Tweet %></h1> 
+    <%= render partial: "shared/tweet_template", locals: {tweet: @tweet} %>
+
+    <h1> Replies </h1>
+    <table class="table table-striped">
+          <tbody>
+          <% @tweet.replies.each do |reply| %>
+            <div class="panel panel-default">
+              <div class="panel-body">              
+                <div>
+                  <%= image_tag reply.user.avatar, class: "avatar" %>
+                  <div class="col-sm-7 col-md-7 pull-right">
+                    <h4><em><%= reply.created_at %> </em></h4>  
+                    <p><%= simple_format reply.comment %></p>
+                  </div>
+                </div>                            
+              </div>      
+            </div>          
+          <% end %>
+          </tbody>
+    </table>
+
+      
+
+  
+      <%= form_for @reply, url: reply_tweet_path, :html => { class: 'reply' } do |f| %>
+        <div class="form-group">
+              <%= f.text_area :comment, placeholder: "What's on your mind", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit class: "btn btn-primary pull-right" %>          
+        </div>
+      <% end %>
+
+      <div class="p-3 mb-2 bg-info text-white"><%= flash[:notice] %></div>
+      <div class="p-3 mb-2 bg-danger text-white"><%= flash[:alert] %></div> 
+
+  </div>
+</div>
