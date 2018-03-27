@@ -33,7 +33,7 @@
         <% @tweets.each do |tweet|%>
           <div class="tweet-item clearfix" >
             <div class="tweet-icon">
-              <%= image_tag(tweet.user.avatar, class: "img-responsive center-block ranking-img") %>
+              <%= image_tag(tweet.user.avatar, class: "img-responsive center-block", id:"ranking-img") %>
             </div>
             <div class="tweet-caption">
               <p><%= link_to tweet.user.name, tweets_user_path(tweet.user) %>, <%= tweet.created_at.time.strftime("%Y-%m-%d %H:%M") %></p>

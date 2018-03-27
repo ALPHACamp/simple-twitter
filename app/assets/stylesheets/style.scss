@@ -66,7 +66,7 @@
   float: right;
 }
 
-.ranking-img{
+#ranking-img{
   width: 85%;
   border-radius: 80%
 }
@@ -76,6 +76,13 @@
 }
 .user-button h4{
   margin-top: 10px;
+}
+.edit-button{
+  margin-top: 20px;
+  text-align: center;
+}
+.btn-info{
+  font-size: 30px;
 }
 /* ---------------------------User Edit---------------------------*/
 .form-group{

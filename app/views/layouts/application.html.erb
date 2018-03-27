@@ -48,9 +48,8 @@
       <% if current_user %>
           <ul class="navbar-nav navbar-right">
             <li class="nav-item"><%= image_tag(current_user.avatar, class: "img-responsive center-block") %></li>
-            <li class="nav-item"><h4><%= current_user.email %></h4></li>
+            <li class="nav-item"><h4><%= link_to current_user.email, tweets_user_path(current_user) %></h4></li>
             <li class="nav-item"><h4><%= link_to('登出', destroy_user_session_path, method: :delete) %></h4></li>
-            <li class="nav-item"><h4><%= link_to('修改個人資料', edit_user_path(current_user)) %></h4></li>
             <li class="nav-item"><h4><%= link_to('修改密碼', edit_user_registration_path) %></h4></li>
       <% else %>
             <li><%= link_to('註冊', new_user_registration_path) %></li>

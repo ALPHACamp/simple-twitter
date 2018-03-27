@@ -14,6 +14,13 @@
         <h4>Followers: </h4>
         <h4>Like: </h4>
       </div>
+      <div class="edit-button">
+        <%if @user == current_user%>
+          <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-info" %>
+        <% else %>
+          <%= link_to 'Follow', edit_user_path(@user), class: "btn btn-info" %>
+        <% end %>
+      </div>
     </div>
     <div class="col-md-9">
       <div class="tweet-section">
