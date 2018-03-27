@@ -16,9 +16,10 @@
     <br>
     <% if current_user == user %>
       <br>
-      <%= link_to "Edit Profile", edit_user_path(user) , class: "btn btn-primary btn-sm" %>
+      <%= link_to "Edit Profile", edit_user_path(user) , class: "btn btn-primary btn-xs" %>
     <% else %>
       <%= render partial: "shared/follow", locals: {user: user} %>
     <% end %>
   </div>
 </div>
+<br>
