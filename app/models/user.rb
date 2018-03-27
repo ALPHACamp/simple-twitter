@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
   validates_uniqueness_of :name, :case_sensitive => true
+  validates_presence_of :name
 
   has_many :tweets, dependent: :destroy
   has_many :replies, dependent: :destroy
