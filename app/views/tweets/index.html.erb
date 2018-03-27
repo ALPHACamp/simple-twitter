@@ -1,24 +1,50 @@
 <div class="container">
   <div class="row">
     <div class="col-md-7">
-      <%= form_for @tweet do |f| %>
-        <%= f.text_area :description, placeholder: "Say it Out!!"%>
-        <%= f.submit "Tweet", class: "btn btn-primary" %>
-      <% end %>
+        <%= form_for @tweet do |f| %>
+        <div class="tweet-box clearfix">
+          <%= f.text_area :description, placeholder: "Say it Out!!",rows: 6, class:"tweet-textarea"%>
+          <%= f.submit "Tweet", class: "btn btn-primary tweet-submit" %>
+        </div>
+        <% end %>
       <hr>
-      <% @tweets.each do |tweet|%>
+      <div class="tweet-section">
+        <% @tweets.each do |tweet|%>
+          <div class="tweet-item clearfix" >
+            <div class="tweet-icon">
+              <%= image_tag(tweet.user.avatar, class: "img-responsive center-block") %>
+            </div>
+            <div class="tweet-caption">
+              <p><%= link_to tweet.user.name, tweets_user_path(tweet.user) %>, <%= tweet.created_at.time.strftime("%Y-%m-%d %H:%M") %></p>
+              <p><%= truncate(tweet.description, length: 50)%><p>
+              <div class="tweet-button">
+                <p>Reply( )&nbsp; &nbsp; &nbsp; &nbsp;Like( )</p>
+              </div>
+            </div>
 
-        <p><%= link_to tweet.user.name, tweets_user_path(tweet.user) %>, <%= tweet.created_at.time.strftime("%Y-%m-%d %H:%M") %></p>
-        <p><%= tweet.description %><p>
-      <% end %>
+          </div>
+        <% end %>
+      </div>
+
     </div>
     <div class="col-md-5">
       <h3>Popular</h3>
-      <% @tweets.each do |tweet|%>
-
-        <p><%= link_to tweet.user.name, tweets_user_path(tweet.user) %>, <%= tweet.created_at.time.strftime("%Y-%m-%d %H:%M") %></p>
-        <p><%= tweet.description %><p>
-      <% end %>
+      <div class="ranking-section">
+        <% @tweets.each do |tweet|%>
+          <div class="tweet-item clearfix" >
+            <div class="tweet-icon">
+              <%= image_tag(tweet.user.avatar, class: "img-responsive center-block ranking-img") %>
+            </div>
+            <div class="tweet-caption">
+              <p><%= link_to tweet.user.name, tweets_user_path(tweet.user) %>, <%= tweet.created_at.time.strftime("%Y-%m-%d %H:%M") %></p>
+              <p><%= truncate(tweet.description, length: 50) %><p>
+              <div class="tweet-button">
+                <p>Reply( )&nbsp; &nbsp; &nbsp; &nbsp;Like( )</p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

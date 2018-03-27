@@ -1,0 +1,78 @@
+/* ---------------------------the below are basic settings---------------------------*/
+
+.container {
+  width: 85%;
+  max-width: 1170px;
+  margin: 0 auto;
+  position: relative;
+}
+
+
+.clearfix::after{
+  content: '';
+  display: table; /*block也可以*/
+  clear: both;
+/*pseudo-element
+::first-line - 選取第一行。
+::first-letter - 選取第一個字。
+::before - 從選取元素的前面插入東西。
+::after - 從選取元素的後面插入東西。
+::selection - 選取文字反白後。*/
+}
+
+.navbar-right{
+  margin-right: 15px;
+}
+.nav-item{
+  margin-right:10px;
+  list-style-type: none;
+}
+.nav-item img{
+  width: 30px;
+  margin-top: 5px;
+}
+/* ---------------------------Tweet Index---------------------------*/
+.text-box{
+  display: inline-block;
+}
+.tweet-box .tweet-textarea{
+  width: 100%;
+}
+.tweet-box .tweet-submit{
+  float:right;
+  font-size: 20px;
+}
+.tweet-section .ranking-section{
+  display: inline-block;
+}
+.tweet-item{
+  border: 2px solid black;
+  margin-bottom: 10px;
+  padding: 3px;
+}
+img{
+  width: 50%;
+  border-radius: 80%
+}
+.tweet-item .tweet-icon{
+  width: 40%;
+  height: 100%;
+  display: inline-block;
+  text-align: center;
+}
+.tweet-item .tweet-caption{
+  width: 60%;
+  float: right;
+}
+
+.ranking-img{
+  width: 85%;
+  border-radius: 80%
+}
+/* ---------------------------User Tweet---------------------------*/
+.user-info h3{
+  text-align: center;
+}
+.user-button h4{
+  margin-top: 10px;
+}
