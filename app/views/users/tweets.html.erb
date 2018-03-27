@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <%= render partial: "shared/userinfo", locals: {user: @user} %>
+    <div class="col-md-8 col-md-offset-1">
+      <div class="col-md-12">
+        <% @tweets.each do |tweet| %>
+          <%= render partial: "shared/tweet", locals: {tweet: tweet} %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,108 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+* {
+  box-sizing: border-box;
+}
+
+#content {
+  position: relative;
+  top: 50px;
+}
+
+textarea.text-area {
+  font-size: 25px;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.tweets-items {
+  border: 1px solid lightgray;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.btn-right {
+  text-align: right;
+}
+
+.navbar, .navbar-brand{
+  font-size :20px;
+}
+.navbar-default {
+  background-color: #7ab9de;
+}
+
+.stnavbar-logo {
+  width: auto;
+  height: 50px;
+  align-items: center;
+}
+
+.stnavbar-logout {
+  width: auto;
+  height: 50px;
+  align-items: center;
+}
+
+.nav-profile {
+  height: 50px;
+}
+
+.stnavbar-menu li a{
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-profile img {
+  margin-top: -15px;
+  width: 50px;
+  height: 50px;
+}
+
+.avatar-styled {
+  width: 100%;
+}
+
+.reply-font {
+  font-size: 17px;
+}
+
+h1 {
+  color: #00a3cc;
+}
+
+.tweet-title, .user-introduction {
+  color: #3399ff;
+}
+
+.gray-link {
+  color: #737373;
+}
+
+.like-red {
+  color: red;
+} 
+
+.like-red:hover {
+  color: #ff8080;
+}

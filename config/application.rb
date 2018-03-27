@@ -11,7 +11,9 @@ module SimpleTwitter
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
     config.time_zone = "Asia/Taipei"
-
+ 
+    config.filestack_rails.api_key = "AUiYc1YfFRfRL04YG22igz"
+    config.filestack_rails.client_name = "simple-tweet"
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

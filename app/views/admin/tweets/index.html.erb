@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><%= link_to 'Tweets list', admin_tweets_path %></a></li>
+      <li role="presentation"><%= link_to 'Users list', admin_users_path %></a></li>
+    </ul>
+    <hr>
+    <div class="col-md-12">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Auther</th>
+            <th>Tweets</th>
+            <th>Replies</th>
+            <th>#</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tweets.each do |tweet| %>
+          <tr>
+            <td>
+              <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
+            </td>
+            <td>
+              <%= link_to tweet.description, tweet_replies_path(tweet) %>
+            </td>
+            <td>
+              <ul>
+                <% tweet.replies.each do |reply| %>
+                  <li><%= reply.comment %> -by <%= link_to reply.user.name, tweets_user_path(reply.user) %></li>
+                <% end %>
+              </ul>
+            </td>
+            <td>
+              <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure"} %> <!-- 對應admin/restaurant#delete的route path 因為admin_restaurant_path的預設方法為get 所以要規定method為delete 但為什麼沒有 delete_admin_restaurant_path? -->
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="text-center">
+        <%= paginate @tweets %>
+      </div>
+    </div>
+  </div>
+</div>
