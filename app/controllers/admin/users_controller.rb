@@ -27,7 +27,7 @@ class Admin::UsersController < Admin::BaseController
     #end
     # ---------------------- #
 
-    @users = User.all
+    @users = User.order(tweets_count: :DESC)
   end
 
 end
