@@ -21,7 +21,7 @@ class User < ApplicationRecord
 
   #處理like的關聯
   has_many :likes, dependent: :destroy
-  has_many :liked_tweets, through: :likes, source: :tweet
+  has_many :like_tweets, through: :likes, source: :tweet
 
   #處理followship的關聯
   has_many :followships, dependent: :destroy

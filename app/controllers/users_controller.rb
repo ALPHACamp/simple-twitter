@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   #tweet被喜歡的數量
   def likes
     # 基於測試規格，必須講定變數名稱
-    @likes = Like.all.where(:user_id => current_user).order(created_at: :desc)
+    @likes = @user.like_tweets.includes(:likes, :user, :like_users).order("likes.created_at desc")
   end
   
   private
