@@ -1,0 +1,9 @@
+<% if current_user.like?(tweet) %>
+  <!-- unlike action -->
+  <%= link_to "Like (#{tweet.likes_count}) ", unlike_tweet_path(tweet), method: :post, style: 'color:#FF0000;' %>
+  <span>..</span>
+  <span class="glyphicon glyphicon-thumbs-up"></span>
+<% else %>
+  <!-- like action -->
+  <%= link_to "Like (#{tweet.likes_count})", like_tweet_path(tweet), method: :post %>
+<% end %>

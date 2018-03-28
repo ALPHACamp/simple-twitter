@@ -22,4 +22,6 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  #database: db/production.sqlite3 #remove 20180328-02
+  adapter: postgresql #add 20180328-02
+  encoding: Unicode   #add 20180328-02

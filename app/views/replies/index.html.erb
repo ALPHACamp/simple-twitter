@@ -1,0 +1,66 @@
+
+<div class="container">
+  <div class="row">
+
+    <!-- user's info -->
+    <div class = "col-md-5 col-md-offset-0">
+      <%= render partial: "shared/userinfo", locals: {user: @user} %>
+    </div>
+
+    <!-- tweets info -->
+    <div class = "col-md-7">
+      <h3 class="header-item-2">Tweets</h3>
+      <div class = "col-md-11">
+        <%= render partial: "shared/tweets", locals: {tweet: @tweet, admin: false} %>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <h3 class="header-item-2">Replies</h3>
+
+
+      <!--  Replis -->
+      <div class = "col-md-11">
+      <% @replies.each do |reply| %>
+        <div class="reply-item">
+          <div class="tweet-user-image">
+            <% if reply.user.avatar? %>
+              <%= link_to tweets_user_path(reply.user) do %>
+                <%= image_tag reply.user.avatar, class: "img-responsive  img-rounded" %>
+              <% end %>
+            <% else %>
+               <span class="glyphicon glyphicon-picture"></span>
+            <% end %>
+          </div>
+          <div class="caption">
+            <p><span><%= link_to reply.user.name, tweets_user_path(reply.user) %></span>, <span><%= reply.created_at %></span></p>
+            <p><%= truncate(reply.comment, length: 140)%></p>
+          </div>
+        </div>
+      <% end %>
+      </div>
+
+      <!--  reply action -->
+      <div class = "col-md-11">
+        <%= form_for [@tweet, @reply] do |f| %>
+          <div class="form-group tweet-content">
+            <%= f.text_area :comment ,class: "form-control", size: "30x5", color:  "#e3f2fd" %>
+          </div>
+
+          <div class = "col-xs-offset-10 col-sm-offset-10 col-md-offset-10 col-lg-offset-10">
+            <div class="form-group tweet-btn">
+              <%= f.submit "Reply", class: "btn-primary"  %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

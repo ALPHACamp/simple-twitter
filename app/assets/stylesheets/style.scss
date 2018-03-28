@@ -1,0 +1,152 @@
+.glyphicon-picture {
+  font-size: 50px;
+}
+
+
+
+.user-edit-image .glyphicon{
+  font-size: 320px;
+}
+
+.user-profile-image .glyphicon{
+  font-size: 260px;
+}
+
+.user-item-image .glyphicon {
+  font-size: 70px;
+}
+
+.tweet-user-image glyphicon-picture {
+  font-size: 70px;
+}
+
+
+.navbar-user-image img{
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+}
+
+.header-item{
+  color:  #6495DD
+}
+
+.header-item-2{
+  color:  #6495DD
+}
+
+.user-edit-image img{
+  width: 320px;
+}
+
+
+.user-profile-image img{
+  width: 260px;
+}
+
+.user-profile-info {
+  padding-left: 80px;
+}
+
+.user-profile-content p{
+  padding-right: 110px;
+}
+
+.user-item-long {
+  border: 1px solid #6495DD;
+  border-radius: 10px;
+  height: 120px;
+  margin-bottom: 15px;
+}
+
+.user-item {
+  border: 1px solid #6495DD;
+  border-radius: 10px;
+  height: 160px;
+  margin-bottom: 15px;
+}
+
+.user-item-image {
+  float: left;
+  width: 75px;
+  height: 75px;
+  margin: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.user-item-image img{
+  width: 70px;
+  height: 70px;
+}
+
+.tweet-content {
+  border:2px solid #6495ED;
+  border-radius: 10px;
+}
+
+.tweet-btn {
+  margin-left: 25px;
+}
+
+.reply-item {
+  border: 1px solid #6495DD;
+  border-radius: 10px;
+  height: 130px;
+  margin-bottom: 15px;
+}
+
+@media screen and (min-width: 480px) {
+  .tweet-item-large {
+    border: 1px solid #6495DD;
+    border-radius: 10px;
+    height: 180px;
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .tweet-item-large {
+    border: 1px solid #6495DD;
+    border-radius: 10px;
+    height: 210px;
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .tweet-item {
+    border: 1px solid #6495DD;
+    border-radius: 10px;
+    height: 160px;
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .tweet-item {
+    border: 1px solid #6495DD;
+    border-radius: 10px;
+    height: 200px;
+    margin-bottom: 15px;
+  }
+}
+
+.tweet-user-image {
+  float: left;
+  width: 75px;
+  height: 75px;
+  margin: 15px;
+  margin-top: 30px;
+}
+
+.tweet-user-image  img{
+  width: 70px;
+  height: 70px;
+}
+
+
+.caption {
+  margin-top: 15px;
+  margin-left: 15px;
+}
