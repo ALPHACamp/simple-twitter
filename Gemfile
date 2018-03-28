@@ -50,6 +50,10 @@ gem 'jbuilder', '~> 2.5'
 #Use 'jquery-rails' for bootstrap 20180321-02
 gem 'jquery-rails'
 
+#use 'filestack-rails' 20180328-01
+gem 'filepicker-rails'
+gem 'filestack-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

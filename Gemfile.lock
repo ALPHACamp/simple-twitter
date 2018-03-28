@@ -95,6 +95,10 @@ GEM
     ffi (1.9.18-java)
     ffi (1.9.18-x64-mingw32)
     ffi (1.9.18-x86-mingw32)
+    filepicker-rails (2.1.0)
+      rails (>= 3.2)
+    filestack-rails (2.2.0)
+      rails (>= 3.2)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     i18n (0.9.3)
@@ -268,6 +272,8 @@ DEPENDENCIES
   devise
   factory_bot_rails
   ffaker
+  filepicker-rails
+  filestack-rails
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
