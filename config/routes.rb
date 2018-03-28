@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   # Tweet
   resources :tweets, only: [:index, :create]
-  get "/" => redirect("/tweets")
+  get "/" => redirect("/tweets") # 轉址
   root "tweets#index"
 
 

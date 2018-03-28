@@ -18,12 +18,12 @@
 
       <!-- followers -->
       <%= link_to (user_follower_path(@user)) do %>
-        <h5>Follower : <%= @user.followers_count %></h5>
+        <h5>Follower : <%= @user.followers.count %></h5>
       <% end %>
 
       <!-- like -->
       <%= link_to (user_likes_path(@user)) do %>
-        <h5>Like : <%= @user.likes_count %></h5>
+        <h5>Like : <%= @user.liked_tweets.count %></h5>
       <% end %>
       
       <div class="button-group">
