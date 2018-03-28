@@ -17,4 +17,11 @@ class User < ApplicationRecord
   has_many :replies
   has_many :likes
   has_many :liked_tweets, through: :likes, source: :tweet
+
+  has_many :followships, dependent: :destroy
+  has_many :followings, through: :followships
+
+  def is_following?(user)
+    self.followings.include?(user)
+  end
 end

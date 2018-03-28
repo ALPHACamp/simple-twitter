@@ -15,6 +15,6 @@
   <%if @user == current_user%>
     <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-info" %>
   <% else %>
-    <%= link_to 'Follow', edit_user_path(@user), class: "btn btn-info" %>
+    <%= render partial: "shared/follow", locals: {user: @user} %>
   <% end %>
 </div>
