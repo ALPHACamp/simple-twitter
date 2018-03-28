@@ -1,0 +1,256 @@
+/*------ Basic setting ------*/
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;  /* google font */
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 8px;
+  padding: 0px;
+}
+
+ul, ol {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+a, a:hover, a:focus {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+}
+
+.container {
+  width: 85%;
+  max-width: 1170px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.clearfix::after {            /* ::after - 從選取元素的後面插入東西 */
+  content: '';
+  display: table;
+  clear: both;                /* 清除子元素設定的 float left、right，使其跟隨父層 */
+}
+
+/*------ header setting ------*/
+
+header {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  right: 0;
+  background-color: #222;
+  z-index: 100; 
+}
+
+#logo {
+  float: left;  /* 原本圖片尺寸跟父層 header 跑，浮動排列就回復原來尺寸 */
+}
+
+.nav {
+  float: right;
+}
+
+.nav li {
+  display: inline-block;
+}
+
+/*------ tweets setting ------*/
+
+.tweets {
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin: 15px;
+  padding: 0 10px;
+  width: 100%;
+}
+
+.col-left {
+  float: left;
+  width: 25%;
+}
+
+.col-right {
+  float: left;
+  width: 75%;
+}
+
+.avatar {
+  padding: 5px 5px 5px 0;
+}
+
+.name {
+  color: #1E90FF;
+}
+
+.description, .introduction {
+  color: #767676;
+}
+
+.tweets-bottom {
+  position: relative;
+  bottom: 0;
+}
+
+.reply {
+  color: #00BFFF;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.like {
+  color: red;
+  display: inline-block;
+}
+
+.button-group  a {
+  display: block;
+  color: #000;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 10px 38px;
+  text-transform: capitalize;
+}
+
+.button-group  a:hover {
+  background: #000;
+  color: #fff;
+  -webkit-transition: all .4s linear;
+  -moz-transition: all .4s linear;
+  -ms-transition: all .4s linear;
+  -o-transition: all .4s linear;
+  transition: all .4s linear;
+}
+
+/*------ followings setting ------*/
+
+.followings {
+  border: 1px solid gray;
+  border-radius: 5px;
+  width: 42%;
+  display: inline-block;
+  padding: 3px;
+  margin: 8px;
+}
+
+
+/*------------*/
+.col-1 {
+  width: 33.3333333%;
+  padding-left: 3px;
+  display: inline-block;
+}
+
+.col-2 {
+  width: 66.6666666%;
+  padding-left: 3px;
+  display: inline-block
+}
+/*------------*/
+
+
+.button-right  a {
+  float: right;
+  width: 65%;
+  display: block;
+  color: #000;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 3px 12px;
+  margin-buttom: 10px;
+  text-transform: capitalize;
+}
+
+.button-right  a:hover {
+  float: right;
+  width: 65%;
+  background: #000;
+  color: #fff;
+  -webkit-transition: all .4s linear;
+  -moz-transition: all .4s linear;
+  -ms-transition: all .4s linear;
+  -o-transition: all .4s linear;
+  transition: all .4s linear;
+}
+
+/*------ replies setting ------*/
+
+.button-reply  a {
+  float: left;
+  width: 24%;
+  display: block;
+  color: #000;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 0 12px;
+  margin-buttom: 10px;
+  text-transform: capitalize;
+}
+
+.button-reply  a:hover {
+  float: left;
+  width: 24%;
+  background: #000;
+  color: #fff;
+  -webkit-transition: all .4s linear;
+  -moz-transition: all .4s linear;
+  -ms-transition: all .4s linear;
+  -o-transition: all .4s linear;
+  transition: all .4s linear;
+}
+
+.reply-area, .tweet-area {
+  width: 100%;
+  margin-left: 15px;
+}
+
+/*------ populars setting ------*/
+
+.populars {
+  border: 1px solid gray;
+  border-radius: 5px;
+  width: 100%;
+  display: inline-block;
+  padding: 3px;
+  margin: 8px;
+}
+
+.button-popular  a {
+  width: 50%;
+  float: right;
+  display: block;
+  color: #000;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 5px 5px;
+  text-transform: capitalize;
+}
+
+.button-popular  a:hover {
+  width: 50%;
+  float: right;
+  background: #000;
+  color: #fff;
+  -webkit-transition: all .4s linear;
+  -moz-transition: all .4s linear;
+  -ms-transition: all .4s linear;
+  -o-transition: all .4s linear;
+  transition: all .4s linear;
+}

@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>Tweet Back-End</h1>
+  <br>
+  <div>
+    <%= link_to 'Tweets', admin_tweets_path %> |
+    <%= link_to 'Users', admin_users_path %>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Tweets</h3>
+      <% @tweets.each do |tweet| %>
+
+        <div class="tweets">
+          <p>@<%= tweet.user.name %></p>
+          <%= tweet.description %>
+          <h5>
+            <%= link_to Reply, replies_user_path(tweet) %>
+            <small>(<%= tweet.replies.count %>)</small>
+
+            Like 連結:(<%= tweet.likes.count %>) <!-- 待 like -->
+          </h5>
+          <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %>
+          <hr>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+
+</div>
