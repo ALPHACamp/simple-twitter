@@ -26,3 +26,58 @@ namespace :dev do
     puts user.name
     puts "now you have #{User.count} users data"
   end
+
+  task fake_tweet: :environment do
+    Tweet.destroy_all
+    User.all.each do |user|
+      rand(20).times do
+        user.tweets.create(
+          description: FFaker::Lorem::sentence(8)
+        )
+      end
+    end
+    puts "create fake tweets"
+  end
+
+  task fake_reply: :environment do
+    Reply.destroy_all
+    3.times do
+      user = User.all.sample
+      tweet = Tweet.all.sample
+      Reply.create(
+        user: user,
+        tweet: tweet,
+        comment: FFaker::Lorem::sentence(8)
+      )
+    end
+    puts "create fake replies"
+  end
+
+  task fake_like: :environment do
+    Like.destroy_all
+    50.times do
+      user = User.all.sample
+      tweet = Tweet.all.sample
+      unless tweet.likes.create(user: user)
+        return
+      end
+    end
+    puts "create fake likes"
+  end
+
+  task fake_follow: :environment do
+    Followship.destroy_all
+
+    User.all.each do |user|
+      followings = User.all.sample(rand(2..20))
+      if followings.include?(user)
+        followings.delete(user)
+      end
+      for following in followings
+        user.followships.create!(following: following)
+      end
+    end
+    puts "create fake_follow"
+  end
+
+end
