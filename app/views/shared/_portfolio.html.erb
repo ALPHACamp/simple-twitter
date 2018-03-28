@@ -3,30 +3,30 @@
     <%= image_tag user.avatar, width: '300px', class: "img img-responsive" %>
   </div>
   <div class="user-name">
-    <h2>@<%= user.name.capitalize %></h2>    
+    <h2>@<%= user.name.capitalize %></h2>
   </div>
   <br>
   <div class="introduction">
     <% if user.introduction? %>
-    <p><%= user.introduction %></p>
+      <p><%= user.introduction %></p>
     <% else %>
-    <p>Tell everyone who is you!</p>
+      <p>Tell everyone who is you!</p>
     <% end %>
   </div>
   <br>
   <div class="user-re-li">
     <ul>
       <li>
-        <%= link_to "Tweets (#{Tweet.all.where(:user_id => user.id).length})", tweets_user_path(user.id) %>
+        <%= link_to "Tweets (#{user.tweets.count})", tweets_user_path(user) %>
       </li>
       <li>
-        <%= link_to "Following (#{Followship.all.where(:user_id => user.id).length})", followings_user_path(user.id) %>
+        <%= link_to "Following (#{user.followings.count})", followings_user_path(user) %>
       </li>
       <li>
-        <%= link_to "Follower (#{Followship.all.where(:following_id => user).length})", followers_user_path(user.id) %>
+        <%= link_to "Follower (#{user.followers.count})", followers_user_path(user) %>
       </li>
       <li>
-        <%= link_to "Like (#{Like.all.where(:user_id => user).length})", likes_user_path(user.id) %>
+        <%= link_to "Like (#{user.likes_count})", likes_user_path(user) %>
       </li>
     </ul>
   </div>
@@ -39,9 +39,9 @@
         <% else %>
         <%= link_to  "Follow", followships_path(following_id: user), method: :post , class: "btn btn-info ctweet"%>
       <% end %>
-      <% else %>
-      <%= link_to "Edit", edit_user_path(user.id), class: "btn btn-success ctweet" %> <br>
+    <% else %>
+      <%= link_to "Edit", edit_user_path(user), class: "btn btn-success ctweet" %> <br>
       <br>
-      <%= link_to "Change Password", edit_user_registration_path(user.id), class: "btn btn-warning ctweet" %>
+      <%= link_to "Change Password", edit_user_registration_path(user), class: "btn btn-warning ctweet" %>
     <% end %>
   </div>
