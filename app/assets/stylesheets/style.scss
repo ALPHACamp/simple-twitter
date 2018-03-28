@@ -49,6 +49,35 @@ a, a:hover, a:focus {
   clear: both;                /* 清除子元素設定的 float left、right，使其跟隨父層 */
 }
 
+.link {
+  font-size: 22px;
+  margin: 16px 16px 8px 0;
+}
+
+.link a {
+  color: black;
+}
+
+.profile_avatar {
+  margin: auto, 0;
+}
+
+.profile_name {
+  text-align: center;
+  color: #00687e;
+  font-size: 32px;
+}
+
+.title {
+  color: #00687e;
+  font-size: 32px;
+}
+
+.intro {
+  color: #78a0cd;
+  text-align: justify;
+}
+
 /*------ header setting ------*/
 
 header {
