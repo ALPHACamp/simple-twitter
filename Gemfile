@@ -17,7 +17,8 @@ gem 'ffaker'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+#gem 'sqlite3'  #move to group :development, :test do //20180328-02
+
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -54,6 +55,13 @@ gem 'jquery-rails'
 gem 'filepicker-rails'
 gem 'filestack-rails'
 
+
+#add gem 'pg' in production  //20180328-02
+# $ brew install postgresql
+group :production do
+  gem 'pg'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -64,6 +72,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'rails-controller-testing'
+  #Add gem 'sqlite3' //2018032-02
+  gem 'sqlite3'
 end
 
 group :development do
