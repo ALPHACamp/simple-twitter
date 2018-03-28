@@ -41,6 +41,9 @@
                   </div>
                 </li>
               <% else %>
+                <%= link_to tweets_user_path(current_user) do %>
+                  <span class="glyphicon glyphicon-picture"></span>
+                <% end %>
                 <li><p class="navbar-text"><%= link_to current_user.name, tweets_user_path(current_user) %></p></li>
               <% end %>
 
