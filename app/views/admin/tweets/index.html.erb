@@ -1,0 +1,41 @@
+<div class="comtainer">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-2">
+
+      <ul class="nav nav-tabs">
+        <li role="presentation" class=<%= "active" if current_page? admin_tweets_path %>>
+          <%= link_to "Tweets", admin_tweets_path %>
+        </li>
+        <li role="presentation" class=<%= "active" if current_page? admin_users_path %>>
+          <%= link_to "Users", admin_users_path %>
+        </li>
+      </ul>
+
+      <hr>
+
+
+        <h3>Tweets list</h3>
+        <% @tweets.each do |tweet| %>   
+          <div class="row">
+            <div class="col-md-3">
+              <%=image_tag tweet.user.avatar, class:"img-responsive" %><br />
+            </div>
+            <div class="col-md-8">
+              <h5>name</h5>
+              <p><%= tweet.description %></p> 
+              <br> 
+              <h4>
+                <%= link_to tweet_replies_path(tweet) do %>
+                      Reply(<%=tweet.replies.size%>)
+                    <%end%>
+                <%= link_to 'Destory', admin_tweet_path(tweet), method: :delete, data: {confirm: "Are you sure?"} %>
+              </h4>
+            </div>
+          </div>          
+          <hr>
+        <%end%>       
+      
+
+    </div>
+  </div>
+</div>

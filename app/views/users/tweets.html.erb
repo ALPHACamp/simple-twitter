@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-4">
+      <div class="">
+        <%= image_tag @user.avatar, width: "100%" if @user.avatar? %><br />
+      
+        <h3> <%= @user.name %></h3><br>
+        <p><%= @user.introduction %></p>
+        <%= link_to tweets_user_path(@user) do %>
+        <h3>Tweets <%=@user.tweets.size %></h3>
+        <%end%>
+
+        <h3>Following <%=@user.followings.size %></h3>
+
+        <h3>Follower <%=@user.followers_count %></h3>
+        
+        <%= link_to likes_user_path(@user) do %>
+        <h3>Likes <%= @user.likes.size %></h3>
+        <% end %>
+          
+      </div>  
+        <p>
+          <% if @user.email == current_user.email %>
+            <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
+          <% end %>  
+        </p>
+      
+      
+      
+    </div>
+
+    <div class="col-md-8">
+
+      <% @tweets.each do |tweet| %>
+            
+            <div class="row">
+              <div class="col-md-3">
+                <%=link_to tweets_user_path(tweet.user) do %>
+                <%=image_tag tweet.user.avatar, class:"img-responsive" %>
+                <%end%>
+              </div>
+              <div class="col-md-8">
+              <ul>
+                <li><h5><%= link_to tweet.user.name, tweets_user_path(tweet.user) %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></h5></li>
+                <li><%= tweet.description %></li>
+                <h4>
+                  <%= link_to tweet_replies_path(tweet) do %>
+                      Reply(<%=tweet.replies.size%>)
+                    <%end%>
+                    <% if tweet.is_liked?(current_user) %>
+                      <%= link_to unlike_tweet_path(tweet), method: :post ,class:"like_link" do %>
+                        Unlike (<%=tweet.likes.size%>)
+                      <%end%>
+                    <% else %>
+                      <%= link_to like_tweet_path(tweet), method: :post,class:"like_link" do %>
+                        Like (<%=tweet.likes.size%>) 
+                      <%end%>
+                    <%end%>     
+                </h4>
+              </ul>
+                
+              </div>
+            </div>          
+        
+            <hr>
+          <%end%>      
+      
+    </div>
+  </div>
+</div>

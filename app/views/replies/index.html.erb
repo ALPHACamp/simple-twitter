@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-5 ">
+      <div class="">
+        <img src="http://via.placeholder.com/90x90" class="img-responsive img-rounded">
+      </div>
+      <div>  
+           <h3> name: </h3><br>
+            Tweets.size: <br>
+            Following.size: <br>
+            Followers.size: <br>
+            likes.size: 
+      </div>  
+      <h3><button>Edit</button></h3>
+
+    </div>
+      
+      <div class="col-md-7">
+         <!-- 右上 -->
+        <div class="tweet col-md-12">
+          <h3>Tweet</h3>
+          <h4>@user.name</h4>
+          <p> @tweet.description </p>  
+          <br>
+        </div>
+
+        <!-- 右下 -->
+        <div class="col-md-12 ">
+         
+          <div class="col-md-12">
+
+
+           
+            <h3>Replies</h3>
+            <% @tweet.replies.each do |reply| %>
+            <div class="col-sm-3">
+              <img src="http://via.placeholder.com/70x70" class="img-responsive img-rounded">
+            </div>
+            <div class="col-md-9">
+
+              <h5><%= link_to @tweet.user.name, tweets_user_path(@tweet.user) %>, <%= @tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></h5>
+              <p><%= simple_format reply.comment %></p>
+              <hr>
+             </div>
+          <% end %>
+         </div>
+          
+
+          <!-- reply form -->
+
+          <br>
+
+          <div class="reply_form">
+            <%= form_for [@tweet, @reply] do |t|%>
+              <div class="form-group">
+                <%= t.text_area :comment, placeholder: "推你的回覆 ",  class: "form-control" %>
+              </div>
+              <div class="form-group">
+                <%= t.submit "Reply", class: "pull-right btn btn-primary" %>
+              </div>      
+            <% end %>  
+          </div>
+
+
+          
+        </div>
+      </div>
+
+
+  </div>
+</div>
