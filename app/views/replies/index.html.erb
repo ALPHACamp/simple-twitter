@@ -1,15 +1,7 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-md-4">
-      <%= image_tag @tweet.user.avatar, height: 100, width: 100 %>
-      <h3><%= @tweet.user.name %></h3> <!-- 待 user#tweets user_tweets_path -->
-      <p><%= @tweet.user.introduction %></p>    
-      <h5>Tweets : <%= @user.tweets.count %></h5>
-      <h5>Following : <%= @user.followings.count %></h5>
-      <h5>Follower : <%= @user.followers_count %></h5>
-      <h5>Like : <%= @user.liked_tweets.count %></h5> <!-- 按過讚的推特總數 -->
-    </div>
+    <%= render partial: "shared/profile", locals: { user: @tweet.user } %>
 
     <div class="col-md-8">
       <h1>Tweets</h1>
