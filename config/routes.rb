@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   # 請依照專案指定規格來設定路由
 
   # Tweet
-  get '/tweets' => 'tweets#index', :as => "tweets" # helper 數量注意 (原複改單 -> 又兩種都可以了)
-  resources :tweets, only: [:create]
+  resources :tweets, only: [:index, :create]
+  get "/" => redirect("/tweets")
+  root "tweets#index"
+
 
   # User
   # resources :users, only: [:edit]
