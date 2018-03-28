@@ -1,0 +1,11 @@
+<% if user != current_user %>
+  <% if current_user.following?(user) %>
+    <div id="user-id-<%= user.id %>">
+      <%= link_to "Unfollow", followship_path(user), remote: true, method: :delete, class: "btn btn-default pull-right my-btn btn-lg" %>
+    </div>
+  <% else %>
+    <div id="user-id-<%= user.id %>">
+      <%= link_to "Follow", followships_path(following_id: user), remote: true, method: :post, class: "btn btn-default pull-right my-btn btn-lg" %>
+    </div>
+  <% end %>
+<% end %>
