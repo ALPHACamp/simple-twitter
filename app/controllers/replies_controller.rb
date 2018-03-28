@@ -1,6 +1,7 @@
 class RepliesController < ApplicationController
 before_action :set_tweet, only: [:index, :create]
   def index
+    @user = current_user
     @replies = @tweet.replies.all
     @reply = Reply.new
   end

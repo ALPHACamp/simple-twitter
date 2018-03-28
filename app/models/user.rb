@@ -15,4 +15,6 @@ class User < ApplicationRecord
   end
   has_many :tweets, dependent: :restrict_with_error
   has_many :replies
+  has_many :likes
+  has_many :liked_tweets, through: :likes, source: :tweet
 end
