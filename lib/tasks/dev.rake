@@ -26,11 +26,11 @@ namespace :dev do
   end
 
   task fake_tweet: :environment do
-      User.all.sample(6).each do |user|
+      User.all.sample(8).each do |user|
         tweet = user.tweets.build(description: FFaker::Lorem.paragraph[0,138])
         tweet.save!
       end
-      puts "create 6 fake tweets"
+      puts "create 8 fake tweets"
   end
 
   task fake_clean_followship: :environment do
@@ -50,6 +50,41 @@ namespace :dev do
       end
     end
     puts "create some fake followships"
+  end
+
+  task fake_clean_like: :environment do
+    Like.destroy_all
+    puts "Clean all likes"
+  end
+
+  task fake_like: :environment do
+    i = 0
+    User.all.each do |user|
+      i = i +1
+      num = i % 5
+      num = 6-num
+      Tweet.all.sample(num).each do |tweet|
+        unless user.like?(tweet)
+            tweet.likes.create(user: user)
+        end
+      end
+    end
+    puts "create some fake likes"
+  end
+
+  task fake_clean_reply: :environment do
+    Reply.destroy_all
+    puts "Clean all replies"
+  end
+
+
+  task fake_reply: :environment do
+    User.all.each do |user|
+      Tweet.all.sample(8).each do |tweet|
+        tweet.replies.create(user: user, comment: FFaker::Lorem.paragraph[0,60])
+      end
+    end
+    puts "create some fake replies"
   end
 
 end
