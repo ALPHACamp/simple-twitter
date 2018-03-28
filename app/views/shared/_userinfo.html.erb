@@ -4,6 +4,8 @@
       <%= link_to tweets_user_path(user) do %>
         <%= image_tag user.avatar, class: "img-responsive  img-rounded" %>
       <% end %>
+    <% else %>
+      <span class="glyphicon glyphicon-picture"></span>
     <% end %>
   </div>
   <div class="user-profile-content">
