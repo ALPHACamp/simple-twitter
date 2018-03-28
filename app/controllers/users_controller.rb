@@ -1,19 +1,16 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:tweets, :edit, :update, :followings, :followers, :likes]
 
-  #呈現用戶頁面，自己或他人
   def tweets
     @tweets = Tweet.where(:user_id => @user.id ).order(created_at: :desc)
   end
 
-  #編輯自己的資料
   def edit
     unless @user == current_user
       redirect_to tweets_user_path(current_user), alert: "Not Allow!"
     end
   end
 
-  #編輯好自己的資料好，上傳
   def update
     if @user == current_user
       if @user.update(user_params)
@@ -38,10 +35,9 @@ class UsersController < ApplicationController
     @followers = @user.followers.order(created_at: :desc)
   end
 
-  #tweet被喜歡的數量
   def likes
     # 基於測試規格，必須講定變數名稱
-    @likes = @user.like_tweets.includes(:likes, :user, :like_users).order("likes.created_at desc")
+    @likes = @user.like_tweets.includes(:likes, :user, :liked_users).order("likes.created_at desc")
   end
   
   private

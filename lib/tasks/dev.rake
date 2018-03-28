@@ -64,7 +64,6 @@ namespace :dev do
     Rake::Task['dev:fake_reply'].execute
     Rake::Task['dev:fake_like'].execute
     Rake::Task['dev:fake_followship'].execute
-    Rake::Task['dev:fake_updatelikescount'].execute
   end
   
   #製造假tweet
@@ -108,7 +107,7 @@ namespace :dev do
     puts "now you have #{Like.count} like data"
   end
 
-  #製造假followship，我花了6小才做出來
+  #製造假followship
   task fake_followship: :environment do
     Followship.destroy_all
     User.all.each do |user|
@@ -123,16 +122,6 @@ namespace :dev do
     end
     puts "have created fake followships"
     puts "now you have #{Followship.count} followships data"
-  end
-
-  task fake_updatelikescount: :environment do
-    User.all.each do |user|
-      user.update!(
-        likes_count: Like.all.where(:user_id => user.id).length
-      )
-      user.save!
-    end
-    puts "Now, All users understand how many likes they haved"
   end
   
 end

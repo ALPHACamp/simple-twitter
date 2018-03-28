@@ -1,12 +1,10 @@
 class RepliesController < ApplicationController
 
-  #replies是點擊某則tweets後出現的頁面
   def index
     @tweet = Tweet.find(params[:tweet_id])
     @reply = Reply.new
   end
 
-  #編輯完回覆，replays
   def create
     @tweet = Tweet.find(params[:tweet_id])
     @reply = @tweet.replies.build(reply_params)

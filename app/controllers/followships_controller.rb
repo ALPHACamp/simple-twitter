@@ -1,26 +1,21 @@
 class FollowshipsController < ApplicationController
   
-  #建立追蹤
   def create
     @followship = current_user.followships.build(following_id: params[:following_id])
 
     unless params[:following_id] == current_user.id
       if @followship.save
         @user = User.find(@followship.following_id)
-        flash[:notice] = "Successfully followed"
-        redirect_back(fallback_location: root_path)
-      else
-        flash[:alert] = @followship.errors.full_messages.to_sentence
+        flash[:notice] = "成功追蹤！"
         redirect_back(fallback_location: root_path)
       end  
     end
   end
 
-  #取消追蹤
   def destroy
     @followship = current_user.followships.where(following_id: params[:id]).first
     @followship.destroy
-    flash[:alert] = "Followship destroyed"
+    flash[:alert] = "你不再追蹤對方囉"
     redirect_back(fallback_location: root_path)
   end
 end
