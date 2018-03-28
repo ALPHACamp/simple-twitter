@@ -18,10 +18,9 @@
               <p><%= link_to tweet.user.name, tweets_user_path(tweet.user) %>, <%= tweet.created_at.time.strftime("%Y-%m-%d %H:%M") %></p>
               <p><%= truncate(tweet.description, length: 50)%><p>
               <div class="tweet-button">
-                <p>Reply( )&nbsp; &nbsp; &nbsp; &nbsp;Like( )</p>
+                <p><%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet) %>&nbsp; &nbsp; &nbsp; &nbsp;Like( )</p>
               </div>
             </div>
-
           </div>
         <% end %>
       </div>
@@ -39,7 +38,7 @@
               <p><%= link_to tweet.user.name, tweets_user_path(tweet.user) %>, <%= tweet.created_at.time.strftime("%Y-%m-%d %H:%M") %></p>
               <p><%= truncate(tweet.description, length: 50) %><p>
               <div class="tweet-button">
-                <p>Reply( )&nbsp; &nbsp; &nbsp; &nbsp;Like( )</p>
+                <p><%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet) %>&nbsp; &nbsp; &nbsp; &nbsp;Like( )</p>
               </div>
             </div>
           </div>

@@ -14,4 +14,5 @@ class User < ApplicationRecord
     self.role == "admin"
   end
   has_many :tweets, dependent: :restrict_with_error
+  has_many :replies
 end
