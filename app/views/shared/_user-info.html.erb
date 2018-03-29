@@ -2,12 +2,12 @@
   <%= image_tag(@user.avatar, class: "img-responsive center-block") %>
 </div>
 <div class="user-info">
-  <h3><%= @user.name%></h3>
-  <p><%=@user.introduction%></p>
+  <h3><%= @user.name %></h3>
+  <p><%= @user.introduction %></p>
 </div>
 <div class="user-button">
-  <h4><%= link_to "Tweets(#{@user.tweets.size})", tweets_user_path(@user) %></h4>
-  <h4>Following: </h4>
+  <h4><%= link_to "Tweets(#{@user.tweets.count})", tweets_user_path(@user) %></h4>
+  <h4><%= link_to "Following(#{@user.followings.count})", followings_user_path(@user) %></h4>
   <h4>Followers: </h4>
   <h4><%= link_to "Like(#{@user.likes_count})", likes_user_path(@user) %></h4>
 </div>

@@ -96,3 +96,26 @@
   margin-top: 10px;
   font-size: 30px;
 }
+/* ---------------------------User Section---------------------------*/
+
+.user-section{
+  display: block;
+}
+.user-item{
+  border: 2px solid black;
+  margin-bottom: 10px;
+  padding: 15px;
+}
+.user-item .user-icon img{
+  border-radius: 80%
+}
+.user-item .user-icon{
+  height: 100%;
+  display: inline-block;
+  text-align: center;
+  margin-top: 15px;
+}
+.user-item .user-caption{
+  float: right;
+  text-align: left;
+}
