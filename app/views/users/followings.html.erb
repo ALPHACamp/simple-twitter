@@ -6,38 +6,35 @@
     <!-- followings -->
     <div class="col-md-8">
       <h2>Following</h2>
-      <% if @followings != nil %>
+      <% @followings.each do |following| %>
 
-        <% @followings.each do |following| %>
-
-          <div class="followings">
-            <div class="col-md-4">
-              <div class="avatar">
-                <%= image_tag following.avatar, height: 85, width: 85 %>
-              </div>
-            </div>
-
-            <div class="col-md-8 clearfix">
-              <div class="name">
-                <!-- user link -->
-                <%= link_to (users_tweets_path(following)) do %>
-                  <h5>@<%= following.name %></h5>
-                <% end %>
-              </div>
-
-              <div class="introduction"><%= truncate(following.introduction, length: 50) %></div>
-
-              <!-- follow / unfollow partial -->
-              <div class="button-right">
-                <%= render partial: "shared/tweets-follow", locals: {user: following} %>
-              </div>
-
+        <div class="followings">
+          <div class="col-md-4">
+            <div class="avatar">
+              <%= image_tag following.avatar, height: 85, width: 85 %>
             </div>
           </div>
 
-        <% end %>
+          <div class="col-md-8 clearfix">
+            <div class="name">
+              <!-- user link -->
+              <%= link_to (users_tweets_path(following)) do %>
+                <h5>@<%= following.name %></h5>
+              <% end %>
+            </div>
+
+            <div class="introduction"><%= truncate(following.introduction, length: 50) %></div>
+
+            <!-- follow / unfollow partial -->
+            <div class="button-right">
+              <%= render partial: "shared/tweets-follow", locals: {user: following} %>
+            </div>
+
+          </div>
+        </div>
 
       <% end %>
+
     </div>
 
 

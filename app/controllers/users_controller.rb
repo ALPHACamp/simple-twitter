@@ -23,8 +23,7 @@ class UsersController < ApplicationController
   #@followings # 基於測試規格，必須講定變數名稱
   def followings
     @user = User.find(params[:id])
-    # @followings = @user.followings
-    @followings = @user.followings.order(created_at: :desc)
+    @followings = @user.followings.includes(:followships).order("followships.created_at desc")
   end
 
   #@followers # 基於測試規格，必須講定變數名稱
