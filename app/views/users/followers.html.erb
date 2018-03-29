@@ -4,23 +4,23 @@
       <%= render partial: "shared/user-info" %>
     </div>
     <div class="col-md-9">
-      <h1>Following</h1>
-      <% @followings.each do |following|%>
+      <h1>Followers</h1>
+      <% @followers.each do |follower|%>
       <div class="col-md-5">
           <div class="user-section">
             <div class="user-item clearfix">
               <div class="col-md-4">
               <div class="user-icon">
-                <%= image_tag(following.avatar, class: "img-responsive center-block") %>
+                <%= image_tag(follower.avatar, class: "img-responsive center-block") %>
               </div>
             </div>
             <div class="col-md-8">
               <div class="user-caption">
-                <p><%= link_to following.name, tweets_user_path(following) %></p>
-                <p><%= truncate(following.introduction, length: 55) %><p>
+                <p><%= link_to follower.name, tweets_user_path(follower) %></p>
+                <p><%= truncate(follower.introduction, length: 55) %><p>
               </div>
               <div class="follow-button">
-                <%= render partial: "shared/follow", locals: {user: following} %>
+                <%= render partial: "shared/follow", locals: {user: follower} %>
               </div>
             </div>
           </div>
