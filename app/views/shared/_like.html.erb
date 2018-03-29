@@ -1,0 +1,9 @@
+<% if tweet.is_liked?(current_user) %>
+  <%= link_to unlike_tweet_path(tweet), method: :post, class: "btn btn-info" do%>
+    <%= fa_icon "heart", text: "Dislike(#{tweet.likes_count})" %>
+  <% end %>
+<% else %>
+  <%= link_to like_tweet_path(tweet), method: :post, class: "btn btn-primary" do%>
+    <%= fa_icon "heart-o", text: "Like(#{tweet.likes_count})" %>
+  <% end %>
+<% end %>

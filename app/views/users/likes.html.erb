@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render partial: "shared/user-info" %>
+    </div>
+    <div class="col-md-9">
+      <h1>Like</h1>
+      <div class="tweet-section">
+        <% @likes.each do |like|%>
+          <div class="tweet-item clearfix" >
+            <div class="tweet-icon">
+              <%= image_tag(like.user.avatar, class: "img-responsive center-block") %>
+            </div>
+            <div class="tweet-caption">
+              <p><%= link_to like.user.name, tweets_user_path(like.user) %>, <%= like.created_at.time.strftime("%Y-%m-%d %H:%M") %></p>
+              <p><%= like.description %><p>
+              <div class="tweet-button">
+                <p><%= link_to "Reply(#{like.replies_count})", tweet_replies_path(like) %>&nbsp; &nbsp; &nbsp; &nbsp;<%= render partial: "shared/like", locals: {tweet: like} %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
