@@ -19,7 +19,9 @@
   <div class="col-md-8 col-lg-8">
     <h1><%= Like %></h1>  
     <% @likes.each do |like| %>
-        <%= render partial: "shared/tweet_template", locals: {tweet: like} %>
+        <%= render partial: "shared/tweet_template", locals: {tweet: Tweet.find(like.tweet_id)} %>
     <% end %> 
   </div>  
 </div>
+
+

@@ -21,20 +21,21 @@ class UsersController < ApplicationController
 
   def followings
     #@user = current_user
-    @followings = @user.followings.order(created_at: :asc)  # 基於測試規格，必須講定變數名稱
+    @followships = Followship.order(created_at: :desc).where(user_id: params[:id])
   end
 
   def followers
     #@user = current_user
-    @followers = @user.followers.order(created_at: :asc) # 基於測試規格，必須講定變數名稱
-    #@followers = User.find(Followship.order(created_at: :asc).find_by_following_id(param[:id]).user_id)
-    @followships = Followship.order(created_at: :desc).where(following_id: 21)
+    #@followers = @user.followers.order(created_at: :asc) # 基於測試規格，必須講定變數名稱
+    @followships = Followship.order(created_at: :desc).where(following_id: params[:id])
 
   end
 
   def likes
     #@user = current_user
-    @likes = @user.likes_tweets.order(created_at: :asc)  # 基於測試規格，必須講定變數名稱
+    #likes = @user.likes_tweets.order(created_at: :asc)  # 基於測試規格，必須講定變數名稱
+    @likes = @user.likes.order(created_at: :desc)  # 基於測試規格，必須講定變數名稱
+    #@likes = likes.order(created_at: :asc)
   end
 
   private
