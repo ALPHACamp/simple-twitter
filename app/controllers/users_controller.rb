@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :check_userself, :only => [:edit, :update]
 
   def tweets
-    @tweets = @user.tweets.order(likes_count: :desc).limit(10)
+    @tweets = @user.tweets.order(created_at: :desc).limit(10)
   end
 
   def edit
@@ -21,17 +21,20 @@ class UsersController < ApplicationController
 
   def followings
     #@user = current_user
-    @followings = @user.followings  # 基於測試規格，必須講定變數名稱
+    @followings = @user.followings.order(created_at: :asc)  # 基於測試規格，必須講定變數名稱
   end
 
   def followers
     #@user = current_user
-    @followers = @user.followers # 基於測試規格，必須講定變數名稱
+    @followers = @user.followers.order(created_at: :asc) # 基於測試規格，必須講定變數名稱
+    #@followers = User.find(Followship.order(created_at: :asc).find_by_following_id(param[:id]).user_id)
+    @followships = Followship.order(created_at: :desc).where(following_id: 21)
+
   end
 
   def likes
     #@user = current_user
-    @likes = @user.likes_tweets  # 基於測試規格，必須講定變數名稱
+    @likes = @user.likes_tweets.order(created_at: :asc)  # 基於測試規格，必須講定變數名稱
   end
 
   private

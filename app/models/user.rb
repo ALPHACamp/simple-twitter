@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :followings, through: :followships
   #定義與followship相反方向的方法
   has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
-  has_many :followers, through: :inverse_followships, source: :user
+  has_many :followers, through: :inverse_followships, source: :user 
   has_many :replies
 
   # 需要 app/views/devise 裡找到樣板，加上 name 屬性
