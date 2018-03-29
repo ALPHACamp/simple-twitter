@@ -6,10 +6,10 @@
       <div class="tweet-area">
         <%= form_for Tweet.new do |f| %>
           <div class="form-group">
-            <%= f.text_field :description, placeholder: "Tweet something!", :size=>"50", class: "form-control" %>
+            <%= f.text_area :description, placeholder: "Tweet something!", class: "form-control text-area" %>
             <%= f.hidden_field :user_id, :value => current_user.id %>
           </div>
-          <%= f.submit 'Tweet', class: "btn btn-primary" %>
+          <%= f.submit 'Tweet', class: "pull-right btn btn-primary" %>
         <% end %>
       </div>
 

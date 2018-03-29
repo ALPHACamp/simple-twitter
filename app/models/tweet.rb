@@ -1,6 +1,6 @@
 class Tweet < ApplicationRecord
   validates_length_of :description, maximum: 140
-  belongs_to :user
+  belongs_to :user, counter_cache: true
   has_many :replies, dependent: :destroy
 
   # Like
@@ -9,7 +9,7 @@ class Tweet < ApplicationRecord
 
   # 排序
   # default_scope :include => :likes, :order => "likes.created_at desc"
-  scope :ordered, -> { includes(:likes).order('likes.created_at asc') }
+  # scope :ordered, -> { includes(:likes).order('likes.created_at asc') }
 
   def is_liked?(user)
     self.liked_users.include?(user)
