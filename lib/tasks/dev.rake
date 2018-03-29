@@ -5,14 +5,18 @@ namespace :dev do
     User.destroy_all
     20.times do |i|
       name = FFaker::Name::first_name
-      file = File.open("#{Rails.root}/public/avatar/user#{i+1}.jpg")
+      # filelink = ''
+      # Dir.glob("#{Rails.root}/public/avatar/user#{i+1}.jpg").map do |pic|
+      #   client = FilestackClient.new('AdXNwEl0bRuyww64RxwQNz')
+      #   filelink = client.upload(filepath: pic)
+      # end
 
       user = User.new(
         name: name,
         email: "#{name}@example.co",
         password: "12345678",
         introduction: FFaker::Lorem::sentence(30),
-        avatar: file
+        avatar: "https://cdn.filestackcontent.com/mEKqzZJKQGidi7aRCks8"
       )
 
       user.save!
@@ -20,4 +24,67 @@ namespace :dev do
     end
   end
 
+  task fake_tweet: :environment do
+    Tweet.destroy_all
+
+    User.all.each do |u|
+      5.times do
+        u.tweets.create!(
+          description: FFaker::Lorem::phrase(10)
+        )
+      end
+    end
+    puts "have created fake tweets"
+    puts "now you have #{Tweet.count} users' data"
+  end
+
+  task fake_like: :environment do
+
+    500.times do
+      Like.create!(
+        user_id: User.all.ids.sample,
+        tweet_id: Tweet.all.ids.sample
+      )
+    end
+
+    puts "have created fake likes"
+    puts "now you have #{Like.count} favorites' data"
+  end
+
+  task fake_followship: :environment do
+    Followship.destroy_all
+
+    User.all.each do |user|
+      num = rand(1..9)
+      @users = User.where.not(id: user.id).shuffle
+      num.times do
+        user.followships.create!(
+          following: @users.pop
+        )
+      end
+    end
+
+    puts "have created fake followship"
+    puts "now you have #{Followship.count} followships' data"
+  end
+
+  task fake_reply: :environment do
+    Reply.destroy_all
+
+    Tweet.all.each do |r|
+      3.times do |i|
+        r.replies.create!(
+          comment: FFaker::Lorem.sentence,
+          user: User.all.sample
+        )
+      end
+    end
+    puts "have created fake replies"
+    puts "now you have #{Reply.count} replies' data"
+  end
+
+  task count_tweet: :environment do
+    User.find_each { |user| User.reset_counters(user.id, :tweets) }
+    puts "Finished!"
+  end
 end

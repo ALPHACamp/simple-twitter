@@ -1,0 +1,32 @@
+<div id="replies" class="container">
+  <div class="col-md-3">
+      <%= render partial: "shared/info", locals: { user: @tweet.user} %>
+  </div>
+  <div class="col-md-9">
+    <h3 class="title">tweets</h3>
+    <%= render partial: "shared/tweet_msg", locals: { tweet: @tweet} %>
+    <h3 class="title">replies</h3>
+    <% @replies.each do |t| %>
+      <div class="reply-msg row">
+        <div class="col-md-2">
+          <%= user_avatar t.user.avatar, "" %>
+        </div>
+        <div class="col-md-10">
+          <%= link_to "@#{t.user.name},#{t.created_at.to_s(:db)}", tweets_user_path(t.user) %>
+          <p><%= t.comment %></p>
+        </div>
+      </div>
+    <% end %>
+    <div class="reply-form">
+      <%= form_for [@tweet, @reply] do |f| %>
+        <div class="form-group">
+          <%= f.text_area :comment, class: "form-control"%>
+        </div>
+        <div class="form-group button-group">
+          <%= f.submit "Reply", class: "btn" %>
+          <%= f.button "Cancel", type: :reset, class: "btn" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

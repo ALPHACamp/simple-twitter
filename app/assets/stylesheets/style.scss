@@ -1,0 +1,313 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul, li {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+// ==============Default=================
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-size: 16px;
+  font-family: verdana;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+a, a:hover, a:focus {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+	border-radius: 5px;
+}
+
+th {
+	font-size: 18px;
+	text-align: center;
+	text-transform: capitalize;
+}
+
+.clearfix::after  {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.col-md-9 {
+	padding-left: 50px;
+}
+
+.navbar {
+	margin-bottom: 50px;
+	.img-a {
+		padding: 0 10px;
+	}
+	img {
+		width: 50px;
+		height: 50px;
+	}
+}
+
+.title {
+  margin-bottom: 50px;
+  font-size: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 50px;
+  letter-spacing: 2px;
+}
+
+.btn {
+	background-color: #71A5D0;
+	color: #222;
+	letter-spacing: 2px;
+	text-transform: capitalize;
+	font-size: 20px;
+}
+
+.button-group {
+	text-align: right;
+}
+
+.none {
+	display: none;
+}
+
+.tweet-msg {
+	margin-bottom: 15px;
+	padding: 10px;
+	border: 1px solid #aeaeae;
+	border-radius: 5px;
+	p {
+		margin: 15px 0;
+		color: #7D7D7D;
+	}
+	.like {
+		padding: 0 5px;
+		color: #f00;
+	}
+
+	.unlike {
+		padding: 0 5px;
+		color: #0f1;
+	}
+}
+
+.name {
+	padding: 10px 0;
+	color: #00677E;
+	font-size: 26px;
+	font-weight: 700;
+	letter-spacing: 2px;
+}
+
+.content {
+	color: #00677E;
+	font-size: 14px;
+}
+
+.info {
+	margin: 10px 0;
+
+	.count {
+		color: #4B4C4B;
+		line-height: 2;
+		font-size: 22px;
+		letter-spacing: 2px;
+		display: block;
+		margin-bottom: 5px;
+
+		span {
+			margin-left: 10px;
+		}
+	}
+}
+
+.pop-user {
+	margin-bottom: 15px;
+	padding: 10px;
+	border: 1px solid #aeaeae;
+	border-radius: 5px;
+	p {
+		color: #7D7D7D;
+		font-size: 14px;
+	}
+	a.name {
+		padding: 10px 0;
+		font-size: 18px;
+		font-weight: 700;
+		letter-spacing: 2px;
+	}
+	.btn {
+		font-size: 16px;
+	}
+}
+
+ //=====================Page css====================
+
+// tweet index
+#index {
+	#tweet_description {
+		height: 100px;
+		padding: 10px;
+		border: 2px solid #A8CDDF;
+	}
+	.title {
+		margin-bottom: 20px;
+		color: #00677E;
+		font-size: 30px;
+		text-align: left;
+	}
+	.tweet-form{
+		margin-bottom: 50px;
+	}
+}
+
+// user edit page
+#user-edit {
+	#user_name {
+		border: 2px solid #A8CDDF;
+	}
+	#unique-id {
+		width: 100%;
+	}
+	textarea.form-control {
+	    height: 150px;
+			border: 2px solid #A8CDDF;
+	}
+	img {
+		margin-bottom: 30px;
+	}
+}
+
+// replies
+#replies {
+	#reply_comment {
+		height: 100px;
+		padding: 10px;
+		border: 2px solid #A8CDDF;
+	}
+	.title {
+		margin-bottom: 20px;
+		color: #00677E;
+		font-size: 30px;
+		text-align: left;
+		text-transform: capitalize;
+	}
+	.reply-msg {
+		margin-bottom: 15px;
+		padding: 10px;
+		border: 1px solid #aeaeae;
+		border-radius: 5px;
+
+		p {
+			margin: 15px 0;
+			color: #7D7D7D;
+		}
+	}
+	.reply-form {
+		margin-top: 30px;
+	}
+}
+
+//user follow/unfollow
+#follow {
+	.title {
+		margin-bottom: 20px;
+		color: #00677E;
+		font-size: 30px;
+		text-align: left;
+		text-transform: capitalize;
+	}
+	.pop-user {
+		position: relative;
+		height: 280px;
+		.btn {
+			position: absolute;
+			right: 10px;
+			bottom: 10px;
+		}
+	}
+	.col-md-8 {
+		position: static;
+	}
+}
+
+//admin
+#admin {
+	.time {
+		width: 130px;
+	}
+	.like {
+		text-align: center;
+	}
+	.user {
+		td {
+			text-align: center;
+		}
+	}
+	.modal {
+		li {
+			margin-bottom: 10px;
+			line-height: 1.6;
+		}
+	}
+}

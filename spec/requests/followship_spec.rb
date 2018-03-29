@@ -18,9 +18,9 @@ RSpec.describe 'Followship', type: :request do
       end
 
       it 'can not follow self' do
-        post '/followships', params: { following_id: user.id }
-        expect(Followship.count).to eq 0
-      end
+         post '/followships', params: { following_id: user.id }
+         expect(Followship.count).to eq 0
+       end
     end
   end
 

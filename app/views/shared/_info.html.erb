@@ -1,0 +1,14 @@
+<%= user_avatar user.avatar, "" %>
+<h3 class="name"><%= user.name %></h3>
+<p class="content"><%= user.introduction %></p>
+<div class="info">
+  <%= link_to "Tweets #{user.tweets.count}", tweets_user_path(user), class: "count" %>
+  <%= link_to "Following #{user.followings.count}",followings_user_path(user), class: "count" %>
+  <%= link_to "Follower #{user.followers_count}",followers_user_path(user), class: "count" %>
+  <%= link_to "Like #{user.likes_count}",likes_user_path(user), class: "count" %>
+</div>
+<% if user != current_user %>
+  <%= render partial: "shared/follow", locals: { u: user} %>
+<% else %>
+  <%= link_to('edit profile', edit_user_path(user), class: "btn") %>
+<% end %>
