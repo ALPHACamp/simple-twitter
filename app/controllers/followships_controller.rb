@@ -9,7 +9,7 @@ class FollowshipsController < ApplicationController
     if @followship.save
 
        # @user.increment!(:followers_count)    # 個人頁設定
-       @user.followers_plus                    # 首頁設定
+       # @user.followers_plus                    # 首頁設定
 
       flash[:notice] = "Successfully followed"
       redirect_back(fallback_location: "users/tweets") # 不同 controller 的 template 的轉向方法。Action Controller-控制 HTTP 流程
@@ -29,7 +29,7 @@ class FollowshipsController < ApplicationController
     @followship.destroy
 
     # @user.decrement!(:followers_count)       # 個人頁設定
-    @user.followers_minus                      # 首頁設定
+    # @user.followers_minus                      # 首頁設定
 
     flash[:alert] = "Followship destroyed"
     redirect_back(fallback_location: "users/tweets")

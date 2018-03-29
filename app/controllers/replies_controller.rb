@@ -11,7 +11,7 @@ class RepliesController < ApplicationController
     @tweet = Tweet.find(params[:tweet_id])
     @reply = Reply.new(reply_params)
     @reply.save
-    @tweet.increment!(:replies_count)
+    # @tweet.increment!(:replies_count)
     flash[:notice] = "reply was successfully created"
 
     redirect_to replies_path
