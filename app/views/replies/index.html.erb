@@ -15,15 +15,16 @@
         </div>
 
         <div class="col-right">
-          <%= link_to users_tweets_path(@user) do %>
-            <div class="name">@<%= @user.name %>, <%= @tweet.created_at %></div>
-          <% end %>
+          <div class="name">
+            <%= link_to "@#{@user.name},", users_tweets_path(@user) %>
+            <%= @tweet.created_at.strftime("%Y-%m-%d, %l:%M") %>
+          </div>
 
           <div class="description"><%= @tweet.description %></div>
 
           <div class="tweets-buttom">
             <div class="reply">Reply(<%= @tweet.replies.count %>)</div>
-            <div class="like">Like(<%= @tweet.likes_count %>)</div><!-- 文章被讚總數 -->
+            <div class="like">Like(<%= @tweet.likes.count %>)</div><!-- 文章被讚總數 -->
             <div class="button-reply">
               <%= render partial: "shared/like", locals: {tweet: @tweet} %>
             </div>
@@ -43,9 +44,8 @@
           </div>
           <div class="col-right">
             <div class="name">
-              <%= link_to users_tweets_path(reply.user) do %>
-                @<%= reply.user.name %>, <%= reply.created_at %>
-              <% end %>
+              <%= link_to "@#{reply.user.name}", users_tweets_path(reply.user) %>
+              <%= reply.created_at.strftime("%Y-%m-%d, %l:%M") %>
             </div>
 
             <div class="description"><%= reply.comment %></div>
@@ -58,9 +58,9 @@
         <%= form_for Reply.new do |f| %>
           <%= f.hidden_field :tweet_id, :value => @tweet.id %>
           <%= f.hidden_field :user_id, :value => current_user.id %>
-          <%= f.text_field :comment, placeholder: "Reply here", class: "form-control" %>
+          <%= f.text_area :comment, placeholder: "Reply here!", class: "form-control text-area" %>
           <br>
-          <%= f.submit 'Reply', class: "btn btn-primary" %>
+          <%= f.submit 'Reply', class: "pull-right btn btn-primary" %>
         <% end %>
       </div>
 
