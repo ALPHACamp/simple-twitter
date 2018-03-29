@@ -33,8 +33,11 @@
             </div>
 
             <div class="like">
-              <!-- Like : (<%= like.likes.count %>) -->
-              <%= link_to "Like(#{like.likes.count})", like_tweet_path(like) %>
+              Like : (<%= like.likes.count %>)
+            </div>
+
+            <div class="button-reply">
+              <%= render partial: "shared/like", locals: {tweet: like} %>
             </div>
 
           </div>
