@@ -1,0 +1,56 @@
+  <!-- dashboard start-->
+    <div class="dashboard ">
+
+      <!-- dashboardProfile field start -->
+      <div class="dashboardProfile">
+        <div class="dashboardProfile-avatar">
+          <%= image_tag user.avatar , class: "img-responsive"%>
+        </div>
+        <div class="dashboardProfile-userfield">
+          <div class="dashboardProfile-username"><%= user.name %></div>
+          <div class="dashboardProfile-userintro"><%= user.introduction %></div>
+          
+        </div>
+        <!-- show count of likes,  follwings,  followers -->
+        <div class="dashboardProfile-state">
+          <div class="dashboardProfile-statelist">
+            <!-- tweet count -->
+            <%= link_to tweets_user_path(user) do %>
+              <h2>Tweets <%=user.tweets.size %></h2>
+            <%end%>
+          
+            <!-- following count -->
+            <%= link_to followings_user_path(user) do %>
+              <h2>Following <%= user.followings.size %></h2>
+            <%end%>
+            <!-- follower count -->
+            <%= link_to followers_user_path(user) do %>
+              <h2>Follower <%= user.followers.size %></h2>
+            <%end%>
+            <!-- like count -->
+            <%= link_to likes_user_path(user) do %>
+              <h2>Likes <%=user.likes.size %></h2>
+            <%end%>          
+          </div>
+        </div>
+
+      </div>
+      <!-- dashboardProfile field end -->
+
+      <!-- dashboardContorl button start -->
+      <div class="dashboardContorl">
+
+        <!-- if current_user,  show edit button , or follow -->
+        <% if user == current_user %>
+        <div class="dashboardContorl-edit"><%= link_to "Edit Profile", edit_user_path(user), class: "btn btn-primary "%></div> 
+        <%else%>
+          <div class="dashboardContorl-follow">
+            <!-- follow partial -->
+            <%= render partial:"common/follow", locals:{user: user} %>
+          </div>
+        <%end%>
+      </div>
+      <!-- dashboardContorl button end -->
+
+    </div>  
+    <!-- dashboard end-->

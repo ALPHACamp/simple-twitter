@@ -14,12 +14,14 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
-  # def default_url(*args)
+  def default_url(*args)
   # #   # For Rails 3.1+ asset pipeline compatibility:
   #    ActionController::Base.helpers.asset_path("fallback/" +["avatar.png"].compact.join('_'))
+  #ActionController::Base.helpers.asset_path("default-avatar.png")
+    "https://exelord.github.io/ember-initials/images/default-d5f51047d8bd6327ec4a74361a7aae7f.jpg"
   # #
   # #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
-  # end
+  end
   #
   # version :thumb do
   #   process resize_to_fit: [50, 50]

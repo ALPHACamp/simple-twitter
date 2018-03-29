@@ -1,0 +1,15 @@
+<div class="container">
+
+  <!-- user info panel -->
+  <div class="col-sm-4">
+    <%=render partial: "/common/dashboard", locals:{user: @user}%>
+  </div>
+
+
+<!-- user's tweets -->
+  <div class="col-sm-8">
+    <!-- user tweetswall -->
+    <%=render partial: "common/tweetswall",locals:{tweets: @tweets}%>
+  </div>
+
+</div>

@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="col-sm-7">
+    <div class="tweet-input clearfix u-margin-top-40px">
+      <%=simple_form_for @tweet do |f|%>
+        <%= f.input :description,label: false ,placeholder:"whats on yout mind"%>
+        <%= f.button :submit, 'Tweet',class:"btn btn-primary btn-size-1 u-floatright"%>
+      <%end%>
+    </div>
+    <hr>
+    <div class="index-tweet-content">
+      <%= render partial:"common/tweetswall", locals:{tweets:@tweets} %>
+    </div>
+  </div>
+
+  <div class="col-sm-5">
+    <h1>Popular</h1>
+    <% @users.each do |user| %>
+      <%= render partial:"common/user_item", locals:{user: user}%>
+    <%end%>
+  </div>
+
+</div>

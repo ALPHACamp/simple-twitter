@@ -1,0 +1,6 @@
+<div class="tweetswall">
+  <%tweets.each do |tweet| %>
+    <%= render partial: "common/tweet_item", locals:{tweet: tweet} %>
+  <%end%> 
+
+</div>

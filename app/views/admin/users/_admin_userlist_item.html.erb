@@ -1,0 +1,17 @@
+<div class="admin-userlist-item clearfix">
+    <div class="col-xs-2">
+      <%=link_to tweets_user_path(user) do %>
+      <%=image_tag user.avatar, class:"img-responsive" %>
+      <%end%>
+    </div>
+    <div class="col-xs-10"><p class="item-info">
+      <h4><%=user.name%></h4>
+      <ul>
+        <li>email: <%= user.email %></li>
+        <li>Tweets: <%= user.tweets.size%></li>
+        <li>Following: <%= user.followings.size%></li>
+        <li>Followers: <%= user.followers.size%></li>
+        <li>liked: <%= user.tweets.sum(:likes_count)%></li>
+      </ul>
+    </div>
+  </div>

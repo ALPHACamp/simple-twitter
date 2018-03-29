@@ -1,0 +1,30 @@
+<div class="container">
+
+  <!-- user info panel -->
+  <div class="col-sm-4">
+    <%=render partial: "/common/dashboard", locals:{user: @user}%>
+  </div>
+
+
+<!-- user's tweets -->
+  <div class="col-sm-8">
+    <!-- tweet -->
+    <h2>Tweets</h2>
+    <%=render partial: "common/tweet_item",locals:{tweet: @tweet}%>
+
+    <!-- replies -->
+    <h2>Replies</h2>
+    <!-- reply partial -->
+    <% @replies.each do |reply| %>
+      <%= render partial: "common/reply_item", locals:{reply: reply}%>
+    <%end%>
+    <!-- reply form -->
+    <div class="reply_form">
+      <%=simple_form_for @reply ,url: tweet_replies_path(@tweet) do |f|%>
+        <%= f.input :comment, label: false, placeholder:"leave your comment"%>
+        <%= f.button :submit, 'Reply', class:"btn btn-primary btn-size-1 u-floatright" %>
+      <%end%>
+    </div>
+  </div>
+
+</div>

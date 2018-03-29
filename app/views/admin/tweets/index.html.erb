@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="page-header"><h1>簡單推特 Simple Twitter  <small>網站後台 admin page</small></h1></div>
+  <ul class="nav nav-tabs nav-justified">
+
+    <li role="presentation" class="active">
+      <a href="">All Tweets</a>
+    </li>
+    <li role="presentation"> <%= link_to 'All User list', admin_users_path%></li>
+  </ul>
+  <div class="admin_page_content">
+    <%=render partial: "admin_tweetwall", locals: {tweets: @tweets}%>
+  </div>
+</div>
