@@ -28,6 +28,15 @@
               <div class="description"><%= like.description %></div>
             </div>
 
+            <div class="reply">
+              <%= link_to "Reply(#{like.replies.count})", replies_path(like) %>
+            </div>
+
+            <div class="like">
+              <!-- Like : (<%= like.likes.count %>) -->
+              <%= link_to "Like(#{like.likes.count})", like_tweet_path(like) %>
+            </div>
+
           </div>
         <% end %>
 
