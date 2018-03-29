@@ -65,10 +65,15 @@
   width: 60%;
   float: right;
 }
-
+.tweet-item .tweet-button{
+  margin-top: 30px;
+}
 #ranking-img{
   width: 85%;
   border-radius: 80%
+}
+.user-item .follow-button{
+  text-align: right;
 }
 /* ---------------------------User Tweet---------------------------*/
 .user-info h3{
@@ -116,6 +121,6 @@
   margin-top: 15px;
 }
 .user-item .user-caption{
-  float: right;
+  float: left;
   text-align: left;
 }

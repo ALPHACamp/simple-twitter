@@ -2,22 +2,19 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <% @tweets.each do |tweet|%>
+      <% @users.each do |user|%>
       <div class="col-md-5">
           <div class="user-section">
             <div class="user-item clearfix">
               <div class="col-md-4">
               <div class="user-icon">
-                <%= image_tag(tweet.user.avatar, class: "img-responsive center-block") %>
+                <%= image_tag(user.avatar, class: "img-responsive center-block") %>
               </div>
             </div>
             <div class="col-md-8">
               <div class="user-caption">
-                <p><%= link_to tweet.user.name, tweets_user_path(tweet.user) %></p>
-                <p><%= tweet.description %><p>
-              </div>
-              <div class="delete-button">
-                <h1><%= link_to "Delete", admin_tweet_path(tweet), method: :delete, class: "btn btn-primary"%></h1>
+                <p><%= link_to user.name, tweets_user_path(user) %></p>
+                <p><%= truncate(user.introduction, length: 55) %><p>
               </div>
             </div>
           </div>

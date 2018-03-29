@@ -40,9 +40,9 @@
               <div class="user-caption">
                 <p><%= link_to user.name, tweets_user_path(user) %></p>
                 <p><%= truncate(user.introduction, length: 55) %><p>
-              </div>
-              <div class="follow-button">
-                <%= render partial: "shared/follow", locals: {user: user} %>
+                <div class="follow-button">
+                  <%= render partial: "shared/follow", locals: {user: user} %>
+                </div>
               </div>
             </div>
           </div>
