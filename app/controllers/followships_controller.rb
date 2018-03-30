@@ -25,7 +25,7 @@ before_action :get_following_user, only: [:create, :destroy]
     @following_user.followers_count = @following_user.followers.count
     @following_user.save
     flash[:alert] = "Followship destroyed"
-    redirect_back(fallback_location: user_path(@following_user))
+    redirect_to followings_user_path(current_user)
   end
 
   private

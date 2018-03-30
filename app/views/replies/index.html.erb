@@ -41,7 +41,7 @@
       
 
   
-      <%= form_for @reply, url: reply_tweet_path, :html => { class: 'reply' } do |f| %>
+      <%= form_for @reply, url: replies_tweet_path, :html => { class: 'reply' } do |f| %>
         <div class="form-group">
               <%= f.text_area :comment, placeholder: "What's on your mind", class: "form-control" %>
         </div>

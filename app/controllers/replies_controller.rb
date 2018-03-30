@@ -3,10 +3,11 @@ class RepliesController < ApplicationController
   def index
     @tweet = Tweet.find(params[:id])
     @replies = @tweet.replies
-    @user = current_user
+    @user = @tweet.user
     @reply = Reply.new
     #@users # 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
   end
+
 
   def create
     @tweet = Tweet.find(params[:id])
@@ -19,7 +20,7 @@ class RepliesController < ApplicationController
     else
       flash[:alert] = "Reply was failed to create"
     end
-    redirect_back(fallback_location: root_path)
+    redirect_to replies_tweet_path
   end
 
 

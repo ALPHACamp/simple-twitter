@@ -22,7 +22,7 @@ class TweetsController < ApplicationController
     else
       flash[:alert] = "tweet was failed to create"
     end
-    redirect_back(fallback_location: root_path)
+    redirect_to tweets_path
   end
 
 
@@ -43,6 +43,14 @@ class TweetsController < ApplicationController
     @tweet.save
     redirect_back(fallback_location: root_path)  # 導回上一頁
   end
+
+  #def replies
+  #   @tweet = Tweet.find(params[:id])
+  #  @replies = @tweet.replies
+  #  @user = current_user
+  #  @reply = Reply.new
+  #  #@users # 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
+  #end
 
 
   private

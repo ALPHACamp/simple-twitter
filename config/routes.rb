@@ -16,20 +16,22 @@ Rails.application.routes.draw do
     member do
       post :like
       post :unlike   
-      #post :create
       get  'replies'   => 'replies#index'
-      post 'reply'     => 'replies#create'
-      #post 'contact' => 'contact#create'
+      #get  'replies'
+      post 'replies'     => 'replies#create'
     end
   end
   root "tweets#index"
 
   resources :followships, only: [:create, :destroy]
+  resources :replies, only: [:index, :create]
 
   namespace :admin do
     resources :users, :only => [:index]  
     resources :tweets, :only => [:index, :destroy]  
     root "tweets#index"
   end
+
+
 
 end
