@@ -12,7 +12,7 @@ class Admin::TweetsController < Admin::BaseController
 
   def destroy
     @tweet.destroy
-    redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: admin_root_path)
   end
 
   private
