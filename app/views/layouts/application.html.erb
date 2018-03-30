@@ -29,7 +29,7 @@
 
             <li><!-- 管理者登入顯示後台連結 -->
               <% if current_user && current_user.admin? %>
-                <%= link_to admin_tweets_path(current_user) do %>
+                <%= link_to admin_root_path(current_user) do %> <!-- 修改path -->
                   <%= "Back-End" %> <i class="fa fa-users"></i>
                 <% end %>
               <% end %>              

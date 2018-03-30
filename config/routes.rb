@@ -36,7 +36,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [:index]
 
-    get '/tweets' => 'tweets#index', :as => "tweets"
-    resources :tweets, only: [:destroy]
+    resources :tweets, only: [:index, :destroy]
+    get "/" => redirect("admin/tweets")
+    root "tweets#index"
   end
 end
