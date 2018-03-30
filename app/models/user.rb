@@ -34,16 +34,5 @@ class User < ApplicationRecord
     self.followings.include?(user)
   end
 
-  def followers_plus
-    self.followers_count ||= 0
-    self.followers_count += 1
-    self.save
-  end
-
-  def followers_minus
-    self.followers_count ||= 0
-    self.followers_count -= 1
-    self.save
-  end
 
 end
