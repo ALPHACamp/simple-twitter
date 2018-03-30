@@ -29,17 +29,13 @@ class UsersController < ApplicationController
   #@followers # 基於測試規格，必須講定變數名稱
   def followers
     @user = User.find(params[:id])
-    # @followers = @user.followers
-    @followers = @user.followers.order(created_at: :desc)
+    @followers = @user.followers.includes(:followships).order("followships.created_at desc")
   end
 
   #@likes # 基於測試規格，必須講定變數名稱
   def likes
     @user = User.find(params[:id])
-    # @likes = @user.liked_tweets.order(created_at: :desc) # 錯誤版
-    # @likes = @user.liked_tweets.order(likes.created_at :desc) # 當機版
-    #@likes = @user.liked_tweets.order(created_at: :desc) # 錯誤版
-    @likes = @user.liked_tweets
+    @likes = @user.liked_tweets.includes(:likes, :user, :liked_users).order("likes.created_at desc")
   end
 
 
