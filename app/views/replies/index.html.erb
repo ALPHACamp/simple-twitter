@@ -10,7 +10,7 @@
 
         <div class="col-left">
           <div class="avatar">
-            <%= image_tag @tweet.user.avatar, height: 75, width: 75 %>
+            <%= image_tag @tweet.user.avatar, height: 75, width: 75 if @tweet.user.avatar %>
           </div>
         </div>
 
@@ -39,7 +39,7 @@
         <div class="tweets clearfix">
           <div class="col-left">
             <div class="avatar">
-              <%= image_tag reply.user.avatar, height: 75, width: 75 %>
+              <%= image_tag reply.user.avatar, height: 75, width: 75 if reply.user.avatar %>
             </div>
           </div>
           <div class="col-right">
@@ -55,7 +55,7 @@
       <% end %>
 
       <div class="reply-area">
-        <%= form_for Reply.new do |f| %>
+        <%= form_for @reply do |f| %>
           <%= f.hidden_field :tweet_id, :value => @tweet.id %>
           <%= f.hidden_field :user_id, :value => current_user.id %>
           <%= f.text_area :comment, placeholder: "Reply here!", class: "form-control text-area" %>

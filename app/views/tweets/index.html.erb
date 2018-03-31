@@ -33,7 +33,7 @@
             <div class="description"><%= tweet.description %></div>
             <div class="tweets-buttom">
               <div class="reply">
-                <%= link_to "Reply(#{tweet.replies.count})", replies_user_path(tweet) %>
+                <%= link_to "Reply(#{tweet.replies.count})", tweet_replies_path(tweet) %>
               </div>
               <div class="like">Like(<%= tweet.likes.count %>)</div>
             </div>

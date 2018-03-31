@@ -4,17 +4,20 @@ class RepliesController < ApplicationController
     @tweet = Tweet.find(params[:tweet_id])
     @user = User.find(@tweet.user_id) #S15L1U3
     @replies = Reply.where(tweet_id: @tweet.id).order(created_at: :desc) # editing
+    @reply = Reply.new
   end
 
   def create
     @user = current_user
     @tweet = Tweet.find(params[:tweet_id])
     @reply = Reply.new(reply_params)
-    @reply.save
-    # @tweet.increment!(:replies_count)
-    flash[:notice] = "reply was successfully created"
-
-    redirect_to replies_path
+    if @reply.save
+      @replies = @tweet.replies.all
+      flash[:notice] = "reply was successfully created"
+      redirect_to tweet_replies_path(@tweet)
+    else
+      redirect_to tweet_replies_path(@tweet)
+    end
   end
 
   private

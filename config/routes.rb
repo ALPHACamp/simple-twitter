@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
 
   # Reply
-  get '/tweets/:tweet_id/replies' => 'replies#index', :as => "replies_user"
+  get '/tweets/:tweet_id/replies' => 'replies#index', :as => "tweet_replies" # prefix replies_user 不符規格改為　tweet_replies
   post '/tweets/:tweet_id/replies' => 'replies#create', :as => "replies"
   # create action path_helper 慣例用複數，規則可用 resources 先跑一遍，中間的 id 還是錯的，待處理
 

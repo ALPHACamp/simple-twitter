@@ -26,7 +26,7 @@
 
             <div class="tweets-bottom">
               <div class="reply">
-                <%= link_to replies_user_path(tweet) do %>
+                <%= link_to tweet_replies_path(tweet) do %>
                   Reply(<%= tweet.replies.count %>)
                 <% end %>
               </div>
