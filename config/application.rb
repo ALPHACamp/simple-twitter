@@ -17,5 +17,9 @@ module SimpleTwitter
     # -- all .rb files in that directory are automatically loaded.
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # setup for filestack
+    config.filestack_rails.api_key = "AusaD7GlvTDSm2n1fTcwTz"
+    config.filestack_rails.client_name = "simpleTweeter"
   end
 end

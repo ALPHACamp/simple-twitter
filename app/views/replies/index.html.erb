@@ -1,0 +1,32 @@
+<div class="row">
+  <!-- user profile -->
+  <div class="col-xs-12 col-sm-3">
+    <%= render partial: "shared/user_data" %>
+  </div>
+  
+  <!-- tweets -->
+  <div class="col-xs-12 col-sm-9 reply-col">
+    <hr class="hidden-sm hidden-md hidden-lg">
+    <h1>Tweets</h1>
+    <%= render partial: "shared/message", locals: {message: @tweet, is_tweet: true, with_reply: false} %>
+
+    <h1>Replies</h1>
+    <% @replies.each do |reply| %>
+      <%= render partial: "shared/message", locals: {message: reply, is_tweet: false, with_reply: false} %>
+    <% end %>
+    <div class="text-center"><%= paginate @replies %></div>
+
+    <!-- reply form -->
+    <div class="tweet-form">
+      <%= form_for [@tweet, @reply] do |f| -%>
+        <div class="form-group">
+          <%= f.text_area :comment, class: "form-control", id: "message" %>
+        </div>
+        <div class="form-group text-right">
+          <%= f.submit 'Reply', class: "btn btn-primary" %>
+        </div>
+      <% end -%>
+    </div>
+
+  </div>
+</div>
