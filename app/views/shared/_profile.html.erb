@@ -1,0 +1,25 @@
+<div class="col-md-2">
+
+  <div class="profile_name">
+    <%= render partial: "shared/avatar", locals: {avatar: user.avatar} if user.avatar %>
+  </div>
+
+  <div class="profile_name"><%= user.name %></div>
+  <div class="intro"><%= user.introduction %></div>
+
+  <!-- user link -->
+  <div class="link">
+    <%= link_to "Tweets : #{user.tweets.count}", tweets_user_path(user) %><br/>
+
+    <%= link_to "Following : #{user.followings.count}", followings_user_path(user) %><br/>
+
+    <%= link_to "Follower : #{user.followers.count}", followers_user_path(user) %><br/>
+
+    <%= link_to "Like : #{user.liked_tweets.count}", likes_user_path(user) %>
+  </div>
+
+  <div class="button-group">
+    <%= render partial: "shared/edit", locals: {user: user} %>
+  </div>
+
+</div>
