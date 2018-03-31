@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+    <h1 class="text-center">User List</h1>
+    <hr>
+      <% @users.each do |user| %>
+        <div class="media tweet-box">
+          <div class="media-left">
+            <%= image_tag user.avatar , class:' img-circle' if user.avatar?%>
+              <%= image_tag "http://via.placeholder.com/60x60" , class:' img-circle'  unless user.avatar?%>
+              <h4 class="text-center"><%= link_to user.name, tweets_user_path(user) %></h4>
+          </div>
+          <div class="media-body">
+            <p><%= user.introduction %></p>
+            <hr>
+            <h5 class="media-heading text-center line-disappear">
+              <%= link_to tweets_user_path(user) do %>
+                Tweet <%= user.tweets.count %>&nbsp; | &nbsp;
+              <% end %>
+              <%= link_to followings_user_path(user) do %>
+              Following <%= user.followings.count %>&nbsp; | &nbsp;
+              <% end %>
+              <%= link_to followers_user_path(user) do %>
+              Follower <%= user.followers.count %>&nbsp; | &nbsp;
+              <% end %>
+              <%= link_to likes_user_path(user) do %>
+              Like <%= user.likes_count %>&nbsp; 
+              <% end %>
+            </h5>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

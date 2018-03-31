@@ -1,0 +1,9 @@
+<% if tweet.is_liked?(current_user) %>
+  <%= link_to unlike_tweet_path(tweet),method: :post  do  %>
+    <h4 class="unlike-style">Like (<%= tweet.likes_count %>)</h4>
+  <% end %>
+<% else %>
+  <%= link_to like_tweet_path(tweet),method: :post  do  %>
+    <h4 class="like-style">Like (<%= tweet.likes_count %>)</h4>
+  <% end %>
+<% end %>
