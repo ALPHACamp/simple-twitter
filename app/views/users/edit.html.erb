@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <!-- error message -->
+    <% if @user.errors.any? %>
+      <h2>We have some errors here ! </h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end%>
+      </ul>
+    <% end %>
+
+    <!-- edit area -->
+    <%= form_for @user, :url => { :controller => 'users', :action => 'update', :id => @user } do |f| %>
+
+      <div class="col-md-4">
+
+        <div class="form-group">
+          <%= image_tag @user.avatar, width: 120, height: 120 if @user.avatar? %>
+          <%= f.file_field :avatar, class: "btn" %>
+        </div>
+
+      </div>
+
+      <div class="col-md-8">
+
+        <div class="form-group">
+          <%= f.label :name, "Name" %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+
+
+        <div class="form-group">
+          <%= f.label :introduction, "Introduction" %>
+          <%= f.text_area :introduction, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit "Update", class: "btn btn-primary" %>
+        </div>
+
+
+      </div>
+
+
+    <% end %>
+
+  </div>
+</div>

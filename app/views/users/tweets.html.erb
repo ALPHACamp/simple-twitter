@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+
+    <%= render partial: "shared/profile", locals: { user: @user } %>
+
+    <div class="col-md-8">
+      <!-- Tweets -->
+      <% @tweets.each do |tweet| %>
+
+        <div class="tweets clearfix">
+
+          <div class="col-left">
+            <div class="avatar">
+              <%= image_tag tweet.user.avatar, width: 75, height: 75 %>
+            </div>
+          </div>
+
+          <div class="col-right">
+
+            <div class="name">
+              <%= link_to "@#{tweet.user.name},", users_tweets_path(tweet.user) %>
+              <%= tweet.created_at.strftime("%Y-%m-%d ,%l:%M") %>
+            </div>
+
+            <div class="description"><%= tweet.description %></div>
+
+            <div class="tweets-bottom">
+              <div class="reply">
+                <%= link_to replies_user_path(tweet) do %>
+                  Reply(<%= tweet.replies.count %>)
+                <% end %>
+              </div>
+              <div class="like">Like(<%= tweet.likes_count %>)</div>
+            </div>
+          </div>
+
+        </div>
+
+      <% end %>
+    </div>
+
+  </div>
+</div>
