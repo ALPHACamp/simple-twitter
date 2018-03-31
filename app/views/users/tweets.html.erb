@@ -11,7 +11,7 @@
 
           <div class="col-left">
             <div class="avatar">
-              <%= image_tag tweet.user.avatar, width: 75, height: 75 %>
+              <%= image_tag tweet.user.avatar, width: 75, height: 75 if tweet.user.avatar %>
             </div>
           </div>
 

@@ -39,7 +39,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index]
 
     resources :tweets, only: [:index, :destroy]
-    get "/" => redirect("admin/tweets")
+    # get "/" => redirect("admin/tweets")　＃ http status 變 301 移除
     root "tweets#index"
   end
 end
