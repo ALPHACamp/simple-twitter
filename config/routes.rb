@@ -25,8 +25,8 @@ Rails.application.routes.draw do
   # create action path_helper 慣例用複數，規則可用 resources 先跑一遍，中間的 id 還是錯的，待處理
 
   # Following
-  get '/users/:id/followings' => 'users#followings', :as => "following_user"
-  get '/users/:id/followers' => 'users#followers', :as => "user_follower"
+  get '/users/:id/followings' => 'users#followings', :as => "followings_user" # prefix following_user 不符規格改為 followings_user
+  get '/users/:id/followers' => 'users#followers', :as => "followers_user"     # prefix user_follower 不符規格改為 followers_user
   resources :followships, only: [:create, :destroy]
 
   # Like
