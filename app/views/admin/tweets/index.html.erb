@@ -1,0 +1,36 @@
+<div class="container">
+  <h1>Tweet Back-End</h1>
+  <br>
+  <div>
+    <%= link_to 'Tweets', admin_tweets_path %> |
+    <%= link_to 'Users', admin_users_path %>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Tweets</h3>
+      <% @tweets.each do |tweet| %>
+
+        <div class="tweets">
+          <div class="name">
+            <%= link_to "@#{tweet.user.name},", tweets_user_path(tweet.user) %>
+            <%= tweet.created_at.strftime("%Y-%m-%d ,%l:%M") %>
+          </div>
+          <div class="description"><%= tweet.description %></div>
+
+          <div class="tweets-buttom">
+            <div class="reply">
+              <%= link_to "Reply(#{tweet.replies.count})", tweet_replies_path(tweet) %>
+            </div>
+            <div class="like">Like(<%= tweet.likes.count %>)</div>
+          </div>
+          <br/>
+          <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %>
+          <hr>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+
+</div>
