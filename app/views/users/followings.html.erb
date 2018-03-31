@@ -1,0 +1,35 @@
+
+
+
+
+<div class="container">
+  <div class="row">
+
+    <%= render partial: "share/userdetails", locals: {user: @user} %>
+    <div class="col-sm-8"> 
+      <% @followings.each do |following| %>
+        <div class="row">
+          <div class="tweet-item">
+            <div class="col-sm-4">
+              <%= image_tag following.avatar, class: "img-responsive center-block" %>
+            </div>
+            <div class="col-sm-8">
+              <div class="caption">
+                <h3><%= link_to following.name, tweets_user_path(following) %></h3>
+                <h4><%= truncate(following.introduction, lenght:10) %></h4>
+                <%= render partial: "share/follow", locals: {user: following} %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div> 
+
+    </div> 
+
+
+
+
+      
+  </div>
+</div>
