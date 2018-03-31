@@ -27,7 +27,7 @@
 
           <div class="col-right">
             <div class="name">
-              <%= link_to "@#{tweet.user.name},", users_tweets_path(tweet.user) %>
+              <%= link_to "@#{tweet.user.name},", tweets_user_path(tweet.user) %>
               <%= tweet.created_at.strftime("%Y-%m-%d ,%l:%M") %>
             </div>
             <div class="description"><%= tweet.description %></div>
@@ -61,7 +61,7 @@
           <div class="col-md-8">
             <div class="name">
               <!-- user link -->
-              <%= link_to (users_tweets_path(user)) do %>
+              <%= link_to (tweets_user_path(user)) do %>
                 <h5>@<%= user.name %></h5>
               <% end %>
             </div>

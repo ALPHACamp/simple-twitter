@@ -9,7 +9,7 @@
 
   <!-- user link -->
   <div class="link">
-    <%= link_to "Tweets : #{user.tweets.count}", users_tweets_path(user) %><br/>
+    <%= link_to "Tweets : #{user.tweets.count}", tweets_user_path(user) %><br/>
 
     <%= link_to "Following : #{user.followings.count}", following_user_path(user) %><br/>
 

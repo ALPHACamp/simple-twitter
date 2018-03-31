@@ -11,10 +11,12 @@ Rails.application.routes.draw do
 
 
   # User
-  # resources :users, only: [:edit]
-  get '/users/:id/tweets' => 'users#tweets', :as => "users_tweets" # helper user 要加 s
-  get '/users/:id/edit' => 'users#edit', :as => "edit_users"
-  match '/users/:id/update', to:'users#update', via: [:patch]
+  
+  get '/users/:id/tweets' => 'users#tweets', :as => "tweets_user" # users_tweets user 要加 s => 規格 tweets_user
+
+  resources :users, only: [:edit, :update]
+  # get '/users/:id/edit' => 'users#edit', :as => "edit_user" #  prefix edit_users 不符規格改為 edit_user
+  # match '/users/:id/update', to:'users#update', via: [:patch]
 
 
   # Reply

@@ -19,7 +19,7 @@
             <div class="col-md-8">
               <div class="name">
                 <!-- user link -->
-                <%= link_to (users_tweets_path(follower)) do %>
+                <%= link_to (tweets_user_path(follower)) do %>
                   <h5>@<%= follower.name %></h5>
                 <% end %>
               </div>
