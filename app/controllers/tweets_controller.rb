@@ -4,6 +4,12 @@ class TweetsController < ApplicationController
   # 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
   def index
     @users = User.order(followers_count: :desc).limit(10)
+    # render json: {
+    #   name: @user.name,
+    #   email: @user.email,
+    #   introduction: @user.introduction,
+    #   avatar: @user.avatar
+    # }
     @tweets = Tweet.all.includes(:likes, :user, :liked_users).order(created_at: :desc)
   end
 

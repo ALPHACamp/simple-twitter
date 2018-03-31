@@ -4,7 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  mount_uploader :avatar, AvatarUploader
+  # mount_uploader :avatar, AvatarUploader
+  # 改用 第三方 API 
+
   has_many :tweets
   has_many :replies
 

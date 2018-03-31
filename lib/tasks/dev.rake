@@ -27,6 +27,41 @@ namespace :dev do
     puts "now you have #{User.count} users data"
   end
 
+  task fetch_user: :environment do
+    User.destroy_all
+
+    url = "https://uinames.com/api/?ext&region=england"
+
+    19.times do
+      response = RestClient.get(url)
+      data = JSON.parse(response.body)
+
+      user = User.create!(
+        name: data["name"],
+        email: "#{data["name"]}@example.co",
+        password: "12345678",
+        introduction: FFaker::Lorem::sentence(30),
+        avatar: data["photo"]
+      )
+
+      puts "created user #{user.name}"
+    end
+
+    response = RestClient.get(url)
+    data = JSON.parse(response.body)
+    user = User.create!(
+      name: "Root",
+      email: "Root@example.co",
+      role: "admin",
+      password: "12345678",
+      introduction: FFaker::Lorem::sentence(30),
+      avatar: data["photo"]
+    )
+    puts "created admin user #{user.name}"
+
+    puts "now you have #{User.count} users data"
+  end
+
   task fake_tweet: :environment do
     Tweet.destroy_all
     User.all.each do |user|

@@ -22,7 +22,7 @@
           <div class="tweets clearfix">
             <div class="col-left">
               <div class="aratar">
-                <%= image_tag tweet.user.avatar, height: 85, width: 85 %>
+                <%= image_tag tweet.user.avatar, height: 85, width: 85 if tweet.user.avatar? %>
               </div>
             </div>
 
