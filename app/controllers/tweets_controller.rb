@@ -6,15 +6,21 @@ class TweetsController < ApplicationController
   def index
     @users = User.order(followers_count: :desc).limit(10)
     @tweets = Tweet.all.includes(:likes, :user, :liked_users).order(created_at: :desc)
+    @tweet = Tweet.new
   end
 
   def create
     @user = current_user.id
     @tweet = Tweet.new(tweet_params)
-    @tweet.save
-    flash[:notice] = "tweet was successfully created"
+    if @tweet.save
+      flash[:notice] = "tweet was successfully created"
+      redirect_to tweets_path
+    else
+      flash[:alert] = @tweet.errors.full_messages.to_sentence
+      redirect_to tweets_path
+    end
 
-    redirect_to tweets_path
+
   end
 
   def like

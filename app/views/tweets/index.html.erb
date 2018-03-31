@@ -4,7 +4,7 @@
     <div class="col-md-8">
       <!-- 當前使用者推特發文區 -->
       <div class="tweet-area">
-        <%= form_for Tweet.new do |f| %>
+        <%= form_for @tweet do |f| %>
           <div class="form-group">
             <%= f.text_area :description, placeholder: "Tweet something!", class: "form-control text-area" %>
             <%= f.hidden_field :user_id, :value => current_user.id %>
@@ -16,32 +16,30 @@
       <br>
 
       <!-- All Tweets  -->
-      <% if @tweets != nil %>
-        <% @tweets.each do |tweet| %>
+      <% @tweets.each do |tweet| %>
 
-          <div class="tweets clearfix">
-            <div class="col-left">
-              <div class="aratar">
-                <%= image_tag tweet.user.avatar, height: 85, width: 85 if tweet.user.avatar? %>
-              </div>
-            </div>
-
-            <div class="col-right">
-              <div class="name">
-                <%= link_to "@#{tweet.user.name},", users_tweets_path(tweet.user) %>
-                <%= tweet.created_at.strftime("%Y-%m-%d ,%l:%M") %>
-              </div>
-              <div class="description"><%= tweet.description %></div>
-              <div class="tweets-buttom">
-                <div class="reply">
-                  <%= link_to "Reply(#{tweet.replies.count})", replies_user_path(tweet) %>
-                </div>
-                <div class="like">Like(<%= tweet.likes.count %>)</div>
-              </div>
+        <div class="tweets clearfix">
+          <div class="col-left">
+            <div class="aratar">
+              <%= image_tag tweet.user.avatar, height: 85, width: 85 if tweet.user.avatar? %>
             </div>
           </div>
 
-        <% end %>
+          <div class="col-right">
+            <div class="name">
+              <%= link_to "@#{tweet.user.name},", users_tweets_path(tweet.user) %>
+              <%= tweet.created_at.strftime("%Y-%m-%d ,%l:%M") %>
+            </div>
+            <div class="description"><%= tweet.description %></div>
+            <div class="tweets-buttom">
+              <div class="reply">
+                <%= link_to "Reply(#{tweet.replies.count})", replies_user_path(tweet) %>
+              </div>
+              <div class="like">Like(<%= tweet.likes.count %>)</div>
+            </div>
+          </div>
+        </div>
+
       <% end %>
 
     </div>
@@ -56,7 +54,7 @@
         <div class="populars clearfix">
           <div class="col-md-4">
             <div class="avatar">
-              <%= image_tag user.avatar, height: 85, width: 85 %>
+              <%= image_tag user.avatar, height: 85, width: 85 if user.avatar? %>
             </div>
           </div>
 

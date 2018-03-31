@@ -22,7 +22,7 @@
             <li><!-- 頭像連結個人頁面 -->
               <% if current_user %>
                 <%= link_to users_tweets_path(current_user) do %>
-                  <%= image_tag current_user.avatar, height: 50, width: 50 %>
+                  <%= image_tag current_user.avatar, height: 50, width: 50 if current_user.avatar? %>
                 <% end %>
               <% end %>
             </li>
