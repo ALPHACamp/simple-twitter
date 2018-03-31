@@ -1,0 +1,9 @@
+<ul class="nav nav-pills nav-justified">
+  <li class="<%= "active" if @tweets %>" >
+    <%= link_to "Index", admin_tweets_path(@tweets) %>
+  </li>
+  <li class="<%= "active" if @users %>">
+    <%= link_to "Users", admin_users_path(@users) %>
+  </li>
+</ul>
+

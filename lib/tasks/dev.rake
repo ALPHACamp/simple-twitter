@@ -20,4 +20,54 @@ namespace :dev do
     end
   end
 
+
+  task fake_tweet: :environment do
+    Tweet.destroy_all
+    50.times do |i|
+      Tweet.create!(
+        description: FFaker::Lorem.sentence,
+        user: User.all.sample
+        )   
+    end  
+    puts "Created #{Tweet.count} fake tweets"
+  end
+
+  task fake_follow: :environment do
+    Followship.destroy_all
+    50.times do |i|
+      Followship.create(
+        user: User.all.sample,
+        following: User.all.sample
+        )   
+    end  
+    puts "Created #{Followship.count} fake followships"
+  end
+
+  task fake_like: :environment do
+    Like.destroy_all
+    50.times do |i|
+      Like.create(
+        user: User.all.sample,
+        tweet: Tweet.all.sample
+        )   
+    end  
+    puts "Created #{Like.count} fake likes"
+  end
+
+  task fake_reply: :environment do
+    Reply.destroy_all
+    50.times do |i|
+      Reply.create(
+        user: User.all.sample,
+        tweet: Tweet.all.sample,
+        comment: FFaker::Lorem.sentence
+        )   
+    end  
+    puts "Created #{Reply.count} fake replies"
+  end
+
+
+
+
+
 end

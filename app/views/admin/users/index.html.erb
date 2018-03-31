@@ -1,0 +1,28 @@
+<%= render partial: "shared/admin_nav" %> 
+
+<% @users.each do |user| %>
+  <div class="thumbnail card follow ">
+    <div class="col-sm-6">
+      <%= render partial: "shared/pic", locals: {user: user} %>
+    </div>
+    <div class="caption col-sm-6">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <%= "Tweets #{user.tweets_count}" %>
+        </li>
+        <li class="list-group-item">
+          <%= "Following #{user.followships.count}" %>
+        </li>
+        <li class="list-group-item">
+          <%= "Follower #{user.followers_count}" %>
+        </li>
+        <li class="list-group-item">
+          <%= "Like #{user.likes_count}" %>
+        </li>
+      </ul>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+<% end %>
+
+ 

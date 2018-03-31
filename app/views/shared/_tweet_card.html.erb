@@ -1,0 +1,24 @@
+<% tweets.each do |tweet| %>
+  <div class="thumbnail card tweet ">
+    <div class="col-sm-3">
+      <%= render partial: "shared/pic", locals: {user: tweet.user} %>
+    </div>
+    <div class="caption col-sm-9">
+      <small class="text-muted">
+        <%= link_to "#{tweet.user.name}", tweets_user_path(tweet.user) %>
+        <%= tweet.created_at.to_formatted_s(:db)%>
+      </small>
+      <p class="card-text"><%= truncate(tweet.description, length: 60) %></p>
+
+      <div class="button">
+        <%= link_to "Reply (#{tweet.replies_count}) ", tweet_replies_path(tweet) %>
+        <%= render partial: "shared/like", locals: {tweet: tweet} %>
+        <% if current_user.admin? %>
+         <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: { confirm: "Are you sure?"}, class: "btn  btn-danger" %>
+        <% end %>
+
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+<% end %>  

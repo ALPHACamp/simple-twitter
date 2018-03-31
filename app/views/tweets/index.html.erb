@@ -1,0 +1,26 @@
+
+
+<div class="col-sm-8 a" >
+  <%= form_for(@tweet) do |f| %>
+    <div class="form-group" >
+      <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control", rows: "5" %>
+    </div>
+    <div class="form-group right ">
+      <%= f.submit "Tweet", class: "btn btn-primary" %>
+      <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+    </div>
+  <% end %>    
+  <div class="clearfix"></div>
+  <hr>
+
+  <%= render partial: "shared/tweet_card", locals: {tweets: @tweets} %>
+</div>
+
+<div class="right col-sm-4">
+  <h3>Popular</h3>
+  <%= render partial: "shared/follow_card", locals: {users: @users} %>
+</div>
+
+
+
+ 

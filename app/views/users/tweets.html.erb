@@ -1,0 +1,8 @@
+
+<div class="left col-sm-4">
+  <%= render partial: "shared/info", locals: {user: @user} %>
+</div>  
+<div class="right col-sm-8">
+  <h4>Tweets</h4>
+  <%= render partial: "shared/tweet_card", locals: {tweets: @tweets} %>
+</div>    

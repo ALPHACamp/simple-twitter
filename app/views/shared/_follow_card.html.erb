@@ -1,0 +1,16 @@
+
+<% users.each do |user| %>
+  <div class="thumbnail card follow ">
+    <div class="col-sm-6">
+      <%= render partial: "shared/pic", locals: {user: user} %>
+    </div>
+    <div class="caption col-sm-6">
+      <h3><%= link_to "#{user.name}", tweets_user_path(user) %></h3>
+      <p class="card-text"><%= truncate(user.introduction, length: 80) %></p>
+      <%= render partial: "shared/follow", locals: {user: user} %>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+<% end %>
+
+
