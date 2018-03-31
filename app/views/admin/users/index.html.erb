@@ -1,0 +1,33 @@
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li role="presentation"><a href="../admin/tweets">推特管理</a></li>
+    <li role="presentation class="active""><a href="../admin/users">用戶列表</a></li>
+  </ul>
+  <br>
+  
+  
+    <% @users.each do |user| %>
+      <div class="col-md-4 col-lg-4">  
+        <div class="panel panel-default">
+          <div class="panel-body">              
+            <div>
+              <%= image_tag user.avatar, class: "avatar pull-left" %>
+              <div class="col-sm-5 col-md-5">
+                <h3><%= link_to user.name, tweets_user_path(user), class: "text-primary" %></h3>  
+                <%= 'Tweets ' + user.tweets.count.to_s %><br>
+                <%= 'Followiings ' + user.followings.count.to_s %><br>
+                <%= 'Followers ' + user.followers.count.to_s %><br>
+                <%= 'Likes ' + user.likes.count.to_s %><br>
+                <br>
+                <p class="text-muted">
+                  <em><%=  %> </em>
+                </p>
+              </div>
+            </div>                            
+          </div>      
+        </div>
+      </div>
+    <% end %>
+  
+  
+</div>

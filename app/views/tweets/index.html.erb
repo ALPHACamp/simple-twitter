@@ -1,0 +1,37 @@
+
+<div class="col-md-7 col-lg-7">  
+  <%= form_for @tweet do |f| %>
+      <div class="form-group">
+            <%= f.text_area :description, placeholder: "What's on your mind", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary pull-right" %>          
+      </div>
+  <% end %>
+  <br><br><br>
+  <% @tweets.each do |tweet| %>
+      <%= render partial: "shared/tweet_template", locals: {tweet: tweet} %>
+  <% end %> 
+  <%= paginate @tweets %>
+</div>
+
+<div class="col-md-4 col-lg-4">  
+  <h2><%= "Popular" %></h2>
+  <% @pop_users.each do |user| %>
+      <div class="panel panel-default">
+        <div class="panel-body">              
+          <div>
+            <%= image_tag user.avatar, class: "avatar" %>
+            <div class="col-sm-4 col-md-4 pull-right">
+              <h3><%= link_to user.name, tweets_user_path(user), class: "text-primary" %></h3>  
+              <h4><%= user.followers_count.to_s + " Followers" %></h4>
+              <div><%= truncate(user.introduction, :length => 50)  %></div>
+              <p class="text-muted">
+                <em><%=  %> </em>
+              </p>
+            </div>
+          </div>                            
+        </div>      
+      </div>
+  <% end %>
+</div>
