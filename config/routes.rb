@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   resources :followships, only: [:create, :destroy]
 
   # Like
-  get '/users/:id/likes' => 'users#likes', :as => "user_likes"
+  get '/users/:id/likes' => 'users#likes', :as => "likes_user"    # prefix user_likes 不符規格改為 likes_user
   post '/tweets/:id/like' => 'tweets#like', :as => "like_tweet"
   post '/tweets/:id/unlike' => 'tweets#unlike', :as => "unlike_tweet"
 
