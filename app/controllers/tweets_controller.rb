@@ -31,7 +31,7 @@ class TweetsController < ApplicationController
 
   def replies
     @tweet=Tweet.find(params[:id])
-    @replies=Tweet.find(params[:id]).reply
+    @replies=Tweet.find(params[:id]).replies
     @reply=Reply.new
   end
 

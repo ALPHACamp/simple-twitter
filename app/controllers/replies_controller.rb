@@ -5,7 +5,7 @@ class RepliesController < ApplicationController
 
   def create
     @tweet = Tweet.find(params[:tweet_id])
-    @reply = @tweet.reply.build(reply_params)
+    @reply = @tweet.replies.build(reply_params)
     @reply.user = current_user
     @reply.save!
     redirect_to replies_tweet_path(@tweet)

@@ -18,7 +18,7 @@
                 <h4><%= truncate(tweet.description, length: 80) %></h4>
                 <div class="row">
                   <div class="col-sm-3">
-                    <h4><%= link_to 'Reply('+tweet.reply.count.to_s+')', replies_tweet_path(tweet) %></h4>
+                    <h4><%= link_to 'Reply('+tweet.replies.count.to_s+')', replies_tweet_path(tweet) %></h4>
                   </div>
                   <div class="col-sm-3">
                     <%= render partial: "share/likes", locals: {tweet: tweet} %>

@@ -23,7 +23,7 @@ class User < ApplicationRecord
   has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
   has_many :followers, through: :inverse_followships, source: :user
 
-  has_many :reply
+  has_many :replies
 
 # add admin? method
   def admin?
