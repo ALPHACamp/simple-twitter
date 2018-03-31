@@ -8,11 +8,10 @@ class RepliesController < ApplicationController
   end
 
   def create
-    @user = current_user
     @tweet = Tweet.find(params[:tweet_id])
+    @user = current_user
     @reply = Reply.new(reply_params)
     if @reply.save
-      @replies = @tweet.replies.all
       flash[:notice] = "reply was successfully created"
       redirect_to tweet_replies_path(@tweet)
     else

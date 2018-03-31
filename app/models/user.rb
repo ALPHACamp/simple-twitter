@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   # 改用 第三方 API 生成假資料時要關閉
-  # mount_uploader :avatar, AvatarUploader
+  mount_uploader :avatar, AvatarUploader
 
   has_many :tweets
   has_many :replies

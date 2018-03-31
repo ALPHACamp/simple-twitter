@@ -1,6 +1,8 @@
 namespace :dev do
   # 請先執行 rails dev:fake_user，可以產生 20 個資料完整的 User 紀錄
   # 其他測試用的假資料請依需要自行撰寫
+
+  # 本地端請用這個
   task fake_user: :environment do
     User.destroy_all
     20.times do |i|
@@ -27,6 +29,7 @@ namespace :dev do
     puts "now you have #{User.count} users data"
   end
 
+  # heroku 上圖用
   # 使用時需先關閉 User Model Carrierwave 設定，並存設定待研究
   task fetch_user: :environment do
     User.destroy_all
