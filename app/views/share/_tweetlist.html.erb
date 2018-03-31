@@ -13,7 +13,8 @@
                     <h4><%= link_to 'Reply('+tweet.reply.count.to_s+')', replies_tweet_path(tweet) %></h4>
                   </div>
                   <div class="col-sm-9">
-                    <h4><%= 'like('+tweet.likes.count.to_s+')' %></h4>
+                    <%= render partial: "share/likes", locals: {tweet: tweet} %>
+                    
                   </div>
                 </div>
               </div>

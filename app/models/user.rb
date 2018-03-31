@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :tweets
 
   has_many :likes
+  has_many :like_tweets, through: :likes, source: :tweet
 
   has_many :followships
   has_many :followings, through: :followships
@@ -31,6 +32,10 @@ class User < ApplicationRecord
 
   def following?(user)
     self.followings.include?(user)
+  end
+
+  def like?(tweet)
+    self.like_tweets.include?(tweet)
   end
   
 end
