@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  # 改用 第三方 API 生成假資料時要關閉
   # mount_uploader :avatar, AvatarUploader
-  # 改用 第三方 API 
 
   has_many :tweets
   has_many :replies

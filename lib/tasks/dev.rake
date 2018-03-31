@@ -27,6 +27,7 @@ namespace :dev do
     puts "now you have #{User.count} users data"
   end
 
+  # 使用時需先關閉 User Model Carrierwave 設定，並存設定待研究
   task fetch_user: :environment do
     User.destroy_all
 
