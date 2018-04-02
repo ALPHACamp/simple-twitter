@@ -1,0 +1,45 @@
+<h1>admin page </h1>
+  <div class="container-fluid">
+  <div class="row">
+  
+    
+<div class=" container">
+  
+<% @users.each do |user| %>
+<div id="tweets-list" >
+  
+<div class="row">
+<div class="form-group">
+  
+   
+  
+    <div id="user-pic" class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+    <%= image_tag user.avatar ,class:"img-circle img-responsive img-profile"%>
+
+    </div>
+    
+    <div class="col-xs-12 col-sm-7 col-md-8 col-lg-10">
+   
+              <div class="help-block">Tweets : <%= user.tweets.count%></div> 
+              <div class="help-block">Following : <%= user.followings.count%></div> 
+              <div class="help-block">Follower :<%= user.followers.count%></div> 
+              <div class="help-block">likes : <%= user.likes.count%></div> 
+              </div>
+
+
+  </div>
+  
+
+
+</div>
+
+
+</div>
+<% end %>
+</div>
+
+
+</div>
+
+
+

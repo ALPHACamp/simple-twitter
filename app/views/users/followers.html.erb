@@ -1,0 +1,51 @@
+ <!--content-->
+  <div class="container-fluid">
+  <div class="row">
+  <div > 
+<!--person info-->
+<div class=" col-md-2 col-lg-2 container">
+  <div class="row">
+    <% @users = current_user%>
+    <div id="profile-pic" >
+              <%= image_tag @users.avatar ,class:" img-responsive "%>
+    </div>
+      <div class="form-group">
+         
+            <div>
+               <%= render partial: "shared/userinfo", locals: {users: @users}%>
+            </div>
+        
+      </div> 
+  </div>
+</div>
+
+<!--followings tweets-->
+   <div class="col-md-8 col-lg-8 container">
+  
+      <h2>followers</h2>
+      <% @followers.each do |follower| %>
+      <div class= " col-md-6 col-lg-6">
+      <div id="followship" >
+      <div class="row">
+   
+            <div id="user-pic" class="col-md-2 col-lg-2">
+            <%= image_tag follower.avatar ,class:"img-circle img-responsive img-profile"%>
+            </div>
+  
+    <div class=" col-md-8 col-lg-8">
+    <h4><%= "@#{follower.name}" %></h4>
+      <p><%= truncate(follower.introduction, length: 300)%></p>
+    <%= render partial: "shared/follow", locals: {users: follower}%>
+    </div>
+ 
+ 
+</div>
+
+
+</div>
+    </div>   
+<% end %>
+ </div>
+
+
+ </div></div></div>

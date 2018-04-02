@@ -1,0 +1,125 @@
+.my-nav{
+  background: #8CB2BE;
+}
+.my-nav ul{
+  margin: 10px 0;
+}
+body {
+  padding-top:70px;
+  
+  /*
+  行內(inline style)的宣告樣式優先權大於檔案內(internal style)的
+  宣告樣式大於從外部(external style)匯入的宣告樣式。
+  若彼此有衝突時會以行內為先。
+  background: url('./img/backgroud.jpg') no-repeat center center fixed;
+  background-size: cover;
+
+   */
+
+}
+.container
+{
+  margin-top: 2%;
+  margin-left: 5%;
+}
+#about{
+  border-radius: 8px;
+  background-color:   #FFFFFF ;
+  opacity: 0.9;
+
+}
+#about, #message { 
+ 
+}
+
+#my-avatar img
+{
+  width:50px;
+}
+
+ #tweets-list,  #popular{
+ 
+  border: 1px solid #C0C0C0;
+  margin-bottom: 3%;
+ }
+ #popular{
+ margin-left: 3%;
+ }
+
+ #followship{
+  border: 1px solid #C0C0C0;
+  margin-bottom: 3%;
+  margin-left: 3%;
+ 
+}
+
+#user-pic{
+  margin-top: 1%;
+  width:120px;
+  height: 90px;
+ 
+}
+.img-profile{
+  height:100%;
+  width:100%;
+}
+.btn-primary{
+ 
+   margin-bottom: 2%;
+}
+.btn-right{
+    float:right ;
+}
+.like{
+  color: red;
+}
+#profile-pic{
+  width:200px;
+
+}
+
+.img-profile{
+  
+  height: 80px;
+  max-width: 100%;
+}
+
+.tweets-item {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 4px;
+  margin: 20px;
+  height: 120px;
+
+}
+.tweets-item .caption {
+  padding: 10px;
+}
+
+//for file_field
+#uploadavatar {
+    position: relative;
+}
+
+#uploadavatar .defaultupload {
+    opacity: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+}
+
+#uploadavatar .defaultupload:hover {
+    opacity: 0;
+}
+
+#uploadavatar button {
+    position: relative;
+    top: 0;
+    z-index: 1;
+}
+
+.defaultupload select, input[type="file"] {
+height: 45px;
+line-height: 30px;
+}

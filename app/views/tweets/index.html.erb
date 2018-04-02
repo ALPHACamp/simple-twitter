@@ -1,0 +1,78 @@
+<h1>tweets index</h1>
+  <div class="container-fluid">
+  <div class="row">
+  
+    
+<div class="col-md-7 col-lg-7 container">
+    <div class="row">
+       <%= form_for [@tweet] do |f| %>  
+      <form> 
+        <div class="form-group"> 
+        <%= f.text_area :description, placeholder: "140 character...", maxlength: 140,rows: 5, class:"form-control",id:"message" %>
+        </div>   
+        <%= f.submit "Tweet"  ,class:"btn btn-primary btn-right" %> 
+        </form>
+         <% end %>
+    </div>
+
+
+
+<% @tweets.each do |tweet| %>
+<div id="tweets-list" >
+<div class="row">
+<div class="form-group">
+  
+   
+  
+    <div id="user-pic" class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+    <%= image_tag tweet.user.avatar ,class:"img-circle img-responsive img-profile"%>
+    </div>
+    
+    <div class="col-xs-12 col-sm-7 col-md-8 col-lg-10">
+    <h4><%= link_to "@#{tweet.user.name}" , tweets_user_path(tweet.user)%>, <%= tweet.created_at.strftime("%F")%>, <%=tweet.created_at.strftime(" %H:%M ")%></h4>
+      <p><%= truncate(tweet.description, length: 300)%></p>
+     <div> 
+<%= link_to "Replay(#{tweet.replies_count})" , replies_tweet_path(tweet),class:"btn btn-link"%>
+
+       <%= render partial: "shared/like", locals: {tweet: tweet} %> 
+              </div>
+    </div>
+
+  </div>
+  
+</div>
+
+</div>
+<% end %>
+</div>
+
+   <!--Popular-->
+<div class=" col-md-4 col-lg-4 ">
+   <H2>Popular</H2>
+   <% @users.each do |user| %>
+   <div id="popular" >
+  <div class="row">
+    <div class="container-fluid"> 
+            <div id="user-pic" class=" col-md-2 col-lg-2">
+                <%= image_tag user.avatar ,class:"img-circle img-responsive img-profile"%>
+            </div>
+            <div class="col-md-8 col-lg-8">
+              <h4><%= "@#{user.name}" %></h4>
+              <p><%= truncate(user.introduction, length: 300)%></p>
+               <%= render partial: "shared/follow", locals: {users: user}%>
+            </div>
+          </div>
+      </div> 
+     
+ 
+  </div>
+  <%end%>
+</div>
+</div>
+</div>
+
+
+</div>
+
+
+

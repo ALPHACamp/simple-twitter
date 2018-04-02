@@ -1,0 +1,90 @@
+ <!--content-->
+  <div class="container-fluid">
+  <div class="row">
+  <div > 
+<!--person info-->
+<div class=" col-md-2 col-lg-2 container">
+  <div class="row">
+    <div id="profile-pic" >
+              <%= image_tag current_user.avatar ,class:" img-responsive "%>
+    </div>
+      <div class="form-group">
+         
+            <div>
+             <%= render partial: "shared/userinfo", locals: {users: current_user}%>
+             
+            </div>
+        
+      </div> 
+  </div>
+</div>
+
+<!--tweets-->
+  <div class="col-md-8 col-lg-8 container">
+    <h3>Tweet</h3>
+    <div id="tweets-list" >
+    <div class="row">
+      
+<div class="form-group">
+  <% tweet = @tweet %>
+   
+  
+    <div id="user-pic" class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+    <%= image_tag tweet.user.avatar ,class:"img-circle img-responsive img-profile"%>
+    </div>
+    
+    <div class="col-xs-12 col-sm-7 col-md-8 col-lg-10">
+    <h4><%= link_to "@#{tweet.user.name}" , tweets_user_path(tweet.user)%>, <%= tweet.created_at.strftime("%F")%>, <%=tweet.created_at.strftime(" %H:%M ")%></h4>
+      <p><%= truncate(tweet.description, length: 300)%></p>
+     <div> <%= link_to "Replay(#{tweet.replies_count})" , replies_tweet_path(tweet),class:"btn btn-link"%>
+       <%= render partial: "shared/like", locals: {tweet: tweet} %> 
+              </div>
+    </div>
+
+  </div>
+    </div> 
+</div>
+      
+    <h3>Replies</h3>
+      <% @tweet.replies.each do |reply| %>
+      <div id="tweets-list" >
+        <div class="row">
+    <div class="form-group">
+
+   
+  
+    <div id="user-pic" class="col-xs-3 col-sm-3 col-md-3 col-lg-2">
+    <%= image_tag reply.user.avatar ,class:"img-circle img-responsive img-profile"%>
+    </div>
+    
+    <div class="col-xs-12 col-sm-7 col-md-8 col-lg-10">
+    <h4><%= link_to "@#{reply.user.name}" , tweets_user_path(reply.user)%>, <%= reply.created_at.strftime("%F")%>, <%=reply.created_at.strftime(" %H:%M ")%></h4>
+      <p><%= truncate(reply.comment, length: 300)%></p>
+     
+    </div>
+
+  </div>
+  </div>
+</div>
+<% end %>
+
+<div class="form-group">
+       <%= form_for(@replies, url:  replies_new_tweet_path(@tweet))  do |f| %> 
+        <form> 
+        <div class="form-group">
+    
+        <%= f.text_area :comment, placeholder: "140 character...", maxlength: 140,rows: 5, class:"form-control",id:"message" %>
+        </div>
+        
+        <%= f.submit "Reply"  ,class:"btn btn-primary btn-right" %> 
+       
+       
+        </form>
+         <% end %>
+
+    </div> 
+  </div>  
+    </div>   
+
+ </div>
+ </div>
