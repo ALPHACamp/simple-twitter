@@ -15,7 +15,7 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
-  config.omniauth :facebook, fb_config["app_id"], fb_config["secret"], scope: "public_profile,email", info_fields: "email,name", callback_url: "https://s-tweet.herokuapp.com/users/auth/facebook/callback"
+  config.omniauth :facebook, "app_id", "secret", scope: "public_profile,email", info_fields: "email,name", callback_url: "https://s-tweet.herokuapp.com/users/auth/facebook/callback"
 
 
   # Configure the class responsible to send e-mails.
