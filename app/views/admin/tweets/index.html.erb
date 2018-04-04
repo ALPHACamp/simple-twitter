@@ -1,0 +1,26 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<%= link_to 'All Tweets', admin_tweets_path, class: "btn btn-light"%>
+			<%= link_to 'All Users', admin_users_path, class: "btn btn-light"%>
+			<div>
+				<%- @tweets.each do |f| %>
+					<div class="thumbnail">
+						<%= image_tag f.user.avatar, width:'100px', id:"tweet-avatar" %>
+						<div id="tweet-details-block">
+							<h5 class="text-primary">
+								<%= link_to(tweets_user_path(:id => f.user)) do %>
+									@<%= f.user.name %>
+								<%end%>
+								<%= f.created_at %>
+							</h5>
+							<p><%= simple_format f.description %></p>
+							<%= link_to(tweet_replies_path(f.id), class: "btn btn-light") do %>Replies <%= f.replies.count%><%end%>
+							<%= link_to 'Delete', admin_tweet_path(f.id), class: "btn btn-light", method: :delete%>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

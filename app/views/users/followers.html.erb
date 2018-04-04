@@ -1,0 +1,13 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2">
+			<%= render partial: "shared/userProfile.html.erb", locals: {user: @user}%>
+		</div>
+		<div class="col-md-10">
+			<h3>Followers</h3>
+			<%- @followers.each do |follower| %>
+				<%= render partial: "shared/followships.html.erb", locals: {user: follower}%>
+			<% end %>
+		</div>
+	</div>
+</div>

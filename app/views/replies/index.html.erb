@@ -1,0 +1,37 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2">
+			<%= render partial: "shared/userProfile.html.erb", locals: {user: @user}%>
+		</div>
+		<div class="col-md-10">
+			<h3>Tweets</h3>
+				<div class="thumbnail">
+					<%= image_tag @user.avatar, width:'100px', id:"tweet-avatar" %>
+					<div id="tweet-details-block">
+						<h5 class="text-primary"><%= link_to(tweets_user_path(:id => @user)) do %>@<%= @user.name %><%end%>, <%= @tweet.created_at %></h5>
+						<p><%= simple_format @tweet.description %></p>
+						<%= link_to "replies", tweet_replies_path(@tweet.id) %>
+					</div>
+				</div>
+			<h3>Replies</h3>
+			<%- @replies.each do |r| %>
+				<div class="thumbnail">
+					<%= image_tag r.user.avatar, width:'100px', id:"tweet-avatar" %>
+					<div id="tweet-details-block">
+						<h5 class="text-primary"><%= link_to(tweets_user_path(:id => r.user)) do %>@<%= r.user.name %><%end%>, <%= r.created_at %></h5>
+						<p><%= simple_format r.comment %></p>
+					</div>
+				</div>
+			<%end%>
+			<%= form_for [@tweet, @reply] do |t| %>
+			<form>
+				<div class="form_group">
+					<%= t.text_area :comment, placeholder: "What do you want to say?", rows: "3", class: "form-control"%>
+				</div>
+				<br>
+				<%= t.submit "Reply", class: "btn btn-primary"%>
+			<% end %>
+			</form>
+		</div>
+	</div>
+</div>

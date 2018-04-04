@@ -1,0 +1,25 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-8">
+			<%= form_for @tweet do |t| %>
+				<div class="form_group">
+					<%= t.text_area :description, placeholder: "What's on your mind?", class: "form-control", rows: "5"%>
+				</div>
+				<br>
+				<div class="form_group">
+					<%= t.submit "Tweet", class: "btn btn-primary"%>
+				</div>
+			<% end %>
+			<br>
+			<div>
+				<%= render partial: "shared/showTweets.html.erb", locals: {tweets: @tweets}%>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<h3>Popular</h3>
+			<% @users.each do |user|%>
+				<%= render partial: "shared/followships.html.erb", locals: {user: user}%>
+			<%end%>
+		</div>
+	</div>
+</div>
