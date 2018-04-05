@@ -1,0 +1,16 @@
+<div class = "tweet">
+	<div>
+		<%= filestack_image tweet.user.avatar, transform: filestack_transform.resize(width:100, height:100), class: "avatar" %>
+	</div>
+	<div class = "context">
+		<%= link_to "@#{tweet.user.name} ,#{tweet.created_at.localtime.strftime '%Y-%m-%d %H:%M:%S'}", tweets_user_path(tweet.user) %><br>
+		<div class="description">
+			<%= tweet.description %><br>
+		</div>
+		<%= link_to "Reply(#{tweet.replies.size})", tweet_replies_path(tweet) %>&nbsp;&nbsp;
+		<span class= "likes"><%= "like(#{tweet.likes.size})" %></span>
+		<% if current_user.admin? %>
+			<%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data:{ confirm: "Are you sure?" }  %>
+		<% end %>
+	</div>
+</div>

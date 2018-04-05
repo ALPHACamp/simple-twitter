@@ -1,0 +1,32 @@
+<div class = "input">
+	<%= form_for @tweet do |f| %>
+		<div class="field">
+			<%= f.text_area :description, placeholder: "What's on your mind?", class: 'input-area' %>
+		</div>
+
+		<div class="actions button">
+			<%= f.submit "Tweet", class: "btn btn-primary btn-lg" %>
+		</div>
+	<% end %>
+</div>
+<div class = "tweet-list">
+	<% @tweets.each do |tweet| %>
+		<%= render partial: "shared/tweet", locals: {tweet: tweet} %>
+	<% end %>
+	<div class="kar"><%= paginate @tweets %></div>
+</div>
+<div class = "popular-tweet">
+	<h1>Popular</h1>
+	<% @users.each do |user| %>
+		<div class="tweet">
+			<div>
+				<%= filestack_image user.avatar, transform: filestack_transform.resize(width:100, height:100), class: "avatar" %>
+			</div>
+			<div class="intro">
+				<%= link_to "@#{user.name}", tweets_user_path(user) %><br>
+				<%= user.introduction %><br>
+			</div>
+			<div class="button"><%= render partial: "shared/followbutton", locals: {user: user} %></div>
+		</div>
+	<% end %>
+</div>

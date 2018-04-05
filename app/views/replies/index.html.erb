@@ -1,0 +1,23 @@
+<%= render partial: "shared/userprofile", locals: {user: @user} %>
+<div class="tweet-detial">
+  <div>
+    <h1>Tweets <%= render partial: "shared/like", locals: {tweet: @tweet} %></h1>
+    <%= render partial: "shared/tweet", locals: {tweet: @tweet} %>
+  </div>
+  <div>
+    <h1>Replies</h1>
+    <% @replies.each do |reply| %>
+      <%= render partial: "shared/reply", locals: {reply: reply} %>
+    <% end %>
+    <div class = "input">
+  	  <%= form_for [@tweet, @reply] do |f| %>
+  	    <div class="field">
+          <%= f.text_area :comment, placeholder: "What's on your mind?", class: 'input-area' %>
+        </div>
+  	    <div class="actions button">
+          <%= f.submit "Reply", class: "btn btn-primary btn-lg" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

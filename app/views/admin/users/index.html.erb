@@ -1,0 +1,28 @@
+<h1>Users Background</h1>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Tweeter</th>
+      <th>Tweets number</th>
+	  <th>Followigs number</th>
+	  <th>Followers count</th>
+      <th>Likes count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr class="admin-table">
+      <th scope="row"><%= user.id %></th>
+      <td><%= link_to user.name, tweets_user_path(user) %></td>
+      <td><%= user.tweets_count %></td>
+      <td><%= user.followings.size %></td>
+	  <td><%= user.followers_count %></td>
+	  <td><%= user.likes_count %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="text-center">
+  <%= paginate @users %>
+</div>

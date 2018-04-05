@@ -1,0 +1,8 @@
+<%= render partial: "shared/userprofile", locals: {user: @user} %>
+<div class="like-detial">
+  <h1>Like</h1>
+	<% @likes.each do |like|  %>
+		<%= render partial: "shared/tweet", locals: {tweet: like.tweet} %>
+	<% end %>
+	<div class="kar"><%= paginate @likes %></div>
+</div>

@@ -1,0 +1,17 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<ul class="nav navbar-nav title">
+		<% if current_user %>
+  	  <% if current_user&.admin? %>
+  	    <li><%= link_to 'Admin Tweets', admin_tweets_path %></li>
+				<li><%= link_to 'Admin User', admin_users_path %></li>
+  	  <% end %>
+  	  <li>
+				<%= link_to filestack_image( current_user.avatar, transform: filestack_transform.resize(width:50, height:50)), tweets_user_path(current_user) %>
+			</li>
+  	  <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+  	<% else %>
+  	  <li><%= link_to('註冊', new_user_registration_path) %></li>
+  	  <li><%= link_to('登入', new_user_session_path) %></li>
+  	<% end %>
+	</ul>
+</nav>

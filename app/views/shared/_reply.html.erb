@@ -1,0 +1,9 @@
+<div class="reply">
+  <div>
+    <%= filestack_image reply.user.avatar, transform: filestack_transform.resize(width:100, height:100), class: "avatar" %>
+  </div>
+	<div class = "context">
+  	<%= link_to "@#{reply.user.name} ,#{reply.created_at.localtime.strftime '%Y-%m-%d %H:%M:%S'}", user_path(reply.user.id) %><br>
+		<%= reply.comment %><br>
+	</div>
+</div>
