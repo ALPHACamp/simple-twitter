@@ -1,0 +1,12 @@
+<div class="content col-md-4">
+  <%= render partial: "shared/profile" %>
+</div>
+<div class="content col-md-8">
+  <% @tweets.each do |t| %>
+    <div class="media">
+      <%= image_tag t.user.avatar , class: "align-self-center mr-3 avatar rounded"%>
+      <%= render partial: "shared/tweet", locals:{tweet: t}%>
+    </div>
+  <% end %>
+</div>
+

@@ -1,3 +1,5 @@
+
+<div class="content col-md-8 offset-md-2">
 <h2>Change your password</h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
@@ -9,12 +11,12 @@
     <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em><br />
     <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+    <%= f.password_field :password, autofocus: true, autocomplete: "off",class: "form-control"  %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off",class: "form-control"  %>
   </div>
 
   <div class="actions">
@@ -23,3 +25,4 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>

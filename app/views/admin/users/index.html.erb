@@ -1,0 +1,27 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Avatar</th>
+      <th scope="col">Name</th>
+      <th scope="col">Tweet</th>
+      <th scope="col">Following</th>
+      <th scope="col">Follower</th>
+      <th scope="col">Like</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% num = 0 %>
+      <% @users.each do |u|%>
+        <tr>
+          <th><%= num += 1%></th>
+            <td><%= link_to(image_tag(u.avatar, class: "align-self-center mr-3 avatar rounded"), tweets_user_path(u))%></td>
+            <td><%= link_to "#{u.name}",tweets_user_path(u)%></td>
+            <td><%= link_to "#{u.tweets.size}",tweets_user_path(u)%></td>
+            <td><%= link_to "#{u.followships.size}",followings_user_path(u)%></td>
+            <td><%= link_to "#{u.followers_count}",followers_user_path(u)%></td>
+            <td><%= link_to "#{u.likes.size}",likes_user_path(u)%></td>
+        </tr>
+      <%end%>
+  </tbody>
+</table>

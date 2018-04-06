@@ -3,26 +3,58 @@
   <head>
     <title>SimpleTwitter</title>
     <%= csrf_meta_tags %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <% if current_user %>
-      <% if current_user&.admin? %>
-        <li><%= link_to 'Admin Panel', admin_restaurants_path %></li>
-      <% end %>
-      <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
-      <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
-      <li><%= link_to('修改個人資料', edit_user_path(current_user)) %></li>
-      <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
-    <% else %>
-      <li><%= link_to('註冊', new_user_registration_path) %></li>
-      <li><%= link_to('登入', new_user_session_path) %></li>
-    <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <nav class="text-right bg-primary">
+      <ul>
+        <% if current_user %>
+          <li class="float-left"><%= link_to "LOGO" ,root_path %></li>
+          <li>
+            <%= link_to tweets_user_path(current_user) do%>
+              <%= image_tag current_user.avatar, class: "logo rounded"%>
+            <%end%>
+            </li>
+          <li>
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Log Out
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                <%= link_to 'Edit Profile', edit_user_path(current_user), class: "dropdown-item" %>
+                <%= link_to 'Change Password', edit_user_registration_path, class: "dropdown-item" %>
+                  <% if current_user.role == "admin"%>
+                    <%= link_to "Admin",admin_tweets_path, class: "dropdown-item" %>
+                  <%end%>
+        <% else %>
+          <li><%= link_to('Sign up', new_user_registration_path) %></li>
+          <li><%= link_to('Log In', new_user_session_path) %></li>
+        <% end %>
+      </ul>
+    </nav>
+    <div class="container">
+              <% if flash[:notice]%>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <%= flash[:notice] %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% elsif flash[:alert]%>   
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span>
+        
+        </button>
+        <%= flash[:alert] %>
+      </div>
+    <%end%>
+      <div class="row">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

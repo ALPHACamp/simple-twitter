@@ -1,4 +1,7 @@
 FactoryBot.define do
+  factory :model do
+    
+  end
   factory :tweet do
     description FFaker::Tweet.body
     user

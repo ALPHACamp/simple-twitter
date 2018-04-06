@@ -1,0 +1,21 @@
+  <div class="card" style="width: 18rem;">
+    <%= image_tag @user.avatar, class: "card-img-top rounded" %>
+    <div class="card-body">
+      <h5 class="card-title"><%= @user.name%></h5>
+      <p class="card-text"><%= @user.introduction%></p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><%= link_to "Tweets #{@tweets.size}", tweets_user_path(@user)%></li>
+      <li class="list-group-item"><%= link_to "Following #{@user.followships.size}",followings_user_path(@user)%></li>
+      <li class="list-group-item"><%= link_to "Follower #{@user.followers_count}",followers_user_path(@user)%></li>
+      <li class="list-group-item"><%= link_to "Like #{@user.likes_count}",likes_user_path(@user)%></li>
+    </ul>
+    <div class="card-body">
+      <% if @user != current_user %>
+        <%= render partial: "shared/follow", locals:{user: @user}%>
+      <%else%>
+        <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-primary" %>
+      <% end%>
+    </div>
+  </div>
+

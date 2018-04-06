@@ -1,0 +1,37 @@
+<div class="content col-md 4">
+  <div class="card" style="width: 18rem;">
+    <%= image_tag @user.avatar, class: "card-img-top rounded" %>
+    <div class="card-body">
+      <h5 class="card-title"><%= @user.name%></h5>
+      <p class="card-text"><%= @user.introduction%></p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><%= link_to "Tweets #{@tweets.size}", tweets_user_path(@user)%></li>
+      <li class="list-group-item"><%= link_to "Following #{@user.followships.size}",followings_user_path(@user)%></li>
+      <li class="list-group-item"><%= link_to "Follower #{@user.followers_count}",followers_user_path(@user)%></li>
+      <li class="list-group-item"><%= link_to "Like #{@user.likes_count}",likes_user_path(@user)%></li>
+    </ul>
+    <div class="card-body">
+      <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
+<div class="content col-md-8">
+  <h4>Tweets</h4>
+  <div class="media">
+    <%= image_tag @tweet.user.avatar , class: "align-self-center mr-3 avatar rounded"%>
+    <%= render partial: "shared/tweet", locals:{tweet: @tweet}%>
+  </div>
+  <h4>Replies</h4>
+  <%= render partial: "shared/reply" %>
+  <div class="form-group">
+    <%= form_for [:tweet,@reply] do |r|%>
+      <%= r.text_area :comment , class: "form-control text-area"%>
+      <br/>
+      <div class="text-right">
+        <%= r.submit class: "btn btn-primary"%>
+      </div>
+    <% end %>
+  </div>
+</div>
+
