@@ -35,4 +35,14 @@ namespace :dev do
     puts "Tweet was create successfully, having #{Tweet.count} tweets data"
   end
 
+  task fake_reply: :environment do 
+    Reply.destroy_all
+
+    1500.times do |i|
+      Reply.create!(
+        comment: FFaker::Lorem::sentence
+      )
+    end
+  end
+
 end
