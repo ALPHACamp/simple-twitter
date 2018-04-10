@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="follow-wall clearfix">
+        <h2><%= @tweet.user.name %></h2>
+        <p class="wrap"><%= @tweet.description %></p>
+        <p class="text-muted">
+          <em><%= time_tag @tweet.created_at %></em>
+        </p>
+        <%= link_to "Back", admin_root_path,class: "btn btn-primary" %>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="replied-list">
+        <%= render partial: "shared/reply_list", locals: {replies: @replies} %>
+      </div>
+    </div>
+  </div>
+</div>

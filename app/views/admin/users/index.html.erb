@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <h1 class="text-center">List all Users</h1>
+    <p class="text-center">
+      <%= link_to "Tweets", admin_root_path %> |
+      <%= link_to "Users", admin_users_path %>
+    </p>
+
+    <div class="col-md-10 col-md-offset-1">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Avatar</th>
+            <th>Name</th>
+            <th>#</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= image_tag user.avatar, width: "100px" %></td>
+              <td>
+                <h3 class="text-center"><%= link_to user.name, tweets_user_path(user) %><h3>
+              </td>
+              <td>
+                <p class="text-center">
+                  Tweets <%= link_to user.tweets.count, tweets_user_path(user) %>
+                  Followings <%= link_to user.followings.count, followings_user_path(user) %>
+                  Followers <%= link_to user.followers.count, followers_user_path(user) %>
+                  Likes <%= link_to user.likes.count, likes_user_path(user) %>
+                </p>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="text-center">
+        <%= paginate @users %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

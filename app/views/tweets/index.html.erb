@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="tweet-form clearfix">
+        <%= form_for @tweet do |f| %>
+          <div class="form-group">
+            <%= f.text_area :description, placeholder: "What's on your mind?", rows: "6",class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.submit "Tweet", class: "btn btn-primary btn-right" %>
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="tweet-list">
+        <%= render partial: "shared/tweet_list", locals: {tweets: @tweets} %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h2>Popular</h2>
+        <%= render partial: "shared/follow_wall", locals: {users: @users} %>
+    </div>
+  </div>
+</div>
+

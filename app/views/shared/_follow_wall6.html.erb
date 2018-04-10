@@ -1,0 +1,20 @@
+<% objs.each do |obj| %>
+  <div class="follow-wall6">
+    <div class="col-md-6">
+      <div class="follow-wall clearfix">
+        <div class="tweet-avatar">
+          <%= image_tag obj.avatar %>
+        </div>
+        <div class="tweet-item">
+          <p class="name"><%= link_to obj.name, tweets_user_path(obj) %></p>
+          <p class="wrap"><%= truncate(obj.introduction, length: 100) %></p>
+          <div class="follow-btn">
+            <% if @user != current_user %>
+              <%= render partial: "shared/follow_btn", locals: {user: @user} %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
