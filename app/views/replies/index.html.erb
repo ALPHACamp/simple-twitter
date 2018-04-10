@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="row">
+
+    <%= render partial: "shared/profile", locals: { user: @tweet.user } %>
+
+    <div class="col-md-8">
+      <h1>Tweets</h1>
+
+      <div class="tweets clearfix">
+
+        <div class="col-left">
+          <div class="avatar">
+            <%= image_tag @tweet.user.avatar, height: 75, width: 75 if @tweet.user.avatar %>
+          </div>
+        </div>
+
+        <div class="col-right">
+          <div class="name">
+            <%= link_to "@#{@user.name},", tweets_user_path(@user) %>
+            <%= @tweet.created_at.strftime("%Y-%m-%d, %l:%M") %>
+          </div>
+
+          <div class="description"><%= @tweet.description %></div>
+
+          <div class="tweets-buttom">
+            <div class="reply">Reply(<%= @tweet.replies.count %>)</div>
+            <div class="like">Like(<%= @tweet.likes.count %>)</div><!-- 文章被讚總數 -->
+            <div class="button-reply">
+              <%= render partial: "shared/like", locals: {tweet: @tweet} %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <h1>Replise</h1>
+      <% @replies.each do |reply| %>
+
+        <div class="tweets clearfix">
+          <div class="col-left">
+            <div class="avatar">
+              <%= image_tag reply.user.avatar, height: 75, width: 75 if reply.user.avatar %>
+            </div>
+          </div>
+          <div class="col-right">
+            <div class="name">
+              <%= link_to "@#{reply.user.name}", tweets_user_path(reply.user) %>
+              <%= reply.created_at.strftime("%Y-%m-%d, %l:%M") %>
+            </div>
+
+            <div class="description"><%= reply.comment %></div>
+          </div>
+
+        </div>
+      <% end %>
+
+      <div class="reply-area">
+        <%= form_for @reply do |f| %>
+          <%= f.hidden_field :tweet_id, :value => @tweet.id %>
+          <%= f.hidden_field :user_id, :value => current_user.id %>
+          <%= f.text_area :comment, placeholder: "Reply here!", class: "form-control text-area" %>
+          <br>
+          <%= f.submit 'Reply', class: "pull-right btn btn-primary" %>
+        <% end %>
+      </div>
+
+    </div>
+
+  </div>
+</div>
