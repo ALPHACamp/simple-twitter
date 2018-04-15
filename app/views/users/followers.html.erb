@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  
+  <!-- Left: user profile /start -->
+  <%= render partial: "shared/userprofile", locals: {user: @user} %>
+  <!-- Left: user profile /end -->
+
+  <!-- Right: followings usercards /start -->
+  <div class="col-md-8">
+    <h2 class="usercard-head"><strong>Follower</strong></h2>
+
+    <!-- @user.each 呼叫出各個user card/start -->
+    <%= render partial: "shared/usercard", locals: {users: @followers} %>
+    <!-- @user.each 呼叫出各個user card/end -->
+  </div>
+  <!-- Right: followings usercards /end -->
+
+</div>
