@@ -12,18 +12,18 @@ class User < ApplicationRecord
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
   validates :name, uniqueness: true
 
-  has_many :tweets, dependant: :delete_all
+  has_many :tweets, dependent: :delete_all
 
-  has_many :likes, dependant: :delete_all
+  has_many :likes, dependent: :delete_all
   has_many :like_tweets, through: :likes, source: :tweet
 
-  has_many :followships, dependant: :destroy
+  has_many :followships, dependent: :destroy
   has_many :followings, through: :followships
 
   has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
   has_many :followers, through: :inverse_followships, source: :user
 
-  has_many :replies, dependant: :delete_all
+  has_many :replies, dependent: :delete_all
 
 # add admin? method
   def admin?
