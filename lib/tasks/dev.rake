@@ -39,7 +39,7 @@ namespace :dev do
   task fake_reply: :environment do
     Tweet.all.each do |tweet|
       2.times do |i|
-        tweet.reply.create!(
+        tweet.replies.create!(
           comment: FFaker::Lorem.sentence,
           user: User.all.sample
         )
