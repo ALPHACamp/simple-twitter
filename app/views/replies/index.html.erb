@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-3">
+
+      <%= image_tag @tweet.user.avatar, class: "img-responsive center-block" %>
+
+      <h1><%= @tweet.user.name %></h1>
+      <h3 style="color:lightgray"><%= @tweet.user.email %></h3>
+      <hr>
+
+      <% if @tweet.user.introduction == nil %>
+        <p style="color:lightgray">未新增自我介紹</p>
+      <% else %>
+        <p style="color:lightgray"><%= @tweet.user.introduction %></p>   
+      <% end %>
+      <br>
+      <h4><%= link_to "Tweet #{@tweet.user.tweets.length}", tweets_user_path(@tweet.user), :style=>"color:grey" %></h4>
+      <h4><%= link_to "Following #{@tweet.user.followships.length}", followings_user_path(@tweet.user), :style=>"color:grey" %></h4>
+      <h4><%= link_to "Follower #{@tweet.user.inverse_followships.length}", followers_user_path(@tweet.user), :style=>"color:grey" %></h4>
+      <h4><%= link_to "Like #{@tweet.user.likes.length}", likes_user_path(@tweet.user), :style=>"color:grey" %></h4>
+      <br>
+      <% if @user==current_user %>
+        <%= link_to 'Edit Profile', edit_user_path(@tweet.user), class: "btn btn-primary" %>
+      <% else %>
+        <%= render partial: "shared/follow", locals: {user: @tweet.user} %>
+      <% end %>
+
+    </div>
+
+    <div class="col-md-1">
+    </div>
+
+    <div class="col-md-8">
+      <h1>Tweets</h1>
+      <div class="row rank-item">
+        <div class="col-md-3 col-sm-3 col-lg-3">
+          <%= image_tag @tweet.user.avatar, class: "img-responsive center-block" %>
+        </div>
+
+        <div class="col-md-9 col-sm-9 col-lg-9">
+          <h4><%= @tweet.user.name %> <small><%= @tweet.created_at.strftime('%F') %>, <%= @tweet.created_at.strftime('%H:%M') %></small></h4>
+          <p><%= simple_format @tweet.description %></p>
+          <a href="#reply" style="color:blue;">回覆數(<% @tweet.count_replies %><%= @tweet.replies_count%>)</a>
+          <%= render partial: "shared/like", locals: {tweet: @tweet} %>
+        </div>
+      </div>
+    <hr>
+        <h1>Replies</h1>   
+        <div id='reply'>    
+        <%= form_for [@tweet, @reply] do |f| %>
+          <div class="form-group">
+            <%= f.text_area :comment, placeholder: "你想說什麼？",  class: "form-control", style: "width:100%;height:120px;backgroud-color:lightgray;" %>
+          </div>
+          <%= f.submit class: "btn btn-primary pull-right" %>
+          <br>
+          <br>
+          <% if @reply.errors.any? %>
+            <%= @reply.errors.full_messages.to_sentence %>
+          <% end %>
+        <% end %> 
+
+        <br>
+
+        
+        <% @replies.each do |reply| %>
+          <div class="row rank-item">
+            <div class="col-md-3 col-sm-3 col-lg-3">
+              <%= image_tag reply.user.avatar, class: "img-responsive center-block" %>
+            </div>
+
+            <div class="col-md-9 col-sm-9 col-lg-9">
+              <h4><%= link_to reply.user.name, tweets_user_path(reply.user) %> <small><%= reply.created_at.strftime('%F') %>, <%= reply.created_at.strftime('%H:%M') %></small></h4>
+              <p><%= simple_format reply.comment %></p>
+              <% if current_user.admin? || current_user==reply.user%>
+                ---<%= link_to "Delete", tweet_reply_path(@tweet, reply), method: :delete %>         
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+        </div>
+      </div>
+
+  </div>
+</div>

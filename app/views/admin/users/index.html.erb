@@ -1,0 +1,47 @@
+<div class="container">
+  <h1>後台</h1>
+  <br>
+  <div>
+    <%= link_to 'Po文總覽', admin_root_path, :style=>"color:white" %> | <%= link_to '使用者總覽', admin_users_path, :class=>"btn btn-info" %>
+  </div>  
+  <br>
+  <div class="row">
+
+    <div class="col-md-12">
+
+      <table class="table table-bordered table-striped table-hover" style="background-color:lightgray;opacity: 0.9;">
+        <thead>
+          <tr>
+            <th>使用者名稱</th>
+            <th>推播數量</th>
+            <th>關注人數</th>
+            <th>跟隨者人數</th>
+            <th>推播被like數</th>
+            <th>#</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+            <td><%= user.name %></td>
+            <td><%= user.tweets.length %></td>
+            <td><%= user.followings.ids.length %></td>
+            <td><%= user.followers.ids.length %></td>
+            <td><%= user.tweets.sum(:likes_count) %></td>
+            <td><%= link_to 'Show', tweets_user_path(user) %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      
+      <div class="text-center">
+        <%= paginate @users %>
+      </div>
+
+    </div>
+
+  </div>
+
+
+</div>

@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+
+    <% if @user.errors.any? %>
+      <h4>We have some errors here !</h4>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <%= form_for @user do |f| %>
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= f.label :avatar, "Photo", :style=>"color:lightgray" %>
+          <%= image_tag @user.avatar, width: '300px' if @user.avatar? %>
+          <%= f.file_field :avatar %>
+        </div>
+      </div>
+      
+      <div class="col-md-8">
+        <div class="form-group">        
+          <%= f.label :name, "Name", :style=>"color:lightgray" %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :introduction, "Introduction", :style=>"color:lightgray" %>
+          <%= f.text_area :introduction, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= link_to 'Cancel', user_path(@user), class: "btn btn-outline-primary pull-right" %>
+          <%= f.submit class: "btn btn-primary pull-right" %>
+        </div>
+      </div>
+    
+    <% end %>
+
+  </div>
+</div>

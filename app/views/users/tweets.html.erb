@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <%= image_tag @user.avatar, class: "img-responsive center-block" %>
+
+        <h1><%= @user.name %></h1>
+        <h4 style="color:lightgray"><%= @user.email %></h4>
+        <hr>
+
+        <% if @user.introduction == nil %>
+          <p style="color:lightgray">未新增自我介紹</p>
+        <% else %>
+          <p style="color:lightgray"><%= @user.introduction %></p>   
+        <% end %>
+        <br>
+        <h4 style="color:grey;">Tweet <%= @user.tweets.length %></h4>
+        <h4><%= link_to "Following #{@user.followships.length}", followings_user_path, :style=>"color:grey" %></h4>
+        <h4><%= link_to "Follower #{@user.inverse_followships.length}", followers_user_path, :style=>"color:grey" %></h4>
+        <h4><%= link_to "Like #{@user.likes.length}", likes_user_path, :style=>"color:grey" %></h4>
+        <br>
+        <% if @user==current_user %>
+          <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
+        <% else %>
+          <%= render partial: "shared/follow", locals: {user: @user} %>
+        <% end %>
+
+      </div>
+      <div class="col-md-1">
+      </div>
+
+      <div class="col-md-8">
+
+        <% @tweets.each do |tweet| %>
+            
+            <div class="row rank-item">
+              <div class="col-md-3 col-sm-3 col-lg-3">
+                <%= image_tag @user.avatar, class: "img-responsive center-block" %>
+              </div>
+              <div class="col-md-9 col-sm-9 col-lg-9">
+                <h4><%= @user.name %></h4>
+                <h5><small><%= tweet.created_at.strftime('%F') %>, <%= tweet.created_at.strftime('%H:%M') %></small></h5>
+                <p><%= tweet.description %></p>
+                <% tweet.count_replies %><%= link_to "回覆數(#{tweet.replies_count})", tweet_replies_path(tweet), :style=>"color:blue" %>
+                <%= render partial: "shared/like", locals: {tweet: tweet} %>
+              </div>
+            </div>
+        <% end %>
+
+
+      </div>
+  </div>
+</div>
