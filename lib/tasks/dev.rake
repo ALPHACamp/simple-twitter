@@ -28,7 +28,7 @@ namespace :dev do
           description: FFaker::Lorem.sentence,
           user: User.all.sample
         )
-        user.tweets_count=user.tweets.count
+        #user.tweets_count=user.tweets.count
         user.save
       end
     end
