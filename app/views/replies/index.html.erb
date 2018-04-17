@@ -1,0 +1,62 @@
+<div class="all_left_div">
+<%= image_tag current_user.avatar,style:"width:300px;height:300px;display: block;" %><br>
+  <h4>
+    <p><%=current_user.name%></p><br>
+    <p><%=current_user.introduction%></p><br>
+    <%= link_to "Tweets #{current_user.tweets.count}",tweets_user_path(current_user)%><br>
+    <%= link_to "following #{current_user.followings.count}",followings_user_path(current_user)%><br>
+    <%= link_to "follower #{current_user.followers.count}",followers_user_path(current_user)%><br>
+    <%= link_to "like #{current_user.likes.count}",likes_user_path(current_user)%><br>
+  </h4>
+<%= link_to 'Edit Profile', edit_user_path(current_user), class:"btn btn-primary"  %>
+</div>
+
+<div class="all_right_div">
+  <h1>Tweets</h1><br>
+    <div class="media">
+      <div class="media-left media-middle">
+        <a href="#">
+          <%= image_tag User.find(@tweet.user_id).avatar,class:"media-object" ,style:"width:120px;height:120px"  %>
+        </a>
+      </div>
+      <div class="media-body">
+        <h4><%= link_to User.find(@tweet.user_id).name,tweets_user_path(@tweet.user_id)%></h4>
+        <h4><%= @tweet.description %></h4><br>
+        <%= link_to "Reply (#{@tweet.replies.count})",tweet_replies_path(@tweet.id), class: "btn btn-primary" %>
+        <% if User.find(@tweet.user_id) != current_user %>
+          <% if @tweet.is_likes?(current_user) %>
+            <%= link_to "UnLike (#{@tweet.likes.count})", unlike_tweet_path(@tweet), method: :post, class: "btn btn-info" %>
+          <% else %>
+            <%= link_to "Like (#{@tweet.likes.count})", like_tweet_path(@tweet), method: :post, class: "btn btn-primary" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <hr>
+
+<h1>Replies</h1><br>
+<div class="media">
+  <% @replies.each do |reply| %>
+    <% if @tweet.id == reply.tweet_id %>
+      <div class="media-left media-middle">
+        <a href="#">
+          <%= image_tag User.find(reply.user_id).avatar,class:"media-object" ,style:"width:120px;height:120px"  %>
+        </a>
+      </div>
+      <div class="media-body">
+        <h4><%= link_to User.find(reply.user_id).name + "，" , tweets_user_path(reply.user_id)%>
+        <%=reply.created_at.strftime("%Y-%m-%d,%H:%M:%S") %><br></h4>
+        <h4><%=reply.comment %></h4>
+      </div>
+      <br>
+    <% end %>
+  <% end %>
+</div>
+
+<%= form_for @replyy , url: {action: "create"} do |f| %>
+  <%= f.text_area :comment ,class:"form-control",rows:"4",placeholder: "what's on your mind" %><br>
+  <div class="align_right">
+    <%= f.submit value:"Create Tweet",class:"btn btn-primary" %>
+  </div>
+<% end %>
+</div>

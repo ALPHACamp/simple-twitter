@@ -1,0 +1,72 @@
+<div class="all_left_div">
+<%= image_tag @user_id.avatar,style:"width:300px;height:300px;display: block;" %><br>
+  <h4>
+    <p><%=@user_id.name%></p><br>
+    <p><%=@user_id.introduction%></p><br>
+    <%= link_to "Tweets #{@user_id.tweets.count}",tweets_user_path(@user_id)%><br>
+    <%= link_to "following #{@user_id.followings.count}",followings_user_path(@user_id)%><br>
+    <%= link_to "follower #{@user_id.followers.count}",followers_user_path(@user_id)%><br>
+    <%= link_to "like #{@user_id.likes.count}",likes_user_path(@user_id)%><br>
+  </h4>
+<% if current_user == @user_id %>
+<%= link_to 'Edit Profile', edit_user_path(current_user), class:"btn btn-primary"  %>
+<%else%>
+<% if current_user.following?(@user_id)%>
+<%= link_to 'Unfollow', followship_path(@user_id), method: :delete , class:"btn btn-primary" %>
+<% else %>
+<%= link_to 'Follow', followships_path(following_id: @user_id), method: :post ,class:"btn btn-primary"%>
+<% end %>
+<% end %>
+</div>
+
+<% single=true %>
+<div class="all_right_div">
+ <h2>Following<h2>
+  <div class="media">
+    <% @following.each do |follow| %>
+      <%if single==true%>
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="media-left media-middle">
+              <a href="#">
+                <%= image_tag User.find(follow.following_id.to_i).avatar,class:"media-object" ,style:"width:120px;height:120px"  %>
+              </a>
+            </div>
+            <div class="media-body">
+              <h4><%= link_to User.find(follow.following_id.to_i).name , tweets_user_path(User.find(follow.following_id.to_i))%></h4>
+              <h4><%= truncate(User.find(follow.following_id.to_i).introduction,length: 70)%></h4>
+                      <div class="align_right">
+              <% if current_user.following?(User.find(follow.following_id.to_i))%>
+              <%= link_to 'Unfollow', followship_path(User.find(follow.following_id.to_i)), method: :delete , class:"btn btn-primary" %>
+              <% else %>
+              <%= link_to 'Follow', followships_path(following_id: User.find(follow.following_id.to_i)), method: :post ,class:"btn btn-primary"%>
+              <% end %>
+              </div>
+            </div>
+          </div>
+          <% single=false %>
+          <%else%>
+          <div class="col-xs-6">
+            <div class="media-left media-middle">
+              <a href="#">
+                <%= image_tag User.find(follow.following_id.to_i).avatar,class:"media-object" ,style:"width:120px;height:120px"  %>
+              </a>
+            </div>
+            <div class="media-body">
+              <h4><%= link_to User.find(follow.following_id.to_i).name , tweets_user_path(User.find(follow.following_id.to_i))%></h4>
+              <h4><%= truncate(User.find(follow.following_id.to_i).introduction, length: 70) %></h4>
+                                    <div class="align_right">
+              <% if current_user.following?(User.find(follow.following_id.to_i))%>
+              <%= link_to 'Unfollow', followship_path(User.find(follow.following_id.to_i)), method: :delete , class:"btn btn-primary" %>
+              <% else %>
+              <%= link_to 'Follow', followships_path(following_id: User.find(follow.following_id.to_i)), method: :post ,class:"btn btn-primary"%>
+              <% end %>
+                    </div>
+            </div>
+          </div>
+          <% single=true %>
+      </div><hr>
+      <% end %>
+    <% end %>
+  </div>
+</div>

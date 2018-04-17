@@ -1,0 +1,65 @@
+
+<div class="tweetcommit">
+  <%=  form_for @tweet do |f| %>
+    <%= f.text_area :description ,class:"form-control",rows:"4",placeholder: "what's on your mind" %><br>
+    <%= f.submit value:"Create Tweet",class:"btn btn-primary" %>
+  <% end %>
+</div>
+<br>
+
+<div class="tweetdynamic">
+  <% @tweet_order.each do |tweeto| %>
+     <div class="media">
+       <div class="media-left media-middle">
+         <a href="#">
+          <%= image_tag tweeto.user.avatar , class:"media-object" ,style:"width:120px;height:120px"  %>
+         </a>
+       </div>
+         <div class="media-body">
+           <h4>
+            <%= link_to tweeto.user.name + "，",tweets_user_path(tweeto.user_id)%>
+            <%=tweeto.created_at.strftime("%Y-%m-%d,%H:%M:%S")%><br><br>
+            <p><%=tweeto.description%></p>
+           </h4><br>
+            <%= link_to "Reply (#{tweeto.replies.count})",tweet_replies_path(tweeto.id), class: "btn btn-primary"%>
+            <% if tweeto.user != current_user %>
+              <% if tweeto.is_likes?(current_user) %>
+              <%= link_to "UnLike (#{tweeto.likes.count})", unlike_tweet_path(tweeto), method: :post, class: "btn btn-info" %>
+              <% else %>
+              <%= link_to "Like (#{tweeto.likes.count})", like_tweet_path(tweeto), method: :post, class: "btn btn-primary" %>
+              <% end %>
+            <% end %>
+         </div>
+     </div>
+    <hr size=4><br>
+  <% end %>
+</div>
+
+<div class="tweetpopular">
+  <h2>popular</h2><br>
+  <% @user_followers_count.each do |usertop| %>
+    <div class="media">
+      <div class="media-left media-top">
+        <a href="#">
+         <%= image_tag usertop.avatar , class:"media-object" ,style:"width:100px;height:100px"  %>
+        </a>
+      </div>
+        <div class="media-body">
+          <h4>
+           <%= link_to usertop.name ,tweets_user_path(usertop.id)%>
+           <p><%=usertop.introduction%></p>
+          </h4><br>
+            <div class="align_right">
+              <% if current_user != usertop %>
+              <% if current_user.following?(usertop)%>
+              <%= link_to 'Unfollow', followship_path(usertop), method: :delete , class:"btn btn-primary" %>
+              <% else %>
+              <%= link_to 'Follow', followships_path(following_id: usertop), method: :post ,class:"btn btn-primary"%>
+              <% end %>
+          <% end %>
+            </div>
+        </div>
+    </div>
+    <br>
+  <% end %>
+</div>

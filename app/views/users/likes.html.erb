@@ -1,0 +1,49 @@
+<div class="all_left_div">
+<%= image_tag @user_id.avatar,style:"width:300px;height:300px;display: block;" %><br>
+  <h4>
+    <p><%=@user_id.name%></p><br>
+    <p><%=@user_id.introduction%></p><br>
+    <%= link_to "Tweets #{@user_id.tweets.count}",tweets_user_path(@user_id)%><br>
+    <%= link_to "following #{@user_id.followings.count}",followings_user_path(@user_id)%><br>
+    <%= link_to "follower #{@user_id.followers.count}",followers_user_path(@user_id)%><br>
+    <%= link_to "like #{@user_id.likes.count}",likes_user_path(@user_id)%><br>
+  </h4>
+  <% if current_user == @user_id %>
+    <%= link_to 'Edit Profile', edit_user_path(current_user), class:"btn btn-primary"  %>
+     <%else%>
+      <% if current_user.following?(@user_id)%>
+       <%= link_to 'Unfollow', followship_path(@user_id), method: :delete , class:"btn btn-primary" %>
+        <% else %>
+       <%= link_to 'Follow', followships_path(following_id: @user_id), method: :post ,class:"btn btn-primary"%>
+      <% end %>
+  <% end %>
+</div>
+
+<div class="all_right_div">
+ <h2>Like<h2>
+  <div class="media">
+    <% @like.each do |like| %>
+      <% if like.user_id == @user_id.id %>
+        <div class="media-left media-middle">
+          <a href="#">
+            <%= image_tag User.find(like.tweet.user_id).avatar,class:"media-object" ,style:"width:120px;height:120px"  %>
+          </a>
+        </div>
+        <div class="media-body">
+          <h4><%= link_to User.find(like.tweet.user_id).name + "，" , tweets_user_path(@user_id)%>
+          <%=like.tweet.created_at.strftime("%Y-%m-%d,%H:%M:%S") %><br></h4>
+          <h4><%=like.tweet.description %></h4>
+          <%= link_to "Reply (#{Tweet.find(like.tweet_id).replies.count})",tweet_replies_path(Tweet.find(like.tweet_id)), class: "btn btn-primary" %>
+          <% if User.find(like.tweet.user_id) != current_user %>
+            <% if Tweet.find(like.tweet_id).is_likes?(current_user) %>
+              <%= link_to "UnLike (#{Tweet.find(like.tweet_id).likes.count})", unlike_tweet_path(Tweet.find(like.tweet_id)), method: :post, class: "btn btn-info" %>
+            <% else %>
+              <%= link_to "Like (#{Tweet.find(like.tweet_id).likes.count})", like_tweet_path(Tweet.find(like.tweet_id)), method: :post, class: "btn btn-primary" %>
+            <% end %>
+          <% end %>
+        </div>
+        <br>
+      <% end %>
+    <% end %>
+  </div>
+</div>

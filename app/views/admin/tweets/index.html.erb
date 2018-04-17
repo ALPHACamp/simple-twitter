@@ -1,0 +1,50 @@
+<div>
+  <h3>
+    <%= link_to 'Tweet |',  admin_tweets_path %>
+    <%= link_to 'User ', admin_users_path %>
+  </h3>
+</div>
+
+<div class="tweetdynamic">
+  <% @tweets.each do |tweet_order| %>
+    <% first=tweet_order %>
+     <div class="media">
+       <div class="media-left media-middle">
+         <a href="#">
+          <%= image_tag tweet_order.user.avatar , class:"media-object" ,style:"width:120px;height:120px"  %>
+         </a>
+       </div>
+         <div class="media-body">
+           <h4>
+            <%= link_to tweet_order.user.name + "，",tweets_user_path(tweet_order.user_id)%>
+            <%=tweet_order.created_at.strftime("%Y-%m-%d,%H:%M:%S")%><br><br>
+            <p><%=tweet_order.description%></p>
+           </h4><br>
+            <%= link_to "Reply (#{tweet_order.replies.count})",reply_admin_tweet_path(tweet_order), class: "btn btn-primary"%>
+            <% if tweet_order.user != current_user %>
+              <% if tweet_order.is_likes?(current_user) %>
+              <%= link_to "UnLike (#{tweet_order.likes.count})", unlike_tweet_path(tweet_order), method: :post, class: "btn btn-info" %>
+              <% else %>
+              <%= link_to "Like (#{tweet_order.likes.count})", like_tweet_path(tweet_order), method: :post, class: "btn btn-primary" %>
+              <% end %>
+            <% end %>
+            <%= link_to "Delete", admin_tweet_path(tweet_order), method: :delete , data: { confirm: "確認刪除?" } , class: "btn btn-primary"  %>
+         </div>
+         </div>
+    <hr size=4><br>
+  <% end %>
+</div>
+
+
+<div class="usertweet">
+<h1>Replies</h1><br>
+  <% @reply_all.each do |reply| %>
+    <% if reply.tweet_id == $whole_area_tweet_id.id%>
+    <p class="user_tweet_text_line_height">
+      <%= User.find(reply.user_id).name + ":"%><br>
+      <%= reply.comment %><br>
+      <%= User.find(reply.user_id).created_at.strftime("%Y-%m-%d,%H:%M:%S")%><br><br>
+    </p>
+  <% end %>
+<% end %>
+</div>
