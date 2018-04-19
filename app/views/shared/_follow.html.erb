@@ -1,0 +1,11 @@
+<% if current_user.id != user.id %>
+  <% if current_user.following?(user)%>  
+    <%= link_to followship_path(user), method: :delete do %>
+      <i class="fas fa-star" aria-hidden="true" style="color: #FF8800"></i>
+    <% end %>
+  <% else %>
+    <%= link_to followships_path(following_id: user.id), method: :post do %>  
+      <i class="far fa-star" aria-hidden="true" style="color: #FF8800"></i>
+    <% end %>
+  <% end %>    
+<% end %>

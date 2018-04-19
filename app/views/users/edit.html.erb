@@ -1,0 +1,32 @@
+<div class="container">
+ <div class="row">
+  <%= form_for @user do |f| %>
+    <div class="col-md-4">    
+      <div class="form-group">  
+        <% if !@user.avatar.nil? %>
+          <%= image_tag(@user.avatar, :class => 'img-responsive img-circle') %>
+          <br>
+        <% end %>
+        <%= f.label :avatar, "大頭照上傳" %>
+        <%= f.filestack_field :avatar, 'Upload Your Avatar' %>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="form-group">
+         <%= f.label :name, "Name" %>
+         <%= f.text_field :name, class: "form-control" %>
+       </div>
+       <div class="form-group">
+         <%= f.label :introduction, "自我介紹" %>
+         <%= f.text_area :introduction, class: "form-control", rows: 5, style: 'resize: none'%>
+       </div>
+       <div class="form-group">
+         <%= f.submit "Update", class: "btn btn-primary pull-right" %>         
+       </div>         
+    </div>          
+  <% end %>
+ </div>
+</div>
+<script type="text/javascript">
+  console.log(custom_client)
+</script>

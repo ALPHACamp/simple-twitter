@@ -1,0 +1,43 @@
+<div class="container-fluid">  
+  <div class="row">
+    <div class="col-md-7 col-sm-6">
+      <div class="container-fluid">
+        <%= form_for :tweet , :url => {:controller=>'tweets', :action => 'create' } do |f| %>
+          <div class="form-group">
+            <%= f.text_area :description, placeholder: "寫些什麼吧～", class: "form-control", maxlength: 140, rows: 4, style: 'resize: none'%>
+          </div>
+          <div class="form-group">
+            <%= f.submit 'Tweet it!', class: "btn btn-primary pull-right brand-text"%>
+          </div>
+        <% end %>
+        <div class="clearfix"></div>    
+        <br>
+        <% @tweets.each do |tweet| %>
+          <%= render partial: "shared/tweetRecord", locals: {tweet: tweet} %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-5">         
+      <h2 class="brand-text text-center">POPULAR</h2>
+        <% @users.each do |user| %>
+          <div class="row well">        
+            <div class="col-md-4 col-sm-4 col-xs-4">
+              <% if !user.avatar.nil? %>
+              <%= image_tag(user.avatar, :class => 'img-resposive img-circle', :width => '100%') %>    
+              <% else %>
+                尚未上傳
+              <% end %>            
+            </div>                    
+            <div class="col-md-7 col-sm-7 col-xs-7">
+              <p>
+                <%= link_to user.name, tweets_user_path(user.id) %>
+                <%= render partial: "shared/follow", locals: {user: user} %> 
+              </p>
+              <p><%= truncate(user.introduction, length: 40) %></p>                          
+            </div>
+             
+          </div>
+        <% end %>      
+    </div>
+  </div>
+</div>

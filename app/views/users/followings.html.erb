@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4 col-sm-4">
+      <%= render partial: "shared/userProfile", locals: {user: @user} %>  
+    </div>
+    <div class="col-md-8 col-sm-8 row">
+      <h4 class="text-center">追蹤對象名單</h4>
+      <hr>
+      <% @followings.each do |following| %>                        
+        <div class="col-md-5 col-md-offset-1 col-sm-5 col-sm-offset-1 col-xs-10 col-xs-offset-1 well row" style="height: 100%"> 
+          <div class="col-md-4 col-sm-5 col-xs-4">
+            <% if !following.following.avatar.nil? %>
+            <%= image_tag(following.following.avatar, :class => 'img-resposive img-circle', :width => '100%') %>                
+            <% else %>
+              尚未上傳
+            <% end %>
+          </div>                    
+          <div class="col-md-8 col-sm-7 col-xs-8">
+            <p><%= link_to following.following.name, tweets_user_path(following.following.id) %>
+              <%= render partial: "shared/follow", locals: {user: following.following} %>   
+            </p>
+            <p>
+              <%= truncate(following.following.introduction, length: 30) %>
+            </p>              
+          </div>           
+        </div>   
+      <% end %>
+  
+    </div>
+    
+  </div>
+</div>

@@ -3,26 +3,103 @@
   <head>
     <title>SimpleTwitter</title>
     <%= csrf_meta_tags %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <%= filestack_js_include_tag %>
+    <%= filestack_js_init_tag %> 
   </head>
 
-  <body>
-    <% if current_user %>
-      <% if current_user&.admin? %>
-        <li><%= link_to 'Admin Panel', admin_restaurants_path %></li>
-      <% end %>
-      <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
-      <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
-      <li><%= link_to('修改個人資料', edit_user_path(current_user)) %></li>
-      <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
-    <% else %>
-      <li><%= link_to('註冊', new_user_registration_path) %></li>
-      <li><%= link_to('登入', new_user_session_path) %></li>
-    <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+ <body class="brand-text">        
+     <!-- 導覽列 -->
+     <nav class="navbar navbar-inverse" style="border: 0px solid black">
+       <div class="container-fluid">
+         <!-- Brand and toggle get grouped for better mobile display -->
+         <div class="navbar-header">
+           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+             <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </button>           
+            <%= link_to "iTweet", root_path, class: "navbar-brand navbrand-text", style: 'margin-left: 10%'%>           
+         </div>
+ 
+         <!-- Collect the nav links, forms, and other content for toggling -->
+         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+           <ul class="pull-right text-right nav navbar-nav">
+             <% if current_user %>
+               <li>
+                <p class="navbar-text">
+                  Hi, <%= current_user.name %>
+                  <% if !current_user.avatar.nil? %>
+                    <a href="<%= tweets_user_path(current_user.id) %>"><%= image_tag(current_user.avatar, style: 'width: 20px; height: 20px', class: 'img-circle') %></a>
+                  <% else %>
+                    <%= link_to tweets_user_path(current_user.id) do %>
+                       <i class="fas fa-user fa-lg"></i>
+                    <% end %>
+                  <% end %> 
+                </p>                
+              </li>
+              <li>
+                <%= link_to root_path do %>
+                  <i class="fas fa-home fa-lg"></i>
+                <% end %> 
+               </li>
+               <% if current_user.admin? %>                  
+                 <li>
+                  <%= link_to  admin_root_path do %>
+                    <i class="fas fa-cogs fa-lg"></i>
+                  <% end %>
+                 </li>
+               <% end %>                      
+               <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <i class="fas fa-sign-out-alt fa-lg"></i>
+                <% end %> 
+               </li>                              
+             <% else %>
+               <li><%= link_to('註冊', new_user_registration_path) %></li>
+               <li><%= link_to('登入', new_user_session_path) %></li>
+             <% end %>
+           </ul>
+         </div>
+       </div>
+     </nav>    
+      
+     <% if flash[:notice] %>
+       <div class="container">
+         <div class="row">
+            <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <%= notice %>
+            </div>
+         </div>
+       </div>
+     <% end %>
+ 
+     <% if flash[:alert] %>
+      <div class="container">
+         <div class="row">
+            <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+             <%= alert %>
+            </div>
+        </div>
+      </div>
+     <% end %>
+
+     <div class="container-fluid">
+        <%= yield %>   
+     </div>    
+      <script>
+        $(".alert-success").fadeTo(2000, 500).slideUp(500, function(){
+            $(".alert-success").slideUp(500);
+        });
+        $(".alert-danger").fadeTo(2000, 500).slideUp(500, function(){
+            $(".alert-danger").slideUp(500);
+        });
+      </script>
   </body>
 </html>
