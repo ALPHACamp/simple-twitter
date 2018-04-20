@@ -9,8 +9,8 @@ namespace :dev do
 
       user = User.new(
         name: name,
-        email: "#{name}@example.co",
-        password: "12345678",
+        email: "user#{i}@example.co",
+        password: "user123",
         introduction: FFaker::Lorem::sentence(30),
         avatar: file
       )
@@ -18,6 +18,52 @@ namespace :dev do
       user.save!
       puts user.name
     end
+  end
+
+  task fake_tweet: :environment do
+    Tweet.destroy_all
+    15.times do |i|
+      tweet = Tweet.new(
+        description: FFaker::Lorem::sentence(10),
+        user: User.all.sample,
+      )
+      tweet.save!
+    end
+    puts "successful! Tweet: #{ Tweet.all.size }"
+  end
+
+  task fake_like: :environment do
+    Like.destroy_all
+    20.times do |i|
+      user = User.all.shuffle
+      Like.create!(user: user.pop, tweet: Tweet.all.sample)
+    end
+    puts "successful"
+  end
+
+  task fake_follow: :environment do
+    Followship.destroy_all
+    users = User.all
+    users.each do |user|
+      others = User.where.not(id: user.id).shuffle
+      5.times do |i|
+        user.followships.create!(following: others.pop)
+      end
+    end
+    puts "successful"
+  end
+
+  task fake_reply: :environment do
+    Reply.destroy_all
+    User.all.each do |user|
+      2.times do |i|
+        user.replies.create!(
+          tweet: Tweet.all.sample,
+          comment: FFaker::Lorem::sentence(20)
+        )
+      end
+    end
+    puts "successful! Replies: #{ Reply.all.size }"
   end
 
 end

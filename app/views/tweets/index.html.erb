@@ -1,0 +1,25 @@
+<div id="tweet-index">
+  <div class="col-md-8">
+    <div class="tweet-form">
+      <%= form_for @tweet do |t| %>
+      <div class="form-group">
+        <%= t.text_area :description, placeholder: "What's on your mind?", class: "form-control", size: "140x10", resize: "none" %>
+      </div>
+      <div class="action">
+        <%= t.submit "Tweet", class: "btn btn-primary" %>
+      </div><br />
+      <% end %>
+    </div>
+    <% if @tweets.any? %>
+      <% @tweets.each do |tweet| %>
+        <%= render 'shared/tweets', t: tweet %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col-md-4">
+    <div class="popular">
+      <h3>Popular</h3>
+      <%= render 'shared/populars', object: @users %>
+    </div>
+  </div>
+</div>
