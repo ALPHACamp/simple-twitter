@@ -1,0 +1,20 @@
+<!-- User info -->
+<div class="col-md-4">
+  <%= render partial: "shared/user_info",locals: {user: @tweet.user} %>
+</div>
+
+
+<div class="col-md-8">
+  <h1>Tweets</h1>
+  <!-- Only Tweets -->
+  <%= render partial: "shared/tweet_item", locals: {tweet: @tweet} %>
+
+  <!-- Replies item -->
+  <h1>Replies</h1>
+  <% @tweet.replies.each do |reply| %>
+    <%= image_tag reply.user.avatar, class: "img-rounded", width: "200px", hight: "200px",
+    onerror: 'this.error=null;this.src="https://d30y9cdsu7xlg0.cloudfront.net/png/17241-200.png"' %>
+    <p><%= "#{reply.user.name},#{reply.created_at.strftime('%F')},#{reply.created_at.strftime('%H:%M')} " %></p>
+    <p><%= reply.comment %></p>
+  <% end %>
+</div>

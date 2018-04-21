@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="row">
+
+    <% tweets.each do |tweet| %>
+      <%= render partial: "shared/tweet_item", locals: {tweet: tweet} %>
+    <% end %>
+  </div>
+</div>

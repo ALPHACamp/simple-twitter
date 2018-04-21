@@ -4,4 +4,21 @@ Rails.application.routes.draw do
 
   # 請依照專案指定規格來設定路由
 
+  # =======前台=======
+  root "tweets#index"
+  resources :users, only: [:edit, :update] do
+    member do
+      get :tweets
+    end
+  end
+
+  resources :tweets, only: [:new, :create] do
+    resources :replies, only: [:index]
+  end
+
+  # =======後台=======
+  namespace :admin do
+    root "tweets#index"
+  end
+
 end

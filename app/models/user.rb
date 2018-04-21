@@ -10,5 +10,16 @@ class User < ApplicationRecord
   # 並參考 Devise 文件自訂表單後通過 Strong Parameters 的方法
   validates_presence_of :name
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
+  validates :name, uniqueness: {message: "已被他人註冊"}
 
+  #使用者的tweets
+  has_many :tweets
+
+  # 使用者的replies
+  has_many :replies, dependent: :destroy
+  has_many :reply_tweets, through: :replies, source: :tweet
+
+  def admin?
+    self.role == "admin"
+  end
 end

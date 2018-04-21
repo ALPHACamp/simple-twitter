@@ -1,0 +1,18 @@
+<!-- Create Tweets -->
+<div class="container">
+  <div class="row">
+
+    <%= form_for @tweet do |f| %>
+      <div class="form-group">
+        <%= f.text_area :description, placeholder: "What's on your mind?", maxlength: "140", class: "form-control" %>
+        <%= f.submit "Tweet", class: "btn btn-info"%>
+      </div>
+
+    <% end %>
+  </div>
+</div>
+
+<br>
+
+<!-- All Tweets -->
+<%= render partial: "shared/tweets_item", locals: {tweets: @tweets} %>
