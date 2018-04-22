@@ -36,10 +36,10 @@
               <%= image_tag('admin-logo', height: '32', width: '32') %>
             <% end %>
           </td>
-          <td><%= "Tweet(#{user.tweets.count})" %></td>
-          <td><%= "Following(#{Followship.where(:user_id => user).length})" %></td>
-          <td><%= "Follower(#{Followship.where(:following_id => user).length})" %></td>
-          <td><%= "Like(#{user.likes_count})" %></td>
+          <td><%= user.tweets.count %></td>
+          <td><%= user.followings.count %></td>
+          <td><%= user.followers_count %></td>
+          <td><%= user.likes_count %></td>
         </tr>
       <% end %>      
     </table>
