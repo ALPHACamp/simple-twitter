@@ -25,14 +25,7 @@
               <div class="user-description">
                 <%= tweet.description %>
               </div>
-              <div class="user-re-li">
-                <%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet), class: "btn btn-default btn-group-xs" %>
-                <% if tweet.is_liked?(current_user) %>
-                  <%= link_to "Unlike(#{tweet.likes_count})", unlike_tweet_path(tweet), method: :post, class: "btn btn-danger btn-group-xs" %>
-                <% else %>
-                  <%= link_to "Like(#{tweet.likes_count})", like_tweet_path(tweet), method: :post, class: "btn btn-info btn-group-xs" %>
-                <% end %>
-              </div>
+              <%= render  "shared/action", object: tweet %>
             </div>
           </div>
         </div>
