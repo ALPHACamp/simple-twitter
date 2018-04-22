@@ -4,17 +4,7 @@
   <hr class="hrlogin">
   <div class="row">
     <div class="avatar">
-      <% if @user.errors.any? %>
-        <h4>We have some errors here !</h4>
-        <ul>
-          <% @user.errors.full_messages.each do |msg| %>
-          <li>
-            <%= msg %>
-          </li>
-          <% end %>
-        </ul>
-        <hr>
-      <% end %>
+      <%= render  "shared/error", object: @user %>
     </div>
     <div class="editing col-md-12">
       <%= form_for @user do |f| %>

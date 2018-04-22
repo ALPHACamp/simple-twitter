@@ -6,34 +6,12 @@
   <!-- 顯示該使用者的likes -->
   <div class="pertweet">
     <% @likes.each do |like| %>
-    <div class="col-sm-12 col-md-8 user-relative">
+      <div class="col-sm-12 col-md-8 user-relative">
         <div class="following-tweets">
-          <div class="single-tweet">
-            <div class="user-avatar">
-              <%= image_tag(like.user.avatar, height: '128', width: '128') %>
-            </div>
-            <div class="user-tweet">
-              <div class="user-name">
-                <strong>
-                  <%= link_to "@#{like.user.name}", tweet_replies_path(like), :alt => "Who is this?" %>
-                </strong>
-              </div>
-              <div class="user-description">
-                <%= like.description.truncate(70) %>
-              </div>
-              <div class="user-re-li">
-                <%= link_to "Reply(#{like.replies_count})", tweet_replies_path(like), class: "btn btn-default btn-group-xs" %>
-                <% if like.is_liked?(current_user) %>
-                  <%= link_to "Unlike(#{like.likes_count})", unlike_tweet_path(like), method: :post, class: "btn btn-danger btn-group-xs" %>
-                <% else %>
-                  <%= link_to "Like(#{like.likes_count})", like_tweet_path(like), method: :post, class: "btn btn-info btn-group-xs" %>
-                <% end %>
-              </div>
-            </div>
-          </div>
+          <%= render  "shared/tweet", object: like %>
         </div>
         <hr>
       </div>
-      <% end %>
+    <% end %>
   </div>
 </div>

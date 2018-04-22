@@ -4,17 +4,7 @@
       <div class="tweet-field">
         <!-- 顯示錯誤訊息 -->
         <div class="row">
-          <% if @tweet.errors.any? %>
-            <h4>We have some errors here !</h4>
-            <ul>
-              <% @tweet.errors.full_messages.each do |msg| %>
-                <li>
-                  <%= msg %>
-                </li>
-                <% end %>
-            </ul>
-            <hr>
-            <% end %>
+          <%= render  "shared/error", object: @tweet %>
         </div>
         <!-- 輸入tweet的地方 -->
         <%= form_for @tweet do |f| %>
@@ -25,42 +15,16 @@
           <div class="form-group">
             <%= f.submit class: "btn btn-primary ctweet" %>
           </div>
-          <% end %>
+        <% end %>
       </div>
       <!-- 顯示所有的tweets -->
       <div class="following-tweets">
         <% @tweets.each do |tweet| %>
           <div class="col-sm-12 col-md-12 all-tweets">
-            <div class="single-tweet">
-              <div class="user-avatar">
-                <%= image_tag(tweet.user.avatar, height: '128', width: '128') %>
-              </div>
-              <div class="user-tweet">
-                <div class="user-name">
-                  <strong>
-                    <%= link_to  "@#{tweet.user.name}", tweets_user_path(tweet.user.id) %>
-                  </strong>
-                  <em>,
-                    <%= tweet.created_at.strftime("%Y-%m-%d") %>,
-                      <%= tweet.created_at.strftime("%I:%M%p") %>
-                  </em>
-                </div>
-                <div class="user-description">
-                  <%= tweet.description %>
-                </div>
-                <div class="user-re-li" >
-                  <%= link_to  "Reply(#{@tweet.replies_count})", tweet_replies_path(tweet), class: "btn btn-default btn-group-xs" %>
-                    <% if tweet.is_liked?(current_user) %>
-                      <%= link_to "Unlike(#{@tweet.likes_count})", unlike_tweet_path(tweet), method: :post, class: "btn btn-danger btn-group-xs" %>
-                      <% else %>
-                      <%= link_to "Like(#{@tweet.likes_count})", like_tweet_path(tweet), method: :post, class: "btn btn-info btn-group-xs" %>
-                    <% end %>
-                </div>
-              </div>
-            </div>
+            <%= render  "shared/tweet", object: tweet %>
           </div>
           <br>
-          <% end %>
+        <% end %>
       </div>
     </div>
     <!-- 顯示追蹤數前10的使用者 -->
@@ -88,12 +52,8 @@
             </div>
             <div class="user-re-li">
               <% if user != current_user %>
-                <% if current_user.following?(user) %>
-                  <%= link_to  "Unfollow", followship_path(user), method: :delete, class: "btn btn-danger ctweet" %>
-                  <% else %>
-                  <%= link_to  "Follow", followships_path(following_id: user), method: :post , class: "btn btn-info ctweet"%>
-                <% end %>
-                <% else %>
+                <%= render  "shared/follow", object_user: user %>
+              <% else %>
                 <strong>It's you!</strong>
               <% end %>
             </div>
@@ -104,5 +64,3 @@
     </div>
   </div>
 </div>
-
-<%#= filestack_picker_element 'button test', 'callbackForButton', id: 'someuniequeid', pickerOptions: { 'fromSources' => 'facebook' } %>
