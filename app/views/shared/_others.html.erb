@@ -1,0 +1,27 @@
+<% others.each do |other| %>
+  <div class="col-sm-12 col-md-8 user-relative">
+    <div class="following-tweets">
+      <div class="single-tweet">
+        <div class="user-avatar">
+          <%= image_tag(other.avatar, height: '128', width: '128') %>
+        </div>
+        <div class="user-tweet">
+        <div class="user-name">
+          <strong>
+            <%= link_to "@#{other.name}", tweets_user_path(other), :alt => "Who is this?" %>
+          </strong>
+        </div>
+        <div class="user-description">
+          <%= other.introduction.truncate(70) if other.introduction? %>
+        </div>
+        <div class="user-re-li">
+        <% if current_user != other %>        
+          <%= render  "shared/follow", object_user: other %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+</div>
+<% end %>

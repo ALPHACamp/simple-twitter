@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <%= render partial: "shared/portfolio", locals: { user: @tweet.user } %>
+  </div>
+  <!-- 選定的tweet -->
+  <div class="col-sm-12 col-md-8">
+    <div class="following-tweets">
+      <div class="single-tweet">
+        <%= render  "shared/tweet", object: @tweet %>
+      </div>
+    </div>
+    <hr>
+    <div class="following-tweets">
+      <!-- 已回覆 -->
+      <div class="replies">
+        <% @tweet.replies.each do |reply| %>
+        <div class="single-tweet">
+          <div class="user-avatar">
+            <%= image_tag(reply.user.avatar, height: '128', width: '128') %>
+          </div>
+          <div class="user-tweet">
+            <%= render  "shared/created", object_time: reply %>
+            <div class="user-description">
+              <%= simple_format reply.comment %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <hr>
+      <!-- 輸入框 -->
+      <div class="commentarea">
+        <%= form_for [@tweet, @reply] do |f| %>
+        <div class="form-group">
+          <%= f.text_area :comment, placeholder: "留個言吧", rows: "5", cols: "80"  %>
+        </div>
+        <div class="form-group">
+          <%= f.submit class: "btn btn-default" %>
+          <%= f.button "Cancel", type: :reset, class: "btn btn-danger" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

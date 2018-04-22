@@ -1,0 +1,33 @@
+<div class="container">
+  <h1>Edit Yourself!!!</h1>
+  <br>
+  <hr class="hrlogin">
+  <div class="row">
+    <div class="avatar">
+      <%= render  "shared/error", object: @user %>
+    </div>
+    <div class="editing col-md-12">
+      <%= form_for @user do |f| %>
+      <div class="form-group col-md-12">
+        <% f.label :avatar, "Avatar" %>
+        <%= image_tag @user.avatar, width: '300px' if @user.avatar? %>
+        <%#= f.file_field :avatar, class: "btn btn-primary" %>
+        <br>
+        <hr class="hrlogin">
+        <%= f.filestack_field :avatar, 'Upload Your Avatar!',  pickerOptions: { accept: 'image/*', 'fromSources': 'local_file_system'}, id: 'unique-id', class: "btn btn-default" %>
+      </div>
+      <div class="form-group col-md-12">
+        <%= f.label :name, "Name" %>
+        <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
+      </div>
+      <div class="form-group col-md-12">
+        <%= f.label :introduction, "Introduction" %>
+        <%= f.text_area :introduction, placeholder: "Type anything about you here...", class: "form-control" %>
+      </div>
+      <div class="form-group col-md-12">
+        <%= f.submit "Update",class: "btn btn-primary" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="single-tweet">
+  <div class="user-avatar">
+    <%= image_tag(object.user.avatar, height: '128', width: '128') %>
+  </div>
+  <div class="user-tweet">
+    <%= render  "shared/created", object_time: object %>
+    <div class="user-description">
+      <%= object.description %>
+    </div>
+    <%= render  "shared/action", object_button: object %>
+  </div>
+</div>
