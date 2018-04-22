@@ -4,17 +4,7 @@
       <div class="tweet-field">
         <!-- 顯示錯誤訊息 -->
         <div class="row">
-          <% if @tweet.errors.any? %>
-            <h4>We have some errors here !</h4>
-            <ul>
-              <% @tweet.errors.full_messages.each do |msg| %>
-                <li>
-                  <%= msg %>
-                </li>
-              <% end %>
-            </ul>
-            <hr>
-          <% end %>
+          <%= render  "shared/error", object: @tweet %>
         </div>
         <!-- 輸入tweet的地方 -->
         <%= form_for @tweet do |f| %>
