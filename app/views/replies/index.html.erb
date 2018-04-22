@@ -6,24 +6,7 @@
   <div class="col-sm-12 col-md-8">
     <div class="following-tweets">
       <div class="single-tweet">
-        <div class="user-avatar">
-          <%= image_tag(@tweet.user.avatar, height: '128', width: '128') %>
-        </div>
-        <div class="user-tweet">
-          <div class="user-name">
-            <strong>
-              <%= link_to "@#{@tweet.user.name}", tweets_user_path(@tweet.user), :alt => "Who is this?" %>
-            </strong>
-            <em>,
-              <%= @tweet.created_at.strftime("%Y-%m-%d") %>,
-              <%= @tweet.created_at.strftime("%I:%M%p") %>
-            </em>
-          </div>
-          <div class="user-description">
-            <%= @tweet.description %>
-          </div>
-          <%= render  "shared/action", object: @tweet %>
-        </div>
+        <%= render  "shared/tweet", object: @tweet %>
       </div>
     </div>
     <hr>

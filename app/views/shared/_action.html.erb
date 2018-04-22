@@ -1,8 +1,8 @@
 <div class="user-re-li">
-  <%= link_to  "Reply(#{object.replies_count})", tweet_replies_path(object), class: "btn btn-default btn-group-xs" %>
-    <% if object.is_liked?(current_user) %>
-      <%= link_to "Unlike(#{object.likes_count})", unlike_tweet_path(object), method: :post, class: "btn btn-danger btn-group-xs" %>
+  <%= link_to  "Reply(#{object_button.replies_count})", tweet_replies_path(object_button), class: "btn btn-default btn-group-xs" %>
+    <% if object_button.is_liked?(current_user) %>
+      <%= link_to "Unlike(#{object_button.likes_count})", unlike_tweet_path(object_button), method: :post, class: "btn btn-danger btn-group-xs" %>
     <% else %>
-      <%= link_to "Like(#{object.likes_count})", like_tweet_path(object), method: :post, class: "btn btn-info btn-group-xs" %>
+      <%= link_to "Like(#{object_button.likes_count})", like_tweet_path(object_button), method: :post, class: "btn btn-info btn-group-xs" %>
   <% end %>
 </div>

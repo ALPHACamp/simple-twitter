@@ -11,10 +11,10 @@
                 <li>
                   <%= msg %>
                 </li>
-                <% end %>
+              <% end %>
             </ul>
             <hr>
-            <% end %>
+          <% end %>
         </div>
         <!-- 輸入tweet的地方 -->
         <%= form_for @tweet do |f| %>
@@ -25,35 +25,16 @@
           <div class="form-group">
             <%= f.submit class: "btn btn-primary ctweet" %>
           </div>
-          <% end %>
+        <% end %>
       </div>
       <!-- 顯示所有的tweets -->
       <div class="following-tweets">
         <% @tweets.each do |tweet| %>
           <div class="col-sm-12 col-md-12 all-tweets">
-            <div class="single-tweet">
-              <div class="user-avatar">
-                <%= image_tag(tweet.user.avatar, height: '128', width: '128') %>
-              </div>
-              <div class="user-tweet">
-                <div class="user-name">
-                  <strong>
-                    <%= link_to  "@#{tweet.user.name}", tweets_user_path(tweet.user.id) %>
-                  </strong>
-                  <em>,
-                    <%= tweet.created_at.strftime("%Y-%m-%d") %>,
-                      <%= tweet.created_at.strftime("%I:%M%p") %>
-                  </em>
-                </div>
-                <div class="user-description">
-                  <%= tweet.description %>
-                </div>
-                <%= render  "shared/action", object: tweet %>
-              </div>
-            </div>
+            <%= render  "shared/tweet", object: tweet %>
           </div>
           <br>
-          <% end %>
+        <% end %>
       </div>
     </div>
     <!-- 顯示追蹤數前10的使用者 -->
@@ -83,10 +64,10 @@
               <% if user != current_user %>
                 <% if current_user.following?(user) %>
                   <%= link_to  "Unfollow", followship_path(user), method: :delete, class: "btn btn-danger ctweet" %>
-                  <% else %>
+                <% else %>
                   <%= link_to  "Follow", followships_path(following_id: user), method: :post , class: "btn btn-info ctweet"%>
                 <% end %>
-                <% else %>
+              <% else %>
                 <strong>It's you!</strong>
               <% end %>
             </div>
@@ -97,5 +78,3 @@
     </div>
   </div>
 </div>
-
-<%#= filestack_picker_element 'button test', 'callbackForButton', id: 'someuniequeid', pickerOptions: { 'fromSources' => 'facebook' } %>
