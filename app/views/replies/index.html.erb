@@ -19,18 +19,10 @@
             <%= image_tag(reply.user.avatar, height: '128', width: '128') %>
           </div>
           <div class="user-tweet">
-            <div class="user-name">
-              <strong>
-                <%= link_to "@#{reply.user.name}", tweets_user_path(reply.user), :alt => "Who is this?" %>
-              </strong>
-              <em>,
-                <%= reply.created_at.strftime("%Y-%m-%d") %>,
-                <%= reply.created_at.strftime("%I:%M%p") %>
-              </em>
+            <%= render  "shared/created", object_time: reply %>
+            <div class="user-description">
+              <%= simple_format reply.comment %>
             </div>
-          <div class="user-description">
-            <%= simple_format reply.comment %>
-          </div>
           </div>
         </div>
         <% end %>

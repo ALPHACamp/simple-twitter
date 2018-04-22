@@ -3,15 +3,7 @@
     <%= image_tag(object.user.avatar, height: '128', width: '128') %>
   </div>
   <div class="user-tweet">
-    <div class="user-name">
-      <strong>
-        <%= link_to  "@#{object.user.name}", tweets_user_path(object.user.id) %>
-      </strong>
-      <em>,
-        <%= object.created_at.strftime("%Y-%m-%d") %>,
-        <%= object.created_at.strftime("%I:%M%p") %>
-      </em>
-    </div>
+    <%= render  "shared/created", object_time: object %>
     <div class="user-description">
       <%= object.description %>
     </div>
