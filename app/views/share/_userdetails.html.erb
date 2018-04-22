@@ -10,7 +10,8 @@
           <h3><%= link_to 'Like: '+user.likes.count.to_s, likes_user_path(user) %></h3>
         </div>
         <% if user!=current_user %> 
-          <%= link_to 'Follow', followships_path(following_id: user), method: :post, class: "btn btn-primary"  %>
+          
+          <%= render partial: "share/follow", locals: {user: user} %>
         <% else %>
           <%= link_to 'Edit Profile', edit_user_path(user) %>  
         <% end %>
