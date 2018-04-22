@@ -16,11 +16,7 @@
         </div>
         <div class="user-re-li">
         <% if current_user != other %>        
-          <% if current_user.following?(other) %>
-            <%= link_to  "Unfollow", followship_path(other), method: :delete, class: "btn btn-danger btn-group-xs" %>
-          <% else %>
-            <%= link_to  "Follow", followships_path(following_id: other), method: :post, class: "btn btn-info btn-group-xs" %>
-          <% end %>
+          <%= render  "shared/follow", object_user: other %>
         <% end %>
         </div>
       </div>

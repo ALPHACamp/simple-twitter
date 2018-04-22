@@ -62,11 +62,7 @@
             </div>
             <div class="user-re-li">
               <% if user != current_user %>
-                <% if current_user.following?(user) %>
-                  <%= link_to  "Unfollow", followship_path(user), method: :delete, class: "btn btn-danger ctweet" %>
-                <% else %>
-                  <%= link_to  "Follow", followships_path(following_id: user), method: :post , class: "btn btn-info ctweet"%>
-                <% end %>
+                <%= render  "shared/follow", object_user: user %>
               <% else %>
                 <strong>It's you!</strong>
               <% end %>
