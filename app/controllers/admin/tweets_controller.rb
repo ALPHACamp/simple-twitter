@@ -1,7 +1,7 @@
 class Admin::TweetsController < Admin::BaseController
   
   def index
-    @tweets = Tweet.all
+    @tweets = Tweet.all.includes(:replies, :user).order(replies_count: :desc)
   end
 
   def destroy

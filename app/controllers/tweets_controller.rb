@@ -3,15 +3,14 @@ class TweetsController < ApplicationController
   before_action :set_tweet, only: [:like, :unlike]
   
   def index
-    @tweets = Tweet.order(created_at: :desc)
+    @tweets = Tweet.includes(:likes, :user, :liked_users).order(created_at: :desc)
     @tweet = Tweet.new
     # 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
     @users = User.order(followers_count: :desc).limit(10)
   end
 
   def create
-    @tweet = Tweet.new(tweet_params)
-    @tweet.user = current_user
+    @tweet = current_user.tweets.build(tweet_params)
     if @tweet.save
       flash[:notice] = "Tweet successfully created"
       redirect_to root_path
