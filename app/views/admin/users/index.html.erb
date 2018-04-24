@@ -10,9 +10,9 @@
       <% @users.each do |user| %>
         <div class="row">
           <div class="tweet-item">
-<!--             <div class="col-sm-4">
+            <div class="col-sm-4">
               <%= image_tag user.avatar, class: "img-responsive center-block" %>
-            </div> -->
+            </div>
             <div class="col-sm-8">
               <div class="caption">
                 <h3><%= link_to user.name, tweets_user_path(user) %></h3>
