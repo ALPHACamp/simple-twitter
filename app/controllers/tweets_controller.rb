@@ -15,6 +15,9 @@ class TweetsController < ApplicationController
       redirect_to tweets_path
     else
       flash[:alert] = "Something went wrong"
+      @tweets = Tweet.includes(:likes, :user, :liked_users).order(created_at: :desc)
+      @users = User.order(followers_count: :desc).limit(10)
+      @tweet = Tweet.new
       render 'index'
     end
   end
