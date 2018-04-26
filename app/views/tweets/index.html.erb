@@ -52,7 +52,11 @@
               </i>
             </div>
             <div class="user-introduction">
-              <%= user.introduction.truncate(70) %>
+              <% if user.introduction %>
+                <%= user.introduction.truncate(70) %>
+              <% else %>
+                <p>Oops! There is no introduction.</p>
+              <% end %>
             </div>
             <div class="user-re-li">
               <% if user != current_user %>
