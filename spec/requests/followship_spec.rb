@@ -25,7 +25,7 @@ RSpec.describe 'Followship', type: :request do
   end
 
   context '#destroy' do
-    describe 'when user1 wants to unfollow user2' do
+    describe 'when user1 wants to follow user2' do
       before do
         user
         user_with_tweets

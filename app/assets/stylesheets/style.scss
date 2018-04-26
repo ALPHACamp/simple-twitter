@@ -1,0 +1,120 @@
+.container {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+h1, h2, h3, h4, h5 {
+  margin: auto;
+  align-content: center;
+}
+
+hr {
+  border-width: 20px;
+  margin: 0px;
+}
+
+.hrlogin {
+  border-width: 1px;
+  margin: 10px;
+}
+
+.input-group {
+  margin: auto;
+}
+
+#left-col {
+  box-sizing: content-box;
+  width: 60%;
+  margin-right: 30px;
+}
+
+#right-col {
+  box-sizing: content-box;
+  width: 30%;
+  margin-right: 5px;
+}
+
+a.logo {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+}
+
+a.admin-logo, a.head-shot, a.log-out {
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+}
+
+a.logo img, a.admin-logo img, a.head-shot img {
+  width: 100%;
+}
+
+a.log-out img {
+  width: 120%;
+}
+
+div#nav {
+  background-color: #28AAE1;
+}
+
+div.form-group textarea#tweet_description {
+  resize: none;
+  min-width: 100%;
+  min-height: 150px;
+  margin: auto;
+}
+
+div.form-group input.ctweet {
+  margin-left: 80%;
+}
+
+div.all-tweets {
+  min-width: 100%;
+}
+
+div.single-tweet {
+  box-sizing: content-box;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  height: 175px;
+}
+
+div.user-avatar {
+  float: left;
+  margin-right: 20px;
+}
+
+div.user-description {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+div.user-introduction {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 8;
+  margin-bottom: 10px;
+}
+
+div.user-re-li {
+  display: inline-block;
+}
+
+div.portfolio {
+  box-sizing: content-box;
+  width: 30%;
+  margin-right: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+div.user-relative {
+  box-sizing: content-box;
+  float: right;
+  width: 60%;
+  margin-right: 5px;
+}
+
+div.editorfollow {
+  margin-left: 10px;
+  padding: 0 50px;
+}

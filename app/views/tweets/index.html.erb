@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-8">
+      <div class="tweet-field">
+        <!-- 顯示錯誤訊息 -->
+        <div class="row">
+          <%= render  "shared/error", object: @tweet %>
+        </div>
+        <!-- 輸入tweet的地方 -->
+        <%= form_for @tweet do |f| %>
+          <div class="form-group">
+            <%= f.text_area :description, placeholder: "What's on your mind?", class: "btn btn-default" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.submit class: "btn btn-primary ctweet" %>
+          </div>
+        <% end %>
+      </div>
+      <!-- 顯示所有的tweets -->
+      <div class="following-tweets">
+        <% @tweets.each do |tweet| %>
+          <div class="col-sm-12 col-md-12 all-tweets">
+            <%= render  "shared/tweet", object: tweet %>
+          </div>
+          <br>
+        <% end %>
+      </div>
+    </div>
+    <!-- 顯示追蹤數前10的使用者 -->
+    <div class="col-xs-12 col-md-4">
+      <h1>Top 10 Users</h1>
+      <br>
+      <hr class="hrlogin">
+      <% @users.each do |user| %>
+        <div class="single-tweet">
+          <div class="user-avatar">
+            <% if user.avatar %>
+              <%= image_tag user.avatar, width: '128px', class: "img img-responsive" %>
+            <% else %>
+              <%= image_tag 'fallback/default-avatar', width: '128px', class: "img img-responsive" %>
+            <% end %>
+          </div>
+          <div class="user-tweet">
+            <div class="user-name">
+              <h2>
+                <%= link_to  "@#{user.name}", tweets_user_path(user.id) %>
+              </h2>
+              <i>
+                <p>Followers (
+                  <%= user.followers_count %>)</p>
+              </i>
+            </div>
+            <div class="user-introduction">
+              <% if user.introduction %>
+                <%= user.introduction.truncate(70) %>
+              <% else %>
+                <p>Oops! There is no introduction.</p>
+              <% end %>
+            </div>
+            <div class="user-re-li">
+              <% if user != current_user %>
+                <%= render  "shared/follow", object_user: user %>
+              <% else %>
+                <strong>It's you!</strong>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <br>
+      <% end %>  
+    </div>
+  </div>
+</div>
