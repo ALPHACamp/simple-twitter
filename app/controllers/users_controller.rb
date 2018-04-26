@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def edit
     unless @user == current_user
-      redirect_to tweets_user_path(current_user), alert: "Not Allow!"
+      redirect_to tweets_user_path(@user), alert: "Not Allow!"
     end
   end
 
