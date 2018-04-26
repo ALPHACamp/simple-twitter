@@ -1,9 +1,11 @@
 class FollowshipsController < ApplicationController
   
   def create
-    @followship = current_user.followships.build(following_id: params[:following_id])
-
-    unless params[:following_id] == current_user.id
+    if params[:following_id] == current_user.id
+      flash[:notice] = "不允許追蹤自己！"
+      redirect_back(fallback_location: root_path)
+    else
+      @followship = current_user.followships.build(following_id: params[:following_id])
       if @followship.save
         @user = User.find(@followship.following_id)
         flash[:notice] = "成功追蹤！"
