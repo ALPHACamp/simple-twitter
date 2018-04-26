@@ -1,5 +1,4 @@
-class TweetsController < ApplicationController 
-  before_action :check_avatar 
+class TweetsController < ApplicationController
   before_action :set_tweet, only: [:like, :unlike]
   
   def index
@@ -43,10 +42,4 @@ class TweetsController < ApplicationController
     params.require(:tweet).permit(:description)
   end
 
-  def check_avatar
-    if current_user.avatar.nil?
-      current_user.update(avatar: "https://cdn.filestackcontent.com/z2xAtAcQTF7KgoD67Fpf")
-      current_user.save
-    end
-  end
 end
