@@ -29,7 +29,13 @@
       <% @users.each do |user| %>
         <tr>
           <td><%= user.id %></td>
-          <td><%= image_tag(user.avatar, height: '32', width: '32') %></td>
+          <td>
+            <% if user.avatar %>
+              <%= image_tag user.avatar, width: '32px', class: "img img-responsive" %>
+            <% else %>
+              <%= image_tag 'fallback/default-avatar', width: '32px', class: "img img-responsive" %>
+            <% end %>
+          </td>
           <td><%= link_to "#{user.name}", tweets_user_path(user.id) %></td>
           <td>
             <% if user.admin? %>

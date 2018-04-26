@@ -36,7 +36,11 @@
                 </li>
               <% end %>
             <li>
-              <%= link_to image_tag(current_user.avatar), tweets_user_path(current_user), :alt => "Edit youself!", class: "head-shot" %>
+              <% if current_user.avatar %>
+                <%= link_to image_tag(current_user.avatar), tweets_user_path(current_user), :alt => "Edit youself!", class: "head-shot" %>
+              <% else %>
+                <%= link_to image_tag('fallback/default-avatar'), tweets_user_path(current_user), :alt => "Edit youself!", class: "head-shot" %>
+              <% end %>
             </li>
             <li><%= link_to(image_tag('logout.png'), destroy_user_session_path, method: :delete, class: "log-out") %></li>
             <% else %>
