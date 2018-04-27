@@ -1,0 +1,14 @@
+<div class="row">
+<!-- left===================================== -->
+<div class="col-md-4 ">
+  <%= render partial: "shared/prof",locals:{user:@user} %>
+
+
+</div> <!-- col-md-4 end-->
+
+
+<!-- right===================================== -->
+<div class="col-md-8">
+  <%= render partial: "shared/onerow",locals:{tweets:@tweets} %>
+</div> <!-- col-md-8 end-->
+</div>

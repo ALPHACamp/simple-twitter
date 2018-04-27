@@ -1,0 +1,72 @@
+<div class="row">
+<!-- left===================================== -->
+<div class="col-md-4 ">
+  <%= render partial: "shared/prof",locals:{user:@user} %>
+
+
+</div> <!-- col-md-4 end-->
+
+
+<!-- right top===================================== -->
+<div class="col-md-8">
+  <h2>Tweets</h2>
+  <div class="row tweets">
+    <div class="col-md-3">
+      <img src="<%= @tweet.user.avatar %>" alt="" class="avatar">
+    </div>
+    <div class="col-md-9">
+      <div class="tweet_usr">
+        <%= link_to users_tweets_path(@tweet.user) do %>
+          <h3><%= @tweet.user.name %>
+          ,
+          <%= @tweet.created_at.strftime("%Y-%m-%d, %H:%M") %>
+        </h3>
+        <% end %>
+      </div>
+      <%= simple_format(@tweet.description) %>
+      <div class="tweet_RL">
+        <%= link_to replies_path(@tweet.id), class: "tweet_reply" do %>
+          Reply(<%= @tweet.replies_count %>)
+        <% end %>
+        <span class="tweet_like">Like(<%= @tweet.likes_count %>)</span>
+      </div>
+    </div>
+  </div>
+
+<!-- right middle===================================== -->
+  <h2>Replies</h2>
+  
+  <% if @replies.count == 0 %>
+  not any reply yet
+  <% else %>
+    <% @replies.each do |reply| %>
+
+    <div class="row tweets">
+      <div class="col-md-3">
+        <img src="<%= reply.user.avatar %>" alt="" class="avatar">
+      </div>
+      <div class="col-md-9">
+        <div class="tweet_usr">
+          <%= link_to users_tweets_path(reply.user) do %>
+            <h3><%= reply.user.name %>
+            ,
+            <%= reply.created_at.strftime("%Y-%m-%d, %H:%M") %>
+          </h3>
+          <% end %>
+        </div>
+        <%= simple_format(reply.comment) %>
+
+      </div>
+    </div>
+    <% end %>
+  <% end %>
+
+<!-- right bottom===================================== -->
+  <div class="comment">
+    <%= form_for @reply do |f| %>
+      <%= f.text_area :comment,placeholder: "To reply? (maxlength: 140)",maxlength: 140,class: "newtweet-content" %>
+      <%= f.submit "Reply", class: "btn-submit" %>
+    <% end %>
+  </div>
+</div><!-- col-md-8 end-->
+</div>

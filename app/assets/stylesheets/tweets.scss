@@ -1,3 +1,80 @@
 // Place all the styles related to the tweets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.comment{
+  padding: 10px 0;
+  overflow: hidden;
+  .newtweet-content{
+    width: 100%;
+    height: 15vh;
+    min-height: 3vh;
+    border-radius: 10px;
+    border: 1px solid  #55acee;
+    padding: 10px;
+    font-size: 18px;
+  }
+  .btn-submit{
+    width: 90px;
+    float: right;
+  }
+}
+h2{
+  display: block;
+  width: 100%;
+}
+
+.tweets,.popular{
+  height: 100%;
+  padding: 8px 5px ;
+  border:1px solid #ccc;
+  margin: 5px 0;
+  .col-md-3{
+    text-align: center;
+    img{
+      width: 80%;height: auto;line-height: 0;vertical-align: middle;
+    }
+  }
+  .col-md-9{
+    .tweet_usr,{
+      a{
+        display: inline-block;
+        margin: 1em 0;
+        h3{
+          margin: 0;
+        }
+      }
+    }
+    .popular_usr{
+      a{
+        display: inline-block;
+        h3{
+          margin: 0;
+        }      
+      }
+    }
+    p{
+      font-size: 18px;
+      line-height: 30px;
+      word-break: break-all;
+      margin-top: 0;
+    }
+    .popular_intro{
+      margin: .3em 0px;
+      line-height: 26px;
+    }
+    .tweet_reply{
+      margin-right: 10px;
+    }
+    .tweet_like{
+      color: #cd201f;
+    }
+  }
+}
+.tweet_like{
+  a{
+    color:#cd201f;
+    &:hover,&:focus,&:active{
+      border-bottom: 1px solid #cd201f;
+    }
+  }
+}

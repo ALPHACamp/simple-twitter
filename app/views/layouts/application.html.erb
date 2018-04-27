@@ -9,20 +9,44 @@
   </head>
 
   <body>
-    <% if current_user %>
-      <% if current_user&.admin? %>
-        <li><%= link_to 'Admin Panel', admin_restaurants_path %></li>
+    <header>
+      <div class="logo"><%= link_to root_path do %>
+        <h2>LOGO</h2>
+        <% end %></div>
+    <ul class="service">
+      <% if current_user %>
+
+        <% if current_user&.admin? %>
+          <li><%= link_to 'Admin Panel', admin_tweets_path %></li>
+        <% end %>
+
+        <li><%= link_to users_tweets_path(current_user) do %>
+          <% if current_user.avatar.to_s == '' %>
+            <img src="http://fakeimg.pl/60x60/" alt="" width="50px">
+          <% else %>
+            <img src="<%= current_user.avatar %>" alt="" width="50px">
+          <% end %>
+          <% end %></li>
+        <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+
+      <% else %>
+
+        <li><%= link_to('註冊', new_user_registration_path) %></li>
+        <li><%= link_to('登入', new_user_session_path) %></li>
+
       <% end %>
-      <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
-      <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
-      <li><%= link_to('修改個人資料', edit_user_path(current_user)) %></li>
-      <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
-    <% else %>
-      <li><%= link_to('註冊', new_user_registration_path) %></li>
-      <li><%= link_to('登入', new_user_session_path) %></li>
-    <% end %>
+    </ul>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    </header>
+
     <%= yield %>
+    <script>
+      var alertNotice=$('.notice, .alert');
+      $(alertNotice).delay(3000).fadeOut(500, function(){
+        $('html,body').scrollTop(0);
+            modal.addClass('is-visible');
+        });
+    </script>
   </body>
 </html>

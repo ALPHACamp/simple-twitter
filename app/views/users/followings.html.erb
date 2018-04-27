@@ -1,0 +1,15 @@
+<div class="row">
+<!-- left===================================== -->
+<div class="col-md-4 ">
+  <%= render partial: "shared/prof",locals:{user:@user} %>
+
+
+</div> <!-- col-md-4 end-->
+
+
+<!-- right===================================== -->
+<div class="col-md-8 flex-container">
+  <h2>Following</h2>
+  <%= render partial: "shared/tworow",locals:{users:@followings} %>
+</div> <!-- col-md-8 end-->
+</div>

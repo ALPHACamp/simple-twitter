@@ -1,0 +1,33 @@
+<div class="user-prof">
+  <div class="row avatar">
+      <img src="<%= user.avatar %>" alt="" class="avatar">
+  </div>
+  <div class="row user_des">
+    <%= link_to users_tweets_path(user) do %>
+        <h2><%= user.name %> </h2>
+    <% end %>
+    <p class="popular_intro"><%= user.introduction %></p>
+  </div>
+  <div class="row social">
+    <%= link_to users_tweets_path(user) do %>
+      Tweets <%= user.tweets.count %>
+    <% end %><br>
+    <%= link_to users_followings_path(user) do %>
+      Following <%= user.followings.count %>
+    <% end %><br>
+    <%= link_to users_followers_path(user) do %>
+      Follower <%= user.followers_count %>
+    <% end %><br>
+    <%= link_to users_likes_path(user) do %>
+      Like <%= user.likes_count %>
+    <% end %>
+      <div class="popular-follow">
+        <%= render partial: "shared/follow",locals:{user:user} %>
+      </div> 
+      <div class="edit-prof">
+        <% if current_user == user %>
+        <%= link_to 'Edit Profile' ,edit_user_path(user),class: 'submit-btn' %>
+        <% end %>
+      </div>   
+  </div>
+</div>
