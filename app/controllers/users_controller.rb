@@ -13,10 +13,10 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      flash[:notice] = "profile was successfully updated"
+      flash[:notice] = "Profile was successfully updated."
       redirect_to tweets_user_path(@user)
     else
-      flash.now[:alert] = "profile was failed to update"
+      flash.now[:alert] = "#{@user.errors.full_messages.to_sentence}. Profile was failed to update."
       render :edit
     end
 
