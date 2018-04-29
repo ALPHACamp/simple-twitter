@@ -12,7 +12,18 @@ class User < ApplicationRecord
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
   validates_uniqueness_of :name
 
+  has_many :tweets
+
+  # 設定following
+  has_many :followships, dependent: :destroy
+  has_many :followings, through: :followships, counter_cache: true
+
   def admin?
     self.role == "admin"
   end
+
+  def following?(user)
+    self.followings.include?(user)
+  end
+  
 end

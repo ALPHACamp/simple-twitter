@@ -1,1 +1,49 @@
-前台
+<div class="container">
+  <div class="col-md-offset-1">
+    <div class="row">
+      <div class="col-md-6">
+        <!-- 新增tweet的表單輸入框 -->
+        <%= form_for [@tweet] do |f| %>
+        <div class="form-group">
+          <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Tweet", class: "btn btn-primary" %>
+        </div>
+        <% end %>
+
+        <% @tweets.each do |tweet| %>
+        <div class="row">
+          <div class="col-md-3">
+            <%= image_tag tweet.user.avatar, size:50, class: "img-responsive" %>
+          </div>
+          <div class="col-md-9">
+            <h4><%= tweet.user.name %>,<%= tweet.created_at %></h4>
+            <p><%= simple_format tweet.description %></p>
+          </div>
+            
+        </div>
+          
+        <hr>
+        <% end %>
+      </div>
+
+      <div class="col-md-4">
+        <p>Popular</p>
+        <% @users.each do |user| %>
+          <%= image_tag user.avatar, size:50, class: "img-responsive" %>
+          <h4><%= link_to user.name, tweets_user_path(user) %></h4>
+          <p><%= simple_format user.introduction %></p>
+
+          <!--使用新增追蹤按鈕的prtial-->  
+          <%= render partial: "shared/follow", locals:{user:user} %>
+          <br>
+        <% end %>
+        
+
+      </div>
+
+
+    </div>
+  </div> 
+</div>
