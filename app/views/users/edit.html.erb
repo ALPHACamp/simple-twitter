@@ -4,7 +4,7 @@
       <%= form_for [@user] do |f| %>
       <div class="col-md-3">
         <div class="form-gruop">
-          <%= image_tag current_user.avatar, size: 120 %>
+          <%= image_tag current_user.avatar, size: 110 %>
           <%= f.file_field :avatar %>
           <%= f.label :avatar, "Browse files.." , class: "btn btn-primary" %>
         </div>

@@ -17,3 +17,18 @@ nav.navbar {
   font-size: 20px;
   padding: 5px;
 }
+
+.form-control {
+  resize: none;
+}
+
+.btn.btn-primary.right {
+  margin: 10px;
+  margin-right: 0px;
+  float: right;
+}
+
+.clear {
+  clear: right;
+  margin: 50px; 
+}
