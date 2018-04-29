@@ -14,11 +14,11 @@
         <div class="form-gruop">
           <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
         </div>
-        <br>
+        
         <div class="form-gruop">
-          <%= f.text_field :introduction, placeholder: "Type anything about you here...", class: "form-control" %>
+          <%= f.text_area :introduction, placeholder: "Type anything about you here...", class: "form-control" %>
         </div>
-        <br>
+        
         <div class="form-gruop">
           <%= f.submit "Update", class: "btn btn-primary" %>
           <%= link_to "Cancel", tweets_user_path(@user), class: "btn btn-default" %>
