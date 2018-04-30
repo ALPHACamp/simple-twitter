@@ -34,11 +34,14 @@ namespace :dev do
   
   task fake_followship: :environment do
     Followship.destroy_all
-    500.times do |i|
-      Followship.create!(
-        following: User.all.sample,
-        user: User.all.sample
-      )
+    User.all.each do |user|
+      followings = User.all.sample(rand(25..45))
+      if followings.include?(user)
+        followings.delete(user)
+      end
+      for following in followings
+        user.followships.create!(following: following)
+      end
     end
     puts "have created fake followships"
     puts "now you have #{Followship.count} followship data"
