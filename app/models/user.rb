@@ -16,7 +16,7 @@ class User < ApplicationRecord
 
   # 設定following
   has_many :followships, dependent: :destroy
-  has_many :followings, through: :followships, counter_cache: true
+  has_many :followings, through: :followships
 
   def admin?
     self.role == "admin"
