@@ -53,3 +53,24 @@ nav.navbar {
 .tweet-item p {
   color: dimgray;
 }
+
+.user-item {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 4px;
+  margin-bottom: 20px;
+}
+
+.user-item img {
+  max-height: 180px;
+  width: 100%;
+  margin: 10px;
+}
+
+.user-item h4 {
+  color: steelblue;
+}
+
+.user-item p {
+  color: dimgray;
+}
