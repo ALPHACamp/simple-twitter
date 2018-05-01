@@ -1,0 +1,9 @@
+<% @users.each do |user| %>
+  <%= image_tag user.avatar, size:50, class: "img-responsive" %>
+  <h4><%= link_to user.name, tweets_user_path(user) %></h4>
+  <p><%= simple_format user.introduction %></p>
+
+  <!--使用新增追蹤按鈕的prtial-->  
+  <%= render partial: "shared/follow", locals:{user:user} %>
+  <br>
+<% end %>
