@@ -20,6 +20,7 @@ nav.navbar {
 
 .form-control {
   resize: none;
+  border-radius: 10px;
 }
 
 .btn.btn-primary.right {
@@ -35,7 +36,6 @@ nav.navbar {
 
 .tweet-item {
   border: 1px solid #ddd;
-  border-radius: 4px;
   padding: 4px;
   margin-bottom: 20px;
 }
@@ -46,17 +46,8 @@ nav.navbar {
   margin: 10px;
 }
 
-.tweet-item h5 {
-  color: steelblue;
-}
-
-.tweet-item p {
-  color: dimgray;
-}
-
 .user-item {
   border: 1px solid #ddd;
-  border-radius: 4px;
   padding: 4px;
   margin-bottom: 20px;
 }
@@ -67,10 +58,10 @@ nav.navbar {
   margin: 10px;
 }
 
-.user-item h4 {
-  color: steelblue;
+p {
+  color: dimgray;
 }
 
-.user-item p {
-  color: dimgray;
+h4, h5 {
+  color: steelblue;
 }
