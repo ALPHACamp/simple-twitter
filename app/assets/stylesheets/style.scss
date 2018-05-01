@@ -32,3 +32,24 @@ nav.navbar {
   clear: right;
   margin: 50px; 
 }
+
+.tweet-item {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 4px;
+  margin-bottom: 20px;
+}
+
+.tweet-item img {
+  max-height: 180px;
+  width: 100%;
+  margin: 10px;
+}
+
+.tweet-item h5 {
+  color: steelblue;
+}
+
+.tweet-item p {
+  color: dimgray;
+}
