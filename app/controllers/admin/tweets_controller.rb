@@ -4,9 +4,8 @@ class Admin::TweetsController < Admin::BaseController
   
   def index
     @tweet = Tweet.new
-
     @tweets = Tweet.all.order(created_at: :desc)
-    @popular_users = User.all.order(follower_count: :desc).limit(10)
+    @users = User.all.order(follower_count: :desc).limit(10)
   end
 
   def destroy
