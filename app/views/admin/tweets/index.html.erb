@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <ul class="nav nav-tabs"> 
+      <li role="presentation" class="<%= "active" if current_page?(controller: 'tweets', action:('index'||'new'||'edit')) %>">
+        <%= link_to 'Tweets', admin_tweets_path %>
+      </li>
+      <li role="presentation" class="<%= "active" unless current_page?(controller: 'tweets', action:('index'||'new'||'edit')) %>">
+        <%= link_to 'Users', admin_users_path %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<br>
+
+<div class="container">
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Author</th>
+          <th>Description</th>
+          <th>Replies Count</th>
+          <th>Replies</th>
+          <th>#</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tweets.each do |tweet| %>
+        <tr>
+          <td><%= tweet.id %></td>
+          <td><%= tweet.user.email.split('@').first %></td>
+          <td><%= tweet.description %></td>
+          <td><%= tweet.replies.size() %></td>
+          <td>
+            <% tweet.replies.each do |reply| %>
+              <ul>
+                <li><%=reply.comment %></li>
+              </ul>
+            <% end %>
+          </td>
+          <td><%= link_to "Delete", admin_tweet_path(tweet), method: :delete %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

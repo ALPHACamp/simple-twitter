@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <ul class="nav nav-tabs"> 
+      <li role="presentation" class="<%= "active" if current_page?(controller: 'tweets', action:('index'||'new'||'edit')) %>">
+        <%= link_to 'Tweets', admin_tweets_path %>
+      </li>
+      <li role="presentation" class="<%= "active" unless current_page?(controller: 'tweets', action:('index'||'new'||'edit')) %>">
+        <%= link_to 'Users', admin_users_path %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<br>
+
+<div class="container">
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Tweets</th>
+          <th>Followings</th>
+          <th>Followers</th>
+          <th>likes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.email.split('@').first %></td>
+          <td><%= user.tweets.size() %></td>
+          <td><%= user.followings.size() %></td>
+          <td><%= user.followers.size() %></td>
+          <td><%= user.likes.size() %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

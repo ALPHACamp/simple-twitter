@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-xs-3">
+      <div class="text-center">
+        <% if @user.avatar? %>
+          <%= image_tag @user.avatar, class: "img-responsive img-rounded" %>
+        <% else %>
+          <%= image_tag ("download.png"), class: "img-responsive img-rounded" %>
+        <% end %>
+      </div>
+      <div class="col-md-9 col-sm-8">
+        <h2>
+          <% if @user.name? %>
+            <%= @user.name %>
+          <% else %>
+            <%= @user.email.split('@').first %>
+          <% end %>
+        </h2>
+        <div><%= simple_format @user.introduction %></div>
+        <div class="link-items">
+          <a class="links" href="/users/<%= @user.id %>/tweets">Tweet(<%=@user.tweets.size()%>)</a>
+          <br>
+          <a class="links" href="/users/<%= @user.id %>/followings">Following(<%=@user.followings.size()%>)</a>
+          <br>
+          <a class="links" href="/users/<%= @user.id %>/followers">Follower(<%=@user.followers.size()%>)</a>
+          <br>
+          <a class="links" href="/users/<%= @user.id %>/likes">Like(<%=@user.liked_tweets.size()%>)</a>
+        </div>  
+        <br>       
+        <% if @user.email == current_user.email %>
+          <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
+        <% elsif current_user.following?(@user)%>
+          <%= link_to 'Unfollow', followship_path(@user), method: :delete, class: "btn btn-info" %>
+        <% else %>
+          <%= link_to 'Follow', followships_path(following_id: @user), method: :post, class: "btn btn-primary" %>
+        <% end %>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+
+    <div class="col-xs-8 col-xs-offset-1">
+      <% @user.tweets.each do |tweet| %>
+        <div class="tweet-item row">
+          <div class="col-xs-3">
+            <% if @user.avatar? %>
+              <%= image_tag @user.avatar, class: "img-responsive img-rounded" %>
+            <% else %>
+              <%= image_tag (asset_path("download.png")), class: "img-responsive img-rounded" %>
+            <% end %>
+          </div>
+          <div class="col-xs-9">
+            <p>
+              <% if tweet.user.name? %>
+                <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
+              <% else %>
+                <%= link_to tweet.user.email.split('@').first, tweets_user_path(tweet.user) %>
+              <% end %>   
+            <em><%= time_ago_in_words(tweet.created_at) %> ago -</em>
+            </p>
+            <p><%= tweet.description %></p>
+          </div>
+          <div class="col-xs-9 col-xs-offset-3">
+            <%= link_to 'Reply' %>(<%= tweet.replies.size() %>)
+            <% if tweet.is_liked?(current_user) %>
+              <%= link_to 'Unlike', unlike_tweet_path(tweet), method: :post %>
+            <% else %>
+              <%= link_to 'Like', like_tweet_path(tweet), method: :post %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    
+  </div>
+</div>
