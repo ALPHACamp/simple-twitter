@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def edit
     if @user == current_user
-      redirect_to user_path(@user)
+      render  :action => :edit
     else
       redirect_to tweets_user_path(@user)
     end
