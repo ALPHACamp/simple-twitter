@@ -41,7 +41,7 @@
     </div>
     
     <div class="col-xs-8 col-xs-offset-1">
-      <% @user.liked_tweets.each do |tweet| %>
+      <% @likes.each do |tweet| %>
         <div class="tweet-item row">
           <div class="col-xs-3">
             <% if @user.avatar? %>
