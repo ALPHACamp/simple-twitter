@@ -1,0 +1,99 @@
+.nav-pills-center {
+  text-align: center;
+}
+
+.nav-pills-center > li {
+  float: none;
+  display: inline-block;
+
+}
+
+.tweet-item {
+  border: 2px solid lightgray;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.user-item {
+  border: 2px solid lightgray;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+.tweet-item {
+  border: 2px solid lightgray;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.tweets-form {
+  margin-bottom: 20px;
+}
+
+.nav-avatar a{
+  width: 50px;
+  height: 50px;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+.row {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.col-xs-12 {
+    width: 100%;
+}
+
+.col-xs-3 {
+  width: 25%;
+}
+
+.col-xs-9 {
+  width: 75%;
+}
+
+.col-xs-offset-1 {
+  margin-left: 8.3333333333%;
+}
+
+.col-xs-8 {
+  width: 66.6666666667%;
+}
+
+.col-xs-12 {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+div {
+  display: block;
+}
+
+div.inline {
+  display: inline-block;
+}
+
+li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+
+td, th {
+  display: table-cell;
+}
+
+.link-items {
+  text-align: left;
+}
+
+.edit_user img {
+  width: 150px;
+  margin: 100px;
+}
