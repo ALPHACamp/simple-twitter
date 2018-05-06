@@ -6,7 +6,7 @@
       </div>
       <div class="col-md-8">
         <h4><%= link_to user.name, tweets_user_path(user) %></h4>
-        <p><%= simple_format user.introduction %></p>
+        <%= simple_format truncate(user.introduction, length: 50) %>
         <!--使用新增追蹤按鈕的prtial-->  
         <%= render partial: "shared/follow", locals:{user:user} %>
       </div>
@@ -14,3 +14,4 @@
     </div>
   </div>
 <% end %>
+

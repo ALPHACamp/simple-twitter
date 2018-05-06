@@ -8,23 +8,27 @@
       <div class="col-md-8">
         <h2>Following</h2>
         <% @followings.each do |following| %>
-          <div class="user-item">
-            <div class="row">
-              <div class="col-md-4">
-                <%= image_tag following.avatar, class: "img-responsive" %>
+          <div class="col-md-6">
+            <div class="user-item">
+              <div class="row">
+                <div class="col-md-4">
+                  <%= image_tag following.avatar, class: "img-responsive" %>
+                </div>
+                <div class="col-md-8">
+                  <h4><%= link_to following.name, tweets_user_path(following) %></h4>
+                  <%= simple_format truncate(following.introduction, length: 50) %>
+                  <!--使用新增追蹤按鈕的prtial-->  
+                  <%= render partial: "shared/follow", locals:{user:following} %>
+                </div>   
               </div>
-              <div class="col-md-8">
-                <h4><%= link_to following.name, tweets_user_path(following) %></h4>
-                <p><%= simple_format following.introduction %></p>
-                <!--使用新增追蹤按鈕的prtial-->  
-                <%= render partial: "shared/follow", locals:{user:following} %>
-              </div>   
             </div>
           </div>
         <% end %>
-        <%= paginate @followings  %>
       </div>
-
+      
+      <div class="text-center">
+        <%= paginate @followings %>
+      </div>
     </div>
   </div>
 </div>
