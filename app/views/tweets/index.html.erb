@@ -1,0 +1,102 @@
+<% if @tweet.errors.present? %>
+  <ul>
+    <% @tweet.errors.each do |error, message| %>
+      <li> <%= "#{error.capitalize}  #{message}" %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-7">
+
+      <div class="col-xs-12 tweets-form">
+        <%= form_for @tweet do |f| %>
+          <div class="form-group">
+            <%= f.text_area :description, placeholder: "What's in your mind?", class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.submit class: "btn btn-primary", class: "pull-right btn btn-default my-btn btn-lg" %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="col-xs-12">
+        <table class="table table-striped table-bordered">
+          <tbody>
+            <% @tweets.each do |tweet| %>
+              <div class="tweet-item row">
+                <div class="col-xs-3">
+                  <% if tweet.user.avatar? %>
+                    <%= image_tag tweet.user.avatar, class: "img-responsive img-rounded" %>
+                  <% else %>
+                    <%= image_tag (asset_path("download.png")), class: "img-responsive img-rounded" %>
+                  <% end %>
+                </div>
+                <div class="col-xs-9">
+                  <% if tweet.user.name? %>
+                    <%= link_to tweet.user.name, tweets_user_path(tweet.user_id) %>
+                  <% else %>
+                    <%= link_to tweet.user.email.split('@').first, tweets_user_path(tweet.user_id) %>
+                  <% end %>
+                  <p class="text-muted">
+                    <em><%= time_ago_in_words(tweet.created_at) %> ago -</em>
+                  </p>
+                  <%= simple_format tweet.description %>
+                </div>
+                <div class="col-xs-9 col-xs-offset-3">
+                  <div id="reply" class="inline">
+                    <a class="links" href="/tweets/<%= tweet.id %>/replies">Reply(<%=tweet.replies.size()%>)</a>
+                  </div>
+                  <div id="tweet-id-214" class="inline">
+                    <% if tweet.is_liked?(current_user) %>
+                      <%= link_to 'Unlike', unlike_tweet_path(tweet), method: :post %>
+                    <% else %>
+                      <%= link_to 'Like', like_tweet_path(tweet), method: :post %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-xs-5">
+      <div class="popular col-xs-12">
+        <h2>Popular</h2>
+        <% @users.each do |user| %>
+          <div class="user-item row">
+            <div class="col-xs-4">
+              <% if user.avatar? %>
+                <%= image_tag user.avatar, class: "img-responsive img-rounded" %>
+              <% else %>
+                <%= image_tag (asset_path("download.png")), class: "img-responsive img-rounded" %>
+              <% end %>
+            </div>
+            <div class="col-xs-8">
+              <% if user.name? %>
+                <%= link_to user.name, tweets_user_path(user) %>
+              <% else %>
+                <%= link_to user.email.split('@').first, tweets_user_path(user) %>
+              <% end %>              
+              <br>
+              <%= simple_format user.introduction %>
+              <% if current_user.following?(user)%>
+                <%= link_to 'Unfollow', followship_path(user), method: :delete, class: "btn btn-info" %>
+              <% else %>
+                <%= link_to 'Follow', followships_path(following_id: user), method: :post, class: "btn btn-primary" %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+
+
