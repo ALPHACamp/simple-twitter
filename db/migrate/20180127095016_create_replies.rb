@@ -8,6 +8,6 @@ class CreateReplies < ActiveRecord::Migration[5.1]
       t.timestamps
     end
 
-    add_index :replies, [:tweet_id, :user_id]
+    add_index :replies, %i[tweet_id user_id]
   end
 end

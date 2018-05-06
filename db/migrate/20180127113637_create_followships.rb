@@ -6,6 +6,6 @@ class CreateFollowships < ActiveRecord::Migration[5.1]
       t.timestamps
     end
 
-    add_index :followships, [:user_id, :following_id]
+    add_index :followships, %i[user_id following_id]
   end
 end

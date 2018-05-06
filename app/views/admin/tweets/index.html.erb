@@ -1,0 +1,12 @@
+<h1>後台</h1>
+<ul>
+  <% @tweets.each do |t| %>
+  <li>
+    <%= t.name %>
+    <%= link_to 'Show', admin_restaurant_path(t) %>
+    <%= link_to 'Edit', edit_admin_restaurant_path(t) %>
+    <%= link_to 'Delete', admin_restaurant_path(t), method: :delete, data: {confirm:"Are you sure?"} %>
+  </li>
+  <% end %>
+</ul>
+<%= link_to 'New Tweet', new_admin_tweet_path %>

@@ -1,0 +1,6 @@
+<%= image_tag @user.avatar, width: '200px' %>
+<h2><%= @user.name %></h2>
+  <%= @user.introduction %>
+<% if @user == current_user %>
+  <%= link_to "Edit porfile", edit_user_path(@user), class: "btn btn-primary" %>
+  <% end %>
