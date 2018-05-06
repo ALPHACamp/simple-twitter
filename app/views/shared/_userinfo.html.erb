@@ -3,7 +3,7 @@
 <h5><%= @user.introduction %></h5>       
 <p>Tweet <%= @user.tweets.size %></p>
 <p><%= link_to "Following", followings_user_path %> <%= @user.followings.size %></p>
-<p>Follower  <%= @user.followers_count %></p>
+<p><%= link_to "Follower", followers_user_path %> <%= @user.followers_count %></p>
 <p>like</p>
 <% if @user.email == current_user.email %>
   <%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-primary" %>

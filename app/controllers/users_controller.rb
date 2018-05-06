@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :tweets, :followings]
+  before_action :set_user, only: [:show, :edit, :update, :tweets, :followings, :followers]
 
   def tweets
     @users = User.all
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def followers
-    @followers # 基於測試規格，必須講定變數名稱
+    @followers = @user.followers.page(params[:page]).per(6)
   end
 
   def likes
