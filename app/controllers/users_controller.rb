@@ -26,11 +26,11 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings = @user.followings.page(params[:page]).per(6)
+    @followings = @user.followings.order(created_at: :desc).page(params[:page]).per(6)
   end
 
   def followers
-    @followers = @user.followers.page(params[:page]).per(6)
+    @followers = @user.followers.order(created_at: :desc).page(params[:page]).per(6)
   end
 
   def likes
