@@ -1,0 +1,19 @@
+<div class="card mt-3">
+  <div class="card-body">
+    <div class="float-left w-25 pr-3 text-center">
+      <% if tweet.user.avatar? %>
+        <%= image_tag tweet.user.avatar, width: '125px', class: "img-fluid" %>
+      <% else %>
+        <i class="fas fa-user fa-5x img-thumbnail" ></i>
+      <% end %>
+    </div>
+    <div class="float-right w-75">
+      <h5 class="card-title">
+        <%= link_to tweets_user_path(tweet.user.id) do%>
+          @<%= tweet.user.name %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %>
+        <% end %>
+      </h5>
+         <p class="card-text"><%= tweet.description %></p>
+    </div>
+  </div>
+</div>

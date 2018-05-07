@@ -14,9 +14,9 @@
       <% end %>
     </div>
     <div id="tweets-list">
-      <% @tweets.each do |tweets| %>
-        <%#= render partial: "shared/tweet_card", locals: {tweet: tweet} %>
-        <%= tweets.description %>
+      <% @tweets.each do |tweet| %>
+        <%= render partial: "shared/tweets_list", locals: {tweet: tweet} %>
+        
       <% end %>
     </div>
   </div>
