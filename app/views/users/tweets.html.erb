@@ -1,10 +1,13 @@
-<% if current_user.avatar? %>
-    <%=  image_tag current_user.avatar,  width: '20px' ,class: " nav-link img-thumbnail img-fluid mb-3 " %>
-  <% else %>
-    <i class="fas fa-user fa-2x img-thumbnail" ></i>
- <% end %>
-<h2><%= @user.name %></h2>
-  <%= @user.introduction %>
-<% if @user == current_user %>
-  <%= link_to "Edit porfile", edit_user_path(@user), class: "btn btn-primary" %>
-  <% end %>
+<div class="row justify-content-center mt-5">
+  <div class="col-sm-3 col-12">
+    <%= render 'shared/user_profile' %>
+  </div>
+
+<div class="col-sm-9 col-12">
+    <div id="tweets-list">
+      <% @tweets.each do |tweet| %>
+        <%= render partial: "shared/tweet_card", locals: {tweet: tweet} %>
+      <% end %>
+    </div>
+  </div>
+</div>

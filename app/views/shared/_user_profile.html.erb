@@ -1,0 +1,13 @@
+<div class="ml-5 mt-3">
+<% if @user.avatar? %>
+    <%=  image_tag @user.avatar,  width: '250px' ,class: " nav-link img-thumbnail img-fluid mb-3 " %>
+  <% else %>
+    <i class="fas fa-user fa-10x img-thumbnail" ></i>
+ <% end %>
+<h2 class="tweet_color"><%= @user.name%></h2>
+  <%= @user.introduction %>
+<% if @user == current_user %>
+  <%= link_to "Edit porfile", edit_user_path(@user), class: "btn btn-primary" %>
+  <% end %>
+
+  </div>
