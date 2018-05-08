@@ -18,6 +18,58 @@ namespace :dev do
       user.save!
       puts user.name
     end
+
+    # Default admin
+    User.create(name: "Admin", email: "admin@example.com", password: "123456", introduction: FFaker::Lorem::sentence(30), role: "admin")
+    puts "Default admin created!"
   end
 
+  task fake_tweet: :environment do
+    Tweet.destroy_all
+
+    30.times do |i|
+      Tweet.create!(
+        description: FFaker::Lorem::paragraph[1..rand(1..140)],
+        user: User.all.sample
+      )
+    end
+    puts "now there are #{Tweet.count} tweets"
+  end
+
+  task fake_reply: :environment do
+    50.times do |i|
+      Reply.create!(
+        comment: FFaker::Lorem::paragraph[1..rand(1..140)],
+        user: User.all.sample,
+        tweet: Tweet.all.sample
+      )
+    end
+    puts "now there are #{Reply.count} replies"
+  end
+
+  task fake_like: :environment do
+    50.times do |i|
+      post = Tweet.all.sample
+      Like.create(
+        user: User.all.sample,
+        tweet: post
+      )
+      post.user.count_likes(true)
+    end
+    puts "now there are #{Like.count} likes"
+  end  
+
+  task fake_followship: :environment do
+    60.times do |i|
+      user1 = User.all.sample
+      user2 = User.all.sample
+      if user1 != user2
+        Followship.create(
+          user: user1,
+          following_id: user2.id
+        )
+      end
+    end
+    puts "now there are #{Followship.count} followships"
+  end
 end

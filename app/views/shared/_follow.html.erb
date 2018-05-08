@@ -1,0 +1,7 @@
+<% if object != current_user %>
+  <% if current_user.following?(object) %>
+    <%= link_to "Followed", followship_path(object), method: :delete, class: "btn btn-default followed-btn" %>
+  <% else %>
+    <%= link_to "Follow", followships_path(following_id: object), method: :post, class: "btn btn-default follow-btn" %>
+  <% end %>
+<% end %>

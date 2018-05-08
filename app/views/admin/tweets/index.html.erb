@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+
+    <h2 id="admin_panel_title">Admin Panel</h2>
+    <br>
+    <ul class="nav nav-tabs" id="admin_index_nav">
+      <li role="presentation" class="active">
+        <%= link_to 'Tweets', admin_tweets_path %>
+      </li>
+      <li role="presentation">
+        <%= link_to 'Users', admin_users_path %>
+      </li>
+    </ul>
+
+    <br>
+
+    <div class="col-md-8 col-md-offset-2"> 
+      <div class="col-md-12">   
+        <% @tweets.each do |tweet| %>
+          <%= render partial: "shared/tweet_list", locals: {object: tweet, flag: true} %>
+          <br>
+        <% end %> 
+      </div>   
+    </div>
+
+  </div>
+</div>
