@@ -7,6 +7,12 @@
       <div class="col-md-9">
         <h5><%= tweet.user.name %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></h5>
         <%= simple_format tweet.description %>
+        <% if tweet.is_liked?(current_user) %>
+          <%= link_to 'Unlike', unlike_tweet_path(tweet), method: :post %>
+        <% else %>  
+          <%= link_to 'Like', like_tweet_path(tweet), method: :post %>
+        <% end %>
+        (<%= tweet.likes_count %>)
       </div>
              
     </div>

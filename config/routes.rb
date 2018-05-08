@@ -9,7 +9,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :tweets, only: [:index, :create, :show, :edit, :update]
+  resources :tweets, only: [:index, :create, :show, :edit, :update] do
+    member do
+      post :like
+      post :unlike
+    end
+  end
 
   resources :followships, only: [:create, :destroy]
 
