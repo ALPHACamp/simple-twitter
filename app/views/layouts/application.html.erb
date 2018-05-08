@@ -12,7 +12,7 @@
 
 		<!-- 導覽列start -->
 
-<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #B1D2DE;">
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #B1D2DE">
 					<%= link_to ' LOGO '.html_safe, root_path, class: "navbar-brand ml-4" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -22,14 +22,14 @@
             <% if current_user %>
                 <%= link_to tweets_user_path(current_user) do %>
                 <% if current_user.avatar? %>
-            <%=  image_tag current_user.avatar,  width: '50px' ,class: " nav-link img-thumbnail img-fluid mb-3 " %>
+            <%=  image_tag current_user.avatar,  width: '50px' ,class: "img-thumbnail img-fluid mb-3 " %>
                 <% else %>
              <i class="fas fa-user fa-2x img-thumbnail nav-link" ></i>
                 <% end %>
             <% end %>
       						<% if current_user %>
 					<!-- <li><%= link_to'Profile', tweets_user_path(current_user) %></li> -->
-						<li class="navbar-text">Hi, <%= current_user.email  %></li>
+						<li class="navbar-text"> &nbsp; Hi, <%= current_user.email  %></li>
 						<li class="nav-item"><%= link_to('登出', destroy_user_session_path, method: :delete,class:"nav-link") %></li>      
               <% if current_user.admin? %>
                 <li class="nav-item"><%= link_to '<i class="fa fa-user-plus" aria-hidden="true"></i> Admin後台'.html_safe, admin_tweets_path,class:"nav-link" %></li>
