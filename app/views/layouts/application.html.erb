@@ -6,23 +6,61 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= filestack_js_include_tag %>
+    <%= filestack_js_init_tag %> 
   </head>
 
   <body>
-    <% if current_user %>
-      <% if current_user&.admin? %>
-        <li><%= link_to 'Admin Panel', admin_restaurants_path %></li>
-      <% end %>
-      <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
-      <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
-      <li><%= link_to('修改個人資料', edit_user_path(current_user)) %></li>
-      <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
-    <% else %>
-      <li><%= link_to('註冊', new_user_registration_path) %></li>
-      <li><%= link_to('登入', new_user_session_path) %></li>
+    <nav class="navbar navbar-default">
+      <div "collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <%= link_to 'SimpleTwitter',root_path,class: "navbar-brand"%>
+        <ul class="pull-right text-right nav navbar-nav">
+          <% if current_user %>
+            <% if current_user&.admin? %>
+              <li><%= link_to 'Admin Panel', admin_root_path %></li>
+            <% end %>
+            <li>
+              <div class="user-layouts-item">
+                <%= link_to tweets_user_path(current_user) do %>
+                  <% if current_user.avatar? %>
+                    <%= image_tag(current_user.avatar, class: "img-rounded") %>
+                  <% else %>
+                    <%= image_tag "fallback/avatar.png",
+                      class: "img-rounded" %>
+                  <% end %>
+                <% end %>
+              </div>
+            </li>
+            <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
+            <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
+          <% else %>
+            <li><%= link_to('註冊', new_user_registration_path) %></li>
+            <li><%= link_to('登入', new_user_session_path) %></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+    <% if flash[:notice] %>
+    <div class="container">
+      <div class="row">
+        <div class="alert alert-success alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <%= notice %>
+        </div>
+      </div>
+    </div>
     <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+
+    <% if flash[:alert] %>
+    <div class="container">
+      <div class="row">
+        <div class="alert alert-danger alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <%= alert %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+      <%= yield %>
   </body>
 </html>

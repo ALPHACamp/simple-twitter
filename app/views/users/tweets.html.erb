@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="col-md-12 col-sm-12">
+        <%= render partial: "shared/user", locals: {user: @user} %>
+      </div>
+    </div>
+
+
+    <div class="col-md-8">
+      <% @tweets.each do |tweet| %>
+      <div class="tweets">
+        <% if tweet.user.avatar? %>
+          <%= image_tag(tweet.user.avatar, class: "img-rounded") %>
+          <% else %>
+          <%= image_tag "fallback/avatar.png", class: "img-rounded" %>
+        <% end %>
+        <ul class="list-inline">
+          <li class="list-inline-item"><h4><%= link_to "#{tweet.user.name}" , tweets_user_path(tweet.user)%></h4></li>
+          <li class="list-inline-item"><em><%= time_tag(tweet.created_at) %></em></li>
+        </ul>
+        <p><%= simple_format tweet.description %></p>
+        <h4 class="text-muted">
+          <%= link_to "Reply (#{tweet.replies.count})" ,tweet_replies_path(tweet) %>
+          <% if tweet.liked?(current_user) %>
+            <%= link_to "Unlike (#{tweet.likes_count})", unlike_tweet_path(tweet), method: :post ,style:"color:red;" %>
+            <% else %>
+            <%= link_to "Like (#{tweet.likes_count})", like_tweet_path(tweet), method: :post ,style:"color:red;" %>
+          <% end %>
+        </h4>
+      </div>
+      <hr>
+      <% end %>      
+    </div>
+  </div>
+</div>

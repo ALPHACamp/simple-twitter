@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Twitter 後台</h1>
+      <div>
+        <%= link_to 'Tweet', admin_tweets_path %> |
+        <%= link_to 'Users', admin_users_path %>
+      </div>
+      <br>
+      <% @tweets.each do |tweet| %>
+      <div class="tweets">
+        <ul class="list-inline">      
+          <li class="list-inline-item"><h4><%= link_to tweet.user.name ,tweets_user_path(tweet.user) %></h4></li>
+          <li class="list-inline-item"><p class="text-muted">
+            <em><%= time_ago_in_words(tweet.created_at) %> ago -</em></p></li>
+          <li class="list-inline-item"><%= link_to "Delete", admin_tweet_path(tweet), method: :delete, data: { confirm: "Are you sure?"} %></li>
+        </ul>
+        <p><%= simple_format tweet.description %></p>
+        <h4 class="text-muted">
+          <%= link_to "Reply (#{tweet.replies.count})" ,tweet_replies_path(tweet) %>
+          <% if tweet.liked?(current_user) %>
+            <%= link_to "Unlike (#{tweet.likes_count})", unlike_tweet_path(tweet), method: :post ,style:"color:red;" %>
+            <% else %>
+            <%= link_to "Like (#{tweet.likes_count})", like_tweet_path(tweet), method: :post ,style:"color:red;" %>
+          <% end %>
+        </h4>
+      </div>
+      <br>
+      <% end %>
+    </div>
+  </div>
+</div>

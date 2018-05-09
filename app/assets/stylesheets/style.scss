@@ -1,0 +1,106 @@
+.navbar-default {
+  background-color: #BAD3DC;
+  border-color: #E7E7E7;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #000;
+}
+
+.btn-primary{
+  color: #000;
+  font-size:16px;
+}
+
+.btn-default{
+  font-size:16px;  
+}
+
+.user-item {
+  margin-bottom: 15px;
+}
+
+.user-item img {
+  width: 128px;
+  height: 128px;
+}
+
+.user-tweet-item {
+  margin-bottom: 8px;
+}
+
+.user-tweet-item img {
+  width: 250px;
+  height: 250px;
+}
+
+h2{
+  color:#286E86;
+}
+
+.user-layouts-item img{
+
+  width: 50px;
+  height: 50px;
+}
+
+.tweets {
+  border:1px #ccc solid;
+  padding:20px;
+  border-radius: 10px;
+  margin: 0 10px 0 0;
+}
+
+.tweets img{ 
+  width: 110px;
+  height: 110px;
+  float:left;
+  margin: 0 10px 0 0;
+}
+
+a:link,a:visited,a:hover{
+  text-decoration:none;
+}
+
+
+
+.user-text {
+  border:1px #ccc solid;
+  padding:10px 20px;
+  border-radius: 10px;
+  margin: 10px 10px 0 0; 
+  width: 350px;
+  height: 300px;
+}
+
+.user-text img {
+  width: 70px;
+  height: 70px;
+  float:left;
+  margin: 0 10px 0 0;
+}
+
+
+.botton{
+  text-align: right;
+}
+
+
+.replies {
+  border:1px #ccc solid;
+  padding:20px;
+  padding-bottom:45px;
+  border-radius: 10px;
+  margin: 0 10px 0 0;
+}
+
+.replies img{ 
+  width: 110px;
+  height: 110px;
+  float:left;
+  margin: 0 10px 0 0;
+}
+
+.user-list{
+  color:#3c3c3c;
+}
