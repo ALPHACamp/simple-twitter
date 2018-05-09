@@ -10,63 +10,65 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_180_201_102_838) do
-  create_table 'followships', force: :cascade do |t|
-    t.integer 'user_id'
-    t.integer 'following_id'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index %w[user_id following_id], name: 'index_followships_on_user_id_and_following_id'
+ActiveRecord::Schema.define(version: 20180201102838) do
+
+  create_table "followships", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "following_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "following_id"], name: "index_followships_on_user_id_and_following_id"
   end
 
-  create_table 'likes', force: :cascade do |t|
-    t.integer 'user_id'
-    t.integer 'tweet_id'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index %w[user_id tweet_id], name: 'index_likes_on_user_id_and_tweet_id'
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "tweet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "tweet_id"], name: "index_likes_on_user_id_and_tweet_id"
   end
 
-  create_table 'replies', force: :cascade do |t|
-    t.text 'comment'
-    t.integer 'tweet_id'
-    t.integer 'user_id'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index %w[tweet_id user_id], name: 'index_replies_on_tweet_id_and_user_id'
+  create_table "replies", force: :cascade do |t|
+    t.text "comment"
+    t.integer "tweet_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tweet_id", "user_id"], name: "index_replies_on_tweet_id_and_user_id"
   end
 
-  create_table 'tweets', force: :cascade do |t|
-    t.text 'description'
-    t.integer 'user_id'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.integer 'replies_count', default: 0
-    t.integer 'likes_count', default: 0
-    t.index ['user_id'], name: 'index_tweets_on_user_id'
+  create_table "tweets", force: :cascade do |t|
+    t.text "description"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "replies_count", default: 0
+    t.integer "likes_count", default: 0
+    t.index ["user_id"], name: "index_tweets_on_user_id"
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'email', default: '', null: false
-    t.string 'encrypted_password', default: '', null: false
-    t.string 'reset_password_token'
-    t.datetime 'reset_password_sent_at'
-    t.datetime 'remember_created_at'
-    t.integer 'sign_in_count', default: 0, null: false
-    t.datetime 'current_sign_in_at'
-    t.datetime 'last_sign_in_at'
-    t.string 'current_sign_in_ip'
-    t.string 'last_sign_in_ip'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.string 'name', default: '', null: false
-    t.string 'avatar'
-    t.text 'introduction'
-    t.integer 'likes_count', default: 0
-    t.string 'role', default: 'normal'
-    t.integer 'followers_count', default: 0
-    t.index ['email'], name: 'index_users_on_email', unique: true
-    t.index ['name'], name: 'index_users_on_name', unique: true
-    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name", default: "", null: false
+    t.string "avatar"
+    t.text "introduction"
+    t.integer "likes_count", default: 0
+    t.string "role", default: "normal"
+    t.integer "followers_count", default: 0
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["name"], name: "index_users_on_name", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
 end
