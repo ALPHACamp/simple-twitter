@@ -1,0 +1,19 @@
+<div class="tweet-item row">
+  <% @tweets.each do |tweet|%>
+    <div class="col-xs-3 avatar">
+      <%= image_tag tweet.user.avatar, width: "70%"%>
+    </div>
+    <div class="col-xs-9 tweet">
+      <p>
+        <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
+        <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %>
+      </p>
+      <p><%= tweet.description %></p>
+      <div class="reply">
+        <%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet) %>
+        <%= render "shared/like", :tweet => tweet %>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  <% end %>
+</div>

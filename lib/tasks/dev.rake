@@ -18,6 +18,28 @@ namespace :dev do
       user.save!
       puts user.name
     end
+    file = File.open("#{Rails.root}/public/avatar/user21.png")
+    User.create(
+      email: "admin@mail.com",
+      password: "admin@mail.com",
+      name: "Admin",
+      introduction: FFaker::Lorem::sentence(30),
+      avatar: file,
+      role: "admin"
+    )
+    puts "create user admin"
+  end
+
+  task fake_tweet: :environment do 
+    Tweet.destroy_all
+    User.all.each do |user|
+      rand(3).times do 
+        user.tweets.create(
+          description: FFaker::Lorem::sentence(10)
+        )
+      end
+    end
+    puts "create tweets"
   end
 
 end
