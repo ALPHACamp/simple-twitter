@@ -17,7 +17,7 @@ class RepliesController < ApplicationController
     
     if @reply.save
       flash[:notice] = "Reply was successfully created"
-      redirect_to tweet_replies_path(@replies.first.tweet)
+      redirect_to tweet_replies_path(@tweet)
     else
       flash.now[:alert] = "Reply can't be blank or longer than 140 characters"
       render :index
