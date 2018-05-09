@@ -1,0 +1,58 @@
+<!-- Reply page -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-2">
+      
+
+      <%= render partial: "shared/user_section", locals: {user: @tweet.user} %>
+    </div>
+
+    <div class="col-xs-9 col-xs-offset-1">
+      <h3>Tweets</h3>
+      <div class="row">
+        <div class="col-xs-offset-1">
+          <%= render partial: "shared/tweet_list", locals: {tweet: @tweet }  %>
+        </div>
+      </div>
+
+      <h3> Replies </h3>
+      <div class="row">
+        <div class="col-xs-offset-1">
+          <% @replies.each do |reply| %>
+            <div class="tweet-item">
+              <div class="row">
+                <div  class="col-xs-2 tweet-item-img">  
+                  <%= link_to tweets_user_path(reply.user) do %>
+                    <%= image_tag reply.user.avatar, class: "img-responsive center-block img-rounded" %>
+                  <% end %>
+                </div>
+
+                <div class="col-xs-10">
+                  <div class="caption">
+                    <h5><%= link_to reply.user.name, tweets_user_path(reply.user) %>, <%= "#{reply.created_at}".split(" ").first %>, <%= "#{reply.created_at}".split(" ").second %>  </h5>
+                    <p><%= simple_format reply.comment %></p>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+
+          <%= form_for [@tweet, @reply] do |f| %>
+            <div class="form-group">
+              <%= f.text_area :comment, placeholder: "", class: "form-control tweet-form", rows: "5" %>
+            </div>
+
+            <% if @reply.errors.any? %>
+              <%= @reply.errors.full_messages.to_sentence %>
+            <% end %>
+            <div class="form-group tweet-btn">
+              <%= f.submit "Reply", class: "btn btn-primary" %>
+            </div>
+            <div class="clearfix"></div>
+          <% end %>
+        </div>    
+      </div>
+    </div>
+  </div>
+</div>
