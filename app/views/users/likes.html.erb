@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="col-md-offset-1">
+    <div class="row">
+      <div class="col-md-3">
+        <%= render partial: "shared/userinfo" %>         
+      </div>
+
+      <div class="col-md-8">
+        <h2>Like</h2>
+        <% @likes.each do |like| %>
+          <div class="tweet-item">
+            <div class="row">
+              <div class="col-md-3">
+                <%= image_tag like.tweet.user.avatar, class: "img-responsive" %>
+              </div>
+              <div class="col-md-9">
+                <h5><%= like.tweet.user.name %>, <%= like.tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></h5>
+                <%= simple_format like.tweet.description %>
+                <% if like.tweet.is_liked?(current_user) %>
+                  <%= link_to 'Unlike', unlike_tweet_path(like), method: :post %>
+                <% else %>  
+                  <%= link_to 'Like', like_tweet_path(like), method: :post %>
+                <% end %>
+                (<%= like.tweet.likes_count %>)
+              </div>
+                     
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
