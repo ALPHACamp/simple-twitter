@@ -1,0 +1,11 @@
+<%= image_tag user_avatar(tweet.user), width: "100px" %>
+<h4><%= link_to tweet.user.name, tweets_user_path(tweet.user) %>, <p><%= tweet.created_at %></p></h4>
+<p><%= tweet.description %></p>
+<%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet) %>
+<%= render partial: "shared/like", locals: { tweet: tweet } %>
+<% if current_user.admin? %>
+  <%= link_to admin_tweet_path(tweet), method: :delete,
+  data: { confirm: "Are you sure?" }  do %>
+    <span class="glyphicon glyphicon-trash"></span>
+  <% end %>
+<% end %>

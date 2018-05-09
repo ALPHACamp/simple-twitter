@@ -1,0 +1,14 @@
+<div class="show-user-profile-page">
+  <div class="user-profile">
+    <%= render partial: "shared/profile", locals: { user: @user } %>
+  </div>
+
+  <div>
+    <h3>Following</h3>
+    <div class="user-follow-page">
+      <% @followings.each do |following| %>
+        <%= render partial: "shared/users", locals: { user: following.following } %>
+      <% end %>
+    </div>
+  </div>
+</div>

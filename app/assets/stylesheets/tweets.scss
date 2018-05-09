@@ -1,3 +1,116 @@
 // Place all the styles related to the tweets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*tweets#index*//////////////////////////////////////////////////////
+#tweets-index {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 68% 30%;
+  grid-template-rows: 170px auto;
+  grid-row-gap: 10px;
+  grid-column-gap: 20px;
+}
+
+#new-tweet {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+
+#recent-tweet {
+  grid-column: 1/2;
+  grid-row: 2/-1;
+}
+
+#popular {
+  grid-column: 2/-1;
+  grid-row: 1/-1;
+}
+
+
+/*new tweet*///////////////////////////////////////////////////////
+#new-tweet form textarea {
+  resize: none;
+  border: 2px #99D1F5 solid;
+  height: 120px;
+}
+
+#new-tweet form input[type=submit] {
+  background-color: #87CEFA;
+  color: #444444;
+  font-weight: bold;
+  float: right;
+  margin-top: 10px;
+  width: 80px;
+}
+
+/*recent tweets*////////////////////////////////////////////////////////
+.tweet-box {
+  border: 1px #AAAAAA solid;
+  border-radius: 7px;
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 25% 10% 10% 50% 5%;
+  grid-template-rows: 1fr 2fr 1fr;
+  background-color: white;
+}
+
+/*#popular*////////////////////////////////////////////////////////////
+#popular > h3 {
+  color: #666666;
+}
+
+#popular > div {
+  border-left: 2px #DDDDDD solid;
+}
+
+/*_tweets*////////////////////////////////////////////////////////////////
+.tweet-box img {
+  grid-column: 1/2;
+  grid-row: 1/-1;
+  margin: 12px 12px;
+}
+
+.tweet-box h4 {
+  grid-column: 2/-1;
+  grid-row: 1/2;
+  height: 20px;
+  margin-bottom: 0px;
+}
+
+.tweet-box h4 a {
+  text-decoration: none;
+}
+
+.tweet-box h4 p {
+  display: inline-block;
+  font-size: 14px;
+}
+
+.tweet-box p {
+  grid-column: 2/-1;
+  grid-row: 2/3;
+  word-wrap:break-word;
+  margin-right: 10px;
+}
+
+.tweet-box > a {
+  text-decoration: none;
+}
+
+.tweet-box a:nth-child(5) {
+  color: #FF4500;
+}
+
+.tweet-box a:nth-child(5):hover {
+  color: #B22222;
+}
+
+.tweet-box a:nth-child(6) {
+  grid-column: 5/-1;
+  color: #696969;
+}
+
+.tweet-box a:nth-child(6):hover {
+  color: #C0C0C0;
+}

@@ -1,3 +1,55 @@
 // Place all the styles related to the replies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*reply box*///////////////////////////////////////////
+.reply-box {
+  display: grid;
+  grid-template: 20% 1fr / 25% 75%;
+  background-color: white;
+  border: 1px #AAAAAA solid;
+  border-radius: 7px;
+  margin-top: 10px;
+}
+
+.reply-box img {
+  grid-column: 1/2;
+  grid-row: 1/-1;
+  margin: 12px 12px;
+}
+
+.reply-box h4 {
+  grid-column: 2/-1;
+  grid-row: 1/2;
+  height: 25px;
+  margin-bottom: 0;
+}
+
+.reply-box h4 a {
+  text-decoration: none;
+}
+
+.reply-box h4 p {
+  display: inline-block;
+  font-size: 14px;
+}
+
+.reply-box > p {
+  grid-column: 2/-1;
+  grid-row: 2/-1;
+  word-wrap:break-word;
+  margin-right: 10px;
+}
+
+/*reply form*////////////////////////////////////////////
+#reply-form textarea {
+  resize: none;
+  border: 2px #99D1F5 solid;
+  height: 120px;
+  margin-top: 20px;
+}
+
+#reply-form .reply-btn {
+  float: right;
+  margin-top: 10px;
+}
