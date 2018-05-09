@@ -1,0 +1,13 @@
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="float-right w-75">
+
+          <%= render partial:"shared/avatar", locals:{avatar: user.avatar} if user.avatar? %>
+          <%= link_to user.name, tweets_user_path(user) %>
+          <%= truncate user.introduction, length: 140 %>
+          <%= render partial: "shared/follow", locals: { user: user } %>
+
+
+    </div>
+  </div>
+</div>

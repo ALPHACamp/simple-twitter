@@ -1,0 +1,100 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+* {
+  font-family: 'Lato', monospace;
+}
+a:hover {
+  text-decoration: none;
+}
+nav.navbar {
+  border-style: solid;
+  color: white;
+}
+.tweets-form {
+  border-style: solid;
+  margin-bottom: 50px;
+}
+
+.navbar-title {
+  border-style: solid;
+  text-align: center;
+  color: white;
+  font-size: 2em;
+  padding: 5px;
+  margin-top: 0px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.navbar-box {
+  text-align: left;
+  font-size: 1em;
+  padding: 5px;
+  margin-top: 0px;
+
+}
+
+.blue {
+  text-align: center;
+  font-size: 3em;
+  padding: 5px;
+  margin-top: 0px;
+
+}
+
+.navbar-nav {
+  border-style: hidden;
+  li {
+    a.nav-avatar {
+      padding: 10px;
+    }
+    a {
+      padding: 15px 10px;
+      font-size: 1.2em;
+    }
+  }
+}
+
+.tweet-item {
+  border: 4px solid lightblue;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.popular {
+  border: 4px solid CornflowerBlue;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.tweets {
+  border: 4px solid CornflowerBlue;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.users {
+  border: 0px solid;
+  padding: 5px;
+  margin-bottom: 15px;
+  display : inline-block
+}
+
+
+

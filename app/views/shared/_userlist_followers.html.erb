@@ -1,0 +1,16 @@
+<div class="userListFollower clearfix">
+<div>
+       <%= render partial: "shared/avatar", locals: {avatar: user.avatar} if user.avatar? %>
+      </div>
+  <div class="col-xs-8">
+    <%= link_to tweets_user_path(user) do%>
+    <h4 class="userListFollower-name">
+      @<%= user.name %>
+    </h4>
+    <%end%>
+    <div class="userListFollower-intro"><%= user.introduction %></div>
+    <div class= "u-floatright">
+      <%= render partial: "shared/follow" ,locals:{user:user}%>
+    </div>
+  </div>
+</div>

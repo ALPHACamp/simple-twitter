@@ -1,0 +1,17 @@
+
+<div >
+<%= render partial: "shared/profile", locals: { user: @tweet.user } %>
+</div>
+  <div class="tweets">
+  <h1>Tweets</h1>
+  <%= render partial: "shared/message", locals: { message: @tweet, message_content: @tweet.description, message_btn: true } %>
+  </div>
+  <h1>Replies</h1>
+  <% @replies.each do |reply| %>
+     <%= render partial: "shared/message", locals: { message: reply, message_content: reply.comment, message_btn: false } %>
+  <% end %>
+</div>
+<%= form_for [@tweet, @reply] do |f| %>
+  <%= f.text_area :comment %>
+  <%= f.submit "Reply", :disable_with => 'Replying...' %>
+<% end %>

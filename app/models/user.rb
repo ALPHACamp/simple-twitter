@@ -10,5 +10,27 @@ class User < ApplicationRecord
   # 並參考 Devise 文件自訂表單後通過 Strong Parameters 的方法
   validates_presence_of :name
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
+  validates_uniqueness_of :name
+  # 「使用者評論」的多對多關聯
+  has_many :tweets, dependent: :delete_all
+  has_many :replies, dependent: :delete_all
+  # 「使用者likes」的多對多關聯
+  has_many :likes, dependent: :delete_all
+  has_many :like_tweets, through: :likes, source: :tweet
+  # 「使用者追蹤」的多對多關聯
+  has_many :followships, dependent: :destroy
+  has_many :followings, through: :followships
+  has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
+  has_many :followers, through: :inverse_followships, source: :user
+
+  def admin?
+    self.role == "admin"
+  end
+
+  def following?(user)
+    self.followings.include?(user)
+  end
+
+
 
 end

@@ -1,0 +1,46 @@
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-md-12">
+      <%= link_to "User List", admin_users_path, class: "nav-link active" %>
+      <%= link_to "Tweets", admin_tweets_path, class: "nav-link active" %>
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col-xs-2">Description</th>
+            <th scope="col">replies</th>
+            <th scope="col">Likes</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tweets.each do |tweet| %>
+          <tr>
+            <td ><%= tweet.id %></td>
+
+            <td><%= link_to tweet.user.name, tweets_user_path(tweet.user) %></td>
+            <td ><%= tweet.description %></td>
+            <td>
+              <% tweet.replies.each do |reply| %>
+                <li><%= reply.comment %></li>
+              <% end %>
+            </td>
+            <td><%= tweet.likes_count %></td>
+            <td>
+              <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: { confirm: "Are you sure?"} %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+
+    </div>
+<%= render partial: "shared/backhome" %>
+  </div>
+
+
+
