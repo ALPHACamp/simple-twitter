@@ -1,0 +1,47 @@
+
+<div class="row">
+  <div class="col-xs-3">
+    <%= render partial: "shared/user_profile" %>
+  </div>
+  <div class="col-xs-8 col-xs-offset-1">
+    <div class="tweets col-xs-12">
+      <h2>Tweets</h2>
+      <div class="col-xs-3 avatar">
+        <!-- <img src="http://via.placeholder.com/150x150" class="img-responsive img-rounded"> -->
+        <%= image_tag @user.avatar, width: "75%"%>
+      </div>
+      <p class="user-name"><%= link_to @user.name, tweets_user_path(@user) %></p>
+      <p><%= @tweet.description %></p>
+      <%= "Reply(#{@tweet.replies_count})" %>
+      <%= render "shared/like", :tweet => @tweet %>
+    </div>
+
+    <div class="col-xs-12">
+      <h2>Replies</h2>
+      <div id="replies">
+      <% @replies.each do |reply| %>
+        <div class="col-xs-2">
+        <!-- <img src="http://via.placeholder.com/150x150" class="img-responsive img-rounded"> -->
+        <%= image_tag current_user.avatar, width: "40%"%>
+        </div>
+        <div class="col-xs-10">
+        <p class="user-name"><%= reply.user.name %></p>
+        <p><%= reply.created_at.strftime("%Y-%m-%d, %H:%M") %></p>
+        <p><%= simple_format(reply.comment) %></p>
+        </div>
+      <% end %>
+      </div>
+    </div>
+    <%= form_for [@tweet, @reply], remote: true do |f| %>
+      <div class="form-group">
+        <%= f.text_area :comment, class: "form-control text-area" %>
+      </div>
+      <div class="form-group pull-right">
+        <%= f.submit "Reply", :disable_with => 'Replying...' , remote: true, class: "btn btn-default my-btn btn-lg"%>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+

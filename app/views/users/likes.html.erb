@@ -1,0 +1,19 @@
+  <div class="row">
+    <div class="col-md-3 col-md-offset-1">
+      <%= render partial: "shared/user_profile", loclas: {user: @user} %>    
+    </div>
+    
+    <div class="col-md-8">
+      <div class="tweets col-xs-12">
+      <h2>Likes</h2>
+      <%= render partial: "shared/tweets", locals:{tweets: @likes} %>
+      </div>
+    </div>
+
+  </div>
+
+
+  
+
+
+

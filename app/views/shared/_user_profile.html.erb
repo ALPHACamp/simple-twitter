@@ -1,0 +1,25 @@
+
+
+<div class="profile">
+  <!-- <img src="http://via.placeholder.com/150x150" class="img-responsive img-rounded"> -->
+  <%= image_tag @user.avatar, class: "img-responsive img-rounded", width: "75%" %>
+  <p class="user-name"><%= link_to @user.name, tweets_user_path(@user) %></p>
+  <div class="intro">
+    <%= truncate @user.introduction, length: 200 %>
+  </div>
+  <div class="link-items">
+    <%= link_to "Tweets(#{@user.tweets.count})", tweets_user_path(@user), class: "links links-black" %><br/>
+    <%= link_to "Following(#{@user.followings.count})", followings_user_path(@user), class: "links links-black" %><br/>
+    <%= link_to "Follower(#{@user.followers.count})", followers_user_path(@user), class: "links links-black" %><br/>
+    <%= link_to "Like(#{@user.likes.count})", likes_user_path(@user), class: "links links-black" %>
+  </div>
+  <div class="button">
+    <%= render partial: "shared/follow", locals: {user: @user}%>
+  </div>
+</div>
+
+
+
+
+
+
