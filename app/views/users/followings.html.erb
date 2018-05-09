@@ -1,0 +1,26 @@
+<div class="row">
+   <div class="col-md-3">
+     <%= render partial: "shared/profile", locals: { user: @user } %>
+   </div>
+   <div class="col-md-8 col-md-offset-1">
+     <div class="tweets row">
+       <h2>Followings</h2>
+       <% @followings.each_with_index do |following, index| %>
+         <div class="col-md-6 follow-item">
+
+           <div class="col-md-4">
+                 <%= image_tag following.avatar, width: "100%"  if following.avatar? %>
+               </div>
+               <div class="col-md-8">
+                 <%= link_to following.name, tweets_user_path(following) %><br/>
+
+                <%= truncate following.introduction, length: 80 %>
+               </div>
+
+           <%= render partial: "shared/followship", locals: { user: following } %>
+         </div>
+
+       <% end %>
+     </div>
+   </div>
+ </div>

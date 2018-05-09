@@ -1,0 +1,114 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+ */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+ @import "bootstrap/theme";  // this is optional
+ @import "style";
+
+
+ a:hover {
+    text-decoration: none;
+  }
+  nav.navbar {
+    background-color: #b1d2df;
+  }
+
+  .navbar-brand {
+    color: black;
+    font-size: 3em;
+    padding: 10px;
+    margin-top: 15px;
+  }
+  .navbar-nav {
+    li {
+      a.nav-avatar {
+        padding: 10px;
+      }
+      a {
+        padding: 25px 10px;
+        font-size: 1.5em;
+       }
+     }
+   }
+
+  .nav-tabs {
+    margin-bottom: 20px;
+  }
+
+
+.items {
+display: inline-block
+
+}
+
+
+    .tweets-form {
+      margin-bottom: 20px;
+    }
+   .tweet-item {
+     border: 2px solid lightgray;
+     padding: 10px;
+     margin-bottom: 15px;
+   }
+   .follow-item {
+     border: 2px solid lightgray;
+     padding: 10px;
+     margin-bottom: 15px;
+   }
+   .user-item {
+     border: 2px solid lightgray;
+     padding: 10px;
+     margin-bottom: 30px;
+   }
+
+   .user-name {
+     text-align: center;
+     font-size: 2.5em;
+     color:lightblue;
+   }
+
+   .my-btn {
+     background-color: #71a6d0;
+   }
+
+   .my-btn:hover {
+     background-color: lightblue;
+   }
+
+   .links {
+     font-size: 1.2em;
+   }
+   .links-red {
+     color: red;
+   }
+   .links-red:hover {
+     color: red;
+   }
+   .links-black {
+     color: black;
+   }
+   textarea.text-area {
+     font-size: 1.5em;
+     height: 8em;
+     border-radius: 20px;
+     padding: 20px;
+     border-color: #b6d6e4;
+   }
+
+   .text-field {
+     font-size: 1.5em;
+     border-radius: 5px;
+     border-color: #b6d6e4;
+   }

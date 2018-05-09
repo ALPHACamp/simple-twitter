@@ -1,0 +1,24 @@
+<div class="profile">
+   <div class="avatar">
+     <%= image_tag @user.avatar, size: "200" if @user.avatar? %>
+     <p class="user-name"><%= user.name %></p>
+     <div class="intro">
+       <%= user.introduction %>
+   </div>
+   <div class="items">
+     <div class="link-items">
+       <%= link_to "Tweets #{user.tweets.size}", tweets_user_path(user), class: "links links-black" %><br/>
+       <%= link_to "Following #{user.followings.count}", followings_user_path(user), class: "links links-black" %><br/>
+       <%= link_to "Follower #{user.followers.count}", followers_user_path(user), class: "links links-black" %><br/>
+       <%= link_to "like #{user.likes_count}", likes_user_path(user), class: "links links-black" %>
+     </div>
+
+    <div class="button">
+
+     <% if user == current_user %>
+       <%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-lg btn-default my-btn" %>
+     <% else %>
+       <%= render partial: "shared/followship", locals: { user: user } %>
+     <% end %>
+    </div>
+  </div>

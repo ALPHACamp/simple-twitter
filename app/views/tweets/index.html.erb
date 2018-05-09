@@ -1,0 +1,62 @@
+<div class="row">
+   <div class="col-md-7">
+      <div class="col-md-12">
+        <%= form_for Tweet.new do |f| %>
+          <div class="form-group">
+
+           <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control text-area" %>
+          </div>
+          <div class="form-group">
+
+           <%= f.submit "Tweet", :disable_with => 'Tweeting...', class: "pull-right btn btn-default my-btn" %>
+          </div>
+        <% end %>
+      </div>
+     <div class="tweets col-md-12">
+       <% @tweets.each do |tweet| %>
+
+       <div class="tweet-item row">
+          <div class="col-md-12">
+
+              <div>
+                <p>
+
+                 <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
+                  <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %>
+                </p>
+                <p><%= tweet.description %></p>
+             </div>
+           </div>
+           <div class="col-md-9 col-md-offset-3">
+
+            <%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet), class: "links" %>
+             <%= render partial: "shared/like", locals: {tweet: tweet} %>
+           </div>
+         </div>
+
+        <% end %>
+     </div>
+   </div>
+   <div class="col-md-5">
+     <div class="popular col-md-12">
+       <h2>Popular</h2>
+       <% @users.each do |user| %>
+         <div class="user-item row">
+           <div class="col-md-4">
+                 <%= image_tag user.avatar, width: "100%"  if user.avatar? %>
+               </div>
+               <div class="col-md-8">
+                 <%= link_to user.name, tweets_user_path(user) %><br/>
+
+                <%= truncate user.introduction, length: 80 %>
+               </div>
+           <%= render partial: "shared/followship", locals: { user: user } %>
+         </div>
+       <% end %>
+     </div>
+   </div>
+ </div>
+
+
+
+ 

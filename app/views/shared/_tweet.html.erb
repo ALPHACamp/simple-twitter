@@ -1,0 +1,18 @@
+<div class="tweet-item row">
+   <div class="col-md-12">
+
+       <div>
+         <p>
+        <%= image_tag tweet.user.avatar, width: "20%"  if tweet.user.avatar? %>
+          <%= link_to "@#{tweet.user.name}", tweets_user_path(tweet.user) %>
+           <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %>
+         </p>
+         <p><%= tweet.description %></p>
+      </div>
+    </div>
+    <div class="col-md-9 col-md-offset-3">
+
+     <%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet), class: "links" %>
+      <%= render partial: "shared/like", locals: {tweet: tweet} %>
+    </div>
+  </div>
