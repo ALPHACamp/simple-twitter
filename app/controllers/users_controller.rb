@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   end
 
   def likes
-    @likes = @user.likes
+    @likes = @user.liked_tweets
   end
 
 
