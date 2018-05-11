@@ -4,10 +4,12 @@
   <% else %>
     <i class="fas fa-user fa-10x img-thumbnail" ></i>
  <% end %>
+ 
 <h2 class="tweet_color"><%= @user.name%></h2>
-  <%= @user.introduction %>
-<% if @user == current_user %>
-  <%= link_to "Edit porfile", edit_user_path(@user), class: "btn btn-primary" %>
-  <% end %>
-
+    <%= @user.introduction %>
+  <div>
+      <% if @user == current_user %>
+        <%= link_to "Edit porfile", edit_user_path(@user), class: "btn btn-primary" %>
+      <% end %>
   </div>
+</div>

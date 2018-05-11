@@ -6,7 +6,7 @@
 <div class="col-sm-9 col-12">
     <div id="tweets-list">
       <% @tweets.each do |tweet| %>
-        <%= render partial: "shared/tweet_card", locals: {tweet: tweet} %>
+        <%= render partial: "shared/tweets_list", locals: {tweet: tweet} %>
       <% end %>
     </div>
   </div>

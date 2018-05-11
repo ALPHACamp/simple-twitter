@@ -1,0 +1,47 @@
+<div class="row justify-content-center mt-5">
+  <div class="col-sm-3 ">
+  <%= render 'shared/user_profile' %>
+  </div> 
+
+  <div class="col-sm-6">
+   <h1 class="tweet_color">Tweets</h1>
+    <div id="tweets-list">
+        <%= render partial: "shared/tweets_list", locals: {tweet: @tweet} %>
+    </div>
+
+    <h1 class="tweet_color mt-5">Replies</h1>
+    <% @replies.each do |r| %>
+      <div class="card mt-3">
+        <div class="card-body">
+          <div class="float-left w-25 pr-3 text-center">
+          
+            <% if r.user.avatar? %>
+        <%= image_tag r.user.avatar, width: '125px', class: "img-fluid" %>
+            <% else %>
+        <i class="fas fa-user fa-5x img-thumbnail" ></i>
+            <% end %>
+          </div>
+            <div class="float-right w-75">
+             <h5 class="card-title">
+                <%= link_to tweets_user_path(r.user.id) do%>
+                  @<%= r.user.name %>, <%= r.created_at.strftime("%Y-%m-%d, %H:%M") %>
+               <% end %>
+              </h5>
+                <p class="card-text"><%= r.comment %></p>
+            </div>          
+        </div> 
+      </div>
+      <% end %>
+   
+          <h1 class="mt-5"></h1>
+          <%= form_for [@tweet, @reply] do |f| %>
+            <div class="form-group">
+              <%= f.text_area :comment, placeholder: "留個言吧", class: "form-control" %>
+            </div>
+            <div class="form-group text-right">
+              <%= f.submit class: "btn btn-primary" %>
+              <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+            </div>
+          <% end %>
+            </div>
+      </div>
