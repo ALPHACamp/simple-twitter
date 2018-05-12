@@ -5,7 +5,7 @@
         <%= image_tag tweet.user.avatar, class: "img-responsive" %>
       </div>
       <div class="col-md-9">
-        <h5><%= tweet.user.name %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></h5>
+        <h5><%= link_to tweet.user.name, tweets_user_path(tweet.user) %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></h5>
         <%= simple_format tweet.description %>
         <% if tweet.is_liked?(current_user) %>
           <%= link_to 'Unlike', unlike_tweet_path(tweet), method: :post %>
