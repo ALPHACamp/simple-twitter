@@ -6,7 +6,7 @@
     <div id="tweet-form" class="mb-3">
       <%= form_for(@tweet) do |f| %>
         <div class="form-group">
-          <%= f.text_area :description, class: "form-control", rows: 6 %>
+          <%= f.text_area :description, class: "form-control", rows: 6 ,maxlength:"140" %>
         </div>
         <div class="text-right">
           <%= f.submit "Tweet", class: "btn btn-primary" %>
