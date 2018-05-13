@@ -1,1 +1,12 @@
 <h1>Reply</h1>
+<!-- 新增reply的表單輸入框 -->
+<%= form_for [@tweet, @reply] do |f| %>
+  <div class="form-gruop">
+    <%= f.text_area :comment, class: "form-control", rows:"4" %>
+  </div>
+  <div class="form-gruop">
+    <%= f.submit "Reply", class: "btn btn-primary right" %>
+  </div>
+<% end %>
+
+<div class="clear"></div>
