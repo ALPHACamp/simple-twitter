@@ -19,4 +19,10 @@ namespace :dev do
       puts user.name
     end
   end
+
+  task reset_counters: :environment do
+    Tweet.find_each{ |tweet|Tweet.reset_counters(tweet.id,:replies)}
+    puts 'replies is rest count'
+  end
+
 end
