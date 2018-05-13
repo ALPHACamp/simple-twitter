@@ -28,6 +28,9 @@
         </div>
 
         <h2>Replies</h2>
+        <!-- replies list -->
+        <%= render partial: "shared/reply" %>
+
         <!-- 新增reply的表單輸入框 -->
         <%= form_for [@tweet, @reply] do |f| %>
           <div class="form-gruop">

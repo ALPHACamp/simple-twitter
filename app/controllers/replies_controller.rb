@@ -4,6 +4,7 @@ class RepliesController < ApplicationController
   def index
     @reply = Reply.new
     @user = current_user
+    @replies = @tweet.replies 
   end
 
   def create
