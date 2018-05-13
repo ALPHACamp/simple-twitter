@@ -1,9 +1,9 @@
 <div class="row justify-content-center mt-5">
   <div class="col-sm-3 ">
-  <%= render 'shared/user_profile' %>
+  <%= render partial: 'shared/user_profile' %>
   </div> 
 
-  <div class="col-sm-6">
+  <div class="col-sm-9">
    <h1 class="tweet_color">Tweets</h1>
     <div id="tweets-list">
         <%= render partial: "shared/tweets_list", locals: {tweet: @tweet} %>
@@ -21,7 +21,7 @@
         <i class="fas fa-user fa-5x img-thumbnail" ></i>
             <% end %>
           </div>
-            <div class="float-right w-75">
+            <div class="float-left ">
              <h5 class="card-title">
                 <%= link_to tweets_user_path(r.user.id) do%>
                   @<%= r.user.name %>, <%= r.created_at.strftime("%Y-%m-%d, %H:%M") %>
