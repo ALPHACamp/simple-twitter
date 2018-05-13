@@ -1,12 +1,27 @@
-<h1>Reply</h1>
-<!-- 新增reply的表單輸入框 -->
-<%= form_for [@tweet, @reply] do |f| %>
-  <div class="form-gruop">
-    <%= f.text_area :comment, class: "form-control", rows:"4" %>
-  </div>
-  <div class="form-gruop">
-    <%= f.submit "Reply", class: "btn btn-primary right" %>
-  </div>
-<% end %>
+<div class="container">
+  <div class="col-md-offset-1">
+    <div class="row">
+      <div class="col-md-4">
+        <%= render partial: "shared/userinfo" %>         
+      </div>
 
-<div class="clear"></div>
+      <div class="col-md-6">
+        <h2>Reply</h2>
+        <!-- 新增reply的表單輸入框 -->
+        <%= form_for [@tweet, @reply] do |f| %>
+          <div class="form-gruop">
+            <%= f.text_area :comment, class: "form-control", rows:"4" %>
+          </div>
+          <div class="form-gruop">
+            <%= f.submit "Reply", class: "btn btn-primary right" %>
+          </div>
+        <% end %>
+
+        <div class="clear"></div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+

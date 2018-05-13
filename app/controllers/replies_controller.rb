@@ -3,6 +3,7 @@ class RepliesController < ApplicationController
 
   def index
     @reply = Reply.new
+    @user = current_user
   end
 
   def create

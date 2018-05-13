@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :tweets, :followings, :followers, :likes]
 
   def tweets
-    @users = User.all
     @tweets = @user.tweets.order(created_at: :desc)
     @followings = @user.followings
   end
