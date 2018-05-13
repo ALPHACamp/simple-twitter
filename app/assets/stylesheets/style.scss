@@ -21,12 +21,16 @@ nav.navbar {
 .form-control {
   resize: none;
   border-radius: 10px;
+  border: 3px solid #009FCC;
 }
 
 .btn.btn-primary.right {
   margin: 5px;
   margin-right: 0px;
   float: right;
+  color: black;
+  background-color: #009FCC;
+  border: 1px solid #009FCC;
 }
 
 .clear {
@@ -78,3 +82,22 @@ h2 {
   color: dimgray; 
 }
 
+.reply-color {
+  color: lightskyblue;
+  font-weight: bold;
+}
+
+.reply-color a {
+  color: lightskyblue;
+  font-weight: bold;
+}
+
+.like-color {
+  color: red;
+  font-weight: bold;
+}
+
+.like-color a {
+  color: red;
+  font-weight: bold;
+}
