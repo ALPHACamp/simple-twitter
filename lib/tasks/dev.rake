@@ -20,9 +20,14 @@ namespace :dev do
     end
   end
 
-  task reset_counters: :environment do
+  task reset_replies_counters: :environment do
     Tweet.find_each{ |tweet|Tweet.reset_counters(tweet.id,:replies)}
-    puts 'replies is rest count'
+    puts 'replies is reset count'
+  end
+  
+  task reset_followships_counters: :environment do
+  User.find_each{|user|User.reset_counters(user.id,:followships)}
+  puts 'followships is reset count'
   end
 
 end

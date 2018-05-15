@@ -6,10 +6,22 @@
  <% end %>
  
 <h2 class="tweet_color"><%= @user.name%></h2>
-    <%= @user.introduction %>
+    <div style="word-wrap:break-word">
+     <%= @user.introduction %>
+     
+    </div>
+    Following (<%= @user.followships_count %>)
+    
   <div>
       <% if @user == current_user %>
         <%= link_to "Edit porfile", edit_user_path(@user), class: "btn btn-primary" %>
+
+        <% elsif current_user.following?(@user)%>
+        <%= link_to "Unfollow", followship_path(@user), method: :delete, class: "btn btn-danger"%>
+      <% else %>
+        <%= link_to "Follow", followships_path(following_id: @user), method: :post, class: "btn btn-primary"%>
       <% end %>
+      
+
   </div>
 </div>

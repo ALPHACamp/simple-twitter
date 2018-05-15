@@ -1,9 +1,9 @@
 <div class="row justify-content-center mt-5">
-  <div class="col-sm-3 ">
+  <div class="col-sm-3 col-12">
     <%= render partial: 'shared/user_profile' %>
   </div>
 
-<div class="col-sm-9 ">
+<div class="col-sm-9 col-12">
     <div id="tweets-list">
       <% @tweets.each do |tweet| %>
         <%= render partial: "shared/tweets_list", locals: {tweet: tweet} %>
