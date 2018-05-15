@@ -1,5 +1,4 @@
 class TweetsController < ApplicationController
-  before_action :authenticate_user!  #devise內建的方法，導到登入頁面
   before_action :set_tweet, only: [:show, :edit]
 
   def index
