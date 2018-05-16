@@ -1,1 +1,25 @@
-後台
+<div class="container">
+  <div class="col-md-offset-1">
+    <div class="col-md-6">
+      <% @tweets.each do |tweet| %>
+        <div class="tweet-item">
+          <div class="row">
+            <div class="col-md-3">
+              <%= image_tag tweet.user.avatar, class: "img-responsive" %>
+            </div>
+            <div class="col-md-9">
+              <h5><%= link_to tweet.user.name, tweets_user_path(tweet.user) %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></h5>
+              <%= simple_format tweet.description %>
+              <span class="reply-color">
+                <%= link_to 'Reply', tweet_replies_path(tweet) %>(<%= tweet.replies_count %>)
+              </span>
+              <span>
+                <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: { confirm: "Are you sure?"} %>
+              </span>
+            </div>        
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div> 
