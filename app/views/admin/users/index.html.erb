@@ -1,2 +1,18 @@
-<h1>user list</h1>
-<%= link_to 'tweet list', admin_tweets_path %>
+<div class="container">
+  <%= link_to 'tweet list', admin_tweets_path %>
+  <div class="col-md-offset-1">
+    <div class="col-md-4">
+      <% @users.each do |user| %>
+        <%= image_tag user.avatar, size: 200, class:"img-responsive" %>
+        <h2><%= user.name %></h2>
+        <h5><%= user.introduction %></h5>
+        <div class="user-info">       
+          <p><%= link_to "Tweet", tweets_user_path(user) %> <%= user.tweets.size %></p>
+          <p><%= link_to "Following", followings_user_path(user) %> <%= user.followings.size %></p>
+          <p><%= link_to "Follower", followers_user_path(user) %> <%= user.followers_count %></p>
+          <p><%= link_to "like", likes_user_path(user) %> <%= user.likes_count %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>      
