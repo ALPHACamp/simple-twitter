@@ -3,16 +3,26 @@
   <div class="col-md-offset-1">
     <div class="col-md-4">
       <% @users.each do |user| %>
-        <%= image_tag user.avatar, size: 200, class:"img-responsive" %>
-        <h2><%= user.name %></h2>
-        <h5><%= user.introduction %></h5>
-        <div class="user-info">       
-          <p><%= link_to "Tweet", tweets_user_path(user) %> <%= user.tweets.size %></p>
-          <p><%= link_to "Following", followings_user_path(user) %> <%= user.followings.size %></p>
-          <p><%= link_to "Follower", followers_user_path(user) %> <%= user.followers_count %></p>
-          <p><%= link_to "like", likes_user_path(user) %> <%= user.likes_count %></p>
+        <div class="user-item">
+          <div class="row">
+            <div class="col-md-4">
+              <%= image_tag user.avatar, class: "img-responsive" %>
+            </div>
+            <div class="col-md-8">
+              <h4><%= link_to user.name, tweets_user_path(user) %></h4>
+              <%= simple_format truncate(user.introduction, length: 50) %>
+              <p><%= link_to "Tweet", tweets_user_path(user) %> <%= user.tweets.size %></p>
+              <p><%= link_to "Following", followings_user_path(user) %> <%= user.followings.size %></p>
+              <p><%= link_to "Follower", followers_user_path(user) %> <%= user.followers_count %></p>
+              <p><%= link_to "like", likes_user_path(user) %> <%= user.likes_count %></p>    
+            </div>
+            
+          </div>
         </div>
       <% end %>
     </div>
   </div>
-</div>      
+</div>
+
+
+
