@@ -17,11 +17,11 @@
       <% end %>
     </div>
   </div>
-  <div class="card col-md-5  mr-5">
+  <div class=" col-md-5  mr-5">
   <h3>Popular</h3>
-   <% @tweets.each do |tweets| %>
-     <%#= render partial: "shared/user_card", locals: {user: user} %>
-     <%= tweets.description %>
+   <% @users.each do |user| %>
+     <%= render partial: "shared/user_list", locals: {user: user} %>
+     
    <% end %>
   </div>
 </div>

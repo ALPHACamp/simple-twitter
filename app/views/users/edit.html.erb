@@ -7,9 +7,9 @@
       <div class="col-md-4">
         <div class="form-group">
           <% if @user.avatar? %>
-            <%= image_tag @user.avatar,  width: '200px' ,class: "img-thumbnail img-fluid mb-3" %>
+            <%= image_tag @user.avatar,  width: '200px' ,class: "img-fluid img-fluid mb-3" %>
           <% else %>
-            <i class="fas fa-user fa-7x img-thumbnail  mb-3" ></i>
+            <i class="fas fa-user fa-7x img-fluid  mb-3" ></i>
           <% end %>
           <%= f.file_field :avatar ,class: "form-control-file"  %>
         </div>
