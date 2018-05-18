@@ -1,0 +1,16 @@
+<div class="row justify-content-center mt-5">
+  <div class="col-sm-3 col-12">
+    <%= render partial: 'shared/user_profile' %>
+  </div>
+
+  <div class="col-sm-6 col-12 mr-5">
+  <h3>Following</h3>
+  <div class="row">
+   <% @followers.each do |user| %>
+    <div class="col-lg-6">
+     <%= render partial: "shared/user_list", locals: {user: user} %>
+     </div>
+   <% end %>
+  </div>
+  </div>
+    </div>

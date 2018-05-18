@@ -3,9 +3,9 @@
     <%= render partial: 'shared/user_profile' %>
   </div>
 
-<div class="col-sm-6 col-12">
+  <div class="col-sm-6 col-12">
     <div id="tweets-list">
-      <% @tweets.each do |tweet| %>
+      <% @likes.each do |tweet| %>
         <%= render partial: "shared/tweets_list", locals: {tweet: tweet} %>
       <% end %>
     </div>

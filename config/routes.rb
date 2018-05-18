@@ -11,9 +11,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: %i[show edit update] do
+  resources :users, only: %i[edit update] do
     member do
       get :tweets
+      get :followings
+      get :followers
+      get :likes
     end
   end
 
@@ -23,5 +26,6 @@ Rails.application.routes.draw do
     resources :tweets, only: [:index,:destroy]
     root 'tweets#index'
     resources :users, only: [:index]
+    
   end
 end

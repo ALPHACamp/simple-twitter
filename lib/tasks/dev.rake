@@ -26,7 +26,7 @@ namespace :dev do
   end
   
   task reset_followships_counters: :environment do
-  User.find_each{|user|User.reset_counters(user.id,:followships)}
+  User.find_each{|user|User.reset_counters(user.id,:followings)}
   puts 'followships is reset count'
   end
 
