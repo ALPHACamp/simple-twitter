@@ -1,3 +1,11 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#user_introduction {
+  margin: 10px;
+  margin-left: 0px;
+  resize: none; //大小固定
+  // resize: vertical; 寬度固定
+  // resize: horizontal; 高度固定
+}

@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="col-md-offset-1">
+    <div class="row">
+      <div class="col-md-6">
+        <!-- 新增tweet的表單輸入框 -->
+        <%= form_for [@tweet] do |f| %>
+        <div class="form-gruop">
+          <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control", rows:"4" %>
+        </div>
+        <div class="form-gruop">
+          <%= f.submit "Tweet", class: "btn btn-primary right" %>
+        </div>
+        <% end %>
+
+        <div class="clear"></div>
+        
+        <!-- tweet list -->
+        <%= render partial: "shared/tweet" %>
+
+      </div>
+
+      <div class="col-md-4">
+        <h2>Popular</h2>
+        <!-- user list -->
+        <%= render partial: "shared/user" %> 
+
+      </div>
+
+
+    </div>
+  </div> 
+</div>

@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="col-md-offset-1">
+    <div class="row">
+      <div class="col-md-4">
+        <%= render partial: "shared/userinfo" %>         
+      </div>
+
+      <div class="col-md-6">
+        <h2>Tweets</h2>
+        <div class="tweet-item">
+          <div class="row">
+            <div class="col-md-3">
+              <%= image_tag @tweet.user.avatar, class: "img-responsive" %>
+            </div>
+            <div class="col-md-9">
+              <h5><%= link_to @tweet.user.name, tweets_user_path(@tweet.user) %>, <%= @tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></h5>
+              <%= simple_format @tweet.description %>
+              <%= link_to 'Reply', tweet_replies_path(@tweet) %>(<%= @tweet.replies_count %>)
+              <% if @tweet.is_liked?(current_user) %>
+                <%= link_to 'Unlike', unlike_tweet_path(@tweet), method: :post %>
+              <% else %>  
+                <%= link_to 'Like', like_tweet_path(@tweet), method: :post %>
+              <% end %>
+              (<%= @tweet.likes_count %>)
+            </div>
+                   
+          </div>
+        </div>
+
+        <h2>Replies</h2>
+        <!-- replies list -->
+        <%= render partial: "shared/reply" %>
+
+        <!-- 新增reply的表單輸入框 -->
+        <%= form_for [@tweet, @reply] do |f| %>
+          <div class="form-gruop">
+            <%= f.text_area :comment, class: "form-control", rows:"4" %>
+          </div>
+          <div class="form-gruop">
+            <%= f.submit "Reply", class: "btn btn-primary right" %>
+          </div>
+        <% end %>
+
+        <div class="clear"></div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+

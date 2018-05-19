@@ -1,0 +1,8 @@
+<% if user != current_user %>
+  <% if current_user.following?(user)%>
+    <%= button_to 'Unfollow', followship_path(user), method: :delete, class: "btn btn-primary right" %>
+  <% else %>
+    <%= button_to 'Follow', followships_path(following_id: user), method: :post, class: "btn btn-primary right" %>
+  <% end %>
+<% end %>
+
