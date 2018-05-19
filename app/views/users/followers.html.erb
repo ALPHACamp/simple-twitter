@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="col-md-offset-1">
+    <div class="row">
+      <div class="col-md-3">
+        <%= render partial: "shared/userinfo" %>         
+      </div>
+
+      <div class="col-md-8">
+        <h2>Follower</h2>
+        <% @followers.each do |follower| %>
+          <div class="col-md-6">
+            <div class="user-item">
+              <div class="row">
+                <div class="col-md-4">
+                  <%= image_tag follower.avatar, class: "img-responsive" %>
+                </div>
+                <div class="col-md-8">
+                  <h4><%= link_to follower.name, tweets_user_path(follower) %></h4>
+                  <%= simple_format truncate(follower.introduction, length: 50) %>
+                  <!--使用新增追蹤按鈕的prtial-->  
+                  <%= render partial: "shared/follow", locals:{user:follower} %>
+                </div>   
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="text-center">
+        <%= paginate @followers %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+

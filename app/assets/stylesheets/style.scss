@@ -1,0 +1,103 @@
+nav.navbar {
+  background-color: #ADD8E6;
+}
+
+.navbar-brand {
+  color: black;
+  font-size: 40px;
+  font-weight: bold;
+  margin-top: 7px;
+  margin-bottom: 5px;
+}
+
+.pull-right.text-right.nav.navbar-nav li a {
+  color: #008B8B;
+  font-weight: bold;
+  line-height: 50px;
+  font-size: 20px;
+  padding: 5px;
+}
+
+.form-control {
+  resize: none;
+  border-radius: 10px;
+  border: 3px solid #009FCC;
+}
+
+.btn.btn-primary.right {
+  margin: 5px;
+  margin-right: 0px;
+  float: right;
+  color: black;
+  background-color: #009FCC;
+  border: 1px solid #009FCC;
+}
+
+.clear {
+  clear: right;
+  margin: 60px; 
+}
+
+.tweet-item {
+  border: 1px solid #ddd;
+  padding: 4px;
+  margin-bottom: 20px;
+}
+
+.tweet-item img {
+  max-height: 180px;
+  width: 100%;
+  margin: 10px;
+}
+
+.user-item {
+  border: 1px solid #ddd;
+  padding: 4px;
+  margin-bottom: 20px;
+}
+
+.user-item img {
+  max-height: 180px;
+  width: 100%;
+  margin: 10px;
+}
+
+p {
+  color: dimgray;
+}
+
+h4, h5 {
+  color: steelblue;
+}
+
+h2 {
+  color: #008B8B;
+}
+
+.user-info {
+  font-size: large;
+}
+
+.user-info a {
+  color: dimgray; 
+}
+
+.reply-color {
+  color: lightskyblue;
+  font-weight: bold;
+}
+
+.reply-color a {
+  color: lightskyblue;
+  font-weight: bold;
+}
+
+.like-color {
+  color: red;
+  font-weight: bold;
+}
+
+.like-color a {
+  color: red;
+  font-weight: bold;
+}
