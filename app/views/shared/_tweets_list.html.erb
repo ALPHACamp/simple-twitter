@@ -21,7 +21,7 @@
             &nbsp;&nbsp;
           <% if tweet.is_liked?(current_user) %>
             <%= link_to "unlike (#{tweet.likes_count})",unlike_tweet_path(tweet),method: :post ,style:"color:red" %>
-            
+           
           <% else %>
             <%= link_to "like(#{tweet.likes_count})" ,like_tweet_path(tweet),method: :post ,style:"color:red" %>
             
