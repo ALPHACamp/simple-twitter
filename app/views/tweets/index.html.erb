@@ -18,7 +18,7 @@
     </div>
   </div>
   <div class=" col-sm-5 col-12 mr-5">
-  <h3>Popular</h3>
+  <h3 class="tweet_color">Popular</h3>
    <% @users.each do |user| %>
      <%= render partial: "shared/user_list", locals: {user: user} %>
      
