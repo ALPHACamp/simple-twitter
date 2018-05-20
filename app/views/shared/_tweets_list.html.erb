@@ -1,0 +1,30 @@
+<div class="card mt-3">
+  <div class="card-body">
+    <div class="float-left w-25 pr-3 text-center">
+      <% if tweet.user.avatar? %>
+        <%= image_tag tweet.user.avatar, width: '125px', class: "img-fluid" %>
+      <% else %>
+        <i class="fas fa-user fa-5x img-fluid" ></i>
+      <% end %>
+    </div>
+    <div class="float-right w-75">
+      <h5 class="card-title">
+        <%= link_to tweets_user_path(tweet.user.id) do%>
+          @<%= tweet.user.name %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %>
+        <% end %>
+      </h5>
+         <p class="card-text"><%= tweet.description %></p>
+    </div>
+         <%= link_to tweet_replies_path(tweet) do %>
+          Reply(<%= tweet.replies_count %>)
+         <% end %>
+            &nbsp;&nbsp;
+          <% if tweet.is_liked?(current_user) %>
+            <%= link_to "unlike (#{tweet.likes_count})",unlike_tweet_path(tweet),method: :post ,style:"color:red" %>
+           
+          <% else %>
+            <%= link_to "like(#{tweet.likes_count})" ,like_tweet_path(tweet),method: :post ,style:"color:red" %>
+            
+         <% end %>
+  </div>
+</div>

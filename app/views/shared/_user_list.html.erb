@@ -1,0 +1,31 @@
+<div class="card mt-3">
+  <div class="card-body">
+    <div class="float-left w-25 pr-3 text-center">
+      <% if user.avatar? %>
+        <%= image_tag user.avatar, width: '125px', class: "img-fluid" %>
+      <% else %>
+        <i class="fas fa-user fa-5x img-fluid" ></i>
+      <% end %>
+    </div>
+    <div class="float-right w-75">
+      <h5 class="card-title">
+        <%= link_to tweets_user_path(user.id) do%>
+          @<%= user.name %>
+        <% end %>
+      </h5>
+         <p class="card-text"><%= user.introduction %></p>
+      <% if user == current_user %>
+        
+         <p class = "text-right">
+      <% elsif current_user.following?(user)%>
+        <%= link_to "Unfollow", followship_path(user), method: :delete, class: "btn btn-danger"%>
+      <% else %>
+        <%= link_to "Follow", followships_path(following_id: user), method: :post, class: "btn btn-primary", redirect_to: "http://127.0.0.1:3000/tweets"%>
+        
+      <% end %>
+    </p>
+    </div>
+
+  </div>
+  
+</div>

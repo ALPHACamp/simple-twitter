@@ -1,7 +1,7 @@
 RSpec.describe 'Admin::Tweet', type: :request do
   let(:user) { create(:user, email: FFaker::Internet.email, name: 'no_tweets') }
   let(:user_with_tweets) { create(:user_with_tweets) }
-  let(:admin_user) { create(:user, email: FFaker::Internet.email, name: 'no_tweets_admin', role: 'admin')}
+  let(:admin_user) { create(:user, email: FFaker::Internet.email, name: 'no_tweets_admin', role: 'admin') }
 
   context 'go to admin root page' do
     describe 'if normal user log in' do

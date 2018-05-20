@@ -1,0 +1,31 @@
+<div class="ml-5 mt-3">
+<% if @user.avatar? %>
+    <%=  image_tag @user.avatar,  width: '250px' ,class: " nav-link img-thumbnail img-fluid mb-3 " %>
+  <% else %>
+    <i class="fas fa-user fa-10x img-fluid" ></i>
+ <% end %>
+ 
+<h2 class="tweet_color"><%= @user.name%></h2>
+    <div style="word-wrap:break-word">
+     <%= @user.introduction %>
+      <hr>
+
+    </div>
+    <p>Tweets (<%= @user.tweets_count %>)</p>
+     <p><%= link_to "Following (#{@user.followships_count})",followings_user_path(@user) %><p>  
+   <p><%= link_to "Followers (#{@user.followers_count})",followers_user_path(@user) %><p>
+   <p><%= link_to "Like (#{@user.likes_count})",likes_user_path(@user) %><p>
+   <div>
+
+      <% if @user == current_user %>
+        <%= link_to "Edit porfile", edit_user_path(@user), class: "btn btn-primary" %>
+
+        <% elsif current_user.following?(@user)%>
+        <%= link_to "Unfollow", followship_path(@user), method: :delete, class: "btn btn-danger"%>
+      <% else %>
+        <%= link_to "Follow", followships_path(following_id: @user), method: :post, class: "btn btn-primary"%>
+      <% end %>
+      
+
+  </div>
+</div>

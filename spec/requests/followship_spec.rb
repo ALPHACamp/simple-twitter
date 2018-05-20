@@ -8,7 +8,6 @@ RSpec.describe 'Followship', type: :request do
         user
         user_with_tweets
         sign_in(user)
-
       end
 
       it 'will show following' do
