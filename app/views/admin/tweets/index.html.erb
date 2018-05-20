@@ -1,11 +1,52 @@
-<h1>後台</h1>
-<ul>
-  <% @tweets.each do |t| %>
-  <li>
-    <%= t.description %>
-    <%= t.user_id %>
+<div class="container mt-5">
 
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <%= link_to "Tweets" ,admin_tweets_path ,class:"nav-link active" %>
   </li>
-  <% end %>
+
+  <li class="nav-item">
+    <%= link_to "Users" ,admin_users_path ,class:"nav-link" %>
+  </li>
+
 </ul>
-<%#= link_to 'New Tweet', new_admin_tweet_path %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Tweeter</th>
+      <th scope="col">Description</th>
+      <th scope="col">Likes</th>
+      <th scope="col">Replies</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @tweets.each do |t| %>
+    <tr>
+      <th scope="row"><%=link_to t.id ,tweet_replies_path(t)%></th> 
+      <td><%= t.user.name %></td>
+      <td><%= t.description %></td>
+      <td><%= t.likes_count %></td>
+         
+      <td>
+      <% if t.replies.present? %>
+      <% t.replies.each do |r| %>
+      <li><%= truncate(r.comment,length:20) %></li>
+      <% end %>
+        <% else %>
+        <p>None Replies</p>
+      <% end %>
+      </td>
+      <td> <%= link_to "Delete", admin_tweet_path(t),
+      method: :delete, data: {:confirm => 'Are you sure?'} ,class: "btn btn-danger btn-sm" %> 
+      </td>
+      
+       <% end %>
+    </tr>
+
+   
+  </tbody>
+</table>
+</div>

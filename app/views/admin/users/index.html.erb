@@ -1,0 +1,38 @@
+<div class="container mt-5">
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <%= link_to "Tweets" ,admin_tweets_path ,class:"nav-link " %>
+  </li>
+
+  <li class="nav-item">
+    <%= link_to "Users" ,admin_users_path ,class:"nav-link active" %>
+  </li>
+
+</ul>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Tweet</th>
+      <th scope="col">following</th>
+      <th scope="col">follower</th>
+      <th scope="col">like</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <th scope="row"><%= user.id %></th>
+      <td><%= user.name %></td>
+      <td><%= user.tweets_count %></td>
+      <td><%= user.followships_count %></td>
+      <td><%= user.followers_count %></td>
+      <td><%= user.likes_count %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

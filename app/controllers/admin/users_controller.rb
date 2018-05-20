@@ -1,3 +1,5 @@
 class Admin::UsersController < Admin::BaseController
-  def index; end
+  def index
+  @users = User.order(tweets_count: :desc)
+  end
 end
