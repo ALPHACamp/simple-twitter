@@ -5,7 +5,7 @@ namespace :dev do
     User.destroy_all
     20.times do |i|
       name = FFaker::Name.first_name
-      file = File.open("#{Rails.root}/public/avatar/user#{i + 1}.jpg")
+      file = File.open("#{Rails.root}/assets/images/avatar/user#{i + 1}.jpg")
 
       user = User.new(
         name: name,
