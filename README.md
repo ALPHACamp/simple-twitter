@@ -35,7 +35,21 @@
   + 點show會連至該使用者的profile, 如果該使用者就是目前正在使用的管理者, 亦可編輯自己的profile      
 
 ## 撰寫方式  
-ruby on rails, html, css     
+ruby on rails, html, css
+
+特別使用的gem：     
+* [Carrierwave](https://github.com/carrierwaveuploader/carrierwave)  
+--完成使用者註冊及登入功能   
+
+* [FFaker](https://github.com/ffaker/ffaker/blob/master/REFERENCE.md)   
+--用來產生使用者名稱以及推文的標題,內容以及回覆等假資料  
+
+* [jquery-rails](https://github.com/rails/jquery-rails)  
+* [bootstrap-sass](https://github.com/twbs/bootstrap-sass)  
+--用來撰寫一些前端效果時需要用到,  例如網站的導覽列, 按鈕樣式等
+
+* [kaminari](https://github.com/kaminari/kaminari)  
+--用來產生分頁, 一頁產生特定數量的推文清單 
 
 ## 部署方式  
 已部署至heroku, 網址如下  
