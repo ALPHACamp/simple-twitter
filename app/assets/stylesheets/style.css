@@ -271,6 +271,11 @@ h2 {
   align-self: center;
 }
 
+.no-more .loading {
+  padding-top:10px;
+  color: var(--lgrey); 
+}
+
 /* popular wall */
 
 .user-item-sm {
@@ -521,6 +526,10 @@ h2 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     justify-items: center;
+  }
+
+  #popular-wall{
+    display: none;
   }
 }
 

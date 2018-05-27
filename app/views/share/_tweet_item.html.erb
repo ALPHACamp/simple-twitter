@@ -1,4 +1,4 @@
-
+<div class="tweet-item" id="tweet-<%= tweet.id %>">
   <div class="avatar-sm">
     <%= link_to tweets_user_path(tweet.user) do %>
       <%= image_tag(tweet.user.avatar, class: "") %>
@@ -40,3 +40,4 @@
       </div>
     </div>
   </div>
+</div>

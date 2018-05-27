@@ -3,7 +3,7 @@ class TweetsController < ApplicationController
 
   def index
     @users = User.order(followers_count: :desc, created_at: :desc).limit(10) # 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
-    @tweets = Tweet.order(created_at: :desc)
+    @tweets = Tweet.order(created_at: :desc).limit(20)
 
     @tweet = Tweet.new
   end
@@ -55,6 +55,20 @@ class TweetsController < ApplicationController
     @likes.destroy_all
     @tweet.reload
     # redirect_back(fallback_location: root_path)  Ajax設定之前
+  end
+
+  def load
+    if params[:current_id]
+      @tweet = Tweet.find(params[:current_id])
+      @tweets = Tweet.where( "created_at < ? and id < ?", @tweet.created_at, @tweet.id).order(id: :desc).limit(20)
+      render json: {
+          data: @tweets.map do |tweet| {
+            id: tweet.id,
+            html: render_to_string(partial: "share/tweet_item", locals: {tweet: tweet})
+          }
+        end
+      }
+    end
   end
 
   private 

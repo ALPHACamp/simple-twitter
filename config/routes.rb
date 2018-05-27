@@ -12,6 +12,10 @@ Rails.application.routes.draw do
       post :like
       post :unlike
     end 
+
+    collection do
+      get :load
+    end
   end
 
   resources :users, only: [:edit, :update] do
