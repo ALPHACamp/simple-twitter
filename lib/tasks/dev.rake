@@ -24,7 +24,7 @@ namespace :dev do
     Tweet.destroy_all
     
     #Create Tweet
-    Users.all.each do |user|
+    User.all.each do |user|
       10.times do |j|
         tweet = Tweet.new(
           user: user,
@@ -32,18 +32,18 @@ namespace :dev do
         )
       end
     end
-    put "create 10 tweet per user"
+    puts "create 10 tweet per user"
 
     #Create Reply
     Tweet.all.each do |tweet|
       5.times do |j|
-        reply = Replies.new(
+        reply = Reply.new(
           comment: FFaker::Lorem::sentence(30),
           user: User.all.sample
         )
       end
     end
-    put "create 5 reply per tweet"
+    puts "create 5 reply per tweet"
 
 
   end
