@@ -17,7 +17,6 @@ Rails.application.routes.draw do
     resources :replies, only: [:index, :create]
 
     member do
-     
       post :like
       post :unlike
     end
