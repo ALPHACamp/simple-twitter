@@ -20,4 +20,34 @@ namespace :dev do
     end
   end
 
+  task fake_tweet: :environment do
+    Tweet.destroy_all
+    
+    #Create Tweet
+    Users.all.each do |user|
+      10.times do |j|
+        tweet = Tweet.new(
+          user: user,
+          description: FFaker::Lorem::sentence(30)
+        )
+      end
+    end
+    put "create 10 tweet per user"
+
+    #Create Reply
+    Tweet.all.each do |tweet|
+      5.times do |j|
+        reply = Replies.new(
+          comment: FFaker::Lorem::sentence(30),
+          user: User.all.sample
+        )
+      end
+    end
+    put "create 5 reply per tweet"
+
+
+  end
+
+
+
 end
