@@ -6,13 +6,18 @@
             <button>Tweet</button>
           </div>
   
+           <% @tweet.each do |tweet| %>
 
           <div class="tweet-item">
             <img src="http://via.placeholder.com/80x80" class="avatar">
-            <a href="#"> @username </a>, <span class="time"> time </span>
-            <div class="content">tweet content</div>
-            <a href="#">Reply(2)</a> <span class="like-info">like(2)</span>
+            <%= link_to @tweet.user.name, tweet_user_path(@tweet.user) %>, 
+            <span class="time">  <%= @tweet.created_at %> </span>
+            <div class="content"><%= @tweet.description %></div>
+            <%= link_to "Reply(@tweet.replies_count)", reply_tweet_path(@tweet) %> 
+            <span class="like-info">like(2)</span>
           </div>
+ 
+          <% end %>
 
 
         </div>
