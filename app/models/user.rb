@@ -26,7 +26,11 @@ class User < ApplicationRecord
 
 # User可以跟隨很多人，如果User刪掉的話 follow關係也要被刪掉 也可以被很多人跟隨
   has_many :followships, dependent: :destroy
-  has_many :following, through: :followships
+  has_many :followings, through: :followships
+  has_many :followers, class_name: "Followship", foreign_key: "following_id"
 
+  def admin?
+    self.role == "admin"
+  end
 
 end

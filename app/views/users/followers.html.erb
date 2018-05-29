@@ -3,13 +3,13 @@
   <div class="col-md-4">    
 
     <img src="http://via.placeholder.com/350x350" class="avatar">
-    <div>Username</div>
-    <div>Userdescription </div>
+    <div><%= @user.name %></div>
+    <div><%= @user.introduction %> </div>
 
-    <a href="#">Tweet 32</a>
-    <a href="#">Following 32</a>
-    <a href="#">Follower 32</a>
-    <a href="#">Like 32</a>
+    <%= link_to "Tweet #{@user.tweets.count}" , tweets_user_path(@user) %> 
+    <%= link_to "Following #{@user.followings.count}" , followings_user_path(@user) %> 
+    <%= link_to "Follower #{@user.followers.count}" , followers_user_path(@user) %> 
+    <%= link_to "Like #{@user.likes.count}" , likes_user_path(@user) %> 
 
     <button> Follow </button>
 
@@ -18,13 +18,18 @@
   <div class="col-md-8">    
 
     <h3>Followers</h3>
+     
+     <% @followers.each do |follower| %>
+
       <div class="Following-item">
         <img src="http://via.placeholder.com/80x80" class="avatar">
-        <a href="#"> @username </a>, <span class="time"> time </span>
-        <div class="descript"> user info </div>
-        <button>Unfollow</button>
+        <%= link_to "@#{follower.name}" , tweets_user_path(follower) %></a>, 
+        <div class="descript"> <%= follower.introduction %></div>
+        <%= link_to "Unfollow" , delete_following_path(follower), class: "like"%>
       </div>
-   
+
+
+    <% end %>
   
   </div>
 

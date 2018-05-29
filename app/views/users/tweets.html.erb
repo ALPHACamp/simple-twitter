@@ -3,40 +3,37 @@
   <div class="col-md-4">    
 
     <img src="http://via.placeholder.com/350x350" class="avatar">
-    <div>Username</div>
-    <div>Userdescription </div>
+    <div><%= @user.name %></div>
+    <div><%= @user.introduction %> </div>
 
-    <a href="#">Tweet 32</a>
-    <a href="#">Following 32</a>
-    <a href="#">Follower 32</a>
-    <a href="#">Like 32</a>
+    <%= link_to "Tweet #{@user.tweets.count}" , tweets_user_path(@user) %> 
+    <%= link_to "Following #{@user.followings.count}" , followings_user_path(@user) %> 
+    <%= link_to "Follower #{@user.followers.count}" , followers_user_path(@user) %> 
+    <%= link_to "Like #{@user.likes.count}" , likes_user_path(@user) %> 
 
-    <button> Follow </button>
-
+    <% if @user == current_user  %>
+      <%= link_to "Edit Profile" , edit_user_path(@user), Class: "btn btn-primary" %> 
+    <% else %>
+      <button class="btn btn-primary">Follow</button>
+    <% end %>
+    
   </div>
 
   <div class="col-md-8">    
 
-      <div class="tweet-item">
-        <img src="http://via.placeholder.com/80x80" class="avatar">
-        <a href="#"> @username </a>, <span class="time"> time </span>
-        <div class="content">tweet content</div>
-        <a href="#">Reply(2)</a> <span class="like-info">like(2)</span>
-      </div>
-    
-      <div class="tweet-item">
-        <img src="http://via.placeholder.com/80x80" class="avatar">
-        <a href="#"> @username </a>, <span class="time"> time </span>
-        <div class="content">tweet content</div>
-        <a href="#">Reply(2)</a> <span class="like-info">like(2)</span>
-      </div>
+        <% @tweet.each do |tweet| %>
 
-      <div class="tweet-item">
-        <img src="http://via.placeholder.com/80x80" class="avatar">
-        <a href="#"> @username </a>, <span class="time"> time </span>
-        <div class="content">tweet content</div>
-        <a href="#">Reply(2)</a> <span class="like-info">like(2)</span>
-      </div>
+          <div class="tweet-item">
+            <img src="http://via.placeholder.com/80x80" class="avatar">
+            <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>, 
+            <span class="time">  <%= time_ago_in_words(tweet.created_at) %> </span>
+            <div class="content"><%= tweet.description %></div>
+            <%= link_to "Reply(#{tweet.replies_count})" , tweet_replies_path(tweet) %> 
+            <%= link_to "Like(#{tweet.likes_count})" , like_tweet_path(tweet),  method: :post, class: "like"%> 
+          </div>
+ 
+        <% end %>
+
   
   </div>
 

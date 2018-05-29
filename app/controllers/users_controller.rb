@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 
   def tweets
+    @user = User.find(params[:id])
+    @tweet = @user.tweets
   end
 
   def edit
@@ -10,15 +12,28 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings # 基於測試規格，必須講定變數名稱
+    set_user
+    @followings = @user.followings # 基於測試規格，必須講定變數名稱
   end
 
   def followers
-    @followers # 基於測試規格，必須講定變數名稱
+    set_user
+    @followers = @user.followers# 基於測試規格，必須講定變數名稱
   end
 
   def likes
-    @likes # 基於測試規格，必須講定變數名稱
+    set_user
+    @likes = @user.likes# 基於測試規格，必須講定變數名稱
   end
+
+  
+  private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  
+
 
 end
