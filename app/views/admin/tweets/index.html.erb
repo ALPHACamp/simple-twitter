@@ -1,0 +1,40 @@
+<div class="container">
+  <ul class="nav nav-pills nav-admin">
+    <li role="presentation" class="active"><%= link_to "所有推播與回覆", admin_tweets_path %></li>
+    <li role="presentation"><%= link_to "使用者清單", admin_users_path %></li>
+  </ul>
+  <div class="admin-tweet">
+    <% @tweets.each do |tweet| %>
+      <div class="tweet-block">
+        <% for img_id in 0..26 %>
+          <% if image_path(tweet.user.avatar).include?('/user'+img_id.to_s+'.jpg') %>
+            <%= image_tag('/avatar/user'+img_id.to_s+'.jpg', class: "user-avatar") %>
+          <% end %>
+        <% end %>
+        <div class="user-text clearfix">
+          <h4><%= link_to tweet.user.name, tweets_user_path(tweet.user) %></h4>
+          <p class="text-muted"><em><%= tweet.created_at.to_s(:db) %></em></p>
+          <p><%= simple_format tweet.description %></p>
+          <%= render partial: "shared/like", locals: {tweet: tweet} %>
+          <%= link_to 'Reply('+tweet.replies.length.to_s+')', tweet_replies_path(tweet), class: "reply-btn" %>
+          <p class="like-num"><%= 'Like('+tweet.liked_users.length.to_s+')' %></p>
+          <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sore?"}, class: "btn btn-default btn-right" %><hr>
+          <% tweet.replies.each do |reply| %>
+            <div class="all-tweet-reply">
+              <% for img_id in 0..26 %>
+                <% if image_path(reply.user.avatar).include?('/user'+img_id.to_s+'.jpg') %>
+                  <%= image_tag('/avatar/user'+img_id.to_s+'.jpg', class: "user-avatar") %>
+                <% end %>
+              <% end %>
+              <div class="user-text">
+                <h4><%= link_to reply.user.name, tweets_user_path(reply.user) %></h4>
+                <p class="text-muted"><em><%= reply.created_at.to_s(:db) %></em></p>
+                <p><%= simple_format reply.comment %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

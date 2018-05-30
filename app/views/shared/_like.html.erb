@@ -1,0 +1,9 @@
+<% if tweet.is_liked?(current_user) %>
+  <%= link_to unlike_tweet_path(tweet), method: :post do %>
+    <span class="glyphicon glyphicon-heart heart"  aria-hidden="true"></span>
+  <% end %>
+<% else %>
+  <%= link_to like_tweet_path(tweet), method: :post do %>
+    <span class="glyphicon glyphicon-heart-empty heart"  aria-hidden="true"></span>
+  <% end %>
+<% end %>

@@ -1,0 +1,7 @@
+<div class="container">
+  <%= render partial: "shared/user_profile", locals: {user: @user} %>
+
+  <div class="user-tweet">
+    <%= render partial: "shared/show_tweets", locals: {tweets: @tweets} %>
+  </div>
+</div>
