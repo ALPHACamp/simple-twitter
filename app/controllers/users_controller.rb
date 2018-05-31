@@ -24,22 +24,22 @@ class UsersController < ApplicationController
         flash.now[:alert] = "intro was failed to update : run user"
         render :edit  
     end
-    
+
   end
 
   def followings
     set_user
-    @followings = @user.followings # 基於測試規格，必須講定變數名稱
+    @followings = @user.followings.includes(:followships).order("followships.created_at DESC") # 基於測試規格，必須講定變數名稱
   end
 
   def followers
     set_user
-    @followers = @user.followers# 基於測試規格，必須講定變數名稱
+    @followers = @user.followers.includes(:inverse_followships).order("followships.created_at DESC")# 基於測試規格，必須講定變數名稱
   end
 
   def likes
     set_user
-    @likes = @user.liked_tweet# 基於測試規格，必須講定變數名稱
+    @likes = @user.liked_tweet.includes(:likes).order("likes.created_at DESC")# 基於測試規格，必須講定變數名稱
   end
 
   

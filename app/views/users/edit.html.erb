@@ -4,8 +4,6 @@
   <div class="col-md-3">    
   <%= form_for @user do |f| %>
     
-    <img src="http://via.placeholder.com/250x250" class="avatar">
-  
     <div class="form-group">
     <%= f.label :avatar, "大頭照上傳" %>
     <%= image_tag @user.avatar, width: '250px' if @user.avatar? %>
