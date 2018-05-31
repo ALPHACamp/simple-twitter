@@ -17,12 +17,12 @@ class User < ApplicationRecord
 
 #user可以發很多篇Replies
   has_many :replies, dependent: :destroy
-  has_many :replied_tweet, through: :replies, source: :tweets
+  has_many :replied_tweet, through: :replies, source: :tweet
 
 
 # User可以喜歡很多文，如果User刪掉的話 喜歡的關係也要被刪掉
   has_many :likes, dependent: :destroy
-  has_many :liked_tweet, class_name: "Like", foreign_key:"tweet_id"
+  has_many :liked_tweet,  through: :likes, source: :tweet
 
 # User可以跟隨很多人，如果User刪掉的話 follow關係也要被刪掉 也可以被很多人跟隨
   has_many :followships, dependent: :destroy

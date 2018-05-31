@@ -43,9 +43,20 @@
  
       <% end %>
 
-      <textarea></textarea>
-      <button>Reply</button>
-      
+                  
+     <div class="form-inline" >
+      <%= form_for [@tweet,@reply] do |f| %>
+        <div class="form-group">
+          <%= f.text_area :comment, placeholder: "",  class: "form-control" %>
+        </div>
+        <%= f.submit "Reply", class: "btn btn-primary" %>
+          <% if @tweet.errors.any? %>
+        <%= @tweet.errors.full_messages.to_sentence %>
+        <% end %>
+      <% end %>
+
+      </div>
+
   </div>
 
 </div>
