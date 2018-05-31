@@ -1,0 +1,26 @@
+<div class="speak-item row">
+  <div class="col-xs-3">
+     <%= render partial: "shared/avatar", locals: {avatar: tweet.user.avatar} ,size: "200"if tweet.user.avatar? %>
+     
+  </div>
+
+  <div class="col-xs-9">
+    <p>
+      <%= link_to tweet.user.name,tweets_user_path(tweet.user) %> ,
+      <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %>
+
+    </p>
+    <p> <%=tweet.description %></p>
+
+
+  </div>
+ 
+
+
+  <div class="col-xs-9 col-xs-offset-3">
+    <div id="reply" class= "reply-item inline">
+      <%= link_to "Reply(#{tweet.replies.size})",tweet_replies_path(tweet),class: "address" %>
+    </div>
+    <%= render partial: "shared/like", locals: {tweet: tweet} %>
+  </div>
+</div>

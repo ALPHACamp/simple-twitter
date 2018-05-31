@@ -1,0 +1,50 @@
+<div class="col-md-6">
+<h1>User/<%= link_to "Tweets", admin_tweets_path %></h1>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Tweet </th>
+        <th>Following</th>
+        <th>Follower</th>
+        <th>Like</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+       <tr>  
+
+        <td> <%= user.name %></td>
+        <td> <%= user.tweets.count %></td>
+        <td> <%= user.followings.count %></td>
+        <td> <%= user.followers.count %></td>
+        <td> <%= user.likes.count %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="col-md-6">
+    <h1>Tweet</h1>
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+         
+        </tr>
+      </thead>
+      <tbody>
+        <% @tweets.each do |tweet| %>
+         <tr>  
+
+           <td> <%= tweet.user.name %></td>
+            <td> <%= tweet.description %></td>
+              
+          
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
