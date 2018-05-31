@@ -2,16 +2,32 @@
 
   <div class="col-md-4">    
 
-    <img src="http://via.placeholder.com/350x350" class="avatar">
-    <div><%= @user.name %></div>
-    <div><%= @user.introduction %> </div>
+  <div class="user-intro">
+    <img src="http://via.placeholder.com/250x250" class="avatar">
+    <h3><%= @user.name %></h3>
+    <div class="introduction"><%= @user.introduction %> </div>
+    
+    <div class="link">
+    <%= link_to "Tweet #{@user.tweets.count}" , tweets_user_path(@user) %> 
+    <%= link_to "Following #{@user.followings.count}" , followings_user_path(@user) %> 
+    <%= link_to "Follower #{@user.followers.count}" , followers_user_path(@user) %> 
+    <%= link_to "Like #{@user.likes.count}" , likes_user_path(@user) %> 
+    </div>
 
-    <%= link_to "Tweet #{1}" , tweets_user_path(@user) %> 
-    <%= link_to "Following #{1}" , followings_user_path(@user) %> 
-    <%= link_to "Follower #{1}" , followers_user_path(@user) %> 
-    <%= link_to "Like #{1}" , likes_user_path(@user) %> 
-
-    <button> Edit Profile </button>
+    <% if @user == current_user  %>
+      <%= link_to "Edit Profile" , edit_user_path(@user), Class: "btn btn-primary" %> 
+    <% else %>
+      
+      <% if current_user.following?(@user) %>
+      
+        <%= link_to "Unfollow" , followship_path(@user), method: :delete, class: "btn btn-primary"%>
+      <% else %>
+        <%= link_to "Follow" , followships_path(following_id: @user), method: :post, class: "btn btn-primary"%>
+  
+      <% end %>
+  
+    <% end %>
+    </div>
 
   </div>
 
@@ -20,13 +36,23 @@
     <h3>Tweets</h3>
 
       <div class="tweet-item">
-        <img src="http://via.placeholder.com/80x80" class="avatar">
-        <%= link_to "#{@user.name}" , tweets_user_path(@user) %>, <span class="time"> time </span>
-        <div class="content">tweet content</div>
-            <%= link_to "Reply(#{@tweet.replies_count})" , tweet_replies_path(@tweet) %> 
-            <%= link_to "Like(#{@tweet.likes_count})" , like_tweet_path(@tweet), class: "like"%> 
+              <img src="http://via.placeholder.com/80x80" class="avatar">
+             
+              <div class="content">
+                <%= link_to "@"+@user.name, tweets_user_path(@user) %>, 
+                <span class="time">  <%= @tweet.created_at.to_s(:db)  %> </span>
+                <div class="description"><%= @tweet.description %></div>
+               
+                <%= link_to "Reply(#{@tweet.replies_count})" , tweet_replies_path(@tweet) %> 
+                <%= link_to "Like(#{@tweet.likes_count})" , like_tweet_path(@tweet), method: :post, class: "like"%> 
+               
+                <% if @tweet.liked_user.include?(current_user) %>
+                  <%= link_to "Unlike" , unlike_tweet_path(@tweet), method: :post, class: "unlike"%> 
+                <% end %>
+              </div>
 
-      </div>
+              <div class="clearfix"> </div>
+            </div>
     
     <h3>Replies</h3>
 
@@ -34,22 +60,25 @@
 
           <div class="tweet-item">
             <img src="http://via.placeholder.com/80x80" class="avatar">
+            <div class="content">
             <%= link_to reply.user.name, tweets_user_path(reply.user) %>, 
             <span class="time">  <%= time_ago_in_words(reply.created_at) %> </span>
-            <div class="content"><%= reply.comment %></div>
-            
+            <div class="comment"><%= reply.comment %></div>
+            </div>
+            <div class="clearfix"></div>
+
           </div>
 
  
       <% end %>
 
                   
-     <div class="form-inline" >
+     <div id="tweet-area" class="form-inline" >
       <%= form_for [@tweet,@reply] do |f| %>
         <div class="form-group">
           <%= f.text_area :comment, placeholder: "",  class: "form-control" %>
         </div>
-        <%= f.submit "Reply", class: "btn btn-primary" %>
+        <%= f.submit "Reply", class: "btn btn-primary", id: "tweet-button" %>
           <% if @tweet.errors.any? %>
         <%= @tweet.errors.full_messages.to_sentence %>
         <% end %>

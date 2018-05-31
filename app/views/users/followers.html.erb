@@ -1,15 +1,17 @@
 <div class="col-md-12">
 
-  <div class="col-md-4">    
-
-    <img src="http://via.placeholder.com/350x350" class="avatar">
-    <div><%= @user.name %></div>
-    <div><%= @user.introduction %> </div>
-
+  <div class="col-md-3">    
+    <div class="user-intro">
+    <img src="http://via.placeholder.com/250x250" class="avatar">
+    <h3><%= @user.name %></h3>
+    <div class="introduction"><%= @user.introduction %> </div>
+    
+    <div class="link">
     <%= link_to "Tweet #{@user.tweets.count}" , tweets_user_path(@user) %> 
     <%= link_to "Following #{@user.followings.count}" , followings_user_path(@user) %> 
     <%= link_to "Follower #{@user.followers.count}" , followers_user_path(@user) %> 
     <%= link_to "Like #{@user.likes.count}" , likes_user_path(@user) %> 
+    </div>
 
     <% if @user == current_user  %>
       <%= link_to "Edit Profile" , edit_user_path(@user), Class: "btn btn-primary" %> 
@@ -24,23 +26,28 @@
       <% end %>
   
     <% end %>
-    
+    </div>
 
   </div>
 
-  <div class="col-md-8">    
+  <div class="col-md-9">    
 
     <h3>Followers</h3>
      
-     <% @followers.each do |follower| %>
+     <% @followers.each do |following| %>
 
-      <div class="Following-item">
-        <img src="http://via.placeholder.com/80x80" class="avatar">
-        <%= link_to "@#{follower.name}" , tweets_user_path(follower) %></a>, 
-        <div class="descript"> <%= follower.introduction %></div>
-      
-      </div>
-
+        <div class="following-item">
+          <img src="http://via.placeholder.com/80x80" class="avatar">
+          <div class="content">
+            <%= link_to "@#{following.name}" , tweets_user_path(following) %>
+            <div class="descript"> <%= following.introduction %>
+            </div>
+          </div>
+          <div class="button-area">
+          <%= link_to "Unfollow" , followship_path(following), method: :delete, class: "btn btn-primary"%>
+          </div>
+          <div class="clearfix"></div>
+        </div>
 
     <% end %>
   

@@ -24,7 +24,7 @@
              
               <div class="content">
                 <%= link_to "@"+tweet.user.name, tweets_user_path(tweet.user) %>, 
-                <span class="time">  <%= tweet.created_at %> </span>
+                <span class="time">  <%= tweet.created_at.to_s(:db)  %> </span>
                 <div class="description"><%= tweet.description %></div>
                
                 <%= link_to "Reply(#{tweet.replies_count})" , tweet_replies_path(tweet) %> 

@@ -1,15 +1,17 @@
 <div class="col-md-12">
 
-  <div class="col-md-4">    
-
-    <img src="http://via.placeholder.com/350x350" class="avatar">
-    <div><%= @user.name %></div>
-    <div><%= @user.introduction %> </div>
-
+  <div class="col-md-3">    
+    <div class="user-intro">
+    <img src="http://via.placeholder.com/250x250" class="avatar">
+    <h3><%= @user.name %></h3>
+    <div class="introduction"><%= @user.introduction %> </div>
+    
+    <div class="link">
     <%= link_to "Tweet #{@user.tweets.count}" , tweets_user_path(@user) %> 
     <%= link_to "Following #{@user.followings.count}" , followings_user_path(@user) %> 
     <%= link_to "Follower #{@user.followers.count}" , followers_user_path(@user) %> 
     <%= link_to "Like #{@user.likes.count}" , likes_user_path(@user) %> 
+    </div>
 
     <% if @user == current_user  %>
       <%= link_to "Edit Profile" , edit_user_path(@user), Class: "btn btn-primary" %> 
@@ -24,28 +26,35 @@
       <% end %>
   
     <% end %>
+    </div>
 
   </div>
 
-  <div class="col-md-8">    
+  <div class="col-md-9">    
 
     <h3>Like</h3>
 
-      <% @likes.each do |like| %>
+      <% @likes.each do |tweet| %>
 
-      <div class="tweet-item">
+       <div class="tweet-item">
         <img src="http://via.placeholder.com/80x80" class="avatar">
-        <%= link_to "@#{like.user.name}" , tweets_user_path(like.user) %>,
-        <span class="time"> <%= time_ago_in_words(like.created_at) %> </span>
-        <div class="content"> <%= like.description %></div>
-        <%= link_to "Reply(#{like.replies_count})" , tweet_replies_path(like) %> 
-            <%= link_to "Like(#{like.likes_count})" , like_tweet_path(like), method: :post, class: "like"%> 
-           
-            <% if like.liked_user.include?(current_user) %>
-              <%= link_to "Unlike" , unlike_tweet_path(like), method: :post, class: "like"%> 
-            <% end %>
+       
+        <div class="content">
+          <%= link_to "@"+tweet.user.name, tweets_user_path(tweet.user) %>, 
+          <span class="time">  <%= tweet.created_at.to_s(:db)  %> </span>
+          <div class="description"><%= tweet.description %></div>
+         
+          <%= link_to "Reply(#{tweet.replies_count})" , tweet_replies_path(tweet) %> 
+          <%= link_to "Like(#{tweet.likes_count})" , like_tweet_path(tweet), method: :post, class: "like"%> 
+         
+          <% if tweet.liked_user.include?(current_user) %>
+            <%= link_to "Unlike" , unlike_tweet_path(tweet), method: :post, class: "unlike"%> 
+          <% end %>
+        </div>
 
+        <div class="clearfix"> </div>
       </div>
+   
 
     <% end %>
       

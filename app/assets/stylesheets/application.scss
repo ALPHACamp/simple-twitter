@@ -18,6 +18,7 @@
 @import "bootstrap";
 
 
+
 .tweet-item, .user-item
 {
   padding:10px;
@@ -34,7 +35,7 @@ h3
 
 }
 
-.form-group, #tweet_description
+.form-group, #tweet_description ,#reply_comment
 {
 width: 100%  
 }
@@ -90,4 +91,64 @@ width: 100%
 .user-item .content .button
 {
   text-align:right;
+}
+
+.user-item .introduction
+{
+  margin-bottom:15px;
+}
+
+
+.user-intro .introduction
+{
+  color:#337ab7;
+  margin-bottom:15px;
+}
+
+
+.user-intro .link a
+{
+  font-size:1.3em;
+  color: #666666;
+  display: block;
+  width:100px;
+  margin:5px;
+}
+
+
+.following-item 
+{
+  border: 1px solid #EEEEEE;
+  padding:10px;
+  margin:10px;
+  height:200px;
+
+}
+
+.following-item  .content
+{
+  margin-left:10px;
+  width:250px;
+
+}
+
+.button-area
+{
+  text-align:right;
+}
+
+.following-item img, .following-item .content
+{
+  
+  float:left;
+}
+
+.following-item .content
+{
+  height:140px;
+}
+
+.following-item descript
+{
+  width:100px;
 }
