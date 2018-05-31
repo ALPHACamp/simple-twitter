@@ -18,12 +18,20 @@
   <div class="col-md-8">    
 
     <h3>Like</h3>
+
+      <% @likes.each do |like| %>
+
       <div class="tweet-item">
         <img src="http://via.placeholder.com/80x80" class="avatar">
-        <a href="#"> @username </a>, <span class="time"> time </span>
-        <div class="content">tweet content</div>
-        <a href="#">Reply(2)</a> <span class="like-info">like(2)</span>
+        <%= link_to "@#{like.user.name}" , tweets_user_path(like.user) %>,
+        <span class="time"> <%= time_ago_in_words(like.created_at) %> </span>
+        <div class="content"> <%= like.description %></div>
+        <%= link_to "Reply(#{like.replies_count})" , tweet_replies_path(like) %> 
+        <%= link_to "Like(#{like.likes_count})" , like_tweet_path(like), method: :post, class: "like"%> 
       </div>
+
+    <% end %>
+      
    
   
   </div>

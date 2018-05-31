@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     root "admin/tweets#index"
   end
 
-  resources :tweets, only: [:index, :show] do
+  resources :tweets, only: [:index, :show, :create] do
     resources :replies, only: [:index, :create]
 
     member do

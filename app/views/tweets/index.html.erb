@@ -2,11 +2,21 @@
         <div class="col-md-8">    
           
           <div class="form-group">
-            <textarea>test</textarea>
-            <button>Tweet</button>
+            
+             <div class="form-inline" >
+              <%= form_for @tweet do |f| %>
+                <div class="form-group">
+                  <%= f.text_field :description, placeholder: "What's on your mind?",  class: "form-control" %>
+                </div>
+                <%= f.submit "tweet", class: "btn btn-primary" %>
+                  <% if @tweet.errors.any? %>
+                <%= @tweet.errors.full_messages.to_sentence %>
+                <% end %>
+              <% end %>
+
           </div>
   
-           <% @tweet.each do |tweet| %>
+           <% @tweets.each do |tweet| %>
 
           <div class="tweet-item">
             <img src="http://via.placeholder.com/80x80" class="avatar">

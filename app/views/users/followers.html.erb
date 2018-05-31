@@ -8,10 +8,10 @@
 
     <%= link_to "Tweet #{@user.tweets.count}" , tweets_user_path(@user) %> 
     <%= link_to "Following #{@user.followings.count}" , followings_user_path(@user) %> 
-    <%= link_to "Follower #{@user.followers.count}" , followers_user_path(@user) %> 
+    <%= link_to "Follower #{@user.followships.count}" , followers_user_path(@user) %> 
     <%= link_to "Like #{@user.likes.count}" , likes_user_path(@user) %> 
 
-    <button> Follow </button>
+    
 
   </div>
 
@@ -25,7 +25,7 @@
         <img src="http://via.placeholder.com/80x80" class="avatar">
         <%= link_to "@#{follower.name}" , tweets_user_path(follower) %></a>, 
         <div class="descript"> <%= follower.introduction %></div>
-        <%= link_to "Unfollow" , delete_following_path(follower), class: "like"%>
+      
       </div>
 
 
