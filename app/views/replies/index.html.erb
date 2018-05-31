@@ -3,7 +3,7 @@
   <div class="col-md-4">    
 
   <div class="user-intro">
-    <img src="http://via.placeholder.com/250x250" class="avatar">
+    <%= image_tag @user.avatar, width: '250px',class: "avatar" if @user.avatar? %>
     <h3><%= @user.name %></h3>
     <div class="introduction"><%= @user.introduction %> </div>
     

@@ -20,7 +20,7 @@
              <% @tweets.each do |tweet| %>
 
             <div class="tweet-item">
-              <img src="http://via.placeholder.com/80x80" class="avatar">
+                 <%= image_tag tweet.user.avatar, width: '80px',class: "avatar" if tweet.user.avatar? %>
              
               <div class="content">
                 <%= link_to "@"+tweet.user.name, tweets_user_path(tweet.user) %>, 
@@ -48,7 +48,7 @@
           <% @users.each do |user| %>
           <div class="user-item">
              
-             <img src="http://via.placeholder.com/80x80" class="avatar">
+             <%= image_tag user.avatar, width: '80px',class: "avatar" if user.avatar? %>
 
              <div class="content">
               <%= link_to "@#{user.name}", tweets_user_path(user) %>

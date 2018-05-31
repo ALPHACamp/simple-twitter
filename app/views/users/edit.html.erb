@@ -1,21 +1,41 @@
     
 <div class="col-md-12">
 
-  <div class="col-md-4">    
-
-    <img src="http://via.placeholder.com/350x350" class="avatar">
+  <div class="col-md-3">    
+  <%= form_for @user do |f| %>
+    
+    <img src="http://via.placeholder.com/250x250" class="avatar">
   
-    <button> Browsing Files </button>
+    <div class="form-group">
+    <%= f.label :avatar, "大頭照上傳" %>
+    <%= image_tag @user.avatar, width: '250px' if @user.avatar? %>
+    <%= f.file_field :avatar %>
+    </div>
 
   </div>
 
-  <div class="col-md-8">    
+  <div class="col-md-9">    
 
-    <input type=text>
-    <textarea></textarea>
+
+   <div class="form-group">
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name , {class: "form-control"} %>
+    </div>
     
-    <button>Update</button>
-  
+
+    <div class="form-group">
+    <%= f.label :introduction, "自我介紹" %>
+    <%= f.text_area :introduction , {class: "form-control"}  %>
+    </div>
+
+
+
+    <%= f.submit "Update" ,class: "btn btn-primary" %>
+    <%= link_to "Cancel", tweets_user_path(current_user),class: "btn btn-default"  %>
+  <% end %>
+
+
+
   </div>
 
 </div>

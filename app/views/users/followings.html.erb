@@ -2,7 +2,7 @@
 
   <div class="col-md-3">    
     <div class="user-intro">
-    <img src="http://via.placeholder.com/250x250" class="avatar">
+    <%= image_tag @user.avatar, width: '250px',class: "avatar" if @user.avatar? %>
     <h3><%= @user.name %></h3>
     <div class="introduction"><%= @user.introduction %> </div>
     
@@ -38,7 +38,7 @@
      <% @followings.each do |following| %>
       
         <div class="following-item">
-          <img src="http://via.placeholder.com/80x80" class="avatar">
+          <%= image_tag following.avatar, width: '80px',class: "avatar" if following.avatar? %>
           <div class="content">
             <%= link_to "@#{following.name}" , tweets_user_path(following) %>
             <div class="descript"> <%= following.introduction %>

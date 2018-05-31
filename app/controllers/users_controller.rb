@@ -6,9 +6,25 @@ class UsersController < ApplicationController
   end
 
   def edit
+    set_user
   end
 
   def update
+    set_user
+    if @user.id == current_user.id 
+
+      if @user.update(user_params)
+        flash[:notice] = "intro was successfully updated"
+        redirect_to tweets_user_path(@user)
+      else
+        flash.now[:alert] = "intro was failed to update"
+        render :edit
+      end
+    else
+        flash.now[:alert] = "intro was failed to update : run user"
+        render :edit  
+    end
+    
   end
 
   def followings
@@ -33,7 +49,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  
+  def user_params
+    params.require(:user).permit(:name, :introduction, :avatar)
+  end
 
 
 end
