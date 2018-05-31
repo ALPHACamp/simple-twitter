@@ -28,7 +28,6 @@
 
             <% if current_user %>
              
-              <li> <%= link_to(current_user.name, tweets_user_path(current_user)) %> </li>
                 <% if current_user.admin? %>
                   <li><%= link_to('Admin', admin_tweets_path) %> </li>
                 <% end %>

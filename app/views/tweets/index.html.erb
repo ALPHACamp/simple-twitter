@@ -1,55 +1,77 @@
 <div class="col-md-12">
         <div class="col-md-8">    
           
-          <div class="form-group">
-            
-             <div class="form-inline" >
-              <%= form_for @tweet do |f| %>
-                <div class="form-group">
-                  <%= f.text_area :description, placeholder: "What's on your mind?",  class: "form-control" %>
-                </div>
-                <%= f.submit "Tweet", class: "btn btn-primary" %>
-                  <% if @tweet.errors.any? %>
-                <%= @tweet.errors.full_messages.to_sentence %>
+            <div id="tweet-area" class="form-group">
+              
+               <div class="form-inline" >
+                <%= form_for @tweet do |f| %>
+                  <div class="form-group">
+                    <%= f.text_area :description, placeholder: "What's on your mind?",  class: "form-control" %>
+                  </div>
+                  <%= f.submit "Tweet", class: "btn btn-primary", id: "tweet-button" %>
+                    <% if @tweet.errors.any? %>
+                  <%= @tweet.errors.full_messages.to_sentence %>
+                  <% end %>
                 <% end %>
-              <% end %>
 
-          </div>
-  
-           <% @tweets.each do |tweet| %>
+              </div>
+            </div>
+    
+             <% @tweets.each do |tweet| %>
 
-          <div class="tweet-item">
-            <img src="http://via.placeholder.com/80x80" class="avatar">
-            <%= link_to "@"+tweet.user.name, tweets_user_path(tweet.user) %>, 
-            <span class="time">  <%= time_ago_in_words(tweet.created_at) %> </span>
-            <div class="description"><%= tweet.description %></div>
-           
-            <%= link_to "Reply(#{tweet.replies_count})" , tweet_replies_path(tweet) %> 
-            <%= link_to "Like(#{tweet.likes_count})" , like_tweet_path(tweet), method: :post, class: "like"%> 
-           
-            <% if tweet.liked_user.include?(current_user) %>
-              <%= link_to "Unlike" , unlike_tweet_path(tweet), method: :post, class: "like"%> 
+            <div class="tweet-item">
+              <img src="http://via.placeholder.com/80x80" class="avatar">
+             
+              <div class="content">
+                <%= link_to "@"+tweet.user.name, tweets_user_path(tweet.user) %>, 
+                <span class="time">  <%= tweet.created_at %> </span>
+                <div class="description"><%= tweet.description %></div>
+               
+                <%= link_to "Reply(#{tweet.replies_count})" , tweet_replies_path(tweet) %> 
+                <%= link_to "Like(#{tweet.likes_count})" , like_tweet_path(tweet), method: :post, class: "like"%> 
+               
+                <% if tweet.liked_user.include?(current_user) %>
+                  <%= link_to "Unlike" , unlike_tweet_path(tweet), method: :post, class: "unlike"%> 
+                <% end %>
+              </div>
+
+              <div class="clearfix"> </div>
+            </div>
+   
             <% end %>
-
-          </div>
- 
-          <% end %>
-
 
         </div>
 
         <div class="col-md-4">
-          <h3>popular</h3>
+          <h3>Popular</h3>
           
+          <% @users.each do |user| %>
           <div class="user-item">
+             
              <img src="http://via.placeholder.com/80x80" class="avatar">
-             <a href="#"> @username </a>
-             <div class="descript"> user info </div>
-             <button> Follow </button>
 
+             <div class="content">
+              <%= link_to "@#{user.name}", tweets_user_path(user) %>
+          
+              <div class="introduction"> <%= user.introduction %> </div>
+              <div class="button">
+                <% if current_user.following?(user) %>   
+                  <%= link_to "Unfollow" , followship_path(user), method: :delete, class: "btn btn-primary"%>
+                <% else %>
+                  <%= link_to "Follow" , followships_path(following_id: user), method: :post, class: "btn btn-primary"%>
+            
+                <% end %>
+              </div>
+            </div>
+
+            <div class="clearfix"> </div>
           </div>
+          <% end %>
+ 
 
         </div>
+
+        <div class="clearfix"></div>
 
 
     </div>

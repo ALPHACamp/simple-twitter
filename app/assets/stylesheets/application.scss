@@ -16,3 +16,78 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+
+.tweet-item, .user-item
+{
+  padding:10px;
+  border: 1px solid #EEEEEE;
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+h3
+{
+  color: #337ab7;
+
+}
+
+.form-group, #tweet_description
+{
+width: 100%  
+}
+
+#tweet_description
+{
+    height:200px;
+}
+
+#tweet-area
+{
+  margin-top: 15px;
+  text-align:right;
+
+}
+
+#tweet-button
+{
+  
+  margin:10px;
+}
+
+.time{
+  color: #337ab7;
+}
+
+.like{
+  color: #b73333;
+}
+
+.unlike{
+  color: #b7b7b7; 
+}
+
+.tweet-item img, .user-item img{
+
+  float:left;  
+}
+
+.tweet-item .content{
+  float:left;
+  margin:10px;
+}
+
+
+.user-item .content
+{
+  float:left;
+  margin-left:10px;
+  width:220px;
+}
+
+.user-item .content .button
+{
+  text-align:right;
+}

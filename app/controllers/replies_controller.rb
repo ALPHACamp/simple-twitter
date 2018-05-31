@@ -16,9 +16,16 @@ class RepliesController < ApplicationController
     
     if @reply.save
       flash[:notice] = "reply was successfully created"
+      @tweet.replies_count += 1
+      @tweet.save
     end
 
     redirect_to tweet_replies_path(@tweet)
+
+  end
+
+
+  def destroy
 
   end
 
