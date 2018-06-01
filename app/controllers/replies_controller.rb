@@ -25,10 +25,6 @@ class RepliesController < ApplicationController
   end
 
 
-  def destroy
-
-  end
-
 
   private
     def reply_params

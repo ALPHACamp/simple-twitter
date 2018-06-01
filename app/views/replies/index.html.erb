@@ -36,8 +36,7 @@
     <h3>Tweets</h3>
 
       <div class="tweet-item">
-              <img src="http://via.placeholder.com/80x80" class="avatar">
-             
+             <%= image_tag @user.avatar, width: '80px',class: "avatar" if @user.avatar? %>
               <div class="content">
                 <%= link_to "@"+@user.name, tweets_user_path(@user) %>, 
                 <span class="time">  <%= @tweet.created_at.to_s(:db)  %> </span>
@@ -59,7 +58,7 @@
        <% @replies.each do |reply| %>
 
           <div class="tweet-item">
-            <img src="http://via.placeholder.com/80x80" class="avatar">
+            <%= image_tag reply.user.avatar, width: '80px',class: "avatar" if reply.user.avatar? %>
             <div class="content">
             <%= link_to reply.user.name, tweets_user_path(reply.user) %>, 
             <span class="time">  <%= time_ago_in_words(reply.created_at) %> </span>
