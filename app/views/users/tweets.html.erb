@@ -1,0 +1,66 @@
+<div class="col-md-12">
+
+  <div class="col-md-3">    
+    <div class="user-intro">
+     <%= image_tag @user.avatar, width: '250px',class: "avatar" if @user.avatar? %>
+  
+    <h3><%= @user.name %></h3>
+    <div class="introduction"><%= @user.introduction %> </div>
+    
+    <div class="link">
+    <%= link_to "Tweet #{@user.tweets.count}" , tweets_user_path(@user) %> 
+    <%= link_to "Following #{@user.followings.count}" , followings_user_path(@user) %> 
+    <%= link_to "Follower #{@user.followers.count}" , followers_user_path(@user) %> 
+    <%= link_to "Like #{@user.likes.count}" , likes_user_path(@user) %> 
+    </div>
+
+    <% if @user == current_user  %>
+      <%= link_to "Edit Profile" , edit_user_path(@user), Class: "btn btn-primary" %> 
+    <% else %>
+      
+      <% if current_user.following?(@user) %>
+      
+        <%= link_to "Unfollow" , followship_path(@user), method: :delete, class: "btn btn-primary"%>
+      <% else %>
+        <%= link_to "Follow" , followships_path(following_id: @user), method: :post, class: "btn btn-primary"%>
+  
+      <% end %>
+  
+    <% end %>
+    </div>
+
+  </div>
+
+  <div class="col-md-9">    
+
+
+
+        <% @tweets.each do |tweet| %>
+
+            <div class="tweet-item">
+             <%= image_tag tweet.user.avatar, width: '80px',class: "avatar" if tweet.user.avatar? %>
+             
+              <div class="content">
+                <%= link_to "@"+tweet.user.name, tweets_user_path(tweet.user) %>, 
+                <span class="time">  <%= tweet.created_at.to_s(:db)  %> </span>
+                <div class="description"><%= tweet.description %></div>
+               
+                <%= link_to "Reply(#{tweet.replies_count})" , tweet_replies_path(tweet) %> 
+                <%= link_to "Like(#{tweet.likes_count})" , like_tweet_path(tweet), method: :post, class: "like"%> 
+               
+                <% if tweet.liked_user.include?(current_user) %>
+                  <%= link_to "Unlike" , unlike_tweet_path(tweet), method: :post, class: "unlike"%> 
+                <% end %>
+              </div>
+
+              <div class="clearfix"> </div>
+            </div>
+   
+        <% end %>
+
+
+
+  
+  </div>
+
+</div>

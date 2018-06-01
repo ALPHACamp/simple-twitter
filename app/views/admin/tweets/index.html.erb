@@ -1,0 +1,66 @@
+<%= link_to "Tweet管理", admin_tweets_path %>
+<%= link_to "使用者管理", admin_users_path %>
+
+<div class="col-md-12">
+        <div class="col-md-6">    
+          
+             <% @tweets.each do |tweet| %>
+
+            <div class="tweet-item">
+                 <%= image_tag tweet.user.avatar, width: '80px',class: "avatar" if tweet.user.avatar? %>
+            
+              <div class="content">
+                <%= link_to "@"+tweet.user.name, tweets_user_path(tweet.user) %>, 
+                <span class="time">  <%= tweet.created_at.to_s(:db)  %> </span>
+                <div class="description"><%= tweet.description %></div>
+               
+                <%= link_to "Reply(#{tweet.replies_count})" , tweet_replies_path(tweet) %> 
+                <%= link_to "Like(#{tweet.likes_count})" , like_tweet_path(tweet), method: :post, class: "like"%> 
+               
+                <% if tweet.liked_user.include?(current_user) %>
+                  <%= link_to "Unlike" , unlike_tweet_path(tweet), method: :post, class: "unlike"%> 
+                <% end %>
+              </div>
+
+              <div class="clearfix"> </div>
+               <%= link_to "Delete" , admin_tweet_path(tweet), method: :delete,  data: { confirm: "Are you sure?"} , class: "btn btn-danger"%>
+              <% replies = tweet.replies %>
+              <% if replies.count >0 %>
+                <hr>
+
+              <div class="reply-item">
+                  <% replies.each do |reply| %>
+
+                   <div class="tweet-item">
+                    <img src="http://via.placeholder.com/80x80" class="avatar">
+                    <div class="content">
+                    <%= link_to reply.user.name, tweets_user_path(reply.user) %>, 
+                    <span class="time">  <%= time_ago_in_words(reply.created_at) %> </span>
+                    <div class="comment"><%= reply.comment %></div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                  </div>
+                  <% end %>
+
+              </div>
+              <%end %>
+
+            </div>
+   
+            <% end %>
+
+        </div>
+
+      
+
+        <div class="clearfix"></div>
+
+
+    </div>
+  
+
+  </div>
+
+
+</div>
