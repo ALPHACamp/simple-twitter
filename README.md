@@ -1,4 +1,4 @@
-[![Maintainability](https://api.codeclimate.com/v1/badges/c0609ce113878eab620c/maintainability)]
+
 
 # Simple Twitter
 
