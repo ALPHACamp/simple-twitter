@@ -1,4 +1,6 @@
 class TweetsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :authenticate_admin
 
   def index
     #@users # 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
@@ -13,4 +15,12 @@ class TweetsController < ApplicationController
   def unlike
   end
 
+  private
+
+  def authenticate_admin
+    unless current_user.admin?
+      flash[:alert] = "Not allow"
+      redirect_to root_path
+    end
+  end
 end
