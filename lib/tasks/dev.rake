@@ -19,7 +19,7 @@ namespace :dev do
       puts user.name
     end
 
-    user = User.new(
+    User.new(
       name: "root",
       email: "root@mail.com",
       password: "123456",
@@ -29,6 +29,18 @@ namespace :dev do
     )
     user.save!
     puts "root"
+  end
+
+  task fake_tweet: :environment do
+    Tweet.destroy_all
+    10.times do |i|
+
+      tweet = Tweet.create!(
+        description: FFaker::Lorem::sentence(5),
+        user_id: User.all.sample.id
+      )
+    end
+    puts "now you have #{Tweet.count} tweets data"
   end
 
 end
