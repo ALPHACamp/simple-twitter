@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
   def tweets
+    @user = User.find(params[:user_id])
   end
 
   def show
