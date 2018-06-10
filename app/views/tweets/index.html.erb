@@ -15,7 +15,7 @@
       <!-- 新增推播表格 -->
       <%= form_for @tweet do |f| %>
         <div class="form-group">
-          <%= f.text_area :description, class: "form-control" %>
+          <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control" %>
           <br />
           <%= f.submit class: "btn btn-primary" %>
         </div>
