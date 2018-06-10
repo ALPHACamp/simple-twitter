@@ -19,7 +19,7 @@ namespace :dev do
       puts user.name
     end
 
-    User.new(
+    User.create!(
       name: "root",
       email: "root@mail.com",
       password: "123456",
@@ -27,7 +27,6 @@ namespace :dev do
       avatar: file,
       role: "admin"
     )
-    user.save!
     puts "root"
   end
 
@@ -43,4 +42,11 @@ namespace :dev do
     puts "now you have #{Tweet.count} tweets data"
   end
 
+  task fake_all: :environment do
+    #Rake::Task['db:migrate'].execute
+    #Rake::Task['db:seed'].execute
+    Rake::Task['dev:fake_user'].execute
+    Rake::Task['dev:fake_tweet'].execute
+    #
+  end
 end
