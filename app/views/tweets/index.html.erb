@@ -30,7 +30,10 @@
       <div class="tweet-item">
 
         <% @tweets.each do |tweet| %>
-          <h5><%= tweet.user.name %></h5>
+          <%= link_to user_tweets_path(tweet.user) do %>
+            <h5><%= tweet.user.name %></h5>
+          <% end %>
+          
           <p><%= tweet.description %></p>
         <% end %>
 
@@ -49,7 +52,10 @@
       <div class="popular-user">
 
         <% @users.each do |user| %>
-          <h5><%= user.name %>
+          <%= link_to user_tweets_path(user) do %>
+            <h5><%= user.name %>
+          <% end %>
+
           <p><%= user.introduction %></p>
         <% end %>
 
