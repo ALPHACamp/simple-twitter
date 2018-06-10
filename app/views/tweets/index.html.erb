@@ -30,6 +30,7 @@
       <div class="tweet-item">
 
         <% @tweets.each do |tweet| %>
+          <h5><%= tweet.user.name %></h5>
           <p><%= tweet.description %></p>
         <% end %>
 
