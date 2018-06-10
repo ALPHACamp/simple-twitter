@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   # 注意有 sign_up 和 account_update 兩種參數要處理
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  #before_action :authenticate_user! #使用者一定要登入才能使用網站
+  before_action :authenticate_user! #使用者一定要登入才能使用網站
 
   protected
 
