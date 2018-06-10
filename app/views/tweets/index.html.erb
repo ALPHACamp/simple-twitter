@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
 
-    <h2>前台首頁</h2><br />
-
 <!--------------------------------------- 左邊區塊 --------------------------------------->
 
     <div class="col-md-8">
+
+      <br />
 
       <!-- 新增推播失敗的錯誤提示 -->
       <% if @tweet.errors.any? %>
@@ -16,10 +16,12 @@
       <%= form_for @tweet do |f| %>
         <div class="form-group">
           <%= f.text_area :description, class: "form-control" %>
+          <br />
           <%= f.submit class: "btn btn-primary" %>
         </div>
       <% end %>
 
+      <br />
 
       <!-- 站內所有推播(最新的在前) -->
 
@@ -41,6 +43,7 @@
     <div class="col-md-4">
 
       <!-- 跟隨者最多的使用者 -->
+      <h3>Popular</h3>
 
     </div><!-- col-md-4 -->
 
