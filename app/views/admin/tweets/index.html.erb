@@ -1,15 +1,23 @@
 <h1>餐廳後台</h1>
-<ul>
-  <% @tweets.each do |tweet| %>
-    <li>
-      <%= tweet.description %>
-      <%= tweet.user_id %>
-      <%= link_to 'Show', admin_tweet_path(tweet) %>
-      <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %>
-    </li>
-  <% end %>
-</ul>
+<div class= "container">
+  <ul>
+    <% @tweets.each do |tweet| %>
+      <li>
+        <%= tweet.description %>
+        <%= tweet.user_id %>
+        <%= link_to 'Show', admin_tweet_path(tweet) %>
+        <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %>
+      </li>
+    <% end %>
+  </ul>
+  <ul>
+    <% @users.each do |user| %>
+      <li>
+        <%= user.name %>
+        <%= user.email %>
 
-<ul>
+      </li>
+    <% end %>
+  </ul>
 
-</ul>
+</div>
