@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def tweets
     @user = User.find(params[:user_id])
+    @tweets = @user.tweets.order(created_at: :desc)
   end
 
   def show

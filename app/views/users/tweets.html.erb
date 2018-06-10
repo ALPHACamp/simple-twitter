@@ -1,1 +1,23 @@
-<%= @user.name %>
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-4">
+
+      <%= @user.name %>
+
+    </div>
+
+
+
+    <div class="col-md-8">
+
+      <% @tweets.each do |tweet| %><!-- 前面不要加 = -->
+        <p><%= simple_format tweet.description %></p>
+      <% end %>
+
+    </div>
+
+
+
+  </div>
+</div>
