@@ -14,8 +14,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(user_params)
-    redirect_to user_path(@user)
+    if @user.update(user_params)
+      flash[:notice] = "update successfully"
+      redirect_to user_path(@user)
+    else
+      flash.now[:alert] = "Update failed! Maybe this name has already been taken, try another name."
+      render :edit
+    end
   end
 
   def followings

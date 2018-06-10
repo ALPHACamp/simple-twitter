@@ -2,23 +2,23 @@
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
     
-    <div class="list-group">
+      <div class="list-group">
 
-      <% if @user.avatar? %>
-        <%= image_tag @user.avatar.url, width: '200px' %>
-      <% else %>
-        <%= image_tag ("800x600.png"), width: '200px' %>
-      <% end %>
+        <% if @user.avatar? %>
+          <%= image_tag @user.avatar.url, width: '200px' %>
+        <% else %>
+          <%= image_tag ("800x600.png"), width: '200px' %>
+        <% end %>
 
-      <h4><%= @user.name %></h4>
-      <p><%= @user.introduction %></p>
+        <h4><%= @user.name %></h4>
+        <p><%= @user.introduction %></p>
 
+        
+        <% if @user.email == current_user.email %>
+          <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-primary" %>
+        <% end %>
       
-      <% if @user.email == current_user.email %>
-        <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-primary" %>
-      <% end %>
-    
-    </div>
+      </div>
     
 
     </div>
