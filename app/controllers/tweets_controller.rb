@@ -9,7 +9,7 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new(tweet_params)
     if @tweet.save
       flash[:notice] = "tweet was successfully created"
-      redirtect_to root_path
+      redirect_to tweets_path
     else
       flash.now[:alert] = "tweet was failed to create"
       render :index
