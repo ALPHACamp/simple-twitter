@@ -1,7 +1,10 @@
-
 <div class= "container">
-  <h1>後台</h1>
   <div class="row">
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><%= link_to "Tweets", admin_root_path %></li>
+      <li role="presentation"><%= link_to "Users", allusers_admin_tweets_path %></li>
+    </ul>
+
     <h3>Tweets</h3>
     <table class="table table-hover">
       <thead>
@@ -27,29 +30,6 @@
     </table>
     <div class="text-center">
       <%= paginate @tweets %>
-    </div>
-
-    <h3>Users</h3>
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>name</th>
-          <th>email</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
-          <tr>
-            <th><%= user.id %></th>
-            <td><%= user.name %></td>
-            <td><%= user.email %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <div class="text-center">
-      <%= paginate @users %>
     </div>
   </div>
 </div>
