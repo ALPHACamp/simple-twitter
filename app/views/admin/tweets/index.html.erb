@@ -1,48 +1,55 @@
-<h1>餐廳後台</h1>
+
 <div class= "container">
-
-  <h3>Tweets</h3>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>user id</th>
-        <th>description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @tweets.each do |tweet| %>
+  <h1>後台</h1>
+  <div class="row">
+    <h3>Tweets</h3>
+    <table class="table table-hover">
+      <thead>
         <tr>
-          <th><%= tweet.id %></th>
-          <td><%= tweet.user_id %></td>
-          <td><%= tweet.description %></td>
-          <td>
-            <%= link_to 'Show', admin_tweet_path(tweet) %>
-            <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %>
-          </td>
+          <th>#</th>
+          <th>user id</th>
+          <th>description</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @tweets.each do |tweet| %>
+          <tr>
+            <th><%= tweet.id %></th>
+            <td><%= tweet.user_id %></td>
+            <td><%= tweet.description %></td>
+            <td>
+              <%= link_to 'Show', admin_tweet_path(tweet) %>
+              <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="text-center">
+      <%= paginate @tweets %>
+    </div>
 
-  <h3>Users</h3>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>name</th>
-        <th>email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @users.each do |user| %>
+    <h3>Users</h3>
+    <table class="table table-hover">
+      <thead>
         <tr>
-          <th><%= user.id %></th>
-          <td><%= user.name %></td>
-          <td><%= user.email %></td>
+          <th>#</th>
+          <th>name</th>
+          <th>email</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <th><%= user.id %></th>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="text-center">
+      <%= paginate @users %>
+    </div>
+  </div>
 </div>
