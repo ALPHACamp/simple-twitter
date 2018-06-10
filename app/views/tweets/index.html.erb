@@ -1,16 +1,54 @@
 <div class="container">
+  <div class="row">
 
-  <h1>前台首頁</h1>
+    <h2>前台首頁</h2><br />
 
-  <!-- 新增推文失敗的錯誤提示 -->
-  <% if @tweet.errors.any? %>
-    <%= @tweet.errors.full_messages.to_sentence %>
-  <% end %>
+<!--------------------------------------- 左邊區塊 --------------------------------------->
 
-  <!-- 新增推文表格 -->
-  <%= form_for @tweet do |f| %>
-      <%= f.text_area :description %>
-      <%= f.submit %>
-  <% end %>
+    <div class="col-md-8">
 
-</div>
+      <!-- 新增推播失敗的錯誤提示 -->
+      <% if @tweet.errors.any? %>
+        <%= @tweet.errors.full_messages.to_sentence %>
+      <% end %>
+
+      <!-- 新增推播表格 -->
+      <%= form_for @tweet do |f| %>
+        <div class="form-group">
+          <%= f.text_area :description, class: "form-control" %>
+          <%= f.submit class: "btn btn-primary" %>
+        </div>
+      <% end %>
+
+
+      <!-- 站內所有推播(最新的在前) -->
+
+      <h3>最新推播</h3>
+
+      <div class="tweet-item">
+
+        <% @tweets.each do |tweet| %>
+          <tr>
+            <td><%= tweet.description %></td>
+          </tr>
+        <% end %>
+
+      </div><!-- tweet-item -->
+
+
+    </div><!-- col-md-6 -->
+
+<!--------------------------------------- 右邊區塊 --------------------------------------->
+    
+    <div class="col-md-4">
+
+      <!-- 跟隨者最多的使用者 -->
+
+    </div><!-- col-md-4 -->
+
+
+
+
+
+  </div><!-- row -->
+</div><!-- container -->
