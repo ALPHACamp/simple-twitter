@@ -46,6 +46,15 @@
       <!-- 跟隨者最多的使用者 -->
       <h3>Popular</h3>
 
+      <div class="popular-user">
+
+        <% @users.each do |user| %>
+          <h5><%= user.name %>
+          <p><%= user.introduction %></p>
+        <% end %>
+
+      </div>
+
     </div><!-- col-md-4 -->
 
 
