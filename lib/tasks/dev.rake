@@ -33,7 +33,7 @@ namespace :dev do
 
   task fake_tweet: :environment do
     Tweet.destroy_all
-    20.times do |i|
+    10.times do |i|
 
       tweet = Tweet.create!(
         description: FFaker::Lorem::sentence(5),
