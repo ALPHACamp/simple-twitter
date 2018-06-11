@@ -30,12 +30,25 @@
         <% @tweets.each do |tweet| %>
           <div class="tweet-item">
             <%= link_to user_tweets_path(tweet.user) do %>
+              
+              <% if tweet.user.avatar? %>
+                <%= image_tag tweet.user.avatar.url, height: '100px' %>
+              <% else %>
+                <%= image_tag ("800x600.png"), height: '100px' %>
+              <% end %>
+
               <h5><%= tweet.user.name %></h5>
-            <% end %>
+
+            <% end %><!-- link_to -->
+
+            <p class="text-muted">
+              <em><%= time_tag(tweet.created_at) %></em>
+            </p>
 
             <p><%= tweet.description %></p>
 
             <%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet) %>
+
           </div><!-- tweet-item -->
         <% end %>
 
