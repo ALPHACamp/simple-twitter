@@ -41,6 +41,16 @@
         <p><%= simple_format @tweet.description %></p>
       </div>
 
+      <hr />
+
+      <div class="single-tweet-reply-item">
+
+          <% @replies.each do |reply| %>
+            <p><%= reply.comment %></p>
+          <% end %>
+
+      </div>
+
 
       <%= form_for [@tweet, @reply] do |f| %>
         <%= f.text_area :comment %>
