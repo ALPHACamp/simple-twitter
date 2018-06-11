@@ -1,1 +1,14 @@
-<h1>tweets前台</h1>
+
+<div class="container">
+  <% @tweets.each do |tweet| %>
+    <div class="tweet-item">
+      <%= image_tag tweet.user.avatar %>
+      <div>
+        <h3><%= tweet.user.name %></h3>
+        <h4><%= tweet.created_at.strftime("%F, %H:%M") %></h4>
+        <p><%= tweet.description %></p>
+      </div>
+    </div>
+  <% end %>
+  <%= paginate @tweets %>
+</div>

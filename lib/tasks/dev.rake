@@ -35,7 +35,7 @@ namespace :dev do
     20.times do |i|
 
       tweet = Tweet.create!(
-        description: FFaker::Lorem::sentence(5),
+        description: FFaker::Lorem::sentence(10),
         user_id: User.all.sample.id
       )
     end
