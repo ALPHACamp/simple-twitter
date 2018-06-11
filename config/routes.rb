@@ -4,8 +4,12 @@ Rails.application.routes.draw do
 
   # 請依照專案指定規格來設定路由
   root "tweets#index" #前台首頁
-  resources :tweets
+
   resources :followships, only: [:create, :destroy]
+
+  resources :tweets do
+    resources :replies, only: [:create, :destroy] #使用者在個別推播下留下回覆
+  end
 
 
   resources :users, only: [:show, :edit, :update] do
