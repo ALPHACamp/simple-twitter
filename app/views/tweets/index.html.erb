@@ -65,7 +65,15 @@
         <% @users.each do |user| %>
           <div class="popular-user">
             <%= link_to user_tweets_path(user) do %>
+
+              <% if user.avatar? %>
+                <%= image_tag user.avatar.url, height: '100px' %>
+              <% else %>
+                <%= image_tag ("800x600.png"), height: '100px' %>
+              <% end %>
+
               <h5><%= user.name %>
+
             <% end %>
 
             <p><%= user.introduction %></p>
