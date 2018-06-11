@@ -27,19 +27,17 @@
 
       <h3>最新推播</h3>
 
-      <div class="tweet-item">
-
         <% @tweets.each do |tweet| %>
-          <%= link_to user_tweets_path(tweet.user) do %>
-            <h5><%= tweet.user.name %></h5>
-          <% end %>
+          <div class="tweet-item">
+            <%= link_to user_tweets_path(tweet.user) do %>
+              <h5><%= tweet.user.name %></h5>
+            <% end %>
 
-          <p><%= tweet.description %></p>
+            <p><%= tweet.description %></p>
 
-          <%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet) %>
+            <%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet) %>
+          </div><!-- tweet-item -->
         <% end %>
-
-      </div><!-- tweet-item -->
 
 
     </div><!-- col-md-6 -->
@@ -51,17 +49,15 @@
       <!-- 跟隨者最多的使用者 -->
       <h3>Popular</h3>
 
-      <div class="popular-user">
-
         <% @users.each do |user| %>
-          <%= link_to user_tweets_path(user) do %>
-            <h5><%= user.name %>
-          <% end %>
+          <div class="popular-user">
+            <%= link_to user_tweets_path(user) do %>
+              <h5><%= user.name %>
+            <% end %>
 
-          <p><%= user.introduction %></p>
+            <p><%= user.introduction %></p>
+          </div><!-- popular-user -->
         <% end %>
-
-      </div>
 
     </div><!-- col-md-4 -->
 
