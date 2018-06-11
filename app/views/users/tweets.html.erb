@@ -14,9 +14,10 @@
 
       <% if @user.email == current_user.email %>
         <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-primary" %>
-      <% else %>
-        <%= link_to 'Follow', followships_path(following_id: @user), method: :post, class: "btn btn-default" %>
       <% end %>
+
+      <%= link_to 'Follow', followships_path(following_id: @user), method: :post, class: "btn btn-default" %>
+      <%= link_to 'Unfollow', followship_path(@user), method: :delete, class: "btn btn-danger" %>
 
     </div>
 
