@@ -46,6 +46,7 @@
       <div class="single-tweet-reply-item">
 
           <% @replies.each do |reply| %>
+            <h4><%= reply.user.name %></h4>
             <p><%= reply.comment %></p>
           <% end %>
 

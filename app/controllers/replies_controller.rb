@@ -4,12 +4,12 @@ class RepliesController < ApplicationController
     @tweet = Tweet.find(params[:tweet_id]) #確認推播物件
     @user = @tweet.user
     @reply = @tweet.replies.new
-    @replies = @tweet.replies
+    @replies = @tweet.replies.all
   end
 
   def create
     @tweet = Tweet.find(params[:tweet_id]) #確認推播物件
-    @reply = @tweet.replies.new(reply_params)
+    @reply = @tweet.replies.build(reply_params)
     @reply.user = current_user #重要
     @reply.save
     redirect_to tweet_replies_path(@tweet)
