@@ -35,6 +35,8 @@
           <% end %>
 
           <p><%= tweet.description %></p>
+
+          <%= link_to 'Reply(xx)', tweet_replies_path(tweet) %>
         <% end %>
 
       </div><!-- tweet-item -->

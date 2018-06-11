@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :followships, only: [:create, :destroy]
 
   resources :tweets do
-    resources :replies, only: [:create, :destroy] #使用者在個別推播下留下回覆
+    resources :replies, only: [:index, :create] #使用者在個別推播下留下回覆
   end
 
 
