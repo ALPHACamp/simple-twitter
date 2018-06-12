@@ -92,7 +92,7 @@
 
             <% end %>
 
-            <p><%= user.introduction %></p>
+            <p><%= truncate user.introduction, length: 80 %></p>
 
             <!-- 呼叫follow/unfollow button -->
             <%= render partial: "shared/follow", locals: {user: user} %>
