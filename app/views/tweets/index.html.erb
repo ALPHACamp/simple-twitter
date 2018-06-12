@@ -1,14 +1,34 @@
-
 <div class="container">
+  <div class="col-sm-6 col-md-8">
+    <%= form_for @tweet do |f| %>
+      <div class="form-group">
+        <%= f.text_area :description, placeholder: "留個言吧", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+
+
   <% @tweets.each do |tweet| %>
-    <div class="tweet-item">
-      <%= image_tag tweet.user.avatar %>
-      <div>
-        <h3><%= tweet.user.name %></h3>
-        <h4><%= tweet.created_at.strftime("%F, %H:%M") %></h4>
-        <p><%= tweet.description %></p>
+    <div class="col-sm-6 col-md-8">
+      <div class="tweet-item">
+        <div class="col-md-4">
+          <%= image_tag tweet.user.avatar %>
+        </div>
+
+        <div class="col-md-8">
+          <h3>
+            <%= tweet.user.name %>
+            <%= tweet.created_at.strftime("%F, %H:%M") %>
+          </h3>
+
+          <p><%= tweet.description %></p>
+        </div>
       </div>
     </div>
   <% end %>
   <%= paginate @tweets %>
+
 </div>
