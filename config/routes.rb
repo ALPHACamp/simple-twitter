@@ -9,6 +9,12 @@ Rails.application.routes.draw do
 
   resources :tweets do
     resources :replies, only: [:index, :create] #使用者在個別推播下留下回覆
+
+    member do
+      post :like
+      post :unlike
+    end
+
   end
 
 
