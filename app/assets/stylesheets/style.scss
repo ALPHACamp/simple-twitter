@@ -4,6 +4,15 @@
   margin-bottom: 10px;
 }
 
+.tweet-item h5 {
+  display: inline-block;
+}
+
+.tweet-item .time-tag {
+  display: inline-block;
+  color: #0066CC;
+}
+
 .popular-user {
   border: 1px solid #DCDCDC;
   padding: 10px 10px;

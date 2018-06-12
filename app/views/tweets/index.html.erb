@@ -29,32 +29,40 @@
 
         <% @tweets.each do |tweet| %>
           <div class="tweet-item">
-            <%= link_to user_tweets_path(tweet.user) do %>
               
-              <% if tweet.user.avatar? %>
-                <%= image_tag tweet.user.avatar.url, height: '100px' %>
-              <% else %>
-                <%= image_tag ("800x600.png"), height: '100px' %>
+            <div class="col-md-3">
+              <div class="text-center">
+
+                <% if tweet.user.avatar? %>
+                  <%= image_tag tweet.user.avatar.url, height: '100px' %>
+                <% else %>
+                  <%= image_tag ("800x600.png"), height: '100px' %>
+                <% end %>
+
+              </div>
+            </div>
+
+            <div class="col-md-9">  
+
+              <%= link_to user_tweets_path(tweet.user) do %>     
+                <h5><%= tweet.user.name %></h5>
               <% end %>
 
-              <h5><%= tweet.user.name %></h5>
+              <p class="time-tag">, <%= time_tag(tweet.created_at) %></p>
 
-            <% end %><!-- link_to -->
+              <p><%= tweet.description %></p>
 
-            <p class="text-muted">
-              <em><%= time_tag(tweet.created_at) %></em>
-            </p>
+              <%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet) %>
 
-            <p><%= tweet.description %></p>
+              <% if tweet.liked_users.include?(current_user) %>
+                Like(<%= "#{tweet.likes_count}" %>)
+              <% end %>
 
-            <%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet) %>
+              <!-- 呼叫like/unlike button -->
+              <%= render partial: "shared/like", locals: {tweet: tweet} %>
+            </div><!-- col-md-9 -->
 
-            <% if tweet.liked_users.include?(current_user) %>
-              Like(<%= "#{tweet.likes_count}" %>)
-            <% end %>
-
-            <!-- 呼叫like/unlike button -->
-            <%= render partial: "shared/like", locals: {tweet: tweet} %>
+            <div class="clearfix"></div>
 
           </div><!-- tweet-item -->
         <% end %>
