@@ -22,7 +22,11 @@ class TweetsController < ApplicationController
 
   def like
     #@tweet = Tweet.find(params[:id])
-    @tweet.likes.create!(user: current_user)
+    if @tweet.is_liked?(current_user)
+      flash[:alert] = "already liked"
+    else
+      @tweet.likes.create!(user: current_user)
+    end
     redirect_back(fallback_location: root_path)
   end
 

@@ -49,8 +49,8 @@
 
             <%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet) %>
 
-            <%= link_to "Like" %>
-            <%= link_to "Unlike" %>
+            <!-- 呼叫like/unlike button -->
+            <%= render partial: "shared/like", locals: {tweet: tweet} %>
 
           </div><!-- tweet-item -->
         <% end %>
