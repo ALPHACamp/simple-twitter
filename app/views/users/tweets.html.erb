@@ -18,13 +18,8 @@
         <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-primary" %>
       <% end %>
 
-      <% if @user != current_user %>
-        <% if current_user.following?(@user) %>
-          <%= link_to 'Unfollow', followship_path(@user), method: :delete, class: "btn btn-danger" %>
-        <% else %>
-          <%= link_to 'Follow', followships_path(following_id: @user), method: :post, class: "btn btn-default" %>
-        <% end %>
-      <% end %>
+      <!-- 呼叫follow/unfollow button -->
+      <%= render partial: "shared/follow", locals: {user: @user} %>
 
     </div>
 
