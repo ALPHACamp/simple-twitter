@@ -4,13 +4,15 @@
   margin-bottom: 10px;
 }
 
-.tweet-item h5 {
+.tweet-item .tweet-user-name {
   display: inline-block;
+  margin-bottom: 0px;
 }
 
 .tweet-item .time-tag {
   display: inline-block;
   color: #0066CC;
+  margin-bottom: 0px;
 }
 
 .tweet-item .like-item {
