@@ -49,6 +49,10 @@
 
             <%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet) %>
 
+            <% if tweet.liked_users.include?(current_user) %>
+              Like(<%= "#{tweet.likes_count}" %>)
+            <% end %>
+
             <!-- 呼叫like/unlike button -->
             <%= render partial: "shared/like", locals: {tweet: tweet} %>
 
