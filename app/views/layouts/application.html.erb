@@ -27,7 +27,7 @@
             <% if current_user %>
               <li><p class="navbar-text">Hi, <%= current_user.name %></p></li>
 
-              <% if current_user.admin? %>
+              <% if current_user&.admin? %>
                 <li><%= link_to '後台管理', admin_root_path %></li>
               <% end %>
 
