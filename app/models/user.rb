@@ -7,7 +7,7 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   has_many :tweets, dependent: :destroy
-  has_many :replies
+  has_many :replies, dependent: :destroy
 
   validates_presence_of :name
   # 需要 app/views/devise 裡找到樣板，加上 name 屬性
