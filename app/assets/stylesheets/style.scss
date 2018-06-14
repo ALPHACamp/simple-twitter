@@ -38,6 +38,14 @@
 
 /*======================================= Users#Tweets page =======================================*/
 
+.user-name {
+  color: #0044BB;
+}
+
+.user-introduction {
+  color: #0066FF;
+}
+
 /* 隱藏followings,followers,likes的超連結底線顏色 */
 .user-interaction a {
   text-decoration: none;
@@ -46,6 +54,7 @@
 
 /* 滑鼠游標經過followings,followers,likes時的超連結顏色 */
 .user-interaction a:hover {
-  color: blue;
+  font-style: italic;
+  color: #666666;
 }
 
