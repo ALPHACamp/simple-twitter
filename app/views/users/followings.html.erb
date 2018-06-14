@@ -6,9 +6,34 @@
       <%= render partial: "shared/follow", locals: {user: @user} %>
     </div>
 
+
     <div class="col-md-8">
       <h3>Following</h3>
-    </div>
+      
+      <% @followings.each do |following| %>
+        <div class="following-item">
+
+          <%= link_to user_tweets_path(following) do %>
+
+            <% if following.avatar? %>
+              <%= image_tag following.avatar.url, height: '100px' %>
+            <% else %>
+              <%= image_tag ("800x600.png"), height: '100px' %>
+            <% end %>
+
+            <h5><%= following.name %>
+
+          <% end %>
+
+          <p><%= truncate following.introduction, length: 80 %></p>
+
+          <!-- 呼叫follow/unfollow button -->
+          <%= render partial: "shared/follow", locals: {user: following} %>
+
+        </div><!-- following-item -->
+      <% end %>
+      
+    </div><!-- col-md-8 -->
 
   </div>
 </div>
