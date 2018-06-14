@@ -11,26 +11,9 @@
       <h3>Follower</h3>
       
       <% @followers.each do |follower| %>
-        <div class="follower-item">
-
-          <%= link_to user_tweets_path(follower) do %>
-
-            <% if follower.avatar? %>
-              <%= image_tag follower.avatar.url, height: '100px' %>
-            <% else %>
-              <%= image_tag ("800x600.png"), height: '100px' %>
-            <% end %>
-
-            <h5><%= follower.name %>
-
-          <% end %>
-
-          <p><%= truncate follower.introduction, length: 80 %></p>
-
-          <!-- 呼叫follow/unfollow button -->
-          <%= render partial: "shared/follow", locals: {user: follower} %>
-
-        </div><!-- follower-item -->
+        <div class="col-md-6">
+          <%= render partial: "shared/user-item", locals: {user: follower} %>
+        </div>
       <% end %>
 
     </div><!-- col-md-8 -->

@@ -33,7 +33,7 @@
         <% end %>
 
 
-    </div><!-- col-md-6 -->
+    </div><!-- col-md-8 -->
 
 <!--------------------------------------- 右邊區塊 (Popular) --------------------------------------->
     
@@ -43,24 +43,39 @@
       <h3>Popular</h3>
 
         <% @users.each do |user| %>
-          <div class="popular-user">
-            <%= link_to user_tweets_path(user) do %>
+          <div class="user-item">
 
-              <% if user.avatar? %>
-                <%= image_tag user.avatar.url, height: '100px' %>
-              <% else %>
-                <%= image_tag ("800x600.png"), height: '100px' %>
-              <% end %>
+            <div class="col-md-4 col-sm-4">
+              <div class="text-center">
+                <div class="tweet-avatar">
 
-              <h5><%= user.name %>
+                  <% if user.avatar? %>
+                    <%= image_tag user.avatar.url, height: '100px' %>
+                  <% else %>
+                    <%= image_tag ("800x600.png"), height: '100px' %>
+                  <% end %>
 
-            <% end %>
+                </div>
+              </div>
+            </div>
 
-            <p><%= truncate user.introduction, length: 80 %></p>
+            <div class="col-md-8 col-sm-8">
+              <div class="user-description">
 
-            <!-- 呼叫follow/unfollow button -->
-            <%= render partial: "shared/follow", locals: {user: user} %>
-          </div><!-- popular-user -->
+                <%= link_to user_tweets_path(user) do %>
+                  <h5><%= user.name %></h5>
+                <% end %>
+
+                <p><%= truncate user.introduction, length: 36 %></p>
+
+                <!-- 呼叫follow/unfollow button -->
+                <%= render partial: "shared/follow", locals: {user: user} %>
+              </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+          </div><!-- user-item -->
         <% end %>
 
     </div><!-- col-md-4 -->

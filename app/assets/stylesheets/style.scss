@@ -32,7 +32,7 @@
   color: red;
 }
 
-.popular-user {
+.user-item {
   border: 1px solid #DCDCDC;
   padding: 10px 10px;
   margin-bottom: 10px;
@@ -75,4 +75,8 @@
   border: 1px solid #DCDCDC;
   margin-bottom: 5px;
   padding: 10px 10px;
+}
+
+.user-item {
+  height: 180px;
 }
