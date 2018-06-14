@@ -9,13 +9,8 @@
     <div class="col-md-8">
       <h3>Like</h3>
 
-      <% @likes.each do |like| %>
-        <div class="like-item">
-
-          <h4><%= like.user.name %></h4>
-          <p><%= simple_format like.description %></p>
-
-        </div><!-- like-item -->
+      <% @likes.each do |like| %><!-- 每個like是一則推播tweet -->
+        <%= render partial: "shared/tweet", locals: {tweet: like} %>
       <% end %>
 
     </div><!-- col-md-8 -->

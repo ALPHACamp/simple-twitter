@@ -29,43 +29,7 @@
       <h3>最新推播</h3>
 
         <% @tweets.each do |tweet| %>
-          <div class="tweet-item">
-              
-            <div class="col-md-3 col-sm-4">
-              <div class="text-center">
-                <div class="tweet-avatar">
-
-                  <% if tweet.user.avatar? %>
-                    <%= image_tag tweet.user.avatar.url, height: '100px' %>
-                  <% else %>
-                    <%= image_tag ("800x600.png"), height: '100px' %>
-                  <% end %>
-                
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-9 col-sm-8">
-              <div class="tweet-content">
-
-                <%= link_to user_tweets_path(tweet.user) do %>     
-                  <p class="tweet-user-name"><%= tweet.user.name %></p>
-                <% end %>
-
-                <p class="time-tag">, <%= time_tag(tweet.created_at) %></p>
-                <p><%= simple_format tweet.description %></p>
-
-                <%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet) %>
-                <p class="like-item">Like(<%= "#{tweet.likes_count}" %>)</p>
-                <!-- 呼叫like/unlike button -->
-                <%= render partial: "shared/like", locals: {tweet: tweet} %>
-
-              </div><!-- tweet-content -->
-            </div><!-- col-md-9 -->
-
-            <div class="clearfix"></div>
-
-          </div><!-- tweet-item -->
+          <%= render partial: "shared/tweet", locals: {tweet: tweet} %>
         <% end %>
 
 
