@@ -14,6 +14,15 @@
       <h4><%= @user.name %></h4>
       <p><%= @user.introduction %></p>
 
+      
+      <div class="user-interaction"><!-- tweets/followings/followers/like -->
+        <p>Tweets</p>
+        <p><%= link_to "Following", user_followings_path(@user) %></p>
+        <p><%= link_to "Followers", user_followers_path(@user) %> </p>
+
+      </div><!-- user-interaction -->
+
+
       <% if @user == current_user %>
         <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-primary" %>
       <% end %>
