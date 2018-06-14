@@ -16,10 +16,10 @@
 
       
       <div class="user-interaction"><!-- tweets/followings/followers/like -->
-        <p>Tweets</p>
-        <p><%= link_to "Following", user_followings_path(@user) %></p>
-        <p><%= link_to "Followers", user_followers_path(@user) %> </p>
-
+        <p>Tweets(<%= @user.tweets.count %>)</p>
+        <p><%= link_to "Following(#{@user.followings.count})", user_followings_path(@user) %></p>
+        <p><%= link_to "Followers(#{@user.followers.count})", user_followers_path(@user) %> </p>
+        <p><%= link_to "Like(#{@user.liked_tweets.count})", user_likes_path(@user) %></p><!-- 該使用者 like 過的推播清單 -->
       </div><!-- user-interaction -->
 
 
