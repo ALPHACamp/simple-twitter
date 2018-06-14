@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container index-container">
   <div class="row">
 
 <!--------------------------------------- 左邊區塊 (站內所有推播) --------------------------------------->
@@ -43,39 +43,7 @@
       <h3>Popular</h3>
 
         <% @users.each do |user| %>
-          <div class="user-item">
-
-            <div class="col-md-4 col-sm-4">
-              <div class="text-center">
-                <div class="tweet-avatar">
-
-                  <% if user.avatar? %>
-                    <%= image_tag user.avatar.url, height: '100px' %>
-                  <% else %>
-                    <%= image_tag ("800x600.png"), height: '100px' %>
-                  <% end %>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-8 col-sm-8">
-              <div class="user-description">
-
-                <%= link_to user_tweets_path(user) do %>
-                  <h5><%= user.name %></h5>
-                <% end %>
-
-                <p><%= truncate user.introduction, length: 36 %></p>
-
-                <!-- 呼叫follow/unfollow button -->
-                <%= render partial: "shared/follow", locals: {user: user} %>
-              </div>
-            </div>
-
-            <div class="clearfix"></div>
-
-          </div><!-- user-item -->
+          <%= render partial: "shared/user-item", locals: {user: user} %>
         <% end %>
 
     </div><!-- col-md-4 -->
