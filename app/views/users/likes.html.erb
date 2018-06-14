@@ -8,7 +8,17 @@
 
     <div class="col-md-8">
       <h3>Like</h3>
-    </div>
+
+      <% @likes.each do |like| %>
+        <div class="like-item">
+
+          <h4><%= like.user.name %></h4>
+          <p><%= simple_format like.description %></p>
+
+        </div><!-- like-item -->
+      <% end %>
+
+    </div><!-- col-md-8 -->
 
   </div>
 </div>

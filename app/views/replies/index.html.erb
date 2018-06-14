@@ -47,7 +47,7 @@
 
           <% @replies.each do |reply| %>
             <h4><%= reply.user.name %></h4>
-            <p><%= reply.comment %></p>
+            <p><%= simple_format reply.comment %></p>
           <% end %>
 
       </div>
