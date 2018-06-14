@@ -1,3 +1,5 @@
+/*================================= Public Index (Tweets#index) page =================================*/
+
 .form-group .text-area {
   height: 150px;
   font-size: 20px;
@@ -31,3 +33,19 @@
   padding: 10px 10px;
   margin-bottom: 10px;
 }
+
+
+
+/*======================================= Users#Tweets page =======================================*/
+
+/* 隱藏followings,followers,likes的超連結底線顏色 */
+.user-interaction a {
+  text-decoration: none;
+  color: black;
+}
+
+/* 滑鼠游標經過followings,followers,likes時的超連結顏色 */
+.user-interaction a:hover {
+  color: blue;
+}
+
