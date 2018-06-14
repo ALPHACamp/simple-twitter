@@ -1,8 +1,8 @@
-/*================================= Public Index (Tweets#index) page =================================*/
-
-.index-container {
-  margin-top: 50px;
+.container {
+  margin-top: 60px;
 }
+
+/*================================= Public Index (Tweets#index) page =================================*/
 
 .form-group .text-area {
   height: 150px;
@@ -42,10 +42,6 @@
 
 /*======================================= Users#Tweets page =======================================*/
 
-.tweets-container {
-  margin-top: 60px;
-}
-
 .user-name {
   color: #0044BB;
 }
@@ -69,34 +65,14 @@
 
 /*======================================= 其他 =======================================*/
 
-.followings-container {
-  margin-top: 60px;
-}
-
 .following-item {
   border: 1px solid #DCDCDC;
   margin-bottom: 5px;
   padding: 10px 10px;
 }
 
-.followers-container {
-  margin-top: 60px;
-}
-
 .follower-item {
   border: 1px solid #DCDCDC;
   margin-bottom: 5px;
   padding: 10px 10px;
-}
-
-.likes-container {
-  margin-top: 60px;
-}
-
-.reply-container {
-  margin-top: 60px;
-}
-
-.user-show-container {
-  margin-top: 60px;
 }
