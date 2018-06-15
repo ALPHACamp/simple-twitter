@@ -5,9 +5,9 @@
       <div class="tweet-avatar">
 
         <% if tweet.user.avatar? %>
-          <%= image_tag tweet.user.avatar.url, height: '100px' %>
+          <%= image_tag tweet.user.avatar.url, height: 100, width: 100 %>
         <% else %>
-          <%= image_tag ("800x600.png"), height: '100px' %>
+          <%= image_tag ("800x600.png"), height: 100, width: 100 %>
         <% end %>
       
       </div>

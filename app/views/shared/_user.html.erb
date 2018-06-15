@@ -3,9 +3,9 @@
 <div class="user-profile">
 
   <% if user.avatar? %>
-    <%= image_tag user.avatar.url, width: '200px' %>
+    <%= image_tag user.avatar.url, height: 200, width: 200 %>
   <% else %>
-    <%= image_tag ("800x600.png"), width: '200px' %>
+    <%= image_tag ("800x600.png"), height: 200, width: 200 %>
   <% end %>
 
   <h4 class="user-name"><%= user.name %></h4>
