@@ -24,3 +24,6 @@
   <%= link_to 'Edit', edit_user_path(user), class: "btn btn-primary" %>
 <% end %>
 
+<!-- 呼叫 follow/unfollow -->
+<%= render partial: "shared/follow", locals: {user: user} %>
+
