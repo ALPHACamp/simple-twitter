@@ -5,26 +5,8 @@
 
     <div class="col-md-4">
 
-      <% if @user.avatar? %>
-        <%= image_tag @user.avatar.url, width: '200px' %>
-      <% else %>
-        <%= image_tag ("800x600.png"), width: '200px' %>
-      <% end %>
-
-      <h4><%= @user.name %></h4>
-      <p><%= @user.introduction %></p>
-
-      <% if @user == current_user %>
-        <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-primary" %>
-      <% end %>
-
-      <% if @user != current_user %>
-        <% if current_user.following?(@user) %>
-          <%= link_to 'Unfollow', followship_path(@user), method: :delete, class: "btn btn-danger" %>
-        <% else %>
-          <%= link_to 'Follow', followships_path(following_id: @user), method: :post, class: "btn btn-default" %>
-        <% end %>
-      <% end %>
+      <!-- 呼叫user partial -->
+      <%= render partial: "shared/user", locals: {user: @user} %>
 
     </div><!-- col-md-4 -->
 
