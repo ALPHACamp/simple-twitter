@@ -5,19 +5,21 @@
 
     <div class="col-md-4">
 
-      <!-- 呼叫user partial -->
-      <%= render partial: "shared/user", locals: {user: @user} %>
+        <!-- 呼叫user partial -->
+        <%= render partial: "shared/user", locals: {user: @user} %>
 
     </div>
 
 <!----------------------------------------- 右半邊 (使用者的推播）----------------------------------------->
 
     <div class="col-md-8">
+      <div class="user-tweets">
 
-      <% @tweets.each do |tweet| %><!-- 前面不要加 = -->
-        <%= render partial: "shared/tweet", locals: {tweet: tweet} %>
-      <% end %>
+        <% @tweets.each do |tweet| %><!-- 前面不要加 = -->
+          <%= render partial: "shared/tweet", locals: {tweet: tweet} %>
+        <% end %>
 
+      </div>
     </div>
 
   </div><!-- row -->

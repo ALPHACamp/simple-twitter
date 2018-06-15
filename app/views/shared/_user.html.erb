@@ -1,29 +1,32 @@
 <!-- 左半邊（使用者簡介）-->
 
-<% if user.avatar? %>
-  <%= image_tag user.avatar.url, width: '200px' %>
-<% else %>
-  <%= image_tag ("800x600.png"), width: '200px' %>
-<% end %>
+<div class="user-profile">
 
-<h4 class="user-name"><%= user.name %></h4>
-<p class="user-introduction"><%= user.introduction %></p>
+  <% if user.avatar? %>
+    <%= image_tag user.avatar.url, width: '200px' %>
+  <% else %>
+    <%= image_tag ("800x600.png"), width: '200px' %>
+  <% end %>
 
-
-<div class="user-interaction"><!-- tweets/followings/followers/like -->
-  <br />
-  <p><%= link_to "Tweets(#{user.tweets.count})", user_tweets_path(user) %></p>
-  <p><%= link_to "Following(#{@user.followings.count})", user_followings_path(user) %></p>
-  <p><%= link_to "Followers(#{@user.followers.count})", user_followers_path(user) %> </p>
-  <p><%= link_to "Like(#{@user.liked_tweets.count})", user_likes_path(user) %></p>
-  <br />
-</div><!-- user-interaction -->
+  <h4 class="user-name"><%= user.name %></h4>
+  <p class="user-introduction"><%= user.introduction %></p>
 
 
-<% if user == current_user %>
-  <%= link_to 'Edit', edit_user_path(user), class: "btn btn-primary" %>
-<% end %>
+  <div class="user-interaction"><!-- tweets/followings/followers/like -->
+    <br />
+    <p><%= link_to "Tweets(#{user.tweets.count})", user_tweets_path(user) %></p>
+    <p><%= link_to "Following(#{@user.followings.count})", user_followings_path(user) %></p>
+    <p><%= link_to "Followers(#{@user.followers.count})", user_followers_path(user) %> </p>
+    <p><%= link_to "Like(#{@user.liked_tweets.count})", user_likes_path(user) %></p>
+    <br />
+  </div><!-- user-interaction -->
 
-<!-- 呼叫 follow/unfollow -->
-<%= render partial: "shared/follow", locals: {user: user} %>
 
+  <% if user == current_user %>
+    <%= link_to 'Edit', edit_user_path(user), class: "btn btn-primary" %>
+  <% end %>
+
+  <!-- 呼叫 follow/unfollow -->
+  <%= render partial: "shared/follow", locals: {user: user} %>
+
+</div>
