@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :followships, only: [:create, :destroy]
 
-  resources :tweets do
+  resources :tweets, only: [:index, :create] do
     resources :replies, only: [:index, :create] #使用者在個別推播下留下回覆
 
     member do
@@ -26,7 +26,13 @@ Rails.application.routes.draw do
   end
   
 
+
+  #管理者後台
   namespace :admin do
+    resources :tweets do
+      resources :replies
+    end
+
     root "tweets#index" #後台首頁
   end
 
