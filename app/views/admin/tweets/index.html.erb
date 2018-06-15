@@ -3,5 +3,23 @@
 
     <h1>後台入口</h1>
 
+    <div class="col-md-12">
+
+      <% @tweets.each do |tweet| %>
+        <div class="col-md-6">
+          <div class="admin-index-tweet">
+            <p>
+              <%= tweet.user.name %>
+              , <%= time_tag(tweet.created_at) %>
+            </p>
+            <p><%= simple_format tweet.description %></p>
+
+            <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm: "Are you sure?"} %>
+          </div>
+        </div>
+      <% end %>
+
+    </div><!-- col-md-12 -->
+
   </div>
 </div>

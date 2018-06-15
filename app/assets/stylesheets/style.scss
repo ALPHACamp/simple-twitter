@@ -1,5 +1,5 @@
 .container {
-  margin-top: 55px;
+  padding-top: 50px;
 }
 
 /*================================= Public Index (Tweets#index) page =================================*/
@@ -103,3 +103,15 @@
 .user-profile {
   margin-top: 30px;
 }
+
+
+/*======================================= Admin =======================================*/
+
+.admin-index-tweet {
+  border: 1px solid #DCDCDC;
+  height: 180px;
+  padding: 10px 10px;
+  margin-bottom: 10px;
+}
+
+
