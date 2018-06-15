@@ -14,29 +14,66 @@
 <!-------------------------------------- 右半邊 (針對特定推播的回覆) -------------------------------------->
 
     <div class="col-md-8">
+      <div class="col-md-10">
 
-      <!-- 原推播 -->
-      <%= render partial: "shared/tweet", locals: {tweet: @tweet} %>
+        <!-- 原推播 -->
+        <h3>Tweets</h3>
+        <%= render partial: "shared/tweet", locals: {tweet: @tweet} %>
 
-      <hr />
 
-      <!-- 針對原推播的回覆 -->
-      <div class="single-tweet-reply-item">
+        <!-- 針對原推播的回覆 -->
+        <h3>Replies</h3>
 
-          <% @replies.each do |reply| %>
-            <h4><%= reply.user.name %></h4>
-            <p><%= simple_format reply.comment %></p>
+        <% @replies.each do |reply| %>
+
+          <div class="reply-item">
+
+                <div class="col-md-3 col-sm-4">
+                  <div class="text-center">
+                    <div class="reply-user-avatar">
+                      <% if reply.user.avatar? %>
+                        <%= image_tag reply.user.avatar.url, height: '100px' %>
+                      <% else %>
+                        <%= image_tag ("800x600.png"), height: '100px' %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-9 col-sm-8">
+                  <div class="reply-content">
+
+                    <%= link_to user_tweets_path(reply.user) do %> 
+                      <p class="reply-user-name"><%= reply.user.name %></p>
+                    <% end %>
+
+                    <p class="time-tag">, <%= time_tag(reply.created_at) %></p>
+                    <p><%= simple_format reply.comment %></p>
+
+                  </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+              </div><!-- reply-item -->
+
+        <% end %>
+
+        <br />
+
+        <!-- 回覆表單 -->
+        <div class="reply-form">
+          <%= form_for [@tweet, @reply] do |f| %>
+            <div class="form-group">
+              <%= f.text_area :comment, class: "form-control text-area" %>
+            </div>
+            <div class="form-group">
+              <%= f.submit 'Reply', class: "pull-right btn btn-primary" %>
+            </div>
           <% end %>
+        </div>
 
-      </div>
-
-      <!-- 回覆表單 -->
-      <%= form_for [@tweet, @reply] do |f| %>
-        <%= f.text_area :comment %>
-        <%= f.submit 'Reply' %>
-      <% end %>
-
-
+      </div><!-- col-md-10 -->
     </div><!-- col-md-8 -->
 
 

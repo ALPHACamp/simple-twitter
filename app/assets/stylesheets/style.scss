@@ -66,6 +66,32 @@
   color: #666666;
 }
 
+/*======================================= Reply Index =======================================*/
+
+.reply-item {
+  border: 1px solid #DCDCDC;
+  padding: 10px 10px;
+  margin-bottom: 10px;
+}
+
+.reply-item .reply-user-name {
+  display: inline-block;
+  margin-bottom: 0px;
+}
+
+.reply-item .time-tag {
+  display: inline-block;
+  color: #0066CC;
+  margin-bottom: 0px;
+}
+
+.reply-form {
+  margin-bottom: 100px;
+}
+
+.reply-form .form-group .text-area {
+  height: 120px;
+}
 
 /*======================================= 其他 =======================================*/
 
