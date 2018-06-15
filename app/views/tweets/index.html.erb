@@ -1,7 +1,7 @@
 <div class="container index-container">
   <div class="row">
 
-<!--------------------------------------- 左邊區塊 (站內所有推播) --------------------------------------->
+<!------------------------------------- 左邊區塊 (站內所有推播) ------------------------------------->
 
     <div class="col-md-8">
 
@@ -25,13 +25,11 @@
       <br />
 
       <!-- 站內所有推播(最新的在前) -->
-
       <h3>最新推播</h3>
 
-        <% @tweets.each do |tweet| %>
-          <%= render partial: "shared/tweet", locals: {tweet: tweet} %>
-        <% end %>
-
+      <% @tweets.each do |tweet| %>
+        <%= render partial: "shared/tweet", locals: {tweet: tweet} %>
+      <% end %>
 
     </div><!-- col-md-8 -->
 
@@ -48,9 +46,7 @@
 
     </div><!-- col-md-4 -->
 
-
-
-
+<!------------------------------------------------------------------------------------------------->
 
   </div><!-- row -->
 </div><!-- container -->

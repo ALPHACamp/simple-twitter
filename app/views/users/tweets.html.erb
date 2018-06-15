@@ -13,22 +13,15 @@
 
     </div>
 
-<!------------------------------------------------- 右半邊 ------------------------------------------------->
+<!----------------------------------------- 右半邊 (使用者的推播）----------------------------------------->
 
     <div class="col-md-8">
 
       <% @tweets.each do |tweet| %><!-- 前面不要加 = -->
-        <h4><%= @user.name %></h4>
-        <p class="text-muted">
-          <em><%= time_tag(tweet.created_at) %></em>
-        </p>
-        <p><%= simple_format tweet.description %></p>
-        <br />
+        <%= render partial: "shared/tweet", locals: {tweet: tweet} %>
       <% end %>
 
     </div>
 
-
-
-  </div>
-</div>
+  </div><!-- row -->
+</div><!-- container -->
