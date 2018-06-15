@@ -15,16 +15,12 @@
 
     <div class="col-md-8">
 
-      <div class="single-tweet-item">
-        <h4><%= @user.name %></h4>
-        <p class="text-muted">
-          <em><%= time_tag(@tweet.created_at) %></em>
-        </p>
-        <p><%= simple_format @tweet.description %></p>
-      </div>
+      <!-- 原推播 -->
+      <%= render partial: "shared/tweet", locals: {tweet: @tweet} %>
 
       <hr />
 
+      <!-- 針對原推播的回覆 -->
       <div class="single-tweet-reply-item">
 
           <% @replies.each do |reply| %>
@@ -34,7 +30,7 @@
 
       </div>
 
-
+      <!-- 回覆表單 -->
       <%= form_for [@tweet, @reply] do |f| %>
         <%= f.text_area :comment %>
         <%= f.submit 'Reply' %>
