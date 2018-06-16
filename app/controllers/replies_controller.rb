@@ -20,12 +20,12 @@ class RepliesController < ApplicationController
 
 private
 
- def setup_tweet
-   @tweet = Tweet.includes(:replies, :user).find(params[:tweet_id])
- end
+  def setup_tweet
+    @tweet = Tweet.includes(:replies, :user).find(params[:tweet_id])
+  end
 
- def reply_params
-   params.require(:reply).permit(:comment)
- end
+  def reply_params
+    params.require(:reply).permit(:comment)
+  end
 
 end
