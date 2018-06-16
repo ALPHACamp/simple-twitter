@@ -1,0 +1,19 @@
+<% @tweets.each do |tweet| %>
+  <div class="col-sm-6 col-md-8">
+    <div class="tweet-item">
+      <div class="col-md-4">
+        <%= image_tag tweet.user.avatar %>
+      </div>
+
+      <div class="col-md-8">
+        <h3>
+          <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
+          <%= tweet.created_at.strftime("%F, %H:%M") %>
+        </h3>
+
+        <p><%= tweet.description %></p>
+      </div>
+    </div>
+  </div>
+<% end %>
+<%= paginate @tweets %>

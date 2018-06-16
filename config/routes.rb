@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :replies, only: [:index, :create]
   end
 
-  resoures :users, only: [:create, :update] do
+  resources :users, only: [:create, :update] do
     member do
       get :tweets
     end
