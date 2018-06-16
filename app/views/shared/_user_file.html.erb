@@ -11,8 +11,11 @@
     <% if @user == current_user %>
       <%= link_to "Edit profile", edit_user_path(@user) %>
     <% else %>
-      <%= link_to "Follow", followships_path(following_id: @user), method: :post %>
-      <%= link_to "Unfollow", followship_path(@user), method: :delete %>
+      <% if current_user.following?(@user) %>
+        <%= link_to "Unfollow", followship_path(@user), method: :delete %>
+      <% else %>
+        <%= link_to "Follow", followships_path(following_id: @user), method: :post %>
+      <% end %>
     <% end %>
   </div>
 </div>
