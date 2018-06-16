@@ -1,0 +1,17 @@
+<div class="col-sm-4 col-md-3">
+  <div class="user-file">
+    <%= image_tag @user.avatar %>
+    <h2><%= @user.name %></h2>
+    <p><%= @user.introduction%></p>
+    <h4>Tweets <%=@user.tweets.count%></h4>
+    <h4>following</h4>
+    <h4>Follower</h4>
+    <h4>Like</h4>
+
+    <% if @user == current_user %>
+      <%= link_to "Edit profile", edit_user_path %>
+    <% else %>
+      <%= "Follow" %>
+    <% end %>
+  </div>
+</div>

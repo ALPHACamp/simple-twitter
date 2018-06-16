@@ -1,5 +1,6 @@
+<div class="col-sm-6 col-md-8">
 <% @tweets.each do |tweet| %>
-  <div class="col-sm-6 col-md-8">
+
     <div class="tweet-item">
       <div class="col-md-4">
         <%= image_tag tweet.user.avatar %>
@@ -14,6 +15,7 @@
         <p><%= tweet.description %></p>
       </div>
     </div>
-  </div>
+
 <% end %>
+</div>
 <%= paginate @tweets %>
