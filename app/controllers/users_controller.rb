@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       flash[:notice] = "successfull updated"
       redirect_to tweets_user_path(@user)
     else
-      flash[:alert] = "update failed"
+      flash[:alert] = @user.errors.full_messages.to_sentence
       render :edit
     end
   end

@@ -5,13 +5,13 @@
     <p><%= @user.introduction%></p>
     <h4>Tweets <%=@user.tweets.count%></h4>
     <h4>following</h4>
-    <h4>Follower</h4>
+    <h4>Follower <%=@user.followings.count%></h4>
     <h4>Like</h4>
 
     <% if @user == current_user %>
-      <%= link_to "Edit profile", edit_user_path %>
+      <%= link_to "Edit profile", edit_user_path(@user) %>
     <% else %>
-      <%= "Follow" %>
+      <%= link_to "Follow", followships_path(following_id: @user), method: :post %>
     <% end %>
   </div>
 </div>
