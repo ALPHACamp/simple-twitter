@@ -8,7 +8,6 @@ class UsersController < ApplicationController
   end
 
   def update
-
     if @user.update(user_params)
       redirect_to root_path
     else
@@ -26,9 +25,7 @@ class UsersController < ApplicationController
   def likes
     @likes = @user.liked_tweets.order("likes.created_at desc")# 基於測試規格，必須講定變數名稱
   end
-
-
-
+  
 private
   def set_user
     @user = User.find(params[:id])
