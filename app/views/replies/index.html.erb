@@ -1,0 +1,23 @@
+<h3>Tweets</h3>
+<%= image_tag @tweet.user.avatar, size: '150x150' %>
+<%= link_to @tweet.user.name, tweets_user_path(@tweet.user) %>
+<%= @tweet.created_at.strftime("%Y-%m-%d, %T") %>
+<%= @tweet.description %>
+<h3>Replies</h3>
+<% @replies.each do |reply| %>
+  <ul>
+    <%= image_tag reply.user.avatar, size: '150x150' %>
+    <%= link_to reply.user.name, tweets_user_path(reply.user) %>
+    <%= reply.created_at.strftime("%Y-%m-%d, %T") %>
+    <%= reply.comment %>
+<% end %>
+  </ul>
+<%= form_for [ @tweet, @reply ] do |f| %>
+<div >
+  <%= f.text_area :comment %>
+</div>
+  <% if @reply.errors.any? %>
+    <%= @reply.errors.full_messages.to_sentence %>
+  <% end %>
+  <%= f.submit 'Reply' %>
+<% end %>

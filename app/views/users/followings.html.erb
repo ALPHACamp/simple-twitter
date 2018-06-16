@@ -1,0 +1,28 @@
+<div>
+  <li><%= image_tag @user.avatar, size: '150x150'%></li>
+  <li><%= @user.name %></li>
+  <li><%= @user.introduction %></li>
+</div>
+  <%= link_to "Tweets #{@user.tweets.size}",tweets_user_path(@user)%><br>
+  <%= link_to "Following #{@user.followings.size}",followings_user_path(@user)%><br>
+  <%= link_to "Follower #{@user.followers.size}",followers_user_path(@user)%><br>
+</div>
+<% if @user == current_user %>
+  <%= link_to "Edit Profile",edit_user_path(current_user) %>
+<% else %>
+  <% if current_user.following?(@user) %>
+   <%= link_to 'Unfollow', followship_path(@user), method: :delete %>
+   <% else %>
+   <%= link_to 'Follow', followships_path(following_id: user.id), method: :post %>
+   <% end %>
+<% end %>
+</div>
+
+<h3>followings</h3>
+<div>
+<% @followings.each do |user| %>
+  <%= image_tag @user.avatar, size: '150x150'%></br>
+  <%= link_to user.name,tweets_user_path(user) %></br>
+  <%= user.created_at.strftime("%Y-%m-%d, %H:%M") %></br>
+<% end %>
+</div>
