@@ -1,13 +1,13 @@
 .tweet-item img {
   height: 100px;
   width: 100px;
-  margin: 20px 20px;
-  margin-left: 10px;
+  margin: 20px 10px;
 }
 .tweet-item {
-  height: 170px;
   border: 2px solid #ddd;
-  margin: 15px 20px;
+  margin: 10px 20px;
+  float: left;
+  width: 98%;
 }
 
 .user-file img {
@@ -19,15 +19,20 @@
   margin: 10px 20px;
 }
 
-.follow-item {
+.user-item {
   border: 2px solid #ddd;
   margin: 10px -10px;
   float: left;
   padding-bottom: 15px;
+  width: 92%;
 }
 
-.follow-item img{
+.user-item img {
   margin: 15px -5px;
+}
+
+.follow-item {
+  margin-bottom: 30px;
 }
 
 .follow-button {
