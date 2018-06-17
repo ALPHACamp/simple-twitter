@@ -39,10 +39,10 @@ namespace :dev do
     Like.destroy_all
 
     User.all.each do |user|
-      1.times do
-        tweet = Tweet.all.sample
+      @tweets = Tweet.all.shuffle #亂數排序
+      10.times do
         user.likes.create!(
-          tweet: tweet
+          tweet: @tweets.pop #removes the last element from self and returns it
         )
       end
     end
@@ -55,8 +55,9 @@ namespace :dev do
     Followship.destroy_all
 
     User.all.each do |user|
-      1.times do
-        following = User.all.sample
+      @users = User.where.not(id: user.id).shuffle #用where.not排除自己
+      10.times do
+        following = @users.pop
         user.followships.create!(
           following: following
         )
@@ -71,7 +72,7 @@ namespace :dev do
     Reply.destroy_all
 
     User.all.each do |user|
-      3.times do
+      10.times do
         tweet = Tweet.all.sample
         user.replies.create!(
           tweet: tweet,
