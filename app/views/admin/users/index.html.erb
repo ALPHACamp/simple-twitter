@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <h2>All users</h2>
+
+    <div>
+      <%= link_to 'Tweets', admin_tweets_path %> |
+      <%= link_to 'Users', admin_users_path %>
+    </div>
+
+    <br />
+
+    <% @users.each do |user| %>
+      <p><%= user.name %></p>
+      <p><%= user.introduction %></p>
+      <p>Tweets: <%= user.tweets.count %></p>
+      <p>Followings: <%= user.followings.count %></p>
+      <p>Followers: <%= user.followers.count %></p>
+      <p>Likes: <%= user.likes.count %></p>
+      <hr />
+    <% end %>
+  </div>
+</div>
