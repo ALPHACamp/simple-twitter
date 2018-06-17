@@ -49,28 +49,33 @@ $(document).on('turbolinks:load', function() {
   });
 
   $(window).on('scroll', debounce(function(e){
-    if (($(window).height() + $(window).scrollTop()) >= $(document).height()-100)  {
+    var path = window.location.pathname
+    var str1 = "users";
+    var str2 = "replies"
 
-      $.ajax({
-        url: "tweets/load?current_id=" + current_tweet_id,
-        method: "GET",
-        dataType: "json",
-        success: function(data){
-          var tweets = data["data"];
-          $('#tweet-wall .loading').hide();
-          if (tweets.length > 0) {
-            tweets.forEach( function(element, index) {
-              console.log(tweets[index]);
-              $('#tweet-wall').append(tweets[index]["html"]);
-              current_tweet_id = tweets[index]["id"];
-            });
-            $('#tweet-wall').append('<div class="text-center loading"><em>Loading...</em></div>');           
-          } else {
-            $('#tweet-wall').append('<div class="text-center no-more"><em>No more todo</em></div>');
-            $(window).off('scroll');
+    if ( !path.includes(str1) && !path.includes(str2)) {
+      if (($(window).height() + $(window).scrollTop()) >= $(document).height()-100)  {
+
+        $.ajax({
+          url: "tweets/load?current_id=" + current_tweet_id,
+          method: "GET",
+          dataType: "json",
+          success: function(data){
+            var tweets = data["data"];
+            $('#tweet-wall .loading').hide();
+            if (tweets.length > 0) {
+              tweets.forEach( function(element, index) {
+                $('#tweet-wall').append(tweets[index]["html"]);
+                current_tweet_id = tweets[index]["id"];
+              });
+              $('#tweet-wall').append('<div class="text-center loading"><em>Loading...</em></div>');           
+            } else {
+              $('#tweet-wall').append('<div class="text-center no-more"><em>No more tweet</em></div>');
+              $(window).off('scroll');
+            }
           }
-        }
-      });
+        });
+      }      
     }
   }));
 });

@@ -5,9 +5,7 @@
       <h2>Like
       </h2>
       <% @likes.each do |tweet| %>
-      <div class="tweet-item" id="tweet-<%= tweet.id %>">
         <%= render partial: "share/tweet_item", locals: {tweet: tweet} %>
-      </div>
       <% end %>
     </div>    
   </div>
