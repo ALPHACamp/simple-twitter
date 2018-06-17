@@ -10,9 +10,9 @@
           <p><%= user.introduction %></p>
           <div class="follow-button">
             <% if current_user.following?(user) %>
-              <%= link_to "Unfollow", followship_path(user), method: :delete, class: "btn btn-primary" %>
+              <%= link_to "Unfollow", followship_path(user), method: :delete, class: "btn btn-default" %>
             <% else %>
-              <%= link_to "Follow", followships_path(following_id: user), method: :post, class: "btn btn-default" %>
+              <%= link_to "Follow", followships_path(following_id: user), method: :post, class: "btn btn-primary" %>
             <% end %>
           </div>
         </div>

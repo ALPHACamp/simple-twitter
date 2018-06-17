@@ -7,7 +7,7 @@
 .tweet-item {
   height: 170px;
   border: 2px solid #ddd;
-  margin: 5px 20px;
+  margin: 15px 20px;
 }
 
 .user-file img {
@@ -20,9 +20,10 @@
 }
 
 .follow-item {
-  height: 200px;
   border: 2px solid #ddd;
   margin: 10px -10px;
+  float: left;
+  padding-bottom: 15px;
 }
 
 .follow-item img{
@@ -30,7 +31,9 @@
 }
 
 .follow-button {
-  position: absolute;
-  top: 150px;
-  left: 130px;
+  float: right;
+}
+
+.paginate {
+  text-align: center;
 }

@@ -7,7 +7,7 @@ class TweetsController < ApplicationController
     @tweets = Tweet.order(created_at: :desc).page(params[:page]).per(10)
     @tweet = Tweet.new
     #@users # 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
-    @user = User.order(followers_count: :desc).limit(10)
+    @users = User.order(followers_count: :desc).limit(10)
   end
 
   def create
