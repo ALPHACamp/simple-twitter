@@ -33,6 +33,8 @@ Rails.application.routes.draw do
       resources :replies
     end
 
+    resources :users, only: [:index]
+
     root "tweets#index" #後台首頁
   end
 
