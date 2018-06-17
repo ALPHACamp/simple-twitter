@@ -14,8 +14,8 @@
             </p>
             <p><%= simple_format tweet.description %></p>
             
-            <%= link_to 'Reply', admin_tweet_replies_path(tweet) %>
-            <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm: "Are you sure?"} %>
+            <%= link_to "Reply(#{tweet.replies.count})", admin_tweet_replies_path(tweet) %>
+            <%= link_to "Delete", admin_tweet_path(tweet), method: :delete, data: {confirm: "Are you sure?"} %>
           </div>
         </div>
       <% end %>

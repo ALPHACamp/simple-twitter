@@ -1,6 +1,15 @@
 <div class="container">
   <div class="row">
-    admin replies for each tweet
+    <h3>Tweet</h3>
+    <h4><%= @tweet.user.name %></h4>
+    <h4><%= @tweet.description %></h4>
+
+    <h3>Replies</h3>
+    <% @replies.each do |reply| %>
+      <h4><%= reply.user.name %></h4>
+      <p><%= simple_format reply.comment %></p>
+      <%= link_to 'Delete', admin_tweet_reply_path(@tweet, reply), method: :delete, data: {confirm: "Are you sure?"} %>
+    <% end %>
 
 
   </div>
