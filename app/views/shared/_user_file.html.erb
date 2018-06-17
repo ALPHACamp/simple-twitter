@@ -4,8 +4,8 @@
     <h2><%= @user.name %></h2>
     <p><%= @user.introduction%></p>
     <h4>Tweets <%=@user.tweets.count%></h4>
-    <h4>following</h4>
-    <h4>Follower <%=@user.followings.count%></h4>
+    <h4><%= link_to "Following #{@user.followings.count}",followings_user_path %></h4>
+    <h4><%= link_to "Follower #{@user.followers.count}",followers_user_path %></h4>
     <h4>Like</h4>
 
     <% if @user == current_user %>
