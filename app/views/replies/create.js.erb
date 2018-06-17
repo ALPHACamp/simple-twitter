@@ -1,0 +1,3 @@
+$("#replies").append("<%=j render :partial => 'shared/reply_list', locals: {reply: @reply} %>");
+$("#reply_form").trigger("reset");
+$("#tweet_reply_count-<%= @tweet.id %>").html("<%=j render :partial => 'shared/count_reply', locals: {tweet: @tweet} %>")

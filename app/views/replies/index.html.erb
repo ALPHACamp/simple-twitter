@@ -1,0 +1,32 @@
+<div class="container reply_index">
+  <div class="row">
+    <div class="col-3">
+      <%= render :partial => "shared/profile", locals: {user: @tweet.user} %>
+    </div>
+
+    <div class="col-7">
+      <div class="reply_rigth_top">
+        <h3>Tweet</h3>
+        <%= render :partial => "shared/tweet_list", locals: {tweet: @tweet} %>
+
+        <h3>Reply</h3>
+        <div id="replies" class="replies_list">
+          <% @replies.each do |reply| %>
+            <%= render :partial => "shared/reply_list", locals:{ reply: reply } %>
+          <% end %>
+        </div>
+
+        <%= form_for :reply, html: {id: "reply_form"}, remote: true do |reply| %>
+          <div class="form-group">
+            <%= reply.hidden_field :tweet_id, :value => @tweet.id %>
+            <%= reply.text_field :comment,class: "form-control", placeholder: "Comment" %>
+          </div>  
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+        

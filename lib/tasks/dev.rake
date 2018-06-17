@@ -18,6 +18,48 @@ namespace :dev do
       user.save!
       puts user.name
     end
+
+    2.times do |i|
+      name = FFaker::Name::first_name
+      file = File.open("#{Rails.root}/public/avatar/user#{i+1}.jpg")
+
+      user = User.new(
+        name: name,
+        email: "#{name}@example.co",
+        password: "12345678",
+        introduction: FFaker::Lorem::sentence(30),
+        role: "admin",
+        avatar: file
+      )
+    end
+
+    puts "#{user.name} is admin"
+
+  end
+
+  task fake_tweet: :environment do
+    User.all.each do |user|
+      5.times do |i|
+        user.tweets.create!(
+          description: FFaker::Lorem.sentence
+        )
+      end
+    end
+    puts "have created fake tweet"
+    puts "you have #{Tweet.count} tweet data"
+  end
+
+  task fake_reply: :environment do
+    Tweet.all.each do |tweet|
+      3.times do |i|
+        tweet.replies.create!(
+          comment: FFaker::Lorem.sentence,
+          user: User.all.sample
+        )
+      end
+    end
+    puts "have created fake reply"
+    puts "now you have #{Reply.count} comment data"
   end
 
 end

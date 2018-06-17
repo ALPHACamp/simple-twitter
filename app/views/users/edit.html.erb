@@ -1,0 +1,33 @@
+<div class="container user_edit">
+  <%= form_for @user do |user| %>
+    <div class="row">
+    
+      <div class="col-3">
+        <% if current_user.avatar.url %>
+          <%= image_tag current_user.avatar.url, class: "img-fluid img-thumbnail" %>
+        <% else %>
+          THere is no photo
+        <% end %>
+
+        <div class="form-group">
+          <%= user.label :avatar %>
+          <%= user.file_field :avatar, class: "form-control-file" %>
+        </div>
+      </div>
+
+      <div class="col-9">
+        <div class="form-group">
+          <%= user.label :name %>
+          <%= user.text_field :name, class: "form-control" %>
+        </div>
+        <div>
+          <%= user.label :introduction %>
+          <%= user.text_area :introduction,rows: "5", class: "form-control"%>
+        </div>
+          
+          <%= user.submit "Update", class: "btn btn-primary edit_submit" %>        
+    
+      </div>
+    </div>
+  <% end %>
+</div>

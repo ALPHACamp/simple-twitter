@@ -1,0 +1,36 @@
+<div class="user_profile">
+  <div class="profile_image">
+    <% if user.avatar.url %>
+      <%= image_tag user.avatar.url, class: "img-fluid img-thumbnail" %>
+    <% else %>
+      THere is no photo
+    <% end %>
+  </div>
+  <div>
+    <h4 class="profile_name"><%= user.name %></h4>
+    <p>
+      <%= user.introduction %>
+    </p>
+  </div>
+    
+  
+  <% if current_user == user %>
+    <h6><%= link_to "tweets #{current_user.tweets.count}", tweets_user_path(current_user) %> </h6>
+    <h6 id="user_followings_count">
+      <%= render :partial => 'shared/count_user_followings'%>
+    </h6>
+    <h6><%= link_to "Followers #{current_user.followers_count}", followers_user_path(current_user) %></h6>
+    <h6 id="tweet_like_count">
+      <%= render :partial => 'shared/count_user_like'%>
+    </h6>
+    <%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-primary" %>
+  <% else %>
+    <h6>Tweets <%= user.tweets.count %></h6>
+    <h6>Following <%= user.followings.count %></h6>
+    <h6 id="followed-<%= user.id %>">Follower <%= user.followers.count %></h6>
+    <h6>Likes <%= user.likes_count %> </h6>
+    <span id="follow-<%= user.id %>">
+    <%= render :partial => 'shared/follow_list', locals: {user: user} %>
+    </span>
+  <% end %>
+</div>

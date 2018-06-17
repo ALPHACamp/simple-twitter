@@ -1,0 +1,2 @@
+$("#tweet_like_count-<%= @tweet.id %>").html("<%=j render :partial => 'shared/count_like', locals: {tweet: @tweet} %>")
+$("#tweet_like_count").html("<%=j render :partial => 'shared/count_user_like'%>")

@@ -1,0 +1,26 @@
+<div class="tweet_list">
+  <div class="row">
+    <div class="col-2">
+      <% if tweet.user.avatar.url %>
+        <%= image_tag tweet.user.avatar.url, class: "img-fluid img-thumbnail tweet_list_image" %>
+      <% else %>
+        THere is no photo
+      <% end %>
+    </div>
+
+    <div class="col-9">
+      <h5>
+        <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>, <%= tweet.created_at %>
+      </h5>
+      <p>
+        <%= tweet.description %>
+      </p>
+      <span id="tweet_reply_count-<%= tweet.id %>">
+        <%= render :partial => 'shared/count_reply', locals: {tweet: tweet} %>
+      </span>
+      <span id="tweet_like_count-<%= tweet.id %>">
+        <%= render :partial => 'shared/count_like', locals: {tweet: tweet} %>
+      </span>
+    </div>
+  </div>  
+</div>
