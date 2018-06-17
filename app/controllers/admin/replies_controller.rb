@@ -1,7 +1,7 @@
 class Admin::RepliesController < Admin::BaseController
   def index
     @tweet = Tweet.find(params[:tweet_id]) #確認推播物件
-    @replies = @tweet.replies.all
+    @replies = @tweet.replies.all.order(created_at: :asc)
   end
 
   def destroy

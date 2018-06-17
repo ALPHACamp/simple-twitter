@@ -4,7 +4,7 @@ class RepliesController < ApplicationController
     @tweet = Tweet.find(params[:tweet_id]) #確認推播物件
     @user = @tweet.user
     @reply = @tweet.replies.new
-    @replies = @tweet.replies.all
+    @replies = @tweet.replies.all.order(created_at: :asc)
   end
 
   def create
