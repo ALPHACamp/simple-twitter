@@ -1,0 +1,32 @@
+<div class="container">
+  <div id="root-index">
+    <div id="tweet-wall">
+      <%= form_for @tweet do |f| %>
+       <div class="tweet-form form-group">
+        <div class="avatar-xs">
+          <%= link_to tweets_user_path(current_user) do %>
+            <%= image_tag(current_user.avatar, class: "img-circle") %>
+          <% end %>
+        </div>
+        <div>
+          <%= f.text_area :description, placeholder: "What's on your mind?", maxlength: 140, class: "tweet-form-textarea form-control" %>
+        </div>
+        <%= f.submit 'Tweet', class: "tweet-btn btn btn-primary" %> 
+       </div> 
+      <% end %>
+      <% @tweets.each do |tweet| %>
+        <%= render partial: "share/tweet_item", locals: {tweet: tweet} %>
+      <% end %>
+      <div class="text-center loading"><em>Loading...</em></div>
+    </div>
+    <div id="popular-wall">
+      <h2>Popular</h2>
+      <% @users.each do |user| %>
+        <%= render partial: "share/user_item_sm", locals: {user: user} %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  var current_tweet_id = <%= @tweets.last.id %>
+</script>

@@ -1,0 +1,3 @@
+var id = '#tweet-<%= @tweet.id %>'
+var html = '<%= j render partial: 'share/like', locals: { tweet: @tweet } %>'
+$('#tweet-wall').children(id).find('.heart-render').html(html);

@@ -11,7 +11,7 @@ namespace :dev do
         name: name,
         email: "#{name}@example.co",
         password: "12345678",
-        introduction: FFaker::Lorem::sentence(30),
+        introduction: FFaker::Lorem::sentence,
         avatar: file
       )
 
@@ -20,4 +20,59 @@ namespace :dev do
     end
   end
 
+  task fake_tweet: :environment do 
+    Tweet.destroy_all
+  
+    30.times do |i|
+      Tweet.create!(
+        description: FFaker::Lorem.sentence,
+        user: User.all.sample
+      )
+    end
+
+    puts "have created fake tweets"
+    puts "now you have #{Tweet.count} tweet data"
+  end
+
+  task fake_reply: :environment do
+    Reply.destroy_all
+
+    50.times do
+      Reply.create!(
+        comment: FFaker::Lorem.sentence,
+        tweet: Tweet.all.sample,
+        user: User.all.sample,
+      )
+    end
+
+    puts "have created fake replies"
+    puts "now you have #{Reply.count} reply data"
+
+  end
+
+  task fake_like: :environment do
+    Like.destroy_all
+
+    50.times do
+      Like.create!(
+        user: User.all.sample,
+        tweet: Tweet.all.sample
+      )
+    end
+    puts "have created fake likes"
+    puts "now you have #{Like.count} like data"
+  end
+
+  task fake_followship: :environment do
+    Followship.destroy_all
+
+    50.times do
+      Followship.create(
+        user: User.all.sample,
+        following: User.all.sample
+      )
+    end
+    puts "have created fake followships"
+    puts "now you have #{Followship.count} followship data"
+  end
 end
