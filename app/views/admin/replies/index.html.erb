@@ -1,14 +1,16 @@
 <div class="container">
   <div class="row">
     <h3>Tweet</h3>
-    <h4><%= @tweet.user.name %></h4>
-    <h4><%= @tweet.description %></h4>
+    <p><%= @tweet.user.name %>, <%= time_tag(@tweet.created_at) %></p>
+    <p><%= @tweet.description %></p>
+    <hr />
 
     <h3>Replies</h3>
     <% @replies.each do |reply| %>
-      <h4><%= reply.user.name %></h4>
+      <p><%= reply.user.name %>, <%= time_tag(reply.created_at) %></p>
       <p><%= simple_format reply.comment %></p>
       <%= link_to 'Delete', admin_tweet_reply_path(@tweet, reply), method: :delete, data: {confirm: "Are you sure?"} %>
+      <hr />
     <% end %>
 
 
