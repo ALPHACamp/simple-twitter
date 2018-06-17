@@ -20,5 +20,17 @@
 }
 
 .follow-item {
+  height: 200px;
   border: 2px solid #ddd;
+  margin: 10px -10px;
+}
+
+.follow-item img{
+  margin: 15px -5px;
+}
+
+.follow-button {
+  position: absolute;
+  top: 150px;
+  left: 130px;
 }

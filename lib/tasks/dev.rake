@@ -11,7 +11,7 @@ namespace :dev do
         name: name,
         email: "#{name}@example.com",
         password: "123456",
-        introduction: FFaker::Lorem::sentence(30),
+        introduction: FFaker::Lorem::sentence(10),
         avatar: file
       )
 
@@ -23,7 +23,7 @@ namespace :dev do
       name: "root",
       email: "root@mail.com",
       password: "123456",
-      introduction: FFaker::Lorem::sentence(30),
+      introduction: FFaker::Lorem::sentence(10),
       role: "admin"
     )
     puts "root"
@@ -59,6 +59,7 @@ namespace :dev do
     #Rake::Task['db:seed'].execute
     Rake::Task['dev:fake_user'].execute
     Rake::Task['dev:fake_tweet'].execute
+    Rake::Task['dev:fake_followship'].execute
     #
   end
 end

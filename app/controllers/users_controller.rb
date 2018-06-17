@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only:[:tweets, :edit, :update, :followers]
+  before_action :set_user, only:[:tweets, :edit, :update, :followers, :followings]
   def tweets
     @tweets = @user.tweets.order(created_at: :desc).page(params[:page]).per(10)
   end
@@ -21,7 +21,9 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings # 基於測試規格，必須講定變數名稱
+    @followings = @user.followings
+    @users = @followings
+    # 基於測試規格，必須講定變數名稱
   end
 
   def followers
