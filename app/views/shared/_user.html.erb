@@ -1,0 +1,32 @@
+<!-- 左半邊（使用者簡介）-->
+
+<div class="user-profile">
+
+  <% if user.avatar? %>
+    <%= image_tag user.avatar.url, height: 200, width: 200 %>
+  <% else %>
+    <%= image_tag ("800x600.png"), height: 200, width: 200 %>
+  <% end %>
+
+  <h4 class="user-name"><%= user.name %></h4>
+  <p class="user-introduction"><%= user.introduction %></p>
+
+
+  <div class="user-interaction"><!-- tweets/followings/followers/like -->
+    <br />
+    <p><%= link_to "Tweet(#{user.tweets.count})", tweets_user_path(user) %></p>
+    <p><%= link_to "Following(#{user.followings.count})", followings_user_path(user) %></p>
+    <p><%= link_to "Follower(#{user.followers.count})", followers_user_path(user) %> </p>
+    <p><%= link_to "Like(#{user.liked_tweets.count})", likes_user_path(user) %></p>
+    <br />
+  </div><!-- user-interaction -->
+
+
+  <% if user == current_user %>
+    <%= link_to 'Edit', edit_user_path(user), class: "btn btn-primary" %>
+  <% end %>
+
+  <!-- 呼叫 follow/unfollow -->
+  <%= render partial: "shared/follow", locals: {user: user} %>
+
+</div>

@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <h2>All Users</h2>
+
+    <div>
+      <%= link_to 'All Tweets', admin_tweets_path %> |
+      <%= link_to 'All Users', admin_users_path %>
+    </div>
+
+    <br />
+
+    <% @users.each do |user| %>
+      <div class="col-sm-6 col-md-4">
+        <div class="all-user-item">
+
+          <% if user.avatar? %>
+            <%= image_tag user.avatar.url, width: 128, height: 128, class: "img-rounded" %>
+          <% else %>
+            <%= image_tag ("128x128.png"), class: "img-rounded" %>
+          <% end %>
+
+          <%= link_to tweets_user_path(user) do %>
+            <h4><%= user.name %></h4>
+          <% end %>
+          
+          <p><%= user.introduction %></p>
+          <p>Tweets: <%= user.tweets.count %></p>
+          <p>Followings: <%= user.followings.count %></p>
+          <p>Followers: <%= user.followers.count %></p>
+          <p>Likes: <%= user.likes.count %></p>
+
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
