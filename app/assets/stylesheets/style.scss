@@ -1,0 +1,25 @@
+/*====bootstrap adjustment=====*/
+.panel .panel-heading{
+    padding:0;
+    padding-top: 8px;
+  }
+
+
+/*====rails-form field adjustment====*/
+.field{
+  margin-top: 7px;
+}
+
+/*====devise buttom class====*/
+.actions{
+  margin-top:8px;
+}
+
+/*====application====*/
+body{
+  padding-top: 70px;
+}
+    
+.flash-remind{
+  margin-top: -20px;
+}
