@@ -4,28 +4,35 @@
     <h2>All Tweets</h2>
 
     <div>
-      <%= link_to 'Tweets', admin_tweets_path %> |
-      <%= link_to 'Users', admin_users_path %>
+      <%= link_to 'All Tweets', admin_tweets_path %> |
+      <%= link_to 'All Users', admin_users_path %>
     </div>
 
     <br />
 
     <div class="col-md-12">
 
-      <% @tweets.each do |tweet| %>
-        <div class="col-md-6">
-          <div class="admin-index-tweet">
-            <p>
-              <%= tweet.user.name %>
-              , <%= time_tag(tweet.created_at) %>
-            </p>
-            <p><%= simple_format tweet.description %></p>
-            
-            <%= link_to "Reply(#{tweet.replies.count})", admin_tweet_replies_path(tweet) %>
-            <%= link_to "Delete", admin_tweet_path(tweet), method: :delete, data: {confirm: "Are you sure?"} %>
-          </div>
-        </div>
-      <% end %>
+      <table class="table table-striped table-bordered">
+        <tr>
+          <th>Name / Time</th>
+          <th>Tweet Description</th>
+          <th></th>
+        </tr>
+
+        <% @tweets.each do |tweet| %>
+          <tr>  
+            <td class="col-md-2">
+              <p><%= tweet.user.name %></p>
+              <p><%= time_tag(tweet.created_at) %></p>
+            </td>
+            <td class="col-md-9"><p><%= simple_format tweet.description %></p></td>
+            <td class="col-md-1">
+              <%= link_to "Reply(#{tweet.replies.count})", admin_tweet_replies_path(tweet) %> &emsp;
+              <%= link_to "Delete", admin_tweet_path(tweet), method: :delete, data: {confirm: "Are you sure?"} %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
 
     </div><!-- col-md-12 -->
 

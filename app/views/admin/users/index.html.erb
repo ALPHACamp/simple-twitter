@@ -3,13 +3,19 @@
     <h2>All Users</h2>
 
     <div>
-      <%= link_to 'Tweets', admin_tweets_path %> |
-      <%= link_to 'Users', admin_users_path %>
+      <%= link_to 'All Tweets', admin_tweets_path %> |
+      <%= link_to 'All Users', admin_users_path %>
     </div>
 
     <br />
 
     <% @users.each do |user| %>
+      <% if user.avatar? %>
+        <%= image_tag user.avatar.url, width: 128, height: 128, class: "img-rounded" %>
+      <% else %>
+        <%= image_tag ("128x128.png"), class: "img-rounded" %>
+      <% end %>
+
       <p><%= user.name %></p>
       <p><%= user.introduction %></p>
       <p>Tweets: <%= user.tweets.count %></p>
