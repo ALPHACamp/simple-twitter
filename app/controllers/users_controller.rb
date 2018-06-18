@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
-  before_action :set_user_id, only: [:tweets, :followings, :followers, :likes]
+  before_action :set_user, only: [:show, :edit, :update, :tweets, :followings, :followers, :likes]
 
   def tweets
     #@user = User.find(params[:user_id])
@@ -45,10 +44,6 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
-  end
-
-  def set_user_id
-    @user = User.find(params[:user_id])
   end
 
   def user_params

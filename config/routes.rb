@@ -19,10 +19,12 @@ Rails.application.routes.draw do
 
 
   resources :users, only: [:show, :edit, :update] do
-    get :tweets
-    get :followings
-    get :followers
-    get :likes
+    member do
+      get :tweets
+      get :followings
+      get :followers
+      get :likes
+    end
   end
   
 

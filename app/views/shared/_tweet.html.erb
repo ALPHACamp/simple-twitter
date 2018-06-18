@@ -17,7 +17,7 @@
   <div class="col-md-9 col-sm-8">
     <div class="tweet-content">
 
-      <%= link_to user_tweets_path(tweet.user) do %>     
+      <%= link_to tweets_user_path(tweet.user) do %>     
         <p class="tweet-user-name"><%= tweet.user.name %></p>
       <% end %>
 

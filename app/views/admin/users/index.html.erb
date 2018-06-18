@@ -19,7 +19,7 @@
             <%= image_tag ("128x128.png"), class: "img-rounded" %>
           <% end %>
 
-          <%= link_to user_tweets_path(user) do %>
+          <%= link_to tweets_user_path(user) do %>
             <h4><%= user.name %></h4>
           <% end %>
           
