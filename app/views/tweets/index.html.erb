@@ -1,1 +1,9 @@
 <h1>Tweets front desk</h1>
+
+<%= form_for @tweet do |f| %>
+  <%= f.text_area :description, placeholder: "Tweet here" %>
+  <%= f.submit class: "btn btn-primary" %>
+  <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+<% end %>
+
+<%%>
