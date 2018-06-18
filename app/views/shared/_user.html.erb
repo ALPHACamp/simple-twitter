@@ -14,10 +14,10 @@
 
   <div class="user-interaction"><!-- tweets/followings/followers/like -->
     <br />
-    <p><%= link_to "Tweets(#{user.tweets.count})", tweets_user_path(user) %></p>
-    <p><%= link_to "Following(#{@user.followings.count})", followings_user_path(user) %></p>
-    <p><%= link_to "Followers(#{@user.followers.count})", followers_user_path(user) %> </p>
-    <p><%= link_to "Like(#{@user.liked_tweets.count})", likes_user_path(user) %></p>
+    <p><%= link_to "Tweet(#{user.tweets.count})", tweets_user_path(user) %></p>
+    <p><%= link_to "Following(#{user.followings.count})", followings_user_path(user) %></p>
+    <p><%= link_to "Follower(#{user.followers.count})", followers_user_path(user) %> </p>
+    <p><%= link_to "Like(#{user.liked_tweets.count})", likes_user_path(user) %></p>
     <br />
   </div><!-- user-interaction -->
 
