@@ -23,7 +23,7 @@
           <tr>  
             <td class="col-md-2">
               <p><%= tweet.user.name %></p>
-              <p><%= time_tag(tweet.created_at) %></p>
+              <p class="text-muted"><em><%= time_tag(tweet.created_at) %></em></p>
             </td>
             <td class="col-md-9"><p><%= simple_format tweet.description %></p></td>
             <td class="col-md-1">

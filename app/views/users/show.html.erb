@@ -4,6 +4,8 @@
     
       <div class="list-group">
 
+        <br />
+
         <% if @user.avatar? %>
           <%= image_tag @user.avatar.url, width: '200px' %>
         <% else %>
@@ -13,10 +15,13 @@
         <h4><%= @user.name %></h4>
         <p><%= @user.introduction %></p>
 
-        
+        <br />
+
         <% if @user.email == current_user.email %>
           <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-primary" %>
         <% end %>
+
+        <%= render partial: "shared/follow", locals: {user: @user} %>
       
       </div>
     
