@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+
+<!------------------------------------------ 左半邊（使用者簡介）------------------------------------------>
+
+    <div class="col-md-4">
+
+        <!-- 呼叫user partial -->
+        <%= render partial: "shared/user", locals: {user: @user} %>
+
+    </div>
+
+<!----------------------------------------- 右半邊 (使用者的推播）----------------------------------------->
+
+    <div class="col-md-8">
+      <div class="user-tweets">
+
+        <% @tweets.each do |tweet| %><!-- 前面不要加 = -->
+          <%= render partial: "shared/tweet", locals: {tweet: tweet} %>
+        <% end %>
+
+      </div>
+    </div>
+
+  </div><!-- row -->
+</div><!-- container -->

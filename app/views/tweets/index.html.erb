@@ -1,0 +1,54 @@
+<div class="container index-container">
+  <div class="row">
+
+<!------------------------------------- 左邊區塊 (站內所有推播) ------------------------------------->
+
+    <div class="col-md-8">
+
+      <br />
+
+      <!-- 新增推播失敗的錯誤提示 -->
+      <% if @tweet.errors.any? %>
+        <%= @tweet.errors.full_messages.to_sentence %>
+      <% end %>
+
+      <!-- 新增推播表格 -->
+      <%= form_for @tweet do |f| %>
+        <div class="form-group">
+          <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control text-area" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit 'Tweet', class: "pull-right btn btn-primary" %>
+        </div>
+      <% end %>
+
+      <br />
+
+      <!-- 站內所有推播(最新的在前) -->
+      <h3>最新推播</h3>
+
+      <% @tweets.each do |tweet| %>
+        <%= render partial: "shared/tweet", locals: {tweet: tweet} %>
+      <% end %>
+
+      <br />
+
+    </div><!-- col-md-8 -->
+
+<!--------------------------------------- 右邊區塊 (Popular) --------------------------------------->
+    
+    <div class="col-md-4">
+
+      <!-- 跟隨者最多的使用者 -->
+      <h3>Popular</h3>
+
+        <% @users.each do |user| %>
+          <%= render partial: "shared/user-item", locals: {user: user} %>
+        <% end %>
+
+    </div><!-- col-md-4 -->
+
+<!------------------------------------------------------------------------------------------------->
+
+  </div><!-- row -->
+</div><!-- container -->

@@ -1,0 +1,112 @@
+body {
+  margin-top: 55px;
+}
+
+/*================================= Public Index (Tweets#index) page =================================*/
+
+
+.form-group .text-area {
+  height: 150px;
+  font-size: 20px;
+}
+
+.tweet-item {
+  border: 1px solid #DCDCDC;
+  /* height: 180px; */
+  padding: 20px 20px;
+  margin-bottom: 10px;
+}
+
+.tweet-item .tweet-user-name {
+  display: inline-block;
+  margin-bottom: 0px;
+}
+
+.tweet-item .time-tag {
+  display: inline-block;
+  color: #0066CC;
+  margin-bottom: 0px;
+}
+
+.tweet-item .like-item {
+  display: inline-block;
+  color: red;
+}
+
+.user-item {
+  border: 1px solid #DCDCDC;
+  padding: 10px 10px;
+  margin-bottom: 10px;
+}
+
+
+
+/*======================================= Users#Tweets page =======================================*/
+
+.user-name {
+  color: #0044BB;
+}
+
+.user-introduction {
+  color: #0066FF;
+}
+
+/* 隱藏followings,followers,likes的超連結底線顏色 */
+.user-interaction a {
+  text-decoration: none;
+  color: black;
+}
+
+/* 滑鼠游標經過followings,followers,likes時的超連結顏色 */
+.user-interaction a:hover {
+  font-style: italic;
+  color: #666666;
+}
+
+/*======================================= Reply Index =======================================*/
+
+.reply-item {
+  border: 1px solid #DCDCDC;
+  padding: 10px 10px;
+  margin-bottom: 10px;
+}
+
+.reply-item .reply-user-name {
+  display: inline-block;
+  margin-bottom: 0px;
+}
+
+.reply-item .time-tag {
+  display: inline-block;
+  color: #0066CC;
+  margin-bottom: 0px;
+}
+
+.reply-form {
+  margin-bottom: 100px;
+}
+
+.reply-form .form-group .text-area {
+  height: 120px;
+}
+
+/*======================================= 其他 =======================================*/
+
+.user-item {
+  height: 180px;
+}
+
+.user-tweets {
+  margin-top: 30px;
+}
+
+.user-profile {
+  margin-top: 30px;
+}
+
+.all-user-item {
+  border: 1px solid #DCDCDC;
+  height: 450px;
+  padding: 10px 10px;
+  margin-bottom: 10px;
+}
