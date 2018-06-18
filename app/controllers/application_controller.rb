@@ -17,6 +17,6 @@ class ApplicationController < ActionController::Base
       unless current_user.admin?
         flash[:alert] = "Not allow!!"
         redirect_to root_path
-      end      
+      end
     end
 end
