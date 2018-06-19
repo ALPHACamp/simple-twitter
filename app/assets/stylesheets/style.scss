@@ -1,13 +1,14 @@
-.tweet-item img {
+.stream-item img {
   height: 100px;
   width: 100px;
   margin: 20px 10px;
 }
-.tweet-item {
+.stream-item {
   border: 2px solid #ddd;
   margin: 10px 20px;
   float: left;
   width: 98%;
+  padding-bottom: 10px
 }
 
 .user-file img {
@@ -41,4 +42,14 @@
 
 .paginate {
   text-align: center;
+}
+
+.reply-input {
+  margin-left: 20px;
+  margin-right: -7px;
+  margin-top: 10px;
+}
+
+.button {
+  float: right;
 }

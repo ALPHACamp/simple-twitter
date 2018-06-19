@@ -1,7 +1,7 @@
 
   <% @tweets.each do |tweet| %>
 
-      <div class="tweet-item">
+      <div class="stream-item">
         <div class="col-md-3">
           <%= image_tag tweet.user.avatar %>
         </div>
@@ -13,7 +13,7 @@
           </h3>
 
           <p><%= tweet.description %></p>
-          <%= link_to "Reply", tweet_replies_path(tweet) %>
+          <%= link_to "Reply(#{@tweet.replies.count})", tweet_replies_path(tweet), class: "btn" %>
         </div>
       </div>
 

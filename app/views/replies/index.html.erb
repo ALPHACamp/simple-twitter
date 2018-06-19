@@ -1,10 +1,10 @@
 <div class="container">
   <%= render partial: "shared/user_file" %>
 
-  <div class="col-md-8">
+  <div class="col-sm-6 col-md-8">
     <h2>Tweet</h2>
 
-    <div class="tweet-item">
+    <div class="stream-item">
       <div class="col-md-3">
         <%= image_tag @tweet.user.avatar %>
       </div>
@@ -16,8 +16,38 @@
         </h3>
 
         <p><%= @tweet.description %></p>
-        <%= link_to "Reply", tweet_replies_path(@tweet) %>
+        <%= link_to "Reply(#{@tweet.replies.count})", tweet_replies_path(@tweet), class: "btn" %>
       </div>
     </div>
+
+    <h2>Replies</h2>
+    <% @replies.each do |reply| %>
+      <div class="stream-item">
+        <div class="col-md-3">
+          <%= image_tag reply.user.avatar %>
+        </div>
+
+        <div class="col-md-8">
+          <h3>
+            <%= link_to reply.user.name, tweets_user_path(reply.user) %>
+            <%= reply.created_at.strftime("%F, %H:%M") %>
+          </h3>
+
+          <p><%= reply.comment %></p>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="reply-input clearfix">
+      <%= form_for [@tweet, @reply] do |f| %>
+        <div class="form-group">
+          <%= f.text_area :comment, class: "form-control", rows: "5" %>
+        </div>
+        <div class="form-group button">
+          <%= f.submit "Reply", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+
   </div>
 </div>
