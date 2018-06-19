@@ -1,24 +1,25 @@
+<% @tweets.each do |tweet| %>
 
-  <% @tweets.each do |tweet| %>
-
-      <div class="stream-item">
-        <div class="col-md-3">
-          <%= image_tag tweet.user.avatar %>
-        </div>
-
-        <div class="col-md-8">
-          <h3>
-            <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
-            <%= tweet.created_at.strftime("%F, %H:%M") %>
-          </h3>
-
-          <p><%= tweet.description %></p>
-          <%= link_to "Reply(#{tweet.replies.count})", tweet_replies_path(tweet), class: "btn" %>
-        </div>
+    <div class="stream-item">
+      <div class="col-md-3">
+        <%= image_tag tweet.user.avatar %>
       </div>
 
-  <% end %>
+      <div class="col-md-8">
+        <h3>
+          <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
+          <%= tweet.created_at.strftime("%F, %H:%M") %>
+        </h3>
 
-    <div class="paginate">
-      <%= paginate @tweets %>
+        <p><%= tweet.description %></p>
+        <%= link_to "Reply(#{tweet.replies.count})", tweet_replies_path(tweet), class: "btn" %>
+        <%= link_to "Like(#{tweet.likes.count})", like_tweet_path(tweet), method: :post, class: "btn" %>
+        <%= link_to "Unlike(#{tweet.likes.count})", unlike_tweet_path(tweet), method: :post, class: "btn" %>
+      </div>
     </div>
+
+<% end %>
+
+<div class="paginate">
+  <%= paginate @tweets %>
+</div>
