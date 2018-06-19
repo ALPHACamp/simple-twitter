@@ -6,13 +6,15 @@
           <%= f.text_area :description, placeholder: "留個言吧", class: "form-control", rows: "5" %>
         </div>
         <div class="form-group">
-          <%= f.submit class: "btn btn-primary" %>
+          <div class="button">
+            <%= f.submit class: "btn btn-primary" %>
+          </div>
         </div>
       <% end %>
     </div>
 
-    <%= render partial: "shared/tweets_item" %>
-    
+  <%= render partial: "shared/tweets_item" %>
+
   </div>
 
   <div class="col-sm-6 col-md-4">

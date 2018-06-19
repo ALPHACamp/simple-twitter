@@ -13,11 +13,12 @@
           </h3>
 
           <p><%= tweet.description %></p>
-          <%= link_to "Reply(#{@tweet.replies.count})", tweet_replies_path(tweet), class: "btn" %>
+          <%= link_to "Reply(#{tweet.replies.count})", tweet_replies_path(tweet), class: "btn" %>
         </div>
       </div>
 
   <% end %>
-  <div class="paginate">
-    <%= paginate @tweets %>
-  </div>
+
+    <div class="paginate">
+      <%= paginate @tweets %>
+    </div>

@@ -7,8 +7,8 @@
   border: 2px solid #ddd;
   margin: 10px 20px;
   float: left;
-  width: 98%;
-  padding-bottom: 10px
+  width: 95%;
+  padding-bottom: 15px
 }
 
 .user-file img {
@@ -25,7 +25,6 @@
   margin: 10px -10px;
   float: left;
   padding-bottom: 15px;
-  width: 92%;
 }
 
 .user-item img {
@@ -41,7 +40,8 @@
 }
 
 .paginate {
-  text-align: center;
+  float: left;
+  margin-left: 20px;
 }
 
 .reply-input {
