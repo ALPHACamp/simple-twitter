@@ -8,7 +8,7 @@ class TweetsController < ApplicationController
   end
 
   def create
-    @tweet = @tweet.new(tweet_params)
+    @tweet = Tweet.new(tweet_params)
     @tweet.user = current_user
     @tweet.save!
     redirect_to root_path(@tweet)
@@ -27,5 +27,5 @@ class TweetsController < ApplicationController
 
   end
 
-  end
+
 end

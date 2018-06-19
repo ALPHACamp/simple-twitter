@@ -5,6 +5,11 @@
   <%= f.submit class: "btn btn-primary" %>
   <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
 <% end %>
+
 <br>
 
-<%%>
+<% @tweets.each do |tweet| %>
+  <h4>@<%= tweet.user.name %>,<%= tweet.created_at.strftime("%Y-%m-%D, %H:%M") %></h4>
+  <h3><%= tweet.description %></h3>
+
+<% end %>
