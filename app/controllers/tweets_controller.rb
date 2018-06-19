@@ -8,7 +8,10 @@ class TweetsController < ApplicationController
   end
 
   def create
-    @tweet = @tweet.new()
+    @tweet = @tweet.new(tweet_params)
+    @tweet.user = current_user
+    @tweet.save!
+    redirect_to root_path(@tweet)
   end
 
   def like
@@ -17,4 +20,12 @@ class TweetsController < ApplicationController
   def unlike
   end
 
+  private
+
+  def tweet_params
+    params.require(:tweet).permit(:description)
+
+  end
+
+  end
 end
