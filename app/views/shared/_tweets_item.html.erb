@@ -14,6 +14,7 @@
         <p><%= tweet.description %></p>
         <%= link_to "Reply(#{tweet.replies.count})", tweet_replies_path(tweet), class: "btn" %>
         <%= link_to "Like(#{tweet.likes.count})", like_tweet_path(tweet), method: :post, class: "btn" %>
+
         <%= link_to "Unlike(#{tweet.likes.count})", unlike_tweet_path(tweet), method: :post, class: "btn" %>
       </div>
     </div>
