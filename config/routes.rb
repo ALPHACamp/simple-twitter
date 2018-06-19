@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   root "tweets#index"
 
   namespace :admin do
-    root "tweets#index"
-  end  
+    resources :tweets, only: [:index, :destroy]  #index看見站內所有推播、destroy刪除其他使用者的推文
+    resources :users, only: [:index] # user#index 看見站內所有使用者
+  end 
+
+
+
 end
