@@ -1,26 +1,25 @@
-<div class="col-sm-6 col-md-8">
+<div class="col-sm-7 col-md-9">
   <% @users.each do |user|%>
 
     <div class="col-sm-12 col-md-6">
 
       <div class="user-item follow-item">
 
-          <div class="col-md-4">
-            <%= image_tag user.avatar, width: '100px', height: '100px' %>
-          </div>
-          <div class="col-md-8">
-            <h3><%= user.name %></h3>
-            <p><%= user.introduction %></p>
-            <div class="follow-button">
-              <% if current_user.following?(user) %>
-                <%= link_to "Unfollow", followship_path(user), method: :delete, class: "btn btn-default" %>
-              <% else %>
-                <%= link_to "Follow", followships_path(following_id: user), method: :post, class: "btn btn-primary" %>
-              <% end %>
-            </div>
-          </div>
+        <div class="col-md-4">
+          <%= image_tag user.avatar, width: '100px', height: '100px' %>
+        </div>
+        <div class="col-md-8">
+          <h3><%= user.name %></h3>
+          <p><%= user.introduction %></p>
 
-
+        </div>
+      </div>
+      <div class="follow-button">
+        <% if current_user.following?(user) %>
+          <%= link_to "Unfollow", followship_path(user), method: :delete, class: "btn btn-default" %>
+        <% else %>
+          <%= link_to "Follow", followships_path(following_id: user), method: :post, class: "btn btn-primary" %>
+        <% end %>
       </div>
     </div>
   <% end %>

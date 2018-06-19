@@ -54,12 +54,39 @@ namespace :dev do
     puts "now you have #{Followship.count} followships data"
   end
 
+  task fake_reply: :environment do
+    Reply.destroy_all
+    Tweet.all.each do |tweet|
+      rand(1..7).times do |i|
+        tweet.replies.create!(
+          user: User.all.sample,
+          comment: FFaker::Lorem::sentence(10)
+        )
+      end
+    end
+    puts "now you have #{Reply.count} replies data"
+  end
+
+  task fake_like: :environment do
+    Like.destroy_all
+    Tweet.all.each do |tweet|
+      rand(1..5).times do |i|
+        tweet.likes.create!(
+          user: User.all.sample
+        )
+      end
+    end
+    puts "now you have #{Like.count} likes data"
+  end
+
   task fake_all: :environment do
     #Rake::Task['db:migrate'].execute
     #Rake::Task['db:seed'].execute
     Rake::Task['dev:fake_user'].execute
     Rake::Task['dev:fake_tweet'].execute
     Rake::Task['dev:fake_followship'].execute
+    Rake::Task['dev:fake_reply'].execute
+    Rake::Task['dev:fake_like'].execute
     #
   end
 end
