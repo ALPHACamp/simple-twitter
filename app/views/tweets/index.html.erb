@@ -1,24 +1,29 @@
-<h1>前台入口</h1>
+<div class="container">
+    <div class="col-md-12">
+      <div class="col-md-7">
+        <%= form_for @tweet do |f| %>
+          <div class="field">
+            <%= f.text_area :description, placeholder:"What's on your mind ?", class:"form-control", rows:"5"%>
+          </div>
+          
+          <div class="index-tweetbtn">
+            <%= f.submit "發表推特",class:"btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="clearfix"></div>
 
 
-<% if @tweet.errors.any? %>
-  <h2>We have some errors here !</h2>
-  <ul>
-    <% @tweet.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
+      <% @tweets.each do |tweet| %>
+        <div class="col-md-7">
+          <div class="tweet-content">
+            <%= tweet.description %> <br>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+</div>
 
 
-<%= form_for @tweet do |f| %>
-  <div class="field">
-    <%= f.text_area :description%>
-  </div>
-
-  <%= f.submit "發表推特",class:"btn btn-primary" %>
-<% end %>
-
-<% @tweets.each do |tweet| %>
-  <%= tweet.description  %>
-<% end %>
