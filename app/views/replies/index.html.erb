@@ -1,1 +1,23 @@
-<%= @tweet.description %>
+<div class="container">
+  <%= render partial: "shared/user_file" %>
+
+  <div class="col-md-8">
+    <h2>Tweet</h2>
+
+    <div class="tweet-item">
+      <div class="col-md-3">
+        <%= image_tag @tweet.user.avatar %>
+      </div>
+
+      <div class="col-md-8">
+        <h3>
+          <%= link_to @tweet.user.name, tweets_user_path(@tweet.user) %>
+          <%= @tweet.created_at.strftime("%F, %H:%M") %>
+        </h3>
+
+        <p><%= @tweet.description %></p>
+        <%= link_to "Reply", tweet_replies_path(@tweet) %>
+      </div>
+    </div>
+  </div>
+</div>
