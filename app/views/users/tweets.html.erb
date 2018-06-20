@@ -4,10 +4,10 @@
 
       <div class="col-md-4">
         <h1>使用者</h1>
-        <% if current_user %>
+        <% if @user.name == current_user.name %>
           <%= link_to 'Edit Profile',edit_user_path(@user),class:"btn btn-primary" %>
         <% else %>
-          <button class="btn btn-primary"></button>
+          <button class="btn btn-primary">Follow </button>
         <% end %>
       </div>
 
