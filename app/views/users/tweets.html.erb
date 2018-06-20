@@ -3,21 +3,7 @@
     <div class="col-md-12">
 
       <div class="col-sm-5 col-md-3">
-        <div class="thumbnail">
-          <%= image_tag @user.avatar, class:"tweet_user_avatar"%> 
-        </div>
-                
-        <h3 class="text-center"><%= @user.name %></h3>
-
-        <p><%= @user.introduction %></p>
-        
-        <div class="usertweet-content">
-          <% if @user.name == current_user.name %>
-            <%= link_to 'Edit Profile',edit_user_path(@user),class:"btn btn-primary" %>
-          <% else %>
-            <button class="btn btn-primary">Follow </button>
-          <% end %>
-        </div>
+        <%= render partial:"shared/tweet_user" %>
       </div>
 
       <div class="col-sm-7 col-md-9">
