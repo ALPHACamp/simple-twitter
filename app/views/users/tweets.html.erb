@@ -4,6 +4,11 @@
 
       <div class="col-md-4">
         <h1>使用者</h1>
+        <% if current_user %>
+          <%= link_to 'Edit Profile',edit_user_path(@user),class:"btn btn-primary" %>
+        <% else %>
+          <button class="btn btn-primary"></button>
+        <% end %>
       </div>
 
       <div class="col-md-8">
