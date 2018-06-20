@@ -19,6 +19,10 @@
         <p><%= simple_format tweet.description %></p>
       </div>
 
+      <div class="tweet-replies">
+        <p><%= link_to 'replies',tweet_replies_path(@tweets)%></p>
+      </div>
+
     </div>   
   </div>
 <% end %>
