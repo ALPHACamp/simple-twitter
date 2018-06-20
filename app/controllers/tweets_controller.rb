@@ -26,7 +26,7 @@ class TweetsController < ApplicationController
 
   def unlike
     @tweet = Tweet.find(params[:id])
-    unlike = Like.where(user:current_user.id, tweet:@tweet.id).first
+    unlike = Like.where(user:current_user, tweet:@tweet).first
     unlike.destroy    
     redirect_back(fallback_location: root_path)  # 導回上一頁
   end

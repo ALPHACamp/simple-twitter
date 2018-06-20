@@ -15,10 +15,13 @@ Rails.application.routes.draw do
 
   resources :users, only: [:edit,:update] do
 
+
     member do
       get :tweets
     end
   end
+
+  resources :followship, only: [:create,:destroy]
 
   namespace :admin do
     root "tweets#index"
