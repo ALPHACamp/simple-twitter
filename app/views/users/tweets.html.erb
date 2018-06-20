@@ -1,17 +1,35 @@
+<style>
+  .tweet_user_avatar{
+    width: 100%;
+  }
+
+  .usertweet-content .btn{
+    width: 100%;  
+  }
+</style>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
 
-      <div class="col-md-4">
-        <h1>使用者</h1>
-        <% if @user.name == current_user.name %>
-          <%= link_to 'Edit Profile',edit_user_path(@user),class:"btn btn-primary" %>
-        <% else %>
-          <button class="btn btn-primary">Follow </button>
-        <% end %>
+      <div class="col-sm-4 col-md-3">
+        <div class="thumbnail">
+          <%= image_tag @user.avatar, class:"tweet_user_avatar"%> 
+        </div>
+                
+        <h3 class="text-center"><%= @user.name %></h3>
+
+        <p><%= @user.introduction %></p>
+        
+        <div class="usertweet-content">
+          <% if @user.name == current_user.name %>
+            <%= link_to 'Edit Profile',edit_user_path(@user),class:"btn btn-primary" %>
+          <% else %>
+            <button class="btn btn-primary">Follow </button>
+          <% end %>
+        </div>
       </div>
 
-      <div class="col-md-8">
+      <div class="col-sm-8 col-md-9">
         <% if current_user %>
           <%= render partial:"shared/tweet_content" %>
         <% end %>

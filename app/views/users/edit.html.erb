@@ -1,1 +1,13 @@
 <h1>編輯頁面</h1>
+<%= form_for @user do |f| %>
+  <%= image_tage @user.avatar if @user.avatar? %>
+  <%= f.file_field :avatar %>
+
+  <%= f.label :name,"Name" %>
+  <%= f.text_field :name %>
+
+  <%= f.label :introduction,"關於我的介紹" %>
+  <%= f.text_area :introduction   %>
+
+  <%= f.submit "Update" %>
+<% end %>
