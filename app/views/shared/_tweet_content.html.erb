@@ -2,6 +2,7 @@
   .tweet-replies span{
     margin-right: 30px;
   }
+
 </style>
 
 <% @tweets.each do |tweet| %>
@@ -26,15 +27,15 @@
       </div>
 
       <div class="tweet-replies tweet-likes">
-        <span><%= link_to 'replies',tweet_replies_path(tweet)%></span>
+        <span><%= link_to 'Replies',tweet_replies_path(tweet)%></span>
 
         <% unless tweet.is_liked?(current_user) %> 
-          <span><%= link_to 'like',like_tweet_path(tweet),method: :post%></span>
+          <span><%= link_to 'like',like_tweet_path(tweet),method: :post,class:"text-danger"%></span>
         <% else %>
-          <span><%= link_to 'unlike',unlike_tweet_path(tweet),method: :post%></span> 
+          <span><%= link_to 'unlike',unlike_tweet_path(tweet),method: :post,class:"text-danger"%></span> 
         <% end %>
       </div>
-
+ 
 
     </div>   
   </div>
