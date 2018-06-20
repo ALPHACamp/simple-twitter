@@ -1,1 +1,10 @@
- <h1>回覆</h1>
+<h1>回覆</h1>
+<%= form_for [@tweet,@reply]  do |f| %>
+  <%= f.text_area :comment %>
+
+  <%= f.submit "Reply" %>
+<% end %>
+
+<% @replies.each do |reply| %>
+  <%= simple_format reply.comment %>
+<% end %> 
