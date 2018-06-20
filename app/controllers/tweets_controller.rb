@@ -8,6 +8,7 @@ class TweetsController < ApplicationController
 
   def create
     @tweet = Tweet.create(tweet_params)
+    @tweet.user = current_user
     if @tweet.save
       flash[:notice]="您已經成功發佈一篇推特"
       redirect_to root_path

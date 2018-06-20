@@ -1,2 +1,6 @@
 <h1>使用者</h1>
-<%= @tweet.name %>
+<% @tweets.each do |tweet| %>
+  <%= tweet.user.name %> <br>  
+  <%= tweet.description %> <br>
+<% end %>
+
