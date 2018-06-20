@@ -1,13 +1,27 @@
-<h1>編輯頁面</h1>
-<%= form_for @user do |f| %>
-  <%= image_tage @user.avatar if @user.avatar? %>
-  <%= f.file_field :avatar %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <%= form_for @user do |f| %>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail ">
+          <%= image_tag @user.avatar if @user.avatar? %>
+        </div>
+        <%= f.file_field :avatar %>
+      </div>
 
-  <%= f.label :name,"Name" %>
-  <%= f.text_field :name %>
+      <div class="useredit-left-item col-sm-6 col-md-8">
+        <p><%= f.label :name,"名字" %></p>
+        <%= f.text_field :name ,class:"form-control"%>
 
-  <%= f.label :introduction,"關於我的介紹" %>
-  <%= f.text_area :introduction   %>
+        <p><%= f.label :introduction,"關於我的介紹" %></p>
+        <%= f.text_area :introduction,class:"form-control"   %>
 
-  <%= f.submit "Update" %>
-<% end %>
+        <%= f.submit "Update",class:"btn btn-primary" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+ 
+ 
