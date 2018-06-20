@@ -8,23 +8,7 @@
 
       <div class="col-md-8">
         <% if current_user %>
-          <% @tweets.each do |tweet| %>
-            <div class="tweet-content">
-              <div class="col-md-offset-4">
-                <div class="tweet-title">
-                  <%= tweet.user.name %>,
-                  <%= tweet.created_at.to_date %>,
-                  <%= tweet.created_at.strftime("%H:%M") %> 
-                </div>
-              </div>
-
-              <div class="col-md-offset-4">
-                <div class="tweet-description">
-                  <%= tweet.description %>
-                </div>
-              </div> 
-            </div>
-          <% end %>
+          <%= render partial:"shared/tweet_content" %>
         <% end %>
       </div>
     </div>

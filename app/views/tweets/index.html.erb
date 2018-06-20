@@ -14,26 +14,10 @@
     
     <div class="clearfix"></div>
 
+    <div class="col-md-7">
+      <%= render partial:"shared/tweet_content" %>
+    </div>
 
-    <% @tweets.each do |tweet| %>
-      <div class="col-md-7">
-        <div class="tweet-content">
-          <div class="col-md-offset-4">
-            <div class="tweet-title">
-              <%= tweet.user.name %>,
-              <%= tweet.created_at.to_date %>,
-              <%= tweet.created_at.strftime("%H:%M") %> 
-            </div>
-          </div>
-
-          <div class="col-md-offset-4">
-            <div class="tweet-description">
-              <%= tweet.description %>
-            </div>
-          </div> 
-        </div>      
-      </div>
-    <% end %>
 
   </div>
 </div>
