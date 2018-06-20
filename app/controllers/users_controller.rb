@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def tweets
+    
   end
 
   def edit
