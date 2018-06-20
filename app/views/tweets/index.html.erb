@@ -26,7 +26,7 @@
               <%= image_tag user.avatar, width: '100px', height: '100px' %>
             </div>
             <div class="col-md-8">
-              <h3><%= user.name %></h3>
+              <h3><%= link_to user.name, tweets_user_path(user) %></h3>
               <p><%= user.introduction %></p>
               <div class="follow-button">
                 <% if current_user.following?(user) %>
