@@ -11,9 +11,8 @@
   padding-bottom: 15px
 }
 
-.user-file img {
-  max-width: 150px;
-  max-width: 150px;
+.text {
+  padding: 0 10px;
 }
 
 .new-tweet {
@@ -37,6 +36,7 @@
 
 .follow-button {
   float: right;
+  margin-right: 15px;
 }
 
 .paginate {
