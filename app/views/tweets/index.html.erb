@@ -1,29 +1,41 @@
 <div class="container">
-    <div class="col-md-12">
-      <div class="col-md-7">
-        <%= form_for @tweet do |f| %>
-          <div class="field">
-            <%= f.text_area :description, placeholder:"What's on your mind ?", class:"form-control", rows:"5"%>
-          </div>
-          
-          <div class="index-tweetbtn">
-            <%= f.submit "發表推特",class:"btn btn-primary" %>
-          </div>
-        <% end %>
-      </div>
-      
-      <div class="clearfix"></div>
-
-
-      <% @tweets.each do |tweet| %>
-        <div class="col-md-7">
-          <div class="tweet-content">
-            <%= tweet.description %> <br>
-          </div>
+  <div class="col-md-12">
+    <div class="col-md-7">
+      <%= form_for @tweet do |f| %>
+        <div class="field">
+          <%= f.text_area :description, placeholder:"What's on your mind ?", class:"form-control", rows:"5"%>
+        </div>
+        
+        <div class="index-tweetbtn">
+          <%= f.submit "發表推特",class:"btn btn-primary" %>
         </div>
       <% end %>
-
     </div>
+    
+    <div class="clearfix"></div>
+
+
+    <% @tweets.each do |tweet| %>
+      <div class="col-md-7">
+        <div class="tweet-content">
+          <div class="col-md-offset-4">
+            <div class="tweet-title">
+              <%= tweet.user.name %>,
+              <%= tweet.created_at.to_date %>,
+              <%= tweet.created_at.strftime("%H:%M") %> 
+            </div>
+          </div>
+
+          <div class="col-md-offset-4">
+            <div class="tweet-description">
+              <%= tweet.description %>
+            </div>
+          </div> 
+        </div>      
+      </div>
+    <% end %>
+
+  </div>
 </div>
 
 
