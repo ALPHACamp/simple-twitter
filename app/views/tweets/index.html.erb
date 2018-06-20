@@ -1,15 +1,28 @@
-<h1>Tweets front desk</h1>
 
-<%= form_for @tweet do |f| %>
-  <%= f.text_area :description, placeholder: "Tweet here" %>
-  <%= f.submit class: "btn btn-primary" %>
-  <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
-<% end %>
+<div class="container">
+  <div class="row">
 
-<br>
 
-<% @tweets.each do |tweet| %>
-  <h4>@<%= tweet.user.name %>,<%= tweet.created_at.strftime("%Y-%m-%D, %H:%M") %></h4>
-  <h3><%= tweet.description %></h3>
+    <div class="col-md-7">
+      <div class="form-group">
+        <%= form_for @tweet do |f| %>
+        <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control", rows: "10" %>
+        <div class="btn-left">
 
-<% end %>
+
+          <%= f.submit class: "btn btn-primary" %>
+          <%= f.button "Cancel", type: :reset, class: "btn btn-outline-primary" %>
+        </div>
+        <% end %>
+      </div>
+      <br>
+
+      <% @tweets.each do |tweet| %>
+        <h4>@<%= tweet.user.name %>,<%= tweet.created_at.strftime("%Y-%m-%D, %H:%M") %></h4>
+        <h3><%= tweet.description %></h3>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
