@@ -1,10 +1,40 @@
-<h1>回覆</h1>
-<%= form_for [@tweet,@reply]  do |f| %>
-  <%= f.text_area :comment %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
 
-  <%= f.submit "Reply" %>
-<% end %>
+      <div class="col-md-3">
+        <%= render partial:"shared/tweet_user" %>
+      </div>
 
-<% @replies.each do |reply| %>
-  <%= simple_format reply.comment %>
-<% end %> 
+      <div class="col-md-9">
+        <h3>Tweets</h3>
+        <%= render partial:"shared/tweet_replycontent" %>
+
+        <h3>Replies</h3>
+        <%= render partial:"shared/tweet_repliedcomment" %>
+        
+        <div class="replycomment">
+          <%= form_for [@tweet,@reply]  do |f| %>
+            <%= f.text_area :comment,class:"form-control",rows:"5" %>
+
+            <%= f.submit "Reply",class:"btn btn-primary" %>
+          <% end %>
+        </div>
+        
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,25 @@
+<% @replies.each do |reply| %>
+  <div class="tweet-content">
+
+    <div class="col-md-3">
+      <div class="user-avatar">
+        <%= image_tag reply.user.avatar if reply.user.avatar?  %>
+      </div>
+    </div>
+
+    <div class="col-md-9">
+
+      <div class="tweet-title">
+        <p><%= link_to reply.user.name, tweets_user_path(reply.user) %>,
+        <%= reply.created_at.to_date %>,
+        <%= reply.created_at.strftime("%H:%M") %> </p>
+      </div>
+
+      <div class="tweet-description">
+        <p><%= simple_format reply.comment %></p>
+      </div>
+
+    </div>   
+  </div>
+
+<% end %>
