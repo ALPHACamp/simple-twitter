@@ -10,10 +10,6 @@
   <% if @user.name == current_user.name %>
     <%= link_to 'Edit Profile',edit_user_path(@user),class:"btn btn-primary" %>
   <% else %>
-    <% unless current_user.following?(@user) %>
-      <%= link_to "Follow",followships_path(following_id:@user),method: :post,class:"btn btn-primary" %>
-    <% else %>
-      <%= link_to "Unollow",followship_path(@user),method: :delete,class:"btn btn-primary" %>
-    <% end %>
+    <%= render partial:"shared/like" %>
   <% end %>
 </div>   
