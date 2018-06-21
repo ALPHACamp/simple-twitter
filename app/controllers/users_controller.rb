@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     @tweets = @user.tweets
     @likes = @user.likes
     @followings = @user.followings
-    @followers = @user.followers
+    @followers = @user.followers 
   end
  
   def followers
