@@ -17,7 +17,13 @@
     Following <%= @followings.count %>
   <% end %>
 </h3>
-<h3>Follower <%= @followers.count %></h3>
+
+<h3>
+  <%= link_to followers_user_path(@user) do %>
+    Follower <%= @followers.count %>
+  <% end %>
+</h3>
+
 <h3>Like <%= @likes.count %></h3> 
 
 
