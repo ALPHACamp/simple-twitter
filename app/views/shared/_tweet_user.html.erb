@@ -6,7 +6,12 @@
 
 <p><%= @user.introduction %></p>
 
-<h3>Tweets <%= @tweets.count %></h3>
+<h3>
+  <%= link_to tweets_user_path(@user) do %>
+    Tweets <%= @tweets.count %>
+  <% end %>
+</h3>
+
 <h3>Following <%= @followings.count %></h3>
 <h3>Follower <%= @followers.count %></h3>
 <h3>Like <%= @likes.count %></h3> 
@@ -18,4 +23,4 @@
   <% else %>
     <%= render partial:"shared/like" %>
   <% end %>
-</div>    
+</div>     
