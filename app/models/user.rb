@@ -14,13 +14,21 @@ class User < ApplicationRecord
 
   has_many :tweets, dependent: :destroy
 
-  has_many :replies
+  has_many :replies,dependent: :destroy
 
   has_many :likes, dependent: :destroy
   has_many :liked_tweets, through: :likes, source: :tweet
 
+  has_many :followships,dependent: :destroy, class_name: "Followship", foreign_key: "user_id" 
+  has_many :followings,through: :followships,source: :following
+
+
   def admin?
     self.role == "admin"
+  end
+
+  def following?(user)
+    self.followings.include?(user)
   end
   
 end
