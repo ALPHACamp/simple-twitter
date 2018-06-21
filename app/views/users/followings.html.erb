@@ -1,1 +1,6 @@
-追蹤的人
+<% @followings.each do |following| %>
+  <%= image_tag following.avatar if following.avatar?  %> <br>
+  <%= following.name %> <br>
+  <%= following.introduction %> <br>
+  <%= render partial:"shared/follow" ,locals:{user:@user}%>
+<% end %>  
