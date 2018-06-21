@@ -11,24 +11,28 @@ class TweetsController < ApplicationController
     @tweet.user = current_user
     if @tweet.save
       flash[:notice]="您已經成功發佈一篇推特"
-      redirect_to root_path
+      redirect_to tweets_path
+      #redirect_to root_path
     else
       flash[:alert]="推特內容不能空白"
-      redirect_to root_path
+      redirect_to tweets_path
+      #redirect_to root_path
     end
   end
 
   def like
     @tweet = Tweet.find(params[:id])
     Like.create(user:current_user, tweet:@tweet)    
-    redirect_back(fallback_location: root_path)  # 導回上一頁
+    #redirect_back(fallback_location: root_path)  
+    redirect_back(fallback_location: tweets_path)  # 導回上一頁
   end
 
   def unlike
     @tweet = Tweet.find(params[:id])
     unlike = Like.where(user:current_user, tweet:@tweet).first
     unlike.destroy    
-    redirect_back(fallback_location: root_path)  # 導回上一頁
+    #redirect_back(fallback_location: root_path) 
+    redirect_back(fallback_location: tweets_path)  # 導回上一頁
   end
 
   private
