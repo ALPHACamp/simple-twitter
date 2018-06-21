@@ -12,7 +12,11 @@
   <% end %>
 </h3>
 
-<h3>Following <%= @followings.count %></h3>
+<h3>
+  <%= link_to followings_user_path(@user) do %>
+    Following <%#= @followings.count %>
+  <% end %>
+</h3>
 <h3>Follower <%= @followers.count %></h3>
 <h3>Like <%= @likes.count %></h3> 
 
