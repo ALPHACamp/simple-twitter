@@ -1,8 +1,8 @@
 class FollowshipsController < ApplicationController
   def create
-    @user = User.find(params[:following_id])
+    @user = User.find(params[:following_id]) 
     if @user == current_user
-      flash[:notice] = "Can't follow self!"
+      flash[:alert] = "Can't follow self!"
       redirect_to tweets_path
     else
       @followship = Followship.create(user_id:current_user.id, following_id:params[:following_id])
