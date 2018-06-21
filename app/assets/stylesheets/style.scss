@@ -96,4 +96,20 @@ body{
   margin-top: 5px;
 }
 
+/*====user-followings====*/
+.following-list{
+  border: 1px solid #ddd;
+  padding: 5px;
+  height: 175px;
+}
+
+.following-list img{
+  width: 100%;
+}
+
+.following-list-follow{
+  float: right;
+  margin-top: 40px;
+}
+
 

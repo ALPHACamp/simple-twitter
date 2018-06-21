@@ -30,7 +30,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @followings = @user.followings.order('followships.created_at DESC')
     # 基於測試規格，必須講定變數名稱
-
+    @tweets = @user.tweets
+    @likes = @user.likes
+    @followings = @user.followings
+    @followers = @user.followers
   end
 
   def followers
