@@ -20,6 +20,18 @@ body{
   padding-top: 100px;
 
 }
+
+.navbar-right .user-avatar{
+  margin: -10px;  
+}
+
+.navbar-right .user-avatar img{
+  width: 45px;
+  height: 40px;
+  display: block;
+  position: relative;
+}
+
     
 .flash-remind{
   margin-top: -20px;

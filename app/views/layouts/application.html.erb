@@ -15,7 +15,7 @@
         <div class="navbar-header">
             <%= link_to "ALPHACAMP Twitter",root_path,class:"navbar-brand" %>
         </div>
-
+ 
         <ul class="nav navbar-nav navbar-left">
           <% if current_user %>
            <% if current_user&.admin? %>
@@ -32,8 +32,9 @@
               <%# end %>
              
             <li><%= link_to tweets_user_path(current_user) do %>
-              <span class="glyphicon glyphicon-user"></span> 使用者
+              <div class="user-avatar"><%= image_tag current_user.avatar if current_user.avatar? %></div>
             <% end %> 
+
             </li>
 
             <li><%= link_to destroy_user_session_path, method: :delete do%>
