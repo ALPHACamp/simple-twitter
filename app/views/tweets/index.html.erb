@@ -20,7 +20,7 @@
       <!-- 顯示所有的tweets -->
       <div class="following-tweets">
         <% @tweets.each do |tweet| %>
-          <div class="col-sm-12 col-md-12 all-tweets">
+          <div class="all-tweets">
             <%= render  "shared/tweet", object: tweet %>
           </div>
           <br>

@@ -1,16 +1,18 @@
 <div class="single-tweet">
-  <div class="user-avatar">
-    <% if object.user.avatar %>
-      <%= image_tag object.user.avatar, width: '128px', class: "img img-responsive" %>
-    <% else %>
-      <%= image_tag 'fallback/default-avatar', width: '128px', class: "img img-responsive" %>
-    <% end %>
-  </div>
-  <div class="user-tweet">
-    <%= render  "shared/created", object_time: object %>
-    <div class="user-description">
-      <%= object.description %>
+  <div class="row">
+    <div class="col-md-3 col-xs-3">
+      <% if object.user.avatar %>
+        <%= image_tag object.user.avatar, width: '128px', class: "img img-responsive" %>
+      <% else %>
+        <%= image_tag 'fallback/default-avatar', width: '128px', class: "img img-responsive" %>
+      <% end %>
     </div>
-    <%= render  "shared/action", object_button: object %>
+    <div class="col-md-8 col-xs-8">
+      <%= render  "shared/created", object_time: object %>
+      <div class="user-description">
+        <%= object.description %>
+      </div>
+      <%= render  "shared/action", object_button: object %>
+    </div>
   </div>
 </div>
