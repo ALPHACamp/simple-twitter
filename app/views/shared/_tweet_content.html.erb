@@ -13,7 +13,7 @@
         <%= image_tag tweet.user.avatar if tweet.user.avatar?  %>
       </div>
     </div>
-
+ 
     <div class="col-md-9">
 
       <div class="tweet-title">
@@ -27,12 +27,18 @@
       </div>
 
       <div class="tweet-replies tweet-likes">
-        <span><%= link_to 'Replies',tweet_replies_path(tweet)%></span>
+        <%= link_to tweet_replies_path(tweet) do%>
+          <span>Replies (<%= tweet.replies.count %>)</span>
+        <% end %>
 
         <% unless tweet.is_liked?(current_user) %> 
-          <span><%= link_to 'like',like_tweet_path(tweet),method: :post,class:"text-danger"%></span>
+          <%= link_to like_tweet_path(tweet),method: :post,class:"text-danger" do%>
+            <span>like (<%= tweet.likes.count %>)</span>
+          <% end %>
         <% else %>
-          <span><%= link_to 'unlike',unlike_tweet_path(tweet),method: :post,class:"text-danger"%></span> 
+          <%= link_to unlike_tweet_path(tweet),method: :post,class:"text-danger" do%>
+            <span>unlike (<%= tweet.likes.count %>)</span>
+          <% end %>
         <% end %>
       </div>
  
