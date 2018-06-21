@@ -42,12 +42,16 @@ class UsersController < ApplicationController
     # 基於測試規格，必須講定變數名稱
     @tweets = @user.tweets
     @likes = @user.likes
-    @followings = @user.followings
-    @followers = @user.followers
+    @followings = @user.followings 
   end
 
   def likes
-    @likes # 基於測試規格，必須講定變數名稱
+    @user = User.find(params[:id])
+    @likes = @user.liked_tweets.order('likes.created_at DESC')
+    # 基於測試規格，必須講定變數名稱
+    @tweets = @user.tweets
+    @followings = @user.followings
+    @followers = @user.followers
   end
 
   private

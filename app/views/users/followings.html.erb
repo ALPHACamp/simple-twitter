@@ -10,21 +10,25 @@
         <h3>Following</h3>
 
         <% @followings.each do |following| %>
-          <div class="following-list col-md-6">
-            <div class="col-md-3">
-              <%= image_tag following.avatar if following.avatar?  %> 
+          <div class="col-md-6">
+            <div class="follower-list">
+
+              <div class="col-md-3">
+                <%= image_tag following.avatar if following.avatar?  %> 
+              </div>
+
+              <div class="col-md-9">
+                <p><%= link_to following.name, tweets_user_path(following) %> </p>
+                <p><%= simple_format following.introduction %> </p>
+              </div>
+
+              <div class="clearfix"></div>
+
+              <div class="following-list-follow">
+                <%= render partial:"shared/follow" ,locals:{user:@user}%>
+              </div> 
+
             </div>
-
-            <div class="col-md-9">
-              <p><%= link_to following.name, tweets_user_path(following) %> </p>
-              <p><%= simple_format following.introduction %> </p>
-            </div>
-
-            <div class="clearfix"></div>
-
-            <div class="following-list-follow">
-              <%= render partial:"shared/follow" ,locals:{user:@user}%>
-            </div> 
           </div>
         <% end %>  
       </div>

@@ -56,6 +56,10 @@ body{
   height: 105px;
 }
 
+.tweet-replies span{
+    margin-right: 30px;
+}
+
 .tweet-title,.tweet-description,.tweet-replies{
   margin-left: -30px;
 }
@@ -109,7 +113,7 @@ body{
 
 .following-list-follow{
   float: right;
-  margin-top: 40px;
+  margin-top: 50px;
 }
 
 /*====user-followers====*/
@@ -125,7 +129,7 @@ body{
 
 .follower-list-follow{
   float: right;
-  margin-top: 40px;
+  margin-top: 50px;
 }
 
 
