@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :followship, only: [:create,:destroy]
+  resources :followships, only: [:create,:destroy]
 
   namespace :admin do
     root "tweets#index"
