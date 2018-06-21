@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @tweets = @user.tweets.order(created_at: :desc)
     @likes = @user.likes
+    @followings = @user.followings
   end
 
   def edit
