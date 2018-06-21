@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @followers = @user.followers
   end
 
-  def edit
+  def edit 
     @user = User.find(params[:id])
     if @user != current_user
       redirect_to root_path
