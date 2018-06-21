@@ -6,3 +6,4 @@ class Followship < ApplicationRecord
 
 
 end 
+ 
