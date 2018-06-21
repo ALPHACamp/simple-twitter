@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     @tweets = @user.tweets.order(created_at: :desc)
     @likes = @user.likes
     @followings = @user.followings
+    @followers = @user.followers
   end
 
   def edit
