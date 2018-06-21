@@ -24,7 +24,11 @@
   <% end %>
 </h3>
 
-<h3>Like <%= @likes.count %></h3> 
+<h3>
+  <%= link_to likes_user_path(@user) do%> 
+    Like <%= @likes.count %>
+  <% end %>
+</h3> 
 
 
 <div class="usertweet-content">
