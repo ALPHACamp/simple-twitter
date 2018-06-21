@@ -6,6 +6,12 @@
 
 <p><%= @user.introduction %></p>
 
+<h3>Tweets <%= @tweets.count %></h3>
+<h3>Following</h3>
+<h3>Follower</h3>
+<h3>Like</h3>
+
+
 <div class="usertweet-content">
   <% if @user.name == current_user.name %>
     <%= link_to 'Edit Profile',edit_user_path(@user),class:"btn btn-primary" %>
