@@ -1,1 +1,35 @@
-追蹤我的人
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="col-md-3">
+        <%= render partial:"shared/tweet_user" %>
+      </div>
+
+      <div class="follower col-md-9">
+        <h3>Follower</h3>
+
+        <% @followers.each do |follower| %>
+          <div class="follower-list col-md-6">
+            <div class="col-md-3">
+              <%= image_tag follower.avatar if follower.avatar?  %> 
+            </div>
+
+            <div class="col-md-9">
+              <p><%= link_to follower.name, tweets_user_path(follower) %> </p>
+              <p><%= simple_format follower.introduction %> </p>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="follower-list-follow">
+              <%= render partial:"shared/follow" ,locals:{user:@user}%>
+            </div> 
+          </div>
+        <% end %>  
+      </div>
+
+    </div>
+  </div>
+</div>
+
