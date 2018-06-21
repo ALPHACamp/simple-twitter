@@ -11,10 +11,12 @@ class TweetsController < ApplicationController
     @tweet.user = current_user
     if @tweet.save
       flash[:notice]="您已經成功發佈一篇推特"
-      redirect_to root_path
+      redirect_to tweets_path
+      #redirect_to root_path
     else
       flash[:alert]="推特內容不能空白"
-      redirect_to root_path
+      redirect_to tweets_path
+      #redirect_to root_path
     end
   end
 
