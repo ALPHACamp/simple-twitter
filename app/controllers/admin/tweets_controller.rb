@@ -7,6 +7,6 @@ class Admin::TweetsController < Admin::BaseController
     @tweet = Tweet.find(params[:id])
     @tweet.destroy
     flash[:notice]="已成功刪除該推特"
-    redirect_to admin_tweets_path
+    redirect_to admin_root_path
   end
 end
