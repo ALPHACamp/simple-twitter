@@ -39,8 +39,12 @@ body{
 
 
 /*====admin-tweet-index====*/
-.admin-tweet-title,.admin-tweet-description,.admin-tweet-replies{
+.admin-tweet-title,.admin-tweet-description{
   margin-left: 0px;
+}
+
+.admin-tweet-replies{
+  padding-right:15px;
 }
 
 /*====tweet-index====*/

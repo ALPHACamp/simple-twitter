@@ -1,3 +1,8 @@
+<style>
+   .admin-tweet-delete{
+    float:right;
+   }
+</style>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
@@ -37,21 +42,25 @@
                   <p><%= truncate(tweet.description, length:80) %></p>
                 </div>
 
-                <div class="admin-tweet-replies admin-tweet-likes">
+                <div class="admin-tweet-action">
                   <%= link_to tweet_replies_path(tweet) do%>
-                    <span>Replies (<%= tweet.replies.count %>)</span>
+                    <span class="admin-tweet-replies">Replies (<%= tweet.replies.count %>)</span>
                   <% end %>
 
                   <% unless tweet.is_liked?(current_user) %> 
                     <%= link_to like_tweet_path(tweet),method: :post,class:"text-danger" do%>
-                      <span>like (<%= tweet.likes.count %>)</span>
+                      <span class="admin-tweet-likes">like (<%= tweet.likes.count %>)</span>
                     <% end %>
                   <% else %>
                     <%= link_to unlike_tweet_path(tweet),method: :post,class:"text-danger" do%>
-                      <span>unlike (<%= tweet.likes.count %>)</span>
+                      <span class="admin-tweet-likes">unlike (<%= tweet.likes.count %>)</span>
                     <% end %>
                   <% end %>
-                </div>
+
+                  <%= link_to admin_tweet_path(tweet),method: :delete,data:{confirm:"Are to sure to delete ?"} do %>
+                    <span class="glyphicon glyphicon-trash admin-tweet-delete"></span>
+                  <% end %>
+                </div> 
            
 
               </div>   
