@@ -39,13 +39,27 @@ body{
 
 
 /*====admin-tweet-index====*/
-.admin-tweet-title,.admin-tweet-description{
-  margin-left: 0px;
+.admin-tweet-title,.admin-tweet-description,.admin-tweet-replies{
+  margin-left: 10px;
 }
 
 .admin-tweet-replies{
   padding-right:15px;
 }
+
+
+/*====admin-user-index====*/
+.admin-user-list{
+  border: 1px solid #ddd;
+  margin-top: 10px;
+  padding: 10px;
+    }
+
+.admin-user-list img{
+  width: 100%;
+}
+
+
 
 /*====tweet-index====*/
 .index-tweetbtn{
@@ -59,8 +73,7 @@ body{
 
 .popular-list{
   border: 1px solid #ddd;
-  padding: 5px;
-  height: 150px;
+  padding: 5px;  
   margin-top:10px;
 }
 
@@ -74,21 +87,21 @@ body{
 
 .popular-list-follow{
   float: right;
-  margin-top: 10px;
+  margin-top: 0px;
 }
 
 
-
+  
 /*====shared_tweet-content====*/
 .tweet-content{
   border: 1px solid #ddd;
   padding: 10px;
-  height: 125px;
+  
   margin-top:10px;
 }
 
 .tweet-content .user-avatar img{
-  height: 105px;
+  max-height: 105px;
 }
 
 .tweet-replies span{
@@ -96,7 +109,7 @@ body{
 }
 
 .tweet-title,.tweet-description,.tweet-replies{
-  margin-left: -30px;
+  margin-left: 10px;
 }
 
 
@@ -135,12 +148,16 @@ body{
   margin-top: 5px;
 }
 
+.tweet-replies span{
+  margin-right: 30px;
+}
+
 /*====user-followings====*/
 .following-list{
   border: 1px solid #ddd;
   padding: 5px;
-  height: 175px;
   margin-top:10px;
+  min-height:180px;
 }
 
 .following-list img{
@@ -149,14 +166,13 @@ body{
 
 .following-list-follow{
   float: right;
-  margin-top: 0px;
 }
 
 /*====user-followers====*/
 .follower-list{
   border: 1px solid #ddd;
   padding: 5px;
-  height: 175px;
+  min-height: 180px;
   margin-top:10px;
 }
 
@@ -166,7 +182,6 @@ body{
 
 .follower-list-follow{
   float: right;
-  margin-top: 0px;
 }
 
 

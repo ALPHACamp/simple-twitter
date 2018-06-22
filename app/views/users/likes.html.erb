@@ -1,16 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-xs-12 col-sm-12 col-md-12">
 
-      <div class="col-md-3">
+      <div class="col-sm-4 col-md-3">
         <%= render partial:"shared/tweet_user" %>
       </div>
 
-      <div class="follower col-md-9">
+      <div class="follower col-sm-8 col-md-9">
         <h3>Likes</h3>
 
         <% @likes.each do |tweet| %>
-           <div class="tweet-content">
+           <div class="col-xs-12 col-sm-12 col-md-12 tweet-content">
 
             <div class="col-md-3">
               <div class="user-avatar">

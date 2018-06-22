@@ -1,15 +1,3 @@
-<style>
-  .admin-user-list{
-    border: 1px solid #ddd;
-    margin-top: 10px;
-    padding: 10px;
-    height: 250px;
-  }
-
-  .admin-user-list img{
-    width: 100%;
-  }
-</style>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
@@ -26,11 +14,11 @@
         </li>
       </ul>
 
-      <div class="admin-users-content">
+      <div class="admin-users-content"> 
         <% @users.each do |user| %>
-          <div class="col-md-4">
-            <div class="admin-user-list">
-              <div class="col-md-5">
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="col-xs-12 col-sm-12 col-md-12 admin-user-list">
+              <div class="col-xs-12 col-sm-6 col-md-5">
                 <%= image_tag user.avatar,class:"img-circle"  if user.avatar?%> 
 
                 <h4>
@@ -58,7 +46,7 @@
                 </h4> 
               </div>
 
-              <div class="col-md-7">
+              <div class="col-xs-12 col-sm-6 col-md-7">
                 <p><%= link_to user.name, tweets_user_path(user) %> </p>
                 <p><%= truncate(user.introduction, length:90) %> </p>
 

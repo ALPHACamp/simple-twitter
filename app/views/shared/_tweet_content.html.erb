@@ -1,13 +1,13 @@
 <% @tweets.each do |tweet| %>
-  <div class="tweet-content">
+  <div class="col-sm-12 col-md-12 tweet-content">
 
-    <div class="col-md-3">
+    <div class="col-sm-4 col-md-3">
       <div class="user-avatar">
         <%= image_tag tweet.user.avatar if tweet.user.avatar?  %>
       </div>
     </div>
  
-    <div class="col-md-9">
+    <div class="col-sm-8 col-md-9">
 
       <div class="tweet-title">
         <p><%= link_to tweet.user.name, tweets_user_path(tweet.user) %>,
