@@ -1,3 +1,15 @@
+<style>
+  .admin-user-list{
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    padding: 10px;
+    height: 250px;
+  }
+
+  .admin-user-list img{
+    width: 100%;
+  }
+</style>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
@@ -15,8 +27,58 @@
       </ul>
 
       <div class="admin-users-content">
-        使用者列表
+        <% @users.each do |user| %>
+          <div class="col-md-4">
+            <div class="admin-user-list">
+              <div class="col-md-5">
+                <%= image_tag user.avatar,class:"img-circle"  if user.avatar?%> 
+
+                <h4>
+                  <%= link_to tweets_user_path(user) do %>
+                    Tweets <%= user.tweets.count %>
+                  <% end %>
+                </h4>
+
+                <h4>
+                  <%= link_to followings_user_path(user) do %>
+                    Following <%= user.followings.count %>
+                  <% end %>
+                </h4>
+
+                <h4>
+                  <%= link_to followers_user_path(user) do %>
+                    Follower <%= user.followers.count %>
+                  <% end %>
+                </h4>
+
+                <h4>
+                  <%= link_to likes_user_path(user) do%> 
+                    Like <%= user.likes.count %>
+                  <% end %>
+                </h4> 
+              </div>
+
+              <div class="col-md-7">
+                <p><%= link_to user.name, tweets_user_path(user) %> </p>
+                <p><%= truncate(user.introduction, length:90) %> </p>
+
+                <span class="admin-user-list-follow">
+                  <% if user != current_user %>
+                    <% unless current_user.following?(user) %>
+                      <%= link_to "Follow",followships_path(following_id:user),method: :post,class:"btn btn-primary" %>
+                    <% else %>
+                      <%= link_to "Unollow",followship_path(user),method: :delete,class:"btn btn-primary" %>
+                    <% end %>
+                  <% end %>          
+                </span>  
+              </div> 
+
+              
+                
+            </div>
+          </div> 
+        <% end %> 
       </div>
     </div>
   </div>
-</div>
+</div> 
