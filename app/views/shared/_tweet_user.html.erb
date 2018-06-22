@@ -1,0 +1,40 @@
+<div class="thumbnail">
+  <%= image_tag @user.avatar, class:"tweet_user_avatar"%> 
+</div>
+        
+<h3 class="text-center"><%= @user.name %></h3>
+
+<p><%= @user.introduction %></p>
+
+<h3>
+  <%= link_to tweets_user_path(@user) do %>
+    Tweets <%= @tweets.count %>
+  <% end %>
+</h3>
+
+<h3>
+  <%= link_to followings_user_path(@user) do %>
+    Following <%= @followings.count %>
+  <% end %>
+</h3>
+
+<h3>
+  <%= link_to followers_user_path(@user) do %>
+    Follower <%= @followers.count %>
+  <% end %>
+</h3>
+
+<h3>
+  <%= link_to likes_user_path(@user) do%> 
+    Like <%= @likes.count %>
+  <% end %>
+</h3> 
+
+
+<div class="usertweet-content">
+  <% if @user.name == current_user.name %>
+    <%= link_to 'Edit Profile',edit_user_path(@user),class:"btn btn-primary" %>
+  <% else %>
+    <%= render partial:"shared/follow" %> 
+  <% end %>
+</div>     

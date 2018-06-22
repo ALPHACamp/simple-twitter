@@ -1,0 +1,8 @@
+<% if @user != current_user %>
+  <% unless current_user.following?(@user) %>
+    <%= link_to "Follow",followships_path(following_id:@user),method: :post,class:"btn btn-primary" %>
+  <% else %>
+    <%= link_to "Unollow",followship_path(@user),method: :delete,class:"btn btn-primary" %>
+  <% end %>
+<% end %>
+ 

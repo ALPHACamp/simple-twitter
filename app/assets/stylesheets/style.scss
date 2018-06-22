@@ -1,0 +1,190 @@
+/*====bootstrap adjustment=====*/
+.panel .panel-heading{
+    padding:0;
+    padding-top: 8px;
+  } 
+
+
+/*====rails-form field adjustment====*/
+.field{
+  margin-top: 7px;
+}
+
+/*====devise buttom class====*/
+.actions{
+  margin-top:8px;
+}
+
+/*====application====*/
+body{
+  padding-top: 100px;
+
+}
+
+.navbar-right .user-avatar{
+  margin: -10px;  
+}
+
+.navbar-right .user-avatar img{
+  width: 45px;
+  height: 40px;
+  display: block;
+  position: relative;
+}
+
+    
+.flash-remind{
+  margin-top: -20px;
+}
+
+
+/*====admin-tweet-index====*/
+.admin-tweet-title,.admin-tweet-description,.admin-tweet-replies{
+  margin-left: 10px;
+}
+
+.admin-tweet-replies{
+  padding-right:15px;
+}
+
+
+/*====admin-user-index====*/
+.admin-user-list{
+  border: 1px solid #ddd;
+  margin-top: 10px;
+  padding: 10px;
+    }
+
+.admin-user-list img{
+  width: 100%;
+}
+
+
+
+/*====tweet-index====*/
+.index-tweetbtn{
+  float: right;
+  margin-top: 8px;
+}
+
+.tweet-index-content{
+  margin-top: 70px;
+}
+
+.popular-list{
+  border: 1px solid #ddd;
+  padding: 5px;  
+  margin-top:10px;
+}
+
+.popular-list .popular-label{
+  margin-left:10px;
+}
+
+.popular-list img{
+  width: 100%;
+}
+
+.popular-list-follow{
+  float: right;
+  margin-top: 0px;
+}
+
+
+  
+/*====shared_tweet-content====*/
+.tweet-content{
+  border: 1px solid #ddd;
+  padding: 10px;
+  
+  margin-top:10px;
+}
+
+.tweet-content .user-avatar img{
+  max-height: 105px;
+}
+
+.tweet-replies span{
+    margin-right: 30px;
+}
+
+.tweet-title,.tweet-description,.tweet-replies{
+  margin-left: 10px;
+}
+
+
+.tweet-title{
+  letter-spacing: 1px;
+}
+
+.tweet-description{
+  margin-top: 5px;
+}
+
+.tweet_user_avatar{
+  width: 100%;
+}
+
+.usertweet-content .btn{
+  width: 100%;  
+}
+
+/*====user-edit====*/
+.useredit-left-item p,.btn{
+    margin-top: 10px;
+}
+
+.useredit-left-item .btn{
+  float: right;
+}
+
+/*====shared_tweet_replycomment====*/
+.replycomment{
+  margin-top: 10px;
+}
+
+.replycomment .btn{
+  float: right;
+  margin-top: 5px;
+}
+
+.tweet-replies span{
+  margin-right: 30px;
+}
+
+/*====user-followings====*/
+.following-list{
+  border: 1px solid #ddd;
+  padding: 5px;
+  margin-top:10px;
+  min-height:180px;
+}
+
+.following-list img{
+  width: 100%;
+}
+
+.following-list-follow{
+  float: right;
+}
+
+/*====user-followers====*/
+.follower-list{
+  border: 1px solid #ddd;
+  padding: 5px;
+  min-height: 180px;
+  margin-top:10px;
+}
+
+.follower-list img{
+  width: 100%;
+}
+
+.follower-list-follow{
+  float: right;
+}
+
+
+
+
+
