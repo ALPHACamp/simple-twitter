@@ -19,7 +19,7 @@
 
               <div class="col-md-9">
                 <p><%= link_to user.name, tweets_user_path(user) %> </p>
-                <p><%= simple_format user.introduction %> </p>
+                <p><%= truncate(user.introduction,length:80) %> </p>
               </div>
 
               <div class="clearfix"></div>
