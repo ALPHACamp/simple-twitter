@@ -4,8 +4,17 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  #storage :file
   # storage :fog
+
+  # storage :file 
+  if Rails.env.production?
+    storage :fog
+  else
+    storage :file
+  end
+  # 將storage :file改成上面的程式碼，這段程式碼會依照環境的不同來判斷圖片的上傳  要用哪個方法
+
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
