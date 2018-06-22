@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-
+ 
   def followings 
     @user = User.find(params[:id])
     @followings = @user.followings.order('followships.created_at DESC')
