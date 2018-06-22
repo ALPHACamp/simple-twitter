@@ -7,5 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-User.create!(name:'Admin', email:'admin@example.com', password:'123456', role:'admin', avatar:'File.open("#{Rails.root}/public/avatar/admin.jpg")')
+User.create!(name:'Admin', email:'admin@example.com', password:'123456', role:'admin', introduction:'我是管理員', avatar:'File.open("#{Rails.root}/public/avatar/admin.jpg")')
 puts "Default admin created!"
