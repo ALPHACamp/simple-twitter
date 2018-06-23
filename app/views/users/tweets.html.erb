@@ -20,11 +20,10 @@
           <li><strong><h2><%= link_to "like #{}"  %></h2></strong></li>
         </ul>
       </div>
-      <div>
+      <div class="edit-btn">
         <% if @user = current_user %>
-          <%= link_to "Edit profile", edit_user_path(@user), class: "btn btn-primary"%>
+          <%= link_to "Edit profile", edit_user_path(@user), class: "btn btn-primary btn-block btn-lg" %>
         <% end %>
-
       </div>
     </div>
     <div class="col-md-8">
