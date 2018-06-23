@@ -25,7 +25,9 @@
             <% end %>
           </div>
           <div class="col-md-9 text-left">
-            <h4>@<%= tweet.user.name %>,<%= tweet.created_at.strftime("%Y-%m-%D, %H:%M") %></h4>
+            <%= link_to tweets_user_path(tweet) do%>
+              <h4>@<%= tweet.user.name %>,<%= tweet.created_at.strftime("%Y-%m-%D, %H:%M") %></h4>
+            <% end %>
             <h4><%= tweet.description %></h3>
           </div>
         </div>
