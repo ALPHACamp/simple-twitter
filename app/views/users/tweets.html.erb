@@ -1,7 +1,31 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4">
+      <div class="user-avatar">
+        <% if @user.avatar?%>
+          <%= image_tag @user.avatar, class: "img-responsive img-rounded" %>
+        <% else %>
+          <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
+        <% end %>
+      </div>
+      <div class="user-profile">
+        <h1><%= @user.name %></h1>
+        <h4><%= @user.introduction %></h4>
+      </div>
+      <div class="user-item">
+        <ul class="list-unstyled">
+          <li><strong><h2><%= link_to "Tweets #{}"  %></h2></strong></li>
+          <li><strong><h2><%= link_to "Following #{}"  %></h2></strong></li>
+          <li><strong><h2><%= link_to "Follower #{}"  %></h2></strong></li>
+          <li><strong><h2><%= link_to "like #{}"  %></h2></strong></li>
+        </ul>
+      </div>
+      <div>
+        <% if @user = current_user %>
+          <%= link_to "Edit profile", edit_user_path(@user), class: "btn btn-primary"%>
+        <% end %>
 
+      </div>
     </div>
     <div class="col-md-8">
       <% @tweets.each do |tweet| %>
