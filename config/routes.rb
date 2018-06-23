@@ -6,7 +6,13 @@ Rails.application.routes.draw do
   root "tweets#index"
 
   resources :tweets, only: [:index, :create]
-  resources :users, only: [:create, :show, :update]
+  resources :users, only: [:create, :show, :update] do
+
+    member do
+      get :tweets
+    end
+
+  end
 
   namespace :admin do
     root "tweets#index"
