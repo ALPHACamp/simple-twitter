@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   def tweets
-    @tweet = Tweet.find(params[:id])
+    @user = User.find(params[:id])
+    @tweets = @user.tweets.all.order(created_at: :desc)
 
   end
 
