@@ -1,21 +1,26 @@
 <div class="container">
   <div class="row">
-    <% @tweets.each do |tweet| %>
-      <div class="col-md-12 border-style">
-        <div class="col-md-3">
-          <% if tweet.user.avatar?%>
-            <%= image_tag tweet.user.avatar, class: "img-responsive img-rounded" %>
-          <%else %>
-            <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
-          <% end %>
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-md-8">
+      <% @tweets.each do |tweet| %>
+        <div class="col-md-12 border-style">
+          <div class="col-md-3 ">
+            <% if tweet.user.avatar?%>
+              <%= image_tag tweet.user.avatar, class: "img-responsive img-rounded" %>
+            <%else %>
+              <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
+            <% end %>
+          </div>
+          <div class="col-md-9 text-left">
+            <%= link_to tweets_user_path(tweet.user) do%>
+              <h4>@<%= tweet.user.name %>,<%= tweet.created_at.strftime("%Y-%m-%D, %H:%M") %></h4>
+            <% end %>
+            <h4><%= tweet.description %></h3>
+          </div>
         </div>
-        <div class="col-md-9 text-left">
-          <%= link_to tweets_user_path(tweet) do%>
-            <h4>@<%= tweet.user.name %>,<%= tweet.created_at.strftime("%Y-%m-%D, %H:%M") %></h4>
-          <% end %>
-          <h4><%= tweet.description %></h3>
-        </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
