@@ -2,6 +2,7 @@
   <div class="center-align">
     <h2>Log in</h2>
   </div>
+  <br>
 
   <div class="col s12 m8 offset-m2 l8 offset-l2">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -17,10 +18,15 @@
 
       <% if devise_mapping.rememberable? -%>
         <div class="field">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
+          <form action="#">
+            <label>
+              <input type="checkbox" />
+              <span>Remember me</span>
+            </label>
+          </form>
         </div>
       <% end -%>
+      <br>
 
       <div class="actions">
         <div class="left">
