@@ -13,6 +13,9 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
-//= require materialize
-//= require materialize-sprockets
 //= require jquery
+//= require materialize
+
+$(document).ready(function(){
+  $(".dropdown-trigger").dropdown();
+});

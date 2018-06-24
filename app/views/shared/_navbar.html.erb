@@ -1,20 +1,36 @@
 <!-- Dropdown Structure -->
-  <nav class="nav-container">
-    <div class="nav-wrapper">
-      <%= link_to 'LOGO', tweets_path, class: "brand-logo" %>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <% if current_user %>
-          <% if current_user&.admin? %>
-            <li><%= link_to '*Admin Panel* ', admin_users_path %></li>
-          <% end %>
-          <li>Hi, <%= current_user.email %> </li>
-          <li><%= link_to('Edit Self-info', edit_user_path(current_user)) %></li>
-          <li><%= link_to('Change Password', edit_user_registration_path) %></li>
-          <li><%= link_to('Log Out', destroy_user_session_path, method: :delete) %></li>
-        <% else %>
-          <li><%= link_to('註冊', new_user_registration_path) %></li>
-          <li><%= link_to('登入', new_user_session_path) %></li>
-        <% end %>
-      </ul>
-    </div>
-  </nav>
+<ul id="dropdown1" class="dropdown-content">
+  <% if current_user %>
+    <% if current_user&.admin? %>
+      <li><%= link_to 'Admin Panel ', admin_users_path %></li>
+      <li class="divider"></li>
+    <% end %>
+    <li><%= link_to('Log Out', destroy_user_session_path, method: :delete) %></li>
+    <li><%= link_to('Edit Self-info', edit_user_path(current_user)) %></li>
+    <li><%= link_to('Change Password', edit_user_registration_path) %></li>
+  <% else %>
+    <li><%= link_to('Sign Up', new_user_registration_path) %></li>
+    <li><%= link_to('Sign In', new_user_session_path) %></li>
+  <% end %>
+</ul>
+<nav>
+  <div class="nav-wrapper">
+    <%= link_to 'LOGO', tweets_path, class: "brand-logo" %>
+    <ul class="right hide-on-med-and-down">
+      
+      <!-- Dropdown Trigger -->
+      <% if user_signed_in? %>
+        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">
+          Hi, <%= current_user.name %>
+          <i class="material-icons right">arrow_drop_down</i></a>
+        </li>
+      <% else %>
+        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">
+          Hi, Guest 
+          <i class="material-icons right">arrow_drop_down</i></a>
+        </li>
+      <% end %>
+
+    </ul>
+  </div>
+</nav>
