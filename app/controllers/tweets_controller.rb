@@ -14,6 +14,7 @@ class TweetsController < ApplicationController
       redirect_to tweets_path
     else
       @tweets = Tweet.all
+      @users = User.all
       render :index
     end
   end
@@ -27,7 +28,7 @@ class TweetsController < ApplicationController
   private
 
   def tweet_params
-    params.require(:tweet).permit(:description)
+    params.require(:tweet).permit(:descriptio)
   end
 
 end
