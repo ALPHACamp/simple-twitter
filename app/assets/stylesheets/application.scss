@@ -11,12 +11,11 @@
  * It is generally better to create a new file per style scope.
  *
  */
- 
+
+
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 @import "materialize";
 
-.nav-container {
-  width: 90%;
-  margin: 0px auto;
-  border: 1px solid black;
+nav .brand-logo{
+  margin-left: 20px;
 }
