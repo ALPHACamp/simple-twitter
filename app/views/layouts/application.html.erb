@@ -9,6 +9,9 @@
   </head>
 
   <body>
+    <header>
+      <%= render partial: "shared/navbar" %>
+    </header>
 
     <div class="container">
       <% if current_user %>
@@ -25,9 +28,10 @@
       <% end %>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-
-      <%= yield %>
       
+      <div class="row">
+        <%= yield %>  
+      </div>
     </div>
     
   </body>
