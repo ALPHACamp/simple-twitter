@@ -30,7 +30,7 @@ class User < ApplicationRecord
   end
 
   def following?(user)
-    self.followings.include?(user)
+    self.followers.include?(user)
   end
 
 end

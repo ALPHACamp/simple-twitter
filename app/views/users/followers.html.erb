@@ -12,7 +12,7 @@
             <h3>@<%= link_to user.name, tweets_user_path(user) %></h3>
               <%= simple_format user.introduction, style: "color:#808080" %>
             <% if user != current_user %>
-              <% if current_user.following?(user)%>
+              <% if user.following?(current_user)%>
                 <%= link_to 'Unfollow', followship_path(user), method: :delete, class: "btn btn-primary btn-lg movebtn" %>
               <% else %>
                 <%= link_to 'Follow', followships_path(following_id: user), method: :post, class: "btn btn-primary btn-lg movebtn" %>
