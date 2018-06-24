@@ -1,5 +1,5 @@
 <!-- Dropdown Structure -->
-<ul id="dropdown1" class="dropdown-content">
+<ul id="dropdown1" class="dropdown-content nav-user">
   <% if current_user %>
     <% if current_user&.admin? %>
       <li><%= link_to 'Admin Panel ', admin_users_path %></li>

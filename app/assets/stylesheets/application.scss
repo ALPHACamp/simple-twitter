@@ -42,6 +42,13 @@ body {
   margin: 0 auto;
 }
 
+[type="checkbox"] + span:not(.lever) {
+  font-size: 1em;
+}
+
+.nav-user {
+  min-width: 150px;
+}
 .container {
   margin: 0 auto;
   max-width: 1280px;
