@@ -52,3 +52,31 @@ body {
     width: 90%;
   }
 }
+
+/************ All-tweets **************/
+
+.new-tweet {
+  margin-top: 33px;
+  margin-bottom: 40px;
+}
+
+#tweet_description {
+  border: 3px dashed #ee6e72;
+  height: 100px;
+}
+
+.submit-block {
+  display: flow-root;
+}
+
+.tweet-stream {
+  border: 3px dashed #01bcd5;
+  height: 150px;
+  margin: 10px 0;
+}
+
+.pop-user {
+  border: 3px solid #bdbdbd;
+  height: 150px;
+  margin: 10px 0;
+}

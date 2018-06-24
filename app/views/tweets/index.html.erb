@@ -1,1 +1,47 @@
-<h1>Front End is Here</h1>
+<div class="row">
+  <div class="col s8">
+    <div class="new-tweet">
+      <%= form_for [@user, @tweet] do |f| %>
+        <%= f.text_area :description, placeholder: "Hey, what's up?" %>
+        <div class="submit-block">
+          <%= f.button class: "btn-floating btn-large waves-effect waves-light cyan right", type: :submit do %>
+            <i class="material-icons">mode_edit</i>
+          <% end %>
+        </div>
+
+
+        <% if @tweet.errors.any? %>
+          <%= @tweet.errors.full_messages.to_sentence %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <% @tweets.each do |tweet| %>
+    <div class="tweet-stream">
+      <div class="u-avatar" id="avatar">
+        
+      </div>
+      
+      <div class="col m10 u-tweet" id="tweet-content">
+        <%= tweet.user.name %>
+        <%= tweet.description %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="col s4">
+  <h3>Popular</h3>
+  <% @users.each do |user| %>
+    <div class="pop-user">
+      <div class="u-avatar" id="avatar">
+        
+      </div>
+      <div class="user-info">
+        <%= user.name %> 
+        <%= user.introduction %>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>
