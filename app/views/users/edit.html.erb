@@ -7,5 +7,19 @@
   </ul>
 <% end %>
 
-<%= form_for @user do |f| %>
+<h1>這裡是edit page</h1>
+
+<%= form_for(@user, url: edit_user_path, method: :get) do |f| %>
   <%= f.label :name, 'Name' %>
+  <%= f.text_field :name %>
+
+  <%= f.label :introduction, 'Introduction' %>
+  <%= f.text_area :introduction %>
+
+  <%= f.label :avatar, 'Upload your photo:' %>
+  <%= image_tag @user.avatar if @user.avatar? %>
+  <%= f.file_field :avatar %>
+
+  <%= f.submit 'Update', class: 'btn' %>
+  <%= link_to 'Cancel', tweets_user_path(@user), class: 'btn' %>
+<% end %>
