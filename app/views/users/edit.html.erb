@@ -1,25 +1,42 @@
-<% if @user.errors.any? %>
-  <h2>We have some errors here.</h2>
-  <ul>
-    <% @user.errors.full_messages.each do |msg|%>
-      <li><%= msg %></li>
+<div class="row">
+  <div class="error-msg">
+    <% if @user.errors.any? %>
+      <h2>We have some errors here.</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg|%>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
     <% end %>
-  </ul>
-<% end %>
+  </div>
+  
+  <div class="center-align">
+    <h1>Edit Info</h1>
+  </div>
 
-<h1>這裡是edit page</h1>
+  <div class="col s12 m8 offset-m2 l8 offset-l2">
+    <%= form_for(@user, url: edit_user_path, method: :get) do |f| %>
+      <div class="field">
+        <%= f.label :name, 'Name' %>
+        <%= f.text_field :name %>
+      </div>
+      <div class="field">
+        <%= f.label :introduction, 'Introduction' %>
+        <%= f.text_area :introduction, class: "materialize-textarea", id: "textarea2" %>
+      </div>
+      <div class="field">
+        <%= f.label :avatar, 'Upload your photo:' %>
+        <div><%= image_tag @user.avatar if @user.avatar? %></div>
+        <%= f.file_field :avatar %>
+      </div>
+      
+      <div class="field center-align">
+        <hr><br>
+        <%= f.submit 'Update', class: 'btn' %>
+        <%= link_to 'Cancel', tweets_user_path(@user), class: 'btn' %>
+      </div>
+      
+    <% end %>
+  </div>
 
-<%= form_for(@user, url: edit_user_path, method: :get) do |f| %>
-  <%= f.label :name, 'Name' %>
-  <%= f.text_field :name %>
-
-  <%= f.label :introduction, 'Introduction' %>
-  <%= f.text_area :introduction %>
-
-  <%= f.label :avatar, 'Upload your photo:' %>
-  <%= image_tag @user.avatar if @user.avatar? %>
-  <%= f.file_field :avatar %>
-
-  <%= f.submit 'Update', class: 'btn' %>
-  <%= link_to 'Cancel', tweets_user_path(@user), class: 'btn' %>
-<% end %>
+</div>

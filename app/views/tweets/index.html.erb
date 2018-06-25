@@ -23,8 +23,8 @@
       </div>
       
       <div class="col m10 u-tweet" id="tweet-content">
-        <%= tweet.user.name %>
-        <%= tweet.description %>
+        <h5><%= tweet.user.name %></h5>
+        <p><%= tweet.description %></p>
       </div>
     </div>
     <% end %>
@@ -38,8 +38,8 @@
         
       </div>
       <div class="user-info">
-        <%= user.name %> 
-        <%= user.introduction %>
+        <h6><%= user.name %></h6>
+        <span><%= user.introduction %></span>
       </div>
     </div>
   <% end %>
