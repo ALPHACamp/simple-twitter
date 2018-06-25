@@ -32,5 +32,5 @@ namespace :dev do
       end
       puts "have create #{Tweet.count} tweets"
     end
-    
+  end  
 end
