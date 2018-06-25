@@ -1,13 +1,26 @@
-
-<%= form_for @user do |f| %>
-  <% if @user.avatar? %>
-    <%= image_tag @user.avatar  %>
-  <% else %>
-    <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
-  <% end %>
-  
-  <%= f.file_field :avatar %>
-  <%= f.text_field :name, placeholder: "Name"%>
-  <%= f.text_area :introduction, placeholder: "Type anything about you here..." %>
-  <%= f.submit "Update", class: "btn btn-primary"%>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 col-md-offset-1">
+      <%= form_for @user do |f| %>
+        <div class="col-md-4">
+          <% if @user.avatar? %>
+            <%= image_tag @user.avatar  %>
+          <% else %>
+            <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
+          <% end %>
+          <%= f.file_field :avatar %>
+        </div>
+        <div class="col-md-8">
+          <div class="form-group">
+            <%= f.label :name, "Name" %>
+            <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
+            <%= f.text_area :introduction, placeholder: "Type anything about you here...", class: "form-control", rows: "10" %>
+            <div class="text-right">
+              <%= f.submit "Update", class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

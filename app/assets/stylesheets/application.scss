@@ -16,3 +16,8 @@
 @import "bootstrap";
 @import "tweets";
 @import "users";
+
+.form-control {
+  border: 2px solid #00BBFF;
+  border-radius:10px;
+}
