@@ -15,7 +15,7 @@
   </div>
 
   <div class="col s12 m8 offset-m2 l8 offset-l2">
-    <%= form_for(@user, url: edit_user_path, method: :get) do |f| %>
+    <%= form_for(@user, url: user_path) do |f| %>
       <div class="field">
         <%= f.label :name, 'Name' %>
         <%= f.text_field :name %>
