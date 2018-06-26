@@ -26,7 +26,7 @@
       </div>
       <div class="field">
         <%= f.label :avatar, 'Upload your photo:' %>
-        <div><%= image_tag @user.avatar if @user.avatar? %></div>
+        <div><%= image_tag @user.avatar, width: '300px' if @user.avatar? %></div>
         <%= f.file_field :avatar %>
       </div>
       
