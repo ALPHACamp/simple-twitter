@@ -2,13 +2,12 @@
   <div class="col s8">
     <div class="new-tweet">
       <%= form_for [@user, @tweet] do |f| %>
-        <%= f.text_area :description, placeholder: "Hey, what's up?" %>
+        <textarea maxlength="140" placeholder="Hey, what's up?" name="tweet[description]" id="textarea2" data-length="140"></textarea>
         <div class="submit-block">
           <%= f.button class: "btn-floating btn-large waves-effect waves-light cyan right", type: :submit do %>
             <i class="material-icons">mode_edit</i>
           <% end %>
         </div>
-
 
         <% if @tweet.errors.any? %>
           <%= @tweet.errors.full_messages.to_sentence %>
@@ -24,7 +23,7 @@
       
       <div class="col m10 u-tweet" id="tweet-content">
         <h5><%= tweet.user.name %></h5>
-        <p><%= tweet.description %></p>
+        <%= tweet.description %></p>
       </div>
     </div>
     <% end %>

@@ -18,4 +18,5 @@
 
 $(document).ready(function(){
   $(".dropdown-trigger").dropdown();
+  $('textarea#textarea2').characterCounter();
 });

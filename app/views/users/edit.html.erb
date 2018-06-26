@@ -23,7 +23,6 @@
       <div class="field">
         <%= f.label :introduction, 'Introduction' %>
         <%= f.text_area :introduction, class: "materialize-textarea", id: "textarea2" %>
-      </div>
       <div class="field">
         <%= f.label :avatar, 'Upload your photo:' %>
         <div><%= image_tag @user.avatar, width: '300px' if @user.avatar? %></div>
