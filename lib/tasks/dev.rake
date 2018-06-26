@@ -31,12 +31,13 @@ namespace :dev do
 
   task fake_tweet: :environment do
     Tweet.destroy_all
-    40.times do |i|
+    User.all.each do |user|
+      rand(1..7).times do |i|
 
-      tweet = Tweet.create!(
-        description: FFaker::Lorem::sentence(10),
-        user_id: User.all.sample.id
-      )
+        user.tweets.create!(
+          description: FFaker::Lorem::sentence(10)
+        )
+      end
     end
     puts "now you have #{Tweet.count} tweets data"
   end
@@ -80,7 +81,7 @@ namespace :dev do
   end
 
   task fake_all: :environment do
-    #Rake::Task['db:migrate'].execute
+    Rake::Task['db:migrate'].execute
     #Rake::Task['db:seed'].execute
     Rake::Task['dev:fake_user'].execute
     Rake::Task['dev:fake_tweet'].execute
