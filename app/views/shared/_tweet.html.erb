@@ -1,0 +1,24 @@
+<div class="media border p-2 mb-3">
+   <% if tweet.user.avatar? %>
+          <%= image_tag tweet.user.avatar, width: '100px', alt: tweet.user.name,  class: "rounded mr-3"  %>
+        <% else %>
+          <p class="text-center">No User Image</p>
+        <% end %>
+  <div class="media-body">
+    <h5 class="mt-0">
+      <%= link_to tweets_user_path(tweet.user) do %>
+        @<%= tweet.user.name %>
+      <% end %>
+      , <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %>
+    </h5>
+    <%= tweet.description %>
+    </br>
+    <!-- replay link -->
+    <%= link_to tweet_replies_path(tweet), class: "btn btn-link" do %>
+      Reply <span class="badge badge-pill badge-primary"><%= tweet.replies_count %></span>
+    <% end %>
+    
+    <!-- like action button -->
+    <%= render partial: "shared/like", locals: {tweet: tweet} %>
+  </div>
+</div>

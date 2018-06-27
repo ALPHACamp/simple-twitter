@@ -13,14 +13,14 @@
 
     <!-- all tweets  -->
       <% @tweets.each do |tweet| %>
-        <%= render partial: "shared/tweet_in_table", locals: {tweet: tweet} %>
+        <%= render partial: "shared/tweet", locals: {tweet: tweet} %>
       <% end %>  
     </div>  
     <div class="col-xs-12 col-sm-4">   
       <!-- popular users -->
       <h2><strong>Popular</strong></h2>
       <% @users.each do |user| %> 
-        <%= render partial: "shared/user_in_table", locals: {user: user} %>        
+        <%= render partial: "shared/user_in_media", locals: {user: user} %>        
       <% end %>   
     </div>
   </div>

@@ -1,0 +1,16 @@
+ <div class="media border p-2 mb-3">
+  <% if reply.user.avatar? %>
+    <%= image_tag reply.user.avatar, width: '100px', alt: reply.user.name,  class: "rounded mr-3"  %>
+  <% else %>
+    <p class="text-center">No User Image</p>
+  <% end %>
+  <div class="media-body">
+    <h5 class="mt-0">
+      <%= link_to tweets_user_path(reply.user) do %>
+        @<%= reply.user.name %>
+      <% end %>
+      , <%= reply.created_at.strftime("%Y-%m-%d, %H:%M") %>
+    </h5>
+    <%= reply.comment %>
+  </div>
+</div>
