@@ -29,7 +29,7 @@
             <% end %>
           </th>
           <td><%= link_to user.name, tweets_user_path(user) %></td>
-          <td><%= user.tweets.size %></td>
+          <td><%= user.tweets_count %></td>
           <td><%= user.followings.size %></td>
           <td><%= user.followers_count %></td>
           <td><%= user.likes_count %></td>
