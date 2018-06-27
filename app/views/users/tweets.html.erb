@@ -1,0 +1,23 @@
+<div class="col m4">
+  <div class="person-info">
+    <div class="person-avatar">
+      <%= image_tag @user.avatar %>  
+    </div>
+    <h3><%= @user.name %></h3>
+    <p><%= @user.introduction %></p>
+    <%= link_to 'Edit Profile', class: 'btn btn-large' %>
+  </div>
+</div>
+
+<div class="col m8">
+  <div class="person-tweets">
+    <div class="tweet-stream">
+      <div class="col m3 s3 u-avatar">
+        <%= image_tag @user.avatar, class: 'responsive-img' %>
+      </div>
+      <div class="col m9 s9 u-tweet">
+        <%= @user.tweets %>
+      </div>
+    </div>
+  </div>
+</div>

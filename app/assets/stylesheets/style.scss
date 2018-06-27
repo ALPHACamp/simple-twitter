@@ -19,11 +19,6 @@ body {
   margin: 0 auto;
 }
 
-.login {
-  width: 300px;
-  margin: 0 auto;
-}
-
 [type="checkbox"] + span:not(.lever) {
   font-size: 1em;
 }
@@ -31,11 +26,13 @@ body {
 .nav-user {
   min-width: 150px;
 }
+
 .container {
   margin: 0 auto;
   max-width: 1280px;
   width: 90%;
 }
+
 @media only screen and (min-width: 601px){
   .container {
     width: 90%;
@@ -93,4 +90,22 @@ p-avatar img {
 
 .user-info {
   max-height: 150px;
+}
+
+/************ Personal Tweets *************/
+
+.person-avatar img {
+  max-height: 230px;
+}
+
+.person-avatar {
+  height: 230px;
+}
+
+.person-info {
+  padding: 0 30px;
+}
+
+.person-tweets {
+  padding: 0 20px;
 }

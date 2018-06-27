@@ -3,7 +3,9 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:tweets, :edit, :update]
 
   def tweets
-    
+    @users = User.all
+    @tweets = Tweet.all
+    @personal_tweets = @user.tweets.order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def edit
