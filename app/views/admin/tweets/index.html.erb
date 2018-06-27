@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
     <h1>推特後台</h1>
-    <div class="panel-tweet">
-      <% @recent_tweets.each do |t| %>   
-        <p><%= t.user_id %></p>
+    <% @recent_tweets.each do |t| %>
+      <div class="panel-tweet panel panel-default">
+        <p><%= t.user.name %></p>
         <p><%= t.description %></p>
         <p><%= link_to 'Delete',admin_tweet_path(t), method: :delete, data: {comfirm: "Are you sure?"}%></p>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
   
 </div>
