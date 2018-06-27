@@ -12,38 +12,37 @@
         </ul>
         <hr>
       <% end %>
+     
+        <%= form_for @user do |f| %>
+        <div class="row">
+        <div class="col">
+          <%= f.label :avatar, "上傳大頭照" %>
+          <br>
+          <%= image_tag @user.avatar, width: '150px' if @user.avatar? %>
+          <br>
+          <%= f.file_field :avatar %>
+        </div>
 
-      <table >
-        <tbody>
-          <tr>
-            <th scope="row">
-            <%= form_for current_user do |f| %>
-              <%= f.label :avatar, "上傳大頭照" %>
-              <br>
-              <%= image_tag @user.avatar, width: '150px' if @user.avatar? %>
-              <br>
-              <%= f.file_field :avatar %>
-            </th>
-            <td >  
-              <div class="form_group">
-                <%= f.label :name, "您的名稱" %>
-                <%= f.text_field :name, class: "form-control" %>
-              </div>  
-              <br>
-              <div class="form_group">
-                <%= f.label :introduction, "自我介紹" %>
-                <%= f.text_area :introduction, class: "form-control" %>
-              </div>
-              <br>
-              <div class="form_group">
-                <%= f.submit class: "btn btn-primary" %>
-                <%= f.button 'cancel', type: :reset, class: "btn btn-default" %>
-              </div>            
-            </td>
-            <% end %>
-          </tr>          
-        </tbody> 
-      </table>  
+        <div class="col">
+          <div class="form_group">
+            <%= f.label :name, "您的名稱" %>
+            <%= f.text_field :name, class: "form-control" %>
+          </div>  
+          <br>
+          <div class="form_group">
+            <%= f.label :introduction, "自我介紹" %>
+            <%= f.text_area :introduction, class: "form-control" %>
+          </div>
+          <br>
+          <div class="form_group">
+            <%= f.submit class: "btn btn-primary" %>
+            <%= f.button 'cancel', type: :reset, class: "btn btn-default" %>
+          </div>            
+        </div>
+        </div>
+  
+        <% end %>
+      
 
   <!-- 非本人顯示警告與跳轉連結 -->  
   <% else %>

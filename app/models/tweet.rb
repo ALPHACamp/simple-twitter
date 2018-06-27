@@ -1,6 +1,6 @@
 class Tweet < ApplicationRecord
-  validates_presence_of :description
-  validates_length_of :description, maximum: 140
+  validates :description, presence: true
+  validates :description, length: { maximum: 140 }
 
   belongs_to :user, :counter_cache => true
   has_many :likes, dependent: :destroy
