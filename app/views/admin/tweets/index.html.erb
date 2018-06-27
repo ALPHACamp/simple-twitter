@@ -3,8 +3,8 @@
     <h1>推特後台</h1>
     <div class="panel-tweet">
       <% @recent_tweets.each do |t| %>   
-        <p><%= f.user_id %></p>
-        <p><%= f.description %></p>
+        <p><%= t.user_id %></p>
+        <p><%= t.description %></p>
         <p><%= link_to 'Delete',admin_tweet_path(t), method: :delete, data: {comfirm: "Are you sure?"}%></p>
       <% end %>
     </div>
