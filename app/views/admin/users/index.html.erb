@@ -25,7 +25,7 @@
             <% if user.avatar? %>
               <%= image_tag user.avatar, width: '100px', class: "rounded m-auto d-block" %>
             <% else %>
-              <h4 class="text-center">No User Image</span></h4>
+              <img src="https://placeholdit.imgix.net/~text?txtsize=21&txt=No%20User%20Image&w=100&h=100" class="rounded mr-3">
             <% end %>
           </th>
           <td><%= link_to user.name, tweets_user_path(user) %></td>
