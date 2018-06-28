@@ -2,7 +2,7 @@
   <% if user.avatar? %>
     <%= image_tag user.avatar, width: '100px', alt: user.name,  class: "rounded mr-3"  %>
   <% else %>
-    <p class="text-center">No User Image</p>
+    <img src="https://placeholdit.imgix.net/~text?txtsize=21&txt=No%20User%20Image&w=100&h=100" class="rounded mr-3">
   <% end %>
   <div class="media-body">
     <h5 class="mt-0">

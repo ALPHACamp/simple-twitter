@@ -3,7 +3,7 @@
     <% if user.avatar? %>
       <%= image_tag user.avatar, width: '95%', class: "rounded m-auto d-block" %>
     <% else %>
-      <h3 class="text-center">No User Image</span></h3>
+      <img src="https://placeholdit.imgix.net/~text?txtsize=21&txt=No%20User%20Image&w=200&h=200" class="rounded mr-3">
     <% end %>
     <h4 class="card-title"><%= user.name %></h4>
     <p class="card-text"><%= user.introduction %></p>
@@ -20,3 +20,5 @@
     <%= render partial: "shared/followship", locals: {user: user} %>  
   </div>
 </div>
+
+ 
