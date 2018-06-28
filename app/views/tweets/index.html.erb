@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8">
+    <!-- create new tweet -->
+      <%= form_for [@tweet] do |f| %>
+        <div class="form_group">
+          <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control", rows: "3", maxlength:"140"%>
+        </div>
+        <div class="form-group text-right">
+          <%= f.button 'Tweet', type: :submit, class: "btn btn-primary mt-1" %>
+        </div>
+      <% end %>
+
+    <!-- all tweets  -->
+      <% @tweets.each do |tweet| %>
+        <%= render partial: "shared/tweet", locals: {tweet: tweet} %>
+      <% end %>  
+    </div>  
+    <div class="col-xs-12 col-sm-4">   
+      <!-- popular users -->
+      <h2><strong>Popular</strong></h2>
+      <% @users.each do |user| %> 
+        <%= render partial: "shared/user_in_media", locals: {user: user} %>        
+      <% end %>   
+    </div>
+  </div>
+</div>

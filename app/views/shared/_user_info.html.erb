@@ -1,0 +1,24 @@
+<div class="card">
+  <div class="card-body">
+    <% if user.avatar? %>
+      <%= image_tag user.avatar, width: '95%', class: "rounded m-auto d-block" %>
+    <% else %>
+      <img src="https://placeholdit.imgix.net/~text?txtsize=21&txt=No%20User%20Image&w=200&h=200" class="rounded mr-3">
+    <% end %>
+    <h4 class="card-title"><%= user.name %></h4>
+    <p class="card-text"><%= user.introduction %></p>
+
+    <!-- user's data link -->
+    <div class="list-unstyled">
+      <li><%= link_to tweets_user_path(user) do %>Tweets: <%= user.tweets.size %><% end %></li>
+      <li><%= link_to followings_user_path(user) do %>Followings: <%= user.followings.size %><% end %></li>  
+      <li><%= link_to followers_user_path(user) do %>Followers: <%= user.followers_count %><% end %></li> 
+      <li><%= link_to likes_user_path(user) do %>Likes: <%= user.liked_tweets.count %><% end %></li> 
+    </div> 
+   <!-- user's action button -->
+    <%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-primary" if @user == current_user%> 
+    <%= render partial: "shared/followship", locals: {user: user} %>  
+  </div>
+</div>
+
+ 

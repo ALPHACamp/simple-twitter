@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+    <!-- user's info -->
+      <%= render partial: "shared/user_info", locals: {user: @user} %>
+    </div>  
+    <div class="col-xs-12 col-sm-8">
+      <h2><strong>Follower</strong></h2>
+      <div class="row"> 
+      <!-- user's data show area -->
+      <% @followers.each do |user| %>
+        <div class="col-xs-12 col-sm-6">
+          <%= render partial: "shared/user_in_media", locals: {user: user} %>  
+        </div>
+      <% end %>   
+      </div>  
+    </div>
+  </div>
+</div>
