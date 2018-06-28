@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <img src="http://via.placeholder.com/300x250" alt="placeholder">
+      <h1><%= @user.name %></h1>
+      <ul>
+        <li><strong><%= @user.email %></strong></li>
+        <li><strong><%= link_to "Tweets", tweets_user_path %> <%= @user.tweets.count %></strong></li>
+        <li><strong><%= link_to "Followers", followers_user_path %> <%= @user.followers_count %></strong></li>
+        <li><strong><%= link_to "Followings", followings_user_path %><%= @user.followings.count %></strong></li>
+        <li><strong><%= link_to "Likes", likes_user_path %> <%= @user.likes.count %></strong></li>
+      </ul>
+      <p><%= simple_format @user.introduction %></p>
+      <% if current_user == @user %> 
+        <%= link_to '修改', edit_user_path(@user), class: "btn btn-primary" %>
+      <% end %>
+      <%= render partial: "shared/follow", locals: {user: @user} %>
+    </div>
+    <div class="col-md-8">
+      <h3>Likes</h3>
+      <% @likes.reverse.each do |like| %>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2">          
+            <img src="http://via.placeholder.com/90x90" alt="placeholder" class="img-circle">
+          </div>
+          <div class="col-md-6">
+            <ul class="list-unstyled">   
+              <li><%= link_to like.user.name, tweets_user_path(like.user) %>
+                <%= time_ago_in_words(like.created_at) %> ago
+              </li>
+              <li><%= like.likes_count %> likes</li>
+              <li><%= truncate(like.description, length: 140) %>
+              </li>
+              <%= render partial: "shared/like", locals: {tweet: like} %>
+              <%= link_to "replies", tweet_replies_path(like) %>
+          </div>
+        </div>    
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>

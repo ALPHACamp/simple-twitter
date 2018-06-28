@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <img src="http://via.placeholder.com/300x250" alt="placeholder">
+      <h1><%= @user.name %></h1>
+      <ul>
+        <li><strong><%= @user.email %></strong></li>
+        <li><strong><%= link_to "Tweets", tweets_user_path %> <%= @user.tweets.count %></strong></li>
+        <li><strong><%= link_to "Followers", followers_user_path %> <%= @user.followers_count %></strong></li>
+        <li><strong><%= link_to "Followings", followings_user_path %><%= @user.followings.count %></strong></li>
+        <li><strong><%= link_to "Likes", likes_user_path %> <%= @user.likes.count %></strong></li>
+      </ul>
+      <p><%= simple_format @user.introduction %></p>
+      <% if current_user == @user %> 
+        <%= link_to '修改', edit_user_path(@user), class: "btn btn-primary" %>
+      <% end %>
+      <%= render partial: "shared/follow", locals: {user: @user} %>
+    </div>
+    <div class="col-md-8">
+      <h3>Followings</h3>
+      <ul>
+        <% @followings.reverse.each do |following| %>
+            <h3><%= link_to following.name, tweets_user_path(following) %></h3>
+            <h4><%= following.followers_count %>人正在追蹤</h4>
+            <%= render partial: "shared/follow", locals: {user: following} %>    
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

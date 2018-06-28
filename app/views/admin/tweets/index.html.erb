@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <% @tweets.reverse.each do |tweet| %>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-1">          
+            <img src="http://via.placeholder.com/90x90" alt="placeholder" class="img-circle">
+          </div>
+          <div class="col-md-11">
+            <ul class="list-unstyled">   
+              <li><%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
+                <%= time_ago_in_words(tweet.created_at) %> ago
+              </li>
+              <li><%= tweet.likes_count %> likes</li>
+              <li><%= truncate(tweet.description, length: 140) %>
+              </li>
+              <%= render partial: "shared/like", locals: {tweet: tweet} %>
+              <%= link_to "replies", tweet_replies_path(tweet) %>
+              <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: { confirm: "Are you sure?"} %>
+            </ul>
+          </div>
+        </div>    
+      </div>
+    <% end %>  
+  </div>
+</div>
