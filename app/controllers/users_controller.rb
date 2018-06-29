@@ -1,13 +1,17 @@
 class UsersController < ApplicationController
   before_action :set_user
-  def tweets  
-    @tweets = @user.tweets.order(created_at: :desc)
+  def tweets
+    if @user != current_user
+      @tweets = @user.tweets.order(created_at: :desc)
+    else  
+      @tweets = current_user.tweets.order(created_at: :desc)  
+    end  
   end
 
   def edit
     if current_user != @user
       redirect_to tweets_user_path(params[:id]), alert: "You can not edit other user's profile!"
-    end  
+    end
   end
 
   def update
@@ -16,7 +20,7 @@ class UsersController < ApplicationController
         redirect_to tweets_user_path(params[:id]), notice: "User's profile was successfully updated"
       else
         render :edit
-      end  
+      end 
   end
 
   def followings

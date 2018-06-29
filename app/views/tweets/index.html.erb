@@ -12,7 +12,7 @@
       <% end %>
 
     <!-- all tweets  -->
-      <% @tweets.each do |tweet| %>
+      <% @ordered_tweets.each do |tweet| %>
         <%= render partial: "shared/tweet", locals: {tweet: tweet} %>
       <% end %>  
     </div>  
