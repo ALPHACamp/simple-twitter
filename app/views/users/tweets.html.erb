@@ -14,10 +14,18 @@
       </div>
       <div class="user-item">
         <ul class="list-unstyled">
-          <li><strong><%= link_to "Tweets #{@user.tweets.count}"  %></strong></li>
-          <li><strong><%= link_to "Following #{@user.followings.count}"  %></strong></li>
-          <li><strong><%= link_to "Follower #{}"  %></strong></li>
-          <li><strong><%= link_to "like #{}"  %></strong></li>
+          <% if @user == current_user %>
+            <li><strong><%= link_to "Tweets #{@user.tweets.count}"  %></strong></li>
+            <li><strong><%= link_to "Following #{@user.followings.count}"  %></strong></li>
+            <li><strong><%= link_to "Follower #{}"  %></strong></li>
+            <li><strong><%= link_to "like #{}"  %></strong></li>
+          <% else %>
+            <li><strong><%= "Tweets #{@user.tweets.count}"  %></strong></li>
+            <li><strong><%= "Following #{@user.followings.count}"  %></strong></li>
+            <li><strong><%= "Follower #{}"  %></strong></li>
+            <li><strong><%= "like #{}"  %></strong></li>
+          <% end %>
+
         </ul>
       </div>
       <div class="edit-btn">

@@ -13,6 +13,10 @@ Rails.application.routes.draw do
       get :tweets
     end
 
+    member do
+      post :followings
+    end
+
   end
 
   namespace :admin do
