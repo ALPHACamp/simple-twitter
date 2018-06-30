@@ -14,7 +14,15 @@ class User < ApplicationRecord
 
   has_many :tweets
 
+  has_many :followships, dependent: :destroy
+  has_many :followings, through: :followships
+
   def admin?
     self.role == "admin"
   end
+
+  def following?(user)
+    self.followings.include?(user)
+  end
+
 end
