@@ -7,14 +7,20 @@
 }
 
 .border-style {
-  border-style: groove;
+  border: 3px solid gainsboro;
   width: 100%;
-  min-height:150px;
+  height: 100%;
   margin-bottom: 10px;
 }
 
 .border-style img {
-  width: 115px;
-  height: 115px;
-  margin-top: 10px;
+
+  margin: 10px 10px;
+}
+
+
+.title-fonts {
+  font-size: 30px;
+  color: steelblue;
+  margin-left: 10px;
 }

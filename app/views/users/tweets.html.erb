@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="user-avatar">
         <% if @user.avatar?%>
           <%= image_tag @user.avatar, class: "img-responsive img-rounded" %>
@@ -15,7 +15,7 @@
       <div class="user-item">
         <ul class="list-unstyled">
           <% if @user == current_user %>
-            <li><strong><%= link_to "Tweets #{@user.tweets.count}"  %></strong></li>
+            <li><strong><%= link_to "Tweets #{@user.tweets.count}", tweets_user_path(@user) %></strong></li>
             <li><strong><%= link_to "Following #{@user.followings.count}", followings_user_path(@user) %></strong></li>
             <li><strong><%= link_to "Follower #{}"  %></strong></li>
             <li><strong><%= link_to "like #{}"  %></strong></li>
@@ -43,21 +43,23 @@
 
       </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 col-md-offset-1 ">
       <% @tweets.each do |tweet| %>
-        <div class="col-md-12 border-style">
-          <div class="col-md-3 ">
-            <% if tweet.user.avatar?%>
-              <%= image_tag tweet.user.avatar, class: "img-responsive img-rounded" %>
-            <%else %>
-              <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
-            <% end %>
-          </div>
-          <div class="col-md-9 text-left">
-            <%= link_to tweets_user_path(tweet.user) do%>
-              <h4>@<%= tweet.user.name %>,<%= tweet.created_at.strftime("%Y-%m-%D, %H:%M") %></h4>
-            <% end %>
-            <h4><%= tweet.description %></h3>
+        <div class="col-md-11 ">
+          <div class="border-style clearfix">
+            <div class="col-md-3 ">
+              <% if tweet.user.avatar?%>
+                <%= image_tag tweet.user.avatar, class: "img-responsive img-rounded" %>
+              <%else %>
+                <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
+              <% end %>
+            </div>
+            <div class="col-md-8">
+              <%= link_to tweets_user_path(tweet.user) do%>
+                <h4>@<%= tweet.user.name %>,<%= tweet.created_at.strftime("%Y-%m-%D, %H:%M") %></h4>
+              <% end %>
+              <h4><%= tweet.description %></h4>
+            </div>
           </div>
         </div>
       <% end %>
