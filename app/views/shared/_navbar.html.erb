@@ -21,6 +21,7 @@
       
       <!-- Dropdown Trigger -->
       <% if user_signed_in? %>
+        <li><%= image_tag current_user.avatar, class: 'navbar-avatar' if current_user.avatar? %></li>
         <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">
           Hi, <%= current_user.name %>
           <i class="material-icons right">arrow_drop_down</i></a>

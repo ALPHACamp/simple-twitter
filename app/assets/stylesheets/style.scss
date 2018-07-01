@@ -51,6 +51,20 @@ body {
   border-top:10px groove orange;;
 }
 
+.navbar-avatar {
+  margin-top: 10px;
+  max-height: 45px;
+}
+
+.push-to-right, .textarea.materialize-textarea {
+  margin-left: 50px;
+  padding: 30px 0;
+}
+
+.field > textarea {
+  line-height: 1.5;
+}
+
 /************ All-tweets **************/
 
 .new-tweet {
