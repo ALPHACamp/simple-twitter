@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
 
     member do
-      post :followings
+      get :followings
     end
 
   end
