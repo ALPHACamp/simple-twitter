@@ -16,7 +16,7 @@ class RepliesController < ApplicationController
       redirect_to tweet_replies_path(@tweet)
     else
       flash[:alert] = "Comments can't be blank!"
-      redirect_back(fallback_location: request.referrer)
+      redirect_to tweet_replies_path(@tweet)
     end
   end
 

@@ -1,40 +1,28 @@
-<!-- Dropdown Structure -->
-<ul id="dropdown1" class="dropdown-content nav-user">
-  <% if current_user %>
-    <% if current_user&.admin? %>
-      <li><%= link_to 'Admin Panel ', admin_root_path %></li>
-      <li class="divider"></li>
-    <% end %>
-    <li><%= link_to('Log Out', destroy_user_session_path, method: :delete) %></li>
-    <li><%= link_to('Edit Profile', edit_user_path(current_user)) %></li>
-    <li><%= link_to('Change Password', edit_user_registration_path) %></li>
-  <% else %>
-    <li><%= link_to('Sign Up', new_user_registration_path) %></li>
-    <li><%= link_to('Sign In', new_user_session_path) %></li>
-  <% end %>
-</ul>
-
 <nav>
   <div class="nav-wrapper container">
-    <%= link_to 'LOGO', tweets_path, class: "brand-logo" %>
+    <%= link_to 'LOGO', root_path, class: "brand-logo" %>
     <ul class="right hide-on-med-and-down">
-      
-      <!-- Dropdown Trigger -->
-      <% if user_signed_in? %>
-        <li>
-          <%= link_to tweets_user_path(current_user) do %>
-            <%= image_tag current_user.avatar, class: 'navbar-avatar' if current_user.avatar? %>
-          <% end %>    
-        </li>
-        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">
-          Hi, <%= current_user.name %>
-          <i class="material-icons right">arrow_drop_down</i></a>
-        </li>
+      <% if current_user %>
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to tweets_user_path(current_user) do %>
+              <%= image_tag current_user.avatar, class: 'navbar-avatar' if current_user.avatar? %>
+            <% end %>    
+          </li>
+          <li>【 Hi, <%= current_user.name %> 】 </li>
+        <% else %>
+          <li>Hi, Guest :)</li>
+        <% end %>
+
+        <% if current_user&.admin? %>
+          <li><%= link_to 'Admin Panel ', admin_root_path %></li>
+        <% end %>
+        <li><%= link_to('Setting', edit_user_registration_path) %></li>
+        <li><%= link_to('Log Out', destroy_user_session_path, method: :delete) %></li>
       <% else %>
-        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">
-          Hi, Guest 
-          <i class="material-icons right">arrow_drop_down</i></a>
-        </li>
+        <li>【 Hi, Guest 】 </li>
+        <li><%= link_to('Sign Up', new_user_registration_path) %></li>
+        <li><%= link_to('Sign In', new_user_session_path) %></li>
       <% end %>
     </ul>
 

@@ -5,7 +5,7 @@ class Admin::BaseController < ApplicationController
 
   def authenticate_admin
     unless current_user.admin?
-      flash[:alert] = "You don't the access to the back end."
+      flash[:alert] = "You don't have the access to the back end."
       redirect_to root_path
     end
   end
