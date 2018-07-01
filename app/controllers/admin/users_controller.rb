@@ -1,5 +1,5 @@
 class Admin::UsersController < Admin::BaseController
   def index
-    @users = User.order(created_at: :asc)
+    @users = User.order('users.created_at DESC')
   end
 end
