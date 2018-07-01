@@ -17,6 +17,10 @@ Rails.application.routes.draw do
       get :followings
     end
 
+    member do
+      get :followers
+    end
+    
   end
 
   namespace :admin do
