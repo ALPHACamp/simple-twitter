@@ -15,7 +15,7 @@
       <div class="user-item">
         <ul class="list-unstyled">
           <% if @user == current_user %>
-            <li><strong><%= link_to "Tweets #{@user.tweets.count}", tweets_user_path(@user) %></strong></li>
+            <li><strong><%= link_to "Tweets #{@user.tweets.count}", tweets_user_path(@user)  %></strong></li>
             <li><strong><%= link_to "Following #{@user.followings.count}", followings_user_path(@user) %></strong></li>
             <li><strong><%= link_to "Follower #{@user.followers.count}", followers_user_path(@user)  %></strong></li>
             <li><strong><%= link_to "like #{}"  %></strong></li>
@@ -25,41 +25,42 @@
             <li><strong><%= "Follower #{}"  %></strong></li>
             <li><strong><%= "like #{}"  %></strong></li>
           <% end %>
-
         </ul>
       </div>
       <div class="edit-btn">
         <% if @user == current_user %>
           <%= link_to "Edit profile", edit_user_path(@user), class: "btn btn-primary btn-block btn-lg" %>
         <% end %>
-
-        <% if @user != current_user %>
-          <% if current_user.following?(@user)%>
-            <%= link_to "Unfollow", followship_path(@user), method: :delete, class: "btn btn-primary btn-block btn-lg" %>
-          <% else %>
-            <%= link_to "Follow", followships_path(following_id: @user.id), method: :post, class: "btn btn-primary btn-block btn-lg" %>
-          <% end %>
-        <% end %>
-
       </div>
     </div>
-    <div class="col-md-8 col-md-offset-1 ">
-      <% @tweets.each do |tweet| %>
-        <div class="col-md-11 ">
+    <div class="col-md-9">
+      <div class="title-fonts">
+        <p>Follower</p>
+      </div>
+      <% @user.followers.each do |follower| %>
+        <div class="col-md-6">
           <div class="border-style clearfix">
-            <div class="col-md-3 ">
-              <% if tweet.user.avatar?%>
-                <%= image_tag tweet.user.avatar, class: "img-responsive img-rounded" %>
+            <div class="col-md-4">
+              <% if follower.avatar?%>
+                <%= image_tag follower.avatar, class: "img-responsive img-rounded" %>
               <%else %>
                 <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
               <% end %>
             </div>
             <div class="col-md-8">
-              <%= link_to tweets_user_path(tweet.user) do%>
-                <h4>@<%= tweet.user.name %>,<%= tweet.created_at.strftime("%Y-%m-%D, %H:%M") %></h4>
+              <%= link_to tweets_user_path(follower) do%>
+                <h4>@<%= follower.name %></h4>
               <% end %>
-              <h4><%= tweet.description %></h4>
+              <h4 class="fix-height"><%= follower.introduction %></h4>
+              <div class="following-btn text-right">
+                <% if current_user.following?(follower)%>
+                  <%= link_to "Unfollow", followship_path(follower), method: :delete, class: "btn btn-primary  btn-lg" %>
+                <% else %>
+                  <%= link_to "Follow", followships_path(following_id: follower.id), method: :post, class: "btn btn-primary btn-lg" %>
+                <% end %>
+              </div>
             </div>
+
           </div>
         </div>
       <% end %>

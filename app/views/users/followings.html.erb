@@ -17,7 +17,7 @@
           <% if @user == current_user %>
             <li><strong><%= link_to "Tweets #{@user.tweets.count}", tweets_user_path(@user)  %></strong></li>
             <li><strong><%= link_to "Following #{@user.followings.count}", followings_user_path(@user) %></strong></li>
-            <li><strong><%= link_to "Follower #{}"  %></strong></li>
+            <li><strong><%= link_to "Follower #{@user.followers.count}", followers_user_path(@user)  %></strong></li>
             <li><strong><%= link_to "like #{}"  %></strong></li>
           <% else %>
             <li><strong><%= "Tweets #{@user.tweets.count}"  %></strong></li>
