@@ -7,6 +7,7 @@
           <i class="material-icons">mode_edit</i>
         <% end %>
       </div>
+    
 
       <% if @tweet.errors.any? %>
         <%= @tweet.errors.full_messages.to_sentence %>
@@ -23,6 +24,11 @@
     <div class="col m9 s9 u-tweet">
       <h5><%= link_to tweet.user.name, tweets_user_path(tweet.user) %></h5>
       <p><%= tweet.description %></p>
+      <div>
+        <%= link_to tweet_replies_path(tweet) do %>
+          Reply (<%= tweet.replies.count %>)
+        <% end %>
+      </div>
     </div>
   </div>
   <% end %>

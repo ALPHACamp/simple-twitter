@@ -1,0 +1,48 @@
+<div class="col m4 s4">
+  <div class="person-info">
+    <div class="person-avatar">
+      <%= image_tag @user.avatar, class: "responsive-img" %>
+    </div>
+    <h3><%= @user.name %></h3>
+    <p><%= @user.introduction %></p>
+    <h5>Tweets: <%= @user.tweets.count %></h5>
+    <% if current_user != @user %>
+      <%= link_to 'Follow' %>
+    <% else %>
+      <%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-large' %>
+    <% end %>
+  </div>
+</div>
+
+<div class="col m8 s8">
+  <div class="person-tweets">
+    <h3>Tweets</h3>
+    
+    <div class="tweet-stream">
+      <div class="col m3 s3 u-avatar">
+        <%= image_tag @user.avatar, class: "responsive-img" %>
+      </div>
+      <div class="col m9 s9 u-tweet">
+        <h5><%= link_to @user.name, tweets_user_path(@user) %></h5>
+        <p><%= @tweet.description %></p>
+      </div>
+    </div>
+
+    <h3>Replies</h3>
+  
+    <% @replies.each do |reply| %>
+    <div class="tweet-replies"> 
+      <div class="col m3 s3 u-avatar">
+        <%= image_tag reply.user.avatar, class: "responsive-img" %>
+      </div>
+      <div class="col m9 s9 u-tweet">
+        <h5><%= link_to reply.user.name, tweets_user_path(reply.user) %></h5>
+        <p><%= reply.tweet.description %></p>
+      </div>
+        
+      
+    </div>
+    <% end %>
+    
+  </div>
+</div>
