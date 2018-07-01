@@ -27,6 +27,17 @@
               <h4>@<%= tweet.user.name %>,<%= tweet.created_at.strftime("%Y-%m-%D, %H:%M") %></h4>
             <% end %>
             <h4><%= tweet.description %></h3>
+            <div class="">
+              <% if tweet.is_liked?(current_user) %>
+                <%= link_to "Unlike", unlike_tweet_path(tweet), method: :post %>
+              <% else %>
+                <%= link_to "Like", like_tweet_path(tweet), method: :post %>
+              <% end %>
+            </div>
+
+
+
+
           </div>
         </div>
       <% end %>
