@@ -9,9 +9,12 @@
     <%= link_to followings_user_path(@user) do %>
       <h5>Following: <%= @user.followings.count %></h5>
     <% end %>
-    <%= link_to %>
-    <h5>Follower: </h5>
-    <h5>Like: </h5>
+    <%= link_to followers_user_path(@user) do %>
+      <h5>Follower: <%= @user.followers.count %></h5>
+    <% end %>
+    <%= link_to likes_user_path(@user) do %>
+      <h5>Like: <%= @user.likes.count %></h5>
+    <% end %>
 
     <% if current_user != @user %>
       <% if current_user.following?(@user) %>

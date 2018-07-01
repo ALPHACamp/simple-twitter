@@ -22,13 +22,16 @@
     </div>
     
     <div class="col m9 s9 u-tweet">
-      <h5><%= link_to tweet.user.name, tweets_user_path(tweet.user) %></h5>
-      <p><%= tweet.description %></p>
-      <div>
-        <%= link_to tweet_replies_path(tweet) do %>
-          Reply (<%= tweet.replies.count %>)
-        <% end %>
+      <div class="u-tweet-title">
+        <p>
+          <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
+          <em>-<%= tweet.created_at.to_date %>, <%= tweet.created_at.strftime("%H:%M") %>-</em>
+        </p>
+          
       </div>
+      
+      <p><%= tweet.description %></p>
+      <%= render partial: 'shared/like-btn', locals: {tweet: tweet} %>
     </div>
   </div>
   <% end %>

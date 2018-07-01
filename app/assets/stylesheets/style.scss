@@ -73,7 +73,6 @@ body {
   margin: 10px 0;
 }
 
-
 .u-avatar img {
   max-height: 130px;
   margin-top: 7px;
@@ -83,6 +82,16 @@ body {
   height: 130px;
   word-break: break-all;
 }
+
+.u-tweet-title > p > a {
+  font-size: 25px;
+  margin-right: 8px;
+}
+
+.u-reply-like > a {
+  margin-right: 15px;
+}
+
 
 .pop-user {
   padding: 10px 0;
