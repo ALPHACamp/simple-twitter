@@ -1,0 +1,27 @@
+<div class="col m4 s4">
+  <div class="person-info">
+    <div class="person-avatar">
+      <%= image_tag @user.avatar, class: "responsive-img" %>
+    </div>
+    <h3><%= @user.name %></h3>
+    <p><%= @user.introduction %></p>
+    <h5>Tweets: <%= @user.tweets.count %></h5>
+    <%= link_to followings_user_path(@user) do %>
+      <h5>Following: <%= @user.followings.count %></h5>
+    <% end %>
+    <%= link_to %>
+    <h5>Follower: </h5>
+    <h5>Like: </h5>
+
+    <% if current_user != @user %>
+      <% if current_user.following?(@user) %>
+        <%= link_to 'Unfollow', followship_path(@user), class: "btn deep-purple lighten-4", method: :delete %>
+      <% else %>
+        <%= link_to 'Follow', followships_path(following_id: @user), method: :post, class: "btn blue" %>
+      <% end %>
+    <% else %>
+      <%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-large' %>
+    <% end %>
+
+  </div>
+</div>
