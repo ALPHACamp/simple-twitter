@@ -1,1 +1,37 @@
-<h1>Here is the back end</h1>
+<h1>Administration Department</h1>
+
+<p><%= link_to 'Tweet List', admin_tweets_path  %> | 
+  <%= link_to 'User List', admin_users_path %></p>
+
+<hr>
+
+<div class="col l12 x12 m12 s12">
+  <table class="highlight">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>All Tweets</th>
+        <th>Users</th>
+        <th>#</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tweets.each do |tweet| %>
+      <tr>
+        <td><%= tweet.id %></td>
+        <td><%= tweet.description %></td>
+        <td><%= tweet.user.name %></td>
+        <td><%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm: "Are you sure?"} %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="center">
+  <%= paginate @tweets %>  
+</div>
+
+
