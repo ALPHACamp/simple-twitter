@@ -10,7 +10,7 @@
       <thead>
         <tr>
           <th>#</th>
-          <th style="width: 30%; text-align: center">Users on Tweet</th>
+          <th style="width: 30%; text-align: center"><%= @users.count %> Users on Tweet</th>
           <th>Introduction</th>
         </tr>
       </thead>
@@ -23,7 +23,16 @@
               <%= user.name %>
             <% end %>              
           </td>
-          <td style="width: 70%; word-break: normal"><%= user.introduction %></td>
+          <td style="width: 70%; word-break: normal">
+            <div><%= user.introduction %></div>
+            <div class="admin-user-data">
+              <span>Tweets: <%= user.tweets.count %></span> 
+              <span>Following: <%= user.followings.count %></span>
+              <span>Follower: <%= user.followers.count %></span>
+              <span>Like: <%= user.likes.count %></span>
+            </div>
+              
+          </td>
         </tr>
         <% end %>
       </tbody>

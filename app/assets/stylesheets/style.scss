@@ -142,6 +142,17 @@ p-avatar img {
   margin-top: 30px;
 }
 
+.admin-user-data {
+  border: 1px solid purple;
+  border-radius: 8px;
+  margin: 10px 0;
+  padding: 8px 15px;
+}
+
+.admin-user-data > span {
+  margin-right: 50px;
+}
+
 /************ Replies under Tweets *************/
 .tweet-replies {
   border: 3px dashed #ffab00;
