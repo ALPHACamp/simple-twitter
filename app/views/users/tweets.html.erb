@@ -17,7 +17,7 @@
 <div class="col m8 s8">
   <div class="person-tweets">
 
-    <% @user_tweets.each do |tweet| %>
+    <% @tweets.each do |tweet| %>
     <div class="tweet-stream">
       <div class="col m3 s3 u-avatar">
         <%= image_tag tweet.user.avatar, class: 'responsive-img' %>
@@ -30,4 +30,6 @@
     <% end %>
     
   </div>
+
+  <%= paginate @tweets %>
 </div>
