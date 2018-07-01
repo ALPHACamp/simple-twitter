@@ -35,4 +35,17 @@ namespace :dev do
     puts "Users' tweets have been created."
     puts "There are #{Tweet.count} tweets at the moment."
   end
+
+  task fake_reply: :environment do
+    Reply.destroy_all
+    Tweet.all.each do |tweet|
+      3.times do |i|
+        tweet.replies.create!(
+          comment: FFaker::Lorem::sentence(30),
+          user: User.all.sample
+          )
+      end
+    end
+    puts "Replies to a tweet have been created."
+  end
 end
