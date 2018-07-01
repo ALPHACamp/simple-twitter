@@ -3,5 +3,17 @@
 <div class="col m8 s8">
   <div class="person-tweets">
     <h3>Like</h3>
+
+    <% if @user.likes.count > 0 %>
+      <% @likes.each do |tweet| %>
+        <%= render partial: 'shared/tweet-content', locals: {tweet: tweet} %>
+      <% end %>
+    <% else %>
+      <hr class="divide">
+      <h1>WW, you don't have any tweets you like at present.</h1>
+    <% end %>
+  
+  <div class="center">
+    <%= paginate @likes %>
   </div>
 </div>

@@ -1,0 +1,14 @@
+
+    <div class="pop-user">
+      <div class="col m4 s4 p-avatar">
+        <%= image_tag user.avatar, class: 'responsive-img' %>
+      </div>
+      
+      <div class="col m8 s8 user-info">
+        <h6><%= link_to user.name, tweets_user_path(user) %></h6>
+        <p><%= truncate(user.introduction, length: 70) %></p>
+        <div class="right">
+          <%= render partial: 'shared/follow-btn', locals: {user: user} %>
+        </div>
+      </div>
+    </div>

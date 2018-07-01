@@ -3,5 +3,19 @@
 <div class="col m8 s8">
   <div class="person-tweets">
     <h3>Following</h3>
+    <% if @user.followings.count > 0 %>
+      <% @followings.each do |following| %>
+        <div class="col m6 s6">
+          <%= render partial: 'shared/sort-users', locals: {user: following} %>
+        </div>
+      <% end %>
+    <% else %>
+      <hr class="divide">
+      <h1>CC, you haven't followed anyone yet.</h1>
+    <% end %>
+  </div>
+  
+  <div class="center">
+    <%= paginate @followings %>
   </div>
 </div>
