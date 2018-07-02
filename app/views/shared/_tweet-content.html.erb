@@ -1,0 +1,18 @@
+<div class="tweet-stream">
+  <div class="col m3 s3 u-avatar">
+    <%= image_tag tweet.user.avatar, class: 'responsive-img' %>
+  </div>
+  
+  <div class="col m9 s9 u-tweet">
+    <div class="u-tweet-title">
+      <p>
+        <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
+        <em>-<%= tweet.created_at.to_date %>, <%= tweet.created_at.strftime("%H:%M") %>-</em>
+      </p>
+        
+    </div>
+    
+    <p><%= tweet.description %></p>
+    <%= render partial: 'shared/like-btn', locals: {tweet: tweet} %>
+  </div>
+</div>

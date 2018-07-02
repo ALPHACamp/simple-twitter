@@ -1,0 +1,11 @@
+<%= render partial: 'shared/person-info' %>
+
+<div class="col m8 s8">
+  <div class="person-tweets">
+    <% @tweets.each do |tweet| %>
+      <%= render partial: 'shared/tweet-content', locals: {tweet: tweet} %>
+    <% end %>
+  </div>
+
+  <%= paginate @tweets %>
+</div>

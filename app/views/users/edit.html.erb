@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="error-msg">
+    <% if @user.errors.any? %>
+      <h2>We have some errors here.</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg|%>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+  
+  <%= form_for(@user, url: user_path) do |f| %>
+    <div class="col m4 s4">
+      <div class="card-panel">
+        <div class="card-image"><%= image_tag @user.avatar, class: "responsive-img" if @user.avatar? %></div>
+        <%= f.file_field :avatar %>
+      </div>
+    </div>
+      
+    
+    <div class="col m8 s8">
+      <div class="push-to-right">
+        
+        <%= f.text_field :name, placeholder: "Name:" %>
+        
+      
+      <div class="field">
+        <%= f.text_area :introduction, class: "materialize-textarea", style: 'height: 120px', id: "textarea2", placeholder: "Introduce yourself:" %>
+      </div>
+        
+      
+        <div class="field right">
+          <br>
+          <%= f.submit 'Update', class: 'btn' %>
+          <%= link_to 'Cancel', tweets_user_path(@user), class: 'btn' %>
+        </div>
+      </div>
+    </div>
+    
+  <% end %>
+  </div>
+  
+</div>

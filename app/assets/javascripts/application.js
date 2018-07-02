@@ -13,3 +13,10 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+//= require jquery
+//= require materialize
+
+$(document).ready(function(){
+  $(".dropdown-trigger").dropdown();
+  $('textarea#textarea2').characterCounter();
+});

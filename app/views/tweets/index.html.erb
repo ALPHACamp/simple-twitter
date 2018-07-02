@@ -1,0 +1,35 @@
+<div class="col m8">
+  <div class="new-tweet">
+    <%= form_for [@user, @tweet] do |f| %>
+      <textarea maxlength="140" placeholder="Hey, what's up?" name="tweet[description]" id="textarea2" data-length="140"></textarea>
+      <div class="submit-block">
+        <%= f.button class: "btn-floating btn-large waves-effect waves-light cyan right", type: :submit do %>
+          <i class="material-icons">mode_edit</i>
+        <% end %>
+      </div>
+    
+
+      <% if @tweet.errors.any? %>
+        <%= @tweet.errors.full_messages.to_sentence %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <% @tweets.each do |tweet| %>
+    <%= render partial: 'shared/tweet-content', locals: {tweet: tweet} %>
+  <% end %>
+
+  <div class="center-align">
+    <%= paginate @tweets %>
+  </div>
+
+</div>
+
+<div class="col m4">
+  <h3>Popular</h3> <!--計算最多 追蹤者 的人 -->
+
+  <% @users.each do |user| %>
+    <%= render partial: 'shared/sort-users', locals: {user: user} %>
+  <% end %>
+  
+</div>

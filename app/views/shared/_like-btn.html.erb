@@ -1,0 +1,14 @@
+      <div class="u-reply-like">
+        <%= link_to tweet_replies_path(tweet) do %>
+          Reply (<%= tweet.replies.count %>)
+        <% end %>
+        <% if tweet.is_liked?(current_user) %>
+          <%= link_to unlike_tweet_path(tweet), method: :post do %>
+            Unlike (<%= tweet.likes.count %>)
+          <% end %>
+        <% else %>
+          <%= link_to like_tweet_path(tweet), method: :post do %>
+            Like (<%= tweet.likes.count %>)
+          <% end %>
+        <% end %>
+      </div>

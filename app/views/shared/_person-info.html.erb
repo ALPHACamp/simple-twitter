@@ -1,0 +1,23 @@
+<div class="col m4 s4">
+  <div class="person-info">
+    <div class="person-avatar">
+      <%= image_tag @user.avatar, class: "responsive-img" %>
+    </div>
+    <h3><%= @user.name %></h3>
+    <p><%= @user.introduction %></p>
+    <h5>Tweets: <%= @user.tweets.count %></h5>
+    <%= link_to followings_user_path(@user) do %>
+      <h5>Following: <%= @user.followings.count %></h5>
+    <% end %>
+    <%= link_to followers_user_path(@user) do %>
+      <h5>Follower: <%= @user.followers.count %></h5>
+    <% end %>
+    <%= link_to likes_user_path(@user) do %>
+      <h5>Like: <%= @user.likes.count %></h5>
+    <% end %>
+    <br>
+    <%= render partial: 'shared/follow-btn', locals: {user: @user} %>
+  </div>
+  
+  
+</div>
