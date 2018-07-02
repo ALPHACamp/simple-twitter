@@ -1,7 +1,9 @@
 class Followship < ApplicationRecord
   validates :following_id, uniqueness: { scope: :user_id }
 
-  belongs_to :user, counter_cache: :followers_count
+  belongs_to :user, class_name: "User", foreign_key: "following_id", counter_cache: :followers_count
   #followers計算內建功能預設為model名稱改自訂欄位名followers_count
   belongs_to :following, class_name: "User"
+
+
 end

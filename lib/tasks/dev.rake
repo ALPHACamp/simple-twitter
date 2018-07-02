@@ -45,6 +45,7 @@ namespace :dev do
   task fake_followship: :environment do
     Followship.destroy_all
     User.all.each do |user|
+      user.followers_count = 0
       @users = User.where.not(id: user.id).shuffle  #where.not確保不會自己加自己
       rand(1..15).times do |i|
         user.followships.create!(
