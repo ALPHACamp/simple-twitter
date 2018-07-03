@@ -25,6 +25,8 @@ class User < ApplicationRecord
   has_many :followers, through: :inverse_followships, source: :user
 
 
+  has_many :replies, dependent: :destroy
+
   def admin?
     self.role == "admin"
   end
