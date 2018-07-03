@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery with: :exception
+  before_action :authenticate_user!
 
 
   # 請參考 Devise 文件自訂表單後通過 Strong Parameters 的方法
