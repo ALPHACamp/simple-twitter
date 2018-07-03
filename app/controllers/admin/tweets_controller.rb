@@ -5,7 +5,7 @@ class Admin::TweetsController < Admin::BaseController
   end
 
   def allusers
-    @users = User.page(params[:page]).per(10)
+    @users = User.order(tweets_count: :desc).page(params[:page]).per(10)
   end
 
   def destroy
