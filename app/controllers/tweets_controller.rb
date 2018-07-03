@@ -6,6 +6,7 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new
     @tweets = Tweet.all.order(created_at: :desc)
 
+    # 加此方法是為了在主頁能同步更新 follower_count = followers. 照前章節來做 會變成只有回到users follower 的頁面再回到主頁 才會更新
     @users.each do |user|
       user.followers_count = user.followers.size
       user.save
