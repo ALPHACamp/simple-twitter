@@ -7,7 +7,14 @@
     <span> | </span>
       <%= link_to '使用者清單', admin_users_path %>
     </div>
-    
+   
+   <div>
+    <% @user.each do |user| %>
+    <p>
+      <%= user.name %><br>
+      <% end %>
+    </p>
+   </div> 
   </div>
 </div>
 
