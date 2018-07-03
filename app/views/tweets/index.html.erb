@@ -26,10 +26,11 @@
             <% end %>
             <h4><%= tweet.description %></h3>
             <div class="like-btn">
+              <h4><%= link_to "Reply(#{tweet.replies.count})", tweet_replies_path(tweet), method: :get %></h4>
               <% if tweet.is_liked?(current_user) %>
-                <h4><strong><%= link_to "Like(#{tweet.likes.count})", unlike_tweet_path(tweet), method: :post %></strong></h4>
+                <h4><strong><%= link_to "Like(#{tweet.likes.count})", unlike_tweet_path(tweet), method: :post, class: "btn-color" %></strong></h4>
               <% else %>
-                <h4><%= link_to "Like(#{tweet.likes.count})", like_tweet_path(tweet), method: :post %></h4>
+                <h4><%= link_to "Like(#{tweet.likes.count})", like_tweet_path(tweet), method: :post, class: "btn-color" %></h4>
               <% end %>
             </div>
           </div>
