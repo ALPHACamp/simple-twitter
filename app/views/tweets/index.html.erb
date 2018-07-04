@@ -38,7 +38,7 @@
       <% end %>
     </div>
     <div class="col-md-5">
-      <% @users.each do |user| %>
+      <% @users.order(followers_count: :desc).each do |user| %>
         <div class="col-md-12 ">
           <div class="border-style clearfix">
             <div class="col-md-4 ">
@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-8">
               <%= link_to tweets_user_path(user) do%>
-                <h4>@<%= user.name %> <%= "#{user.followers.count}" %> <%= "#{user.followers_count}" %></h4>
+                <h4>@<%= user.name %> <%= "(#{user.followers_count})" %></h4>
               <% end %>
               <h4><%= user.introduction %></h4>
               <div class="following-btn text-right">
