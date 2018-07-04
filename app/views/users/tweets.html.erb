@@ -6,7 +6,7 @@
     </div>  
     <div class="col-12 col-sm-8">
     <!-- user's data show area -->
-    <% @tweets.each do |tweet| %>
+    <% @ordered_tweets.each do |tweet| %>
       <%= render partial: "shared/tweet", locals: {tweet: tweet} %>  
     <% end %>  
     </div>
