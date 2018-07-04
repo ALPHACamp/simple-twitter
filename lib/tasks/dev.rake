@@ -40,7 +40,6 @@ namespace :dev do
           description: FFaker::Lorem::sentence(20)
         )
       end
-      puts "#{user.name}"
     end
     puts "have created fake tweets"
     puts "now you have #{Tweet.count} tweets data (#{Tweet.first.id} ~ #{Tweet.last.id})"
@@ -92,5 +91,19 @@ namespace :dev do
     end
     puts "have created fake likes"
     puts "now you have #{Like.count} likes data (#{Like.first.id} ~ #{Like.last.id})"
+  end
+
+  task fake_all: :environment do
+    puts "fake_user processing..."
+    Rake::Task['dev:fake_user'].execute
+    puts "fake_tweet processing..."
+    Rake::Task['dev:fake_tweet'].execute
+    puts "fake_reply processing..."
+    Rake::Task['dev:fake_reply'].execute
+    puts "fake_follow processing..."
+    Rake::Task['dev:fake_follow'].execute
+    puts "fake_like processing..."
+    Rake::Task['dev:fake_like'].execute
+    #看還有甚麼fake都能放進來
   end
 end
