@@ -33,6 +33,7 @@
                 <h4><%= link_to "Like(#{tweet.likes.count})", like_tweet_path(tweet), method: :post, class: "btn-color" %></h4>
               <% end %>
             </div>
+            <h4 class="text-right"><%= link_to "Delete", admin_tweet_path(tweet), method: :delete, class: "btn btn-primary" %></h4>
           </div>
         </div>
       <% end %>
