@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
-  before_action :authenticate_user!
+  
 
   def index
     #把order(followers_count: :desc)放在 index page 這樣就能同步更新。當在首頁按下follow的時候。

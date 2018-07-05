@@ -13,5 +13,6 @@ user = User.create(
   password: "111111",
   introduction: FFaker::Lorem::sentence(30),
   avatar: file
+  role: "admin"
 )
 puts "#{user.name} created"
