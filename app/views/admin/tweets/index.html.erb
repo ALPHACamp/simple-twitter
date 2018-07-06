@@ -10,7 +10,12 @@
           </div>
         <% end %>
       </div>
-      <hr>
+      <div class="nav-tabs-center">
+        <ul class="nav nav-tabs">
+          <li role="presentation" class="active"><%= link_to "Tweets", admin_root_path %></li>
+          <li role="presentation" ><%= link_to "All Users", admin_users_path %></li>
+        </ul>
+      </div>
       <% @tweets.each do |tweet| %>
         <div class="col-md-12 border-style">
           <div class="col-md-3">
