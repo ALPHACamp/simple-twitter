@@ -5,14 +5,13 @@ namespace :dev do
     User.destroy_all
     20.times do |i|
       name = FFaker::Name::first_name
-      file = File.open("#{Rails.root}/public/avatar/user#{i+1}.jpg")
+     
 
       user = User.new(
         name: name,
         email: "#{name}@example.co",
         password: "12345678",
-        introduction: FFaker::Lorem::sentence(30),
-        avatar: file
+        introduction: FFaker::Lorem::sentence(30)
       )
 
       user.save!
@@ -20,4 +19,6 @@ namespace :dev do
     end
   end
 
-  
+ 
+
+end
