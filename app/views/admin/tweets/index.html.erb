@@ -12,6 +12,7 @@
           <th>#</th>
           <th>user id</th>
           <th>description</th>
+          <th>replies_count</th>
         </tr>
       </thead>
       <tbody>
@@ -19,9 +20,17 @@
           <tr>
             <th><%= tweet.id %></th>
             <td><%= tweet.user_id %></td>
-            <td><%= tweet.description %></td>
             <td>
-              <%= link_to 'Show', admin_tweet_path(tweet) %>
+              <div class="tweet-detail">
+                <%= tweet.description %><hr/>
+                <% tweet.replies.each do |reply| %>
+                  <%= reply.comment %><br/>
+                <% end %>
+              </div>              
+            </td>
+            <td><%= tweet.replies_count %></td>
+            <td>
+              <%= link_to 'Show ', admin_tweet_path(tweet) %>
               <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %>
             </td>
           </tr>
