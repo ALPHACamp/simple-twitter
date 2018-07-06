@@ -19,7 +19,7 @@
         <ul class="nav navbar-nav navbar-right">
           <% if current_user %>
             <li><%= link_to tweets_user_path(current_user) do %> 
-                  <%= image_tag current_user.avatar, class: "img-responsive center-block nav-avatar"%>
+                  <%= image_tag current_user.avatar, size: "50", class: "img-responsive center-block nav-avatar"%>
                 <% end %>
             </li>
             <% if current_user&.admin? %>
