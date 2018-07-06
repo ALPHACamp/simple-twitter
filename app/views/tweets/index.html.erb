@@ -1,26 +1,35 @@
 <div class="container">
   <div class="row">
-
-      <%= form_for [@user, @tweet] do |f| %>
+    <div class="col-md-8">
+      <%= form_for(@tweet) do |f| %>
         <div class="form-group">
-          <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control", rows: "10" %>
+          <%= f.text_area :description, placeholder: "Tweet something...", class: 'form-control' %>
         </div>
+
         <div class="form-group">
-          <%= f.submit "Tweet", class: "btn btn-primary btn-lg movebtn" %>
+          <%= f.submit "Tweet", class: "btn btn-primary" %>
         </div>
       <% end %>
 
-<br>
-<br>
-<br>
-    
-    <% @tweets.each do |tweet| %>
-      <div class="panel panel-default twpanel">
-         
-          <h5>@<%= tweet.user.name %>,<%= tweet.created_at.to_date %>,<%= tweet.created_at.strftime("%k:%M") %></h5>
-          <%= simple_format tweet.description, style: "color:#808080" %>     
-      </div>
-    <% end %>
+      <% @tweets.each do |tweet| %>
+        <div class="col-md-12 border">
+          <%= tweet.user.name %>
+          <%= tweet.created_at %>
+          <br>
+          <%= tweet.description %>
+        </div>
+      <% end %>
+    </div>
 
+    <div class="col-md-4">
+      <h1>Popular</h1>
+      <% @users.each do |user| %>
+        <div class="col-md-12 border">
+          <%= user.name %>
+          <br>
+          <%= user.introduction %>
+        </div>
+      <%end%>
+    </div>
   </div>
 </div>
