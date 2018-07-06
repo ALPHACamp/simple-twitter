@@ -19,6 +19,30 @@ namespace :dev do
     end
   end
 
- 
+ task fake_tweet: :environment do
+    Tweet.destroy_all
+    100.times do |i|
+      tweet = Tweet.new(
+        description: FFaker::Lorem::sentence(8),
+        user_id: User.all.sample.id,
+      )
+
+      tweet.save!
+    end
+    puts "100 fake tweet generated!"
+  end
+
+  task fake_reply: :environment do
+    Reply.destroy_all
+
+    Tweet.all.each do |tweet|
+      3.times do
+        tweet.replies.create!(comment: FFaker::Lorem.paragraph, 
+          user_id: User.all.sample.id)
+      end
+    end
+    
+    puts "3 fake reply generated for each tweet!"
+  end
 
 end
