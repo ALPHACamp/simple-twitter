@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_owner, only: [:update]
   before_action :authenticate_user!
 
-  def show
+  def tweets
     @user = User.find(params[:id])
     @tweeted_tweets = @user.tweets.order(created_at: :desc)
   end
