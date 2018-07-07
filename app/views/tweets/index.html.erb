@@ -1,5 +1,3 @@
-tweet front gate
-
 <div class="col-md-8">
   <%= form_for [@tweet] do |f| %>
     <div class="form_group">
@@ -12,7 +10,7 @@ tweet front gate
   <% end %>
 
   <% @tweets.each do |tweet| %>
-    <%= image_tag "http://lorempixel.com/140/140/people", class: "img-responsive img-circle" %>
+    <%= image_tag tweet.user.avatar, style: 'max-height: 140px',  class: "img-responsive img-circle" %>
     <h5><%= link_to tweet.user.name, user_path(tweet.user) %>, <%= tweet.created_at %></h5>
     <p><%= tweet.description %></p>
     <h5>
@@ -27,7 +25,7 @@ tweet front gate
   <h4>Popular</h4>
   <% @users.each do |user| %>
     <%= image_tag "http://lorempixel.com/140/140/people", class: "img-responsive img-circle" %>
-    <h5><%= link_to user.name, user_path(user) %>, <%= user.follower_count %></h5>
+    <h5><%= link_to user.name, user_path(user) %>, <%= user.followers_count %></h5>
     <p><%= user.introduction %></p>
   <% end %>
 </div>

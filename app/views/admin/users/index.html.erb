@@ -1,5 +1,12 @@
-<% @users.each do |user| %>
-  <div class="col-md-6">
-    <h5><%= link_to user.name, user_path(user) %>, Tweets: <%= user.tweets.count %></h5>
-  </div>
-<% end %>
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li role="presentation"><%= link_to "Tweets", admin_tweets_path %></li>
+    <li role="presentation" class="active"><%= link_to "Users", admin_users_path %></li>
+  </ul>
+  <br/>
+  <% @users.each do |user| %>
+    <div class="col-md-6">
+      <h5><%= link_to user.name, user_path(user) %>, Tweets: <%= user.tweets.count %></h5>
+    </div>
+  <% end %>
+</div>
