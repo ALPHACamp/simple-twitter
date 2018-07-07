@@ -1,0 +1,5 @@
+<% @users.each do |user| %>
+  <div class="col-md-6">
+    <h5><%= link_to user.name, user_path(user) %>, Tweets: <%= user.tweets.count %></h5>
+  </div>
+<% end %>
