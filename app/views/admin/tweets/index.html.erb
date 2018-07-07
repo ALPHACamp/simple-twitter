@@ -1,0 +1,17 @@
+back gate
+
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li role="presentation" class="active"><%= link_to "Tweets", admin_tweets_path %></li>
+    <li role="presentation"><%= link_to "Users", admin_users_path %></li>
+  </ul>
+  <br/>
+  <% @tweets.each do |tweet| %>
+    <div class="col-md-6">
+      <%= image_tag "http://lorempixel.com/140/140/people", class: "img-responsive img-circle" %>
+      <h5><%= link_to tweet.user.name, user_path(tweet.user) %>, <%= tweet.created_at %></h5>
+      <p><%= tweet.description %></p>
+      <%= link_to "Delete", admin_tweet_path(tweet), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+    </div>
+  <% end %>
+</div>
