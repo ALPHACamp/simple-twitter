@@ -27,7 +27,7 @@ namespace :dev do
     50.times do |i|
       Tweet.create!(
       user: User.all.sample,
-      description: FFaker::Lorem.paragraph
+      description: FFaker::Lorem.sentence
       )
     end
     puts "have created fake tweet"
