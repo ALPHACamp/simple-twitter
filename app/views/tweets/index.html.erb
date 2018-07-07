@@ -38,6 +38,9 @@
       <% end %>
     </div>
     <div class="col-md-5">
+      <div class="title-fonts">
+        <p>Popular</p>
+      </div>
       <% @users.order(followers_count: :desc).each do |user| %>
         <div class="col-md-12 ">
           <div class="border-style clearfix">
