@@ -1,0 +1,101 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="user-avatar">
+        <% if @user.avatar?%>
+          <%= image_tag @user.avatar, class: "img-responsive img-rounded" %>
+        <% else %>
+          <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
+        <% end %>
+      </div>
+      <div class="user-profile">
+        <h1><%= @user.name %></h1>
+        <h4><%= @user.introduction %></h4>
+      </div>
+      <div class="user-item">
+        <ul class="list-unstyled">
+          <% if @user == current_user %>
+            <li><strong><%= link_to "Tweets #{@user.tweets.count}", tweets_user_path(@user) %></strong></li>
+            <li><strong><%= link_to "Following #{@user.followings.count}", followings_user_path(@user) %></strong></li>
+            <li><strong><%= link_to "Follower #{@user.followers.count}", followers_user_path(@user)  %></strong></li>
+            <li><strong><%= link_to "like #{@user.likes.count}", likes_user_path(@user)  %></strong></li>
+          <% else %>
+            <li><strong><%= "Tweets #{@user.tweets.count}"  %></strong></li>
+            <li><strong><%= "Following #{@user.followings.count}"  %></strong></li>
+            <li><strong><%= "Follower #{@user.followers.count}"  %></strong></li>
+            <li><strong><%= "like #{@user.likes.count}"  %></strong></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="edit-btn">
+        <% if @user == current_user %>
+          <%= link_to "Edit profile", edit_user_path(@user), class: "btn btn-primary btn-block btn-lg" %>
+        <% end %>
+
+        <% if @user != current_user %>
+          <% if current_user.following?(@user)%>
+            <%= link_to "Unfollow", followship_path(@user), method: :delete, class: "btn btn-primary btn-block btn-lg" %>
+          <% else %>
+            <%= link_to "Follow", followships_path(following_id: @user.id), method: :post, class: "btn btn-primary btn-block btn-lg" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-md-8 col-md-offset-1 ">
+      <div class="title-fonts">
+        <p>Tweet</p>
+          <div class="col-md-11 ">
+            <div class="border-style clearfix">
+              <div class="col-md-3 ">
+                <% if @tweet.user.avatar?%>
+                  <%= image_tag @tweet.user.avatar, class: "img-responsive img-rounded" %>
+                <%else %>
+                  <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
+                <% end %>
+              </div>
+              <div class="col-md-8">
+                <%= link_to tweets_user_path(@tweet.user) do%>
+                  <h4>@<%= @tweet.user.name %>,<%= @tweet.created_at.strftime("%Y-%m-%D, %H:%M") %></h4>
+                <% end %>
+                <h4><%= @tweet.description %></h4>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="title-fonts">
+        <p>Replies</p>
+        <% @replies.each do |reply| %>
+          <div class="col-md-11 ">
+            <div class="border-style clearfix">
+              <div class="col-md-3 ">
+                <% if reply.user.avatar?%>
+                  <%= image_tag reply.user.avatar, class: "img-responsive img-rounded" %>
+                <%else %>
+                  <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
+                <% end %>
+              </div>
+              <div class="col-md-8">
+                <%= link_to tweets_user_path(reply.user) do%>
+                  <h4>@<%= reply.user.name %>,<%= reply.created_at.strftime("%Y-%m-%D, %H:%M") %></h4>
+                <% end %>
+                <h4><%= reply.comment %></h4>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <div class="col-md-11">
+          <div class="form-group edit-btn">
+            <%= form_for [@tweet, @reply] do |f| %>
+              <%= f.text_area :comment, placeholder: "What's on your mind?", class: "form-control", rows: "8" %>
+              <div class="text-right">
+                <%= f.submit "Replay", class: "btn btn-primary btn-lg" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

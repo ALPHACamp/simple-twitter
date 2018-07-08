@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render partial: "shared/users_info" %>
+      <%= render partial: "shared/following" %>
+    </div>
+
+    <div class="col-md-8 col-md-offset-1 ">
+      <div class="title-fonts">
+        <p>Like</p>
+      </div>
+      <% @likes.each do |like| %>
+        <div class="col-md-11 ">
+          <div class="border-style clearfix">
+            <div class="col-md-3 ">
+              <% if like.tweet.user.avatar?%>
+                <%= image_tag like.tweet.user.avatar, class: "img-responsive img-rounded" %>
+              <%else %>
+                <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
+              <% end %>
+            </div>
+            <div class="col-md-8">
+              <%= link_to tweets_user_path(like.tweet.user) do%>
+                <h4>@<%= like.tweet.user.name %>,<%= like.tweet.created_at.strftime("%Y-%m-%D, %H:%M") %></h4>
+              <% end %>
+              <h4><%= like.tweet.description %></h4>
+              <div class="like-btn">
+                <% if like.tweet.is_liked?(current_user) %>
+                  <h4><strong><%= link_to "Like(#{like.tweet.likes.count})", unlike_tweet_path(like.tweet), method: :post %></strong></h4>
+                <% else %>
+                  <h4><%= link_to "Like(#{like.tweet.likes.count})", like_tweet_path(like.tweet), method: :post %></h4>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
