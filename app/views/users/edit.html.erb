@@ -26,7 +26,7 @@
         <%= f.text_area :introduction, placeholder: "Type anything about you here...", class: "form-control" %>
       </div>
       <%= f.submit "Update", class: "btn btn-primary" %>
-      <%= link_to "Cancel", edit_user_path(@user), class: "btn btn-default" %>
+      <%= link_to "Cancel", tweets_user_path(@user), class: "btn btn-default" %>
     </div>
   <% end %>
 </div>
