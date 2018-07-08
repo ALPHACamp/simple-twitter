@@ -27,5 +27,12 @@
     <%= image_tag user.avatar, style: 'max-height: 140px', class: "img-responsive img-circle" %>
     <h5><%= link_to user.name, tweets_user_path(user) %>, <%= user.followers_count %></h5>
     <p><%= user.introduction %></p>
+    <% if user != current_user %>
+      <% if current_user.following?(user) %>
+        <%= link_to 'Unfollow', followship_path(user), method: :delete, class: "btn btn-warning" %>
+      <% else %>
+        <%= link_to 'Follow', followships_path(following_id: user), method: :post, class: "btn btn-success" %>
+      <% end %>
+    <% end %>
   <% end %>
 </div>
