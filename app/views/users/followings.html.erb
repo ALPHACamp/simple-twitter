@@ -24,5 +24,6 @@
     <%= image_tag following.avatar, style: 'max-height: 140px', class: "img-responsive img-circle" %>
     <h5><%= link_to following.name, followings_user_path(following) %></h5>
     <p><%= following.introduction %></p>
+    <%= link_to 'Unfollow', followship_path(following), method: :delete, class: "btn btn-warning" %>
   <% end %>
 </div>
