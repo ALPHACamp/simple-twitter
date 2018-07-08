@@ -16,6 +16,7 @@ class TweetsController < ApplicationController
       flash[:alert] = "not able to tweet"
     end
   end
+  
 
   def like
   end
