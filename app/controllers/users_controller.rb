@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       flash[:notice] = "user was successfully updated"
-      redirect_to user_path(@user)
+      redirect_to tweets_user_path(@user)
     else
       flash.now[:alert] = "user was failed to update"
       render :edit
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     unless current_user == @user
       flash[:alert] = "Not allow!"
-      redirect_to user_path(@user)
+      redirect_to tweets_user_path(@user)
     end
   end
 
