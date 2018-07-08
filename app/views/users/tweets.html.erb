@@ -3,7 +3,9 @@
     <li><%= image_tag @user.avatar, style: 'max-height: 200px', class: "img-responsive img-circle" %></li>
     <li><strong><h5><%= link_to @user.name, tweets_user_path(@user) %></h5></strong></li>
     <li><h6><%= @user.introduction %></h6></li>
-    <li><h6>Tweets <%= @user.tweets.count %></h6></li>
+    <li><h6>Tweet <%= @user.tweets.count %></h6></li>
+    <li><h6>Following <%= @user.followings.count %></h6></li>
+    <li><h6>Follower <%= @user.followers_count %></h6></li>
   </ul>
   <% if current_user == @user %>
     <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-primary" %>
