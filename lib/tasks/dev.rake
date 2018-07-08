@@ -48,5 +48,4 @@ namespace :dev do
     puts "have created fake reply"
     puts "now you have #{Reply.count} replies data"
   end
-
 end
