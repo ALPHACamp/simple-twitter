@@ -1,37 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <div class="user-avatar">
-        <% if @user.avatar?%>
-          <%= image_tag @user.avatar, class: "img-responsive img-rounded" %>
-        <% else %>
-          <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
-        <% end %>
-      </div>
-      <div class="user-profile">
-        <h1><%= @user.name %></h1>
-        <h4><%= @user.introduction %></h4>
-      </div>
-      <div class="user-item">
-        <ul class="list-unstyled">
-          <% if @user == current_user %>
-            <li><strong><%= link_to "Tweets #{@user.tweets.count}", tweets_user_path(@user)  %></strong></li>
-            <li><strong><%= link_to "Following #{@user.followings.count}", followings_user_path(@user) %></strong></li>
-            <li><strong><%= link_to "Follower #{@user.followers.count}", followers_user_path(@user)  %></strong></li>
-            <li><strong><%= link_to "like #{}"  %></strong></li>
-          <% else %>
-            <li><strong><%= "Tweets #{@user.tweets.count}"  %></strong></li>
-            <li><strong><%= "Following #{@user.followings.count}"  %></strong></li>
-            <li><strong><%= "Follower #{}"  %></strong></li>
-            <li><strong><%= "like #{}"  %></strong></li>
-          <% end %>
-        </ul>
-      </div>
-      <div class="edit-btn">
-        <% if @user == current_user %>
-          <%= link_to "Edit profile", edit_user_path(@user), class: "btn btn-primary btn-block btn-lg" %>
-        <% end %>
-      </div>
+      <%= render partial: "shared/users_info" %>
     </div>
     <div class="col-md-9">
       <div class="title-fonts">
