@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
-  
+
 
   def index
     #把order(followers_count: :desc)放在 index page 這樣就能同步更新。當在首頁按下follow的時候。
@@ -19,20 +19,20 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new(tweet_params)
     @tweet.user = current_user
     @tweet.save!
-    redirect_to root_path(@tweet)
+    redirect_to tweets_path
   end
 
   def like
     @tweet = Tweet.find(params[:id])
     @tweet.likes.create!(user: current_user)
-    redirect_back(fallback_location: root_path)
+    redirect_to tweets_path
   end
 
   def unlike
     @tweet = Tweet.find(params[:id])
     like = Like.where(tweet: @tweet, user: current_user)
     like.destroy_all
-    redirect_back(fallback_location: root_path)
+    redirect_to tweets_path
   end
 
   private
