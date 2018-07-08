@@ -2,8 +2,9 @@
   <%= image_tag @tweet.user.avatar, style: 'max-height: 200px', class: "img-responsive img-rounded" %>
   <h5><%= link_to @tweet.user.name, tweets_user_path(@tweet.user) %></h5>
   <p><%= @tweet.user.introduction %></p>
-  <h5>Tweets <%= @tweet.user.tweets.count %></h5>
-  <h5>Followings <%= @tweet.user.tweets.count %></h5>
+  <h5>Tweet <%= @tweet.user.tweets.count %></h5>
+  <h5>Following <%= @tweet.user.followings.count %></h5>
+  <h5>Follower <%= @tweet.user.followers_count %></h5>
   <% if current_user == @tweet.user %>
     <%= link_to "Edit Profile", edit_user_path(@tweet.user), class: "btn btn-primary" %>
   <% else %>
