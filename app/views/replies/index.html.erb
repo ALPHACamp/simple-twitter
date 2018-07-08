@@ -1,20 +1,5 @@
-<div class= "col-md-4">
-  <%= image_tag @tweet.user.avatar, style: 'max-height: 200px', class: "img-responsive img-rounded" %>
-  <h5><%= link_to @tweet.user.name, tweets_user_path(@tweet.user) %></h5>
-  <p><%= @tweet.user.introduction %></p>
-  <h5>Tweet <%= @tweet.user.tweets.count %></h5>
-  <h5>Following <%= @tweet.user.followings.count %></h5>
-  <h5>Follower <%= @tweet.user.followers_count %></h5>
-  <% if current_user == @tweet.user %>
-    <%= link_to "Edit Profile", edit_user_path(@tweet.user), class: "btn btn-primary" %>
-  <% else %>
-    <% if current_user.following?(@tweet.user) %>
-      <%= link_to 'Unfollow', followship_path(@tweet.user), method: :delete, class: "btn btn-warning" %>
-    <% else %>
-      <%= link_to 'Follow', followships_path(following_id: @tweet.user), method: :post, class: "btn btn-success" %>
-    <% end %>
-  <% end %>
-</div>
+<%= render partial: "shared/user_profile", locals: {profile: @tweet.user} %>
+
 <div class= "col-md-8">
   <h4>Tweet</h4>
     <%= image_tag @tweet.user.avatar, style: 'max-height: 140px', class: "img-responsive img-circle" %>
