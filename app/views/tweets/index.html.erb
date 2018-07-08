@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <%= form_for @tweet do |t| %>
+    <div class="tweet-area col-md-4"> 
+      <div class="form-group ">
+        <%= t.text_area :description, placeholder: "What's on your mind?", class: "form-control textarea" %>
+      </div>
+      <div class="form-group ">
+        <%= t.submit "Tweet", class: "btn btn-primary tweet-btn" %>
+      </div>
+    </div>   
+    <% end %>
+  </div>
+  
+</div>
