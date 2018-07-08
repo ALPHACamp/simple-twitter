@@ -4,7 +4,8 @@ class Admin::TweetsController < Admin::BaseController
 
 
   def index
-    @tweets= Tweet.order(created_at: :desc)
+    #@tweets= Tweet.order(created_at: :desc)
+    @tweets=Tweet.all
     @user=current_user
   end
 
