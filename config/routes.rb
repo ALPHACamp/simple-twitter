@@ -26,12 +26,8 @@ Rails.application.routes.draw do
   resources :followships, only: [:create, :destroy]
 
   namespace :admin do
-    resources :tweets, only: :destroy do
-
-      collection do
-        get :allusers
-      end
-    end
+    resources :tweets, only: :destroy
+    
     root "tweets#index"
 
     resources :users, only: :index

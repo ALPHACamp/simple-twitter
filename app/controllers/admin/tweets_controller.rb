@@ -4,10 +4,6 @@ class Admin::TweetsController < Admin::BaseController
     @tweets = Tweet.order(created_at: :desc).page(params[:page]).per(10)
   end
 
-  def allusers
-    @users = User.order(tweets_count: :desc).page(params[:page]).per(10)
-  end
-
   def destroy
     @tweet = Tweet.find(params[:id])
     @tweet.destroy
