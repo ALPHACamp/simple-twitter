@@ -29,4 +29,7 @@ class User < ApplicationRecord
     self.followings.include?(user)
   end
 
+  def liked_tweets?(tweet)
+    self.liked_tweets.include?(tweet)
+  end
 end

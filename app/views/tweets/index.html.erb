@@ -17,7 +17,13 @@
       <%= link_to tweet_replies_path(tweet) do %>
       Reply(<%= tweet.replies.size %>)
       <% end %>
+      Like(<%= tweet.likes_count %>)
     </h5>
+    <% if current_user.liked_tweets?(tweet) %>
+        <%= link_to 'Unlike', unlike_tweet_path(tweet), method: :post, class: "btn btn-warning" %>
+      <% else %>
+        <%= link_to 'Like', like_tweet_path(tweet), method: :post, class: "btn btn-success" %>
+      <% end %>
   <% end %>
 </div>
 
