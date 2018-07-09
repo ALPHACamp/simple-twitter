@@ -9,13 +9,21 @@
   <!-- user introduction -->
   <p><%= @user.introduction%></p>
   <!-- Number of tweets -->
-  <p>Tweets <%= @user.tweets.count %></p>
+  <%= link_to(tweets_user_path(user)) do %>
+    <p>Tweets <%= @user.tweets.count %></p>
+  <% end %>
   <!-- Number of following -->
-  <p>Following <%= @user.followings.count %></p>
+  <%= link_to(followings_user_path(user)) do %>
+    <p>Following <%= @user.followings.count %></p>
+  <% end %>
   <!-- Number of follower -->
-  <p>Follower <%= @user.followers_count %></p>
+  <%= link_to(followers_user_path(user)) do %>
+    <p>Follower <%= @user.followers_count %></p>
+  <% end %>
   <!-- Number of likes -->
-  <p>likes <%= @user.likes_count %></p>
+  <%= link_to(likes_user_path(user)) do %>
+    <p>likes <%= @user.likes_count %></p>
+  <% end %>
   <!-- Follow/Unfollow Button -->
   <%= render partial: "shared/follow", locals: {user: @user} %>
 </div>
