@@ -1,0 +1,21 @@
+<div class="user-item user-avatar">
+  <%= image_tag @user.avatar.url, size: "300x300", class: "img-responsive" %>
+</div>
+<div class="user-item user-texts">
+  <!-- @username -->
+  <%= link_to(tweets_user_path(user)) do %>
+    <p><%= user.name %></p>
+  <% end %>
+  <!-- user introduction -->
+  <p><%= @user.introduction%></p>
+  <!-- Number of tweets -->
+  <p>Tweets <%= @user.tweets.count %></p>
+  <!-- Number of following -->
+  <p>Following <%= @user.followings.count %></p>
+  <!-- Number of follower -->
+  <p>Follower <%= @user.followers_count %></p>
+  <!-- Number of likes -->
+  <p>likes <%= @user.likes_count %></p>
+  <!-- Follow/Unfollow Button -->
+  <%= render partial: "shared/follow", locals: {user: @user} %>
+</div>

@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <h1>/users/:id?tweets</h1>
+  </div>
+  <div class="row">
+  <!-- row start -->
+    <!-- Left -->
+    <div class="col-xl-4 col-lg-4 col-sm-4 col-md-6">
+      <%= render partial: "shared/user_detail", locals: {user: @user} %>
+    </div>
+    <!-- Right -->
+    <div class="col-xl-8 col-lg-8 col-sm-8 col-md-6">
+      <!-- Show Tweets -->
+      <% @tweets.each do |tweet| %>
+        <%= render partial: "shared/tweet", locals: {tweet: tweet} %>
+      <% end %>
+    </div>
+  <!-- row end -->
+  </div>
+</div>
