@@ -54,15 +54,3 @@
 .button {
   float: right;
 }
-
-.tweet-detail {
-  transition: max-height 0.35s;
-}
-
-.tweet-detail-close .tweet-detail {
-  max-height: 50px;
-}
-
-.tweet-detail-open .tweet-detail {
-  max-height: 400px
-}

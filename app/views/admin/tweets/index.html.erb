@@ -21,12 +21,12 @@
             <th><%= tweet.id %></th>
             <td><%= tweet.user_id %></td>
             <td>
+              <%= tweet.description %><hr/>
               <div class="tweet-detail">
-                <%= tweet.description %><hr/>
                 <% tweet.replies.each do |reply| %>
                   <%= reply.comment %><br/>
                 <% end %>
-              </div>              
+              </div>
             </td>
             <td><%= tweet.replies_count %></td>
             <td>
