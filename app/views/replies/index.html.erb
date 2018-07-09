@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <h1>/tweets/:tweet_id/replies</h1>
+  </div>
+  <div class="row">
+  <!-- row start -->
+    <!-- Left -->
+    <div class="col-xl-4 col-lg-4 col-sm-4 col-md-6">
+      <%= render partial: "shared/user_detail", locals: {user: @user} %>
+    </div>
+    <!-- Right -->
+    <div class="col-xl-8 col-lg-8 col-sm-8 col-md-6">
+      <!-- Show Tweets -->
+      <%= render partial: "tweet", locals: {tweet: @tweet} %>
+      <!-- Show Replies -->
+      <% @replies.each do |reply| %>
+        <%= render partial: "reply", locals: {reply: reply} %>
+      <% end %>
+      <!-- Create Reply -->
+      <%= form_for [@tweet, @reply] do |f| %>
+        <div class="form-group">
+          <%= f.text_area :comment, placeholder: "Reply Here", class: "form-control" %>
+        </div>
+        <div>
+          <%= f.submit class: "btn btn-default" %>
+        </div>
+      <% end %>
+    </div>
+  <!-- row end -->
+  </div>
+</div>

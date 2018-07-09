@@ -1,0 +1,21 @@
+<div class="tweet-item">
+  <!-- Left -->
+  <div class="tweet-item tweet-avatar">
+    <%= image_tag tweet.user.avatar.url, size: "150x150", class: "img-responsive" %>
+  </div>
+  <!-- Right -->
+  <div class="tweet-item tweet-texts">
+    <!-- @username -->
+    <p>
+      <%= link_to(tweets_user_path(tweet.user)) do %>
+      <%= tweet.user.name %>
+      <% end %>
+    </p>
+    <!-- tweets description -->
+    <p><%= tweet.description%></p>
+    <!-- Number of replies & likes -->
+    <p>
+      Reply(<%= tweet.replies_count %>) like(<%= tweet.likes_count %>)
+    </p>
+  </div>
+</div>
