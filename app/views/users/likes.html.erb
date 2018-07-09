@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <h1>/users/:id/likes</h1>
+  </div>
+  <div class="row">
+  <!-- row start -->
+    <!-- Left -->
+    <div class="col-xl-4 col-lg-4 col-sm-4 col-md-6">
+      <%= render partial: "shared/user_detail", locals: {user: @user} %>
+    </div>
+    <!-- Right -->
+    <div class="col-xl-8 col-lg-8 col-sm-8 col-md-6">
+      <!-- Title -->
+      <h1>Like</h1>
+      <!-- Show Tweets -->
+      <% @likes.each do |like| %>
+        <%= render partial: "shared/tweet", locals: {tweet: like.tweet} %>
+      <% end %>
+    </div>
+  <!-- row end -->
+  </div>
+</div>
