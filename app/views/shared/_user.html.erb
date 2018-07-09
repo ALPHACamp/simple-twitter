@@ -1,0 +1,19 @@
+<div class="user-item">
+  <!-- Left -->
+  <div class="user-item user-avatar">
+    <%= image_tag user.avatar.url, size: "100x100", class: "img-responsive" %>
+  </div>
+  <!-- Right -->
+  <div class="user-item user-texts">
+    <!-- @username -->
+    <%= link_to(tweets_user_path(user)) do %>
+      <p><%= user.name %></p>
+    <% end %>
+    <!-- user introduction -->
+    <p><%= user.introduction%></p>
+    <!-- Follow/Unfollow Button -->
+    <%= render partial: "shared/follow", locals: {user: user} %>
+    <!-- For check - Should be delete -->
+    <h5><%= user.followers_count %></h5>
+  </div>
+</div>
