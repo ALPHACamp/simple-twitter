@@ -1,22 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-7">
-      <div class="form-group">
-        <%= form_for @tweet do |f| %>
-          <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control", rows: "10" %>
-          <div class="text-right">
-            <%= f.submit class: "btn btn-primary" %>
-            <%= f.button "Cancel", type: :reset, class: "btn btn-outline-primary" %>
-          </div>
-        <% end %>
-      </div>
+    <div class="col-md-8 col-md-offset-1">
       <div class="nav-tabs-center">
         <ul class="nav nav-tabs">
-          <li role="presentation" class="active"><%= link_to "Tweets", admin_root_path %></li>
+          <li role="presentation" class="active"><%= link_to "Tweets", admin_tweets_path %></li>
           <li role="presentation" ><%= link_to "All Users", admin_users_path %></li>
         </ul>
       </div>
-      <% @tweets.each do |tweet| %>
+      <% @tweets.order(likes_count: :desc).each do |tweet| %>
         <div class="col-md-12 border-style">
           <div class="col-md-3">
             <% if tweet.user.avatar?%>
@@ -39,39 +30,6 @@
               <% end %>
             </div>
             <h4 class="text-right"><%= link_to "Delete", admin_tweet_path(tweet), method: :delete, class: "btn btn-primary" %></h4>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="col-md-5">
-      <div class="title-fonts">
-        <p>Popular</p>
-      </div>
-      <% @users.order(followers_count: :desc).each do |user| %>
-        <div class="col-md-12 ">
-          <div class="border-style clearfix">
-            <div class="col-md-4 ">
-              <% if user.avatar?%>
-                <%= image_tag user.avatar, class: "img-responsive img-rounded" %>
-              <%else %>
-                <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
-              <% end %>
-            </div>
-            <div class="col-md-8">
-              <%= link_to tweets_user_path(user) do%>
-                <h4>@<%= user.name %> <%= "(#{user.followers_count})" %></h4>
-              <% end %>
-              <h4><%= user.introduction %></h4>
-              <div class="following-btn text-right">
-                <% if user != current_user %>
-                  <% if current_user.following?(user)%>
-                    <%= link_to "Unfollow", followship_path(user), method: :delete, class: "btn btn-primary  btn-lg" %>
-                  <% else %>
-                    <%= link_to "Follow", followships_path(following_id: user.id), method: :post, class: "btn btn-primary btn-lg" %>
-                  <% end %>
-                <% end %>
-              </div>
-            </div>
           </div>
         </div>
       <% end %>
