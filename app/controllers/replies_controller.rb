@@ -16,7 +16,8 @@ class RepliesController < ApplicationController
     else
       flash[:alert] = @reply.errors.full_messages.to_sentence
     end
-    redirect_back(fallback_location: root_path)
+    redirect_to tweet_replies_path
+    #redirect_back(fallback_location: root_path)
   end
 
   private
