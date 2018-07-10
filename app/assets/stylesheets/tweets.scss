@@ -1,3 +1,49 @@
 // Place all the styles related to the tweets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+  box-sizing: border-box;
+}
+
+.form-control {
+  margin-bottom: 10px;
+}
+
+.border-style {
+  border: 3px solid gainsboro;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 10px;
+}
+
+.border-style img {
+
+  margin: 10px 10px;
+}
+
+
+.title-fonts {
+  font-size: 30px;
+  color: steelblue;
+  margin-left: 10px;
+}
+
+
+.like-btn .btn-color {
+  color: crimson;
+}
+
+.like-btn h4 {
+  display: inline-block;
+}
+
+.nav-tabs-center {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.admin-users-item li {
+  font-size: 17px;
+  margin-right: 5px;
+  display: inline-block;
+}

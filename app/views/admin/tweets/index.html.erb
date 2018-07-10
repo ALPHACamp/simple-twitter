@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-1">
+      <div class="nav-tabs-center">
+        <ul class="nav nav-tabs">
+          <li role="presentation" class="active"><%= link_to "Tweets", admin_tweets_path %></li>
+          <li role="presentation" ><%= link_to "All Users", admin_users_path %></li>
+        </ul>
+      </div>
+      <% @tweets.order(likes_count: :desc).each do |tweet| %>
+        <div class="col-md-12 border-style">
+          <div class="col-md-3">
+            <% if tweet.user.avatar?%>
+              <%= image_tag tweet.user.avatar, class: "img-responsive img-rounded" %>
+            <%else %>
+              <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
+            <% end %>
+          </div>
+          <div class="col-md-9 text-left">
+            <%= link_to tweets_user_path(tweet.user) do%>
+              <h4>@<%= tweet.user.name %>,<%= tweet.created_at.strftime("%Y-%m-%D, %H:%M") %></h4>
+            <% end %>
+            <h4><%= tweet.description %></h3>
+            <div class="like-btn">
+              <h4><%= link_to "Reply(#{tweet.replies.count})", tweet_replies_path(tweet), method: :get %></h4>
+              <% if tweet.is_liked?(current_user) %>
+                <h4><strong><%= link_to "Like(#{tweet.likes.count})", unlike_tweet_path(tweet), method: :post, class: "btn-color" %></strong></h4>
+              <% else %>
+                <h4><%= link_to "Like(#{tweet.likes.count})", like_tweet_path(tweet), method: :post, class: "btn-color" %></h4>
+              <% end %>
+            </div>
+            <h4 class="text-right"><%= link_to "Delete", admin_tweet_path(tweet), method: :delete, class: "btn btn-primary" %></h4>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

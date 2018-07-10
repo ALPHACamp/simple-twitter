@@ -1,3 +1,39 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.edit-btn .btn-block {
+  width: 250px;
+}
+
+.edit-btn .btn-lg {
+  font-size: 25px;
+}
+
+.edit-btn .btn-primary {
+  color: black;
+}
+
+
+.user-item {
+  font-size: 25px;
+}
+
+.user-avatar img {
+  width:250px;
+  height: 250px;
+}
+
+.form-control {
+  border: 2px solid steelblue;
+  border-radius: 10px;
+}
+
+.row {
+  padding-top: 20px;
+}
+
+.btn-uploder {
+  margin-top: 20px;
+}

@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render partial: "shared/users_info" %>
+      <%= render partial: "shared/following" %>
+    </div>
+
+    <div class="col-md-8 col-md-offset-1 ">
+      <div class="title-fonts">
+        <p>Tweet</p>
+          <div class="col-md-11 ">
+            <div class="border-style clearfix">
+              <div class="col-md-3 ">
+                <% if @tweet.user.avatar?%>
+                  <%= image_tag @tweet.user.avatar, class: "img-responsive img-rounded" %>
+                <%else %>
+                  <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
+                <% end %>
+              </div>
+              <div class="col-md-8">
+                <%= link_to tweets_user_path(@tweet.user) do%>
+                  <h4>@<%= @tweet.user.name %>,<%= @tweet.created_at.strftime("%Y-%m-%D, %H:%M") %></h4>
+                <% end %>
+                <h4><%= @tweet.description %></h4>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="title-fonts">
+        <p>Replies</p>
+        <% @replies.each do |reply| %>
+          <div class="col-md-11 ">
+            <div class="border-style clearfix">
+              <div class="col-md-3 ">
+                <% if reply.user.avatar?%>
+                  <%= image_tag reply.user.avatar, class: "img-responsive img-rounded" %>
+                <%else %>
+                  <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
+                <% end %>
+              </div>
+              <div class="col-md-8">
+                <%= link_to tweets_user_path(reply.user) do%>
+                  <h4>@<%= reply.user.name %>,<%= reply.created_at.strftime("%Y-%m-%D, %H:%M") %></h4>
+                <% end %>
+                <h4><%= reply.comment %></h4>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <div class="col-md-11">
+          <div class="form-group edit-btn">
+            <%= form_for [@tweet, @reply] do |f| %>
+              <%= f.text_area :comment, placeholder: "What's on your mind?", class: "form-control", rows: "8" %>
+              <div class="text-right">
+                <%= f.submit "Replay", class: "btn btn-primary btn-lg" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="user-avatar">
+  <% if @user.avatar?%>
+    <%= image_tag @user.avatar, class: "img-responsive img-rounded" %>
+  <% else %>
+    <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
+  <% end %>
+</div>
+<div class="user-profile">
+  <h1><%= @user.name %></h1>
+  <h4><%= @user.introduction %></h4>
+</div>
+<div class="user-item">
+  <ul class="list-unstyled">
+    <% if @user == current_user %>
+      <li><strong><%= link_to "Tweets #{@user.tweets.count}", tweets_user_path(@user) %></strong></li>
+      <li><strong><%= link_to "Following #{@user.followings.count}", followings_user_path(@user) %></strong></li>
+      <li><strong><%= link_to "Follower #{@user.followers.count}", followers_user_path(@user)  %></strong></li>
+      <li><strong><%= link_to "like #{@user.likes.count}", likes_user_path(@user)  %></strong></li>
+    <% else %>
+      <li><strong><%= "Tweets #{@user.tweets.count}"  %></strong></li>
+      <li><strong><%= "Following #{@user.followings.count}"  %></strong></li>
+      <li><strong><%= "Follower #{@user.followers.count}"  %></strong></li>
+      <li><strong><%= "like #{@user.likes.count}"  %></strong></li>
+    <% end %>
+
+  </ul>
+</div>

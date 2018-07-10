@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-1">
+      <div class="nav-tabs-center">
+        <ul class="nav nav-tabs">
+          <li role="presentation" ><%= link_to "Tweets", admin_tweets_path %></li>
+          <li role="presentation" class="active" ><%= link_to "All Users", admin_users_path %></li>
+        </ul>
+      </div>
+      <% @users.order(tweets_count: :desc).each do |user| %>
+        <div class="col-md-12 ">
+          <div class="border-style clearfix">
+            <div class="col-md-4">
+              <% if user.avatar?%>
+                <%= image_tag user.avatar, class: "img-responsive img-rounded" %>
+              <%else %>
+                <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
+              <% end %>
+            </div>
+            <div class="col-md-8">
+              <%= link_to tweets_user_path(user) do%>
+                <h4>@<%= user.name %></h4>
+              <% end %>
+              <h4><%= user.introduction %></h4>
+              <div class="admin-users-item">
+                <ul class="list-unstyled">
+                  <li><strong><%= "Tweets (#{user.tweets.count})" %></strong</li>
+                  <li><strong><%= "Followongs (#{user.followings.count})" %></strong</li>
+                  <li><strong><%= "Followers (#{user.followers_count})" %></strong</li>
+                  <li><strong><%= "Likes (#{user.likes.count})" %></strong</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

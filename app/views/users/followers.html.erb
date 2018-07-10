@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render partial: "shared/users_info" %>
+      <%= render partial: "shared/following" %>
+    </div>
+    <div class="col-md-9">
+      <div class="title-fonts">
+        <p>Follower</p>
+      </div>
+      <% @user.followers.each do |follower| %>
+        <div class="col-md-6">
+          <div class="border-style clearfix">
+            <div class="col-md-4">
+              <% if follower.avatar?%>
+                <%= image_tag follower.avatar, class: "img-responsive img-rounded" %>
+              <%else %>
+                <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
+              <% end %>
+            </div>
+            <div class="col-md-8">
+              <%= link_to tweets_user_path(follower) do%>
+                <h4>@<%= follower.name %></h4>
+              <% end %>
+              <h4 class="fix-height"><%= follower.introduction %></h4>
+              <div class="following-btn text-right">
+                <% if current_user.following?(follower)%>
+                  <%= link_to "Unfollow", followship_path(follower), method: :delete, class: "btn btn-primary  btn-lg" %>
+                <% else %>
+                  <%= link_to "Follow", followships_path(following_id: follower.id), method: :post, class: "btn btn-primary btn-lg" %>
+                <% end %>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
