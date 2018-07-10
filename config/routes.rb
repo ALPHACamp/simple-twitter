@@ -18,13 +18,12 @@ Rails.application.routes.draw do
     
   end
 
-  resources :users, only: [:edit] do
+  resources :users, only: [:edit, :update] do
     member do
       get :tweets     # users#tweets
       get :followings # users#followings
       get :followers  # users#followers
       get :likes      # users#likes
-      # get :edit       # users#edit
     end
   end
 
