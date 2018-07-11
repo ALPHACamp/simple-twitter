@@ -45,7 +45,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     unless current_user == @user
       flash[:alert] = "Not allow!"
-      redirect_to tweets_user_path(@user)
+      redirect_to admin_root_path
     end
   end
 
