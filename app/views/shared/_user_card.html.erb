@@ -1,19 +1,17 @@
-<div class="user-item">
+<div class="user-card-top">
   <!-- Left -->
-  <div class="user-item user-avatar">
-    <%= image_tag user.avatar.url, size: "100x100", class: "img-responsive" %>
+  <div class="user-card-avatar">
+    <%= image_tag user.avatar.url, size: "100x100", class: "img-responsive align-top" %>
   </div>
   <!-- Right -->
-  <div class="user-item user-texts">
+  <div class="user-card-texts">
     <!-- @username -->
-    <%= link_to(tweets_user_path(user)) do %>
-      <p><%= user.name %></p>
-    <% end %>
+    <div class="user-card-name">
+      <h4><%= link_to "#{user.name}", tweets_user_path(user) %></h4>
+    </div>
     <!-- user introduction -->
-    <p><%= user.introduction%></p>
+    <p><%= truncate(user.introduction, length: 80) %></p>
     <!-- Follow/Unfollow Button -->
     <%= render partial: "shared/follow", locals: {user: user} %>
-    <!-- For check - Should be delete -->
-    <h5><%= user.followers_count %></h5>
   </div>
 </div>

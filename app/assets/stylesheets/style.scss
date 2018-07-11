@@ -2,22 +2,25 @@
   box-sizing: border-box;
 }
 
+// Styles for tweets
 .tweet-top {
   border-color: darkgray;
   border-style: solid;
   border-width: 2px;
-  padding: 10px;
+  padding: 1%;
   margin-bottom: 10px;
 }
 
 .tweet-avatar {
   display: inline-block;
-  width: 30%;
+  padding-right: 1%;
+  width: 20%;
 }
 
 .tweet-texts {
   display: inline-block;
-  width: 68%;
+  padding-right: 1%;
+  width: 78%;
 }
 
 .tweet-reply {
@@ -27,4 +30,23 @@
 .tweet-like {
   display: inline-block;
   color: red;
+}
+
+// Styles for user card
+.user-card-top {
+  border-color: darkgray;
+  border-style: solid;
+  border-width: 2px;
+  padding: 3%;
+  margin-bottom: 10px;
+}
+.user-card-avatar {
+  display: inline-block;
+  width: 30%;
+  align-items: center;
+  padding-bottom: 0px;
+}
+.user-card-texts {
+  display: inline-block;
+  width: 68%;
 }
