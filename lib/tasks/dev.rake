@@ -83,9 +83,11 @@ namespace :dev do
     Like.destroy_all
 
     Tweet.all.each do |tweet|
+      user = User.all.sample
+      tweet.is_liked?(user)
       rand(User.count).times do |i|
         tweet.likes.create(
-          user: User.all.sample
+          user: user
         )
       end
     end

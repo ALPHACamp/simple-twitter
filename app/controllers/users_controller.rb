@@ -22,15 +22,17 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings = @user.followings.all # 基於測試規格，必須講定變數名稱
+    @followings = @user.followings.all.order(created_at: :desc) # 基於測試規格，必須講定變數名稱
   end
 
   def followers
-    @followers = @user.followers.all # 基於測試規格，必須講定變數名稱
+    @followers = @user.followers.all.order(created_at: :desc) # 基於測試規格，必須講定變數名稱
   end
 
   def likes
-    @likes = @user.likes.all # 基於測試規格，必須講定變數名稱
+    # @likes = @user.likes.order(created_at: :desc) # 基於測試規格，必須講定變數名稱
+    # @likes = Like.where("user_id = ?", params[:id]).order(created_at: :desc) # 基於測試規格，必須講定變數名稱
+    @likes = Like.where("user_id = ?", params[:id]) # 基於測試規格，必須講定變數名稱
   end
 
   private
