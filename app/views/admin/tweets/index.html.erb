@@ -5,11 +5,22 @@
   </ul>
   <br/>
   <% @tweets.each do |tweet| %>
-    <div class="col-md-6">
-      <%= image_tag "http://lorempixel.com/140/140/people", class: "img-responsive img-circle" %>
+    <div class="col-md-5 individual-item">
+      <%= image_tag tweet.user.avatar, size: "140x140", class: "img-responsive img-circle" %>
       <h5><%= link_to tweet.user.name, user_path(tweet.user) %>, <%= tweet.created_at %></h5>
       <p><%= tweet.description %></p>
       <%= link_to "Delete", admin_tweet_path(tweet), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#tweet<%=tweet.id %>" aria-expanded="false" aria-controls="tweet<%=tweet.id %>">Click to show reply (<%= tweet.replies_count %>)</button>
+      <div class="collapse multi-collapse" id="tweet<%=tweet.id %>">
+        <% tweet.replies.each do |reply| %>
+          <div class="card card-body">
+            <div class="individual-item">
+              <p>Replier: <%= reply.user.name %></p>
+              <p>Content: <%= reply.comment %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>
