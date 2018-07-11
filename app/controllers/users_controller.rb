@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:tweets, :edit, :update, :followings, :followers, :likes]
 
   def tweets
-    @tweets = Tweet.where(user: params[:id])
+    @tweets = @user.tweets.order(created_at: :desc)
   end
 
   def edit
@@ -30,9 +30,8 @@ class UsersController < ApplicationController
   end
 
   def likes
-    # @likes = @user.likes.order(created_at: :desc) # 基於測試規格，必須講定變數名稱
-    # @likes = Like.where("user_id = ?", params[:id]).order(created_at: :desc) # 基於測試規格，必須講定變數名稱
-    @likes = Like.where("user_id = ?", params[:id]) # 基於測試規格，必須講定變數名稱
+    @likes = @user.liked_tweets # 基於測試規格，必須講定變數名稱
+    # @likes = Tweet.joins(:likes).where("likes.user_id = ?", current_user.id).order("likes.created_at DESC")
   end
 
   private
