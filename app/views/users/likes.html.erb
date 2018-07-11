@@ -11,5 +11,6 @@
       <% end %>
       Like(<%= like.likes_count %>)
     </h5>
+    <%= render partial: "shared/like_button", locals: {profile: like} %>
   <% end %>
 </div>

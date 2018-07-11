@@ -11,5 +11,6 @@
       <% end %>
       Like(<%= tweet.likes_count %>)
     </h5>
+    <%= render partial: "shared/like_button", locals: {profile: tweet} %>
   <% end %>
 </div>

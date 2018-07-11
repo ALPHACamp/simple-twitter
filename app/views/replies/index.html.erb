@@ -9,7 +9,9 @@
       <%= link_to tweet_replies_path(@tweet) do %>
       Reply(<%= @tweet.replies.count %>)
       <% end %>
+      Like(<%= @tweet.likes_count %>)
     </h5>
+    <%= render partial: "shared/like_button", locals: {profile: @tweet} %>
     <br/>
     <h4>Reply</h4>
     <% @replies.each do |reply| %>
