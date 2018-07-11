@@ -5,24 +5,27 @@
   </div>
   <div class="row">
     <!-- Left -->
-    <div class="col-xl-8 col-lg-8 col-sm-8 col-md-6">
+    <div class="col-xl-8 col-lg-8 col-sm-6 col-md-6">
       <!-- Create Tweet -->
-      <%= form_for @tweet do |f| %>
-        <div class="form-group">
-          <%= f.text_area :description, placeholder: "Tweet Here", class: "form-control" %>
-        </div>
-        <div>
-          <%= f.submit class: "btn btn-default" %>
-        </div>
-      <% end %>
-      <br>
+      <div class="create-tweet">
+        <%= form_for @tweet do |f| %>
+          <div class="form-group">
+            <%= f.text_area :description, placeholder: "Tweet Here", class: "form-control" %>
+          </div>
+          <div>
+            <%= f.submit class: "btn btn-default pull-right" %>
+          </div>
+        <% end %>
+        <br>
+        <div class="clearfix"></div>
+      </div>
       <!-- Show Tweets -->
       <% @tweets.each do |tweet| %>
         <%= render partial: "shared/tweet", locals: {tweet: tweet} %>
       <% end %>
     </div>
     <!-- Right -->
-    <div class="col-xl-4 col-lg-4 col-sm-4 col-md-6">
+    <div class="col-xl-4 col-lg-4 col-sm-6 col-md-6">
       <!-- Popular Users -->
       <h1>Popular</h1>
       <% @users.each do |user| %>
