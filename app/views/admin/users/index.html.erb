@@ -17,7 +17,7 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td><%= user.name %></td>
+          <td><%= link_to user.name, tweets_user_path(user) %></td>
           <td><%= user.tweets.count %></td>
           <td><%= user.followings.count %></td>
           <td><%= user.followers_count %></td>

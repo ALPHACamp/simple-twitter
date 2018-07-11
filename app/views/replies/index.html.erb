@@ -2,20 +2,12 @@
 
 <div class= "col-md-8">
   <h4>Tweet</h4>
-    <%= image_tag @tweet.user.avatar, style: 'max-height: 140px', class: "img-responsive img-circle" %>
-    <h5><%= link_to @tweet.user.name, tweets_user_path(@tweet.user) %>, <%= @tweet.created_at %></h5>
-    <p><%= @tweet.description %></p>
-    <h5>
-      <%= link_to tweet_replies_path(@tweet) do %>
-      Reply(<%= @tweet.replies.count %>)
-      <% end %>
-      Like(<%= @tweet.likes_count %>)
-    </h5>
+    <%= render partial: "shared/tweet_format", locals: {profile: @tweet} %>
     <%= render partial: "shared/like_button", locals: {profile: @tweet} %>
     <br/>
     <h4>Reply</h4>
     <% @replies.each do |reply| %>
-      <%= image_tag reply.user.avatar, style: 'max-height: 140px', class: "img-responsive img-circle" %>
+      <%= image_tag reply.user.avatar, size: "140x140", class: "img-responsive img-circle" %>
       <h5><%= link_to reply.user.name, tweets_user_path(reply.user) %>, <%= reply.created_at %></h5>
       <p><%= reply.comment %></p>
     <% end %>

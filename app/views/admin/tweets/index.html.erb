@@ -6,9 +6,7 @@
   <br/>
   <% @tweets.each do |tweet| %>
     <div class="col-md-5 individual-item">
-      <%= image_tag tweet.user.avatar, size: "140x140", class: "img-responsive img-circle" %>
-      <h5><%= link_to tweet.user.name, user_path(tweet.user) %>, <%= tweet.created_at %></h5>
-      <p><%= tweet.description %></p>
+      <%= render partial: "shared/tweet_format", locals: {profile: tweet} %>
       <%= link_to "Delete", admin_tweet_path(tweet), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
       <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#tweet<%=tweet.id %>" aria-expanded="false" aria-controls="tweet<%=tweet.id %>">Click to show reply (<%= tweet.replies_count %>)</button>
       <div class="collapse multi-collapse" id="tweet<%=tweet.id %>">

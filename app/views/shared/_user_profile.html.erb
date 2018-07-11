@@ -1,6 +1,6 @@
 <div class="col-md-4">
   <ul class="list-unstyled">
-    <li><%= image_tag profile.avatar, style: 'max-height: 200px', class: "img-responsive img-circle" %></li>
+    <li><%= image_tag profile.avatar, size: "200x200", class: "img-responsive img-circle" %></li>
     <li><strong><h3><%= link_to profile.name, tweets_user_path(profile) %></h3></strong></li>
     <li><h6><%= profile.introduction %></h6></li>
       <li><h5>

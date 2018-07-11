@@ -3,15 +3,7 @@
 <div class= "col-md-8">
   <h4>Like</h4>
   <% @likes.each do |like| %>
-    <%= image_tag like.user.avatar, style: 'max-height: 140px',  class: "img-responsive img-circle" %>
-    <h5><%= link_to like.user.name, tweets_user_path(like.user) %>, <%= like.created_at %></h5>
-    <p><%= like.description %></p>
-    <h5>
-      <%= link_to tweet_replies_path(like) do %>
-        Reply(<%= like.replies.size %>)
-      <% end %>
-      Like(<%= like.likes_count %>)
-    </h5>
+    <%= render partial: "shared/tweet_format", locals: {profile: like} %>
     <%= render partial: "shared/like_button", locals: {profile: like} %>
   <% end %>
 </div>
