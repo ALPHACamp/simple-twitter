@@ -22,16 +22,15 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings = @user.followings.all.order(created_at: :desc) # 基於測試規格，必須講定變數名稱
+    @followings = @user.followings # 基於測試規格，必須講定變數名稱
   end
 
   def followers
-    @followers = @user.followers.all.order(created_at: :desc) # 基於測試規格，必須講定變數名稱
+    @followers = @user.followers # 基於測試規格，必須講定變數名稱
   end
 
   def likes
     @likes = @user.liked_tweets # 基於測試規格，必須講定變數名稱
-    # @likes = Tweet.joins(:likes).where("likes.user_id = ?", current_user.id).order("likes.created_at DESC")
   end
 
   private
