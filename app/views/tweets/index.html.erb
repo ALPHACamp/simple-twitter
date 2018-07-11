@@ -43,8 +43,15 @@
         <h4>  <%= user.name %></h4>
         <%= user.introduction.truncate_words(10) %>
         </div>
-        <div class="">
-          <%= link_to 'Follow', followships_path(following_id: user.id), method: :post, class: 'btn btn-primary'%>
+        <div class="popularBtn">
+          <% if user != current_user %>
+            <% if current_user.following?(user) %>
+              <%= link_to 'Unfollow', followship_path(user), method: :delete %>
+            <% else %>  
+              <%= link_to 'Follow', followships_path(following_id: user.id), method: :post, class: 'btn btn-primary' %>
+            <% end %> 
+          <% end %>  
+          
         </div>
       </div>
       <% end %>
