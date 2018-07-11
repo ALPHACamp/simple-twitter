@@ -10,9 +10,9 @@ class TweetsController < ApplicationController
     @user = current_user
     @tweet = @user.tweets.build(tweet_params)
     if @tweet.save
-      redirect_to root_path
+      redirect_to tweets_path
     else
-      render :index
+      redirect_to tweets_path
       flash[:alert] = "not able to tweet"
     end
   end
@@ -20,15 +20,22 @@ class TweetsController < ApplicationController
 
   def like
     @tweet = Tweet.find(params[:id])
-    @tweet.likes.create!(user: current_user)
-    redirect_back(fallback_location: root_path)
+    @like = @tweet.likes.create(user: current_user)
+    if @like.save
+      redirect_to tweets_path
+    else
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def unlike
     @tweet = Tweet.find(params[:id])
     likes = Like.where(tweet: @tweet, user: current_user)
-    likes.destroy_all
-    redirect_back(fallback_location: root_path)
+    if likes.destroy_all
+      redirect_to tweets_path
+    else
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   private
