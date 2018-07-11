@@ -37,7 +37,8 @@ namespace :dev do
     User.all.each do |user|
       rand(30).times do |i|
         user.tweets.create(
-          description: FFaker::Lorem::sentence(20)
+          description: FFaker::Lorem::sentence(20),
+          created_at: rand(1000).minutes.ago
         )
       end
     end
@@ -52,7 +53,8 @@ namespace :dev do
       rand(20).times do |i|
         tweet.replies.create(
           comment: FFaker::Lorem::sentence(20),
-          user: User.all.sample
+          user: User.all.sample,
+          created_at: rand(1000).minutes.ago
         )
       end
     end
@@ -71,7 +73,8 @@ namespace :dev do
         # )
         Followship.create(
           user: user,
-          following_id: following.id
+          following_id: following.id,
+          created_at: rand(1000).minutes.ago
         )
       end
     end
@@ -87,7 +90,8 @@ namespace :dev do
       tweet.is_liked?(user)
       rand(User.count).times do |i|
         tweet.likes.create(
-          user: user
+          user: user,
+          created_at: rand(1000).minutes.ago
         )
       end
     end
