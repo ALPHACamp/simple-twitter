@@ -13,9 +13,11 @@
       <!-- Title -->
       <h1>Like</h1>
       <!-- Show Tweets -->
-      <% @likes.each do |like| %>
-        <%= render partial: "shared/tweet", locals: {tweet: like} %>
-      <% end %>
+      <div class="reply-right">
+        <% @likes.each do |like| %>
+          <%= render partial: "shared/tweet", locals: {tweet: like} %>
+        <% end %>
+      </div>
     </div>
   <!-- row end -->
   </div>
