@@ -43,6 +43,9 @@
         <h4>  <%= user.name %></h4>
         <%= user.introduction.truncate_words(10) %>
         </div>
+        <div class="">
+          <%= link_to 'Follow', followships_path(following_id: user.id), method: :post, class: 'btn btn-primary'%>
+        </div>
       </div>
       <% end %>
 
