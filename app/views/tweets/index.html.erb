@@ -1,5 +1,6 @@
 <div class="container">
   <div class="row">
+
     <div class="rootLeft col-md-8"">      
       <%= form_for @tweet do |t| %>
       <div class="tweet-area"> 
@@ -28,9 +29,24 @@
           </div>        
         </div>
         <% end %>
-      </div>  
-      
-
+      </div>   
     </div> <!-- rootLeft  -->
+
+    <div class="rootRight col-md-4">
+      <h2>Popular</h2>
+      <% @users.each do |user| %>
+      <div class="panel panel-default popularPanel clearfix">
+        <div class="popularAvatar align-middle">
+          <%= image_tag user.avatar %>
+        </div>
+        <div class="popularIntroduction ">
+        <h4>  <%= user.name %></h4>
+        <%= user.introduction.truncate_words(10) %>
+        </div>
+      </div>
+      <% end %>
+
+    </div>
+
   </div> <!-- row  -->
 </div> <!-- container -->

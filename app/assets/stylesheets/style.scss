@@ -24,3 +24,21 @@
 .tweetInformation h5 {
   display: inline-block;
 }
+
+.popularAvatar > img {
+  width: 80px;
+  height: 100px;
+  display: inline-block;
+  float: left;
+  border: 50px;
+}
+
+.popularIntroduction {
+  display: inline-block;
+  width: 65%;
+  float: right;
+}
+
+.panel {
+  padding: 20px;
+}
