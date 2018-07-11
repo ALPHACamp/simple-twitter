@@ -5,3 +5,22 @@
 .tweet-btn{
   float: right;
 }
+
+.indexPost{
+  padding: 25px;
+}
+.tweetInformation{
+  width: 85%;
+  height:100px;
+  float: right;
+}
+
+.tweetAvatar > img{
+  width: 80px;
+  height: 100px;
+  float: left;
+}
+
+.tweetInformation h5 {
+  display: inline-block;
+}

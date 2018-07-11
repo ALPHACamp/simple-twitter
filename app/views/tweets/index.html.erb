@@ -1,15 +1,36 @@
 <div class="container">
   <div class="row">
-    <%= form_for @tweet do |t| %>
-    <div class="tweet-area col-md-4"> 
-      <div class="form-group ">
-        <%= t.text_area :description, placeholder: "What's on your mind?", class: "form-control textarea" %>
-      </div>
-      <div class="form-group ">
-        <%= t.submit "Tweet", class: "btn btn-primary tweet-btn" %>
-      </div>
-    </div>   
-    <% end %>
-  </div>
-  
-</div>
+    <div class="rootLeft col-md-8"">      
+      <%= form_for @tweet do |t| %>
+      <div class="tweet-area"> 
+        <div class="form-group ">
+          <%= t.text_area :description, placeholder: "What's on your mind?", class: "form-control textarea" %>
+        </div>
+       <div class="form-group clearfix">
+          <%= t.submit "Tweet", class: "btn btn-primary tweet-btn" %>
+       </div>
+      </div>   
+      <% end %>
+    
+      <div>      
+       <% @index_post.each do |p| %>
+        <div class="panel panel-default indexPost clearfix">
+          <div class="tweetAvatar">
+            <%= image_tag p.user.avatar %>
+          </div>  
+          <div class="tweetInformation">
+            <%= p.user.name %>,
+            <%= p.created_at.strftime(" %Y-%m-%d, %R") %> <br>
+            <%= p.description %>  
+            <br>
+            <h5><%= link_to "Reply( #{Reply.count} )", replies_tweet_path(p.user_id) %> </h5>
+            <h5> like(<%= p.likes_count %>)</h5>  
+          </div>        
+        </div>
+        <% end %>
+      </div>  
+      
+
+    </div> <!-- rootLeft  -->
+  </div> <!-- row  -->
+</div> <!-- container -->
