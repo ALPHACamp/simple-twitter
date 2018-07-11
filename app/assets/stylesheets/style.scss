@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+.tweet-top {
+  border-color: darkgray;
+  border-style: solid;
+  border-width: 2px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.tweet-avatar {
+  display: inline-block;
+  width: 30%;
+}
+
+.tweet-texts {
+  display: inline-block;
+  width: 68%;
+}
+
+.tweet-reply {
+  display: inline-block;
+  color: blue;
+}
+.tweet-like {
+  display: inline-block;
+  color: red;
+}
