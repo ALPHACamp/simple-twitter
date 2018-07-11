@@ -8,7 +8,7 @@
   <!-- Right -->
   <div class="tweet-item tweet-texts">
     <!-- @username, create time -->
-    <h4><%= link_to "@#{tweet.user.name}", tweets_user_path(tweet.user) %>, <%= tweet.created_at %></h4>
+    <h4><%= link_to "@#{tweet.user.name}", tweets_user_path(tweet.user) %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></h4>
     <!-- tweets description -->
     <p><%= tweet.description%></p>
     <!-- Number of replies & likes -->
