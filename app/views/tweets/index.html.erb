@@ -23,7 +23,7 @@
             <%= p.created_at.strftime(" %Y-%m-%d, %R") %> <br>
             <%= p.description %>  
             <br>
-            <h5><%= link_to "Reply( #{Reply.count} )", replies_tweet_path(p.user_id) %> </h5>
+            <h5><%= link_to "Reply( #{p.replies.count} )", replies_tweet_path(p.user_id) %> </h5>
             <h5> like(<%= p.likes_count %>)</h5>  
           </div>        
         </div>
