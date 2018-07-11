@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_owner, only: [:update]
+  before_action :authenticate_owner, only: [:edit, :update]
   before_action :authenticate_user!
 
   def tweets
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     unless current_user == @user
       flash[:alert] = "Not allow!"
-      redirect_to admin_root_path
+      redirect_to tweets_user_path(@user)
     end
   end
 
