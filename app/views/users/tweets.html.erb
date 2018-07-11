@@ -5,5 +5,11 @@
     <%= image_tag tweet.user.avatar, style: 'max-height: 140px', class: "img-responsive img-circle" %>
     <h5><%= link_to tweet.user.name, tweets_user_path(tweet.user) %>, <%= tweet.created_at %></h5>
     <p><%= tweet.description %></p>
+    <h5>
+      <%= link_to tweet_replies_path(tweet) do %>
+        Reply(<%= tweet.replies.size %>)
+      <% end %>
+      Like(<%= tweet.likes_count %>)
+    </h5>
   <% end %>
 </div>
