@@ -1,6 +1,7 @@
 <%= render partial: "shared/user_profile", locals: {profile: @user} %>
 
 <div class= "col-md-8">
+  <h4>Like</h4>
   <% @likes.each do |like| %>
     <%= image_tag like.user.avatar, style: 'max-height: 140px',  class: "img-responsive img-circle" %>
     <h5><%= link_to like.user.name, tweets_user_path(like.user) %>, <%= like.created_at %></h5>
