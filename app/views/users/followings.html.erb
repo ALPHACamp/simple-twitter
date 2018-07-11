@@ -5,16 +5,18 @@
   <div class="row">
   <!-- row start -->
     <!-- Left -->
-    <div class="col-xl-4 col-lg-4 col-sm-4 col-md-6">
+    <div class="col-xl-4 col-lg-4 col-sm-6 col-md-6">
       <%= render partial: "shared/user_detail", locals: {user: @user} %>
     </div>
     <!-- Right -->
-    <div class="col-xl-8 col-lg-8 col-sm-8 col-md-6">
+    <div class="col-xl-8 col-lg-8 col-sm-6 col-md-6">
       <!-- Title -->
-      <h1>Like</h1>
+      <h1>Followings</h1>
       <!-- Show Tweets -->
       <% @followings.each do |following| %>
-        <%= render partial: "shared/user_card", locals: {user: following} %>
+        <div class="col-xl-6 col-lg-6 col-sm-12 col-md-12">
+          <%= render partial: "shared/user_card", locals: {user: following} %>
+        </div>
       <% end %>
     </div>
   <!-- row end -->
