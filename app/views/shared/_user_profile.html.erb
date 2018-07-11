@@ -3,7 +3,6 @@
     <li><%= image_tag profile.avatar, style: 'max-height: 200px', class: "img-responsive img-circle" %></li>
     <li><strong><h3><%= link_to profile.name, tweets_user_path(profile) %></h3></strong></li>
     <li><h6><%= profile.introduction %></h6></li>
-    <% if profile == current_user %>
       <li><h5>
         <%= link_to tweets_user_path(profile) do %>
           Tweet <%= profile.tweets.count %>
@@ -19,11 +18,11 @@
           Follower <%= profile.followers_count %>
         <% end %>
       </h5></li>
-    <% else %>
-      <li><h5>Tweet <%= profile.tweets.count %></h5></li>
-      <li><h5>Following <%= profile.followings.count %></h5></li>
-      <li><h5>Follower <%= profile.followers_count %></h5></li>
-    <% end %>
+      <li><h5>
+        <%= link_to likes_user_path(profile) do %>
+          Like <%= profile.likes_count %>
+        <% end %>
+      </h5></li>
   </ul>
   <% if current_user == profile %>
     <%= link_to "Edit Profile", edit_user_path(profile), class: "btn btn-primary" %>
