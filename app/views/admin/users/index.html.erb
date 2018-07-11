@@ -4,9 +4,26 @@
     <li role="presentation" class="active"><%= link_to "Users", admin_users_path %></li>
   </ul>
   <br/>
-  <% @users.each do |user| %>
-    <div class="col-md-6">
-      <h5><%= link_to user.name, user_path(user) %>, Tweets: <%= user.tweets.count %></h5>
-    </div>
-  <% end %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Tweet Count</th>
+        <th>Following Count</th>
+        <th>Follower Count</th>
+        <th>Like Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.tweets.count %></td>
+          <td><%= user.followings.count %></td>
+          <td><%= user.followers_count %></td>
+          <td><%= user.likes_count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
