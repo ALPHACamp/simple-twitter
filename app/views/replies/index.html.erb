@@ -10,21 +10,29 @@
     </div>
     <!-- Right -->
     <div class="col-xl-8 col-lg-8 col-sm-8 col-md-6">
-      <!-- Show Tweets -->
-      <%= render partial: "tweet", locals: {tweet: @tweet} %>
-      <!-- Show Replies -->
-      <% @replies.each do |reply| %>
-        <%= render partial: "reply", locals: {reply: reply} %>
-      <% end %>
-      <!-- Create Reply -->
-      <%= form_for [@tweet, @reply] do |f| %>
-        <div class="form-group">
-          <%= f.text_area :comment, placeholder: "Reply Here", class: "form-control" %>
-        </div>
-        <div>
-          <%= f.submit class: "btn btn-default" %>
-        </div>
-      <% end %>
+      <h2>Tweets</h2>
+      <div class="reply-right">
+        <!-- Show Tweets -->
+        <%= render partial: "shared/tweet", locals: {tweet: @tweet} %>
+      </div>
+      <h2>Replies</h2>
+      <div class="reply-right">
+        <!-- Show Replies -->
+        <% @replies.each do |reply| %>
+          <%= render partial: "reply", locals: {reply: reply} %>
+        <% end %>
+      </div>
+      <div class="reply-right">
+        <!-- Create Reply -->
+        <%= form_for [@tweet, @reply] do |f| %>
+          <div class="form-group">
+            <%= f.text_area :comment, placeholder: "Reply Here", rows: "8", class: "form-control" %>
+          </div>
+          <div>
+            <%= f.submit class: "btn btn-default pull-right" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   <!-- row end -->
   </div>
