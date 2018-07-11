@@ -10,7 +10,7 @@
       <div class="create-tweet">
         <%= form_for @tweet do |f| %>
           <div class="form-group">
-            <%= f.text_area :description, placeholder: "Tweet Here", class: "form-control" %>
+            <%= f.text_area :description, placeholder: "Tweet Here", rows: "8", class: "form-control" %>
           </div>
           <div>
             <%= f.submit class: "btn btn-default pull-right" %>
