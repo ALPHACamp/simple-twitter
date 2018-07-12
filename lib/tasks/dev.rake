@@ -54,7 +54,7 @@ namespace :dev do
         tweet.replies.create(
           comment: FFaker::Lorem::sentence(20),
           user: User.all.sample,
-          created_at: rand(1000).minutes.ago
+          created_at: tweet.created_at + rand(1000).minutes
         )
       end
     end
@@ -91,7 +91,7 @@ namespace :dev do
         if !tweet.is_liked?(user)        
           tweet.likes.create(
             user: user,
-            created_at: rand(1000).minutes.ago
+            created_at: Tweet.created_at + rand(1000).minutes
           )
         end
       end
