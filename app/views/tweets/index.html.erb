@@ -1,0 +1,34 @@
+
+<div class="container">
+  <div class="row"><br></div>
+  <div class="row">
+    <!-- Left -->
+    <div class="col-xl-8 col-lg-8 col-sm-6 col-md-6">
+      <!-- Create Tweet -->
+      <div class="create-tweet">
+        <%= form_for @tweet do |f| %>
+          <div class="form-group">
+            <%= f.text_area :description, placeholder: "Tweet Here", rows: "8", class: "form-control" %>
+          </div>
+          <div>
+            <%= f.submit class: "btn btn-default pull-right" %>
+          </div>
+        <% end %>
+        <br>
+        <div class="clearfix"></div>
+      </div>
+      <!-- Show Tweets -->
+      <% @tweets.each do |tweet| %>
+        <%= render partial: "shared/tweet", locals: {tweet: tweet} %>
+      <% end %>
+    </div>
+    <!-- Right -->
+    <div class="col-xl-4 col-lg-4 col-sm-6 col-md-6">
+      <!-- Popular Users -->
+      <h1>Popular</h1>
+      <% @users.each do |user| %>
+        <%= render partial: "shared/user_card", locals: {user: user} %>
+      <% end %>
+    </div>
+  </div>
+</div>

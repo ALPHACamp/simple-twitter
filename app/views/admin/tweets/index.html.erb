@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <nav class="nav nav-tabs">
+      <li role="presentation" class="active">
+        <%= link_to "All Tweets", admin_tweets_path %>
+      </li>
+      <li role="presentation">
+        <%= link_to "All Users", admin_users_path %>
+      </li>
+    </nav>
+  </div>
+  <div class="row"><br></div>
+  <div class="row">
+    <table class="table table-hover table-condensed">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>User</th>
+          <th>Tweet</th>
+          <th>Created at</th>
+          <th data-toggle="collapse" >Replies #</th>
+          <th>Likes #</th>
+          <th>#</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tweets.each do |tweet| %>
+          <tr>
+            <th scope="row" data-toggle="collapse" aria-expanded="false" aria-controls="collapse#{tweet.id}"><%= tweet.id %></th>
+            <td><%= link_to "#{tweet.user.name}", tweets_user_path(tweet.user) %></td>
+            <td><%= link_to "#{truncate(tweet.description, length: 70)}", tweet_replies_path(tweet) %></td>
+            <td><%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></td>
+            <td><%= tweet.replies_count %></td>
+            <td><%= tweet.likes_count %></td>
+            <td><%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %></td>
+          </tr>
+          <div class="collapse" id="collapse#{tweet.id}">
+            <div class="card card-body">
+              <% tweet.replies.each do |reply| %>
+                <tr>
+                  <td></td>
+                  <th><%= reply.user.name %></th>
+                  <td colspan="5"><%= reply.comment %></td>
+                </tr>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </tbody>
+    </table>  
+  </div>
+</div>

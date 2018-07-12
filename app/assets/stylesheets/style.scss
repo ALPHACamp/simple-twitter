@@ -1,0 +1,75 @@
+* {
+  box-sizing: border-box;
+}
+
+// Style for create-tweet
+.create-tweet {
+  padding: 5% 1% 5% 1%
+}
+// Styles for tweets
+.tweet-top {
+  border-color: darkgray;
+  border-style: solid;
+  border-width: 2px;
+  padding: 1%;
+  margin-bottom: 10px;
+}
+
+.tweet-avatar {
+  display: inline-block;
+  padding-right: 1%;
+  width: 20%;
+}
+
+.tweet-texts {
+  display: inline-block;
+  padding-right: 1%;
+  width: 78%;
+}
+
+.tweet-reply {
+  display: inline-block;
+  color: blue;
+}
+.tweet-like {
+  display: inline-block;
+  color: red;
+}
+
+// Styles for user card
+.user-card-top {
+  border-color: darkgray;
+  border-style: solid;
+  border-width: 2px;
+  padding: 3%;
+  margin-bottom: 10px;
+}
+.user-card-avatar {
+  display: inline-block;
+  width: 30%;
+  align-items: center;
+  padding-bottom: 0px;
+}
+.user-card-texts {
+  display: inline-block;
+  width: 68%;
+}
+
+//Styles fpr user info
+.user-info-avatar img {
+  align-items: center;
+}
+
+// Styles for reply
+.reply-right {
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+// Styles for user edit
+.user-edit-left {
+  text-align: center;
+}
+.user-edit-avatar {
+  padding: 5%
+}

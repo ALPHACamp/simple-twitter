@@ -1,0 +1,17 @@
+<div class="user-card-top">
+  <!-- Left -->
+  <div class="user-card-avatar">
+    <%= image_tag user.avatar.url, size: "100x100", class: "img-responsive align-top" %>
+  </div>
+  <!-- Right -->
+  <div class="user-card-texts">
+    <!-- @username -->
+    <div class="user-card-name">
+      <h4><%= link_to "#{user.name}", tweets_user_path(user) %></h4>
+    </div>
+    <!-- user introduction -->
+    <p><%= truncate(user.introduction, length: 80) %></p>
+    <!-- Follow/Unfollow Button -->
+    <%= render partial: "shared/follow", locals: {user: user} %>
+  </div>
+</div>

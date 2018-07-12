@@ -1,0 +1,31 @@
+<div class="user-info-top">
+  <div class="user-item user-info-avatar">
+    <%= image_tag @user.avatar.url, size: "300x300", class: "img-responsive" %>
+  </div>
+  <div class="user-item user-texts">
+    <!-- @username -->
+    <%= link_to(tweets_user_path(user)) do %>
+      <h2><%= user.name %></h2>
+    <% end %>
+    <!-- user introduction -->
+    <p><%= @user.introduction%></p>
+    <!-- Number of tweets -->
+    <%= link_to(tweets_user_path(user)) do %>
+      <h3>Tweets <%= @user.tweets.count %></h3>
+    <% end %>
+    <!-- Number of following -->
+    <%= link_to(followings_user_path(user)) do %>
+      <h3>Following <%= @user.followings.count %></h3>
+    <% end %>
+    <!-- Number of follower -->
+    <%= link_to(followers_user_path(user)) do %>
+      <h3>Follower <%= @user.followers_count %></h3>
+    <% end %>
+    <!-- Number of likes -->
+    <%= link_to(likes_user_path(user)) do %>
+      <h3>likes <%= @user.likes_count %></h3>
+    <% end %>
+    <!-- Follow/Unfollow Button -->
+    <%= render partial: "shared/follow", locals: {user: @user} %>
+  </div>
+</div>

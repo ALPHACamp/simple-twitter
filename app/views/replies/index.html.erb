@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row"><br></div>
+  <div class="row">
+  <!-- row start -->
+    <!-- Left -->
+    <div class="col-xl-4 col-lg-4 col-sm-4 col-md-6">
+      <%= render partial: "shared/user_detail", locals: {user: @user} %>
+    </div>
+    <!-- Right -->
+    <div class="col-xl-8 col-lg-8 col-sm-8 col-md-6">
+      <h2>Tweets</h2>
+      <div class="reply-right">
+        <!-- Show Tweets -->
+        <%= render partial: "shared/tweet", locals: {tweet: @tweet} %>
+      </div>
+      <h2>Replies</h2>
+      <div class="reply-right">
+        <!-- Show Replies -->
+        <% @replies.each do |reply| %>
+          <%= render partial: "reply", locals: {reply: reply} %>
+        <% end %>
+      </div>
+      <div class="reply-right">
+        <!-- Create Reply -->
+        <%= form_for [@tweet, @reply] do |f| %>
+          <div class="form-group">
+            <%= f.text_area :comment, placeholder: "Reply Here", rows: "8", class: "form-control" %>
+          </div>
+          <div>
+            <%= f.submit class: "btn btn-default pull-right" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <!-- row end -->
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="tweet-top">
+  <!-- Left -->
+  <div class="tweet-avatar">
+    <%= image_tag reply.user.avatar.url, size: "150x150", class: "img-responsive" %>
+  </div>
+  <!-- Right -->
+  <div class="tweet-texts">
+    <!-- @username, create time -->
+    <h4><%= link_to "@#{reply.user.name}", tweets_user_path(reply.user) %>, <%= reply.created_at.strftime("%Y-%m-%d, %H:%M") %></h4>
+    <!-- reply description -->
+    <p><%= reply.comment%></p>
+  </div>
+</div>

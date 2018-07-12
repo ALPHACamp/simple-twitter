@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row"><br></div>
+  <div class="row">
+  <!-- row start -->
+    <!-- Left -->
+    <div class="col-xl-4 col-lg-4 col-sm-6 col-md-6">
+      <%= render partial: "shared/user_detail", locals: {user: @user} %>
+    </div>
+    <!-- Right -->
+    <div class="col-xl-8 col-lg-8 col-sm-6 col-md-6">
+      <!-- Title -->
+      <h1>Follower</h1>
+      <!-- Follower Tweets -->
+      <% @followers.each do |follower| %>
+        <div class="col-xl-6 col-lg-6 col-sm-12 col-md-12">
+          <%= render partial: "shared/user_card", locals: {user: follower} %>
+        </div>
+      <% end %>
+    </div>
+  <!-- row end -->
+  </div>
+</div>
