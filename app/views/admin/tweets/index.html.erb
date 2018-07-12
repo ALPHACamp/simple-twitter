@@ -1,1 +1,10 @@
 <h1>後台</h1>
+<ul>
+  <% @tweets.each do |tweets| %>
+  <li>
+    <%= tweets.user_id %>
+    <%= tweets.description %>
+    <%= link_to 'Delete', admin_tweets_path(tweets), method: :delete, data: {confirm:"Are you sure?"} %>
+  </li>
+  <% end %>
+</ul>
