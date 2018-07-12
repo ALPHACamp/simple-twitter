@@ -10,8 +10,9 @@
   <% end %>
   <br/>
   <% @tweets.each do |tweet| %>
-    <%= render partial: "shared/tweet_format", locals: {profile: tweet} %>
-    <%= render partial: "shared/like_button", locals: {profile: tweet} %>
+    <div class="individual-item">
+      <%= render partial: "shared/tweet_format", locals: {profile: tweet} %>
+    </div>
   <% end %>
 </div>
 

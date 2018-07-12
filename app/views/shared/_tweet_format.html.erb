@@ -7,3 +7,8 @@
   <% end %>
   Like(<%= profile.likes_count %>)
 </h5>
+<% if current_user.liked_tweets?(profile) %>
+  <%= link_to 'Unlike', unlike_tweet_path(profile), method: :post, class: "btn btn-warning" %>
+<% else %>
+  <%= link_to 'Like', like_tweet_path(profile), method: :post, class: "btn btn-success" %>
+<% end %>

@@ -4,6 +4,5 @@
   <h4>Like</h4>
   <% @likes.each do |like| %>
     <%= render partial: "shared/tweet_format", locals: {profile: like} %>
-    <%= render partial: "shared/like_button", locals: {profile: like} %>
   <% end %>
 </div>
