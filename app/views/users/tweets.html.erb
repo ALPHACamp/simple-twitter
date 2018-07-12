@@ -2,8 +2,6 @@
 
 <div class="col-md-8">
   <% @tweeted_tweets.each do |tweet| %>
-    <div class="individual-item">
-      <%= render partial: "shared/tweet_format", locals: {profile: tweet} %>
-    </div>
+    <%= render partial: "shared/tweet_format", locals: {profile: tweet} %>
   <% end %>
 </div>

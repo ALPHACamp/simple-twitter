@@ -10,18 +10,18 @@
   <% end %>
   <br/>
   <% @tweets.each do |tweet| %>
-    <div class="individual-item">
-      <%= render partial: "shared/tweet_format", locals: {profile: tweet} %>
-    </div>
+    <%= render partial: "shared/tweet_format", locals: {profile: tweet} %>
   <% end %>
 </div>
 
 <div class="col-md-4">
   <h4>Popular</h4>
   <% @users.each do |user| %>
-    <%= image_tag user.avatar, style: 'max-height: 140px', class: "img-responsive img-circle" %>
-    <h5><%= link_to user.name, tweets_user_path(user) %></h5>
-    <p><%= user.introduction %></p>
-    <%= render partial: "shared/follow_button", locals: {profile: user} %>
+    <div class="individual-item">
+      <%= image_tag user.avatar, style: 'max-height: 140px', class: "img-responsive img-circle" %>
+      <h5><%= link_to user.name, tweets_user_path(user) %></h5>
+      <p><%= user.introduction %></p>
+      <%= render partial: "shared/follow_button", locals: {profile: user} %>
+    </div>
   <% end %>
 </div>

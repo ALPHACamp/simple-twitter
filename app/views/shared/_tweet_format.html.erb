@@ -1,14 +1,18 @@
-<%= image_tag profile.user.avatar, size: "140x140", class: "img-responsive img-circle" %>
-<h5><%= link_to profile.user.name, tweets_user_path(profile.user) %>, <%= profile.created_at %></h5>
-<p><%= profile.description %></p>
-<h5>
-  <%= link_to tweet_replies_path(profile) do %>
-    Reply(<%= profile.replies.size %>)
-  <% end %>
-  Like(<%= profile.likes_count %>)
-</h5>
-<% if current_user.liked_tweets?(profile) %>
-  <%= link_to 'Unlike', unlike_tweet_path(profile), method: :post, class: "btn btn-warning" %>
-<% else %>
-  <%= link_to 'Like', like_tweet_path(profile), method: :post, class: "btn btn-success" %>
-<% end %>
+<div class="individual-item">
+  <%= image_tag profile.user.avatar, class: "img-responsive img-circle" %>
+  <div class="content">
+    <h5><%= link_to profile.user.name, tweets_user_path(profile.user) %>, <%= profile.created_at %></h5>
+    <p><%= profile.description %></p>
+    <h5>
+      <%= link_to tweet_replies_path(profile) do %>
+        Reply(<%= profile.replies.size %>)
+      <% end %>
+      Like(<%= profile.likes_count %>)
+    </h5>
+    <% if current_user.liked_tweets?(profile) %>
+      <%= link_to 'Unlike', unlike_tweet_path(profile), method: :post, class: "btn btn-warning" %>
+    <% else %>
+      <%= link_to 'Like', like_tweet_path(profile), method: :post, class: "btn btn-success" %>
+    <% end %>
+  </div>
+</div>

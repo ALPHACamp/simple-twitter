@@ -1,12 +1,16 @@
 .individual-item {
-  border: 1px solid #ddd;
   border-radius: 4px;
   padding: 4px;
   margin: 10px;
+  clear: both;
 }
 
 .individual-item img{
   float: left;
-  max-height: 140px;
-  width: 30%;
+  max-width: 140px;
+  padding: 4px;
+}
+
+.individual-item .content{
+  float: left;
 }
