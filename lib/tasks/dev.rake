@@ -86,13 +86,14 @@ namespace :dev do
     Like.destroy_all
 
     Tweet.all.each do |tweet|
-      user = User.all.sample
-      tweet.is_liked?(user)
       rand(User.count).times do |i|
-        tweet.likes.create(
-          user: user,
-          created_at: rand(1000).minutes.ago
-        )
+        user = User.all.sample
+        if !tweet.is_liked?(user)        
+          tweet.likes.create(
+            user: user,
+            created_at: rand(1000).minutes.ago
+          )
+        end
       end
     end
     puts "have created fake likes"
