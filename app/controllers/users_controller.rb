@@ -25,17 +25,26 @@ class UsersController < ApplicationController
 
   def followings
     @user = User.find(params[:id])
-    @followings = @user.followings # 基於測試規格，必須講定變數名稱
+    @followings = [] # 基於測試規格，必須講定變數名稱
+    @user.followships.order(created_at: :desc).map {|ele| ele.following_id}.each do |id|
+      @followings << User.find(id) # 基於測試規格，必須講定變數名稱
+    end
   end
 
   def followers
     @user = User.find(params[:id])
-    @followers = @user.followers # 基於測試規格，必須講定變數名稱
+    @followers = [] # 基於測試規格，必須講定變數名稱
+    @user.inverse_followships.order(created_at: :desc).map {|ele| ele.user_id}.each do |id|
+      @followers << User.find(id)
+    end
   end
 
   def likes
     @user = User.find(params[:id])
-    @likes = @user.like_tweets.all.order(created_at: :desc) # 基於測試規格，必須講定變數名稱
+    @likes = []
+    @user.likes.order(created_at: :desc).map {|ele| ele.tweet_id}.each do |id|
+     @likes << Tweet.find(id)
+    end
   end
 
   private
@@ -45,4 +54,4 @@ class UsersController < ApplicationController
   end
 
 
-end
+  end
