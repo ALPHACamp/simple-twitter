@@ -4,7 +4,7 @@
       <div class='col-md-3'>
         <%= image_tag @user.avatar, class: "img-responsive center-block show-img" %>
         <%= f.label :avatar, "大頭照" %>
-        <%= avatar_tag @user.avata, size: "100" if @user.avatar? %>
+        <%= image_tag @user.avatar, size: "100" if @user.avatar? %>
         <%= f.file_field :avatar %>
       </div>
       <div class='col-md-9'>
