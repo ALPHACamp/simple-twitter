@@ -1,7 +1,9 @@
 <% users.each do |user| %>
   <div class="col-md-12 border">
+  <br>
     <div class="col-md-3">
-      <%= image_tag user.avatar, class: "img-responsive center-block"%>
+      <%= image_tag user.avatar, size: "100", class: "img-responsive center-block"%>
+      <br>
     </div>
     <div class="col-md-9">
       <%= link_to user.name, tweets_user_path(user) %>
