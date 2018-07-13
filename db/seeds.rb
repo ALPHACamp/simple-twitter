@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Tweet.destroy_all
+
+100.times do |i|
+  Tweet.create!( description: FFaker::Lorem.phrase)
+end
+puts "Tweet created!"
