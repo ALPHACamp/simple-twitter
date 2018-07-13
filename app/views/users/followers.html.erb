@@ -15,7 +15,7 @@
             <div class='col-md-9'>
               <%= link_to follower.name, tweets_user_path(follower) %>
               <br>
-              <%= follower.introduction %>
+              <<%= truncate(follower.introduction, length: 100) %>
               <br>
               <%= render partial: "shared/follow", locals: {user: follower} %>
             </div>

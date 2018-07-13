@@ -7,17 +7,15 @@
     </div>
       <div class="col-md-9">
       <h2>Tweets</h2>
-      <div class="col-md-12 border">
-        <%= link_to @tweet.user.name, tweets_user_path(@tweet.user.id) %>
-        <br>
-        <%= @tweet.description %>
-        <br>
-        <%= render 'shared/reply_like', tweet: @tweet %>
-      </div>
+      <%= render 'shared/tweets', tweets: [@tweet]%>
       
       <h2>Replying....</h2>
       <% @replies.each do |reply| %>
         <div class="col-md-12 border">
+          <div class="col-md-3">
+            <%= image_tag reply.user.avatar,size: "100", class: "img-responsive center-block show-img" %>
+            <br>
+          </div>
           <%= link_to reply.user.name, tweets_user_path(reply.user) %>,
           <%= reply.created_at %>
           <br>

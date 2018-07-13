@@ -3,10 +3,9 @@
     <div class="col-md-8">
       <%= form_for(@tweet) do |f| %>
         <div class="form-group">
-          <%= f.text_area :description, placeholder: "Tweet something...", class: 'form-control' %>
+          <%= f.text_area :description, placeholder: "Compose new tweet...", class: 'form-control' %>
         </div>
-      
-      
+
         <div class="form-group">
           <%= f.submit "Tweet", class: "btn btn-primary" %>
         </div>
@@ -17,15 +16,7 @@
 
     <div class="col-md-4">
       <h1>Popular</h1>
-      <% @users.each do |user| %>
-        <div class="col-md-12 border">
-          <%= link_to user.name, tweets_user_path(user) %>
-          <br>
-          <%= user.introduction %>
-          <br>
-          <%= render partial: "shared/follow", locals: {user: user} %>
-        </div>
-      <%end%>
+      <%= render 'shared/user_info', users: @users %>
     </div>
   </div>
 </div>
