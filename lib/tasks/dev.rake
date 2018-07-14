@@ -20,4 +20,64 @@ namespace :dev do
     end
   end
 
+
+  task fake_tweet: :environment do
+    User.all.each do |user|
+      2.times do |i|
+        user.tweets.create!(
+          description: FFaker::Lorem.sentence,
+          user: User.all.sample
+        )
+        #user.tweets_count=user.tweets.count
+        user.save
+      end
+    end
+    puts "have created fake tweets"
+    puts "now you have #{Tweet.count} tweet data"
+  end
+
+  task fake_reply: :environment do
+    Tweet.all.each do |tweet|
+      2.times do |i|
+        tweet.replies.create!(
+          comment: FFaker::Lorem.sentence,
+          user: User.all.sample
+        )
+      end
+    end
+    puts "have created fake replies"
+    puts "now you have #{Reply.count} reply data"
+  end
+
+  task fake_like: :environment do
+    Tweet.all.each do |tweet|
+      2.times do |i|
+        tweet.likes.create!(
+          user: User.all.sample
+        )
+      end
+    end
+    puts "have created fake likes"
+    puts "now you have #{Like.count} like data"
+  end 
+
+  task fake_follow: :environment do
+    20.times do |i|
+      fler=User.all.sample
+      fling=User.all.sample
+      Followship.create(user_id:fler.id, following_id:fling.id)
+    end
+    puts "have created fake followships"
+    puts "now you have #{Followship.count} followship data"
+  end
+
+  task counter: :environment do
+    User.all.each do |user|
+        #fuser.tweets_count=user.tweets.count
+        user.followers_count=user.followers.count
+        user.save
+    end
+    puts "have counted tweets and followers"
+  end
+
 end
