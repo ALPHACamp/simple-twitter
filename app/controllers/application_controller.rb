@@ -8,7 +8,16 @@ class ApplicationController < ActionController::Base
   # 注意有 sign_up 和 account_update 兩種參數要處理
   protected
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
-  end
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    end
+
+  private
+
+    def authenticate_admin
+      unless current_user.admin?
+        flash[:alert] = "Not allow!"
+        redirect_to root_path
+      end 
+    end
 end
