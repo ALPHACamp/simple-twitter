@@ -3,7 +3,7 @@
 <div class="col-md-8">
   <h4>Follower</h4>
   <% @followers.each do |follower| %>
-    <%= image_tag follower.avatar, style: 'max-height: 140px', class: "img-responsive img-circle" %>
+    <%= render partial: "shared/image_tag", locals: {profile: follower} %>
     <h5><%= link_to follower.name, followers_user_path(follower) %></h5>
     <p><%= follower.introduction %></p>
     <% if current_user.following?(follower) %>

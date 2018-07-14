@@ -18,11 +18,7 @@
   <h4>Popular</h4>
   <% @users.each do |user| %>
     <div class="individual-item">
-      <% if image_path(user.avatar).include?('/user'+user.id.to_s+'.jpg') %> 
-        <%= image_tag('/avatar/user'+user.id.to_s+'.jpg', style: 'max-height: 140px', class: "img-responsive img-circle") %>
-      <% else %> 
-        <%= image_tag user.avatar, style: 'max-height: 140px', class: "img-responsive img-circle" %>
-      <% end %>
+      <%= render partial: "shared/image_tag", locals: {profile: user} %>
       <h5><%= link_to user.name, tweets_user_path(user) %></h5>
       <p><%= user.introduction %></p>
       <%= render partial: "shared/follow_button", locals: {profile: user} %>

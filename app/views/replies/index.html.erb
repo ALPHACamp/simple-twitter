@@ -6,7 +6,7 @@
     <br/>
     <h4>Reply</h4>
     <% @replies.each do |reply| %>
-      <%= image_tag reply.user.avatar, size: "140x140", class: "img-responsive img-circle" %>
+      <%= render partial: "shared/image_tag", locals: {profile: reply.user} %>
       <h5><%= link_to reply.user.name, tweets_user_path(reply.user) %>, <%= reply.created_at %></h5>
       <p><%= reply.comment %></p>
     <% end %>
