@@ -1,10 +1,8 @@
 <div class="individual-item">
-  <% for img_id in 0..20 %>
-    <% if image_path(profile.user.avatar).include?('/'+img_id.to_s+'.jpg') %> 
-      <%= image_tag('/avatar/'+img_id.to_s+'.jpg', class: "img-responsive img-circle") %>
-    <% else %> 
-      <%= image_tag profile.user.avatar, class: "img-responsive img-circle" %>
-    <% end %>
+  <% if image_path(profile.user.avatar).include?('/user'+profile.user_id.to_s+'.jpg') %> 
+    <%= image_tag('/avatar/user'+profile.user_id.to_s+'.jpg', class: "img-responsive img-circle") %>
+  <% else %> 
+    <%= image_tag profile.user.avatar, class: "img-responsive img-circle" %>
   <% end %>
   <div class="content">
     <h5><%= link_to profile.user.name, tweets_user_path(profile.user) %>, <%= profile.created_at %></h5>
