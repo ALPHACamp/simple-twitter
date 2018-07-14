@@ -73,7 +73,7 @@ namespace :dev do
 
   task counter: :environment do
     User.all.each do |user|
-        #user.tweets_count=user.tweets.count
+        #fuser.tweets_count=user.tweets.count
         user.followers_count=user.followers.count
         user.save
     end

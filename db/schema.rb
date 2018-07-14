@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20180215073312) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["tweet_id", "user_id"], name: "index_replies_on_tweet_id_and_user_id"
+    t.index ["tweet_id", "user_id"]exit, name: "index_replies_on_tweet_id_and_user_id"
   end
 
   create_table "tweets", force: :cascade do |t|
