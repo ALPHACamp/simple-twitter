@@ -1,6 +1,12 @@
 <div class="col-md-4">
   <ul class="list-unstyled">
-    <li><%= image_tag profile.avatar, size: "200x200", class: "img-responsive img-circle" %></li>
+    <li>
+      <% if image_path(profile.avatar).include?('/user'+profile.id.to_s+'.jpg') %> 
+        <%= image_tag('/avatar/user'+profile.id.to_s+'.jpg', size: "200x200", class: "img-responsive img-circle") %>
+      <% else %> 
+        <%= image_tag profile.avatar, size: "200x200", class: "img-responsive img-circle" %>
+      <% end %>
+    </li>
     <li><strong><h3><%= link_to profile.name, tweets_user_path(profile) %></h3></strong></li>
     <li><h6><%= profile.introduction %></h6></li>
       <li><h5>

@@ -3,7 +3,7 @@
 <div class="col-md-8">
   <h4>Following</h4>
   <% @followings.each do |following| %>
-    <%= image_tag following.avatar, style: 'max-height: 140px', class: "img-responsive img-circle" %>
+    <%= image_tag following.avatar, size: "140x140" , class: "img-responsive img-circle" %>
     <h5><%= link_to following.name, followings_user_path(following) %></h5>
     <p><%= following.introduction %></p>
     <%= link_to 'Unfollow', followship_path(following), method: :delete, class: "btn btn-warning" %>
