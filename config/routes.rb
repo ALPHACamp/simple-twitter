@@ -2,10 +2,13 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users
 
-  # 首頁導向tweets首頁
-  root :to => 'tweets#index'
-
   # 請依照專案指定規格來設定路由
+  root "tweets#index"
   resources :tweets, only: [:index, :create]
+
+  # 透過 namespace 建立後台的路由
+  namespace :admin do
+    root "tweets#index"
+  end
 
 end
