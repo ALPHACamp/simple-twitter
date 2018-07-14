@@ -3,7 +3,7 @@ class Admin::UsersController < Admin::BaseController
 
   def index
     
-    @users = User.page(params[:page]).per(9)
+    @users = User.includes(:tweets).page(params[:page]).per(9)
 
   end
 

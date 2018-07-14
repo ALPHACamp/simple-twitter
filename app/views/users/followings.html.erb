@@ -34,19 +34,19 @@
           <div class="col-md-6">
             <div class="row po-item">
               <div class="col-md-4">
-                <%= image_tag User.find(following.following_id).avatar, class: "img-responsive center-block" %>
+                <%= image_tag following.avatar, class: "img-responsive center-block" %>
               </div>
               <div class="col-md-8">
-                <h4><%= link_to User.find(following.following_id).name, tweets_user_path(User.find(following.following_id)) %></h4>
-                <% if User.find(following.following_id).introduction==nil %>
+                <h4><%= link_to following.name, tweets_user_path(following) %></h4>
+                <% if following.introduction==nil %>
                   <p>未新增自介</p>
                 <% else %>
-                  <p><%= truncate(User.find(following.following_id).introduction, length: 50) %></p>
+                  <p><%= truncate(following.introduction, length: 50) %></p>
                 <% end %>
 
-                <% if User.find(following.following_id)==current_user %>
+                <% if following==current_user %>
                 <% else %>
-                  <%= render partial: "shared/follow", locals: {user: User.find(following.following_id)} %>
+                  <%= render partial: "shared/follow", locals: {user: following} %>
                 <% end %>
               </div>
             </div>

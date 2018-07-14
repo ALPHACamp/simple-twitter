@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   has_many :replies, dependent: :destroy 
   has_many :likes, dependent: :destroy 
-
+  has_many :likes_tweets, through: :likes, source: :tweet
 
   has_many :followships
   has_many :followings, through: :followships

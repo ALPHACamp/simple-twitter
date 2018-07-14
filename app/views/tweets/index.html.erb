@@ -25,7 +25,7 @@
                   <h4><%= link_to tweet.user.name, tweets_user_path(tweet.user) %></h4>
                   <h5><small><%= tweet.created_at.strftime('%F') %>, <%= tweet.created_at.strftime('%H:%M') %></small></h5>
                   <p><%= tweet.description %></p>
-                  <% tweet.count_replies %><%= link_to "回覆數(#{tweet.replies_count})", tweet_replies_path(tweet), :style=>"color:blue" %>  
+                  <%= link_to "回覆數(#{tweet.replies_count})", tweet_replies_path(tweet), :style=>"color:blue" %>  
                   <%= render partial: "shared/like", locals: {tweet: tweet} %>
                 </div>
               </div>

@@ -1,5 +1,5 @@
 <% if tweet.is_liked?(current_user) %>
-  <% tweet.count_likes %><%= link_to "Like(#{tweet.likes_count})", unlike_tweet_path(tweet), method: :post, :style=>"color:green" %>
+  <%= link_to "Like(#{tweet.likes_count})", unlike_tweet_path(tweet), method: :post, :style=>"color:green" %>
 <% else %>
-  <% tweet.count_likes %><%= link_to "Like(#{tweet.likes_count})", like_tweet_path(tweet), method: :post, :style=>"color:grey" %>
+  <%= link_to "Like(#{tweet.likes_count})", like_tweet_path(tweet), method: :post, :style=>"color:grey" %>
 <% end %>
