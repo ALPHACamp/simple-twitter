@@ -18,7 +18,7 @@ namespace :dev do
       user.save!
       puts user.name
     end
-    User.create( email: "root@example.com", password: "12345678", password_confirmation:"foobar", role: "admin", 
+    User.create( email: "root@example.com", password: "12345678", password_confirmation:"12345678", role: "admin", 
                   name: "Gasper", introduction: FFaker::Lorem.paragraph )
   end
 
