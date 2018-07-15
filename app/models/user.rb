@@ -11,6 +11,10 @@ class User < ApplicationRecord
   validates_presence_of :name
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
   validates :email, :name, uniqueness: true
+  
+  # 一個使用者有多個推播
+  has_many :tweets
+
   # 驗證admin方法
   def admin?
     self.role == "admin"
