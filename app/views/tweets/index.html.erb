@@ -1,17 +1,22 @@
-<h1>前台</h1>
+<div class="container">
+  <div class="row">
 
-<% if @tweet.errors.any? %>
-  <h2>We have some errors here !</h2>
-  <ul>
-    <% @tweet.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+    <% if @tweet.errors.any? %>
+      <h2>We have some errors here !</h2>
+      <ul>
+        <% @tweet.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+      <hr>
     <% end %>
-  </ul>
-<% end %>
-<%= form_for @tweet do |f| %>
 
-  <%= f.label :description, "Description" %>
-  <%= f.text_area :description %>
-
-  <%= f.submit %>
-<% end %>
+    <%= form_for @tweet do |f| %>
+      <div class="form-group">
+        <%= f.label :description, "Description" %>
+        <%= f.text_area :description, class: "form-control" %>
+      </div>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>

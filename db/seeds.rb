@@ -12,3 +12,6 @@ Tweet.destroy_all
   Tweet.create!( description: FFaker::Lorem.phrase)
 end
 puts "Tweet created!"
+
+User.create(email: "root@admin.com", password: "12345678", role: "admin")
+puts "Default admin created!"
