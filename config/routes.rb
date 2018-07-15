@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   root "tweets#index"
   resources :tweets, only: [:index, :create]
 
+  # user下的巢狀路由
+  resources :users, only: [:edit] do
+    resources :tweets, only: [:index]
+  end
+
   # 透過 namespace 建立後台的路由
   namespace :admin do
     root "tweets#index"
