@@ -1,0 +1,29 @@
+<% @tweets.each do |tweet| %>
+
+    <div class="stream-item">
+      <div class="col-md-3">
+        <%= image_tag tweet.user.avatar %>
+      </div>
+
+      <div class="col-md-8">
+        <h3>
+          <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
+          <%= tweet.created_at.strftime("%F, %H:%M") %>
+        </h3>
+
+        <p><%= tweet.description %></p>
+        <%= link_to "Reply(#{tweet.replies.count})", tweet_replies_path(tweet), class: "btn" %>
+
+        <% if tweet.is_liked?(current_user) %>
+          <%= link_to "Like(#{tweet.likes.count})", unlike_tweet_path(tweet), method: :post, class: "btn",style: "color: red" %>
+        <% else %>
+          <%= link_to "Like(#{tweet.likes.count})", like_tweet_path(tweet), method: :post, class: "btn",style: "color: gray" %>
+        <% end %>
+      </div>
+    </div>
+
+<% end %>
+
+<div class="paginate">
+  <%= paginate @tweets %>
+</div>

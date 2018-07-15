@@ -1,0 +1,44 @@
+<div class= "container">
+  <div class="row">
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><%= link_to "Tweets", admin_root_path %></li>
+      <li role="presentation"><%= link_to "Users", admin_users_path %></li>
+    </ul>
+
+    <h3>Tweets</h3>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>user id</th>
+          <th>description</th>
+          <th>replies_count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tweets.each do |tweet| %>
+          <tr>
+            <th><%= tweet.id %></th>
+            <td><%= tweet.user_id %></td>
+            <td>
+              <%= tweet.description %><hr/>
+              <div class="tweet-detail">
+                <% tweet.replies.each do |reply| %>
+                  <%= reply.comment %><br/>
+                <% end %>
+              </div>
+            </td>
+            <td><%= tweet.replies_count %></td>
+            <td>
+              <%= link_to 'Show ', admin_tweet_path(tweet) %>
+              <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="text-center">
+      <%= paginate @tweets %>
+    </div>
+  </div>
+</div>

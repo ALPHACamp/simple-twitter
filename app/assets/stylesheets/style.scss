@@ -1,0 +1,56 @@
+.stream-item img {
+  height: 100px;
+  width: 100px;
+  margin: 20px 10px;
+}
+.stream-item {
+  border: 2px solid #ddd;
+  margin: 10px 20px;
+  float: left;
+  width: 95%;
+  padding-bottom: 15px
+}
+
+.text {
+  padding: 0 10px;
+}
+
+.new-tweet {
+  margin: 10px 20px;
+}
+
+.user-item {
+  border: 2px solid #ddd;
+  margin: 10px -10px;
+  float: left;
+  padding-bottom: 15px;
+}
+
+.user-item img {
+  margin: 15px -5px;
+}
+
+.follow-item {
+      min-height: 220px;
+}
+
+.follow-button {
+  float: right;
+  margin-right: 15px;
+}
+
+.paginate {
+  float: left;
+  margin-left: 20px;
+}
+
+.reply-input {
+  margin-left: 20px;
+  margin-top: 10px;
+  float: left;
+  width: 95%;
+}
+
+.button {
+  float: right;
+}
