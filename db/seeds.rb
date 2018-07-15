@@ -7,11 +7,29 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Tweet.destroy_all
+User.destroy_all
 
-100.times do |i|
-  Tweet.create!( description: FFaker::Lorem.phrase)
+20.times do |i|
+  user_name = FFaker::Name.first_name
+  User.create!(
+    name: user_name,
+    email: "#{user_name}@example.com",
+    password: "12345678"
+  )
 end
-puts "Tweet created!"
+puts "have created fake users"
+puts "now you have #{User.count} users data"
+
+
+User.all.each do |user|
+  3.times do |i|
+    user.tweets.create!(
+      description: FFaker::Tweet.body
+    )
+  end
+end
+puts "have created fake tweets"
+puts "now you have #{Tweet.count} comment data"
 
 User.create(email: "root@admin.com", password: "12345678", role: "admin")
 puts "Default admin created!"
