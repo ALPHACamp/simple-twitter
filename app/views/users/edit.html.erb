@@ -1,0 +1,25 @@
+<div class='container'>
+  <div class='row'>
+    <%= form_for(@user) do |f| %>
+      <div class='col-md-3'>
+        <%= image_tag @user.avatar,size: "100", class: "img-responsive center-block show-img" %>
+        <br>
+        <%= f.label :avatar, "大頭照" %>
+        <%= image_tag @user.avatar, size: "100" if @user.avatar? %>
+        <%= f.file_field :avatar %>
+      </div>
+      <div class='col-md-9'>
+        <div class="form-group">
+          <%= f.label :name, "Name" %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        
+        <div class="form-group">
+          <%= f.label :introduction, "Introduction" %>
+          <%= f.text_area :introduction, class: "form-control" %>
+        </div>
+        <%= f.submit "Submit", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
