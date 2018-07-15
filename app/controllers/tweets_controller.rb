@@ -11,7 +11,7 @@ class TweetsController < ApplicationController
     @tweet.user = current_user
       if @tweet.save
         flash[:notice] = "Tweet successfully"
-        redirect_to tweet_path
+        redirect_to tweets_path
       else
         flash[:alert] = "Fail to tweet"
         redirect_to tweets_path(@tweet)
