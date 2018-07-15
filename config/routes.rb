@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   resources :tweets, only: [:index, :create] do
     member do 
       get :replies
+      post :like
+      post :unlike
     end 
+
   end
 
   root "tweets#index"
