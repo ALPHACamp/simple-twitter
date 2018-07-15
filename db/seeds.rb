@@ -31,5 +31,10 @@ end
 puts "have created fake tweets"
 puts "now you have #{Tweet.count} comment data"
 
-User.create(email: "root@admin.com", password: "12345678", role: "admin")
+User.create(
+  name: "admin",
+  email: "root@admin.com",
+  password: "12345678",
+  role: "admin"
+)
 puts "Default admin created!"
