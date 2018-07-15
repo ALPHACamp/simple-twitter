@@ -8,7 +8,11 @@ Rails.application.routes.draw do
 
   # user下的巢狀路由
   resources :users, only: [:edit] do
-    resources :tweets, only: [:index]
+    
+    # 瀏覽個別使用者下的推播
+    member do
+      get :tweets
+    end
   end
 
   # 透過 namespace 建立後台的路由
