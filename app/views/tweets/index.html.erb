@@ -14,18 +14,19 @@
       <% end %>
     
       <div>      
-       <% @index_post.each do |p| %>
+       <% @index_post.each do |twee| %>
         <div class="panel panel-default indexPost clearfix">
           <div class="tweetAvatar">
-            <%= image_tag p.user.avatar %>
+            <%= image_tag twee.user.avatar %>
           </div>  
           <div class="tweetInformation">
-            <%= p.user.name %>,
-            <%= p.created_at.strftime(" %Y-%m-%d, %R") %> <br>
-            <%= p.description %>  
+            <%= twee.user.name %>,
+            <%= twee.created_at.strftime(" %Y-%m-%d, %R") %> <br>
+            <%= twee.description %>  
             <br>
-            <h5><%= link_to "Reply( #{p.replies.count} )", replies_tweet_path(p.user_id) %> </h5>
-            <h5> like(<%= p.likes_count %>)</h5>  
+            <h5><%= link_to "Reply( #{twee.replies.count} )", replies_tweet_path(twee.user_id) %> </h5>
+            <h5> <%= link_to 'like( #{twee.likes_count} )', like_tweet_path(twee), method: :post %>
+             </h5>  
           </div>        
         </div>
         <% end %>
