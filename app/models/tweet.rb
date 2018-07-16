@@ -2,6 +2,8 @@ class Tweet < ApplicationRecord
   validates_length_of :description, maximum: 140
 
   belongs_to :user
+
+  # 推文有很多回覆
   has_many :replies, dependent: :destroy
 
   # 「tweet被很多使用者喜歡」的多對多關係
