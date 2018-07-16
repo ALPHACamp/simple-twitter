@@ -1,6 +1,5 @@
 <div class="container">
   <div class="row">
-
     <% if @tweet.errors.any? %>
       <h2>We have some errors here !</h2>
       <ul>
@@ -10,13 +9,28 @@
       </ul>
       <hr>
     <% end %>
-
     <%= form_for @tweet do |f| %>
       <div class="form-group">
         <%= f.label :description, "Description" %>
-        <%= f.text_area :description, class: "form-control" %>
+        <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control" %>
       </div>
-      <%= f.submit class: "btn btn-primary" %>
+      <%= f.submit "Tweet",class: "btn btn-primary" %>
     <% end %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <% @tweets.each do |tweet| %>
+          <div>
+            <h4><%= tweet.user.name %></h4>
+            <p><%= simple_format tweet.description %></p>
+            <p class="text-muted">
+              <em><%= tweet.created_at %> </em>
+            </p>
+            <p><%= link_to "Reply", tweet_replies_path(tweet) %></p>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

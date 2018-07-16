@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     root "tweets#index"
   end
   resources :tweets do
-    resources :replys, only: [:create]
+    resources :replies
   end
   root "tweets#index"
 end

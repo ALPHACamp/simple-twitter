@@ -2,11 +2,14 @@
   <div class="row">
     <div class="col-md-12">
       <% @tweets.each do |tweet| %>
-        <li>
-          <%= tweet.description %>
-          <%= tweet.user.name %>
-          <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %>
-        </li>
+      <div>
+        <h4><%= tweet.user.name %></h4>
+        <p><%= simple_format tweet.description %></p>
+        <p class="text-muted">
+          <em><%= tweet.created_at %> </em>
+        </p>
+        <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %>
+      </div>
       <% end %>
     </div>
   </div>
