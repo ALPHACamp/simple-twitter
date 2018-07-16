@@ -15,8 +15,9 @@ class User < ApplicationRecord
 
   has_many :followships, dependent: :destroy
   has_many :followings, through: :followships
-
+  #「使用者喜歡很多推文」的多對多關係
   has_many :likes, dependent: :destroy
+  has_many :liked_tweets, through: :likes, source: :tweet
 
   def admin?
     self.role == "admin"
