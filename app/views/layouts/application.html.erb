@@ -30,7 +30,7 @@
                     <li class="dropdown-item"><%= link_to '管理者後台', admin_root_path %></li>
                   <% end %>
                   <li class="dropdown-item"><%= link_to('個人頁面', tweets_user_path(current_user)) %></li>
-                  <li class="dropdown-item"><%= link_to('修改個人資料', edit_user_registration_path) %></li>
+                  <li class="dropdown-item"><%= link_to('修改密碼', edit_user_registration_path) %></li>
                   <li class="dropdown-item"><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
                 </ul>
               </li>
