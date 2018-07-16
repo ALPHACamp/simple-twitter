@@ -6,9 +6,11 @@ class Admin::TweetsController < Admin::BaseController
   end
 
   def destroy
-    @tweet.destroy
-    redirect_to admin_tweets_path
-    flash[:alert] = "tweet was deleted"
+    if current_user.admin?
+      @tweet.destroy
+      redirect_to admin_tweets_path
+      flash[:alert] = "tweet was deleted"
+    end
   end
 
   private
