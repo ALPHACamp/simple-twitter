@@ -20,12 +20,11 @@
       
       <!-- nav links -->
       <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <% if current_user %>
-
+          <% if current_user %>
+            <ul class="navbar-nav ml-auto">
               <!-- 使用者下拉選單 -->
               <li class="nav-item dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown">Hi, <%= current_user.name %></a>
+                <a class="dropdown-toggle btn navbar-btn-1" data-toggle="dropdown">Hi, <%= current_user.name %></a>
                 <ul class="dropdown-menu">
                   <% if current_user&.admin? %>
                     <li class="dropdown-item"><%= link_to '管理者後台', admin_root_path %></li>
@@ -35,12 +34,14 @@
                   <li class="dropdown-item"><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
                 </ul>
               </li>
-            <% else %>
+            </ul>
+          <% else %>
               <!-- 未登入者選單 -->
-              <li class="nav-item"><%= link_to('註冊', new_user_registration_path) %></li>
-              <li class="nav-item"><%= link_to('登入', new_user_session_path) %></li>
-            <% end %>
-          </ul>      
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item btn navbar-btn-1"><%= link_to('註冊', new_user_registration_path) %></li>
+              <li class="nav-item btn navbar-btn-1"><%= link_to('登入', new_user_session_path) %></li>
+            </ul>  
+          <% end %> 
       </div>
     </nav>
     
