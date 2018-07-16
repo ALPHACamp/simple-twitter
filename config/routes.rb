@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :tweets, only: [:index, :create]
 
   # user下的巢狀路由
-  resources :users, only: [:edit] do
+  resources :users, only: [:edit, :update] do
     
     # 瀏覽個別使用者下的推播
     member do

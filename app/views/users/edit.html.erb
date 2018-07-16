@@ -1,7 +1,7 @@
 <div class="container">
   <h1>修改個人資料</h1>
 
-  <%= form_for(@user, url: edit_user_path, method: :get) do |f| %>
+  <%= form_for @user  do |f| %>
     <div class="form-group">
       <%= f.label :email, "Email:" %>
       <%= f.text_field :email, class: "form-control", disabled: true %>

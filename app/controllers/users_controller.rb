@@ -10,7 +10,8 @@ class UsersController < ApplicationController
   end
 
   def update
-
+    @user.update(user_params)
+    redirect_to tweets_user_path(@user)
   end
 
   def followings
@@ -26,6 +27,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def user_params
+    params.require(:user).permit(:name, :introduction, :avatar)
+  end
 
   def set_user
     @user = User.find(params[:id])
