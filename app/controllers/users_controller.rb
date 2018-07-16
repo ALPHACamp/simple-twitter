@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    redirect_to tweets_user_path(@user) unless @user == current_user
   end
 
   def update
