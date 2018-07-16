@@ -25,7 +25,12 @@
             <%= twee.description %>  
             <br>
             <h5><%= link_to "Reply( #{twee.replies.count} )", replies_tweet_path(twee.user_id) %> </h5>
-            <h5> <%= link_to 'like( #{twee.likes_count} )', like_tweet_path(twee), method: :post %>
+            <h5> 
+              <% if twee.is_liked?(current_user) %>
+                <%= link_to "unlike( #{twee.likes.count} )", unlike_tweet_path(twee), method: :post %>
+              <% else %>
+                <%= link_to "like( #{twee.likes.count} )", like_tweet_path(twee), method: :post %>
+              <% end %>  
              </h5>  
           </div>        
         </div>

@@ -5,4 +5,9 @@ class Tweet < ApplicationRecord
   has_many :replies, dependent: :destroy
 
   has_many :likes, dependent: :destroy
+
+  def is_liked?(user)
+    self.likes.include?(user)
+  end
 end
+
