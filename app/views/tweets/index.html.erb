@@ -10,10 +10,7 @@
         <%= f.submit %>
       <% end %>
 
-      <% @tweets.each do |tweet| %>
-        <p><%= tweet.user.name %>, <%= tweet.created_at %></p>
-        <p><%= tweet.description %></p>
-      <% end %>
+      <%= render partial: "shared/tweet_view", locals: {tweets: @tweets} %>
     </div>
 
   </div>

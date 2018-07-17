@@ -1,0 +1,4 @@
+<% tweets.each do |tweet| %>
+  <p><%= tweet.user.name %>, <%= tweet.created_at %></p>
+  <p><%= tweet.description %></p>
+<% end %>

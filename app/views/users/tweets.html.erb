@@ -13,11 +13,7 @@
     </div>
   
     <div class="col-7">
-
-      <% @user.tweets.each do |tweet| %>
-        <p><%= @user.name %>, <%= tweet.created_at %></p>
-        <p><%= tweet.description %></p>
-      <% end %>      
+      <%= render partial: "shared/tweet_view", locals: {tweets: @user.tweets} %>     
     </div>
 
   
