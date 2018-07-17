@@ -26,4 +26,19 @@ namespace :dev do
     end
   end
 
+  # 每個user產生3個推播
+  task fake_tweet: :environment do
+    Tweet.destroy_all
+
+    User.all.each do |user|
+      3.times do |i|
+        user.tweets.create!(
+          description: FFaker::BaconIpsum::phrase
+          )
+      end
+    end
+
+    puts "have create 3 tweets in each user"
+  end
+
 end
