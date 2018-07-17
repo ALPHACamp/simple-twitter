@@ -1,1 +1,35 @@
-<h1>前台</h1>
+<div class="container">
+   <div class="row">
+    <div class="col-md-8">
+      <%= form_for(@tweet) do |f| %>
+        <div class="form-group">
+          <%= f.text_area :description, placeholder: "What's on your mind?", class: 'form-control' %>
+         </div>
+
+         <div class="form-group">
+          <%= f.submit "Tweet", class: "btn btn-primary" %>
+         </div>
+       <% end %>
+ 
+      <% @tweets.each do |tweet| %>
+        <div class="col-md-12 border">
+          <%= tweet.user.name %>
+          <%= tweet.created_at %>
+          <br>
+          <%= tweet.description %>
+        </div>
+      <% end %>
+    </div>
+ 
+    <div class="col-md-4">
+      <h1>Popular</h1>
+      <% @users.each do |user| %>
+        <div class="col-md-12 border">
+          <%= user.name %>
+          <br>
+          <%= user.introduction %>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>
