@@ -8,5 +8,10 @@ Rails.application.routes.draw do
   resources :tweets do
     resources :replies
   end
+  resources :users do
+    member do
+      get 'tweets' => 'users#tweets', controller: 'users'
+    end
+  end
   root "tweets#index"
 end

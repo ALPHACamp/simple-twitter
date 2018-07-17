@@ -2,25 +2,32 @@
   <div class="row">
     <div class="col-md-12">
       <% @tweets.each do |tweet| %>
-      <div>
-        <h4><%= tweet.user.name %></h4>
-        <p><%= simple_format tweet.description %></p>
-        <p class="text-muted">
-          <em><%= tweet.created_at %> </em>
-        </p>
-        <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %>
+      <div class="panel panel-default">
+        <div class="row">
+          <div class="col-md-2">
+            <%= image_tag(tweet.user.avatar.url, height: 100, width: 100) %>
+          </div>
+          <div class="col-md-10">
+            <h4><%= tweet.user.name %></h4>
+            <p><%= simple_format tweet.description %></p>
+            <p class="text-muted">
+              <em><%= tweet.created_at.to_time.to_s.split('+').first %> </em>
+            </p>
+            <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %>
+            <% tweet.replies.each do |reply| %>
+            <div>
+              <h4><%= reply.user.name %></h4>
+              <p><%= simple_format reply.comment %></p>
+              <p class="text-muted">
+                <em><%= reply.created_at.to_time.to_s.split('+').first %> </em>
+              </p>
+            </div>
+            <hr>
+            <% end %>
+          </div>
+        </div>
       </div>
-      <% tweet.replies.each do |reply| %>
-      <div>
-        <h4><%= reply.user.name %></h4>
-        <p><%= simple_format reply.comment %></p>
-        <p class="text-muted">
-          <em><%= reply.created_at.to_time.to_s.split('+').first %> </em>
-        </p>
-      </div>
-      <hr>
-      <% end %>
-      <% end %>
+    <% end %>
     </div>
   </div>
 </div>
