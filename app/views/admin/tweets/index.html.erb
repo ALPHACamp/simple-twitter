@@ -1,0 +1,26 @@
+<div class="col-md-12">
+  <ul class="nav nav-tabs">
+    <li role="presentation" class="active"><%= link_to "Tweets", admin_tweets_path %></li>
+    <li role="presentation"><%= link_to "Users", admin_users_path %></li>
+  </ul>
+  <br/>
+  <% @tweets.each do |tweet| %>
+    <div class="col-md-6">
+      <div class="individual-item clearfix">
+        <%= render partial: "shared/tweet_format", locals: {profile: tweet} %>
+        <%= link_to "Delete", admin_tweet_path(tweet), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#tweet<%=tweet.id %>" aria-expanded="false" aria-controls="tweet<%=tweet.id %>">Click to show reply (<%= tweet.replies_count %>)</button>
+        <div class="collapse multi-collapse" id="tweet<%=tweet.id %>">
+          <% tweet.replies.each do |reply| %>
+            <div class="card card-body">
+              <div class="individual-item">
+                <p>Replier: <%= reply.user.name %></p>
+                <p>Content: <%= reply.comment %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

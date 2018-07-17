@@ -1,0 +1,42 @@
+<div class="col-md-4">
+  <ul class="list-unstyled">
+    <li>
+      <% if image_path(profile.avatar).include?('/user'+profile.id.to_s+'.jpg') %> 
+        <%= image_tag('/avatar/user'+profile.id.to_s+'.jpg', size: "200x200", class: "img-responsive img-circle") %>
+      <% else %> 
+        <%= image_tag profile.avatar, size: "200x200", class: "img-responsive img-circle" %>
+      <% end %>
+    </li>
+    <li><strong><h3><%= link_to profile.name, tweets_user_path(profile) %></h3></strong></li>
+    <li><h6><%= profile.introduction %></h6></li>
+      <li><h5>
+        <%= link_to tweets_user_path(profile) do %>
+          Tweet <%= profile.tweets.count %>
+        <% end %>
+      </h5></li>
+      <li><h5>
+        <%= link_to followings_user_path(profile) do %>
+          Following <%= profile.followings.count %>
+        <% end %>
+      </h5></li>
+      <li><h5>
+        <%= link_to followers_user_path(profile) do %>
+          Follower <%= profile.followers_count %>
+        <% end %>
+      </h5></li>
+      <li><h5>
+        <%= link_to likes_user_path(profile) do %>
+          Like <%= profile.likes_count %>
+        <% end %>
+      </h5></li>
+  </ul>
+  <% if current_user == profile %>
+    <%= link_to "Edit Profile", edit_user_path(profile), class: "btn btn-primary" %>
+  <% else %>
+    <% if current_user.following?(profile) %>
+      <%= link_to 'Unfollow', followship_path(profile), method: :delete, class: "btn btn-warning" %>
+    <% else %>
+      <%= link_to 'Follow', followships_path(following_id: profile), method: :post, class: "btn btn-success" %>
+    <% end %>
+  <% end %>
+</div>

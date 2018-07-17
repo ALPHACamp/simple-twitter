@@ -1,0 +1,29 @@
+<div class="col-md-8">
+  <%= form_for [@tweet] do |f| %>
+    <div class="form_group">
+      <%= f.text_area :description, maxlength: 140, placeholder: "tweet here!", class: "form-control" %>
+    </div>
+    <div class="form_group">
+      <%= f.submit class: "btn btn-primary" %>
+      <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+    </div>
+  <% end %>
+  <br/>
+  <% @tweets.each do |tweet| %>
+    <%= render partial: "shared/tweet_format", locals: {profile: tweet} %>
+  <% end %>
+</div>
+
+<div class="col-md-4">
+  <h4>Popular</h4>
+  <% @users.each do |user| %>
+    <div class="individual-item clearfix">
+      <%= render partial: "shared/image_tag", locals: {profile: user} %>
+      <div class="content">
+      <h5><%= link_to user.name, tweets_user_path(user) %></h5>
+      <p><%= truncate(user.introduction, length:80) %></p>
+      <%= render partial: "shared/follow_button", locals: {profile: user} %>
+      </div>
+    </div>
+  <% end %>
+</div>
