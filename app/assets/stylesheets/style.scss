@@ -3,14 +3,24 @@
   padding: 4px;
   margin: 10px;
   clear: both;
+  border: 1px solid #ddd;
 }
 
 .individual-item img{
-  float: left;
-  max-width: 140px;
+  max-width: 120px;
+  max-height: 120px;
   padding: 4px;
+  float: left;
 }
 
 .individual-item .content{
-  float: left;
+  display: flow-root;
+
+}
+
+.individual-item .btn{
+  float: right;
+  padding: 3px 6px;
+  font-size: 10px;
+
 }

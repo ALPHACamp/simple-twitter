@@ -6,9 +6,13 @@
     <br/>
     <h4>Reply</h4>
     <% @replies.each do |reply| %>
-      <%= render partial: "shared/image_tag", locals: {profile: reply.user} %>
-      <h5><%= link_to reply.user.name, tweets_user_path(reply.user) %>, <%= reply.created_at %></h5>
-      <p><%= reply.comment %></p>
+      <div class="individual-item clearfix">
+        <%= render partial: "shared/image_tag", locals: {profile: reply.user} %>
+        <div class="content">
+          <h5><%= link_to reply.user.name, tweets_user_path(reply.user) %>, <%= reply.created_at %></h5>
+          <p><%= reply.comment %></p>
+        </div>
+      </div>
     <% end %>
     <br/>
     <%= form_for [@tweet, @reply] do |f| %>

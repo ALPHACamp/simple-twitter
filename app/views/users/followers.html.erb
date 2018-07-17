@@ -3,13 +3,19 @@
 <div class="col-md-8">
   <h4>Follower</h4>
   <% @followers.each do |follower| %>
-    <%= render partial: "shared/image_tag", locals: {profile: follower} %>
-    <h5><%= link_to follower.name, followers_user_path(follower) %></h5>
-    <p><%= follower.introduction %></p>
-    <% if current_user.following?(follower) %>
-      <%= link_to 'Unfollow', followship_path(follower), method: :delete, class: "btn btn-warning" %>
-    <% else %>
-      <%= link_to 'Follow', followships_path(following_id: follower), method: :post, class: "btn btn-success" %>
-    <% end %>
+    <div class="col-md-6">
+      <div class="individual-item clearfix">
+        <%= render partial: "shared/image_tag", locals: {profile: follower} %>
+        <div class="content">
+          <h5><%= link_to follower.name, followers_user_path(follower) %></h5>
+          <p><%= truncate(follower.introduction,length:80) %></p>
+          <% if current_user.following?(follower) %>
+            <%= link_to 'Unfollow', followship_path(follower), method: :delete, class: "btn btn-warning" %>
+          <% else %>
+            <%= link_to 'Follow', followships_path(following_id: follower), method: :post, class: "btn btn-success" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>

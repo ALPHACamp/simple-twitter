@@ -3,9 +3,15 @@
 <div class="col-md-8">
   <h4>Following</h4>
   <% @followings.each do |following| %>
-    <%= render partial: "shared/image_tag", locals: {profile: following} %>
-    <h5><%= link_to following.name, followings_user_path(following) %></h5>
-    <p><%= following.introduction %></p>
-    <%= link_to 'Unfollow', followship_path(following), method: :delete, class: "btn btn-warning" %>
+    <div class="col-md-6">
+      <div class="individual-item clearfix">
+        <%= render partial: "shared/image_tag", locals: {profile: following} %>
+        <div class="content">
+          <h5><%= link_to following.name, followings_user_path(following) %></h5>
+          <p><%= truncate(following.introduction, length: 80) %></p>
+          <%= link_to 'Unfollow', followship_path(following), method: :delete, class: "btn btn-warning" %>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>

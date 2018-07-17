@@ -1,4 +1,4 @@
-<div class="individual-item">
+<div class="individual-item clearfix">
   <% if image_path(profile.user.avatar).include?('/user'+profile.user_id.to_s+'.jpg') %> 
     <%= image_tag('/avatar/user'+profile.user_id.to_s+'.jpg', class: "img-responsive img-circle") %>
   <% else %> 

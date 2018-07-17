@@ -1,5 +1,5 @@
-<% if image_path(profile.avatar).include?('/user'+profile.id.to_s+'.jpg') %> 
-  <%= image_tag('/avatar/user'+profile.id.to_s+'.jpg', size: "140x140", class: "img-responsive img-circle") %>
-<% else %>
-  <%= image_tag profile.avatar, size: "140x140", class: "img-responsive img-circle" %>
-<% end %>
+  <% if image_path(profile.avatar).include?('/user'+profile.id.to_s+'.jpg') %> 
+    <%= image_tag('/avatar/user'+profile.id.to_s+'.jpg', class: "img-responsive img-circle") %>
+  <% else %>
+    <%= image_tag profile.avatar, class: "img-responsive img-circle" %>
+  <% end %>
