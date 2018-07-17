@@ -17,15 +17,8 @@
  
     <div class="col-md-4">
       <h1>Popular</h1>
-      <% @users.each do |user| %>
-        <div class="col-md-12 border">
-          <%= link_to user.name, tweets_user_path(user) %>
-          <br>
-          <%= user.introduction %>
-          <br>
-          <%= render partial: "shared/follow", locals: {user: user} %>
-        </div>
-      <%end%>
+      <%= render 'shared/user_inf', users: @users %>
+      
     </div>
   </div>
 </div>

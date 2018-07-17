@@ -1,0 +1,11 @@
+<ul class="nav nav-tabs">
+  <li ><%= link_to 'All Tweets', admin_tweets_path %></li>
+  <li class='active'><%= link_to 'All Users', admin_users_path %></li>
+</ul>
+
+<div class="container">
+  <div class="row">
+    <h1>Users</h1>
+    <%= render 'shared/user_info', users: @users %>
+  </div>
+</div> 
