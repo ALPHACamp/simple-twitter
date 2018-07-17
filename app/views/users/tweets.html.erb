@@ -1,6 +1,26 @@
-<h1>使用者個人頁面</h1>
+<div class="container">
+  
+  <h1>使用者個人頁面</h1>
 
-<% @user.tweets.each do |tweet| %>
-  <p><%= @user.name %>, <%= tweet.created_at %></p>
-  <p><%= tweet.description %></p>
-<% end %>
+  <div class="row">
+    
+    <div class="col-4">
+      <div class="user-image">
+        <%= image_tag @user.avatar, class: "img-thumbnail ", title: "使用者圖片", alt: "使用者尚未上傳" %>
+      </div>
+      <h5><%= @user.name %></h5>
+      <p class="text-monospace"><%= @user.introduction %></p>
+    </div>
+  
+    <div class="col-7">
+
+      <% @user.tweets.each do |tweet| %>
+        <p><%= @user.name %>, <%= tweet.created_at %></p>
+        <p><%= tweet.description %></p>
+      <% end %>      
+    </div>
+
+  
+  </div>
+
+</div>
