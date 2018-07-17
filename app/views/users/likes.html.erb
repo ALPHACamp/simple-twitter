@@ -1,0 +1,8 @@
+<%= render partial: "shared/user_profile", locals: {profile: @user} %>
+
+<div class= "col-md-8">
+  <h4>Like</h4>
+  <% @likes.each do |like| %>
+    <%= render partial: "shared/tweet_format", locals: {profile: like} %>
+  <% end %>
+</div>

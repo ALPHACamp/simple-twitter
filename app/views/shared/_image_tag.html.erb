@@ -1,0 +1,5 @@
+  <% if image_path(profile.avatar).include?('/user'+profile.id.to_s+'.jpg') %> 
+    <%= image_tag('/avatar/user'+profile.id.to_s+'.jpg', class: "img-responsive img-circle") %>
+  <% else %>
+    <%= image_tag profile.avatar, class: "img-responsive img-circle" %>
+  <% end %>

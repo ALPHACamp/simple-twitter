@@ -1,0 +1,27 @@
+<%= render partial: "shared/user_profile", locals: {profile: @tweet.user} %>
+
+<div class= "col-md-8">
+  <h4>Tweet</h4>
+    <%= render partial: "shared/tweet_format", locals: {profile: @tweet} %>
+    <br/>
+    <h4>Reply</h4>
+    <% @replies.each do |reply| %>
+      <div class="individual-item clearfix">
+        <%= render partial: "shared/image_tag", locals: {profile: reply.user} %>
+        <div class="content">
+          <h5><%= link_to reply.user.name, tweets_user_path(reply.user) %>, <%= reply.created_at %></h5>
+          <p><%= reply.comment %></p>
+        </div>
+      </div>
+    <% end %>
+    <br/>
+    <%= form_for [@tweet, @reply] do |f| %>
+    <div class="form_group">
+      <%= f.text_area :comment, maxlength: 140, placeholder: "reply here!", class: "form-control" %>
+    </div>
+    <div class="form_group">
+      <%= f.submit class: "btn btn-primary" %>
+      <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+    </div>
+  <% end %>
+</div>

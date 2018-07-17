@@ -1,0 +1,7 @@
+<%= render partial: "shared/user_profile", locals: {profile: @user} %>
+
+<div class="col-md-8">
+  <% @tweeted_tweets.each do |tweet| %>
+    <%= render partial: "shared/tweet_format", locals: {profile: tweet} %>
+  <% end %>
+</div>

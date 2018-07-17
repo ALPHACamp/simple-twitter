@@ -1,4 +1,30 @@
 namespace :dev do
+  
+  task reset_counter: :environment do
+    Tweet.pluck(:id).each do |i|
+      Tweet.reset_counters(i, :replies)
+    end
+    puts "tweet_count counter reset!"
+
+    User.pluck(:id).each do |i|
+      User.reset_counters(i, :likes)
+    end
+    puts "user/likes_count counter reset!"
+
+    Tweet.pluck(:id).each do |i|
+      Tweet.reset_counters(i, :likes)
+    end
+
+    puts "tweet/likes_count counter reset!"
+
+    User.pluck(:id).each do |i|
+      User.reset_counters(i, :followers_count)
+    end
+
+    puts "followers_count counter reset!"
+  end
+
+
   # 請先執行 rails dev:fake_user，可以產生 20 個資料完整的 User 紀錄
   # 其他測試用的假資料請依需要自行撰寫
   task fake_user: :environment do
@@ -20,4 +46,32 @@ namespace :dev do
     end
   end
 
+  
+  task fake_tweet: :environment do
+    Tweet.destroy_all
+
+    50.times do |i|
+      Tweet.create!(
+      user: User.all.sample,
+      description: FFaker::Lorem.sentence
+      )
+    end
+    puts "have created fake tweet"
+    puts "now you have #{Tweet.count} tweets data"
+  end
+
+  task fake_reply: :environment do
+    Reply.destroy_all
+
+    Tweet.all.each do |tweet|
+      5.times do |i|
+        tweet.replies.create!(
+        user: User.all.sample,
+        comment: FFaker::BaconIpsum.sentence
+        )
+      end
+    end
+    puts "have created fake reply"
+    puts "now you have #{Reply.count} replies data"
+  end
 end
