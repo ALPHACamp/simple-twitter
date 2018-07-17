@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
   def likes
     @user = User.find(params[:id])
-    @likes = @user.like_tweets.all.order(created_at: :desc)
+    @likes = @user.liked_tweets.all.order(created_at: :desc)
   end
 
   private
