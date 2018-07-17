@@ -27,4 +27,11 @@ class User < ApplicationRecord
     self.followings.include?(user)
   end
 
+  has_many :likes, dependent: :destroy
+  has_many :liked_tweets, through: :likes, source: :tweet
+
+  def like?(tweet)
+    self.like_tweets.include?(tweet)
+  end
+
 end
