@@ -13,7 +13,7 @@ class User < ApplicationRecord
   validates :email, :name, uniqueness: true
   
   # 一個使用者有多個推播
-  has_many :tweets
+  has_many :tweets, dependent: :destroy
 
   # 驗證admin方法
   def admin?
