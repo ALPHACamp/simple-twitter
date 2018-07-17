@@ -15,4 +15,6 @@ class User < ApplicationRecord
     self.role == "admin"
   end
 
+  has_many :tweets, dependent: :destroy
+
 end
