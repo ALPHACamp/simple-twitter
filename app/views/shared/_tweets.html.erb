@@ -1,0 +1,10 @@
+<% tweets.each do |tweet| %>
+  <div class="col-md-12 border">
+    <%= tweet.user.name %>
+    <%= tweet.created_at %>
+    <br>
+    <%= tweet.description %>
+    <br>
+    <%= render 'shared/reply_like', tweet: tweet %>
+  </div>
+<% end %> 

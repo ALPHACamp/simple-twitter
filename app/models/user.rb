@@ -31,7 +31,7 @@ class User < ApplicationRecord
   has_many :liked_tweets, through: :likes, source: :tweet
 
   def like?(tweet)
-    self.like_tweets.include?(tweet)
+    self.liked_tweets.include?(tweet)
   end
 
 end
