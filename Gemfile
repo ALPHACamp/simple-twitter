@@ -10,7 +10,7 @@ gem 'devise'
 # file uploader
 gem 'carrierwave'
 # resize image size
-# gem 'mini_magick'
+gem 'mini_magick'
 
 gem 'ffaker'
 

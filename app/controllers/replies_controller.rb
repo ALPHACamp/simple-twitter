@@ -1,6 +1,7 @@
 class RepliesController < ApplicationController
 
   def index
+    @user = current_user
     @tweet = Tweet.find(params[:tweet_id])
     @replies = @tweet.replies
     @reply = Reply.new
@@ -15,7 +16,7 @@ class RepliesController < ApplicationController
   end
 
   private
-  
+
   def reply_params
     params.require(:reply).permit(:comment)
   end
