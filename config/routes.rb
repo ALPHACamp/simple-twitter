@@ -15,7 +15,11 @@ Rails.application.routes.draw do
 
   root "tweets#index"
 
-  resources :users, only: [:edit]
+  resources :users, only: [:edit] do
+    member do
+      get :tweets # 每個user的每個tweet
+    end  
+  end  
 
   resources :followships, only: [:create, :destroy]
 
