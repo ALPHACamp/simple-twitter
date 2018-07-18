@@ -23,4 +23,10 @@ class User < ApplicationRecord
   def admin?
     self.role == "admin"
   end
+
+  # 計算like數量
+  def count_likes
+    self.likes_count = self.likes.size
+    self.save
+  end
 end
