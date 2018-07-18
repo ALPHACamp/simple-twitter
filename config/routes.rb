@@ -4,7 +4,15 @@ Rails.application.routes.draw do
 
   # 請依照專案指定規格來設定路由
   root "tweets#index"
-  resources :tweets, only: [:index, :create]
+  
+  # tweet下的巢狀路由
+  resources :tweets, only: [:index, :create] do
+    # like / unlike tweet
+    member do
+      post :like
+      post :unlike
+    end
+  end
 
   # user下的巢狀路由
   resources :users, only: [:edit, :update] do
@@ -14,6 +22,7 @@ Rails.application.routes.draw do
       get :tweets
     end
   end
+
 
   # 透過 namespace 建立後台的路由
   namespace :admin do
