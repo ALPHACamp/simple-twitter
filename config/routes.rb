@@ -16,10 +16,12 @@ Rails.application.routes.draw do
 
   # user下的巢狀路由
   resources :users, only: [:edit, :update] do
-    
-    # 瀏覽個別使用者下的推播
+      
     member do
+      # 瀏覽個別使用者下的推播
       get :tweets
+      # 瀏覽個別使用者按過like的推播
+      get :likes
     end
   end
 
