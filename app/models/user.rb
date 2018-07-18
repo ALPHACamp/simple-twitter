@@ -15,6 +15,10 @@ class User < ApplicationRecord
   # 一個使用者有多個推播
   has_many :tweets, dependent: :destroy
 
+  # 使用者可like多個推播
+  has_many :likes, dependent: :destroy
+  has_many :liked_tweets, through: :likes, source: :tweet
+
   # 驗證admin方法
   def admin?
     self.role == "admin"
