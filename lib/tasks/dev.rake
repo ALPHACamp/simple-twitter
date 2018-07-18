@@ -18,7 +18,7 @@ namespace :dev do
       user.save!
       puts user.name
     end
-  end
+end
 
   task fake_tweet: :environment do
     Tweet.destroy_all
@@ -44,5 +44,29 @@ namespace :dev do
     end
     
     puts "3 fake reply generated for each tweet!"
+  end
+
+  task fake_followships: :environment do
+    Followship.destroy_all
+
+    User.all.each do |user|
+      5.times do 
+        user.followships.create(following_id: User.all.sample.id)
+      end
+    end
+    puts "have created 100 fake follow"
+    
+  end
+
+  task fake_likes: :environment do
+    Like.destroy_all
+
+    User.all.each do |user|
+      20.times do 
+        user.likes.create(tweet_id: Tweet.all.sample.id)
+      end
+    end
+    puts "have created 400 fake follow"
+    
   end
 end
