@@ -1,36 +1,17 @@
 class UsersController < ApplicationController
-
+  before_action :set_user, only: [:edit, :update]
   def tweets
   end
 
-
-  def edit
-    @user = User.find(params[:id])
-    
-    unless @user.name 
-      @user.name = @user.email.split('@').first
-    end
-    
-    unless @user.id == current_user.id
-      flash[:notice] = "Don't Allow!";
-      # redirect_to user_path(@user)
-      redirect_back(fallback_location: tweets_user_path(current_user))
-    end
-  end
-  
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
-      #redirect_to user_path(@user.id)
-      redirect_back(fallback_location: tweets_user_path(@user))
-      flash[:notice] = "user was successfully updated"
+      redirect_to root_path, notice: "Profile Updated "
     else
-      redirect_back(fallback_location: tweets_user_path(@user))
-      flash[:alert] = "failed"
+      flash[:alert] = @user.errors.full_messages.to_sentence
+
+      render :edit
     end
   end
-
- 
 
   def followings
     @followings # 基於測試規格，必須講定變數名稱
@@ -44,6 +25,12 @@ class UsersController < ApplicationController
     @likes # 基於測試規格，必須講定變數名稱
   end
 
- private
+  private
+  def set_user
+    @user = User.find(params[:id])
+  end
 
+  def user_params
+    params.require(:user).permit(:name, :introduction, :avatar)
+  end
 end
