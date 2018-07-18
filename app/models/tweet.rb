@@ -12,4 +12,10 @@ class Tweet < ApplicationRecord
   def is_liked?(user)
     self.liked_users.include?(user)
   end
+
+  # 計算like數量
+  def count_likes
+    self.likes_count = self.likes.size
+    self.save
+  end
 end
