@@ -6,6 +6,8 @@
     <div class="col-8">
       <p><%= link_to(tweet.user.name, tweets_user_path(tweet.user)) %>, <%= tweet.created_at.strftime("%F %T") %></p>
       <p><%= tweet.description %></p>
+      <%= link_to 'Like', like_tweet_path(tweet), method: :post, class: "btn btn-primary" %> 
+      <%= link_to 'Unlike', unlike_tweet_path(tweet), method: :post, class: "btn btn-info" %>
     </div>
   </div>
 <% end %>
