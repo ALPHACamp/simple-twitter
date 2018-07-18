@@ -1,0 +1,36 @@
+
+  
+  <div class="col-xs-6 col-md-4">
+    <%= image_tag @user.avatar, width: "80px"%>
+    <p>@<%= @user.name %> </p>
+    <p><%= @user.introduction %></p>
+    
+    <br>
+    <p>Tweets <%= @user.tweets.count %></p>
+    <p>Following</p>
+    <p>Follower</p>
+    <p>Like</p>
+    <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-primary" %>
+    
+    
+    
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-8">
+    <% @user.tweets.each do |tweet| %>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="col-md-2">
+            <%= image_tag tweet.user.avatar,width: "80px" %>
+          </div>
+          <div class="col-md-6">
+            <p><strong>@<%= tweet.user.name %></strong>, <em><%= time_ago_in_words(tweet.created_at) %></em></p>
+            <p><%= tweet.description %></p>
+          </div>
+            
+        </div>
+      </div>
+  
+    <% end %>
+  </div>
+     
+

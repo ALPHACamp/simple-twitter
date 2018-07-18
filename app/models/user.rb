@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validates_uniqueness_of :name
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
 
-  has_many :tweets
+  has_many :tweets, dependent: :destroy
 
   has_many :replies, dependent: :destroy
   has_many :replied_tweets, through: :replies, source: :tweet
