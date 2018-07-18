@@ -11,27 +11,30 @@
     <% end %>
 
     <%= form_for @user do |f| -%>
-      <div class="from-group">
-        <%= f.label :name, "Name" %>
-        <%= f.text_field :name, class: "form-control" %>
+      <div class="col-md-3 col-sm-3">
+        <div class="from-group">
+          <%= image_tag @user.avatar, width:'150px', class: "img-responsive" %>
+          <br>
+          <%= f.file_field :avatar%>
+        </div>
       </div>
 
-      <div class="from-group">
-        <%= f.label :introduction, "Introduction" %>
-        <%= f.text_area :introduction, class: "form-control" %>
-      </div>
+      <div class="col-md-9 col-sm-9">
+        <div class="from-group">
+          <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
+        </div>
 
-      <div class="from-group">
-        <%= f.label :avatar, "Avatar" %>
-        <%= image_tag @user.avatar, width:'90px', class: "img-responsive" %>
-        <%= f.file_field :avatar %>
-      </div>
+        <br>
 
-      <br>
+        <div class="from-group">
+          <%= f.text_area :introduction, placeholder: "Type anything bout you here....",class: "form-control" %>
+        </div>
 
-      <div class="from-group">
-        <%= f.submit class: "btn btn-primary" %>
-        <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+        <br>
+
+        <div class="from-group">
+          <%= f.submit "Update", class: "btn btn-primary" %>
+        </div>
       </div>
 
     <% end %>

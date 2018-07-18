@@ -15,8 +15,37 @@ class User < ApplicationRecord
 
   has_many :tweets, dependent: :restrict_with_error
 
+  #like
+  has_many :likes, dependent: :destroy
+  
+
+  #reply
+  has_many :replies, dependent: :destroy
+
+  #followship
+  has_many :followships, dependent: :destroy
+  has_many :followings, through: :followships
+
+  has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id", counter_cache: true
+  has_many :followers, through: :inverse_followships, source: :user
+
+
   def admin?
     self.role == "admin"
+  end
+
+  def following?(user)
+    self.followings.include?(user)
+  end
+
+  def count_followings
+    self.followings_count = self.followings.size
+    self.save
+  end
+
+  def count_followers
+    self.followers_count = self.followers.size
+    self.save
   end
 
 end
