@@ -2,14 +2,7 @@
   <h1>Like Page</h1>
 
   <div class="row">
-    <div class="col-4">
-      <div class="user-image">
-        <%= image_tag @user.avatar, class: "img-thumbnail ", title: "使用者圖片", alt: "使用者尚未上傳" %>
-      </div>
-      <h5><%= @user.name %></h5>
-      <p class="text-monospace"><%= @user.introduction %></p>
-      <p>like <%= @user.likes_count %></p>
-    </div>
+    <%= render partial: "shared/user_data" %>  
 
     <div class="col-7">
       <%= render partial: "shared/tweet_view", locals: {tweets: @likes} %> 

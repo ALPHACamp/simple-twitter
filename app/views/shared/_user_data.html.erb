@@ -1,0 +1,8 @@
+<div class="col-4">
+  <div class="user-image">
+    <%= image_tag @user.avatar, class: "img-thumbnail ", title: "使用者圖片", alt: "使用者尚未上傳" %>
+  </div>
+  <h5><%= @user.name %></h5>
+  <p class="text-monospace"><%= @user.introduction %></p>
+  <p>like <%= @user.likes_count %></p>
+</div>
