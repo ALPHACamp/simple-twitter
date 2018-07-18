@@ -8,4 +8,8 @@ class Tweet < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user
 
+  # 判斷是否已收藏
+  def is_liked?(user)
+    self.liked_users.include?(user)
+  end
 end
