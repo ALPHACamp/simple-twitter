@@ -18,8 +18,6 @@ namespace :dev do
       user.save!
       puts user.name
     end
-    User.create( email: "root@gmail.com", password: "12345678", password_confirmation:"12345678", role: "admin", 
-                   name: "root", introduction: FFaker::Lorem.paragraph )
 end
 
   task fake_tweet: :environment do
