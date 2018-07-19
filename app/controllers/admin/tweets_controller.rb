@@ -1,12 +1,12 @@
 class Admin::TweetsController < Admin::BaseController
   def index
-    @tweets = Tweet.all
+    @tweets = Tweet.order(created_at: :desc)
   end
 
   def destroy
     @tweet = Tweet.find(params[:id])
     @tweet.destroy
-    redirect_back(fallback_location: root_path)
+    redirect_to admin_root_path
   end
 
 end

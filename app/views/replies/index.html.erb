@@ -5,67 +5,42 @@
   <div class="col-md-8 col-sm-8 col-md-offset-1 col-sm-offset-1">
     <h2>Tweets</h2>
     <div class="col-md-11 col-sm-11">
-      <div class="panel panel-default">
+      <%= render partial: "shared/tweet", locals: {tweet: @tweet} %>
+    </div>
+
+    <h2>Replies</h2>
+    <div class="col-md-11 col-sm-11">
+      <% @replies.each do |reply| -%>
+        <div class="panel panel-default">
           <div class="panel-body">
             <div class="col-md-3 col-sm-3">
-              <%= image_tag @tweet.user.avatar, width:'60px', class: "img-reponsive center-block " %>
+              <%= image_tag reply.user.avatar, width:'60px', class: "img-reponsive center-block " %>
             </div>
             
             <div class="col-md-9 col-sm-9">
-              <%= @tweet.user.name %>, 
+              <%= link_to reply.user.name, tweets_user_path(reply.user) %>, 
 
-              <%= @tweet.created_at.to_date %>, 
-              <%= @tweet.created_at.strftime("%H:%M") %>
+              <%= reply.created_at.to_date %>, 
+              <%= reply.created_at.strftime("%H:%M") %>
               <br>
 
-              <%= @tweet.description %>
-              <br>
-
-              <%= link_to tweet_replies_path(@tweet) do %>
-                reply(<%= @tweet.replies_count %>)
-              <% end %>
-              &nbsp;
-              like(<%= @tweet.likes_count %>)
+              <%= reply.comment %>
 
             </div>
-
           </div>
+
         </div>
-      </div>
+      <% end %>
 
-      <h2>Replies</h2>
-      <div class="col-md-11 col-sm-11">
-        <% @tweet.replies.each do |reply| -%>
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <div class="col-md-3 col-sm-3">
-                <%= image_tag reply.user.avatar, width:'60px', class: "img-reponsive center-block " %>
-              </div>
-              
-              <div class="col-md-9 col-sm-9">
-                <%= @tweet.user.name %>, 
-
-                <%= @tweet.created_at.to_date %>, 
-                <%= @tweet.created_at.strftime("%H:%M") %>
-                <br>
-
-                <%= @tweet.description %>
-
-              </div>
-            </div>
-
-          </div>
-        <% end %>
-
-        <%= form_for [@tweet, @replies] do |f| -%>
-          <div class="form-group">
-            <%= f.text_area :comment, class: "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= f.submit "Reply",class: "btn btn-primary" %>
-          </div>
-          
-        <% end %>
+      <%= form_for [@tweet, @reply] do |f| -%>
+        <div class="form-group">
+          <%= f.text_area :comment, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Reply",class: "btn btn-primary" %>
+        </div>
+        
+      <% end %>
       </div>
     </div>
 

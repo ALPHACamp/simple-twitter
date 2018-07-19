@@ -3,9 +3,11 @@ class TweetsController < ApplicationController
   before_action :set_tweet, only: [:like, :unlike]
 
   def index
-    @users = User.order(followers_count: :desc).limit(10)
     @tweet = Tweet.new
+    @tweet.count_follower
     @tweets = Tweet.order(id: :desc)
+    @users = User.order(followers_count: :desc).limit(10)
+    
     # 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
   end
 
@@ -14,7 +16,7 @@ class TweetsController < ApplicationController
     @tweet.user = current_user
     if @tweet.save
       flash[:notice] = "tweet was successfully created"
-      redirect_to root_path
+      redirect_to tweets_path
     else
       flash.now[:alert] = "tweet was failed to create"
       render :index
@@ -23,13 +25,13 @@ class TweetsController < ApplicationController
 
   def like
     @tweet.likes.create!(user: current_user)
-    redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: tweets_path)
   end
 
   def unlike
     like = Like.where(tweet: @tweet, user: current_user)
     like.destroy_all
-    redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: tweets_path)
   end
 
   private

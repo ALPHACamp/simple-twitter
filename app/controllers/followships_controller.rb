@@ -1,7 +1,9 @@
 class FollowshipsController < ApplicationController
   def create
     @followship = current_user.followships.build(following_id:params[:following_id])
-    @followship.save
+    if @followship.user_id != @followship.following_id
+      @followship.save
+    end
 
     redirect_back(fallback_location: root_path)
   end

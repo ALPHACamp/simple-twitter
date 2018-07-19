@@ -15,4 +15,10 @@ class Tweet < ApplicationRecord
     self.liked_users.include?(user)
   end
 
+  def count_follower
+    @users = User.all
+    @users.each do |user|
+      user.count_follower
+    end
+  end
 end
