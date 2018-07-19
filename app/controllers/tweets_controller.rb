@@ -5,7 +5,7 @@ class TweetsController < ApplicationController
     @tweets = Tweet.all.order(created_at: :desc)
     @tweet = Tweet.new
     # 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
-    @users = User.all.order(created_at: :desc).limit(10)
+    @users = User.all.order(followings_count: :desc).limit(10)
   end
 
   def create
@@ -16,7 +16,7 @@ class TweetsController < ApplicationController
       redirect_to tweets_path
     else
       flash[:notice] = "tweet content can't blank"
-      render :index
+      redirect_to tweets_path
     end
   end
 
