@@ -7,8 +7,12 @@ Rails.application.routes.draw do
   
   # tweet下的巢狀路由
   resources :tweets, only: [:index, :create] do
-    # like / unlike tweet
+    
+    # 對個別推播進行reply
+    resources :replies, only: [:index, :create]
+
     member do
+      # like / unlike tweet
       post :like
       post :unlike
     end
