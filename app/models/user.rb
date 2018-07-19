@@ -39,14 +39,4 @@ class User < ApplicationRecord
     self.followings.include?(user)
   end
 
-  def count_followings
-    self.followings_count = self.followings.size
-    self.save
-  end
-
-  def count_followers
-    self.followers_count = self.followers.size
-    self.save
-  end
-
 end

@@ -1,35 +1,5 @@
 <div class="container">
-  <div class="col-md-3  col-sm-3">
-    <br>
-    <%= image_tag @user.avatar, width:'150px', class: "img-reponsive center-block " %>
-    <div class="text-center">
-      <h2><%= @user.name %></h2>
-    </div>
-    
-    <h5><%= truncate(@user.introduction, length:90) %></h5>
-    <%= link_to tweets_user_path(@user) do %>
-      <h3>Tweets <%= @user.tweets_count %></h3>
-    <% end %>
-
-    <%= link_to followings_user_path(@user) do %>
-      <h3>Following <%= @user.followings_count %></h3>
-    <% end %>
-
-    <%= link_to followers_user_path(@user) do %>
-      <h3>Follower <%= @user.followers_count %></h3>
-    <% end %>
-
-    <%= link_to likes_user_path(@user) do %>
-      <h3>Like <%= @user.likes_count %></h3>
-    <% end %>
-
-    <% if @user != current_user %>
-      <%= render partial: "shared/follow", locals: {user: @user} %>
-    <% else %>
-      <%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-primary" %> 
-    <% end %>
-  </div>
-
+  <%= render partial: "shared/profile", locals: {user: @user} %>
 
   <div class="col-md-9 col-sm-9">
     <h2>Following</h2>
