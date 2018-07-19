@@ -11,17 +11,32 @@ namespace :dev do
       name = FFaker::Name::first_name
       file = File.open("#{Rails.root}/public/avatar/user#{i+1}.jpg")
 
-      user = User.new(
+      user.create(
         name: name,
-        email: "#{name}@example.co",
+        email: "#{name}@example.com",
         password: "12345678",
         introduction: FFaker::Lorem::sentence(30),
         avatar: file
       )
-
-      user.save!
-      puts user.name
     end
+      user.save!
+      puts "created fake users"
+    end
+
+    task fake_tweet: :environment do
+
+    User.all.each do | user |
+      Tweet.destroy_all
+
+      50.times do |i|
+        user.tweets.create!(
+          description: FFaker::Lorem::sentence(7),
+        )
+      end
+      puts "created fake tweets"
+    end
+
+
   end
 
 end
