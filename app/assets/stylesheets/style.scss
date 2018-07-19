@@ -1,0 +1,52 @@
+
+.tweet-detail {
+  padding: 4px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow-y: hidden;
+  height: 150px;
+}
+.tweet-action > p {
+  padding: 4px;
+}
+
+.tweet-item img {
+  max-height: 100px;
+  width: 100px;
+}
+
+.tweet-item .caption {
+  > h3 {
+    margin-top: 5px;
+  }
+  padding: 0 5px 0 10px;
+  .description {
+    padding-top: 5px;
+  }
+}
+
+.follow-detail {
+  padding: 4px;
+  margin: 5px 0 10px 0px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow-y: hidden;
+  height: 200px;
+}
+
+.top-detail{
+  padding: 4px;
+  margin: 5px 0 10px 0px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow-y: hidden;
+  height: 200px;
+}
+
+.navbar-nav > li > a {
+   padding-top: 0px; 
+   padding-right: 0px; 
+   padding-bottom: 0px; 
+   padding-left: 20px; 
+}

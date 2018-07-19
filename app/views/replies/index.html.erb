@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+        <%= render partial: "shared/user_info", locals: {user: @tweet.user} %>
+    </div>
+    <div class="col-md-9">
+      <div class="col-md-12">
+          <h1>Tweet</h1>
+          <%= render partial: "shared/tweet_detail", locals: {tweet: @tweet} %>
+      </div>
+      <div class="col-md-12">
+        <h1>Replies</h1>
+        <% @replies.each do |reply| %>
+          <div class="col-md-12">
+            <div class="tweet-detail">
+              <div class="col-md-2">
+                <%= image_tag reply.user.avatar , size: "100", class: "img-responsive center-block" if reply.user.avatar?%>
+              </div>
+              <div class="col-md-10">
+                <p class="description"><%= link_to reply.user.name , tweets_user_path(reply.user) %>, <%= reply.created_at.strftime("%Y-%m-%d, %H:%M") %></p>
+                <p><%= reply.comment  %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <div class="col-md-12">
+        <!-- 回覆-->
+          <%= form_for [@tweet,@reply] do |f| %>
+          <div class="form-group">
+            <%= f.text_area :comment, placeholder: "留個言吧", class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.submit "Reply" ,class: "btn btn-primary" %>
+          </div>
+          <% end %>
+      </div>
+      </div>
+      
+  </div>
+</div>

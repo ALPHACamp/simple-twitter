@@ -1,0 +1,19 @@
+<div class="col-md-12">
+  <div class="tweet-detail">
+    <div class="col-md-3">
+      <%= image_tag tweet.user.avatar , size: "100", class: "img-responsive center-block" if tweet.user.avatar?%>
+    </div>
+    <div class="col-md-9">
+      <p class="description"><%= link_to tweet.user.name , tweets_user_path(tweet.user)   %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %>
+      <% if current_user.admin? %>
+      <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %>
+      <% end %>
+      </p>
+      <p class="description"><%= tweet.description  %></p>
+      <p class="description">
+        <%= link_to "Reply(#{tweet.replies.count})" , tweet_replies_path(tweet) %>
+        <%= render partial: "shared/like", locals: {tweet: tweet}  %>  
+      </p>
+    </div>
+  </div>
+</div>

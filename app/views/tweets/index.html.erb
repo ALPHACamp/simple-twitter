@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="col-md-12">
+        <!-- 新增的評論 -->
+        <%= form_for [@user,@tweet] do |f| %>
+        <div class="form-group">
+          <%= f.text_area :description, placeholder: "留個言吧", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Tweet" ,class: "btn btn-primary" %>
+        </div>
+        <% end %>
+      </div>
+      <div class="col-md-12">
+        <% @tweets.each do |tweet| %>
+          <%= render partial: "shared/tweet_detail", locals: {tweet: tweet} %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="row">
+       <div class="col-md-12">
+        <% @users.each do |user| %>
+          <div class="top-detail">
+            <div class="col-md-6">
+              <%= image_tag user.avatar , size: "150", class: "img-responsive " if user.avatar?%>
+            </div>
+            <div class="col-md-6">
+              <p><%= link_to user.name ,tweets_user_path(user)%></p>
+              <p><%= truncate(user.introduction, length: 80) %></p>
+              <%= render partial: "shared/follow", locals: {user: user} %>
+            </div>
+          </div>
+        <% end %>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>

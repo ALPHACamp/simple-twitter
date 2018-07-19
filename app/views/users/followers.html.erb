@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render partial: "shared/user_info", locals: {user: @user} %>
+    </div>
+    <div class="col-md-9">
+      <h1>Followers</h1>
+      <div class="col-md-12">
+        <% @followers.each do |follower| %>
+          <%= render partial: "shared/follow_list", locals: {follow: follower} %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

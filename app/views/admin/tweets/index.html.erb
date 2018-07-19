@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+
+    <!-- Nav Tabs -->
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active">
+        <%= link_to 'tweets', admin_tweets_path %>
+      </li>
+      <li role="presentation">
+        <%= link_to 'users', admin_users_path %>
+      </li>  
+    </ul>
+
+  </div>
+</div>
+
+<br>
+<div class="container">
+ <br>
+  <div class="row">
+    <div class="col-md-12">
+      <% @tweets.each do |tweet| %>
+        <%= render partial: "shared/tweet_detail", locals: {tweet: tweet} %>
+      <% end %>
+    </div>
+</div>
