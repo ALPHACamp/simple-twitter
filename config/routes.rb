@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
   resources :tweets do
     resources :replies
+    member do
+      post 'like'
+      post 'unlike'
+    end
   end
 
   resources :users do
