@@ -5,7 +5,8 @@
       <br>
     </div>
     <%= link_to tweet.user.name, tweets_user_path(tweet.user.id) %>
-    <%= tweet.created_at %>
+    <%= tweet.created_at.strftime("%Y-%m-%d") %>,
+    <%= tweet.created_at.strftime("%H:%M") %>
     <br>
     <%= tweet.description %>
     <br>
