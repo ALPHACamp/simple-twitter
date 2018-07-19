@@ -1,0 +1,8 @@
+<ul class="nav nav-tabs">
+  <li class='active'><%= link_to 'All Tweets', admin_tweets_path %></li>
+  <li ><%= link_to 'All Users', admin_users_path %></li>
+</ul>
+<div class="container">
+  <h1 class="text-center">Tweets</h1>
+  <%= render "shared/tweets", tweets: @tweets %>
+</div>
