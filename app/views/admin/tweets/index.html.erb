@@ -1,5 +1,13 @@
 <div class="container">
   <div class="row">
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active">
+        <%= link_to 'Tweets', admin_tweets_path %>
+      </li>
+      <li role="presentation">
+        <%= link_to 'Users', admin_users_path %>
+      </li>
+    </ul>
     <div class="col-md-12">
       <% @tweets.each do |tweet| %>
       <div class="panel panel-default">
@@ -15,6 +23,7 @@
             </p>
             <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %>
             <% tweet.replies.each do |reply| %>
+            <hr>
             <div>
               <h4><%= reply.user.name %></h4>
               <p><%= simple_format reply.comment %></p>
@@ -22,7 +31,6 @@
                 <em><%= reply.created_at.to_time.to_s.split('+').first %> </em>
               </p>
             </div>
-            <hr>
             <% end %>
           </div>
         </div>
