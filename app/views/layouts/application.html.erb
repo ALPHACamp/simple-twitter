@@ -38,9 +38,12 @@
               <% end %>
 
               <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
+              <li>
+                <%= link_to tweets_user_path(current_user), class: "navbar-brand" do %>
+                  <%= image_tag current_user.avatar, width: "30px", class: "img-reponsive center-block " %>
+                <% end %>
+              </li>
               <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
-              <li><%= link_to('修改個人資料', edit_user_path(current_user)) %></li>
-              <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
 
             <% else %>
               <li><%= link_to('註冊', new_user_registration_path) %></li>

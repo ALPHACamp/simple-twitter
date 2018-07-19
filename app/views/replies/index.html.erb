@@ -7,10 +7,22 @@
     </div>
     
     <h5><%= truncate(@tweet.user.introduction, length:90) %></h5>
-    <h3>Tweets <%= @tweet.user.tweets_count %></h3>
-    <h3>Following <%= @tweet.user.followings_count %></h3>
-    <h3>Follower <%= @tweet.user.followers_count %></h3>
-    <h3>Like <%= @tweet.user.likes_count %></h3>
+
+    <%= link_to tweets_user_path(@tweet.user) do %>
+      <h3>Tweets <%= @tweet.user.tweets_count %></h3>
+    <% end %>
+
+    <%= link_to followings_user_path(@tweet.user) do %>
+      <h3>Following <%= @tweet.user.followings_count %></h3>
+    <% end %>
+
+    <%= link_to followers_user_path(@tweet.user) do %>
+      <h3>Follower <%= @tweet.user.followers_count %></h3>
+    <% end %>
+
+    <%= link_to likes_user_path(@tweet.user) do %>
+      <h3>Like <%= @tweet.user.likes_count %></h3>
+    <% end %>
 
     <% if @tweet.user != current_user %>
       <%= render partial: "shared/follow", locals: {user: @tweet.user} %>
@@ -61,7 +73,6 @@
               </div>
               
               <div class="col-md-9 col-sm-9">
-                <br>
                 <%= @tweet.user.name %>, 
 
                 <%= @tweet.created_at.to_date %>, 
@@ -69,8 +80,6 @@
                 <br>
 
                 <%= @tweet.description %>
-                <br>
-                <br>
 
               </div>
             </div>

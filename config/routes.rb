@@ -6,7 +6,6 @@ Rails.application.routes.draw do
 
   resources :tweets, only:[:index, :create] do
     member do 
-      get :likes
       post :like
       post :unlike
     end
@@ -19,6 +18,7 @@ Rails.application.routes.draw do
       get :followings
       get :followers
       get :tweets
+      get :likes
     end
   end
 

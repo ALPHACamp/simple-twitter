@@ -31,15 +31,34 @@
   </div>
 
 
-  <div class="col-md-8 col-sm-8 col-md-offset-1 col-sm-offset-1">
-      <div class="col-md-11 col-sm-11">
-        <% @user.tweets.each do |tweet| -%>
-          <%= render partial: "shared/tweet", locals: {tweet: tweet} %>
-        <% end %>
+  <div class="col-md-9 col-sm-9">
+    <h2>Follower</h2>
+    
+      <% @followers.each do |follower| -%>
+        <div class="col-md-6 col-sm-6">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="col-md-3 col-sm-3">
+                <%= image_tag follower.avatar, width:'40px', class: "img-reponsive center-block " %>
+              </div>
+            
+              <div class="col-md-9 col-sm-9">
+                <%= follower.name %>
+                <br> 
 
-      </div>
+                <%= truncate(follower.introduction, length:40)%>
+                <br>
+
+                <%= render partial: "shared/follow", locals: {user: follower} %> 
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      <% end %>
+      
+
     </div>
-
   </div>
-
 </div>

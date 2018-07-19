@@ -11,6 +11,8 @@ class Tweet < ApplicationRecord
   #reply
   has_many :replies, dependent: :destroy
 
-
+  def like?(user)
+    self.liked_users.include?(user)
+  end
 
 end
