@@ -5,7 +5,9 @@
     <%= render partial: "shared/user_data" %>  
 
     <div class="col-7">
-      <%= render partial: "shared/tweet_view", locals: {tweets: @likes} %> 
+      <% @likes.each do |tweet| %>
+        <%= render partial: "shared/tweet_view", locals: {tweet: tweet} %> 
+      <% end %>
     </div>
 
   </div>

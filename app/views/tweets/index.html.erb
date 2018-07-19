@@ -9,8 +9,9 @@
         <br>
         <%= f.submit %>
       <% end %>
-
-      <%= render partial: "shared/tweet_view", locals: {tweets: @tweets} %>
+      <% @tweets.each do |tweet| %>
+        <%= render partial: "shared/tweet_view", locals: {tweet: tweet} %>
+      <% end %>
     </div>
 
   </div>
