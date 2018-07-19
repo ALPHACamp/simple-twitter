@@ -8,6 +8,9 @@ class Tweet < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user
 
+  # 推播可以有多個回覆
+  has_many :replies, dependent: :destroy
+
   # 判斷是否已收藏
   def is_liked?(user)
     self.liked_users.include?(user)
