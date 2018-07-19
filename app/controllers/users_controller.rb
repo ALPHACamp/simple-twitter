@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     if @user != current_user
-      redirect_to root_path
+      redirect_to tweets_user_path(current_user)
     end
   end
 

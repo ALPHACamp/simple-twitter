@@ -1,15 +1,16 @@
 class FollowshipsController < ApplicationController
   def create
-    @followship = current_user.followships.build(following_id: params[:following_id])
-
-    if @followship.save
-      flash[:notice] = "Successfully followed"
+    if current_user.id.to_s == params[:following_id]
+      flash[:alert] = "can't follow my self"
       redirect_back(fallback_location: root_path)
     else
-      flash[:alert] = @followship.errors.full_messages.to_sentence
+      @followship = current_user.followships.build(following_id: params[:following_id])
+      @followship.save
+      flash[:notice] = "Successfully followed"
       redirect_back(fallback_location: root_path)
     end
   end
+  
 
   def destroy
     @followship = current_user.followships.where(following_id: params[:id]).first

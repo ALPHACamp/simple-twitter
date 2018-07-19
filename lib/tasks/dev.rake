@@ -22,7 +22,7 @@ end
 
   task fake_tweet: :environment do
     Tweet.destroy_all
-    100.times do |i|
+    200.times do |i|
       tweet = Tweet.new(
         description: FFaker::Lorem::sentence(8),
         user_id: User.all.sample.id,
@@ -30,7 +30,7 @@ end
 
       tweet.save!
     end
-    puts "100 fake tweet generated!"
+    puts "200 fake tweet generated!"
   end
 
   task fake_reply: :environment do
@@ -66,7 +66,7 @@ end
         user.likes.create(tweet_id: Tweet.all.sample.id)
       end
     end
-    puts "have created 400 fake follow"
+    puts "have created 400 fake likes"
     
   end
 end
