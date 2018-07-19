@@ -6,4 +6,8 @@ class Tweet < ApplicationRecord
   validates_length_of :description, maximum: 140
   validates_presence_of :description
 
+  def is_liked?(user)
+    self.liked_users.include?(user)
+  end
+
 end

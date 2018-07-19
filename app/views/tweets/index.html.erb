@@ -30,7 +30,7 @@
               <em><%= tweet.created_at.to_time.to_s.split('+').first %> </em>
             </p>
             <%= link_to "Reply", tweet_replies_path(tweet) %>
-            <%= link_to "like", like_tweet_path(tweet), method: :post %>
+            <%= render partial: "shared/like", locals: {tweet: tweet} %>
           </div>
         </div>
       </div>
