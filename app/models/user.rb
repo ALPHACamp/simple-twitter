@@ -22,6 +22,11 @@ class User < ApplicationRecord
   # 一個使用者有多個回覆
   has_many :replies, dependent: :destroy
 
+  # 一個 User 擁有很多追蹤紀錄，透過追蹤紀錄，一個 User 追蹤很多其他 User (followings)
+  has_many :followships, dependent: :destroy
+  has_many :followings, through: :followships
+
+
   # 驗證admin方法
   def admin?
     self.role == "admin"
