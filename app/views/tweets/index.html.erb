@@ -10,8 +10,24 @@
         </div>
         <% end %>
       </div>
+      <hr>
 
 
+    <div class="index-tweet-content">
+    <%@tweets.each do |tweet| %>
+      <div class="tweet-item clearfix">
+        <div class="col-xs-2">
+          <%=image_tag tweet.user.avatar, class:"img-responsive" %>
+        </div>
+        <!-- <%=tweet.updated_at.strftime("%Y-%m-%d,%H:%M")%> 顯示'%Y年%m月..日時分'   -->
+        <div class="col-xs-8"><p class="item-info"><%="@"+tweet.user.name+ ", "%><%=tweet.updated_at.strftime("%Y-%m-%d,%H:%M")%></p>
+          <p></p>
+          <p><%=tweet.description%></p>
+        </div>
+      </div>
+    <%end%>
+    </div>
+  </div>
 
   <div class="col-xs-5">
     <div class="topics col-xs-12">
