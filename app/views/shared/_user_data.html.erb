@@ -12,12 +12,12 @@
     </li>
     <li class="list-group-item">
       <% if @user == current_user %>
-        <%= link_to('Edit Profile', edit_user_path(current_user)) %>
+        <%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-primary" %>
       <% else %>
         <% if current_user.following?(@user) %>
-          <%= link_to 'Unfollow', followship_path(@user), method: :delete %>
+          <%= link_to 'Unfollow', followship_path(@user), method: :delete, class: "btn btn-danger" %>
         <% else %>
-          <%= link_to 'Follow', followships_path(following_id: @user), method: :post %>
+          <%= link_to 'Follow', followships_path(following_id: @user), method: :post,  class: "btn btn-primary" %>
         <% end %>
       <% end %>
     </li>
