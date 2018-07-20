@@ -10,5 +10,12 @@
         like <%= @user.likes_count %>
       <% end %>
     </li>
+    <li class="list-group-item">
+      <% if @user == current_user %>
+        <%= link_to('Edit Profile', edit_user_path(current_user)) %>
+      <% else %>
+        <%= link_to 'Follow', followships_path(following_id: @user), method: :post %>
+      <% end %>
+    </li>
   </ul>
 </div>
