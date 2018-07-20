@@ -15,6 +15,7 @@
         <%= link_to('Edit Profile', edit_user_path(current_user)) %>
       <% else %>
         <%= link_to 'Follow', followships_path(following_id: @user), method: :post %>
+        <%= link_to 'Unfollow', followship_path(@user), method: :delete %>
       <% end %>
     </li>
   </ul>
