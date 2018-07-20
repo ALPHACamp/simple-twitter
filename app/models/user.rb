@@ -4,6 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  def admin?
+    self.role == "admin"
+  end
+
   mount_uploader :avatar, AvatarUploader
 
   # 需要 app/views/devise 裡找到樣板，加上 name 屬性
