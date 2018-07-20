@@ -1,0 +1,21 @@
+<div class="container">
+	<%= image_tag @user.avatar, class: 'img-fluid' if @user %><br>
+	<h2><%= @user.name %></h2>
+	<p><%= @user.introduction %></p>
+	<%= link_to "Tweets #{@user.tweets_count}", tweets_user_path(@user), class: 'btn btn-outline-primary' %><br>
+
+	<div class="py-2">
+		<%= link_to "Followers #{@user.followers_count}", followers_user_path(@user), class: 'btn btn-outline-success' %>
+	</div>
+	<div class="py-2">
+		<%= link_to "Followings #{@user.followings.size}", followings_user_path(@user), class: 'btn btn-outline-danger' %>
+	</div>
+	<div class="py-2">
+		<%= link_to "Likes #{@user.likes_count}", likes_user_path(@user), class: 'btn btn-outline-warning' %>
+	</div>
+	<% if @user == current_user %>
+		<%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-primary' %>
+	<% else %>
+		<%= render partial: 'share/follow-btn', locals: {object: @user} %>
+	<% end %>
+</div>

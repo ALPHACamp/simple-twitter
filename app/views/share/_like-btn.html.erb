@@ -1,0 +1,5 @@
+<% if current_user.already_liked?(object) %>
+	<%= link_to 'Unlike', unlike_tweet_path(object), method: :post, class: 'btn btn-danger' %>
+<% else %>
+	<%= link_to 'Like', like_tweet_path(object), method: :post, class: 'btn btn-info' %>
+<% end %>
