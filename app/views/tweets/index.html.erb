@@ -12,6 +12,7 @@
       <% @tweets.each do |tweet| %>
         <%= render partial: "shared/tweet_view", locals: {tweet: tweet} %>
       <% end %>
+      <%= paginate @tweets, theme: 'twitter-bootstrap-4' %>
     </div>
 
   </div>
