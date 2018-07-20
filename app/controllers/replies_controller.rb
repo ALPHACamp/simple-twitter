@@ -11,7 +11,13 @@ class RepliesController < ApplicationController
     @reply = @tweet.replies.build(reply_params)
     @reply.user = current_user
     @reply.save!
+    count_replies(@tweet)
     redirect_back(fallback_location: tweet_replies_path)
+  end
+
+  def count_replies(tweet)
+    tweet.replies_count = tweet.replies.size
+    tweet.save
   end
 
   private

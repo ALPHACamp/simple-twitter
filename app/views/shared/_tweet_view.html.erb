@@ -5,7 +5,11 @@
   <div class="col-8">
     <p><%= link_to(tweet.user.name, tweets_user_path(tweet.user)) %>, <%= tweet.created_at.strftime("%F %T") %></p>
     <p><%= tweet.description %></p>
-    <%= link_to('Reply', tweet_replies_path(tweet)) %>
+    <!-- Reply -->
+    <%= link_to tweet_replies_path(tweet) do %>
+      Reply(<%= tweet.replies_count %>)
+    <% end %>
+    <!-- Like -->
     <% if tweet.is_liked?(current_user) %>
       <%= link_to unlike_tweet_path(tweet), method: :post, class: "like" do %>
         Unlike(<%= tweet.likes_count %>)
