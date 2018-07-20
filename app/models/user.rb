@@ -37,4 +37,10 @@ class User < ApplicationRecord
     self.likes_count = self.likes.size
     self.save
   end
+
+  # 檢查是否有追蹤紀錄
+  def following?(user)
+    self.followings.include?(user)
+  end
+
 end
