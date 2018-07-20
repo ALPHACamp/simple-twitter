@@ -29,6 +29,8 @@ Rails.application.routes.draw do
     end
   end
 
+  # follow / unfollow
+  resources :followships, only: [:create, :destroy]
 
   # 透過 namespace 建立後台的路由
   namespace :admin do
