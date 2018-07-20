@@ -6,6 +6,11 @@ class TweetsController < ApplicationController
   end
 
   def create
+    @user = User.find(params:[:user_id])
+    @tweet = @user.tweets.build(tweet_params)
+    @tweet.user = current_user 
+    @tweet.save!
+    redirect_to user_path(@user)
   end
 
   def like

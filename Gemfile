@@ -41,6 +41,8 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'kaminari'
+
 group :production do
   gem 'pg', '~> 0.20'
 end
