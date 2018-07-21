@@ -26,6 +26,8 @@ Rails.application.routes.draw do
       get :tweets
       # 瀏覽個別使用者按過like的推播
       get :likes
+      # 使用者正在關注的清單
+      get :followings
     end
   end
 
