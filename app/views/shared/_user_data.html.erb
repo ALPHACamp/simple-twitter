@@ -5,11 +5,22 @@
   <h5><%= @user.name %></h5>
   <p class="text-monospace"><%= @user.introduction %></p>
   <ul class="list-group list-group-flush">
+    
+    <!-- Following list link -->
+    <li class="list-group-item">
+      <%= link_to followings_user_path(@user) do %>
+        Following
+      <% end %>
+    </li>
+
+    <!-- Like list link -->
     <li class="list-group-item">
       <%= link_to likes_user_path(@user) do %>
         like <%= @user.likes_count %>
       <% end %>
     </li>
+    
+    <!-- Edit Profile, follow/unfollow -->
     <li class="list-group-item">
       <% if @user == current_user %>
         <%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-primary" %>
