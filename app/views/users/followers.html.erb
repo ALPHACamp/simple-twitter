@@ -1,0 +1,21 @@
+<div class="row">
+	<div class="col-sm-12 col-md-4">
+		<%= render partial: 'share/user-panel' %>
+	</div>
+	<div class="col-sm-12 col-md-8">
+		<div class="row">
+			<% @followers.each do |follower| %>
+				<div class="row border border-secondary rounded my-2 py-2">
+					<div class="col-sm-12 col-md-4">
+						<%= image_tag follower.avatar, class: 'img-fluid' %>
+					</div>
+					<div class="col-sm-12 col-md-8">
+						<%= link_to follower.name, tweets_user_path(follower) %></br>
+						<%= follower.introduction %></br>
+						<%= render partial: 'share/follow-btn' , locals: {object: follower}%>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

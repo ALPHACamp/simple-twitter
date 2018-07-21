@@ -16,9 +16,8 @@ Rails.application.routes.draw do
   	member do
   	  get :followings
   	  get :followers
-  	end
-  	collection do 
-  	  get :likes
+      get :tweets
+      get :likes
   	end
   end
 

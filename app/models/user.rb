@@ -14,11 +14,11 @@ class User < ApplicationRecord
   has_many :tweets
   has_many :replies
   has_many :likes
-  has_many :liked_tweets, through: :likes, source: :tweets
+  has_many :liked_tweets, through: :likes, source: :tweet
   has_many :followships 
   has_many :followings, through: :followships 
   has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
-  has_many :followers, through: :inverse_followships, source: :users
+  has_many :followers, through: :inverse_followships, source: :user
   
   def admin?
     if self.role == "admin"
@@ -26,6 +26,14 @@ class User < ApplicationRecord
     else
     	false
     end
+  end
+
+  def is_following?(user)
+    self.followings.include?(user)
+  end
+
+  def already_liked?(tweet)
+    self.liked_tweets.include?(tweet)
   end
 
 end

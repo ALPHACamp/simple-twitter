@@ -1,8 +1,9 @@
 namespace :dev do
   # 請先執行 rails dev:fake_user，可以產生 20 個資料完整的 User 紀錄
   # 其他測試用的假資料請依需要自行撰寫
-  task :rebuild => [:fake_user, "db:seed", :fake_tweet, :fake_reply, :fake_like, :fake_followship]
-
+  task :build => ["tmp:clear", "log:clear", "db:drop", "db:create", "db:migrate"] 
+  task :rebuild => [ "dev:build", :fake_user,"db:seed", :fake_tweet, :fake_reply, :fake_like, :fake_followship]
+ 
   task fake_user: :environment do
     User.destroy_all
     20.times do |i|

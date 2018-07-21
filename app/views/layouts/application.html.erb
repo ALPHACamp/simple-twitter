@@ -6,23 +6,34 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
   </head>
 
   <body>
-    <% if current_user %>
-      <% if current_user&.admin? %>
-        <li><%= link_to 'Admin Panel', admin_tweets_path %></li>
-      <% end %>
-      <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
-      <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
-      <li><%= link_to('修改個人資料', edit_user_path(current_user)) %></li>
-      <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
-    <% else %>
-      <li><%= link_to('註冊', new_user_registration_path) %></li>
-      <li><%= link_to('登入', new_user_session_path) %></li>
+    <header>
+      <%= render 'share/navbar' %>
+    </header>
+    
+    <% if flash[:notice] %>
+      <div class="container">
+        <div class="alert alert-success alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span   aria-hidden="true">&times;</span></button>
+          <%= notice %>
+        </div>
+      </div>
     <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    
+    <% if flash[:alert] %>
+      <div class="container">
+        <div class="alert alert-warning alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span   aria-hidden="true">&times;</span></button>
+          <%= alert %>
+        </div>
+      </div>
+    <% end %>
+    
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

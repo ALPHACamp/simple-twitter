@@ -3,4 +3,7 @@ class Tweet < ApplicationRecord
   belongs_to :user, counter_cache: :tweets_count
   has_many :replies, dependent: :destroy
   has_many :likes, dependent: :destroy
+
+
+
 end
