@@ -28,6 +28,8 @@ Rails.application.routes.draw do
       get :likes
       # 使用者正在關注的清單
       get :followings
+      # 使用者的跟隨者
+      get :followers
     end
   end
 
