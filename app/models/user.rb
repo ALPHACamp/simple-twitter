@@ -26,6 +26,9 @@ class User < ApplicationRecord
   has_many :followships, dependent: :destroy
   has_many :followings, through: :followships
 
+  # 一個 User 擁有很多被追蹤紀錄，透過被追蹤紀錄，一個 User 被很多其他 User 追蹤 (followers)
+  has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
+  has_many :followers, through: :inverse_followships, source: :user
 
   # 驗證admin方法
   def admin?
