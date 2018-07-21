@@ -28,8 +28,8 @@ class User < ApplicationRecord
     self.save
   end
 
-  def count_likes
-    self.likes_count = self.likes.size
+  def count_tweets
+    self.tweets_count = self.tweets.size
     self.save
   end
 end

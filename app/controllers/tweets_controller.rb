@@ -9,7 +9,9 @@ class TweetsController < ApplicationController
   def create
     @tweet = Tweet.new(tweet_params)
     @tweet.user = current_user
+    user = current_user
     if @tweet.save
+      user.count_tweets
       flash[:notice] = "tweet was successfully created"
       redirect_to root_path
     else
