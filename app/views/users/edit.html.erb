@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <%= form_for @user do |f| %>
+      <div class="col-lg-4 col-md-4 center">
+        <% if @user.avatar.blank? %>
+          <img src = "http://via.placeholder.com/150x150" >
+        <% else %>
+          <%= image_tag @user.avatar, width: '300px' %>
+        <% end %>
+        <br><br>
+        <%= @user.introduction %><br><br>
+        <%= f.file_field :avatar %>
+      </div>
+      <div class="col-lg-6 col-md-6">
+        <%= f.text_field :name, class: "form-control" ,placeholder: "Name" %><br>
+        <%= f.text_area :introduction, class: "form-control" ,placeholder: "Write something about your self !" %><br>
+        <%= f.submit 'Update' %>
+      </div>
+    <% end %>
+  </div>
+</div>

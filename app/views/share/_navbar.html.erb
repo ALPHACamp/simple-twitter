@@ -9,14 +9,14 @@
       <ul class="navbar-nav right">
         <li class="nav-item">
           <% if current_user.avatar? %>
-            <%= link_to current_user.avatar, edit_user_path(current_user), class: 'nav-link'%>
+            <%= link_to image_tag(current_user.avatar, size: 50), tweets_user_path(current_user), class: 'thumb'%>
           <% else %>
-            <%= link_to current_user.name, edit_user_path(current_user), class: 'nav-link'%>
+            <%= link_to current_user.name, tweets_user_path(current_user), class: 'nav-link'%>
           <% end %>
         </li>
         <li class="nav-item">
           <%= link_to 'Log Out', destroy_user_session_path , method: :delete, class: "nav-link" %>
-        </li>    
+        </li>  
       </ul>
     <% end %>   
   </div>

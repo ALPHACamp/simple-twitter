@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:tweets, :followings, :followers, :likes]
+  before_action :find_user, only: [:edit, :update, :tweets, :followings, :followers, :likes]
   def tweets
     @tweets = @user.tweets
   end
@@ -8,6 +8,12 @@ class UsersController < ApplicationController
   end
 
   def update
+    if @user.update(user_profile_params)
+      flash[:notice] = "User Profile Udpate Successfully !"
+    else
+      flash[:alert] = @user.error.full_messsages
+    end
+    redirect_to tweets_user_path(@user)
   end
 
   def followings
@@ -30,5 +36,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def user_profile_params
+    params.require(:user).permit(:introduction, :avatar, :name)
+  end
   
 end
