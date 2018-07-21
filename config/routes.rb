@@ -20,5 +20,8 @@ Rails.application.routes.draw do
       get 'tweets' => 'users#tweets', controller: 'users'
     end
   end
+
+  resources :followships, only: [:create, :destroy]
+
   root "tweets#index"
 end
