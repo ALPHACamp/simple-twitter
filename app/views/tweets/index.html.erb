@@ -33,8 +33,7 @@
             <div class="col-md-8">
               <h4><%= link_to user.name, tweets_user_path(user) %></h4>
               <p><%= user.introduction %></p>
-              <%= link_to 'Follow', followships_path(following_id: user), method: :post %>
-              <%= link_to 'Unfollow', followship_path(user), method: :delete %>
+              <%= render partial: "shared/follow", locals: {user: user} %>
             </div>
           </div>
         </div>
