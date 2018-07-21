@@ -4,16 +4,21 @@
       <%= image_tag(tweet.user.avatar.url, height: 130, width: 130) %>
     </div>
     <div class="col-md-10">
-      <h4><%= tweet.user.name %></h4>
+      <h4>
+        <%= link_to tweets_user_path(tweet.user) do %><%= tweet.user.name %><% end %> , <%= tweet.created_at.to_time.to_s.split('+').first %>
+      </h4>
       <p><%= simple_format tweet.description %></p>
-      <p class="text-muted">
-        <em><%= tweet.created_at.to_time.to_s.split('+').first %> </em>
-      </p>
-      <%= link_to "Reply", tweet_replies_path(tweet) %>
+      <%= link_to tweet_replies_path(tweet) do %>
+       <span>Reply(<%= tweet.replies.size %>)</span>
+      <% end %>
       <% if tweet.is_liked?(current_user) %>
-        <%= link_to "unlike", unlike_tweet_path(tweet), method: :post %>
+        <%= link_to unlike_tweet_path(tweet), method: :post do %>
+          <span>Unlike(<%= tweet.likes.size%>)</span>
+        <% end %>
       <% else %>
-        <%= link_to "like", like_tweet_path(tweet), method: :post %>
+        <%= link_to like_tweet_path(tweet), method: :post do%>
+          <span>like(<%= tweet.likes.size%>)</span>
+        <% end %>
       <% end %>
     </div>
   </div>

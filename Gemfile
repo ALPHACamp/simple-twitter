@@ -13,7 +13,8 @@ gem 'carrierwave'
 # gem 'mini_magick'
 
 gem 'ffaker'
-
+# debug
+gem 'pry', '~> 0.10.3'
 # bootstrap
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'jquery-rails'

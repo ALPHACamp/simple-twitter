@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get 'tweets' => 'users#tweets', controller: 'users'
+      get 'followings'
+      get 'followers'
+      get 'likes'
     end
   end
 

@@ -1,9 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4">
-      <%= image_tag(current_user.avatar.url, height: 100, width: 100) %>
-      <h4><%= current_user.name %></h4>
-      <p><%= current_user.introduction %></p>
+      <%= render partial: "shared/userinfo", locals: {user: current_user} %>
     </div>
     <div class="col-md-8">
       <h1>Tweets</h1>
