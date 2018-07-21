@@ -7,23 +7,8 @@
       <h3>Following</h3>
       
       <div class="row">
-        <% @followings.each do |following| %>
-          
-          <div class="col-5 list-item row">
-            <div class="col-4">
-              <%= image_tag following.avatar, class: "img-thumbnail list-item-img", title: "使用者圖片", alt: "尚未上傳" %>
-            </div>
-            <div class="col-8">
-              <p><%= link_to(following.name, tweets_user_path(following)) %></p>
-              <p class="list-text"><%= following.introduction %></p>
-              <% if current_user.following?(following) %>
-                <%= link_to 'Unfollow', followship_path(following), method: :delete, class: "btn btn-danger" %>
-              <% else %>
-                <%= link_to 'Follow', followships_path(following_id: following), method: :post,  class: "btn btn-primary" %>
-              <% end %>           
-            </div>
-          </div>
-          
+        <% @followings.each do |following| %>          
+          <%= render partial: "shared/follow_list", locals: {follow: following} %>         
         <% end %>
       </div>
 
