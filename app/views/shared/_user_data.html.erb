@@ -20,6 +20,13 @@
       <% end %>
     </li>
 
+    <!-- Follower list link -->
+    <li class="list-group-item">
+      <%= link_to followers_user_path(@user) do %>
+        Follower
+      <% end %>
+    </li>
+
     <!-- Like list link -->
     <li class="list-group-item">
       <%= link_to likes_user_path(@user) do %>
