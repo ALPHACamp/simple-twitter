@@ -7,17 +7,7 @@
     </div>
     <div class="col-md-8">
       <h1>Tweets</h1>
-        <div class="panel panel-default">
-          <div class="row">
-            <div class="col-md-2">
-              <%= image_tag(@tweet.user.avatar.url, height: 100, width: 100) %>
-            </div>
-            <div class="col-md-10">
-              <h4><%= @tweet.user.name %> , <%= @tweet.created_at.to_time.to_s.split('+').first %></h4>
-              <p><%= simple_format @tweet.description %></p>
-            </div>
-          </div>
-        </div>
+        <%= render partial: "shared/tweet", locals: {tweet: @tweet} %>
       <h1>Replies</h1>
       <% @tweet.replies.each do |reply| %>
       <div class="panel panel-default">

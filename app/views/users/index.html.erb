@@ -17,7 +17,6 @@
         </div>
         <%= f.submit "Tweet",class: "btn btn-primary" %>
       <% end %>
-      <p></p>
       <% @tweets.each do |tweet| %>
         <%= render partial: "shared/tweet", locals: {tweet: tweet} %>
       <% end %>

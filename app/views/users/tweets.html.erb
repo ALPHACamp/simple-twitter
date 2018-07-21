@@ -10,16 +10,7 @@
     </div>
     <div class="col-md-8">
       <% @tweets.each do |tweet| %>
-      <div class="panel panel-default">
-        <div>
-          <h4><%= tweet.user.name %></h4>
-          <p><%= simple_format tweet.description %></p>
-          <p class="text-muted">
-            <em><%= tweet.created_at.to_time.to_s.split('+').first %> </em>
-          </p>
-          <p><%= link_to "Reply", tweet_replies_path(tweet) %></p>
-        </div>
-      </div>
+        <%= render partial: "shared/tweet", locals: {tweet: tweet} %>
       <% end %>
     </div>
   </div>
