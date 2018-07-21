@@ -6,6 +6,13 @@
   <p class="text-monospace"><%= @user.introduction %></p>
   <ul class="list-group list-group-flush">
     
+    <!-- Tweets link -->
+    <li class="list-group-item">
+      <%= link_to tweets_user_path(@user) do %>
+        Tweets <%= @user.tweets.size %>
+      <% end %>
+    </li>   
+
     <!-- Following list link -->
     <li class="list-group-item">
       <%= link_to followings_user_path(@user) do %>
