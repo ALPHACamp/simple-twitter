@@ -1,1 +1,34 @@
-<h1>Follower list</h1>
+<div class="container">
+
+  <div class="row">
+    <%= render partial: "shared/user_data" %> 
+
+    <div class="col-8">
+      <h3>Follower</h3>
+      
+      <div class="row">
+        <% @followers.each do |follower| %>
+          
+          <div class="col-5 list-item row">
+            <div class="col-4">
+              <%= image_tag follower.avatar, class: "img-thumbnail list-item-img", title: "使用者圖片", alt: "尚未上傳" %>
+            </div>
+            <div class="col-8">
+              <p><%= link_to(follower.name, tweets_user_path(follower)) %></p>
+              <p class="list-text"><%= follower.introduction %></p>
+              <% if current_user.following?(follower) %>
+                <%= link_to 'Unfollow', followship_path(follower), method: :delete, class: "btn btn-danger" %>
+              <% else %>
+                <%= link_to 'Follow', followships_path(following_id: follower), method: :post,  class: "btn btn-primary" %>
+              <% end %>           
+            </div>
+          </div>
+          
+        <% end %>
+      </div>
+
+    </div>
+  
+  </div>
+  
+</div>
