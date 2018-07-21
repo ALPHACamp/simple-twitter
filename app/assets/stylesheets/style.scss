@@ -16,7 +16,7 @@
 .tweet-item {
   border: 1px solid #E8E8E8;
   border-radius: 10px;
-  margin: 5px;
+  margin: 7px;
   padding: 4px;
 }
 
@@ -28,3 +28,28 @@
 .like {
   color: #FF5959;
 }
+
+.list-item {
+  border: 1px solid #E8E8E8;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 4px;
+  
+  > .col,
+  > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+.list-item-img {
+  height: 80px;
+  width: 80px;
+}
+
+.list-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; 
+}
+
