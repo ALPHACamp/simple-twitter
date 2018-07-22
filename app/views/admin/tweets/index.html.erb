@@ -6,6 +6,9 @@
       <div class="col-8">
         <%= render partial: "shared/tweet_view", locals: {tweet: tweet} %>
       </div>
+      <div class="col-1">
+        <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure to delete this tweet?"}, class: "btn btn-danger"  %>
+      </div>
     <% end %>
     <%= paginate @tweets, theme: 'twitter-bootstrap-4' %>
     
