@@ -38,7 +38,8 @@ Rails.application.routes.draw do
 
   # 透過 namespace 建立後台的路由
   namespace :admin do
-    root "tweets#index"
+    resources :tweets, only: [:index, :destroy]
+    resources :users, only: :index
   end
 
 end
