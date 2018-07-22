@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-md-3">
+    <%= image_tag @user.avatar, width: "80px"%>
+    <p>@<%= @user.name %> </p>
+    <p><%= @user.introduction %></p>
+    
+    <br>
+    <p>Tweets <%= @user.tweets.count %></p>
+    <p> <%= link_to 'Following',followings_user_path %> <%= @user.followings.count %></p>
+    <p>Follower</p>
+    <p>Like</p>
+    <% if @user.email ==  current_user.email %>
+      <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-primary" %>
+    <% end %>
+    <% if @user != current_user %>
+      <% if current_user.following?(@user) %>
+        <%= link_to "Unfollow", followship_path(@user), method: :delete, class: "btn btn-primary" %>
+      <% else %>
+        <%= link_to "Follow", followships_path(following_id: @user), method: :post, class: "btn btn-primary" %>
+      <% end %>
+    <% end %>
+    
+    
+    
+    </div>
+    
+    <div class="col-xs-12 col-sm-6 col-md-8">
+      <h2>Following</h2>
+      <% @user.followings.each do |following,user| %>
+      <div class="col-sm-6 col-md-4">
+        
+      </div>
+      
+      <ul class= "list-group clearfix">
+        <li class="list-group-item">
+          <div class="media-left">
+            <%= image_tag following.avatar, width: "120px"%>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">@<%= following.name %></h4>
+            <%= truncate(following.introduction, length: 80) %>
+            
+
+            <br>
+            <%= render partial: "shared/follow", locals:{user: user} %>
+          </div>
+        </li>
+      </ul>
+
+        
+      <% end %>
+    </div>
+    <div class="text-center">
+      <%= paginate @followings %>
+    </div>
+    
+     
+  </div>
+</div>
+
+
