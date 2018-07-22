@@ -6,6 +6,10 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    
   </head>
 
   <body>
@@ -21,8 +25,7 @@
       <li><%= link_to('註冊', new_user_registration_path) %></li>
       <li><%= link_to('登入', new_user_session_path) %></li>
     <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    
     <%= yield %>
   </body>
 </html>
