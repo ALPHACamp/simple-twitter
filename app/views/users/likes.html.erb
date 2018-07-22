@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="col-xs-3">
+    <div class="user-item">
+      <%= render partial: "shared/user_files" %>
+      <%= render partial: "shared/follow", locals: {user: @user} %>
+    </div>
+  </div>
+  <div class="col-xs-9">
+    <h3>Like</h3>
+
+    <% @likes.each do |like| %>
+      <div class="row">
+        <div class="col-xs-4">
+          <% if like.user.avatar? %>
+            <%= image_tag like.user.avatar, class: "img-responsive img-rounded" %>
+          <% else %>
+            <img src="http://via.placeholder.com/128x128", class="img-rounded">
+          <% end %>
+        </div>
+        <div class="col-xs-8">
+          <h4><%= link_to "@"+like.user.name, tweets_user_path(like.user) %></h4>
+          <div><%= like.description %></div>
+        </div>
+        <%= render partial: "shared/follow", locals: {user: like.user}%>
+      </div>
+    <% end%>
+  </div>
+</div>

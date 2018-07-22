@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="col-xs-3">
+    <div class="user-item">
+      <%= render partial: "shared/user_files" %>
+      <%= render partial: "shared/follow", locals: {user: @user} %>
+    </div>
+  </div>
+  <div class="col-xs-9">
+    <h3>Tweets</h3>
+    <div class="row">
+      <div class="col-xs-2">
+        <%= image_tag @tweet.user.avatar, class: "img-responsive img-rounded" %>
+      </div>
+      <div class="col-xs-10">
+        <h4><%= link_to "@"+@tweet.user.name, tweets_user_path(@tweet.user)%></h4>
+        <div><%= @tweet.description %></div>
+        <div><%= link_to "Reply", tweet_replies_path(@tweet)%></div>
+      </div>
+    </div>
+
+    <h3>Replies</h3>
+    <div>
+      <% @replies.each do |reply| %>
+        <div class="row">
+          <div class="col-xs-2">
+            <%= image_tag reply.user.avatar, class: "img-responsive img-rounded" %>
+          </div>
+          <div class="col-xs-10">
+            <h4><%= "@"+reply.user.name+","%><%= reply.created_at %></h4>
+            <div><%= reply.comment %></div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <%= form_for [@tweet, @reply] do |f| %>
+      <div class="form-group">
+        <%= f.text_area :comment, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary " %>
+      </div>
+    <% end %>
+  </div>
+</div>
