@@ -1,5 +1,5 @@
 class Admin::TweetsController < Admin::BaseController
-  before_action :authenticate_admin
+  
 
 
   def index
