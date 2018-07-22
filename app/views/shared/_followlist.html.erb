@@ -1,13 +1,15 @@
 <% object.each do |user| %>
-  <div class="panel panel-default">
-    <div class="row">
-      <div class="col-md-4">
-        <%= image_tag(user.avatar.url, height: 100, width: 100) %>
-      </div>
-      <div class="col-md-8">
-        <h4><%= link_to user.name, tweets_user_path(user) %></h4>
-        <p><%= user.introduction %></p>
-        <%= render partial: "shared/follow", locals: {user: user} %>
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="row">
+        <div class="col-md-4">
+          <%= image_tag(user.avatar.url, height: 100, width: 100) %>
+        </div>
+        <div class="col-md-8">
+          <h4><%= link_to user.name, tweets_user_path(user) %></h4>
+          <p><%= user.introduction %></p>
+          <%= render partial: "shared/follow", locals: {user: user} %>
+        </div>
       </div>
     </div>
   </div>

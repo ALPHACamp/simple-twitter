@@ -3,7 +3,7 @@ class TweetsController < ApplicationController
   def index
     @users = User.order(followers_count: :desc).limit(10)
     @tweet = Tweet.new
-    @tweets = Tweet.all
+    @tweets = Tweet.order(created_at: :desc)
   end
 
   def create

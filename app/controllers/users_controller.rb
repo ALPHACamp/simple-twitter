@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
 
   def tweets
-    @tweets = @user.tweets
+    @tweets = @user.tweets.order(created_at: :desc)
   end
 
   def update
@@ -17,15 +17,15 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings = @user.followings
+    @followings = @user.followings.includes(:followships).order("followships.created_at desc")
   end
 
   def followers
-    @followers = @user.followers
+    @followers = @user.followers.includes(:followships).order("followships.created_at desc")
   end
 
   def likes
-    @likes = @user.liked_tweets
+    @likes = @user.liked_tweets.includes(:likes).order("likes.created_at desc")
   end
 
   private
