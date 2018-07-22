@@ -23,7 +23,7 @@
     <!-- Follower list link -->
     <li class="list-group-item">
       <%= link_to followers_user_path(@user) do %>
-        Follower
+        Follower <%= @user.followers_count %>
       <% end %>
     </li>
 

@@ -4,6 +4,8 @@ class FollowshipsController < ApplicationController
 
     if @followship.save
       flash[:notice] = "Successfully followed"
+      @user = User.find(@followship.following_id)
+      count_followers(@user)
       redirect_back(fallback_location: root_path)
     else
       flash[:alert] = @followship.errors.full_messages.to_sentence
@@ -16,5 +18,11 @@ class FollowshipsController < ApplicationController
     @followship.destroy
     flash[:alert] = "Followship destroyed"
     redirect_back(fallback_location: root_path)
+  end
+
+  # 計算follower數量，存進followers_count in user
+  def count_followers(user)
+    user.followers_count = user.followers.size
+    user.save
   end
 end
