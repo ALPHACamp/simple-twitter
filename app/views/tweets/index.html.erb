@@ -15,6 +15,16 @@
       <%= paginate @tweets, theme: 'twitter-bootstrap-4' %>
     </div>
 
+    <div class="col-5">
+      <h3>Popular</h3>
+      <% @users.each do |user| %>
+        <div class="list-item row">
+          <%= render partial: "shared/follow_list", locals: {follow: user} %>
+        </div>
+      <% end %>
+      
+    </div>
+
   </div>
 </div>
 

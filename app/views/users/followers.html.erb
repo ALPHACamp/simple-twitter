@@ -8,7 +8,9 @@
       
       <div class="row">
         <% @followers.each do |follower| %>
-          <%= render partial: "shared/follow_list", locals: {follow: follower} %>         
+          <div class="col-5 list-item row">
+            <%= render partial: "shared/follow_list", locals: {follow: follower} %>   
+          </div>      
         <% end %>
       </div>
 
