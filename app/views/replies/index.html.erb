@@ -12,7 +12,7 @@
       <h3>Replies</h3>
       
       <!-- 顯示回覆 -->
-      <% @tweet.replies.each do |reply| %>
+      <% @replies.each do |reply| %>
         <div class="tweet-item row">
           <div class="col=4 tweet-item-img">
             <%= image_tag reply.user.avatar, class: "img-thumbnail", title: "使用者圖片", alt: "使用者尚未上傳" %>

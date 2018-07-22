@@ -3,6 +3,7 @@ class RepliesController < ApplicationController
   def index
     @tweet = Tweet.find(params[:tweet_id])
     @user = current_user
+    @replies = @tweet.replies
     @reply = Reply.new
   end
 
