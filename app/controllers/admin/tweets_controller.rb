@@ -2,6 +2,7 @@ class Admin::TweetsController < Admin::BaseController
   before_action :authenticate_user!
   before_action :authenticate_admin
 
+
   def index
     @tweets = Tweet.all
   end
@@ -12,4 +13,11 @@ class Admin::TweetsController < Admin::BaseController
     render_to admin_tweets_path
     fiash[:alert] = "tweet was delete"
   end
+
+    private
+
+  def restaurant_params
+    params.require(:tweet).permit(:name, :avatar, :introduction)
+  end
+
 end

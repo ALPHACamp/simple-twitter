@@ -16,8 +16,8 @@ namespace :dev do
       )
 
       user.save!
-      puts user.name
     end
+    puts "have created fake tweets"
+    puts "now have 20 users data"
   end
-
 end
