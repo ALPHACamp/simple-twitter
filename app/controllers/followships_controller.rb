@@ -16,6 +16,8 @@ class FollowshipsController < ApplicationController
   def destroy
     @followship = current_user.followships.where(following_id: params[:id]).first
     @followship.destroy
+    @user = User.find(@followship.following_id)
+    count_followers(@user)
     flash[:alert] = "Followship destroyed"
     redirect_back(fallback_location: root_path)
   end
