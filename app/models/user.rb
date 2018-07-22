@@ -17,18 +17,18 @@ class User < ApplicationRecord
 
   # 使用者可like多個推播
   has_many :likes, dependent: :destroy
-  has_many :liked_tweets, through: :likes, source: :tweet
+  has_many :liked_tweets, -> {order 'likes.created_at desc'}, through: :likes, source: :tweet
 
   # 一個使用者有多個回覆
   has_many :replies, dependent: :destroy
 
   # 一個 User 擁有很多追蹤紀錄，透過追蹤紀錄，一個 User 追蹤很多其他 User (followings)
   has_many :followships, dependent: :destroy
-  has_many :followings, through: :followships
+  has_many :followings, -> {order 'followships.created_at desc'}, through: :followships
 
   # 一個 User 擁有很多被追蹤紀錄，透過被追蹤紀錄，一個 User 被很多其他 User 追蹤 (followers)
   has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
-  has_many :followers, through: :inverse_followships, source: :user
+  has_many :followers, -> {order 'followships.created_at desc'}, through: :inverse_followships, source: :user
 
   # 驗證admin方法
   def admin?
