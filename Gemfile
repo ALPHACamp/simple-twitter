@@ -11,7 +11,7 @@ gem 'devise'
 gem 'carrierwave'
 # resize image size
 # gem 'mini_magick'
-
+gem 'kaminari'
 gem 'ffaker'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
