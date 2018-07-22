@@ -6,6 +6,12 @@ class UsersController < ApplicationController
     @tweets = @user.tweets.order(created_at: :desc)
   end
 
+  def edit
+    if @user.id != current_user.id
+      redirect_to tweets_user_path(@user)
+    end
+  end
+
   def update
     if @user.update(user_params)
       flash[:notice] = "user was successfully updated"
