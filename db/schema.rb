@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 20180721161954) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name", default: "", null: false
+    t.string "name", default: "", null: false, unique: true
     t.string "avatar"
     t.text "introduction"
     t.integer "likes_count", default: 0
