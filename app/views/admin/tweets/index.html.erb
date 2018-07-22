@@ -1,5 +1,9 @@
 <div class="container">
-  <h1>Simple Twitter後台首頁</h1>
+
+  <ul class="nav nav-tabs">
+    <li class="nav-items "><%= link_to '後台首頁', admin_root_path, class: "nav-link active" %></li>
+    <li class="nav-items "><%= link_to '站內使用者', admin_users_path, class: "nav-link" %></li>
+  </ul>
 
   <div class="row">
     <% @tweets.each do |tweet| %>
