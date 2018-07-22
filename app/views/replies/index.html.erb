@@ -7,7 +7,7 @@
       <h1>Tweets</h1>
         <%= render partial: "shared/tweet", locals: {tweet: @tweet} %>
       <h1>Replies</h1>
-      <% @tweet.replies.each do |reply| %>
+      <% @replies.each do |reply| %>
       <div class="panel panel-default">
         <div class="row">
           <div class="col-md-2">

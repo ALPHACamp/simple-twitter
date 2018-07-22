@@ -3,6 +3,7 @@ class RepliesController < ApplicationController
 
   def index
     @reply = Reply.new
+    @replies = @tweet.replies
   end
 
   def create
