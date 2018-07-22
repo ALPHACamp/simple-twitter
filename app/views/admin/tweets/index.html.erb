@@ -1,1 +1,13 @@
-<h1>Simple Twitter後台首頁</h1>
+<div class="container">
+  <h1>Simple Twitter後台首頁</h1>
+
+  <div class="row">
+    <% @tweets.each do |tweet| %>
+      <div class="col-8">
+        <%= render partial: "shared/tweet_view", locals: {tweet: tweet} %>
+      </div>
+    <% end %>
+    <%= paginate @tweets, theme: 'twitter-bootstrap-4' %>
+    
+  </div>
+</div>
