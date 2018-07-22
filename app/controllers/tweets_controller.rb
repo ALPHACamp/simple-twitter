@@ -13,7 +13,7 @@ class TweetsController < ApplicationController
     if @tweet.save
       user.count_tweets
       flash[:notice] = "tweet was successfully created"
-      redirect_to root_path
+      redirect_to tweets_path
     else
       flash.now[:alert] = "tweet was failed to create"
       render :index
@@ -22,13 +22,13 @@ class TweetsController < ApplicationController
 
   def like
     @tweet.likes.create!(user: current_user)
-    redirect_back(fallback_location: root_path)
+    redirect_to tweets_path
   end
 
   def unlike
     likes = Like.where(tweet: @tweet, user: current_user).first
     likes.destroy
-    redirect_back(fallback_location: root_path)
+    redirect_to tweets_path
   end
 
   private
