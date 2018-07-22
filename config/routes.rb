@@ -11,4 +11,6 @@ Rails.application.routes.draw do
     root "tweets#index"
   end
 
+  resources :users, only: [:show, :edit, :update]
+
 end
