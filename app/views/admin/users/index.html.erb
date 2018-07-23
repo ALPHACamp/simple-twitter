@@ -1,0 +1,35 @@
+<div class="container">
+  <h1 class="title">後台</h1>
+
+  <div class="row">
+
+    <ul class="nav nav-tabs">
+      <li role="presentation">
+        <%= link_to "All Tweets", admin_tweets_path %>
+      </li>
+      <li role="presentation" class="active">
+        <%= link_to "All Users", admin_users_path %>
+      </li>
+    </ul>
+
+    <br>
+    <table class="table">
+      <thead class="thead">
+        <tr>
+          <th>name</th>
+          <th>tweets</th>
+          <th>followings</th>
+          <th>followers</th>
+          <th>likes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |u| %>
+          <tr>
+            <th scope="row"><%= u.name %></th>
+
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
