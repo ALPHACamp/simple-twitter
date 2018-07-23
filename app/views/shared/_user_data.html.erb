@@ -1,0 +1,50 @@
+<div class="col-3">
+  <div class="user-image">
+    <%= image_tag @user.avatar, class: "img-thumbnail ", title: "使用者圖片", alt: "使用者尚未上傳" %>
+  </div>
+  <h5><%= @user.name %></h5>
+  <p class="text-monospace"><%= @user.introduction %></p>
+  <ul class="list-group list-group-flush">
+    
+    <!-- Tweets link -->
+    <li class="list-group-item">
+      <%= link_to tweets_user_path(@user) do %>
+        Tweets <%= @user.tweets.size %>
+      <% end %>
+    </li>   
+
+    <!-- Following list link -->
+    <li class="list-group-item">
+      <%= link_to followings_user_path(@user) do %>
+        Following <%= @user.followings.size %>
+      <% end %>
+    </li>
+
+    <!-- Follower list link -->
+    <li class="list-group-item">
+      <%= link_to followers_user_path(@user) do %>
+        Follower <%= @user.followers_count %>
+      <% end %>
+    </li>
+
+    <!-- Like list link -->
+    <li class="list-group-item">
+      <%= link_to likes_user_path(@user) do %>
+        like <%= @user.likes_count %>
+      <% end %>
+    </li>
+    
+    <!-- Edit Profile, follow/unfollow -->
+    <li class="list-group-item">
+      <% if @user == current_user %>
+        <%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-primary" %>
+      <% else %>
+        <% if current_user.following?(@user) %>
+          <%= link_to 'Unfollow', followship_path(@user), method: :delete, class: "btn btn-danger" %>
+        <% else %>
+          <%= link_to 'Follow', followships_path(following_id: @user), method: :post,  class: "btn btn-primary" %>
+        <% end %>
+      <% end %>
+    </li>
+  </ul>
+</div>

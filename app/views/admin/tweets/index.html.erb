@@ -1,0 +1,35 @@
+<div class="container">
+
+  <ul class="nav nav-tabs">
+    <li class="nav-items "><%= link_to '後台首頁', admin_root_path, class: "nav-link active" %></li>
+    <li class="nav-items "><%= link_to '站內使用者', admin_users_path, class: "nav-link" %></li>
+  </ul>
+
+  <div class="row justify-content-md-center">
+    <% @tweets.each do |tweet| %>
+      <div class="col-8">
+        <%= render partial: "shared/tweet_view", locals: {tweet: tweet} %>
+        
+        <!-- Display Reply -->
+        <% if tweet.replies.size > 0 %>
+          <h5>Replies</h5>
+          <% tweet.replies.each do |reply| %>
+            <div class="tweet-item">
+              <p><%= link_to(reply.user.name, tweets_user_path(reply.user)) %>, <%= reply.created_at.strftime("%F %T") %></p>
+              <p><%= reply.comment %></p>
+            </div>
+          <% end %>
+        <% end %>
+
+        <hr>
+      </div>
+
+      <!--delete -->
+      <div class="col-2">
+        <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure to delete this tweet?"}, class: "btn btn-danger"  %>
+      </div>
+    <% end %>
+    <%= paginate @tweets, theme: 'twitter-bootstrap-4' %>
+    
+  </div>
+</div>

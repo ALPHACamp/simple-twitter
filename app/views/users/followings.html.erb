@@ -1,0 +1,21 @@
+<div class="container">
+
+  <div class="row justify-content-md-center">
+    <%= render partial: "shared/user_data" %> 
+
+    <div class="col-8">
+      <h3>Following</h3>
+      
+      <div class="row">
+        <% @followings.each do |following| %>
+          <div class="col-5 list-item row">          
+            <%= render partial: "shared/follow_list", locals: {follow: following} %>
+          </div>        
+        <% end %>
+      </div>
+
+    </div>
+  
+  </div>
+  
+</div>

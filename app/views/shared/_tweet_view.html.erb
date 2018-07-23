@@ -1,0 +1,24 @@
+<div class="tweet-item row">
+  <div class="col=4 tweet-item-img">
+    <%= image_tag tweet.user.avatar, class: "img-thumbnail", title: "使用者圖片", alt: "使用者尚未上傳" %>
+  </div>
+  <div class="col-8">
+    <p><%= link_to(tweet.user.name, tweets_user_path(tweet.user)) %>, <%= tweet.created_at.strftime("%F %T") %></p>
+    <p><%= tweet.description %></p>
+    <!-- Reply -->
+    <%= link_to tweet_replies_path(tweet) do %>
+      Reply(<%= tweet.replies_count %>)
+    <% end %>
+    <!-- Like -->
+    <% if tweet.is_liked?(current_user) %>
+      <%= link_to unlike_tweet_path(tweet), method: :post, class: "like" do %>
+        Unlike(<%= tweet.likes_count %>)
+      <% end %>
+    <% else %>
+      <%= link_to like_tweet_path(tweet), method: :post, class: "like" do %>
+        Like(<%= tweet.likes_count %>)
+      <% end %>
+    <% end %>
+  </div>
+</div>
+

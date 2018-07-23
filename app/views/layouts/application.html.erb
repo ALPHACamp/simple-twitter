@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SimpleTwitter</title>
+    <title>Simple Twitter</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,20 +9,66 @@
   </head>
 
   <body>
-    <% if current_user %>
-      <% if current_user&.admin? %>
-        <li><%= link_to 'Admin Panel', admin_restaurants_path %></li>
-      <% end %>
-      <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
-      <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
-      <li><%= link_to('修改個人資料', edit_user_path(current_user)) %></li>
-      <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
-    <% else %>
-      <li><%= link_to('註冊', new_user_registration_path) %></li>
-      <li><%= link_to('登入', new_user_session_path) %></li>
-    <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+
+
+    <!-- 導覽列 -->
+    <nav class="navbar navbar-expand">
+      <!-- Brand -->
+      <div class="navbar-header">
+        <%= link_to "LOGO", root_path, class: "navbar-brand h1" %>
+      </div> 
+      
+      <!-- nav links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <% if current_user %>
+            <ul class="navbar-nav ml-auto">
+              <!-- 使用者下拉選單 -->
+              <li class="nav-item dropdown">
+                <a class="dropdown-toggle btn navbar-btn-1" data-toggle="dropdown">Hi, <%= current_user.name %></a>
+                <ul class="dropdown-menu">
+                  <% if current_user&.admin? %>
+                    <li class="dropdown-item"><%= link_to '管理者後台', admin_tweets_path %></li>
+                  <% end %>
+                  <li class="dropdown-item"><%= link_to('個人頁面', tweets_user_path(current_user)) %></li>
+                  <li class="dropdown-item"><%= link_to('修改個人資料', edit_user_path(current_user)) %></li>
+                  <li class="dropdown-item"><%= link_to('修改密碼', edit_user_registration_path) %></li>
+                  <li class="dropdown-item"><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
+                </ul>
+              </li>
+            </ul>
+          <% else %>
+              <!-- 未登入者選單 -->
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item btn navbar-btn-1"><%= link_to('註冊', new_user_registration_path) %></li>
+              <li class="nav-item btn navbar-btn-1"><%= link_to('登入', new_user_session_path) %></li>
+            </ul>  
+          <% end %> 
+      </div>
+    </nav>
+    
+    <!-- flash alert -->
+    <div class="container">
+      <div class="row">
+        <% if flash[:notice] %>
+          <div class="alert alert-success alert-dismissible fade show">
+            <%= notice %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>  
+          </div>
+        <% end %>
+        <% if flash[:alert] %>
+          <div class="alert alert-danger alert-dismissible fade show">
+            <%= alert %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>  
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+
     <%= yield %>
   </body>
 </html>

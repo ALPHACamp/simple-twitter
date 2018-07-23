@@ -1,0 +1,39 @@
+<div class="container">
+
+  <div class="row justify-content-md-center">
+    <%= render partial: "shared/user_data" %> 
+    
+    <div class="col-7">
+      
+      <h3>Tweet</h3>
+      <%= render partial: "shared/tweet_view", locals: {tweet: @tweet} %>
+      <h3>Replies</h3>
+      
+      <!-- 顯示回覆 -->
+      <% @replies.each do |reply| %>
+        <div class="tweet-item row">
+          <div class="col=4 tweet-item-img">
+            <%= image_tag reply.user.avatar, class: "img-thumbnail", title: "使用者圖片", alt: "使用者尚未上傳" %>
+          </div>
+          <div class="col-8">
+            <p><%= link_to(reply.user.name, tweets_user_path(reply.user)) %>, <%= reply.created_at.strftime("%F %T") %></p>
+            <p><%= reply.comment %></p>
+          </div>
+        </div>
+      <% end %>
+      <hr>
+      <!-- 新增回覆 -->
+      <%= form_for [ @tweet, @reply ] do |f| %>
+        <div class="form-group">
+          <%= f.text_area :comment, placeholder: "Reply...", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit class: "btn btn-primary" %>
+        </div>
+      <% end %>
+
+    </div>
+ 
+  </div>
+  
+</div>

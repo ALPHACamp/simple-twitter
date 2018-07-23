@@ -3,5 +3,44 @@ Rails.application.routes.draw do
   devise_for :users
 
   # 請依照專案指定規格來設定路由
+  root "tweets#index"
+  
+  # tweet下的巢狀路由
+  resources :tweets, only: [:index, :create] do
+    
+    # 對個別推播進行reply
+    resources :replies, only: [:index, :create]
+
+    member do
+      # like / unlike tweet
+      post :like
+      post :unlike
+    end
+  end
+
+  # user下的巢狀路由
+  resources :users, only: [:edit, :update] do
+      
+    member do
+      # 瀏覽個別使用者下的推播
+      get :tweets
+      # 瀏覽個別使用者按過like的推播
+      get :likes
+      # 使用者正在關注的清單
+      get :followings
+      # 使用者的跟隨者
+      get :followers
+    end
+  end
+
+  # follow / unfollow
+  resources :followships, only: [:create, :destroy]
+
+  # 透過 namespace 建立後台的路由
+  namespace :admin do
+    root "tweets#index"
+    resources :tweets, only: [:index, :destroy]
+    resources :users, only: :index
+  end
 
 end

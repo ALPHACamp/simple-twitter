@@ -1,0 +1,33 @@
+<div class="container">
+  <h1>Simple Twitter首頁</h1>
+
+  <div class="row">
+    
+    <div class="col-7">
+      <%= form_for @tweet do |f| %>
+        <%= f.text_area :description, placeholder: "What's on your mind?", maxlength: 140, rows: "8", style: 'width:100%;' %>
+        <br>
+        <%= f.submit :Tweet, class: 'btn btn-info float-right' %>
+        <br>
+      <% end %>
+
+      <br>
+      <% @tweets.each do |tweet| %>
+        <%= render partial: "shared/tweet_view", locals: {tweet: tweet} %>
+      <% end %>
+      <%= paginate @tweets, theme: 'twitter-bootstrap-4' %>
+    </div>
+
+    <div class="col-5">
+      <h3>Popular</h3>
+      <% @users.each do |user| %>
+        <div class="list-item row">
+          <%= render partial: "shared/follow_list", locals: {follow: user} %>
+        </div>
+      <% end %>
+      
+    </div>
+
+  </div>
+</div>
+

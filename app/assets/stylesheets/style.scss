@@ -1,0 +1,59 @@
+.navbar {
+  background-color: #bfe0f6;
+  margin-bottom: 8px;
+}
+
+.navbar-btn-1 {
+  background-color: #d2e8f7;
+  margin: 5px;
+}
+
+.user-image {
+  height: 180px;
+  width: 180px;
+  margin-bottom: 4px;
+}
+
+.tweet-item {
+  border: 1px solid #E8E8E8;
+  border-radius: 10px;
+  margin: 7px;
+  padding: 4px;
+}
+
+.tweet-item-img {
+  height: 100px;
+  width: 100px;
+}
+
+.like {
+  color: #FF5959;
+}
+
+.list-item {
+  border: 1px solid #E8E8E8;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 4px;
+  
+  > .col,
+  > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+.list-item-img {
+  height: 80px;
+  width: 80px;
+}
+
+.list-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; 
+}
+
+.nav {
+  margin: 5px;
+}

@@ -1,0 +1,32 @@
+<div class="container">
+  <h1>修改個人資料</h1>
+
+  <%= form_for @user  do |f| %>
+    <div class="form-group">
+      <%= f.label :email, "Email:" %>
+      <%= f.text_field :email, class: "form-control", disabled: true %>
+    </div>  
+
+    <div class="form-group">
+      <%= f.label :name, "Name:" %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>  
+    
+    <div class="form-group">
+      <%= f.label :introduction, "自我介紹:" %>
+      <%= f.text_area :introduction, class: "form-control", rows: "2" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :avatar, "大頭照上傳" %>
+      <%= image_tag @user.avatar, width: '150px' if @user.avatar? %>
+      <%= f.file_field :avatar %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit class: "btn btn-info btn-primary" %>
+      <%= f.button "Cancel", type: :reset, class: "btn btn-secondary btn-default" %>
+    </div>
+  <% end %>
+
+</div>
