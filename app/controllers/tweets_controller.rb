@@ -9,11 +9,10 @@ class TweetsController < ApplicationController
   end
 
   def create
-    @tweet = Tweet.find(params[:user_id])
-    @tweet = @tweets.build(tweet_params)
+    @tweet = Tweet.new(tweet_params)
     @tweet.user = current_user
     @tweet.save!
-    redirect_to tweet_path(@tweet)
+    redirect_to tweets_path(@tweet)
   end
 
   def like
