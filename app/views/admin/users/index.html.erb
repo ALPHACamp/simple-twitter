@@ -4,7 +4,7 @@
     <li class="nav-items "><%= link_to '站內使用者', admin_users_path, class: "nav-link active" %></li>
   </ul>
 
-  <% @users = @users.sort_by {|user| user.tweets.size}.reverse %>
+  <!-- <% @users = @users.sort_by {|user| user.tweets.size}.reverse %> -->
   
   <div class="row justify-content-md-center">
     <% @users.each do |user| %>
