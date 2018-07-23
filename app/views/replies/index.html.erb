@@ -1,0 +1,10 @@
+
+<div class="reply-item clearfix">
+    <div class="col-xs-2">
+      <%=image_tag reply.user.avatar, class:"img-responsive" %>
+    </div>
+    <div class="col-xs-10"><p class="reply-info">
+      <%="@"+reply.user.name + ", "%><%=reply.updated_at.strftime("%Y-%m-%d,%H:%M")%></p>
+        <p><%=reply.comment%></p>
+    </div>
+  </div>

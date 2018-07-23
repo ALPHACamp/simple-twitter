@@ -1,7 +1,7 @@
   <div class="container">
   <div class="row">
     <div class="col-xs-12 tweets-form">
-      <%= form_for @tweet, remote: true do |f| %>
+      <%= form_for @tweet do |f| %>
         <div class="form-group">
           <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control text-area" %>
         </div>
@@ -12,9 +12,8 @@
       </div>
       <hr>
 
-
-    <div class="index-tweet-content">
-    <%@tweets.each do |tweet| %>
+  <div class="index-tweet-content">
+    <% @tweets.each do |tweet| %>
       <div class="tweet-item clearfix">
         <div class="col-xs-2">
           <%=image_tag tweet.user.avatar, class:"img-responsive" %>
@@ -28,6 +27,7 @@
     <%end%>
     </div>
   </div>
+
 
   <div class="col-xs-5">
     <div class="topics col-xs-12">
