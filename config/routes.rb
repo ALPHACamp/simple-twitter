@@ -10,4 +10,7 @@ Rails.application.routes.draw do
     resources :tweets
     root "tweets#index"
   end
+  # 設定user路由
+  resources :users, only: [:show, :edit, :update]
+  
 end
