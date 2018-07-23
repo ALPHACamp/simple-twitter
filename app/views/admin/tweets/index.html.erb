@@ -13,7 +13,8 @@
            <% @tweets.each do |tweet| %>
            <tr>
              <th scope="row"><%= tweet.id %></th>
-             <td><%= tweet.name %></td>
+             <td><%= tweet.user.name %></td>
+             <td><%= tweet.description %></td>
              <td>
                <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: { confirm: "Are you sure?"} %>
              </td>

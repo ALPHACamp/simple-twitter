@@ -9,8 +9,8 @@ class Admin::TweetsController < Admin::BaseController
   def destroy
     @tweet = Tweet.find(params[:id])
     @tweet.destroy
-    render_to admin_tweets_path
-    fiash[:alert] = "tweet was delete"
+    redirect_to tweets_path(@tweet)
+    flash[:alert] = "tweet was delete"
   end
 
     private

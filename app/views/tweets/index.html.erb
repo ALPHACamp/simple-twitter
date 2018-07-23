@@ -11,6 +11,16 @@
             <div class="form-group">
               <%= f.submit class: "btn btn-primary" %>
             </div>
+            <!-- 顯示Tweet-->
+            <% @tweets.each do |tweet| %>
+              <div>
+                <h4><%= tweet.user.name %>,<em><%=tweet.created_at %></em></h4>
+                  <p><%= simple_format tweet.description %></p>
+                   </p>
+              </div>
+              <hr>
+              <% end %>
+
           <% end %>
         </div>
         <div class="col-md-5">
