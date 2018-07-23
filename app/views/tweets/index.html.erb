@@ -5,8 +5,9 @@
         <div class="form-group">
           <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control text-area" %>
         </div>
-        <div class="form-group">
-          <%= f.submit "Tweet", class: "pull-right btn btn-primary my-btn btn-lg" %>          
+        <div class="form-group button-group">
+          <%= f.submit "Tweet", class: "pull-right btn btn-primary my-btn btn-lg" %> 
+          <%= f.button "Cancel", type: :reset, class: "pull-right my-btn btn-lg" %>         
         </div>
         <% end %>
       </div>
@@ -22,6 +23,7 @@
         <div class="col-xs-8"><p class="item-info"><%="@"+tweet.user.name+ ", "%><%=tweet.updated_at.strftime("%Y-%m-%d,%H:%M")%></p>
           <p></p>
           <p><%=tweet.description%></p>
+          <%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet) %>
         </div>
       </div>
     <%end%>
@@ -29,8 +31,8 @@
   </div>
 
 
-  <div class="col-xs-5">
-    <div class="topics col-xs-12">
+ <div class="col-xs-5">
+    <div class="top col-xs-12">
       <h2>Hot Topics</h2>
       <% @tweets.each do |tweet| %>
         <div class="row">
@@ -41,4 +43,5 @@
       <% end %>
     </div>
   </div>
+
 </div>

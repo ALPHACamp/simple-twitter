@@ -1,10 +1,14 @@
 
-<div class="reply-item clearfix">
-    <div class="col-xs-2">
-      <%=image_tag reply.user.avatar, class:"img-responsive" %>
-    </div>
-    <div class="col-xs-10"><p class="reply-info">
-      <%="@"+reply.user.name + ", "%><%=reply.updated_at.strftime("%Y-%m-%d,%H:%M")%></p>
-        <p><%=reply.comment%></p>
+    <div class="reply-form">
+      <%= form_for [@tweet, @reply] do |f| %>
+        <div class="form-group">
+          <%= f.text_area :comment, class: "form-control"%>
+        </div>
+        <div class="form-group button-group">
+          <%= f.submit "Reply", class: "btn" %>
+          <%= f.button "Cancel", type: :reset, class: "btn" %>
+        </div>
+      <% end %>
     </div>
   </div>
+</div>

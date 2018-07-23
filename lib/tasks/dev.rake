@@ -34,6 +34,7 @@ namespace :dev do
     end
 
     puts "reated fake tweets"
+    puts "now you have #{Tweet.count} users data"
   end
 
   end

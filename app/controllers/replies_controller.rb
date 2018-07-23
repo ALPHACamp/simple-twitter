@@ -2,17 +2,19 @@ class RepliesController < ApplicationController
   
   def index
     @tweet = Tweet.find(params[:tweet_id])
-    @user = @tweet.user
     @replies = @tweet.replies.order(updated_at: :desc)
     @reply = Reply.new
   end
 
   def create
     @tweet = Tweet.find(params[:tweet_id])
-    @reply = tweet.replies.create(reply_params) 
+    @reply = @tweet.replies.build(reply_params)
     @reply.user = current_user
-    reply.save
-    redirect_to tweet_replies_path(@tweet)
+    if @reply.save!
+      redirect_to tweet_replies_path(@tweet)
+    else
+      render :index
+    end
   end
 
   private 

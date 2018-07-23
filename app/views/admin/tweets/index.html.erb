@@ -1,7 +1,15 @@
-<div class="container">
-  
-  <h1>後台 </h1>
-  
-
-  <%= paginate @restaurants %>
-</div>
+ <div class="container">
+   <h1 class="title">後台</h1>
+ 
+   <div class="row">
+ 
+     <ul class="nav nav-tabs">
+       <li role="presentation" class="active">
+         <%= link_to "All Tweets", admin_tweets_path %>
+       </li>
+       <li role="presentation">
+         <%= link_to "All Users", admin_users_path %>
+       </li>
+     </ul>
+      <br>
+ 

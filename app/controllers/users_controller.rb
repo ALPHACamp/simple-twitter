@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update]
+  before_action :set_user, only: [:tweets, :edit, :update, :followings, :followers, :likes]  
+ 
   def tweets
+    if @user == current_user
+      @tweets = current_user.tweets.order(created_at: :desc)
+    else
+      @tweets = @user.tweets.order(created_at: :desc)
+    end
   end
 
   def update
@@ -26,6 +32,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def set_user
     @user = User.find(params[:id])
   end
