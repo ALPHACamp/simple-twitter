@@ -1,0 +1,19 @@
+<%= image_tag(user.avatar.url, height: 100, width: 100) %>
+<h4><%= link_to user.name, tweets_user_path(user) %></h4>
+<p><%= user.introduction %></p>
+<%= link_to tweets_user_path(user) do %>
+  <p>Tweets <%= user.tweets.size %></p>
+<% end %>
+<%= link_to followings_user_path(user) do %>
+  <p>Following <%= user.followings.size %></p>
+<% end %>
+<%= link_to followers_user_path(user) do %>
+  <p>Follower <%= user.followers.size %></p>
+<% end %>
+<%= link_to likes_user_path(user) do %>
+  <p>like <%= user.likes.size %></p>
+<% end %>
+<% if user == current_user %>
+  <%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-primary" %>
+<% end %>
+<%= render partial: "shared/follow", locals: {user: user} %>

@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active">
+        <%= link_to 'Tweets', admin_tweets_path %>
+      </li>
+      <li role="presentation">
+        <%= link_to 'Users', admin_users_path %>
+      </li>
+    </ul>
+    <div class="col-md-12">
+      <p></p>
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Create time</th>
+            <th>User</th>
+            <th>Description</th>
+            <th>Replies count</th>
+            <th>Replies</th>
+            <th>#</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @tweets.each do |tweet| %>
+          <tr>
+            <th scope="row"><%= tweet.id %></th>
+            <td><%= tweet.created_at.to_time.to_s.split('+').first %></td>
+            <td><%= tweet.user.name %></td>
+            <td><%= tweet.description %></td>
+            <td><%= tweet.replies.size %></td>
+            <td><ul><% tweet.replies.each do |reply| %>
+              <li><%= simple_format reply.comment %></li>
+            <% end %></ul></td>
+            <td><%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
