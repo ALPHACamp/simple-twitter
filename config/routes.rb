@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   # 設定後台路由
   namespace :admin do
+    resources :tweets
     root "tweets#index"
   end
 end
