@@ -5,7 +5,7 @@
     
     <div class="col-7">
       <%= form_for @tweet do |f| %>
-        <%= f.text_area :description, placeholder: "What's on your mind?", maxlength: 140, size: "65x8" %>
+        <%= f.text_area :description, placeholder: "What's on your mind?", maxlength: 140, rows: "8", style: 'width:100%;' %>
         <br>
         <%= f.submit %>
       <% end %>
