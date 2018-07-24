@@ -29,22 +29,36 @@
           <% else %>
           <%= link_to "Like(#{tweet.likes_count})", like_tweet_path(tweet), method: :post, class: "like" %>
           <% end %>
-
         </div>
       </div>
     <%end%>
     </div>
   </div>
 
-  <div class="col-xs-5">
-    <div class="top col-xs-12">
-      <h2>Hot Topics</h2>
-      <% @tweets.each do |tweet| %>
-        <div class="row">
-          <div class="col-xs-8">
-            <%= truncate tweet.description, length: 150 %>
+   <div class="col-md-4">
+      <h3 class="title">Popular</h3>
+      <% @users.each do |u| %>
+        <div class="pop-user">
+          <div class="row">
+            <div class="col-md-4">
+              <%= image_tag u.avatar %>
+            </div>
+            <div class="col-md-8">
+              <%= link_to "@#{u.name}", tweets_user_path(u), class: "name" %>
+              <p><%= u.introduction %></p>
+              <div class="button-group">
+                <% if u != current_user %>
+                <% if current_user.following?(u) %>
+                  <%= link_to "Unfollow", followship_path(u), method: :delete, class: "btn" %>
+                <% else %>
+                  <%= link_to "Follow", followships_path(following_id: u), method: :post, class: "btn" %>
+                <% end %>
+                <% end %>
+              </div>
+            </div>
           </div>
         </div>
       <% end %>
     </div>
   </div>
+</div>

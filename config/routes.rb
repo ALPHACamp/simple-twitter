@@ -1,34 +1,45 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users
+  resources :users, only: [:edit, :update] do
 
- # 請依照專案指定規格來設定路由
- root "tweets#index"
+    member do
 
+      # user page
+      get :tweets
 
+      # following and follower pages
+      get :followings
+      get :followers
+
+      # likes page
+      get :likes
+
+    end
+
+  end
+
+  # 請依照專案指定規格來設定路由
   resources :tweets, only: [:index, :create] do
     resources :replies, only: [:index, :create]
 
-    member do 
+    member do
+
+      # like button
       post :like
       post :unlike
-    end
-  end 
 
-  resources :users, only: [:edit, :update] do
-    member do 
-      get :tweets
-      get :followings
-      get :followers
-      get :likes
     end
+
   end
 
-  resource :followships, only: [:create, :destroy]
+  resources :followships, only: [:create, :destroy]
+
+  root "tweets#index"
 
   namespace :admin do
     resources :tweets, only: [:index, :destroy]
-    resources :users, only:[:index]
+    resources :users, only: [:index]
     root "tweets#index"
   end
 
