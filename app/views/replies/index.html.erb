@@ -29,7 +29,7 @@
       </div> <!-- tweetContent  -->
       <div class="tweetidReplies">
         <h2>Replies</h2>
-          <% @replies.each do |reply| %>
+          <% @tweet.replies.each do |reply| %>
           <div class="repliesContnet panel panel-default clearfix">
             <div class="tweetAvatar ">
               <%= image_tag reply.user.avatar %>
