@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to root_path, notice: "Profile Update"
     else
-      flash[:alert] = @user.errors.full_message.to_sentence
+      flash[:alert] = @user.errors.full_messages.to_sentence
       render :edit
     end
   end
