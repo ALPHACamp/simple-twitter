@@ -15,16 +15,28 @@ class User < ApplicationRecord
 
   has_many :tweets, dependent: :destroy
 
+  # 關聯名稱自訂為 : replied_tweets，需要用 source 來告知 model name 位置
   has_many :replies, dependent: :destroy
   has_many :replied_tweets, through: :replies, source: :tweet
 
   has_many :likes, dependent: :destroy
   has_many :liked_tweets, through: :likes, source: :tweet
 
+  # 不需要另加 source (其沒有自訂名稱)，Rails 可自動推論指向 User Model
+  has_many :followships, dependent: :destroy
+  has_many :followings, through: :followships
+
+  # 使用者追蹤設定 
+  has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
+  has_many :followers, through: :inverse_followships, source: :user
+
 def admin?
   self.role== "admin"
 end
 
+def following?(user)
+  self.followings.include?(user)
+end
 
 
 end
