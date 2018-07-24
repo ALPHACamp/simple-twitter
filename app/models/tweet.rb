@@ -3,6 +3,6 @@ class Tweet < ApplicationRecord
   validates_presence_of :name
 
   belongs_to :user, optional: true
-  has_many :replies, dependent: :destroy
+  has_many :replies, dependent: :delete_all
 
 end
