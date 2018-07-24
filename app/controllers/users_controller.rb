@@ -11,8 +11,8 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
 
-    unless user = current_user
-      redirect_to user_path(@user)
+    unless @user == current_user
+      redirect_to tweets_user_path(@user)
     end
 
   end
@@ -34,7 +34,15 @@ class UsersController < ApplicationController
   end
 
   def likes
-    @likes # 基於測試規格，必須講定變數名稱
+
+    @likes =# 基於測試規格，必須講定變數名稱
+    @tweets = @user.tweets
+
+
+  end
+
+  def show
+    
   end
 
   private
