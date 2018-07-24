@@ -9,7 +9,10 @@ Rails.application.routes.draw do
     root "tweets#index"
   end
 
-  resources :tweets, only: [:index, :create]
+  resources :tweets, only: [:index, :create] do
+    resources :replies, only:[:index, :create]
+  end
+
   resources :users, only: [:edit, :update]
   root "tweets#index"
 
