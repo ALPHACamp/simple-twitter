@@ -13,4 +13,7 @@ Rails.application.routes.draw do
   # 設定user路由
   resources :users, only: [:show, :edit, :update]
   
+  # 設定前台使用者行為路由
+  resources :tweets, only: [:index, :create, :new]
+
 end
