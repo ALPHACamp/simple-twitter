@@ -20,4 +20,7 @@ namespace :dev do
     puts "have created fake tweets"
     puts "now have 20 users data"
   end
+
+
+
 end

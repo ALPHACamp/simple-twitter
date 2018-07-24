@@ -14,7 +14,7 @@
             <!-- 顯示Tweet-->
             <% @tweets.each do |tweet| %>
               <div>
-                <h4><%= tweet.user.name %>,<em><%=tweet.created_at %></em></h4>
+                <h4><%= tweet.user.name %>,<em><%=tweet.created_at%></em></h4>
                   <p><%= simple_format tweet.description %></p>
                    </p>
               </div>

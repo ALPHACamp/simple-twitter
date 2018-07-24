@@ -1,10 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update] 
+  before_action :set_user, only: [:edit, :update] 
 
   def tweets
-  end
-
-  def show
   end
 
   def edit
@@ -14,8 +11,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(user_params)
-    redirect_to user_path(@user)
+    if @user.update(user_params)
+      redirect_to root_path, notice: "Profile Update"
+    else
+      flash[:alert] = @user.errors.full_message.to_sentence
+      render :edit
   end
 
   def followings

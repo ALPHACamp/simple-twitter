@@ -12,7 +12,7 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new(tweet_params)
     @tweet.user = current_user
     @tweet.save!
-    redirect_to admin_tweets_path(@tweet)
+    redirect_to tweets_path(@tweet)
   end
 
   def like
@@ -24,7 +24,7 @@ class TweetsController < ApplicationController
   private
 
   def tweet_params
-    params.require(:tweet).permit(:content)
+    params.require(:tweet).permit(:description)
   end
 
 end
