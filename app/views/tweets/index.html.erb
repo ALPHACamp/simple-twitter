@@ -15,12 +15,22 @@
         <br>
             <!-- 顯示Tweet-->
             <% @tweets.each do |tweet| %>
-              <div>
-                <h4><%= tweet.user.name %>,<em><%=tweet.created_at%></em></h4>
+              <div class="tweet-item">
+                <div class ="avatar">
+                  <%= image_tag (tweet.user.avatar if tweet.user.avatar?),size: "150" %>
+                </div>
+
+                <div>
+                  <h4><%= tweet.user.name %>,<em><%=tweet.created_at%></em></h4>
                   <p><%= simple_format tweet.description %></p>
-                   </p>
-              </div>
-              <hr>
+                </div>
+
+                <div>
+                  <h4><%= link_to :'Reply', class: "btn btn-primary" %></h4>
+                  <h4><%= link_to :'Like',like_tweet_path(@tweet), method: :post, class: "btn btn-primary" %></h4>
+                </div>
+
+
             <% end %>
           </div>
       

@@ -15,6 +15,9 @@ class User < ApplicationRecord
   has_many :tweets, dependent: :delete_all
   has_many :replies, dependent: :delete_all
 
+  has_many :likes, dependent: :destroy
+  has_many :liked_tweets, through: :likes, source: :tweet
+
 
   def admin?
     self.role == "admin"
