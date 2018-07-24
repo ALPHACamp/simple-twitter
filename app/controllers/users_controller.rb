@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     else
       flash[:alert] = @user.errors.full_message.to_sentence
       render :edit
+    end
   end
 
   def followings
