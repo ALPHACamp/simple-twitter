@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <div class="userColunm col-md-4">
+      <%= current_user.avatar %> <br>
+      <%= current_user.name %> <br>
+      <%= current_user.introduction %> <br>
+      Tweets <%= current_user.tweets.count %> <br>
+      Following <%= current_user.followships.count %> <br>
+      Follower <%= current_user.followers_count %> <br>
+      like <%=  current_user.likes_count %> <br>
+      <%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-primary" %>
+    </div>  <!-- userColunm -->
+    <div class="tweetidleft col-md-8">
+      <div class="tweetidTweet">
+        <h2>Tweets</h2>
+        <div class="tweetContent panel panel-default clearfix">
+          <div class="tweetAvatar ">
+            <%= image_tag @reply.user.avatar %>
+          </div> 
+          <div class="tweetRepliesContent">
+            <%= link_to @reply.user.name, tweets_user_path(@reply.user) %> 
+             ,<%= @reply.created_at.strftime(" %Y-%m-%d, %R") %> <br>
+            <%= @reply.comment %>
+            <h5><%= link_to "Reply( #{@reply.tweet.replies.count} )", tweet_replies_path(@reply) %> 
+              <%= render partial: "shared/like", locals: {tweet: @reply.tweet} %>
+             </h5> 
+          </div>    
+        </div> 
+      </div> <!-- tweetContent  -->
+      <div class="tweetidReplies">
+        <h2>Replies</h2>
+          <% @replies.each do |reply| %>
+          <div class="repliesContnet panel panel-default clearfix">
+            <div class="tweetAvatar ">
+              <%= image_tag reply.user.avatar %>
+            </div>
+            <div class="tweetRepliesContent">
+              <%= reply.user.name %>
+              <%= reply.created_at.strftime(" %Y-%m-%d, %R") %> <br>
+              <%= reply.comment %>
+            </div>
+          </div>
+          <% end %>
+          <div class="replyBox">
+            <%= form_for [@tweet, @newReply] do |f| %>
+            <div class="form-group">
+              <%= f.text_area :comment, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.submit "Reply",class:"btn btn-primary replybtn" %>
+            </div>
+            <% end %>
+          </div>
+          
+      </div>
+      
+    </div>  <!-- tweetidTweet -->
+   
+  </div>  <!-- row -->
+  
+</div>  <!-- container -->
