@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   resources :users, only: [:edit] do
     member do
       get :tweets # 每個user的每個tweet
+      get :followings #每個user追蹤的人
+      get :followers #追蹤user的人
+      get :likes #user喜歡過的tweet
     end  
   end  
 
