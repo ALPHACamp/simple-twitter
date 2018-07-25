@@ -13,8 +13,8 @@
 </div>
 <!-- 顯示tweets區 -->
 <div class="container">
-  <div class="tweet-item">
-    <% @tweets.each do |tweet| %>
+  <% @tweets.each do |tweet| %>
+    <div class="tweet-item">
       <div>
         <%= image_tag tweet.user.avatar %>
       </div>
@@ -23,6 +23,6 @@
         <span><%= tweet.created_at.strftime('%Y-%m-%d , %H:%M:%S') %></span>
         <p><%= tweet.description %></p>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %> 
 </div>
