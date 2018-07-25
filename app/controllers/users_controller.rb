@@ -19,8 +19,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def followings
-    @followings # 基於測試規格，必須講定變數名稱
+  def followings # 基於測試規格，必須講定變數名稱
+    @followings = @user.followships.order(created_at: :desc)
+   end 
   end
 
   def followers
@@ -41,4 +42,3 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :introduction, :avatar)
   end
-end
