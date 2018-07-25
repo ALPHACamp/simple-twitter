@@ -10,7 +10,7 @@ class RepliesController < ApplicationController
     tweet = Tweet.find(params[:tweet_id])
     reply = tweet.replies.create(reply_params) 
     reply.user = current_user
-    reply.save
+    reply.save!
     redirect_to tweet_replies_path(tweet)
   end
 
