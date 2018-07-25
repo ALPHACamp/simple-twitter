@@ -1,1 +1,16 @@
 <h1>frontend</h1>
+
+
+
+<div class="tweets">
+  <% @tweets.each do |tweet| %>
+    <div class="avatar">
+    </div>
+    <div class="tweet-item">
+      <%= tweet.user.name %>
+      <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %>
+      <%= tweet.description %>
+      <%= link_to 'Reply'  %>
+    </div>
+  <% end %>
+</div>

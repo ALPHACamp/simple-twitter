@@ -21,9 +21,11 @@ namespace :dev do
   end
 
   task fake_tweet: :environment do
+    Tweet.destroy_all
     100.times do |i|
       Tweet.create!(
-      description: FFaker::Lorem::characters(100)
+      description: FFaker::Lorem::characters(100),
+      user: User.all.sample
       )
     end
 
