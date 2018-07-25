@@ -1,4 +1,43 @@
-
+<div id="replies" class="container">
+  <div class="col-md-3">
+      <%= image_tag @tweet.user.avatar %>
+      <h3 class="name"><%= @tweet.user.name %></h3>
+      <p class="content"><%= @tweet.user.introduction %></p>
+      <div class="info">
+        <p class="count">Tweets<span><%= @tweet.user.tweets.count %></span></p>
+        <p class="count">Following<span><%= @tweet.user.followings.count %></span></p>
+        <p class="count">Follower<span><%= @tweet.user.followers_count %></span></p>
+        <p class="count">Like<span><%= @tweet.user.likes_count %></span></p>
+      </div>
+  </div>
+  <div class="col-md-9">
+    <h3 class="title">tweets</h3>
+    <div class="tweet-msg">
+      <div class="row">
+        <div class="col-md-2">
+          <%= image_tag @tweet.user.avatar %>
+        </div>
+        <div class="col-md-10">
+          <%= link_to "@#{@tweet.user.name},#{@tweet.created_at.to_s(:db)}", tweets_user_path(@tweet.user) %>
+          <p><%= @tweet.description %></p>
+          <%= link_to "Reply(#{@tweet.replies_count})", tweet_replies_path(@tweet) %>
+        </div>
+      </div>
+    </div>
+    <h3 class="title">replies</h3>
+    <% @replies.each do |t| %>
+      <div class="reply-msg">
+        <div class="row">
+          <div class="col-md-2">
+            <%= image_tag t.user.avatar %>
+          </div>
+          <div class="col-md-10">
+            <%= link_to "@#{t.user.name},#{t.created_at.to_s(:db)}", tweets_user_path(t.user) %>
+            <p><%= t.comment %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
     <div class="reply-form">
       <%= form_for [@tweet, @reply] do |f| %>
         <div class="form-group">
