@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  # user大頭照照片上傳器
   mount_uploader :avatar, AvatarUploader
 
   # 設定user跟tweet關聯，一個user可以有很多tweets
