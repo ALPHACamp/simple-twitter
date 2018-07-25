@@ -1,3 +1,4 @@
+<!-- 新增tweet區 -->
 <div class="container">
   <div class="row">
   <%= form_for @tweet do |f| %>
@@ -8,6 +9,20 @@
       <%= f.submit "Tweet", class: "btn btn-primary" %>
     </div>
   <% end %>
-
+  </div>
+</div>
+<!-- 顯示tweets區 -->
+<div class="container">
+  <div class="tweet-item">
+    <% @tweets.each do |tweet| %>
+      <div>
+        <%= image_tag tweet.user.avatar %>
+      </div>
+      <div>
+        <span><%= tweet.user.name %>,</span>
+        <span><%= tweet.created_at.strftime('%Y-%m-%d , %H:%M:%S') %></span>
+        <p><%= tweet.description %></p>
+      </div>
+    <% end %>
   </div>
 </div>
