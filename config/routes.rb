@@ -7,7 +7,8 @@ Rails.application.routes.draw do
 
   # 設定後台路由
   namespace :admin do
-    resources :tweets, only: [:index, :destroy]
+    resources :tweets, only: [:index, :destroy] 
+    resources :users, only: [:index]
     root "tweets#index"
   end
   # 設定user路由
