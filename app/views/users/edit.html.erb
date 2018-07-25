@@ -2,8 +2,9 @@
   <%= form_for @user do |f| %>
     <div class="col-xs-4">
       <div class="form-group">
-        <%= f.label :avatar, class: "none"%>
-
+        <%= f.label :avatar, "大頭照上傳" %>
+        <% image_tag @user.avatar if @user.avatar? %>
+        <%= f.file_field :avatar %>
       </div>
     </div>
     <div class="col-xs-7">

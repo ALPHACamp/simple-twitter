@@ -11,8 +11,16 @@
   width: 100%;
 }
 
+.reply-msg {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 4px;
+  margin-bottom: 15px;
+  width: 120%;
 
-.pop-user img {
+}
+
+.reply-msg img {
   max-height: 180px;
   width: 120%;
 }
