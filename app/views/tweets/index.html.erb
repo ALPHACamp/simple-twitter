@@ -20,7 +20,7 @@
     <div class="avatar">
     </div>
     <div class="tweet-item">
-      <%= tweet.user.name %>
+      <%= link_to tweet.user.name, user_path(tweet.user) %>
       <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %>
       <%= tweet.description %>
       <%= link_to 'Reply'  %>

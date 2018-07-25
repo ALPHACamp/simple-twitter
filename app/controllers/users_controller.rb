@@ -3,8 +3,15 @@ class UsersController < ApplicationController
   def tweets
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   def edit
     @user = User.find(params[:id])
+    unless @user == current_user
+    redirect_to user_path(@user)
+    end
   end
 
   def update
