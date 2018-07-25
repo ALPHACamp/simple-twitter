@@ -10,6 +10,7 @@
         <p class="count">Like<span><%= @tweet.user.likes_count %></span></p>
       </div>
   </div>
+  
   <div class="col-md-9">
     <h3 class="title">tweets</h3>
     <div class="tweet-msg">
@@ -24,6 +25,7 @@
         </div>
       </div>
     </div>
+
     <h3 class="title">replies</h3>
     <% @replies.each do |t| %>
       <div class="reply-msg">
