@@ -1,9 +1,31 @@
 
-.item-info{
-  font-size: 9x;
-  font-weight: bold;
-  color: #3b70c9;
+.tweet-item {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 4px;
+  margin-bottom: 20px;
 }
+
+.tweet-item img {
+  max-height: 180px;
+  width: 100%;
+}
+
+
+.pop-user img {
+  max-height: 180px;
+  width: 120%;
+}
+
+.pop-user {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 4px;
+  margin-bottom: 15px;
+}
+
+
+
 
 .like {
   padding: 0 5px;
@@ -14,4 +36,3 @@
   padding: 0 5px;
   color: #0f1;
 }
-
