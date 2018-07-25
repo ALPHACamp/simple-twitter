@@ -1,1 +1,20 @@
-<h1>tweets</h1>
+<% if @tweet.errors.any? %>
+  <h2>We have some errors here !</h2>
+  <ul>
+    <% @tweet.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<%=form_for @tweet do |f|%>
+  <%= f.label :description, "Description" %>
+  <%= f.text_area :description %>
+
+  <%= f.submit %>
+<% end %>
+
+
+
+
