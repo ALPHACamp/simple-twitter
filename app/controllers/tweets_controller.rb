@@ -1,4 +1,5 @@
 class TweetsController < ApplicationController
+  before_action :set_tweet, only: [:like, :unlike]
   
   
 
@@ -21,15 +22,13 @@ class TweetsController < ApplicationController
   end
 
   def like
-    @tweet = Tweet.find(params(:id))
-    @tweet.like.create!(user: corrent_user)
+    @tweet.likes.create!(user: current_user)
     redirect_back(fallback_location: root_path) 
   end
 
   def unlike
-    @tweet = Tweet.find(params(:id))
     likes = Like.where(tweet: @tweet, user: currrent_user)
-    likes.destroy_all
+    like.destroy_all
     redirect_back(fallback_location: root_path)
   end
 
@@ -37,6 +36,12 @@ class TweetsController < ApplicationController
 
   def tweet_params
     params.require(:tweet).permit(:description)
+  end
+
+  private
+
+  def set_tweet
+    @tweet = Tweet.find(params[:id])
   end
 
 end

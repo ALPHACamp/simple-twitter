@@ -17,7 +17,12 @@ Rails.application.routes.draw do
       end
   end
 
-  resources :users, only: [:edit, :update]
+  resources :users, only: [:edit, :update] do
+    member do
+      get :likes
+    end
+  end
+
   root "tweets#index"
 
 end

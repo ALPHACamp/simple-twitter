@@ -1,4 +1,5 @@
 class Admin::TweetsController < Admin::BaseController
+  before_action :set_tweet, only: [:destroy]
   
 
 
@@ -13,7 +14,11 @@ class Admin::TweetsController < Admin::BaseController
     flash[:alert] = "tweet was delete"
   end
 
-    private
+private
+
+  def set_tweet
+    @tweet = Tweet.find(params[:id])
+  end
 
   def restaurant_params
     params.require(:tweet).permit(:name, :avatar, :introduction)
