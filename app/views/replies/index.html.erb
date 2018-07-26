@@ -1,0 +1,79 @@
+<!-- 左半部 -->
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
+  <!-- tweet avatar -->
+          <div class="form-group">
+            <%= image_tag @tweet.user.avatar, class: "avatar-image img-responsive"  %>
+          </div>
+  <!-- tweet name -->
+          <div class="form-group">
+           <h3><%= @tweet.user.name %></h3> 
+          </div>
+  <!-- tweet intro -->
+          <div class="form-group">
+            <%= @tweet.user.introduction %>
+          </div>
+  <!-- tweet count -->
+  <!-- tweet following count -->
+  <!-- tweet follwer count -->
+  <!-- tweet like count -->
+  <!-- tweet edit profile -->
+          <div class="form-group">
+            <%= link_to 'Edit Profile',edit_user_path(@tweet.user_id), class: "btn btn-primary" %>
+          </div>
+        </div>
+
+  <!-- 右半部 -->
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-7 col-md-8 col-lg-9">
+  <!-- tweets_id tweet-->
+        <h2>Tweet</h2>
+          <div class="form-group">
+            <div class="tweet-item">
+              <div class="clearfix">
+                <div class="col-md-3 col-sm-4">
+                  <%= image_tag @tweet.user.avatar, class: "avatar-image img-responsive img-rounded"  %>
+                </div>
+                <div class="col-md-9 col-sm-8">
+                      <span><%= @tweet.user.name %>,</span>
+                      <span><%= @tweet.created_at.strftime('%Y-%m-%d , %H:%M:%S') %></span>
+                      <p><%= @tweet.description %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+    <!-- tweets_id replies -->
+        <h2>Replies</h2>
+          <div class="form-group">
+            <% @tweet.replies.each do |reply| %>
+              <div class="tweet-item">
+                <div class="clearfix">
+                  <div class="col-md-3 col-sm-4">
+                    <%= image_tag reply.user.avatar, class: "avatar-image img-responsive img-rounded"  %>
+                  </div>
+                  <div class="col-md-9 col-sm-8">
+                    <span><%= reply.user.name %>,</span>
+                    <span><%= reply.user.created_at.strftime('%Y-%m-%d , %H:%M:%S') %></span>
+                    <p class="text-muted">
+                      <em><%= simple_format reply.comment %></em>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+    <!-- 新增回覆區 -->
+        <%= form_for [@tweet, @reply] do |f| %>
+          <div class="col-xs-12 col-sm-7 col-md-8 col-lg-9">
+            <div class="form-group">
+              <%= f.text_area :comment, class: "form-control"  %>  
+            </div>
+              <div class="form-group update-btn">
+                <%= f.submit class: "btn btn-primary" %>
+              </div>
+            </div>
+        <% end %>
+      </div>
