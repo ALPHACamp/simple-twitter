@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     @likes = @user.liked_tweets.order('likes.created_at DESC')
     @tweets = @user.tweets
     @followers = @user.followers
-    @likes = @user.likes
+    @followings = @user.followings
     # 基於測試規格，必須講定變數名稱
   end
 

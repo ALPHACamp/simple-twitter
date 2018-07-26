@@ -1,11 +1,10 @@
 class TweetsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_tweet,only:[:show, :create, :edit, :update]
   # before_action :authenticate_admin
   def index
     @tweets = Tweet.order(created_at: :desc)
-    @users = User.order(followers_count: :desc).limit(10)
-    
+    @users = User.order(followers_count: :desc).includes(:followers).limit(10)
+    @tweet = Tweet.new
     # @users 
     # 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
   end
@@ -13,21 +12,14 @@ class TweetsController < ApplicationController
 
   def create
     @tweet = Tweet.new(tweet_params)
-    @tweet = @tweets.build(tweet_params)
     @tweet.user = current_user
-    @tweet.save
+    if @tweet.save
       redirect_back(fallback_location: root_path)
-    
+    else
+      flash[:alert] = "no tweet"
+      redirect_back(fallback_location: root_path)
+    end 
   end
-
-
-  # def create
-  #   @tweet = Tweet.find(params[:user_id])
-  #   @tweet = @tweets.build(tweet_params)
-  #   @tweet.user = current_user
-  #   @tweet.save!
-  #   redirect_to tweet_path(@tweet)
-  # end
 
 
   def like
@@ -50,7 +42,7 @@ class TweetsController < ApplicationController
   end
 
   def tweet_params
-    params.require(:tweet).permit(:name, :description)
+    params.require(:tweet).permit(:description)
   end
 
 
