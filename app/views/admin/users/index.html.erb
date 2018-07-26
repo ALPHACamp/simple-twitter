@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <% @users.each do |user| %>
+      <div class="col-xs-6 col-md-10 col-md-offset-1">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <div class="media-left">
+              <%= image_tag user.avatar,width: "180px", class: "thumbnail" %>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading"><%= link_to user.name, tweets_user_path(user)%></h4>
+              
+              <br>
+              <p><%= link_to 'Tweet', tweets_user_path(user) %> <span class="badge"><%= user.tweets.count %></span></p>
+              <p><%= link_to 'Following',followings_user_path(user) %> <span class="badge"><%= user.followings.count %></span></p>
+              <p><%= link_to 'Follower',followers_user_path(user) %> <span class="badge"><%= user.followers.count %></span></p>
+              <p><%= link_to 'Like',likes_user_path(user) %> <span class="badge"><%= user.likes.count %></span></p>
+            </div>
+          </li>
+        </ul>   
+      </div>
+    <% end %>
+  </div>
+</div>
