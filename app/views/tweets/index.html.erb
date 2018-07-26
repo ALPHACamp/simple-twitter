@@ -27,7 +27,7 @@
 
                 <div>
                   <h4><%= link_to :'Reply', class: "btn btn-primary" %></h4>
-                  <h4><%= link_to :'Likes',like_tweet_path(tweet), method: :post, class: "btn btn-primary" %></h4>
+                  <%= render partial: "shared/like", locals: {tweet: tweet} %>   
                 </div>
 
 
