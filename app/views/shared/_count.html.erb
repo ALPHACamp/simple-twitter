@@ -1,0 +1,4 @@
+  <p><%= link_to 'Tweets',tweets_user_path(user) %> <%= @user.tweets.count %></p>
+  <p> <%= link_to 'Following',followings_user_path(user) %> <%= @user.followings.count %></p>
+  <p><%= link_to 'Follower', followers_user_path(user) %> <%= @user.followers.count %></p>
+  <p><%= link_to 'Like', likes_user_path(user) %> <%= @user.likes.count %></p>
