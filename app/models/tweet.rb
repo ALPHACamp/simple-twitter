@@ -5,5 +5,6 @@ class Tweet < ApplicationRecord
 # tweet限制字數及空白
   validates :user_id, presence: true
   validates :description, presence: true, length: {maximum: 140}
-
+# tweet有很多回覆，當tweet被刪除時，順便刪除回覆
+  has_many :replies, dependent: :destroy
 end
