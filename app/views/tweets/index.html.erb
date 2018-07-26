@@ -8,7 +8,7 @@
 <% end %>
 
 
-<%=form_for @tweet do |f|%>
+<%=form_for [@user, @tweet] do |f|%>
   <%= f.label :description, "Description" %>
   <%= f.text_area :description %>
 
