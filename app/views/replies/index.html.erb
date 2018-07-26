@@ -1,0 +1,49 @@
+<div class="container">
+  <%= render partial: "shared/profile", locals: {user: @tweet.user} %>
+
+
+  <div class="col-md-8 col-sm-8 col-md-offset-1 col-sm-offset-1">
+    <h2>Tweets</h2>
+    <div class="col-md-11 col-sm-11">
+      <%= render partial: "shared/tweet", locals: {tweet: @tweet} %>
+    </div>
+
+    <h2>Replies</h2>
+    <div class="col-md-11 col-sm-11">
+      <% @replies.each do |reply| -%>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="col-md-3 col-sm-3">
+              <%= image_tag reply.user.avatar, width:'60px', class: "img-reponsive center-block " %>
+            </div>
+            
+            <div class="col-md-9 col-sm-9">
+              <%= link_to reply.user.name, tweets_user_path(reply.user) %>, 
+
+              <%= reply.created_at.to_date %>, 
+              <%= reply.created_at.strftime("%H:%M") %>
+              <br>
+
+              <%= reply.comment %>
+
+            </div>
+          </div>
+
+        </div>
+      <% end %>
+
+      <%= form_for [@tweet, @reply] do |f| -%>
+        <div class="form-group">
+          <%= f.text_area :comment, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Reply",class: "btn btn-primary" %>
+        </div>
+        
+      <% end %>
+      </div>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,34 @@
+<div class="container">
+  <%= render partial: "shared/profile", locals: {user: @user} %>
+
+  <div class="col-md-9 col-sm-9">
+    <h2>Following</h2>
+    
+      <% @followings.each do |following| -%>
+        <div class="col-md-6 col-sm-6"> 
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="col-md-3 col-sm-3">
+                <%= image_tag following.avatar, width:'40px', class: "img-reponsive center-block " %>
+              </div>
+            
+              <div class="col-md-9 col-sm-9">
+                <%= following.name %>
+                <br> 
+
+                <%= truncate(following.introduction, length:40)%>
+                <br>
+
+                <%= render partial: "shared/follow", locals: {user: following} %> 
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      <% end %>
+      
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <% if @user.errors.any? %>
+      <h4>We have some errors here</h4>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+      <hr>
+    <% end %>
+
+    <%= form_for @user do |f| -%>
+      <div class="col-md-3 col-sm-3">
+        <div class="from-group">
+          <%= image_tag @user.avatar, width:'150px', class: "img-responsive" %>
+          <br>
+          <%= f.file_field :avatar%>
+        </div>
+      </div>
+
+      <div class="col-md-9 col-sm-9">
+        <div class="from-group">
+          <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
+        </div>
+
+        <br>
+
+        <div class="from-group">
+          <%= f.text_area :introduction, placeholder: "Type anything bout you here....",class: "form-control" %>
+        </div>
+
+        <br>
+
+        <div class="from-group">
+          <%= f.submit "Update", class: "btn btn-primary" %>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>
