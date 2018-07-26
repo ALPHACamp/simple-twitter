@@ -3,6 +3,8 @@ namespace :dev do
   # 其他測試用的假資料請依需要自行撰寫
   task fake_user: :environment do
     User.destroy_all
+    name = FFaker::Name::first_name
+    file = File.open("#{Rails.root}/public/avatar/user#{i+1}.jpg")
 
     20.times do |i|
       user_name = FFaker::Name.first_name

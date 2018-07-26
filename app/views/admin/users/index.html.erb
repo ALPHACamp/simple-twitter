@@ -1,0 +1,12 @@
+ <% @users.each do |user| %>
+        <div class="col-md-3 col-sm-4 col-xs-6 text-center user-item">
+
+           <%= link_to user_path(user) do %>
+           <%= image_tag user.avatar, class: "img-rounded" %>
+           <h3><%= user.name %></h3>
+           <% end %> 
+
+           <%= render partial: "shared/follow", locals:{user: user} %>
+           <%= render partial: "shared/friend", locals:{user: user} %>
+        </div>
+          <% end %>
