@@ -6,7 +6,7 @@
         
         
           <div class="form-group">
-            <%= image_tag @user.avatar , width: "200px"if @user.avatar?   %>
+            <%= image_tag @user.avatar , width: "180px"if @user.avatar?   %>
             <%= f.file_field :avatar %>
             <%= f.label :avatar, "Browse files", class: 'btn btn-primary' %>
           </div>
