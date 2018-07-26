@@ -5,6 +5,7 @@ class RepliesController < ApplicationController
     @tweet = Tweet.find(params[:tweet_id])
     @replies = @tweet.replies
     @reply = Reply.new
+    @user = @tweet.user
      
   end
 
