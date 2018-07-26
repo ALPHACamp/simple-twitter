@@ -17,4 +17,6 @@ Rails.application.routes.draw do
     resources :tweets, only: [:index, :create] do
       resources :replies, only: [:index, :create]
     end
+  # 設定追蹤路由
+    resources :followships, only: [:create, :destroy]
 end
