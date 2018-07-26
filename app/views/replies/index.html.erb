@@ -1,6 +1,6 @@
 <div id="replies" class="container">
-  <div class="col-md-3">
-      <%= image_tag @tweet.user.avatar %>
+  <div class="col-md-3"  ->
+      <%= image_tag @tweet.user.avatar, class: "img-rounded" %>
       <h3 class="name"><%= @tweet.user.name %></h3>
       <p class="content"><%= @tweet.user.introduction %></p>
       <div class="info">
@@ -11,7 +11,7 @@
       </div>
   </div>
   
-  <div class="col-md-9">
+  <div class="col-md-9 ">
     <h3 class="title">tweets</h3>
     <div class="tweet-msg">
       <div class="row">

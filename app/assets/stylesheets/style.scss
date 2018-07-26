@@ -1,14 +1,19 @@
-
-.tweet-item {
+#tweets img {
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 4px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+
 }
 
-.tweet-item img {
-  max-height: 180px;
-  width: 100%;
+
+
+#replies img {
+  width: 110%;
+  padding: 6px;
+  max-height: 200px;
+
+
 }
 
 .reply-msg {
@@ -16,14 +21,10 @@
   border-radius: 4px;
   padding: 4px;
   margin-bottom: 15px;
-  width: 120%;
-
 }
 
-.reply-msg img {
-  max-height: 180px;
-  width: 120%;
-}
+
+
 
 .pop-user {
   border: 1px solid #ddd;
@@ -32,8 +33,10 @@
   margin-bottom: 15px;
 }
 
-
-
+.pop-user img {
+  max-height: 180px;
+  width: 120%;
+}
 
 .like {
   padding: 0 5px;
