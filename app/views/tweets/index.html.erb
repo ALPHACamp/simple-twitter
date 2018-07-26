@@ -16,6 +16,7 @@
           <br>
           <div class="form-group">
             <% @tweets.each do |tweet| %>
+              
               <div class="panel panel-default">
                 <div class="panel-body">
                   <div class="col-md-2">
@@ -24,16 +25,15 @@
                   <div class="col-md-6">
                     <strong>@<%= link_to tweet.user.name, tweets_user_path(tweet.user) %></strong>
                     
-                    , <em><%= time_ago_in_words(tweet.created_at) %></em> ago
+                    ,   <em><%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></em>
                     <br>
                     <p><%= simple_format(tweet.description)%></p>
-                    <p><%= link_to 'Reply', tweet_replies_path(tweet.id)%></p>
+                    <%= link_to tweet_replies_path(tweet) do%>
+                      Reply (<%= tweet.replies.count %>)
+                    <% end %>
+                    
+                    <%= render partial: "shared/like", locals:{tweet: tweet} %>
                   </div>
-                     
-                    
-                    
-            
-                  
                 </div>
               </div>
             <% end %>
@@ -41,20 +41,23 @@
         <% end %>
 
       </div>
-              
-
-      
-      <br>
-      
-          
-      
-      
-
-      
-      
+ 
     </div>
     <div class="col-xs-6 col-md-4">
+      <h2>Popular</h2>
+      <% @users.each do |user| %>
+      <div class="panel panel-default">
+        <div class="panel-body">
       
+        <%= image_tag user.avatar, width: "80px"%>
+        <p>@<%= user.name %> </p>
+        <p><%= user.introduction %></p> 
+      
+        </div>
+      </div> 
+      <% end %>        
+       
+        
     </div>
   </div>
 </div>
