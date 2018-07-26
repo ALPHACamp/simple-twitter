@@ -12,9 +12,14 @@ class User < ApplicationRecord
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
 
   has_many :tweets, dependent: :destroy
-
+  #使用者有很多追蹤的人
   has_many :followships, dependent: :destroy
   has_many :followings, through: :followships
+
+  #使用者的追蹤者
+  has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
+  has_many :followers, class_name: "inverse_followships", source: :user
+
   #「使用者喜歡很多推文」的多對多關係
   has_many :likes, dependent: :destroy
   has_many :liked_tweets, through: :likes, source: :tweet
