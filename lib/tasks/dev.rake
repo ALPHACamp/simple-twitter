@@ -3,23 +3,23 @@ namespace :dev do
   # 其他測試用的假資料請依需要自行撰寫
   task fake_user: :environment do
     User.destroy_all
+
     20.times do |i|
-      name = FFaker::Name::first_name
-      file = File.open("#{Rails.root}/public/avatar/user#{i+1}.jpg")
-
-      user = User.new(
-        name: name,
-        email: "#{name}@example.co",
-        password: "12345678",
-        introduction: FFaker::Lorem::sentence(30),
-        avatar: file
-      )
-
-      user.save!
+      user_name = FFaker::Name.first_name
+      User.create!(name: user_name,
+                   email:"#{user_name}@example",
+                   password: "12345678"
+    )
     end
-    puts "have created fake tweets"
-    puts "now have 20 users data"
+
+    puts "have created fake users"
+    puts "now you have #{User.count} users data"
+
+    User.create(email: "root@example.com", password: "12345678", role: "admin", name: "Dojo AC")
+    puts "Default admin created!"
   end
+
+
 
 
 
