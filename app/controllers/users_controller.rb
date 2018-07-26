@@ -9,28 +9,27 @@ class UsersController < ApplicationController
     end
   end
 
-  def update
-    if @user.update(user_params)
-      redirect_to root_path, notice: "Profile Updated "
-    else
-      flash[:alert] = @user.errors.full_messages.to_sentence
-
-      render :edit
+  def edit
+    if current_user != @user
+      redirect_to tweets_user_path(@user)
     end
+  end
+
+  def update
+    @user.update(user_params)
+    redirect_to edit_user_path(@user)
   end
 
   def followings # 基於測試規格，必須講定變數名稱
     @followings = @user.followships.order(created_at: :desc)
-   end 
-  end
+  end 
 
   def followers
-    @followers # 基於測試規格，必須講定變數名稱
+    @followers = @user.followers.order(created_at: :desc)
   end
 
   def likes
-    @likes = @user.liked_tweets.order('likes.created_at desc')
-     # 基於測試規格，必須講定變數名稱
+    @likes = @user.liked_tweets.order(created_at: :desc)
   end
 
   private
@@ -42,3 +41,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :introduction, :avatar)
   end
+
+end
