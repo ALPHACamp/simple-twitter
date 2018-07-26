@@ -18,7 +18,7 @@ class User < ApplicationRecord
 
   #使用者的追蹤者
   has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
-  has_many :followers, class_name: "inverse_followships", source: :user
+  has_many :followers, through: :inverse_followships, source: :user
 
   #「使用者喜歡很多推文」的多對多關係
   has_many :likes, dependent: :destroy
