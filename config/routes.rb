@@ -11,8 +11,12 @@ Rails.application.routes.draw do
     resources :users, only: [:index]
     root "tweets#index"
   end
-  # 設定user路由
-    resources :users, only: [:edit, :update]
+  # 設定user路由及某user的簡介及推播
+    resources :users, only: [:edit, :update] do
+      member do
+        get :tweets
+      end
+    end
   # 設定前台使用者行為路由
     resources :tweets, only: [:index, :create] do
       resources :replies, only: [:index, :create]
