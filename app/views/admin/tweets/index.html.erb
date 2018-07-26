@@ -1,6 +1,10 @@
-<h1>推播後台</h1>
-<div class="form-group">
-  <% @tweets.each do |tweet| %>
+
+<div class="container">
+
+  <div class="row">
+    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= link_to 'User List', admin_users_path %></h2>
+    <div class="form-group">
+      <% @tweets.each do |tweet| %>
               
     <div class="panel panel-default">
       <div class="panel-body">
@@ -10,18 +14,18 @@
         <div class="col-md-6">
           <strong>@<%= link_to tweet.user.name, tweets_user_path(tweet.user) %></strong>
                     
-          , <em><%= time_ago_in_words(tweet.created_at) %></em> ago
+          , <em><%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %></em> 
           <br>
           <p><%= simple_format(tweet.description)%></p>
+          <% tweet.replies.each do |reply| %>
+            <%= reply.comment %>
+          <% end %>
           <p><%= link_to 'Reply', tweet_replies_path(tweet.id)%></p>
           <p><%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data:{confirm: "Are you sure?"} %></p>
         </div>
-                     
-                    
-                    
-            
-                  
       </div>
     </div>
-  <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
