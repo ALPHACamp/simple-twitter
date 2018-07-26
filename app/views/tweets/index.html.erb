@@ -50,8 +50,10 @@
         <div class="panel-body">
       
         <%= image_tag user.avatar, width: "80px"%>
-        <p>@<%= user.name %> </p>
+        <p><strong>@<%= link_to user.name, tweets_user_path(user) %></strong> </p>
         <p><%= user.introduction %></p> 
+        <br>
+        <%= render partial: "shared/follow",locals: {user: user} %>
       
         </div>
       </div> 
