@@ -1,6 +1,14 @@
 class RepliesController < ApplicationController
 
   def index
+    @tweet = Tweet.find(params[:tweet_id])
+    @reply = Reply.new
+    @replies = @tweet.replies
+    @user = @tweet.user
+    @tweets = @user.tweets
+    @followings = @user.followings
+    @followers = @user.followers
+    @likes = @user.likes
   end
 
   def create
@@ -8,7 +16,7 @@ class RepliesController < ApplicationController
     @reply = @tweet.replies.build(reply_params)
     @reply.user = current_user
     @reply.save!
-    redirect_to tweet_path(@tweet)
+    redirect_to tweet_replies_path(@tweet)
   end
 
   def destroy
