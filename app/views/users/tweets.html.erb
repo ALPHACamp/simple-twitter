@@ -20,7 +20,7 @@
           <strong>followers: <%= @followers.count %></strong>
         </p>
         <p>
-          <strong>likes: <%= @likes.count %></strong>
+          <strong>likes: <%= link_to @likes.count, likes_user_path(@user) %></strong>
         </p>
 
         
