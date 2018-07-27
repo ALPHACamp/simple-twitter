@@ -21,11 +21,11 @@
     <% end %>
   </div>
 
-    <div class="col-md-9">
-      <% @tweets.each do |t| %>
-      <%= render partial: "shared/tweet", locals: { tweet: t} %>
-      <% end %>
-    </div>
+  <div class="col-md-9">
+    <% @tweets.each do |t| %>
+    <%= render partial: "shared/tweet", locals: { tweet: t} %>
+    <% end %>
   </div>
+</div>
 
      
