@@ -67,5 +67,23 @@ end
       puts "now you have #{Like.count} like data"
     end
 
+    task fake_followship: :environment do
+      Followship.destroy_all
 
-end
+      User.all.each do |user|
+        num = rand(1..8)
+        @users = User.where.not(id: user.id).shuffle
+        num.times do
+          user.followships.create!(
+            following: @users.pop
+          )
+        end
+      end
+
+      puts "have created fake followship"
+      puts "now you have #{Followship.count} followships data"
+    end
+
+  end
+
+
