@@ -16,7 +16,8 @@
         <div class="form-group">
           <div class="tweet-item">
             <div>
-              <%= image_tag tweet.user.avatar, class: "avatar-image img-responsive center-block"%>
+              <%# image_tag tweet.user.avatar, class: "avatar-image img-responsive center-block"  %>
+               <%= render partial: "shared/avatar", locals: {user: tweet.user}%>
             </div>
             <div>
               <span><%= tweet.user.name %>,</span>

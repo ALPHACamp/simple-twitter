@@ -1,5 +1,5 @@
-<% if current_user.avatar? %>
-  <%= image_tag current_user.avatar, class: "avatar-image img-responsive center-block"  %>
+<% if user.avatar? %>
+  <%= image_tag user.avatar, class: "avatar-image img-responsive center-block"  %>
 <% else %>
   <img src="http://via.placeholder.com/100x100" class: "avatar-image img-responsive center-block">
 <% end %>
