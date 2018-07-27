@@ -3,6 +3,13 @@
   border-radius: 4px;
   padding: 6px;
   margin-bottom: 15px;
+  width: 130%;
+}
+
+#tweets {
+text-align: left;
+float: left;
+
 }
 
 
@@ -11,7 +18,6 @@
   width: 110%;
   padding: 6px;
   max-height: 200px;
-
 
 }
 
@@ -23,19 +29,14 @@
 }
 
 
-
-
 .pop-user {
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 4px;
   margin-bottom: 15px;
+
 }
 
-.pop-user img {
-  max-height: 180px;
-  width: 120%;
-}
 
 .like {
   padding: 0 5px;
