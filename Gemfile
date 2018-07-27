@@ -45,8 +45,9 @@ gem 'jquery-rails'
 gem 'kaminari'
 
 group :production do
-  gem 'pg', '~> 0.20'
+  gem 'pg'
 end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -58,6 +59,7 @@ group :development, :test do
   gem 'shoulda-matchers', '~> 3.1'
   gem 'rails-controller-testing'
   gem 'sqlite3'
+  
 end
 
 group :development do
