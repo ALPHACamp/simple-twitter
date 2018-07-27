@@ -39,10 +39,8 @@
         <h2>Tweets</h2>
         <div class="seinbg">
             <%= image_tag (@tweet.user.avatar if @tweet.user.avatar?),height: 100,class: "img-circle" %>
-            <h4><%= link_to @tweet.user.name, tweets_path(@tweet) %>
-             <em><%= @tweet.created_at %> </em>
-            </h4>
-            <h5>@<%= @tweet.user.name %>,<%= @tweet.created_at.to_date %>,<%= @tweet.created_at.strftime("%k:%M") %></h5>
+            
+            <h5>@<%= link_to @tweet.user.name %>,<%= @tweet.created_at.to_date %>,<%= @tweet.created_at.strftime("%k:%M") %></h5>
             <%= @tweet.description %><br>
             <p><strong>
               Reply: <%= @tweet.replies.count %>
@@ -56,8 +54,9 @@
         <div class="seinbg">
           <% @tweet.replies.each do |reply| %>
           <div>
-            <h5>@<%= @tweet.user.name %>,<%= @tweet.created_at.to_date %>,<%= @tweet.created_at.strftime("%k:%M") %></h5>
-            <h4><%= link_to reply.user.name, tweets_path(@tweet) %></h4>
+            <%= image_tag (reply.user.avatar),height: 100,class: "img-circle" %>
+            <h5>@<%= link_to reply.user.name, tweets_path(@tweet) %>,
+              <%= reply.created_at.to_date %>,<%= reply.created_at.strftime("%k:%M") %></h5>
             <p><%= simple_format reply.comment %></p>
             <p class="text-muted">
               <em><%= time_ago_in_words(reply.created_at) %> </em>
