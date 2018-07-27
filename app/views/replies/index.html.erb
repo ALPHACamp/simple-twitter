@@ -45,6 +45,15 @@
             <p><strong>
               Reply: <%= @tweet.replies.count %>
               like: <%= @tweet.likes.count %>
+              <% if @tweet.is_liked?(current_user) %>
+                 <%= link_to unlike_tweet_path(@tweet), method: :post, class: "text-danger" do %>
+                 Unlike(<%= @tweet.likes.count %>)
+                 <% end %> 
+               <% else %>
+                 <%= link_to like_tweet_path(@tweet), method: :post, class: "text-danger" do %>
+                 Like(<%= @tweet.likes.count %>)
+                 <% end %> 
+               <% end %> 
             </strong></p>
         
         </div>

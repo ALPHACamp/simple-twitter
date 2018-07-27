@@ -17,7 +17,7 @@
           <strong>followings: <%= @followings.count %></strong>
         </p>
         <p>
-          <strong>followers: <%= @followers.count %></strong>
+          <strong>followers: <%= link_to @followers.count %></strong>
         </p>
         <p>
           <strong>likes: <%= link_to @likes.count, likes_user_path(@user) %></strong>
@@ -51,8 +51,20 @@
             </h5>
             <p><%= truncate(tweet.description, length: 80) %></p>
             <p><strong>
-              Reply: <%= link_to tweet.replies.count, tweets_path(@tweet) %>
-              like: <%= tweet.likes.count %>
+              <%= link_to tweet_replies_path(tweet) do %>
+                Reply(<%= tweet.replies.count %>)
+              <% end %>
+              
+              <% if tweet.is_liked?(current_user) %>
+                 <%= link_to unlike_tweet_path(tweet), method: :post, class: "text-danger" do %>
+                 Unlike(<%= tweet.likes.count %>)
+                 <% end %> 
+               <% else %>
+                 <%= link_to like_tweet_path(tweet), method: :post, class: "text-danger" do %>
+                 Like(<%= tweet.likes.count %>)
+                 <% end %> 
+               <% end %> 
+
             </strong></p>
         
             
