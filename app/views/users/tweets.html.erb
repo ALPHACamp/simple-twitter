@@ -1,4 +1,5 @@
 <div class="container" id="tweets">
+  <div class="col-md-3 " >
   <%= image_tag @user.avatar, class: "img-responsive" %>
   <h1><%= @user.name %></h1>
   <p><%= @user.introduction %></p>
@@ -18,6 +19,7 @@
     <% else %>
       <%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-primary" %>
     <% end %>
+  </div>
 
     <div class="col-md-9">
       <% @tweets.each do |tweet| %>

@@ -47,9 +47,25 @@ end
         )
       end
     end
+
     puts "have created fake replies"
-    puts "now you have #{Reply.count} replies' data"
+    puts "now you have #{Reply.count} replies data"
   end
+
+ 
+    task fake_like: :environment do
+      Like.destroy_all
+
+      400.times do
+        Like.create!(
+          user_id: User.all.ids.sample,
+          tweet_id: Tweet.all.ids.sample
+         )
+      end
+
+      puts "have created fake likes"
+      puts "now you have #{Like.count} like data"
+    end
 
 
 end
