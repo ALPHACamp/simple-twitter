@@ -42,7 +42,7 @@
             <h4><%= link_to @tweet.user.name, tweets_path(@tweet) %>
              <em><%= @tweet.created_at %> </em>
             </h4>
-            
+            <h5>@<%= @tweet.user.name %>,<%= @tweet.created_at.to_date %>,<%= @tweet.created_at.strftime("%k:%M") %></h5>
             <%= @tweet.description %><br>
             <p><strong>
               Reply: <%= @tweet.replies.count %>
@@ -56,7 +56,7 @@
         <div class="seinbg">
           <% @tweet.replies.each do |reply| %>
           <div>
-
+            <h5>@<%= @tweet.user.name %>,<%= @tweet.created_at.to_date %>,<%= @tweet.created_at.strftime("%k:%M") %></h5>
             <h4><%= link_to reply.user.name, tweets_path(@tweet) %></h4>
             <p><%= simple_format reply.comment %></p>
             <p class="text-muted">
