@@ -8,13 +8,16 @@
           </div>
   <!-- tweet name -->
           <div class="form-group">
-           <h3><%= @tweet.user.name %></h3> 
+           <h2><%= @tweet.user.name %></h2> 
           </div>
   <!-- tweet intro -->
           <div class="form-group">
-            <%= @tweet.user.introduction %>
+            <h5><%= @tweet.user.introduction %></h5>
           </div>
   <!-- tweet count -->
+          <div class="form-group">
+            <h3>Tweets <%= @tweet.user.tweets.count %></h3>
+          </div>
   <!-- tweet following count -->
   <!-- tweet follwer count -->
   <!-- tweet like count -->
