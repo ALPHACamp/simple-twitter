@@ -11,10 +11,10 @@
         <p><strong><%= @user.email %></strong></p>
         <div><%= simple_format @user.introduction %></div>
         <p>
-          <strong>tweets: <%= @tweets.count %></strong>
+          <strong>tweets: <%= link_to @tweets.count, tweets_user_path(@user) %></strong>
         </p>
         <p>
-          <strong>followings: <%= @followings.count %></strong>
+          <strong>followings: <%= link_to @followings.count, followings_user_path(@user) %></strong>
         </p>
         <p>
           <strong>followers: <%= link_to @followers.count %></strong>
@@ -45,10 +45,11 @@
         <% @tweets.each do |tweet| %>
           <div class="seinbg">
             <%= image_tag(@user.avatar, height: 60, width: 60, class: "img-circle") %>
-            <h4><%= link_to @user.name, tweets_path(@tweet) %></h4>
-            <h5>
-              <em><%= tweet.created_at %> </em>
-            </h5>
+
+            <h4><%= link_to tweets_path(@tweet) do %>
+                @<%= @user.name%>.<%= tweet.created_at %>
+              <% end %>
+            </h4>
             <p><%= truncate(tweet.description, length: 80) %></p>
             <p><strong>
               <%= link_to tweet_replies_path(tweet) do %>

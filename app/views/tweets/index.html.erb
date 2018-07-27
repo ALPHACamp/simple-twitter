@@ -15,6 +15,7 @@
       <% @tweets.each do |tweet| %>
           <div class="seinbg">
             <%= image_tag(tweet.user.avatar, height: 60, width: 60, class: "img-circle") %>
+            
             <h5>@<%= tweet.user.name %>,<%= tweet.created_at.to_date %>,<%= tweet.created_at.strftime("%k:%M") %></h5>
             <p><%= truncate(tweet.description, length: 80) %></p>
             <p><strong>

@@ -1,47 +1,92 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Marketplace
-Explore
- @yvesen
- Sign out
- Watch 0
-  Star 0  Fork 72 cindyliu923/simple-twitter
-forked from ALPHACamp/simple-twitter
- Code  Pull requests 0  Projects 0  Wiki  Insights
-Branch: master Find file Copy pathsimple-twitter/app/views/users/followings.html.erb
-81547bb  6 days ago
-@cindyliu923 cindyliu923 style followers view
-1 contributor
-RawBlameHistory     
-28 lines (25 sloc)  1004 Bytes
 <div class="container">
   <div class="row">
 
-  <%= render partial: "shared/user_intro" %>
-
-    <div class="col-md-8">
-      <h2>Following</h2>
-        <% @followings.each do |user| %>
-          <div class="col-md-6">
-          <div class="panel panel-default ppanel">
-            <%= image_tag (user.avatar), class: "usertweet-avatar" %>
-            <h3>@<%= link_to user.name, tweets_user_path(user) %></h3>
-              <%= simple_format user.introduction, style: "color:#808080" %>
-            <% if user != current_user %>
-              <% if current_user.following?(user)%>
-                <%= link_to 'Unfollow', followship_path(user), method: :delete, class: "btn btn-primary btn-lg movebtn" %>
-              <% else %>
-                <%= link_to 'Follow', followships_path(following_id: user), method: :post, class: "btn btn-primary btn-lg movebtn" %>
-              <% end %>
-            <% end %>  
-            </div>  
+      <div class="">
+        
+        <div class="col-md-4 col-sm-4">
+          <div class="text-center">
+            <%= image_tag (@user.avatar if @user.avatar?),height: 200 %>
           </div>
-        <% end %>
-    </div>
+        <h2><%= @user.name %></h2>
+        <p><strong><%= @user.email %></strong></p>
+        <div><%= simple_format @user.introduction %></div>
+        <p>
+          <strong>tweets: <%= @tweets.count %></strong>
+        </p>
+        <p>
+          <strong>followings: <%= @followings.count %></strong>
+        </p>
+        <p>
+          <strong>followers: <%= @followers.count %></strong>
+        </p>
+        <p>
+          <strong>likes: <%= link_to @likes.count, likes_user_path(@user) %></strong>
+        </p>
 
-    </div>
+        
+        
+        <% if @user != current_user %>
+            <% if current_user.following?(@user)%>
+              <%= link_to 'Unfollow', followship_path(@user), method: :delete, class: "btn btn-default" %>
+            <% else %>
+              <%= link_to 'Follow', followships_path(following_id: @user), method: :post, class: "btn btn-info" %>
+            <% end %>
+          <% end %>
+
+        <% if @user.email == current_user.email %>
+          <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-info" %>
+          <% end %>
+
+        </div>
+      <div class="col-md-8 col-sm-8">
+        
+            <h2>Followings</h2>
+        
+        <% @tweets.each do |tweet| %>
+          <div class="seinbg">
+            <%= image_tag(@user.avatar, height: 60, width: 60, class: "img-circle") %>
+            <h4><%= link_to tweets_user_path(@user)do %>
+              @<%= @user.name %>.<%= tweet.created_at %>
+              <% end %>
+            </h4>
+            <p><%= truncate(tweet.description, length: 80) %></p>
+            <p><strong>
+              <%= link_to tweet_replies_path(tweet) do %>
+                Reply(<%= tweet.replies.count %>)
+              <% end %>
+              
+              <% if tweet.is_liked?(current_user) %>
+                 <%= link_to unlike_tweet_path(tweet), method: :post, class: "text-danger" do %>
+                 Unlike(<%= tweet.likes.count %>)
+                 <% end %> 
+               <% else %>
+                 <%= link_to like_tweet_path(tweet), method: :post, class: "text-danger" do %>
+                 Like(<%= tweet.likes.count %>)
+                 <% end %> 
+               <% end %> 
+
+            </strong></p>
+        
+            
+            
+
+          </div>
+      <% end %>
+
+      </div>
+      </div>
+
+
   </div>
 </div>
+
+<style>
+  .seinbg{
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-color: #eee;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+  }
+</style>

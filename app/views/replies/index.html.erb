@@ -41,10 +41,14 @@
             <%= image_tag (@tweet.user.avatar if @tweet.user.avatar?),height: 100,class: "img-circle" %>
             
             <h5>@<%= link_to @tweet.user.name, tweets_user_path(@user) %>,<%= @tweet.created_at.to_date %>,<%= @tweet.created_at.strftime("%k:%M") %></h5>
+
+
             <%= @tweet.description %><br>
             <p><strong>
-              Reply: <%= @tweet.replies.count %>
-              like: <%= @tweet.likes.count %>
+              <%= link_to tweet_replies_path(@tweet) do %>
+              Reply(<%= @tweet.replies.count %>)
+              <% end %>
+              
               <% if @tweet.is_liked?(current_user) %>
                  <%= link_to unlike_tweet_path(@tweet), method: :post, class: "text-danger" do %>
                  Unlike(<%= @tweet.likes.count %>)
