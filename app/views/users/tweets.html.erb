@@ -1,4 +1,4 @@
-<div class="container" id="tweets">
+<div class="container" id="index">
   <div class="col-md-3 " >
   <%= image_tag @user.avatar, class: "img-responsive" %>
   <h1><%= @user.name %></h1>
@@ -22,19 +22,8 @@
   </div>
 
     <div class="col-md-9">
-      <% @tweets.each do |tweet| %>
-        <div class="tweet-msg">
-          <div class="row">
-            <div class="col-md-2">
-              <%= image_tag tweet.user.avatar %>
-            </div>
-          <div class="col-md-10">
-            <%= link_to "@#{tweet.user.name},#{tweet.created_at.to_s(:db)}", tweets_user_path(tweet.user) %>
-            <p><%= tweet.description %></p>
-            <%= link_to "Reply(#{tweet.replies_count})", tweet_replies_path(tweet) %>
-          </div>
-        </div>
-      </div>
+      <% @tweets.each do |t| %>
+      <%= render partial: "shared/tweet", locals: { tweet: t} %>
       <% end %>
     </div>
   </div>
