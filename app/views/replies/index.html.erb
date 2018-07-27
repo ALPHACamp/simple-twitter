@@ -1,45 +1,96 @@
 <div class="container">
   <div class="row">
+      <div class="">
+        
+        <div class="col-md-4 col-sm-4">
+          <div class="text-center">
+            <%= image_tag (@tweet.user.avatar if @tweet.user.avatar?),height: 200 %>
+          </div>
+        <h2><%= link_to @tweet.user.name, tweets_path(@tweet) %></h2>
+        <p><strong><%= @tweet.user.email %></strong></p>
+        <div><%= simple_format @tweet.user.introduction %></div>
+        <p>
+          <strong>followings: <%= @tweet.user.followings.count %></strong>
+        </p>
+        <p>
+         <strong>followers: <%= @tweet.user.followers.count %></strong>
+        </p>
+        <p><strong>like: <%= @tweet.likes.count %></strong></p>
 
-  <%= render partial: "shared/user_intro" %>
-
-  <div class="col-md-8">
-    <h2>Tweets</h2>
-      <div class="panel panel-default twpanel">
-          <%= image_tag (@tweet.user.avatar), class: "usertweet-avatar" %>
-          <h5>@<%= link_to @tweet.user.name, tweets_user_path(@user) %>,<%= @tweet.created_at.to_date %>,<%= @tweet.created_at.strftime("%k:%M") %></h5>
-          <%= simple_format @tweet.description, style: "color:#808080" %>
-          <%= link_to tweet_replies_path(@tweet) do %>
-            Reply(<%= @tweet.replies.count %>)
+        <% if @user != current_user %>
+            <% if current_user.following?(@user)%>
+              <%= link_to 'Unfollow', followship_path(@user), method: :delete, class: "btn btn-default" %>
+            <% else %>
+              <%= link_to 'Follow', followships_path(following_id: @user), method: :post, class: "btn btn-info" %>
+            <% end %>
           <% end %>
-          <% if @tweet.is_liked?(current_user) %>
-            <%= link_to unlike_tweet_path(@tweet), method: :post, class: "text-danger" do %>
-              Unlike(<%= @tweet.likes.count %>)
-            <% end %>
-          <% else %>
-            <%= link_to like_tweet_path(@tweet), method: :post, class: "text-danger" do %>
-              Like(<%= @tweet.likes.count %>)
-            <% end %>
-          <% end %>     
+        
+        <% if @tweet.user.email == current_user.email %>
+          <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-info" %>
+          <% end %>
+          
+        <%= link_to 'Back to index', tweets_path, class: "btn btn-default" %>
+        </div>
+
+      <div class="col-md-8 col-sm-8">
+        <h2>Tweets</h2>
+        <div class="seinbg">
+            <%= image_tag (@tweet.user.avatar if @tweet.user.avatar?),height: 100,class: "img-circle" %>
+            <h4><%= link_to @tweet.user.name, tweets_path(@tweet) %>
+             <em><%= @tweet.created_at %> </em>
+            </h4>
+            
+            <%= @tweet.description %><br>
+            <p><strong>
+              Reply: <%= @tweet.replies.count %>
+              like: <%= @tweet.likes.count %>
+            </strong></p>
+        
+        </div>
+
+        <h2>Reply</h2>
+
+        <div class="seinbg">
+          <% @tweet.replies.each do |reply| %>
+          <div>
+
+            <h4><%= link_to reply.user.name, tweets_path(@tweet) %></h4>
+            <p><%= simple_format reply.comment %></p>
+            <p class="text-muted">
+              <em><%= time_ago_in_words(reply.created_at) %> </em>
+              <% if current_user.admin? %>
+                <%= link_to "Delete", tweet_reply_path(@tweet, reply), method: :delete %>
+              <% end %>
+            </p>
+          </div>
+          <hr>
+          <% end %>
+        </div>
+
+        
+         <%= form_for [@tweet, @reply] do |f| %>
+          <div class="form-group">
+            <%= f.text_area :comment, placeholder: "留個言吧", class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.submit class: "btn btn-info" %>
+            <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+          </div>
+        <% end %>  
+
+      </div>
       </div>
 
-    <h2>Replies</h2>
-      <% @replies.each do |reply| %>
-        <div class="panel panel-default twpanel">
-          <%= image_tag (reply.user.avatar), class: "usertweet-avatar" %>
-          <h5>@<%= reply.user.name %>,<%= reply.created_at.to_date %>,<%= reply.created_at.strftime("%k:%M") %></h5>
-          <%= simple_format reply.comment, style: "color:#808080" %>
-        </div>
-      <% end %>
-   
-        
-          <%= form_for [@tweet, @reply] do |f| %>
-            <div class="form-group">
-              <%= f.text_area :comment, class: "form-control", rows: "5" %>
-            </div>
-            <div class="form-group">
-              <%= f.submit "Reply", class: "btn btn-primary btn-lg movebtn" %>
-            </div>
-          <% end %>
   </div>
 </div>
+
+<style>
+  .seinbg{
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-color: #eee;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+  }
+</style>
