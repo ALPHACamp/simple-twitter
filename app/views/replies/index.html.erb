@@ -10,6 +10,9 @@
         <p><strong><%= @tweet.user.email %></strong></p>
         <div><%= simple_format @tweet.user.introduction %></div>
         <p>
+          <strong>tweets: <%= @tweet.user.tweets.count %></strong>
+        </p>
+        <p>
           <strong>followings: <%= @tweet.user.followings.count %></strong>
         </p>
         <p>
