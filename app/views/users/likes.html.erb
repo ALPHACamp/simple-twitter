@@ -21,10 +21,13 @@
     <% end %>
   </div>
 
-  <div class="col-md-9">
-    <% @likes.each do |like| %>
-    <%= render partial: "shared/tweet", locals: { tweet: like} %>
-    <% end %>
+  <h3 class="title">likes</h3>
+  <div class="row clearfix">
+    <div class="col-md-6">
+      <% @likes.each do |like| %>
+      <%= render partial: "shared/tweet", locals: { tweet: like} %>
+      <% end %>
+    </div>
   </div>
 </div>
 
