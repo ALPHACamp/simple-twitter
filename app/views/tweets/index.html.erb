@@ -12,24 +12,9 @@
         </div>
       <% end %>
 <!-- 顯示tweets區 -->
-      <% @tweets.each do |tweet| %>
-        <div class="form-group">
-          <div class="tweet-item">
-            <div>
-              <%# image_tag tweet.user.avatar, class: "avatar-image img-responsive center-block"  %>
-               <%= render partial: "shared/avatar", locals: {user: tweet.user}%>
-            </div>
-            <div>
-              <span><%= tweet.user.name %>,</span>
-              <span><%= tweet.created_at.strftime('%Y-%m-%d , %H:%M:%S') %></span>
-              <p><%= tweet.description %></p>
-            </div>
-          </div>
-        </div>
-      <% end %> 
-    </div>
-  </div>
-</div>
+<% @tweets.each do |tweet| %>
+  <%= render partial: "shared/tweeter", locals: {tweeter: tweet}%>
+<% end %> 
 <!-- 右半部 -->
 <div class="container">
   <div class="row">
