@@ -40,7 +40,7 @@
         <div class="seinbg">
             <%= image_tag (@tweet.user.avatar if @tweet.user.avatar?),height: 100,class: "img-circle" %>
             
-            <h5>@<%= link_to @tweet.user.name %>,<%= @tweet.created_at.to_date %>,<%= @tweet.created_at.strftime("%k:%M") %></h5>
+            <h5>@<%= link_to @tweet.user.name, tweets_user_path(@user) %>,<%= @tweet.created_at.to_date %>,<%= @tweet.created_at.strftime("%k:%M") %></h5>
             <%= @tweet.description %><br>
             <p><strong>
               Reply: <%= @tweet.replies.count %>
@@ -55,7 +55,7 @@
           <% @tweet.replies.each do |reply| %>
           <div>
             <%= image_tag (reply.user.avatar),height: 100,class: "img-circle" %>
-            <h5>@<%= link_to reply.user.name, tweets_path(@tweet) %>,
+            <h5>@<%= link_to reply.user.name, tweets_user_path(@user) %>,
               <%= reply.created_at.to_date %>,<%= reply.created_at.strftime("%k:%M") %></h5>
             <p><%= simple_format reply.comment %></p>
             <p class="text-muted">
