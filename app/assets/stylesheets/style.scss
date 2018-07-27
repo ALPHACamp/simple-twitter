@@ -4,6 +4,7 @@
   padding: 6px;
   margin-bottom: 15px;
   width: 130%;
+
 }
 
 #tweets {
@@ -12,8 +13,6 @@ float: left;
 
 }
 
-
-
 #replies img {
   width: 110%;
   padding: 6px;
@@ -21,11 +20,12 @@ float: left;
 
 }
 
-.reply-msg {
-  border: 1px solid #ddd;
+#replies {
   border-radius: 4px;
   padding: 4px;
   margin-bottom: 15px;
+  text-align: left;
+  float: left;
 }
 
 

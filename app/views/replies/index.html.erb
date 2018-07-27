@@ -13,7 +13,7 @@
   
   <div class="col-md-9 ">
     <h3 class="title">tweets</h3>
-    <div class="tweet-msg">
+    <div class="tweet">
       <div class="row">
         <div class="col-md-2">
           <%= image_tag @tweet.user.avatar %>
@@ -28,7 +28,7 @@
 
     <h3 class="title">replies</h3>
     <% @replies.each do |t| %>
-      <div class="reply-msg">
+      <div class="reply">
         <div class="row">
           <div class="col-md-2">
             <%= image_tag(t.user.avatar, class: "img-rounded") %>
