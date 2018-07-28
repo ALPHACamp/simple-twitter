@@ -1,0 +1,13 @@
+<%= form_for @user do |f| %>
+<%= f.label :avatar, "Photo" %>
+<%= image_tag @user.avatar,width: '300px' if @user.avatar? %>
+<%= f.file_field :avatar%>
+
+<%= f.label :name, "Name" %>
+<%= f.text_field :name %>
+
+<%= f.label :introduction, "Introduction" %>
+<%= f.text_area :introduction %>
+
+<%= f.submit "Update" %>
+<% end %>
