@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:tweet, :edit, :update, :following, :followers, :likes] 
+  before_action :set_user, only: [:tweets, :edit, :update, :following, :followers, :likes] 
 
   def tweets
-    @tweets = @tweets.uniq
+    @tweets = @user.tweets.all.order(created_at: :desc).page(params[:page]).per(10)
     @likes = @user.likes
     @followings = @user.followings
     @followers = @user.followers
