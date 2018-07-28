@@ -45,5 +45,15 @@ namespace :dev do
     end
     puts "have create fake replies"
     puts "now you have #{Reply.count} reply date"     
-  end  
+  end 
+
+  task fake_followship: :environment do 
+    User.all.each do |user|
+      user.followships.create(
+        following: User.all.sample
+        )
+    end
+    puts "have create fake followships"  
+  end
+
 end
