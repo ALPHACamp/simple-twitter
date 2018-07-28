@@ -14,6 +14,11 @@ class TweetsController < ApplicationController
     redirect_to tweets_path
   end
 
+  def show
+    @tweet = Tweet.find(params[:tweet_id])
+    @reply = Reply.new
+  end
+
   def like
   end
 
