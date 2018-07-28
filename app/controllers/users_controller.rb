@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update] 
 
   def tweets
+    @tweets = @tweets.uniq
+    @likes = @user.likes
+    @followings = @user.followings
+    @followers = @user.followers
   end
 
   def edit
@@ -21,10 +25,12 @@ class UsersController < ApplicationController
 
   def followings
     @followings # 基於測試規格，必須講定變數名稱
+    @followers.count_likes
   end
 
   def followers
     @followers # 基於測試規格，必須講定變數名稱
+    @followers.count_likes
   end
 
   def likes
