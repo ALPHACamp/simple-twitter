@@ -4,7 +4,7 @@
         
         <div class="col-md-4 col-sm-4">
           <div class="text-center">
-            <%= image_tag (@user.avatar if @user.avatar?),height: 200 %>
+            <%= image_tag (@user.avatar),height: 200 %>
           </div>
         <h2><%= @user.name %></h2>
         <p><strong><%= @user.email %></strong></p>
@@ -41,10 +41,13 @@
       <div class="col-md-8 col-sm-8">
         <h2>Tweets</h2>
         <div class="seinbg">
-            <%= image_tag (@tweet.user.avatar if @tweet.user.avatar?),height: 100,class: "img-circle" %>
+            <%= image_tag (@tweet.user.avatar),height: 100,class: "img-circle" %>
             
-            <h5>@<%= link_to @tweet.user.name, tweets_user_path(@user) %>,<%= @tweet.created_at.to_date %>,<%= @tweet.created_at.strftime("%k:%M") %></h5>
-
+            <h5>
+              <%= link_to tweets_user_path(@user) do%>
+              <%= @tweet.user.name %>.<%= @tweet.created_at %>
+              <% end %>
+            </h5>
 
             <%= @tweet.description %><br>
             <p><strong>

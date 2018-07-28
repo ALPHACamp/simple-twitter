@@ -5,7 +5,7 @@
         
         <div class="col-md-4 col-sm-4">
           <div class="text-center">
-            <%= image_tag (@user.avatar if @user.avatar?),height: 200 %>
+            <%= image_tag (@user.avatar),height: 200 %>
           </div>
         <h2><%= @user.name %></h2>
         <p><strong><%= @user.email %></strong></p>
@@ -46,10 +46,10 @@
           <div class="seinbg">
             <%= image_tag(@user.avatar, height: 60, width: 60, class: "img-circle") %>
 
-            <h4><%= link_to tweets_path(@tweet) do %>
+            <h5><%= link_to tweet_replies_path(tweet) do %>
                 @<%= @user.name%>.<%= tweet.created_at %>
               <% end %>
-            </h4>
+            </h5>
             <p><%= truncate(tweet.description, length: 80) %></p>
             <p><strong>
               <%= link_to tweet_replies_path(tweet) do %>

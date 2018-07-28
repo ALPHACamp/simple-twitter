@@ -5,7 +5,7 @@
       <div class="text-center">
         <%= form_for @user do |f| %>
           <div class="form-group">
-            <%= image_tag (@user.avatar if @user.avatar?),height: 200 %>
+            <%= image_tag (@user.avatar),height: 200 %>
             <%= f.file_field :avatar %>
           </div>
         <% end %>
