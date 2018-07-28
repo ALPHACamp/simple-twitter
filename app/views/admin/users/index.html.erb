@@ -1,0 +1,34 @@
+<div class="container"> 
+  <div class="text-center">
+    <%= link_to 'Tweet total', admin_root_path, class: "btn btn-default" %> 
+    <%= link_to 'User List', admin_users_path, class: "btn btn-default active" %>       
+  </div>
+  
+    <div class="row"> 
+      <div class="col-md-12">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Tweet</th>
+              <th>Following</th>            
+              <th>Follower</th>            
+              <th>like</th>            
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr class="">
+                <th scope="row"><%= user.name %></th>
+                  <td><%= user.tweets.count %></td>
+                  <td><%= user.followings.count %></td>
+                  <td><%= user.followers.count %></td>
+                  <td><%= user.liked_tweets.count %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>        
+        <div class="text-center"><%= paginate @users %></div>
+      </div> 
+    </div>
+</div>

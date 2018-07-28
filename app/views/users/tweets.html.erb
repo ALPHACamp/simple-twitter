@@ -1,0 +1,93 @@
+<div class="container">
+  <div class="row">
+
+      <div class="">
+        
+        <div class="col-md-4 col-sm-4">
+          <div class="text-center">
+            <%= image_tag (@user.avatar),height: 200 %>
+          </div>
+        <h2><%= @user.name %></h2>
+        <p><strong><%= @user.email %></strong></p>
+        <div><%= simple_format @user.introduction %></div>
+        <p>
+          <strong>tweets: <%= link_to @tweets.count, tweets_user_path(@user) %></strong>
+        </p>
+        <p>
+          <strong>followings: <%= link_to @followings.count, followings_user_path(@user) %></strong>
+        </p>
+        <p>
+          <strong>followers: <%= link_to @followers.count %></strong>
+        </p>
+        <p>
+          <strong>likes: <%= link_to @likes.count, likes_user_path(@user) %></strong>
+        </p>
+
+        
+        
+        <% if @user != current_user %>
+            <% if current_user.following?(@user)%>
+              <%= link_to 'Unfollow', followship_path(@user), method: :delete, class: "btn btn-default" %>
+            <% else %>
+              <%= link_to 'Follow', followships_path(following_id: @user), method: :post, class: "btn btn-info" %>
+            <% end %>
+          <% end %>
+
+        <% if @user.email == current_user.email %>
+          <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-info" %>
+          <% end %>
+
+        </div>
+      <div class="col-md-8 col-sm-8">
+        
+            <h2>Tweets</h2>
+        
+        <% @tweets.each do |tweet| %>
+          <div class="seinbg">
+            <%= image_tag(@user.avatar, height: 60, width: 60, class: "img-circle") %>
+
+            <h5><%= link_to tweet_replies_path(tweet) do %>
+                @<%= @user.name%>.<%= tweet.created_at %>
+              <% end %>
+            </h5>
+            <p><%= truncate(tweet.description, length: 80) %></p>
+            <p><strong>
+              <%= link_to tweet_replies_path(tweet) do %>
+                Reply(<%= tweet.replies.count %>)
+              <% end %>
+              
+              <% if tweet.is_liked?(current_user) %>
+                 <%= link_to unlike_tweet_path(tweet), method: :post, class: "text-danger" do %>
+                 Unlike(<%= tweet.likes.count %>)
+                 <% end %> 
+               <% else %>
+                 <%= link_to like_tweet_path(tweet), method: :post, class: "text-danger" do %>
+                 Like(<%= tweet.likes.count %>)
+                 <% end %> 
+               <% end %> 
+
+            </strong></p>
+        
+            
+            
+
+          </div>
+      <% end %>
+
+      </div>
+      </div>
+
+
+  </div>
+</div>
+
+<style>
+  .seinbg{
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-color: #eee;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+  }
+</style>
