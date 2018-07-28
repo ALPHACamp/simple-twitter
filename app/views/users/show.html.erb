@@ -1,13 +1,10 @@
 <h1>Profile</h1>
+    <div class ="col-md-9 col-sm-8">
+      <div class="form-group">
+        <%= image_tag @user.avatar, class: "img-responsive center-block" %>
+      </div>
 
-<div class ="container">
-  <div class ="row">
-    <div class="col-md-10 col-md-offset-1">
-
-<!-- page-header 裡面顯示個人檔案資料 -->
-      
-
-        <div class ="col-md-9 col-sm-8">
+         <br>
           <h1><%= @user.name %></h1>
           <p><strong><%= @user.email %></strong></p>
           <p><%= simple_format @user.introduction %></p>
