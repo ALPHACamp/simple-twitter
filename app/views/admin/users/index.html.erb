@@ -1,15 +1,19 @@
 <div class="container"> 
-  <h1>User List <%= link_to 'Tweet後台', admin_root_path, class: "btn btn-default btn-lg" %></h1>
+  <div class="text-center">
+    <%= link_to 'Tweet total', admin_root_path, class: "btn btn-default" %> 
+    <%= link_to 'User List', admin_users_path, class: "btn btn-default active" %>       
+  </div>
+  
     <div class="row"> 
       <div class="col-md-12">
-        <table class="table table-hover table-bordered">
+        <table class="table table-hover">
           <thead>
-            <tr class="active">
+            <tr>
               <th>Name</th>
-              <th>推播數量</th>
-              <th>關注人數</th>            
-              <th>跟隨者人數</th>            
-              <th>like 過的推播數</th>            
+              <th>Tweet</th>
+              <th>Following</th>            
+              <th>Follower</th>            
+              <th>like</th>            
             </tr>
           </thead>
           <tbody>
@@ -24,6 +28,7 @@
             <% end %>
           </tbody>
         </table>        
+        <div class="text-center"><%= paginate @users %></div>
       </div> 
     </div>
 </div>

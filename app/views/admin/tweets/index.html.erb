@@ -1,5 +1,9 @@
 <div class="container">
-    <%= link_to 'User List', admin_users_path, class: "btn btn-default btn-lg" %>
+    <div class="text-center">
+      <%= link_to 'Tweet total', admin_root_path, class: "btn btn-default active" %> 
+      <%= link_to 'User List', admin_users_path, class: "btn btn-default" %>       
+    </div>
+
     <table class="table table-hover">
       <thead>
         <tr>
