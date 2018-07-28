@@ -11,13 +11,13 @@
         <p><strong><%= @user.email %></strong></p>
         <div><%= simple_format @user.introduction %></div>
         <p>
-          <strong>tweets: <%= @tweets.count %></strong>
+          <strong>tweets: <%= link_to @tweets.count, tweets_user_path(@user) %></strong>
         </p>
         <p>
-          <strong>followings: <%= @followings.count %></strong>
+          <strong>followings: <%= link_to @followings.count, followings_user_path(@user) %></strong>
         </p>
         <p>
-          <strong>followers: <%= @followers.count %></strong>
+          <strong>followers: <%= link_to @followers.count %></strong>
         </p>
         <p>
           <strong>likes: <%= link_to @likes.count, likes_user_path(@user) %></strong>
