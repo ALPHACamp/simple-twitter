@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
 before_action :set_user, only: [:edit, :update]
   def tweets
+    @user = User.find(params[:id])
   end
+
 
   def edit
     unless @user == current_user
@@ -15,11 +17,14 @@ before_action :set_user, only: [:edit, :update]
   end
 
   def followings
-    @followings # 基於測試規格，必須講定變數名稱
+    @user = User.find(params[:id])
+    @followings = @user.followings # 基於測試規格，必須講定變數名稱
+  
   end
 
   def followers
-    @followers # 基於測試規格，必須講定變數名稱
+    @user = User.find(params[:id])
+    @followers = @user.followers # 基於測試規格，必須講定變數名稱
   end
 
   def likes
