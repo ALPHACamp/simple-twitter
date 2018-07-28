@@ -1,0 +1,30 @@
+<div class="col-md-4">
+    <div><%= image_tag (@user.avatar), class: "user-avatar" %></div>
+    <h2><%= @user.name %></h2>
+    <%= simple_format @user.introduction, style: "color:#4682B4" %>
+    <h3><%= link_to tweets_user_path(@user), class: "twuser" do %>
+          Tweets 
+        <% end %></h3>
+    <h3><%= link_to followings_user_path(@user), class: "twuser" do %>
+          Following
+        <% end %></h3>
+    <h3><%= link_to followers_user_path(@user), class: "twuser" do %>
+          Follower
+        <% end %></h3>
+    <h3><%= link_to likes_user_path(@user), class: "twuser" do %>
+          Like
+        <% end %></h3>
+
+
+     <% if @user.email == current_user.email %>
+      <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary btn-lg" %>
+    <% else %>
+
+
+    
+
+    <% end %>
+
+
+
+</div>
