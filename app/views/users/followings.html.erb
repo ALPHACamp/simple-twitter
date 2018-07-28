@@ -17,7 +17,7 @@
           <strong>followings: <%= link_to @followings.count, followings_user_path(@user) %></strong>
         </p>
         <p>
-          <strong>followers: <%= link_to @followers.count %></strong>
+          <strong>followers: <%= link_to @followers.count, followers_user_path(@user) %></strong>
         </p>
         <p>
           <strong>likes: <%= link_to @likes.count, likes_user_path(@user) %></strong>
