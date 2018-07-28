@@ -68,7 +68,7 @@
         <h2>Reply</h2>
 
         <div class="seinbg">
-          <% @tweet.replies.each do |reply| %>
+          <% @replies.each do |reply| %>
           <div>
             <%= image_tag (reply.user.avatar),height: 100,class: "img-circle" %>
             <h5>@<%= link_to reply.user.name, tweets_user_path(@user) %>,
@@ -76,9 +76,6 @@
             <p><%= simple_format reply.comment %></p>
             <p class="text-muted">
               <em><%= time_ago_in_words(reply.created_at) %> </em>
-              <% if current_user.admin? %>
-                <%= link_to "Delete", tweet_reply_path(@tweet, reply), method: :delete %>
-              <% end %>
             </p>
           </div>
           <hr>

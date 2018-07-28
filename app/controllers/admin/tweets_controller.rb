@@ -2,10 +2,7 @@ class Admin::TweetsController < Admin::BaseController
   before_action :authenticate_admin
   before_action :set_tweet, only:  [:show, :destroy]
   def index
-    @tweets = Tweet.all
-  end
-
-  def show
+    @tweets = Tweet.order(created_at: :desc)
   end
 
   def destroy
@@ -14,7 +11,7 @@ class Admin::TweetsController < Admin::BaseController
     flash[:alert] = "tweet was deleted"
   end
 
-  private
+    private
 
   def set_tweet
     @tweet = Tweet.find(params[:id])  
@@ -23,5 +20,6 @@ class Admin::TweetsController < Admin::BaseController
   def tweet_params
     params.require(:tweet).permit(:name, :description)
   end
+
 
 end
