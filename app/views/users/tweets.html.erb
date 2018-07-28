@@ -1,36 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="userColunm col-md-4">
-      
-      <% if @user == current_user %>
-        <div class="leftAvatar">
-         <%= image_tag current_user.avatar %> <br>
-        </div> 
-        <%= current_user.name %> <br>
-        <%= current_user.introduction %> <br>
-        <%= link_to "Tweets #{@user.tweets.count}" %> <br>
-        <%= link_to "Following #{@user.followings.count}", followings_user_path(@user) %> <br>
-        <%= link_to "Followers #{@user.followers.count}", followers_user_path(@user) %> <br>
-        <%= link_to "Like #{@user.likes.count}", likes_user_path(@user) %> <br>
-      <% else %>
-        <div class="leftAvatar">
-          <%= image_tag @user.avatar %> <br>
-        </div>  
-        <%= @user.name %> <br>
-        <%= @user.introduction %> <br>
-        Tweets <%= current_user.tweets.count %> <br>
-        Following <%= current_user.followships.count %> <br>
-        Follower <%= current_user.followers.count %> <br>
-        like <%=  current_user.likes_count %> <br>
-      <% end %>
+    <%= render :partial => "shared/userColunm" %>
 
-      <% if @user == current_user %>
-        <%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-primary" %>
-      <% else %>
-        <%= link_to 'Follow', followships_path(@user), class: "btn btn-primary" %>
-      <% end %>  
-
-    </div>  <!-- userColunm -->
     <div class="col-md-8">
 
       <% @user.tweets.each do |twee| %>
