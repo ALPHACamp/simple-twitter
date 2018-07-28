@@ -74,8 +74,11 @@
           <% @replies.each do |reply| %>
           <div>
             <%= image_tag (reply.user.avatar),height: 100,class: "img-circle" %>
-            <h5>@<%= link_to reply.user.name, tweets_user_path(@user) %>,
-              <%= reply.created_at.to_date %>,<%= reply.created_at.strftime("%k:%M") %></h5>
+            <h5>
+              <%= link_to tweets_user_path(@user) do %>
+              @<%= reply.user.name %>,<%= reply.created_at %>
+              <% end %>
+            </h5>
             <p><%= simple_format reply.comment %></p>
             <p class="text-muted">
               <em><%= time_ago_in_words(reply.created_at) %> </em>
