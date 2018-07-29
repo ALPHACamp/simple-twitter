@@ -1,16 +1,16 @@
 <div class="tweet-item clearfix">
-  <div class ="col-xs-2">
+  <div class ="col-md-2">
     <%= image_tag (tweet.user.avatar if tweet.user.avatar?),size: "75" %>
   </div>
 
-  <div class="col-xs-10">
+  <div class="col-md-10">
     <%= tweet.user.name %>,<%=tweet.created_at%>
     <br>
     <h3><%=tweet.description %></h3>
     <%= link_to tweet_replies_path(tweet) do %>
-      <div>Replies (<%= tweet.replies.size %>)
+      Reply (<%= tweet.replies.size %>)
         <% end %>
-      <%= render partial: "shared/like", locals: {tweet: tweet} %></div>
+      <%= render partial: "shared/like", locals: {tweet: tweet} %>
     
     
   </div>
