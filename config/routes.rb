@@ -3,13 +3,13 @@ Rails.application.routes.draw do
   devise_for :users
 
   # 請依照專案指定規格來設定路由
+
   # 前台首頁 for public users
   root "tweets#index"
 
   namespace :admin do
-    resources :tweets
-    # 後台首頁 for admin user
-    root "tweets#index"
+    resources :tweets, only: [:index, :destroy]
+    resources :users, only: [:index]
   end
 
   resources :users, only: [:index, :show, :edit, :update]
