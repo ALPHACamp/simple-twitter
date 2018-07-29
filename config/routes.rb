@@ -10,4 +10,6 @@ Rails.application.routes.draw do
     # 後台首頁 for admin user
     root "tweets#index"
   end
+
+  resources :users, only: [:index, :show, :edit, :update]
 end
