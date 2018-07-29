@@ -7,4 +7,8 @@ class Tweet < ApplicationRecord
   validates :description, presence: true, length: {maximum: 140}
 # tweet有很多回覆，當tweet被刪除時，順便刪除回覆
   has_many :replies, dependent: :destroy
+
+# 使用者可以喜歡很多評論
+  has_many :likes, dependent: :destroy
+  has_many :liked_users, through: :likes, source: :user
 end
