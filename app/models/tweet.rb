@@ -5,4 +5,7 @@ class Tweet < ApplicationRecord
   has_many :replies, dependent: :destroy
   has_many :replied_users, through: :replies, source: :user
 
+  has_many :likes, dependent: :destroy
+  has_many :liked_tweets, through: :likes, source: :user
+
 end

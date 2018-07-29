@@ -20,4 +20,7 @@ class User < ApplicationRecord
   has_many :replies, dependent: :destroy
   has_many :replied_tweets, through: :replies, source: :tweet
 
+  has_many :likes, dependent: :destroy
+  has_many :liked_tweets, through: :likes, source: :tweet
+
 end
