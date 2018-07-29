@@ -4,7 +4,8 @@
   </div>
 
   <div class="col-md-10">
-    <%= tweet.user.name %>,<%=tweet.created_at%>
+    <%=link_to tweet.user.name,tweets_user_path(tweet.user) %>
+    <%=tweet.created_at%>
     <br>
     <h3><%=tweet.description %></h3>
     <%= link_to tweet_replies_path(tweet) do %>
