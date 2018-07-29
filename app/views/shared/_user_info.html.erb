@@ -1,0 +1,20 @@
+            <%= image_tag @user.avatar, class:"img-responsive" %>
+        
+            <h2><%= @user.name %></h2><br>
+            <p><strong><%= simple_format @user.introduction %></strong></p><br>
+    
+            <li><strong><%= link_to tweets_user_path(@user) do %>
+              Tweets:  <%= @user.tweets.size %></strong></li><br >
+            <% end %>
+
+            <li><strong>Following:  <%= @followings.count %></strong></li><br >
+            <li><strong>Follower:  <%=  %></strong></li><br >
+
+            <li><strong><%= link_to likes_user_path(@user) do %>
+             Likes: <%= @user.likes.size  %></strong></li><br >
+            <% end %>
+          </ul>
+
+           <% if @user.email == current_user.email %>
+             <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
+           <% end %>
