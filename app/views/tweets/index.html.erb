@@ -26,6 +26,8 @@
               </p>
               <div>
                 <%= link_to 'Reply', tweet_replies_path(tweet) %>
+                <%= link_to 'Like', like_tweet_path(:tweet_id), method: :post, class: "btn btn-primary" %>
+                <%= link_to 'Unlike', unlike_tweet_path(:tweet_id), method: :post, class: "btn btn-info" %>
               </div>
             </div>
           <% end %>
