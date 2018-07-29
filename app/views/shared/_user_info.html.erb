@@ -7,12 +7,14 @@
               Tweets:  <%= @user.tweets.size %></strong></li><br >
             <% end %>
 
-            <li><strong><%= %>
+            <li><strong><%= link_to followings_user_path(@user) do %>
               Following:  <%= @user.followings.size %></strong></li><br >
+            <% end %>
             
 
-            <li><strong><%=  %>
+            <li><strong><%= link_to followers_user_path(@user) do %>
               Followers:  <%= @user.followers.size %></strong></li><br >
+            <% end %>
             
 
             <li><strong><%= link_to likes_user_path(@user) do %>
