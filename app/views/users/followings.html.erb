@@ -6,17 +6,16 @@
       
     <br>
 
- 
     <h1>Followimgs</h1>
-      <div class ="col-md-5">
-        <% @followings.each do |following| %> 
-             <div class="col-md-6 col-sm-2 col-xs-5 text-center user-item img">
-            <%= image_tag following.avatar, class: "img-responsive" %>
-            <h3><%= following.name %></h3>
+      
+        <% @followings.each do |following| %>
+          <div class ="col-md-5 text-center">
+            <div class="tweet-item clearfix"> 
+              <%= image_tag following.avatar, class:"img-responsive" %>
+              <h3><%= following.name %></h3>
               <%= simple_format following.introduction, length: 200 %>
-                <%= render partial: "shared/follow", locals:{user: following} %>
-                        
-          
+              <%= render partial: "shared/follow", locals:{user: following} %>
+            </div>
         </div>
                               
     <% end %>                 
