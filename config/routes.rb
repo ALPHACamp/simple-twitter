@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     member do
       get :followings
       get :followers
+      get :tweets
     end
   end
   resources :followship, only: [:create, :destroy]

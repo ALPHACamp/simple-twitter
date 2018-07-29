@@ -11,8 +11,9 @@
 
 
 <%= form_for [:admin, @tweet] do |f| %>
-	<%= f.label :description, "Description" %>
-	<%= f.text_area :description %>
-
+	<div class="form_group">
+		<%= f.label :description, "Description" %>
+		<%= f.text_area :description %>
+	</div>
 	<%=f.submit%>
 <% end %>

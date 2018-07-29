@@ -3,18 +3,11 @@ class Admin::TweetsController < Admin::BaseController
   def index
   	@tweets = Tweet.page(params[:page]).per(10)
   end
-  def new
-  	@tweet = Tweet.new
-  end
   def create
-  	@tweet = Tweet.new(tweet_params)
-  	if @restaurant.save
-  		flash[:notice] = "tweet is successfully create"
-  		redirect_to admin_tweets_path
-  	else
-  		flash.now[:alert] = "tweet is failed to create"
-  		render :new
-  	end
+    @user= current_user
+    @tweet= @user.tweets.build(tweet_params)
+    @tweet.save!
+    redirect_to tweet_path(@tweet)
   end
   def show
   	
@@ -31,16 +24,18 @@ class Admin::TweetsController < Admin::BaseController
   	end
   end
   def destroy
-    @tweet.destroy
-    redirect_to admin_tweets_path
+    if current_user.admin?
+      @tweet.destroy
+      redirect_to tweets_path
+    end
     flash[:alert] = "tweet was deleted"
   end
 
   private
   def tweet_params
-  	params.require(:tweet).permit(:name, :opening_hours, :tel ,:address, :description, :image, :category_id, :remote_image_url)
+  	params.require(:tweet).permit( :description)
   end
   def set_tweet
-  	@tweet = tweet.find(params[:id])
+  	@tweet = Tweet.find(params[:id])
   end
 end
