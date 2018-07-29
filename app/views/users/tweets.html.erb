@@ -1,14 +1,12 @@
 <div class="container">
-      <!-- page-header 裡面顯示個人檔案資料 -->
-      <div class="page-header"></div>
 
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <%= render partial: "shared/user_info", locals: {user: @user} %> 
          </div>
       
       <br>
 
-          <div class="col-sm-8">
+          <div class="col-sm-9">
             <div class="index-tweet-content">
               <% @tweets.each do |tweet| %>
                 <%= render partial: "shared/tweet_item", locals: {tweet: tweet} %>
