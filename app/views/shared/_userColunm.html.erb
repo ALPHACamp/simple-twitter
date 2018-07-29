@@ -6,7 +6,7 @@
         </div> 
         <%= current_user.name %> <br>
         <%= current_user.introduction %> <br>
-        <%= link_to "Tweets #{@user.tweets.count}" %> <br>
+        <%= link_to "Tweets #{@user.tweets.count}", tweets_user_path(@user) %> <br>
         <%= link_to "Following #{@user.followings.count}", followings_user_path(@user) %> <br>
         <%= link_to "Followers #{@user.followers.count}", followers_user_path(@user) %> <br>
         <%= link_to "Like #{@user.likes.count}", likes_user_path(@user) %> <br>
