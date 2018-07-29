@@ -18,8 +18,11 @@
           <%= render partial: "shared/tweeter", locals: {tweeter: tweet}%>
 <!-- like button -->
 
-  <%= link_to 'Unlike', unlike_tweet_path(tweet),method: :post, class: "btn btn-info" %>
-  <%= link_to 'Like', like_tweet_path(tweet), method: :post, class: "btn btn-primary" %>
+        <% if tweet.is_liked?(current_user) %>
+          <%= link_to 'Unlike', unlike_tweet_path(tweet),method: :post, class: "btn btn-info" %>
+        <% else %>
+          <%= link_to 'Like', like_tweet_path(tweet), method: :post, class: "btn btn-primary" %>
+        <% end %>
 
         <% end %> 
       </div>
