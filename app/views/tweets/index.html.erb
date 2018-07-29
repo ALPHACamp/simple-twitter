@@ -25,9 +25,12 @@
                 <%= tweet.description %>
               </p>
               <div>
-                <%= link_to 'Reply', tweet_replies_path(tweet) %>
-                <%= link_to 'Like', like_tweet_path(:tweet_id), method: :post, class: "btn btn-primary" %>
-                <%= link_to 'Unlike', unlike_tweet_path(:tweet_id), method: :post, class: "btn btn-info" %>
+                <%= link_to 'Reply', tweet_replies_path(tweet), class:"links links-blue" %>
+                <% if @tweet.is_liked?(current_user) %>
+                  <%= link_to 'Unlike', unlike_tweet_path(tweet.id), method: :post, class: "links links-red" %>
+                <% else %>
+                  <%= link_to 'Like', like_tweet_path(tweet.id), method: :post, class: "links links-red" %>
+                <% end %>
               </div>
             </div>
           <% end %>
