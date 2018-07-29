@@ -19,11 +19,11 @@
         <h1>Popular</h1>
           <%= @users.each do |user| %>
             <div class="user-item clearfix">
-              <div class ="col-xs-3">       
+              <div class ="col-xs-4">       
                 <%= image_tag user.avatar, class: "img-responsive" %>
               </div>
 
-              <div class="col-xs-9">
+              <div class="col-xs-8">
                 <%= simple_format user.introduction, length: 200 %>
                 <%= render partial: "shared/follow", locals: {user: user} %>
               </div>
