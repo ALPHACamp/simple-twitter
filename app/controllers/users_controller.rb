@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def update
     @user.update(user_params)
-    #redirect_to tweets_user_path(@user)
+    redirect_to tweets_user_path(@user)
   end
 
   def followings

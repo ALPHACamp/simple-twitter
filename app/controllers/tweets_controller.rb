@@ -13,10 +13,10 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new(tweet_params)
     @tweet.user = current_user
     if @tweet.save
-      flash[:notice] = "tweet was successfully created"
+      flash[:notice] = "推播建立！"
       redirect_to :tweets
     else
-      flash.now[:alert] = "tweet was failed to create"
+      flash.now[:alert] = "推播不可空白！"
       render :index
     end
 
@@ -24,9 +24,16 @@ class TweetsController < ApplicationController
 
 
   def like
+    @tweet = Tweet.find(params[:id])
+    @tweet.likes.create!(user: current_user)
+    redirect_to tweets_path
   end
 
   def unlike
+    @tweet = Tweet.find(params[:id])
+    like = Like.where(tweet: @tweet, user: current_user)
+    like.destroy_all
+    redirect_to tweets_path
   end
 
 
