@@ -10,19 +10,7 @@
             <!-- 顯示Tweet-->
         <div class="index-tweet-content">
           <% @tweets.each do |tweet| %>
-            <div class="tweet-item clearfix">
-              <div class ="col-xs-2">
-                <%= image_tag (tweet.user.avatar if tweet.user.avatar?),size: "75" %>
-              </div>
-
-              <div class="col-xs-10">
-                <%= tweet.user.name %>,<em><%=tweet.created_at%></em>
-                <p><%=tweet.description %></p>
-                <%= link_to 'Replay', method: :post, class: "btn btn-info" %>
-                <%= render partial: "shared/like", locals: {tweet: tweet} %>
-              </div>
-
-            </div> 
+            <%= render partial: "shared/tweet_item", locals: {tweet: tweet} %>
           <% end %>
         </div>
   </div>

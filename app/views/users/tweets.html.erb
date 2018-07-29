@@ -13,14 +13,15 @@
           <!-- inline & unstyled 的 list -->
           <ul class="list-unstyled list-inline">
 
-            <%= link_to tweets_user_path(@user) do %>
-              <li><strong>Tweets:  <%= @user.tweets.size %></strong></li><br >
+            <li><strong><%= link_to tweets_user_path(@user) do %>
+              Tweets:  <%= @user.tweets.size %></strong></li><br >
             <% end %>
 
             <li><strong>Following:  <%= @followings.count %></strong></li><br >
             <li><strong>Follower:  <%=  %></strong></li><br >
-            <%= link_to likes_user_path(@user) do %>
-             <li><strong>Likes: <%= @user.likes.size  %></strong></li><br >
+
+            <li><strong><%= link_to likes_user_path(@user) do %>
+             Likes: <%= @user.likes.size  %></strong></li><br >
             <% end %>
           </ul>
 
