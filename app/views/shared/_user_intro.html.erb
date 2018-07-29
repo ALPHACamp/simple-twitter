@@ -16,7 +16,7 @@
         <% end %></h3>
 
 
-     <% if @user.email == current_user.email %>
+    <% if @user.email == current_user.email %>
       <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary btn-lg" %>
     <else %>
       <% if @user.following?(current_user)%>
