@@ -23,11 +23,14 @@ Rails.application.routes.draw do
   # 設定前台使用者行為路由
     resources :tweets, only: [:index, :create] do
       resources :replies, only: [:index, :create]
-        member do
-          post :like
-          post :unlike
-        end
+
+   # 設定user喜歡或取消喜歡tweet
+      member do
+        post :like
+        post :unlike
+      end
     end
   # 設定追蹤路由
     resources :followships, only: [:create, :destroy]
-end
+
+  end
