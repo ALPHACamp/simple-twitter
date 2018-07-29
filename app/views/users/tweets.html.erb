@@ -1,17 +1,17 @@
 <div class="container">
 
-          <div class="col-sm-3">
-            <%= render partial: "shared/user_info", locals: {user: @user} %> 
-         </div>
+  <div class="col-sm-3">
+    <%= render partial: "shared/user_info", locals: {user: @user} %> 
+  </div>
       
       <br>
 
-          <div class="col-sm-9">
-            <div class="index-tweet-content">
-              <% @tweets.each do |tweet| %>
-                <%= render partial: "shared/tweet_item", locals: {tweet: tweet} %>
-              <% end %>
-            </div>
-          </div>
+  <div class="col-sm-9">
+    <div class="index-tweet-content">
+      <% @tweets.each do |tweet| %>
+        <%= render partial: "shared/tweet_item", locals: {tweet: tweet} %>
+      <% end %>
+    </div>
+  </div>
   
 </div>

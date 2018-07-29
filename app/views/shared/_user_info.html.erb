@@ -8,12 +8,12 @@
             <% end %>
 
             <li><strong><%= link_to followings_user_path(@user) do %>
-              Following:  <%= @user.followings.size %></strong></li><br >
+              Followings:  <%= @user.followings.size %></strong></li><br >
             <% end %>
             
 
             <li><strong><%= link_to followers_user_path(@user) do %>
-              Followers:  <%= @user.followers.size %></strong></li><br >
+              Follower:  <%= @user.followers.size %></strong></li><br >
             <% end %>
             
 

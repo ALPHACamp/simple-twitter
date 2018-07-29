@@ -7,10 +7,10 @@
       <br>
         <div class="index-tweet-content">
           <div class="col-sm-9">
-              <h2>Tweets</h2>
+              <h1>Tweets</h1>
                 <%= render partial: "shared/tweet_item", locals: {tweet: @tweet} %>
                 <br>
-                <h2>Replies</h2>
+                <h1>Replies</h1>
                   <% @replies.each do |reply| %>
                     <div class="tweet-item clearfix">
                       <div class ="col-xs-2">
