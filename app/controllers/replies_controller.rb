@@ -1,6 +1,8 @@
 class RepliesController < ApplicationController
 
   def index
+    @tweet = Tweet.find(tweet_params)
+    @reply = Reply.new
   end
 
   def create

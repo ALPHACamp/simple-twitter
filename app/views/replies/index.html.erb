@@ -1,1 +1,13 @@
 <h1>Tweet show page</h1>
+
+<!-- 顯示twitter replies -->
+<% @tweet.replies.each do |reply| %>
+<div>
+  <h4><%= reply.user.name %></h4>
+  <p><%= simple_format reply.comment %></p>
+  <p class="text-muted">
+    <em><%= reply.created_at %> </em>
+  </p>
+</div>
+<hr>
+<% end %>
