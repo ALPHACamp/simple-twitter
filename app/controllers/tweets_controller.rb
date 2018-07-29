@@ -4,7 +4,7 @@ class TweetsController < ApplicationController
   	@users = User.all
   	@tweet = Tweet.new
     @tweets = Tweet.all
-    @rank_tweets = Tweet.order(followers_count: :desc).limit(10)
+    @rank_users = User.order(followers_count: :desc).limit(10)
   	# 新增一組空白資料給表單，首頁為index，＠tweet傳入表單的實例變數
     # @users # 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
   end
