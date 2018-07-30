@@ -1,0 +1,29 @@
+<div class="container"> 
+  <h1>User List <%= link_to 'Tweet後台', admin_root_path, class: "btn btn-default" %></h1>
+    <div class="row"> 
+      <div class="col-md-12">
+        <table class="table table-hover table-bordered">
+          <thead>
+            <tr class="active">
+              <th>Name</th>
+              <th>推播數量</th>
+              <th>關注人數</th>            
+              <th>跟隨者人數</th>            
+              <th>like 過的推播數</th>            
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr class="warning">
+                <th scope="row"><%= user.name %></th>
+                  <td><%= user.tweets.count %></td>
+                  <td><%= user.followings.count %></td>
+                  <td><%= user.followers.count %></td>
+                  <td><%= user.liked_tweets.count %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>        
+      </div> 
+    </div>
+</div>
