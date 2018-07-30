@@ -1,1 +1,9 @@
 <h1>tweet後台</h1>
+<ul>
+  <% @tweets.each do |t| %>
+  <li>
+    <p><%= t.description %></p>
+    <%= link_to "Delete", admin_tweet_path(t), method: :delete, data: {confirm:"考慮清楚了嗎？"} %>
+  </li>
+  <% end %>
+</ul>

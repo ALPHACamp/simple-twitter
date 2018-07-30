@@ -3,7 +3,14 @@ class Admin::TweetsController < ApplicationController
   before_action :authenticate_admin
 
   def index
-    
+    @tweets = Tweet.all
+  end
+
+  def destroy
+    @tweet = Tweet.find(params[:id])
+    @tweet.destroy
+    redirect_to admin_tweets_path
+    flash[:alert] = "推文已刪除"
   end
 
   private
