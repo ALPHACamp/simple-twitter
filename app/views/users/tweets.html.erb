@@ -1,0 +1,14 @@
+<h1>tweet</h1>
+<div class="container">
+  <div class="row">
+    <!-- 左半部 -->
+    <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
+      <%= render partial: "shared/userinfo", locals: {user: @user}%>
+    </div>
+    <div class="col-xs-12 col-sm-7 col-md-8 col-lg-9">
+      <% @tweets.each do |tweet| %>
+        <%= render partial: "shared/tweeter", locals: {tweeter: tweet}%>
+      <% end %>
+    </div>
+  </div>
+</div>
