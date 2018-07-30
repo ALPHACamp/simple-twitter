@@ -3,10 +3,10 @@
     <%= render partial: "shared/avatar", locals: {user_avatar: user}%>
     <h3><%= user.name %></h3>
     <p><%= user.introduction %></p>
-    <p>Tweet <%= user.tweets.count %></p>
-    <p>Following <%= user.followings.count %></p>
-    <p>Follower <%= user.followers.count %></p>
-    <p>likes  <%= user.likes.count %></p>
+    <p><%= link_to "Tweet (#{user.tweets.count}) ", tweets_user_path(user)  %></p>
+    <p><%= link_to "Following (#{user.followings.count}) ",followings_user_path(user) %></p>
+    <p><%= link_to "Follower (#{user.followers.count}) ", followers_user_path(user) %></p>
+    <p><%= link_to "Likes (#{user.likes.count}) ", likes_user_path(user) %></p>
 
     <% if user != current_user %>
       <p><%= render partial: "shared/follow", locals: {user: user} %></p>
