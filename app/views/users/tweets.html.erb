@@ -45,6 +45,57 @@
           <%end%>
           <hr>
         <%end%>
+        <div class="col-md-4">
+          <!-- 顯示followings的清單，panel包一個list-group  -->
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title"><%= @followings.count %></strong> followings</h3>
+            </div>
+
+            <ul class="list-group">
+              <% @followings.each do |following| %>
+              <li class="list-group-item">
+                <%= link_to user_path(following) do %>
+                <%= image_tag(following.avatar, height: 30, width: 30, class: "img-circle") %>
+                <%= following.name %>
+                <% end %>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+          <!-- 顯示followings的清單，panel包一個list-group  -->
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title"><%= @followers.count %></strong> followers</h3>
+            </div>
+
+            <ul class="list-group">
+              <% @followers.each do |follower| %>
+              <li class="list-group-item">
+                <%= link_to user_path(follower) do %>
+                <%= image_tag(follower.avatar, height: 30, width: 30, class: "img-circle") %>
+                <%= follower.name %>
+                <% end %>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title"><%= @likes.count %></strong> likes</h3>
+            </div>
+
+            <ul class="list-group">
+              <% @likes.each do |like| %>
+              <li class="list-group-item">
+                <%= link_to tweets_path(like) do %>
+                <%= like.tweet.description %>
+                <% end %>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>

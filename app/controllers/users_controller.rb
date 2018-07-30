@@ -1,25 +1,29 @@
 class UsersController < ApplicationController
-	before_action :set_user, only: [:show, :edit, :update, :tweets]
-  def index
-    @users = User.all
-  end
+	before_action :set_user, only: [ :edit, :update, :tweets]
   def tweets
-    @user = User.find(params[:id])
+    @followings = @user.followings.order(created_at: :desc)
+    @followers = @user.followers.order(created_at: :desc)
+    @likes = @user.likes.order(created_at: :desc)
   end
-
-  def show
-    
-  end
-
   def edit
     unless @user == current_user
-      redirect_to user_path(@user)
+      redirect_to tweets_user_path(current_user), alert: "Can't edit other's profile"
     end
   end
 
   def update
-    @user.update(user_params)
-    redirect_to user_path(@user)
+    if @user == current_user
+      if @user.update(user_params)
+        flash[:notice] = "Profile updated"
+        redirect_to root_path
+      else
+        flash[:alert] = @user.errors.full_messages.to_sentence
+        render :edit
+      end
+    else
+      flash[:alert] = "Can't edit other's profile"
+      redirect_to root_path
+    end
   end
 
   private

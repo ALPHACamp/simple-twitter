@@ -10,16 +10,19 @@ Rails.application.routes.draw do
       post :unlike
     end
   end
-  resources :users, only: :edit  do
+  resources :users, only: [:edit, :update]  do
     member do
       get :followings
       get :followers
       get :tweets
+      get :like
     end
   end
   resources :followships, only: [:create, :destroy]
   namespace :admin do
-  	resources :tweets, only: [:index ,:destroy]
+  	resources :tweets, only: [:index ,:destroy] do
+      resources :replies,only:[:index,:destroy]
+    end
   	resources :users, only: :index
     root "tweets#index"
   end
