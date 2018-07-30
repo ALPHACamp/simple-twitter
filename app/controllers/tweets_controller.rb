@@ -15,7 +15,7 @@ class TweetsController < ApplicationController
     @tweet.user = current_user
     if @tweet.save
       flash[:notice] = "Tweet Update"
-      redirect_to root_path
+      redirect_to tweets_path
     else
       flash[:alert] = @tweet.errors.full_messages.to_sentence
       render :index

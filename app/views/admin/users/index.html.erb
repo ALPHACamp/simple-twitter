@@ -8,14 +8,17 @@
         </div>
 
           <% @users.each do |user| %>
-            <div class ="col-md-3 text-center">
-               <%= link_to user_path(user) do %>
-               <%= image_tag user.avatar, width:'100px'%>
-               <h3><%= user.name %></h3>
-               <%= render partial: "shared/follow", locals:{user: user} %>
-           </div>
-              <% end %> 
-              <% end %>
+            <div class ="col-md-3 text-center ">
+              <div class="tweet-item clearfix">
+                <%= image_tag user.avatar, width:'100px'%>              
+                <h2><%= user.name %></h2><br>
+                <h4>Tweets: <%= user.tweets.size %></h4><br>
+                <h4>Followings: <%= user.followings.size %></h4><br>
+                <h4>Follower: <%= user.followers.size %></h4><br>     
+                <h4>Likes: <%= user.likes.size  %></h4><br >
+              </div>
+            </div>
+          <% end %>
         
 
   </div>
