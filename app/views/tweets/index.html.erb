@@ -7,7 +7,7 @@
         <%= f.text_area :description, placeholder: "你想說什麼？", class: "form-control", rows: "10" %>
         </div>
         <div class="form-group">
-        <%= f.submit "推吧推吧", class: "btn btn-primary movebtn" %>
+        <%= f.submit "推吧", class: "btn btn-primary movebtn" %>
         </div>
       <% end %>
 
@@ -40,7 +40,7 @@
     </div>
 
     <div class="col-md-4">
-      <h2>Popular</h2>
+      <h2>熱門玩家</h2>
         <% @users.each do |user| %>
           <div class="panel panel-default ppanel">
             <%= image_tag (user.avatar), class: "usertweet-avatar" %>

@@ -19,16 +19,16 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <h1><%= link_to 'EZ twitter', root_path %></h1>
+            <h2><%= link_to '簡易推特', root_path %></h2>
           </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="pull-right text-right nav navbar-nav">
             <% if current_user %>
               <% if current_user&.admin? %>
-                <li><%= link_to 'Admin Panel', admin_root_path %></li>
+                <li><%= link_to '後台', admin_root_path %></li>
               <% end %>
-              <li><%= link_to "Mytwitter", tweets_user_path(current_user), style: "color:#008B8B" %></li>
+              <li><%= link_to "個人檔案", tweets_user_path(current_user), style: "color:#008B8B" %></li>
               <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
             <% else %>
               <li><%= link_to('註冊', new_user_registration_path) %></li>
