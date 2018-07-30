@@ -23,13 +23,20 @@ class TweetsController < ApplicationController
   def like
     @tweet = Tweet.find(params[:id])
     @tweet.likes.create!(user: current_user)
-    redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: tweets_path)
   end
 
   def unlike
     @tweet = Tweet.find(params[:id])
-    @like = Like.where(tweet: @tweet, user: current_user).first
-    @like.destroy
+    @likes = Like.where(tweet: @tweet, user: current_user)
+    @likes.destroy_all
+    redirect_back(fallback_location: tweets_path)
+  end
+
+  def unfavorite
+    @restaurant = Restaurant.find(params[:id])
+    favorites = Favorite.where(restaurant: @restaurant, user: current_user)
+    favorites.destroy_all
     redirect_back(fallback_location: root_path)
   end
 
