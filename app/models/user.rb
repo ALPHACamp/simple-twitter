@@ -21,6 +21,9 @@ class User < ApplicationRecord
   # 建立多對多的關係，回應
   has_many :replies, dependent: :restrict_with_error
   # has_many :restaurants, through: :comments =>>已經擁有tweets
+  # 建立喜歡
+  has_many :likes, dependent: :destroy
+  has_many :liked_tweets, through: :likes , source: :likes
   
   def admin?
     self.role == "admin"
