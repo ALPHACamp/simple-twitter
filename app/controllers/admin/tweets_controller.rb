@@ -20,7 +20,7 @@ private
     @tweet = Tweet.find(params[:id])
   end
 
-  def restaurant_params
+  def tweet_params
     params.require(:tweet).permit(:name, :avatar, :introduction)
   end
 
