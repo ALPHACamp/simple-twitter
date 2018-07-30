@@ -8,6 +8,11 @@ class User < ApplicationRecord
     self.role == "admin"
   end
 
+  def count_followers
+     self.followers_count = self.followers.size
+     self.save
+  end
+
   mount_uploader :avatar, AvatarUploader
 
   # 需要 app/views/devise 裡找到樣板，加上 name 屬性
