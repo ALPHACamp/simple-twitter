@@ -8,8 +8,7 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   # 設定user跟tweet關聯，一個user可以有很多tweets
-  has_many :tweets
-
+  has_many :tweets, dependent: :destroy
   # 設定追蹤關聯紀錄
   has_many :followships, dependent: :destroy
   has_many :followings, through: :followships
