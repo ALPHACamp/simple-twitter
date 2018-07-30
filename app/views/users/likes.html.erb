@@ -10,9 +10,7 @@
 
   <div class="col-md-10">
     <div class="index-tweet-content">
-      <% @likes.each do |tweet| %>
         <%= render partial: "shared/tweet_item", locals: {tweet: @like} %>
-      <% end %>
     </div>
   </div>
   
