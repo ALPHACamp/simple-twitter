@@ -20,7 +20,6 @@ Rails.application.routes.draw do
     end
   end
 
-
   resources :followships, only: [:create,:destroy]
 
   namespace :admin do
@@ -28,7 +27,5 @@ Rails.application.routes.draw do
     resources :users, only: [:index]
     root "tweets#index"
   end
-
-
 
 end
