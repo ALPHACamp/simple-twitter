@@ -55,8 +55,13 @@
              <h4><%= link_to user.name, tweets_user_path(user) %></h4>
              <p><%= truncate(user.introduction, length: 140) %></p>
              <div class="form-group">
-               <%= link_to 'Follow',followships_path(following_id: @user), method: :post, class: "btn btn-default pull-right" %>
-               <%= link_to 'Unfollow', followship_path(user.id), method: :delete, class: "btn btn-default pull-right" %>
+               <% if user != current_user %>
+                 <% if current_user.following?(user)%>
+                   <%= link_to 'Unfollow', followship_path(user.id), method: :delete, class: "btn btn-default pull-right" %>
+                 <% else %>
+                   <%= link_to 'Follow',followships_path(following_id: user.id), method: :post, class: "btn btn-default pull-right" %>
+                 <% end %>
+               <% end %>
              </div>
            </div>
          </div>
