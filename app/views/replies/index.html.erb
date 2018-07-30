@@ -67,15 +67,22 @@
 
       <h1>Replies</h1>
       <% @tweet.replies.each do |reply| %>
-      <div class="tweet-item">
-        <h4><%= reply.user.name %></h4>
-        <p><%= simple_format reply.comment %></p>
-        <p class="text-muted">
-          <em><%= reply.created_at %> </em>
-        </p>
-      </div>
-      <hr>
+        <div class="tweet-item">
+          <div class="row">
+            <div class="col-md-3">
+              <%= image_tag reply.user.avatar, size: "100"%>
+            </div>
+            <div class="col-md-9">
+              <h4><%= reply.user.name %></h4>
+              <p><%= simple_format reply.comment %></p>
+              <p class="text-muted">
+                <em><%= reply.created_at %> </em>
+              </p>
+            </div>
+          </div>
+        </div>
       <% end %>
+      <hr>
 
       <!-- create replies -->
       <div>
