@@ -23,7 +23,7 @@ namespace :dev do
     puts "have created fake users"
     puts "now you have #{User.count} users data"
 
-    User.create(email: "root@example.com", password: "12345678", role: "admin", name: "Dojo AC")
+    User.create(name: "Dojo AC", email: "root@example.com", password: "12345678",introduction: FFaker::Lorem::sentence(30), role: "admin",avatar: file)
     puts "Default admin created!"
   end
 
