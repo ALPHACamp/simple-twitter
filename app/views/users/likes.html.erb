@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+  
+  <%= render partial: "shared/user_intro" %>
+
+  <div class="col-md-8">
+    <h2>Like</h2>
+    <% @likes.each do |tweet| %>
+      <div class="panel panel-default twpanel">
+          <%= image_tag (tweet.user.avatar), class: "usertweet-avatar" %>
+          <h5>@<%= link_to tweet.user.name, tweets_user_path(tweet.user) %>,<%= tweet.created_at.to_date %>,<%= tweet.created_at.strftime("%k:%M") %></h5>
+          <%= simple_format tweet.description, style: "color:#808080" %>
+          <%= link_to tweet_replies_path(tweet) do %>
+            Reply(<%= tweet.replies.count %>)
+          <% end %>
+          <% if tweet.is_liked?(current_user) %>
+            <%= link_to unlike_tweet_path(tweet), method: :post, class: "text-danger" do %>
+              Unlike(<%= tweet.likes_count %>)
+            <% end %>
+          <% else %>
+            <%= link_to like_tweet_path(tweet), method: :post, class: "text-danger" do %>
+              Like(<%= tweet.likes_count %>)
+            <% end %>
+          <% end %>     
+      </div>
+    <% end %>
+  </div>
+
+
+  </div>
+</div>
