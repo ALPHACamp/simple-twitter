@@ -13,18 +13,7 @@
   
   <div class="col-md-9 ">
     <h3 class="title">tweets</h3>
-    <div class="tweet">
-      <div class="row">
-        <div class="col-md-2">
-          <%= image_tag @tweet.user.avatar %>
-        </div>
-        <div class="col-md-10">
-          <%= link_to "@#{@tweet.user.name},#{@tweet.created_at.to_s(:db)}", tweets_user_path(@tweet.user) %>
-          <p><%= @tweet.description %></p>
-          <%= link_to "Reply(#{@tweet.replies_count})", tweet_replies_path(@tweet) %>
-        </div>
-      </div>
-    </div>
+    <%= render partial: "shared/tweet", locals: { tweet: @tweet} %>
 
     <h3 class="title">replies</h3>
     <% @replies.each do |t| %>
