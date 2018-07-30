@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <%= render :partial => "shared/userColunm" %>
+    <h1> Like</h1>
+    <div class="col-md-8 likes">
+
+      <% @likes.each do |like| %>
+      <div class="panel panel-default clearfix">
+        
+          <div class="tweetAvatar">
+            <%= image_tag like.user.avatar %>
+          </div>  
+          <div class="tweetInformation">
+            <%= like.user.name %>,
+            <%= like.tweet.created_at.strftime(" %Y-%m-%d, %R") %> <br>
+            <%= like.tweet.description %>  
+            <br>
+            <h5><%= link_to "Reply( #{like.tweet.replies.count} )", tweet_replies_path(like.user_id) %> </h5>
+            <h5> 
+              <%= render partial: "shared/like", locals: {tweet: like.tweet} %>
+             </h5>  
+          </div>        
+    
+             
+      </div>
+      <% end %> 
+      
+    </div>
+    
+    
+  </div>
+  
+</div>
