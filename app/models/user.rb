@@ -18,6 +18,9 @@ class User < ApplicationRecord
   #被誰追蹤
   has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id" #主鍵指向following_id
   has_many :followers, through: :inverse_followships, source: :user
+  # 建立多對多的關係，回應
+  has_many :replies, dependent: :restrict_with_error
+  # has_many :restaurants, through: :comments =>>已經擁有tweets
   
   def admin?
     self.role == "admin"

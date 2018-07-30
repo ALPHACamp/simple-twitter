@@ -17,13 +17,6 @@
     <div>
       <% @tweets.each do |tweet| %>
         <h4><%=  link_to tweet.user.name, tweets_user_path(tweet.user) %></h4>
-        <% if tweet.user != current_user %>
-          <% if current_user.following?(tweet.user) %>
-            <%= link_to 'Unfollow', followship_path(tweet.user), method: :delete,class: "btn btn-primary" %>
-          <% else %>
-            <%= link_to 'Follow', followships_path(following_id: tweet.user), method: :post,class: "btn btn-info" %>
-          <% end %>
-        <%end%>
         <p><%= simple_format tweet.description %></p>
         <p class="text-muted">
           <em><%= time_ago_in_words(tweet.created_at)   %> </em>
