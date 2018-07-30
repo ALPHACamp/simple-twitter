@@ -1,9 +1,9 @@
-<h1>Tweet 後台</h1>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
       <div>
-         <%= link_to "Tweet", class: "btn btn-primary" %>
+        <%= link_to "Tweet", admin_tweets_path %>
+        <%= link_to "User", admin_users_path %>
       </div>
       <br>
       <table class="table table-striped table-bordered">
@@ -20,7 +20,7 @@
          <tbody>
            <% @tweets.each do |tweet| %>
            <tr>
-             <td><%= tweet.id %></td>
+             <th scope="row"><%= tweet.id %></th>
              <td><%= tweet.user.name %></td>
              <td><%= tweet.description %></td>
              <td><%= tweet.replies %></td>
