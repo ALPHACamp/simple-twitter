@@ -11,10 +11,8 @@
       <%= simple_format @tweet.description, style: "color:#808080" %>
 
       <%= link_to tweet_replies_path(@tweet) do %>
-      Reply <!--(<%= @tweet.replies_count %>) -->
+      Reply (<%= @tweet.replies_count %>)
       <% end %>
-
-<!-- like & unlike undo-->   
 
 
     <h2>Replies</h2>

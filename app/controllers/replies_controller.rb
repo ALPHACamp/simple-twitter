@@ -6,9 +6,9 @@ class RepliesController < ApplicationController
     @replies = @tweet.replies
     @user = @tweet.user
     @tweets = @user.tweets
-    #@followings = @user.followings
-    #@followers = @user.followers
-    #@likes = @user.likes
+    @followings = @user.followings
+    @followers = @user.followers
+    @likes = @user.likes
   end
 
   def create
