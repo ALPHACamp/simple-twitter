@@ -1,6 +1,6 @@
 class Tweet < ApplicationRecord
   validates_length_of :description, maximum: 140
-  belongs_to :user
+  belongs_to :user, counter_cache: true
   #tweet只有一個作者
   
   has_many :likes, dependent: :destroy

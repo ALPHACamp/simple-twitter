@@ -1,13 +1,3 @@
-<% if @tweet.errors.any? %>
-  <h2>We have some errors here !</h2>
-  <ul>
-    <% @tweet.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
-
-
 <div class="container">
   <div class="row">
     <div class="col-md-8">
@@ -45,25 +35,27 @@
             <% end %>    
           <% end %>
         </div>
-        
+
       <% end %>
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <div class="col-md-4">
+      <h2>Popular</h2>
+        <% @users.each do |user| %>
+          <div class="panel panel-default ppanel">
+            <%= image_tag (user.avatar), class: "usertweet-avatar" %>
+            <h3>@<%= link_to user.name, tweets_user_path(user) %></h3>
+              <%= simple_format user.introduction, style: "color:#808080" %>
+            <% if user != current_user %>
+              <% if user.following?(current_user)%> 
+                <%= link_to 'Unfollow', followship_path(user), method: :delete, class: "btn btn-primary movebtn" %>
+              <% else %>
+                <%= link_to 'Follow', followships_path(following_id: user), method: :post, class: "btn btn-primary movebtn" %>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+    </div>
 
   </div>
 </div>

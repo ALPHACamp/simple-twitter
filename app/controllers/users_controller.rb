@@ -4,6 +4,9 @@ class UsersController < ApplicationController
   def tweets
     @tweets = @user.tweets
     @order_user_tweets = @user.tweets.order(created_at: :desc)
+    @followings = @user.followings
+    @followers = @user.followers
+    @likes = @user.likes
 
   end
 

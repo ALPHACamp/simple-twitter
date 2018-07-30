@@ -20,7 +20,7 @@ class RepliesController < ApplicationController
       redirect_to tweet_replies_path(@tweet)
     else
       @tweet = Tweet.find(params[:tweet_id])     
-      flash[:alert] = "回覆不可以空白!!"
+      flash[:alert] = "回覆不可空白!!"
       redirect_to tweet_replies_path(@tweet)
     end
   end
