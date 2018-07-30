@@ -6,4 +6,6 @@
     <%= link_to "Delete", admin_tweet_path(t), method: :delete, data: {confirm:"考慮清楚了嗎？"} %>
   </li>
   <% end %>
+
+  <%= paginate @tweets %>
 </ul>

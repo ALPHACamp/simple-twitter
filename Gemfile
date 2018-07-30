@@ -34,13 +34,15 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 #for User
-gem "devise"
+gem 'devise'
 #for image
-gem "carrierwave"
+gem 'carrierwave'
 #for fake data
-gem "ffaker"
+gem 'ffaker'
 # Use uinames
 gem 'rest-client'
+
+gem 'kaminari'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
