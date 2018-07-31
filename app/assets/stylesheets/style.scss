@@ -1,0 +1,104 @@
+.navbar {
+  margin-bottom: 30px;
+  .img-1 {
+    padding: 0 10px;
+  }
+  img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.form {
+  border: 3px solid #e3f2fd;
+} 
+
+.info {
+   p {
+    color: #0a80d6;
+    font-size: 14px;
+  }   
+}
+
+#index {
+  margin-bottom: 15px;
+  padding: 10px;
+  text-align: left;
+  float: left;
+
+  img {
+    padding: 6px;  
+    width: 90px;
+    height: 90px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+}
+
+.tweet {
+  border: 1px solid #bfbdbd;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+
+  p {
+    margin: 10px 0;
+    color: #7D7D7D;
+  }
+
+  img {
+    padding: 2px;  
+    width: 100px;
+    height: 100px;
+  }  
+
+}
+
+.reply {
+  border: 1px solid #bfbdbd;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.pop-user {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #bfbdbd;
+  border-radius: 5px;
+
+  p {
+    color: #666464;
+    font-size: 14px;
+  }
+
+  a.name {
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 1px;
+
+  }
+
+  btn {
+    font-size: 14px;
+  }
+
+  img {
+    padding: 6px;  
+    width: 90px;
+    height: 90px;
+  }
+
+}
+
+.like {
+  padding: 0 5px;
+  color: #f00;
+}
+
+.unlike {
+  padding: 0 5px;
+  color: #0f1;
+}

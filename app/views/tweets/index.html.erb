@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row ">
+    <div class="col-md-16">
+      <%= form_for @tweet do |f| %>
+      <div class="form">
+        <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control text-area" %>
+      </div>
+      <div class="button">
+        <%= f.submit "Tweet", class: "btn-primary btn-lg pull-right "  %> 
+      </div>
+      <% end %>
+    </div>
+    <hr>
+
+    <div class="col-md-8">
+      <% @tweets.each do |tweet| %>
+      <%= render partial: "shared/tweet", locals: { tweet: tweet} %>
+      <% end %>       
+    </div>
+
+    <div class="col-md-4">
+      <h3 class="title" >Popular</h3>
+      <div id="index">
+        <% @users.each do |u| %>
+        <%= render partial: "shared/pop", locals: { u: u} %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="container" id="index">
+  <div class="col-md-3 ">
+    <%= render partial: "shared/index", locals: { user: @user} %>
+  </div> 
+
+  <div class="col-md-9">
+    <% @tweets.each do |t| %>
+    <%= render partial: "shared/tweet", locals: { tweet: t} %>
+    <% end %>
+  </div>
+</div>
+
+     

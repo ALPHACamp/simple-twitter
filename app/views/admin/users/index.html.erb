@@ -1,0 +1,38 @@
+<div id="admin" class="container">
+  <h1 class="title">後台管理</h1>
+
+  <div class="row">
+
+    <ul class="nav nav-tabs">
+      <li role="presentation">
+        <%= link_to "All Tweets", admin_tweets_path %>
+      </li>
+      <li role="presentation" class="active">
+        <%= link_to "All Users", admin_users_path %>
+      </li>
+    </ul>
+
+    <br>
+    <table class="table">
+      <thead class="thead-inverse">
+        <tr>
+          <th>name</th>
+          <th>tweets</th>
+          <th>following</th>
+          <th>follower</th>
+          <th>likes</th>
+        </tr>
+      </thead>
+      <tbody class="user">
+        <% @users.each do |u| %>
+          <tr>
+            <th scope="row"><%= u.name %></th>
+            <td><%= u.tweets.count %></td>
+            <td><%= u.followings.count %></td>
+            <td><%= u.followers.count %></td>
+            <td><%= u.likes.count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>

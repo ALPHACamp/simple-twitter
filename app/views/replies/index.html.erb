@@ -1,0 +1,45 @@
+<div id="index" class="container">
+  <div class="col-md-3" >
+      <%= image_tag @tweet.user.avatar, class: "img-rounded" %>
+      <h3 class="name"><%= @tweet.user.name %></h3>
+      <p class="content"><%= @tweet.user.introduction %></p>
+      <div class="info">
+        <p class="count">Tweets<span><%= @tweet.user.tweets.count %></span></p>
+        <p class="count">Following<span><%= @tweet.user.followings.count %></span></p>
+        <p class="count">Follower<span><%= @tweet.user.followers_count %></span></p>
+        <p class="count">Like<span><%= @tweet.user.likes_count %></span></p>
+      </div>
+  </div>
+  
+  <div class="col-md-9 ">
+    <h3 class="title">Tweets</h3>
+    <%= render partial: "shared/tweet", locals: { tweet: @tweet} %>
+
+    <h3 class="title">Replies</h3>
+    <% @replies.each do |t| %>
+      <div class="reply">
+        <div class="row">
+          <div class="col-md-2">
+            <%= image_tag(t.user.avatar, class: "img-rounded") %>
+          </div>
+          <div class="col-md-10">
+            <%= link_to "@#{t.user.name},#{t.created_at.to_s(:db)}", tweets_user_path(t.user) %>
+            <p><%= t.comment %></p>
+          </div>          
+        </div>
+      </div>
+      <% end %>
+
+    <div class="reply-form"" >
+      <%= form_for [@tweet, @reply] do |f| %>
+        <div class="form-group">
+          <%= f.text_area :comment, class: "form-control" %>
+        </div>
+        <div class="button-group">
+          <%= f.button "Cancel", type: :reset, class: "pull-right btn btn-default btn-lg" %>
+          <%= f.submit "Reply", class: "pull-right btn btn-primary btn-lg" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

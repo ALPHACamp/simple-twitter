@@ -1,0 +1,21 @@
+<div class="info">
+  <%= image_tag @user.avatar, class: "img-responsive"  %>
+  <h1><%= @user.name %></h1>
+  <p><%= @user.introduction %></p>
+  <br />
+  <h4> <%= link_to "Tweets #{@user.tweets.count}", tweets_user_path(@user) %></h4>
+  <h4> <%= link_to "Following #{@user.followings.count}", followings_user_path(@user) %></h4>
+  <h4> <%= link_to "Follower #{@user.followers.count}",followers_user_path(@user) %></h4>
+  <h4> <%= link_to "like #{@user.likes.count}",likes_user_path(@user) %></h4>
+  <br>
+
+  <% if @user != current_user %>
+    <% if current_user.following?(@user)%>
+      <%= link_to 'Unfollow', followship_path(@user), method: :delete, class: "btn btn-default" %>
+    <% else %>
+      <%= link_to 'Follow', followships_path(following_id: @user), method: :post, class: "btn btn-primary" %>
+    <% end %>
+    <% else %>
+      <%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-primary" %>
+    <% end %>
+</div>

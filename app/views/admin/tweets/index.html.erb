@@ -1,0 +1,53 @@
+<div id="admin" class="container">
+  <h1 class="title">後台</h1>
+  <div class="row">
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active">
+        <%= link_to "All Tweets", admin_tweets_path %>
+      </li>
+      <li role="presentation">
+        <%= link_to "All Users", admin_users_path %>
+      </li>
+    </ul>
+
+    <br>
+    <table class="table">
+      <thead class="thead-inverse">
+        <tr>
+          <th>user</th>
+          <th>content</th>
+          <th class="time">tweet time</th>
+          <th>likes</th>
+          <th>replies</th>
+          <th>delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tweets.each do |t| %>
+          <tr>
+            <th scope="row"><%= t.user.name %></th>
+            <td><%= t.description %></td>
+            <td class="time"><%= t.created_at.strftime("%Y-%m-%d") %></td>
+            <td class="like"><%= t.likes_count %></td>
+            <td>
+              <button type="button" class="btn" data-toggle="modal" data-target="#myModal">replies</button>
+              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Replies</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <%= link_to "Delete", admin_tweet_path(t), method: :delete,data: { confirm: "Are you sure?"}, class: "btn" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>

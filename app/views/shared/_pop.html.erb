@@ -1,0 +1,20 @@
+<div class="pop-user">
+  <div class="row clearfix">
+    <div class="col-md-4">
+      <%= image_tag(u.avatar, class: "img-rounded ") %>
+    </div>
+    <div class="col-md-6">
+      <%= link_to "@#{u.name}", tweets_user_path(u), class: "name" %>
+      <p><%= u.introduction %></p>
+      <div class="button-group">
+        <% if u != current_user %>
+        <% if current_user.following?(u) %>
+        <%= link_to "Unfollow", followship_path(u), method: :delete, class: "btn btn-info pull-right" %>
+        <% else %>
+        <%= link_to "Follow", followships_path(following_id: u), method: :post, class: "btn btn-primary pull-right" %>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>  

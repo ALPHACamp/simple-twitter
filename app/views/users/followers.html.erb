@@ -1,0 +1,15 @@
+<div class="container" id="index">
+  <div class="col-md-3 " >
+    <%= render partial: "shared/index", locals: { user: @user} %>
+  </div>
+
+  <h3 class="title">follower</h3>
+  <div class="row clearfix">
+    <div class="col-md-6">
+      <% @followers.each do |f| %>
+      <div class="col-md-16">
+       <%= render partial: "shared/pop", locals: { u: f} %>
+      <% end %>
+    </div>
+  </div>
+</div>
