@@ -16,31 +16,36 @@
       <div class="form-group">
         <% @tweets.each do |tweet| %>
           <%= render partial: "shared/tweeter", locals: {tweeter: tweet}%>
-<!-- like button -->
         <% end %> 
       </div>
     </div>
 <!-- 右半部 -->
-    <div class="col-xs-12 col-sm-6 col-md-5 col-lg-4">
 <!-- popular -->
-  <h2>Popular</h2>
-<!-- follow按鈕 -->
-    <div class="form-group">
-      <ul>
-        <% @users.each do |user| %>
-        <li>
-            <%= user.name %>
-              <%= render partial: "shared/follow", locals: {user: user} %>
-          <% end %>
-        </li>
-      </ul>
 
-    </div>
-<!-- follow btn -->
-<div class="form-group">
-  
-</div>
-
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-5 col-lg-4">
+    <h2>Popular</h2>
+    <br>   
+      <% @users.each do |user| %>
+        <div class="form-group clearfix tweet-item">
+          <div class="col-md-5">
+            <%= render partial: "shared/avatar", locals: {user_avatar: user}%>
+          </div>
+          <div class="col-md-7">
+            <h5><%= link_to "#{user.name}", tweets_user_path(user)  %></h5>
+          <p>
+            <%= user.introduction %>
+          </p>
+          <p class="update-btn">
+            <%= render partial: "shared/follow", locals: {user: user} %>
+          </p>
+          </div>
+        </div>
+      <% end %>
+        
+      
     </div>
   </div>
 </div>
+
