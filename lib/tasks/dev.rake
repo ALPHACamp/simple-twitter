@@ -3,9 +3,6 @@ namespace :dev do
   # 其他測試用的假資料請依需要自行撰寫
 
   task fake_user: :environment do
-    User.create(name: "Dojo AC", email: "root@example.com", password: "12345678",introduction: FFaker::Lorem::sentence(30), role: "admin",avatar: file)
-    puts "Default admin created!"
-
     User.destroy_all
     20.times do |i|
       name = FFaker::Name::first_name
@@ -20,8 +17,13 @@ namespace :dev do
         avatar: file
         )
 
-
+      user.save!
+     
     end
+
+    User.create(name: "Dojo AC", email: "root@example.com", password: "12345678",introduction: FFaker::Lorem::sentence(30), role: "admin",avatar: file)
+    puts "Default admin created!"
+
 
     puts "now you have #{User.count} users data"
 
@@ -35,7 +37,7 @@ namespace :dev do
         user: User.all.sample
       )
     end
-    puts "now you have #{Tweet.count} are created"
+    puts "now you have #{Tweet.count} tweets are created"
   end
 
   task fake_replies: :environment do
@@ -47,7 +49,7 @@ namespace :dev do
         user: User.all.sample
       )
     end
-    puts "now you have #{Reply.count} are created"
+    puts "now you have #{Reply.count} rsplies are created"
   end
 
   task fake_all: :environment do

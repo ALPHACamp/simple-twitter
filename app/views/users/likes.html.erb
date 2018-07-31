@@ -1,19 +1,21 @@
 <div class="container-fluid">
+  <div class="row">
 
-  <div class="col-md-2">
-    <%= render partial: "shared/user_info", locals: {user: @user} %> 
-  </div>
-      
-    <br>
-
-    <h1>Like</h1>
-
-  <div class="col-md-10">
-    <div class="index-tweet-content">
-      <% @likes.each do |tweet| %>
-        <%= render partial: "shared/tweet_item", locals: {tweet: @like} %>
-      <% end %>
+    <div class="col-md-2">
+      <%= render partial: "shared/user_info", locals: {user: @user} %> 
     </div>
+        
+      <br>
+
+      <h1>Like</h1>
+
+    <div class="col-md-10">
+      <div class="index-tweet-content">
+        <% @likes.each do |like| %>
+          <%= render partial: "shared/tweet_item", locals: {tweet: like.tweet} %>
+        <% end %>
+      </div>
+    </div>
+
   </div>
-  
 </div>

@@ -1,23 +1,24 @@
 <div class="container-fluid">
+  <div class="row">
 
-  <div class="col-md-2">
-    <%= render partial: "shared/user_info", locals: {user: @user} %> 
-  </div>
-      
-    <br>
+    <div class="col-md-2">
+      <%= render partial: "shared/user_info", locals: {user: @user} %> 
+    </div>
+        
+      <br>
 
-    <h1>Follower</h1>
-      
-        <% @followers.each do |follower| %>
-          <div class ="col-md-5 text-left">
-            <div class="tweet-item clearfix"> 
-              <%= image_tag follower.avatar, class:"img-responsive" %>
-              <h3><%= follower.name %></h3>
-              <%= simple_format follower.introduction, length: 200 %>
-              <%= render partial: "shared/follow", locals:{user: follower} %>
+      <h1>Follower</h1>
+        
+          <% @followers.each do |follower| %>
+            <div class ="col-md-5 text-left">
+              <div class="tweet-item clearfix"> 
+                <%= image_tag follower.avatar, class:"img-responsive" %>
+                <h3><%= follower.name %></h3>
+                <%= simple_format follower.introduction, length: 200 %>
+                <%= render partial: "shared/follow", locals:{user: follower} %>
+              </div>
             </div>
-          </div>
-                              
-        <% end %>                 
-         
+                                
+          <% end %>                 
+  </div>         
 </div>

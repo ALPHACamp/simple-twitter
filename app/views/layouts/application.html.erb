@@ -29,6 +29,7 @@
                <% end %>
               <li><p class="navbar-text">Hi,
                 <%=link_to current_user.name,tweets_user_path(current_user) %></p></li>
+              <li><%= image_tag current_user.avatar, class:"img-responsive" %></li> 
               <li><%= link_to('Profile', edit_user_path(current_user)) %></li>
               <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
  
