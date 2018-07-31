@@ -25,14 +25,15 @@
           <div class="col-md-10">
             <%= link_to "@#{t.user.name},#{t.created_at.to_s(:db)}", tweets_user_path(t.user) %>
             <p><%= t.comment %></p>
-          </div>
+          </div>          
         </div>
       </div>
-    <% end %>
-    <div class="reply-form">
+      <% end %>
+
+    <div class="reply-form"" >
       <%= form_for [@tweet, @reply] do |f| %>
         <div class="form-group">
-          <%= f.text_area :comment, class: "form-control"%>
+          <%= f.text_area :comment, class: "form-control" %>
         </div>
         <div class="button-group">
           <%= f.button "Cancel", type: :reset, class: "pull-right btn btn-default btn-lg" %>

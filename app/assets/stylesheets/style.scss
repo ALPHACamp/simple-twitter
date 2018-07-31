@@ -9,10 +9,9 @@
   }
 }
 
-.form-group {
+.form {
   border: 3px solid #e3f2fd;
-
-}
+} 
 
 .info {
    p {
@@ -42,7 +41,7 @@
   border: 1px solid #bfbdbd;
   border-radius: 10px;
   margin-bottom: 10px;
-  padding: 5px;
+  padding: 10px;
 
   p {
     margin: 10px 0;
@@ -53,8 +52,14 @@
     padding: 2px;  
     width: 100px;
     height: 100px;
-  }
+  }  
 
+}
+
+.reply {
+  border: 1px solid #bfbdbd;
+  padding: 5px;
+  margin-bottom: 10px;
 }
 
 .pop-user {

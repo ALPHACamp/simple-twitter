@@ -2,17 +2,17 @@
   <div class="row ">
     <div class="col-md-16">
       <%= form_for @tweet do |f| %>
-      <div class="form-group">
+      <div class="form">
         <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control text-area" %>
       </div>
-      <div class="button-group">
-        <%= f.submit "Tweet", class: "btn btn-primary btn-lg"  %> 
+      <div class="button">
+        <%= f.submit "Tweet", class: "btn-primary btn-lg pull-right "  %> 
       </div>
       <% end %>
     </div>
     <hr>
 
-    <div class="row ">
+    <div class="col-md-8">
       <% @tweets.each do |tweet| %>
       <%= render partial: "shared/tweet", locals: { tweet: tweet} %>
       <% end %>       
