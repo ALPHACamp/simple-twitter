@@ -7,5 +7,9 @@ before_action :authenticate_admin
   end
 
   def destroy
+    @tweets = Tweet.find(params[:id])
+    @tweets.destroy
+    redirect_to admin_tweets_path
+    flash[:alert] = "tweet was deleted"
   end
 end
