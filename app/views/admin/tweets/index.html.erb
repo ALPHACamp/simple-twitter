@@ -15,7 +15,7 @@
           <%= reply.user.name %>回：
           <%= reply.comment %></p>
         <% end %>  
-        <p><%= link_to 'Delete',admin_tweet_path(t), method: :delete, data: {comfirm: "Are you sure?"}%></p>
+        <p><%= link_to( 'Delete',admin_tweet_path(t), method: :delete, data: {comfirm: "Are you sure?"} )%></p>
       </div>
     <% end %>
   </div>

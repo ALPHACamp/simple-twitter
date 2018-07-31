@@ -1,6 +1,6 @@
 class Admin::TweetsController < Admin::BaseController
   def index
-    @tweets = Tweet.all
+    @tweets = Tweet.order(created_at: :desc)
   end
 
   def destroy
@@ -13,6 +13,6 @@ class Admin::TweetsController < Admin::BaseController
       flash[:notice] = "Tweet was successfully deleted!!!"
     end
     
-    redirect_to admin_tweets_path      
+    redirect_to admin_root_path      
   end
 end
