@@ -1,10 +1,16 @@
+<!-- 看見站內所有的推播（設為後台首頁） -->
+<div class="container">
+
 <h1>tweets 後台</h1>
 <ul>
   <% @tweets.each do |tweet| %>
-    <li>
-      <%= tweets.name %>
-      <%= link_to 'Show', admin_tweet_path(tweet) %>
-      <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %>
-    </li>
-  <% end %> 
+  <button type="button" class="btn btn-danger">
+   <%= link_to 'Delete',admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %>
+   </button>
+   <%= render partial: "shared/tweeter", locals: {tweeter: tweet} %>
+  <% end %>
 </ul>
+
+
+</div>
+
