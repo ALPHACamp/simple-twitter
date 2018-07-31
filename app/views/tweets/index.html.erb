@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+
+      <%=form_for [@user, @tweet] do |f|%>
+        <div class="form-group">
+        <%= f.text_area :description, placeholder: "你想說什麼？", class: "form-control", rows: "10" %>
+        </div>
+        <div class="form-group">
+        <%= f.submit "推吧", class: "btn btn-primary movebtn" %>
+        </div>
+      <% end %>
+
+      <br>
+      <br>
+      <br>
+
+
+      <% @tweets.each do |tweet| %>
+        <div class="panel panel-default twpanel">
+          <%= image_tag (tweet.user.avatar), class: "usertweet-avatar" %>
+          <h5><%= link_to tweet.user.name, tweets_user_path(tweet.user) %>,<%= tweet.created_at.to_date %>,<%= tweet.created_at.strftime("%k:%M") %></h5>
+          <%= simple_format tweet.description, style: "color:#808080" %>
+          <%= link_to tweet_replies_path(tweet) do %>
+          Reply(<%= tweet.replies_count %>)
+          <% end %>
+
+          <% if tweet.is_liked?(current_user) %>
+            <%= link_to unlike_tweet_path(tweet), method: :post, class: "text-danger" do %>
+              Unlike(<%= tweet.likes_count %>)
+            <% end %>
+          <% else %>
+            <%= link_to like_tweet_path(tweet), method: :post, class: "text-danger" do %>
+              Like(<%= tweet.likes_count %>)
+            <% end %>    
+          <% end %>
+        </div>
+
+      <% end %>
+    </div>
+
+    <div class="col-md-4">
+      <h2>熱門玩家</h2>
+        <% @users.each do |user| %>
+          <div class="panel panel-default ppanel">
+            <%= image_tag (user.avatar), class: "usertweet-avatar" %>
+            <h3>@<%= link_to user.name, tweets_user_path(user) %></h3>
+              <%= simple_format user.introduction, style: "color:#808080" %>
+            <% if user != current_user %>
+              <% if user.following?(current_user)%> 
+                <%= link_to 'Unfollow', followship_path(user), method: :delete, class: "btn btn-primary movebtn" %>
+              <% else %>
+                <%= link_to 'Follow', followships_path(following_id: user), method: :post, class: "btn btn-primary movebtn" %>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+    </div>
+
+  </div>
+</div>

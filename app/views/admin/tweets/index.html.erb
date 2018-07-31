@@ -1,0 +1,31 @@
+<div class="container"> 
+  <h1>Tweet後台 <%= link_to 'User List', admin_users_path, class: "btn btn-default" %></h1>
+    <div class="row"> 
+      <div class="col-md-12">
+        <table class="table table-hover table-bordered">
+          <thead>
+            <tr class="active">
+              <th>Name</th>
+              <th>Tweets</th>
+              <th>All Replies</th>            
+              <th>Delete</th>            
+            </tr>
+          </thead>
+          <tbody>
+            <% @tweets.each do |tweet| %>
+              <tr class="warning">
+                <th scope="row"><%= tweet.user.name %></th>
+                  <td><%= tweet.description %></td>
+                  <td><% tweet.replies.each do |reply| %>
+                        [<%= reply.comment %>]<br>
+                      <% end %></td>
+                  <td>
+                    <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: { confirm: "Are you sure?"} %>
+                  </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>        
+      </div> 
+    </div>
+</div>

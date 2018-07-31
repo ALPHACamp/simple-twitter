@@ -1,12 +1,21 @@
-<h2>Sign up</h2>
+<div class="container col-md-4" >
+
+<h3>註冊</h3>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autocomplete: "email" %>
   </div>
+
+  <!-- 增加 name 輸入框之後，需要讓 name 屬性通過 Strong Parameter 驗證，在 Devise 文件裡有說明：https://github.com/plataformatec/devise#strong-parameters -->
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
 
   <div class="field">
     <%= f.label :password %>
@@ -24,6 +33,9 @@
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+
+  </div>
