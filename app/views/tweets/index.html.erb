@@ -22,7 +22,7 @@
           <h5><%= link_to tweet.user.name, tweets_user_path(tweet.user) %>,<%= tweet.created_at.to_date %>,<%= tweet.created_at.strftime("%k:%M") %></h5>
           <%= simple_format tweet.description, style: "color:#808080" %>
           <%= link_to tweet_replies_path(tweet) do %>
-          reply(<%= tweet.replies_count %>)
+          Reply(<%= tweet.replies_count %>)
           <% end %>
 
           <% if tweet.is_liked?(current_user) %>
