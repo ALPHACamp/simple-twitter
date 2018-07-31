@@ -10,7 +10,8 @@
 }
 
 .form-group {
-  border: 2px solid #e3f2fd;
+  border: 3px solid #e3f2fd;
+
 }
 
 .info {
@@ -21,22 +22,39 @@
 }
 
 #index {
+  margin-bottom: 15px;
+  padding: 10px;
   text-align: left;
   float: left;
 
   img {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 6px;
-    margin-bottom: 15px;
+    padding: 6px;  
     width: 90px;
     height: 90px;
   }
 
   p {
     font-size: 14px;
-
   }
+}
+
+.tweet {
+  border: 1px solid #bfbdbd;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+
+  p {
+    margin: 10px 0;
+    color: #7D7D7D;
+  }
+
+  img {
+    padding: 2px;  
+    width: 100px;
+    height: 100px;
+  }
+
 }
 
 .pop-user {
@@ -58,8 +76,14 @@
 
   }
 
-  .btn {
+  btn {
     font-size: 14px;
+  }
+
+  img {
+    padding: 6px;  
+    width: 90px;
+    height: 90px;
   }
 
 }

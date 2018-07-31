@@ -7,7 +7,7 @@
   <div class="row clearfix">
     <div class="col-md-6">
       <% @followers.each do |f| %>
-      <div class="col-md-12">
+      <div class="col-md-16">
        <%= render partial: "shared/pop", locals: { u: f} %>
       <% end %>
     </div>

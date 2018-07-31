@@ -12,10 +12,10 @@
   </div>
   
   <div class="col-md-9 ">
-    <h3 class="title">tweets</h3>
+    <h3 class="title">Tweets</h3>
     <%= render partial: "shared/tweet", locals: { tweet: @tweet} %>
 
-    <h3 class="title">replies</h3>
+    <h3 class="title">Replies</h3>
     <% @replies.each do |t| %>
       <div class="reply">
         <div class="row">
