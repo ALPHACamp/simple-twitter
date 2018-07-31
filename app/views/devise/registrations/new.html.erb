@@ -1,4 +1,6 @@
-<h2>Sign up</h2>
+<div class="container col-md-4" >
+
+<h3>註冊</h3>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -31,6 +33,9 @@
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+
+  </div>
