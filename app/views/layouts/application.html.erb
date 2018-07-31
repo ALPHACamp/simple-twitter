@@ -46,9 +46,13 @@
               <% if current_user.admin? %>
                 <li><%= link_to 'Admin Panel', admin_tweets_path %></li>
               <% end %>
-              <li><p class="navbar-text"> Hi, <%= link_to current_user.name, tweets_user_path(current_user) %></p></li>
+              <li>
+                <%= link_to tweets_user_path(current_user) do %>
+                  <div class="navpic"><%= image_tag current_user.avatar %></div>
+                <% end %>
+              </li>
               <%# navbar-text：用於垂直置中 %>
-              <li><%= link_to('Profile', user_path(current_user)) %></li>
+              <li><p class="navbar-text"> Hi, <%= link_to current_user.name, tweets_user_path(current_user) %></p></li>
               <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
               <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
             <% else %>
