@@ -2,10 +2,11 @@ class TweetsController < ApplicationController
 # 登入認證
 before_action :authenticate_user!
   def index
-    @users # 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
+    # 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
+    @users = User.order(followers_count: :desc).limit(10)
     @tweets = Tweet.all
     @tweet = Tweet.new #在index建立tweet容器來建立短文
-    @users = User.all #在index上建立popular前先測試資料
+    #@users = User.all 在index上建立popular前先測試資料
   end
 
   def create

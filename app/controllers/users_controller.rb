@@ -23,6 +23,7 @@ before_action :set_user, only: [:edit, :update, :followings, :followers, :likes,
 
   def followers
     @followers = @user.followers.includes(:followships).order("followships.created_at desc") # 基於測試規格，必須講定變數名稱
+    @user.followers_count
   end
 
   def likes
