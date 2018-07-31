@@ -1,0 +1,24 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-md-2">
+      <%= render partial: "shared/user_info", locals: {user: @user} %> 
+    </div>
+        
+      <br>
+
+      <h1>Followimgs</h1>
+        
+          <% @followings.each do |following| %>
+            <div class ="col-md-5 text-left">
+              <div class="tweet-item clearfix"> 
+                <%= image_tag following.avatar, class:"img-responsive" %>
+                <h3><%= following.name %></h3>
+                <%= simple_format following.introduction, length: 200 %>
+                <%= render partial: "shared/follow", locals:{user: following} %>
+              </div>
+            </div>
+                                
+          <% end %> 
+  </div>                      
+</div>

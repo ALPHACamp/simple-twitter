@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+
+    <ul class="nav nav-tabs">
+      <li role="presentation">
+        <%= link_to "Tweets", admin_tweets_path %>
+       </li>
+      <li role="presentation" class="active">
+        <%= link_to "Users", admin_users_path %>
+      </li>
+    </ul>
+  </div>
+</div>
+<br>
+
+ <ul class="nav nav-pills nav-pills-center">
+
+    <div class="container-fluid">
+      <div class="row">
+
+            <div class="container">
+              <div class="page-header">
+                <h1>All Users</h1>
+              </div>
+            </div>
+
+              <% @users.each do |user| %>
+                <div class ="col-md-3 text-center ">
+                  <div class="tweet-item clearfix">
+                    <%= image_tag user.avatar, width:'100px'%>              
+                    <h2><%= user.name %></h2><br>
+                    <h4>Tweets: <%= user.tweets.size %></h4><br>
+                    <h4>Followings: <%= user.followings.size %></h4><br>
+                    <h4>Follower: <%= user.followers.size %></h4><br>     
+                    <h4>Likes: <%= user.likes.size  %></h4><br >
+                  </div>
+                </div>
+              <% end %>
+            
+
+      </div>
+    </div>
+  </ul>

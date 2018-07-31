@@ -1,0 +1,43 @@
+.user-item{
+  margin-bottom: 15px;
+}
+
+.user-item img{
+  width: 128px;
+  height: 128px;
+}
+
+#tweet_description{
+  height: 100px;
+  font-size: 30px;
+  resize: none;
+ }
+
+.tweet-item{
+  border: 1px solid #e7e7e7;
+  margin-top: 5px;
+  padding: 10px;
+  word-wrap:break-word;
+  position: relative;
+  width: 100%;
+}
+
+.index-tweet-content{
+  position: relative;
+}
+
+.img-responsive {
+  width: 64px;
+  height: 64px;
+}
+
+
+.user-item{
+  border: 1px solid #e8e8e8;
+  margin-top: 5px;
+  padding: 10px;
+  word-wrap:break-word;
+  position: relative;
+  width: 100%;
+}
+

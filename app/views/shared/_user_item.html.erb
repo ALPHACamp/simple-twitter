@@ -1,0 +1,12 @@
+<div class="user-item clearfix">
+  <div class ="col-xs-4">       
+    <%= image_tag user.avatar, class: "img-responsive" %>
+  </div>
+
+  <div class="col-xs-8">
+    <h3><%=link_to user.name,tweets_user_path(user)%></h3>
+    <%= simple_format user.introduction, length: 200 %>
+    <%= render partial: "shared/follow", locals: {user: user} %>
+  </div>
+                
+</div>

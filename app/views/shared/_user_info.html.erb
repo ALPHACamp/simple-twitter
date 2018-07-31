@@ -1,0 +1,29 @@
+          <%= image_tag @user.avatar, class:"img-responsive" %>
+          
+          <h2><%= @user.name %></h2><br>
+          <p><strong><%= simple_format @user.introduction %></strong></p><br>
+    
+          <h4><%= link_to tweets_user_path(@user) do %>
+              Tweets:  <%= @user.tweets.size %></h4><br >
+          <% end %>
+
+          <h4><%= link_to followings_user_path(@user) do %>
+              Followings:  <%= @user.followings.size %></h4><br >
+          <% end %>
+            
+
+          <h4><%= link_to followers_user_path(@user) do %>
+              Follower:  <%= @user.followers.size %></h4><br >
+          <% end %>
+            
+
+          <h4><%= link_to likes_user_path(@user) do %>
+             Likes: <%= @user.likes.size  %></h4><br >
+          <% end %>
+          
+
+          <% if user == current_user %>
+            <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
+          <% else %>
+            <%= render partial: "shared/follow", locals: {user: user} %>
+           <% end %>

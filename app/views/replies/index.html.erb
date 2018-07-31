@@ -1,0 +1,39 @@
+<div class="container">
+
+          <div class="col-sm-3">
+            <%= render partial: "shared/user_info", locals: {user: @user} %> 
+         </div>
+      
+      <br>
+        <div class="index-tweet-content">
+          <div class="col-sm-9">
+              <h1>Tweets</h1>
+                <%= render partial: "shared/tweet_item", locals: {tweet: @tweet} %>
+                <br>
+                <h1>Replies</h1>
+                  <% @replies.each do |reply| %>
+                    <div class="tweet-item clearfix">
+                      <div class ="col-xs-2">
+                        <%= image_tag reply.user.avatar, size: "75" %>
+                      </div>
+
+                      <div class="col-xs-10">
+                        <%= reply.user.name %>,<%=reply.created_at%>
+                        <br>
+                        <h3><%=reply.comment %></h3>
+                      </div>
+                    </div>
+                  <% end %>
+                    <br>
+    
+                <%= form_for [@tweet,@reply] do |t| %>
+                  <%= t.text_area :comment, placeholder: "Leave your messages!", class: "form-control" %>
+                  <%= t.submit "Reply", class: "btn btn-primary" %>
+                <% end %>
+
+
+                <br>
+            </div>
+          </div>
+  
+</div>

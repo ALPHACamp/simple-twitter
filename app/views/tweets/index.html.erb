@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="col-sm-7">
+        <div class="tweet-input">
+          <%= form_for (@tweet) do |f| %>
+            <%= f.text_area :description, placeholder: "What's on your mind?", class: "form-control" %>
+            <%= f.submit "Tweet", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+        <br>
+            <!-- 顯示Tweet-->
+        <div class="index-tweet-content">
+          <% @tweets.each do |tweet| %>
+            <%= render partial: "shared/tweet_item", locals: {tweet: tweet} %>
+          <% end %>
+        </div>
+  </div>
+
+  <div class="col-sm-5">
+        <h1>Popular</h1>
+          <%= @users.each do |user| %>
+            <%= render partial: "shared/user_item", locals: {user: user} %> 
+          <% end %>      
+            
+    
+  </div>
+</div>
