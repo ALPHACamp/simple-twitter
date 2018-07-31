@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-md-8">
+    <div class="col-md-12">
     <h1>tweet後台</h1>
     <div>
       <%= link_to "All Tweets", admin_tweets_path %> |
@@ -17,32 +17,29 @@
         <thead>
           <tr>
             <th>#</th>
-            <th>Tweet</th>
-            <th>#</th>
+            <th>User Name</th>
           </tr>
         </thead>
         <tbody>
-          <% @tweets.each do |t|%>
+          <% @users.each do |u|%>
             <tr>
-              <th scope="row"><%= t.id %></th>
+              <th scope="row"><%= u.id %></th>
               <td>
                 <div>
-                  <%= link_to "@"+t.user.name %>，
-                  <%= t.created_at%>
+                  <%= link_to "@"+u.name %>，
+                  <%= u.created_at%>
                 </div>
                 <div>
-                  <%= t.description %>
+                  <%= u.follower_count %>
+                  <%= u.likes_count%>
                 </div>
-              <td>
-                <%= link_to "Delete", admin_tweet_path(t), method: :delete, data: {confirm:"Are you sure?"} %>
-              </td>
             </tr>
             <% end %>
         </tbody>
       </talbe>
 
       <div class="text-center">
-        <%= paginate @tweets %>
+        <%= paginate @users %>
       </div>
 
     </div>
