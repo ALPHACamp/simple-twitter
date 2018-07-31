@@ -37,9 +37,5 @@ def followers_count
   self.followers_count = self.followers.count
   self.save
 end
-def tweets_count
-  self.tweets_count = self.tweets.count
-  self.save
-end
 
 end

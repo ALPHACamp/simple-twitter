@@ -6,7 +6,6 @@ before_action :authenticate_user!
     @users = User.order(followers_count: :desc).limit(10)
     @tweets = Tweet.all
     @tweet = Tweet.new #在index建立tweet容器來建立短文
-    #@users = User.all 在index上建立popular前先測試資料
   end
 
   def create
