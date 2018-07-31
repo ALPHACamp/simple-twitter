@@ -29,7 +29,7 @@
                 <div>
                   <%= link_to 'Reply', tweet_replies_path(tweet), class:"links links-blue" %>
                   <% if tweet.is_liked?(current_user) %>
-                    <%= link_to "Unlike", unlike_tweet_path(tweet.id), method: :post, class: "links links-red" %>
+                    <%= link_to "Unlike(#{tweet.likes_count})", unlike_tweet_path(tweet.id), method: :post, class: "links links-red" %>
                   <% else %>
                     <%= link_to "Like(#{tweet.likes_count})", like_tweet_path(tweet.id), method: :post, class: "links links-red" %>
                   <% end %>
