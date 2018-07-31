@@ -287,7 +287,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   listen (>= 3.0.5, < 3.2)
-  pg (~> 0.20)
+  pg (~> 0.21)
   puma (~> 3.7)
   rails (~> 5.1.4)
   rails-controller-testing
