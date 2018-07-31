@@ -1,4 +1,5 @@
-  <%= image_tag @user.avatar, class: "img-responsive" %>
+<div class="info">
+  <%= image_tag @user.avatar, class: "img-responsive"  %>
   <h1><%= @user.name %></h1>
   <p><%= @user.introduction %></p>
   <br />
@@ -17,3 +18,4 @@
     <% else %>
       <%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-primary" %>
     <% end %>
+</div>

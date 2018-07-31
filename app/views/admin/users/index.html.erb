@@ -1,6 +1,8 @@
 <div id="admin" class="container">
-  <h1 class="title">後台</h1>
+  <h1 class="title">後台管理</h1>
+
   <div class="row">
+
     <ul class="nav nav-tabs">
       <li role="presentation">
         <%= link_to "All Tweets", admin_tweets_path %>
@@ -25,10 +27,10 @@
         <% @users.each do |u| %>
           <tr>
             <th scope="row"><%= u.name %></th>
-            <td><%= u.tweets_count %></td>
+            <td><%= u.tweets.count %></td>
             <td><%= u.followings.count %></td>
-            <td><%= u.followers_count %></td>
-            <td><%= u.likes_count %></td>
+            <td><%= u.followers.count %></td>
+            <td><%= u.likes.count %></td>
           </tr>
         <% end %>
       </tbody>

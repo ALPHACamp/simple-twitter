@@ -1,4 +1,4 @@
-<div id="replies" class="container">
+<div id="index" class="container">
   <div class="col-md-3" >
       <%= image_tag @tweet.user.avatar, class: "img-rounded" %>
       <h3 class="name"><%= @tweet.user.name %></h3>
@@ -34,9 +34,9 @@
         <div class="form-group">
           <%= f.text_area :comment, class: "form-control"%>
         </div>
-        <div class="form-group button-group">
-          <%= f.submit "Reply", class: "btn" %>
-          <%= f.button "Cancel", type: :reset, class: "btn" %>
+        <div class="button-group">
+          <%= f.submit "Reply", class: "btn btn-primary" %>
+          <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
         </div>
       <% end %>
     </div>

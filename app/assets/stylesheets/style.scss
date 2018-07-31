@@ -1,5 +1,5 @@
 .navbar {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   .img-1 {
     padding: 0 10px;
   }
@@ -7,6 +7,17 @@
     width: 50px;
     height: 50px;
   }
+}
+
+.form-group {
+  border: 2px solid #e3f2fd;
+}
+
+.info {
+   p {
+    color: #0a80d6;
+    font-size: 14px;
+  }   
 }
 
 #index {
@@ -18,33 +29,40 @@
     border-radius: 4px;
     padding: 6px;
     margin-bottom: 15px;
-    width: 120%;
+    width: 90px;
+    height: 90px;
+  }
+
+  p {
+    font-size: 14px;
+
   }
 }
-
-#replies {
-  width: 110%;
-  padding: 6px;
-  max-height: 200px;
-
-  img {
-    border-radius: 4px;
-    padding: 4px;
-    margin-bottom: 15px;
-    text-align: left;
-    float: left;
-  }
-}
-
 
 .pop-user {
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 4px;
   margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #bfbdbd;
+  border-radius: 5px;
+
+  p {
+    color: #666464;
+    font-size: 14px;
+  }
+
+  a.name {
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 1px;
+
+  }
+
+  .btn {
+    font-size: 14px;
+  }
 
 }
-
 
 .like {
   padding: 0 5px;
