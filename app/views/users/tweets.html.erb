@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+
+  <%= render partial: "shared/user_intro" %>
+
+  <div class="col-md-8">
+    <% @order_user_tweets.each do |tweet| %>
+      <div class="panel panel-default twpanel">
+          <%= image_tag (tweet.user.avatar), class: "usertweet-avatar" %>
+          <h5>@<%= link_to tweet.user.name, tweets_user_path(@user) %>,<%= tweet.created_at.to_date %>,<%= tweet.created_at.strftime("%k:%M") %></h5>
+          <%= simple_format tweet.description, style: "color:#808080" %>     
+      </div>
+    <% end %>
+  </div>
+
+
+
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="col-md-4">
+    <div><%= image_tag (@user.avatar), class: "user-avatar" %></div>
+    <h2><%= @user.name %></h2>
+    <%= simple_format @user.introduction, style: "color:#4682B4" %>
+    <h3><%= link_to tweets_user_path(@user), class: "twuser" do %>
+          Tweets <%= @tweets.count %>
+        <% end %></h3>
+    <h3><%= link_to followings_user_path(@user), class: "twuser" do %>
+          Following <%= @followings.count %>
+        <% end %></h3>
+    <h3><%= link_to followers_user_path(@user), class: "twuser" do %>
+          Follower <%= @followers.count %>
+        <% end %></h3>
+    <h3><%= link_to likes_user_path(@user), class: "twuser" do %>
+          Like <%= @likes.count %>
+        <% end %></h3>
+
+
+    <% if @user.email == current_user.email %>
+      <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
+    <%else %>
+      <% if @user.following?(current_user)%>
+        <%= link_to 'Unfollow', followship_path(@user), method: :delete, class: "btn btn-primary" %>
+      <% else %>
+        <%= link_to 'Follow', followships_path(following_id: @user), method: :post, class: "btn btn-primary"%>
+      <% end %>
+    <% end %>
+
+
+
+</div>
