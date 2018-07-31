@@ -33,5 +33,9 @@ end
 def following?(user)
   self.followings.include?(user)
 end
+def followers_count
+  self.followers_count = self.followers.count
+  self.save
+end
 
 end
