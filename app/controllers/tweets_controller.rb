@@ -29,7 +29,7 @@ before_action :authenticate_user!
     @tweet = Tweet.find(params[:id])
     likes = Like.where(tweet: @tweet, user: current_user)
     likes.destroy_all
-    redirect_back(fallback_location: root_path)
+    redirect_to tweets_path
   end
 
   private
