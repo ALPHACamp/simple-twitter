@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row">
+    <div class ="col-md-3">
+      <div class="form-group">
+        <%= image_tag @user.avatar, size: "250"  %>
+      </div>
+
+      <div class="form-group">
+        <h1><%= @user.name %></h1>
+        <p><%= @user.introduction %></p>
+      </div>
+
+      <div class="form-group">
+        <h3><%= link_to "Tweets  #{@user.tweets.count}", tweets_user_path(@user) %></h3>
+        <h3><%= link_to "Following", followings_user_path(@user) %></h3>
+        <h3><%= link_to "Follower", followers_user_path(@user) %></h3>
+        <h3><%= link_to "Likes #{@user.likes_count}", likes_user_path(@user) %></h3>
+      </div>
+
+      <div class="form-group">
+        <% if @user != current_user %>
+          <% if current_user.following?(@user)%>
+            <%= link_to 'Unfollow', followship_path(@user), method: :delete, class: "btn btn-default" %>
+          <% else %>
+            <%= link_to 'Follow',followships_path(following_id: @user), method: :post, class: "btn btn-default" %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <% if @user.email == current_user.email %>
+          <%= link_to 'Edit Profile', edit_user_path, class:"btn btn-primary" %>
+        <% end %>
+      </div>
+
+      <div class="clearfix"></div>
+    </div>
+
+    <div class="col-md-9">
+      <% @users.each do |user| %>
+      <div class="tweet-item">
+        <div class="row">
+          <div class="col-md-3">
+            <%= image_tag user.avatar, size: "100" %>
+          </div>
+          <div class="col-md-9">
+            <h4><%= link_to user.name, tweets_user_path(user) %></h4>
+            <p><%= truncate(user.introduction, length: 140) %></p>
+            <div class="form-group">
+              <% if user != current_user %>
+                <% if current_user.following?(user)%>
+                  <%= link_to 'Unfollow', followship_path(user.id), method: :delete, class: "btn btn-default pull-right" %>
+                <% else %>
+                  <%= link_to 'Follow',followships_path(following_id: user.id), method: :post, class: "btn btn-default pull-right" %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+
+    </div>
+
+  </div>
+</div>

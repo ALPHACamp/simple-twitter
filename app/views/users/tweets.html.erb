@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="row">
+    <div class ="col-md-3">
+      <div class="form-group">
+        <%= image_tag @user.avatar, size: "250"  %>
+      </div>
+
+      <div class="form-group">
+        <h1><%= @user.name %></h1>
+        <p><%= @user.introduction %></p>
+      </div>
+
+      <div class="form-group">
+        <h3><%= link_to "Tweets  #{@user.tweets.count}", tweets_user_path(@user) %></h3>
+        <h3><%= link_to "Following", followings_user_path(@user) %></h3>
+        <h3><%= link_to "Follower", followers_user_path(@user) %></h3>
+        <h3><%= link_to "Likes  #{@user.likes_count}", likes_user_path(@user) %></h3>
+      </div>
+
+      <div class="form-group">
+        <% if @user != current_user %>
+          <% if current_user.following?(@user)%>
+            <%= link_to 'Unfollow', followship_path(@user), method: :delete, class: "btn btn-default" %>
+          <% else %>
+            <%= link_to 'Follow',followships_path(following_id: @user), method: :post, class: "btn btn-default" %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <% if @user.email == current_user.email %>
+          <%= link_to 'Edit Profile', edit_user_path, class:"btn btn-primary" %>
+        <% end %>
+      </div>
+
+      <div class="clearfix"></div>
+    </div>
+
+    <div class="col-md-9">
+      <% @tweets.each do |tweet| %>
+      <div class="tweet-item">
+        <div class="row">
+          <div class="col-md-3">
+            <%= image_tag tweet.user.avatar, size: "100" if tweet.user.avatar? %>
+          </div>
+          <div class="col-md-9">
+            <p>
+              <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>
+              <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %>
+            </p>
+            <p>
+              <%= tweet.description %>
+            </p>
+            <div>
+              <%= link_to 'Reply', tweet_replies_path(tweet), class:"links links-blue" %>
+              <% if tweet.is_liked?(current_user) %>
+                <%= link_to "Unlike(#{tweet.likes_count})", unlike_tweet_path(tweet.id), method: :post, class: "links links-red" %>
+              <% else %>
+                <%= link_to "Like(#{tweet.likes_count})", like_tweet_path(tweet.id), method: :post, class: "links links-red" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+
+    </div>
+
+  </div>
+</div>

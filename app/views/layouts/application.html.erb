@@ -9,20 +9,42 @@
   </head>
 
   <body>
-    <% if current_user %>
-      <% if current_user&.admin? %>
-        <li><%= link_to 'Admin Panel', admin_restaurants_path %></li>
-      <% end %>
-      <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
-      <li><%= link_to('登出', destroy_user_session_path, method: :delete) %></li>
-      <li><%= link_to('修改個人資料', edit_user_path(current_user)) %></li>
-      <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
-    <% else %>
-      <li><%= link_to('註冊', new_user_registration_path) %></li>
-      <li><%= link_to('登入', new_user_session_path) %></li>
-    <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
-  </body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <%= link_to "LOGO", root_path %>
+        </div>
+        <div class="navbar-body">
+          <ul class="nav navbar-nav pull-right">
+            <% if current_user %>
+              <% if current_user&.admin? %>
+                <li><%= link_to 'Admin Panel', admin_tweets_path %></li>
+              <% end %>
+                <li class="nav-item">
+                  <span class="navbar-text">
+                    <%= image_tag current_user.avatar, size: "50" if current_user.avatar? %>
+                    Hi! <%= link_to current_user.name, tweets_user_path(current_user)  %>
+                    &nbsp;
+                  </span>
+                </li>
+
+                <li class="nav-item">
+                  <%= link_to('登出', destroy_user_session_path, method: :delete) %>
+                </li>
+            <% else %>
+                <li class="nav-item">
+                  <%= link_to('註冊', new_user_registration_path) %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to('登入', new_user_session_path) %>
+                </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
+    </body>
 </html>
