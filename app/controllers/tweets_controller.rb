@@ -22,7 +22,7 @@ before_action :authenticate_user!
   def like
     @tweet = Tweet.find(params[:id])
     @tweet.likes.create!(user: current_user)
-    redirect_back(fallback_location: root_path) #導回上一頁
+    redirect_back(fallback_location: tweets_path) #導回上一頁
   end
 
   def unlike
