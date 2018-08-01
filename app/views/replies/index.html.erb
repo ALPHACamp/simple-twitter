@@ -1,0 +1,29 @@
+<h1>回覆</h1>
+
+<div>
+    <h4><%=  link_to @tweet.user.name, tweets_user_path(@tweet.user) %></h4>
+    <p><%= simple_format @tweet.description %></p>
+    <p class="text-muted">
+      <em><%= time_ago_in_words(@tweet.created_at)   %> </em>
+    </p>
+    <hr>
+</div>
+<%= form_for [@tweet, @reply] do |f| %>
+  <div class="form_group">
+    <%= f.text_area :comment, placeholder: "回應", class: "form-control" %>
+  </div>
+  <div class="form_group">
+    <%= f.submit class:"btn btn-primary" %>
+    <%= f.button "Cancel", type: :reset, class:"btn-primary" %>
+  </div>
+<%end%> 
+<% @tweet.replies.each do |reply| %>
+  <div>
+    <h4><%=  reply.user.name %></h4>
+    <p><%= simple_format reply.comment %></p>
+    <p class="text-muted">
+      <em><%= time_ago_in_words(reply.created_at)   %> </em>
+    </p>
+  </div>
+  <hr>
+<%end%>

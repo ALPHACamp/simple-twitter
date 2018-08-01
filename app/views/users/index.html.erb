@@ -1,0 +1,13 @@
+<% @users.each do |user| %>
+  <div class="col-sm-6 col-md-4">
+    <div class="user-item">
+      <img src="http://via.placeholder.com/128x128",class:= "img-responsive center-block>">
+      <div class="caption">
+        <h3><%= link_to user.name, user_path(user) %></h3>
+        <% if user != current_user %>
+	      	<%= render partial: "shared/following", locals: {user: user} %>
+	    	<%end%>
+      </div>
+    </div>
+  </div>
+<% end %>

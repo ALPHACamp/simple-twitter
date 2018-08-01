@@ -1,0 +1,26 @@
+<h1>後台回覆</h1>
+
+<div>
+    <h4><%=  link_to @tweet.user.name, tweets_user_path(@tweet.user) %></h4>
+    <p><%= simple_format @tweet.description %></p>
+    <p class="text-muted">
+      <em><%= time_ago_in_words(@tweet.created_at)   %> </em>
+    </p>
+    <% if current_user.admin? %>
+      <%= link_to "Delete", admin_tweet_path(@tweet), method: :delete %>
+    <%end%>
+    <hr>
+</div>
+<% @tweet.replies.each do |reply| %>
+  <div>
+    <h4><%=  reply.user.name %></h4>
+    <p><%= simple_format reply.comment %></p>
+    <p class="text-muted">
+      <em><%= time_ago_in_words(reply.created_at)   %> </em>
+    </p>
+    <% if current_user.admin? %>
+      <%= link_to "Delete", admin_tweet_reply_path(@tweet, reply), method: :delete %>
+    <%end%>
+  </div>
+  <hr>
+<%end%>

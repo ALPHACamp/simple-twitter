@@ -1,0 +1,14 @@
+<h1>後台</h1>
+<div>
+  <% @tweets.each do |tweet| %>
+    <h4><%=  link_to tweet.user.name, tweets_user_path(tweet.user) %></h4>
+    <p><%= simple_format tweet.description %></p>
+    <p class="text-muted">
+      <em><%= time_ago_in_words(tweet.created_at)   %> </em>
+    </p>
+    <%= render partial: "shared/like", locals: {tweet: tweet} %>
+    <%= link_to "Reply(#{tweet.replies_count})" , admin_tweet_replies_path(tweet)%>
+    <%= link_to 'Delete', admin_tweet_path(tweet), method: :delete,class: "btn btn-primary" %>
+    <hr>
+  <% end %>
+</div>
