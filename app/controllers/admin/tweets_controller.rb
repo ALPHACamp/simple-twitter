@@ -1,6 +1,8 @@
 class Admin::TweetsController < Admin::BaseController
   def index
-    
+    if current_user.admin? == false
+      redirect_to root_path
+    end
   	@tweets = Tweet.order(created_at: :desc)
   end
   
