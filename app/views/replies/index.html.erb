@@ -30,7 +30,7 @@
 
       <div class="form-group">
         <% if @user.email == current_user.email %>
-          <%= link_to 'Edit Profile', edit_user_path, class:"btn btn-primary" %>
+          <%= link_to 'Edit Profile', edit_user_path(@user), class:"btn btn-primary" %>
         <% end %>
       </div>
 
