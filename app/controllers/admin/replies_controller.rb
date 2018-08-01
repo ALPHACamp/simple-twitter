@@ -2,6 +2,7 @@ class Admin::RepliesController < ApplicationController
 	def index
 		@replies = Reply.order(created_at: :desc)
 		@tweet = Tweet.find(params[:tweet_id])
+		
 	end
   
 
