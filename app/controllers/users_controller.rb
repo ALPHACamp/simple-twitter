@@ -7,7 +7,7 @@ before_action :set_user, only: [:edit, :update, :followings, :followers, :likes,
   
   def edit
     unless @user == current_user
-      redirect_to edit_user_path(@user)
+      redirect_to tweets_user_path(@user)
     end
   end
 
