@@ -8,14 +8,14 @@ Rails.application.routes.draw do
       post :like
       post :unlike
     end
-    
+
   end
 
   
 
   root "tweets#index"
 
-  resources :users, only: [:edit] do
+  resources :users, only: [:edit, :update] do
 
     member do
       get :tweets
