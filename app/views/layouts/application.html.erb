@@ -27,8 +27,7 @@
       <ul class="pull-right text-right nav navbar-nav">
         <% if current_user %>
           <% if current_user.admin? %>
-            <li><h5><%= link_to 'Tweets Admin ', admin_tweets_path %></h5></li>
-            <li><h5><%= link_to 'Users Admin ', admin_users_path %></h5></li>
+           <li><h5><%= link_to '後台入口 ', admin_tweets_path %></h5></li>
           <% end %>
           <li><%= link_to tweets_user_path(current_user) do %>
             <%= render partial: "shared/avatar", locals: {user_avatar: current_user}  %>

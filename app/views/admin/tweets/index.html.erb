@@ -2,6 +2,9 @@
 <div class="container">
 
 <h1>tweets 後台</h1>
+<button><h5><%= link_to 'Tweets Admin ', admin_tweets_path %></h5></button>
+<button><h5><%= link_to 'Users Admin ', admin_users_path %></h5></button>
+<br>
 <ul>
   <% @tweets.each do |tweet| %>
   <button type="button" class="btn btn-danger">
