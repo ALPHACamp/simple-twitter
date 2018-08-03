@@ -5,7 +5,10 @@ before_action :authenticate_user!
     @tweets = Tweet.all.order(created_at: :desc)
     @tweet = Tweet.new #在index建立tweet容器來建立短文
     # 基於測試規格，必須講定變數名稱，請用此變數中存放關注人數 Top 10 的使用者資料
+    # 必須搭配counter_cache才年通過測試
     @users = User.order(followers_count: :desc).limit(10)
+    # 以下也可以通過自動測試  
+    #@users = User.all.sort_by {|user| user.followers.size}.reverse.first(10)
   end
 
   def create

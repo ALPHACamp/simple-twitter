@@ -4,7 +4,7 @@ class Followship < ApplicationRecord
   # 限制是否追蹤自己
   validate :check_self_following
   belongs_to :user
-  belongs_to :following, class_name:"User"
+  belongs_to :following, class_name:"User" ,counter_cache: :followers_count
 
   def check_self_following
     if user_id == following_id
