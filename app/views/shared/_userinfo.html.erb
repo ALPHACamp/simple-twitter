@@ -1,0 +1,22 @@
+<div class="form-group">
+  <div class="clearfix">
+    <%= render partial: "shared/avatar", locals: {user_avatar: user}%>
+    <h3><%= user.name %></h3>
+    <p><%= user.introduction %></p>
+    <p><%= link_to "Tweet (#{user.tweets.count}) ", tweets_user_path(user)  %></p>
+    <p><%= link_to "Following (#{user.followings.count}) ",followings_user_path(user) %></p>
+    <p><%= link_to "Follower (#{user.followers.count}) ", followers_user_path(user) %></p>
+    <p><%= link_to "Likes (#{user.likes.count}) ", likes_user_path(user) %></p>
+
+    <% if user != current_user %>
+      <p><%= render partial: "shared/follow", locals: {user: user} %></p>
+    <% else %>
+      <p><%= link_to "Edit Profile", edit_user_path(user), class:"btn btn-info" %></p>
+    <% end %>
+
+    
+  </div>
+</div>
+<div class="form-group">
+  
+</div>

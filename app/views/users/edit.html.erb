@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <%= form_for @user do |f| %>
+<!-- 左半部 -->
+      <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
+        <div class="form-group">
+          <%= render partial: "shared/avatar", locals: {user_avatar: @user}  %>
+        </div>
+          <div class="form-group">
+            <%= f.file_field :avatar %>
+          </div>
+        </div>
+<!-- 右半部 -->
+      <div class="col-xs-12 col-sm-7 col-md-8 col-lg-9">
+        <div class="form-group">
+          <%= f.text_field :name, placeholder: "name" %>
+        </div>
+        <div class="form-group">
+          <%= f.text_area :introduction, placeholder: "Type anything about you here....",class: "form-control" %>
+        </div>
+        <span class="update-btn">
+          <div class="form-group">
+            <%= f.submit "Update", class: "btn btn-primary" %>
+          </div>
+        </span> 
+      </div>
+    <% end %>
+  </div>
+</div>

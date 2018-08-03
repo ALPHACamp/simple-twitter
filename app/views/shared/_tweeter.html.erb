@@ -1,0 +1,20 @@
+<div class="form-group">
+    <div class="tweet-item">
+      <div class="clearfix">
+        <div class="col-md-3 col-sm-4">
+          <%= render partial: "shared/avatar", locals: {user_avatar: tweeter.user}%>
+        </div>
+        <div class="col-md-9 col-sm-8">
+          <span><%= link_to"#{tweeter.user.name}", tweets_user_path(tweeter.user)  %>,</span>          
+          <span><%= tweeter.created_at.strftime('%Y-%m-%d, %H:%M:%S') %></span>          
+          <p class="text-muted">
+            <em><%= tweeter.description %></em>
+          </p>
+          <p>
+            <%= render partial: "shared/liked", locals: {tweet: tweeter}%>
+            <%= link_to "Reply(#{tweeter.replies.count}) ", tweet_replies_path(tweeter), class: "links" %>
+          </p>
+        </div>
+      </div>
+    </div>
+</div>

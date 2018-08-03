@@ -1,0 +1,49 @@
+<!-- 左半部 -->
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
+  <!-- tweet avatar -->
+          <div class="form-group">
+            <%= render partial: "shared/userinfo", locals: {user: @tweet.user} %>
+          </div>
+      </div>
+  <!-- 右半部 -->
+      <div class="col-xs-12 col-sm-7 col-md-8 col-lg-9">
+  <!-- tweets_id tweet-->
+        <h2>Tweet</h2>
+          <%= render partial: "shared/tweeter", locals: {tweeter: @tweet } %>
+          <div class="clearfix"></div>
+    <!-- tweets_id replies -->
+        <h2>Replies</h2>
+          <div class="form-group">
+            <% @replies.each do |reply| %>
+              <div class="tweet-item">
+                <div class="clearfix">
+                  <div class="col-md-3 col-sm-4">
+                    <%= image_tag reply.user.avatar, class: "avatar-image img-responsive img-rounded"  %>
+                  </div>
+                  <div class="col-md-9 col-sm-8">
+                    <span><%= reply.user.name %>,</span>
+                    <span><%= reply.user.created_at.strftime('%Y-%m-%d , %H:%M:%S') %></span>
+                    <p class="text-muted">
+                      <em><%= simple_format reply.comment %></em>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+    <!-- 新增回覆區 -->
+        <%= form_for [@tweet, @reply] do |f| %>
+          <div class="col-xs-12 col-sm-7 col-md-8 col-lg-9">
+            <div class="form-group">
+              <%= f.text_area :comment, class: "form-control"  %>  
+            </div>
+              <div class="form-group update-btn">
+                <%= f.submit class: "btn btn-primary" %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+  </div>
+</div>
