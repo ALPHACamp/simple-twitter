@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def edit
      unless @user == current_user
-      redirect_to user_path(@user)
+      redirect_to tweets_user_path(@user)
     end
   end
 
