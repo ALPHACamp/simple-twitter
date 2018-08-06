@@ -21,10 +21,8 @@ namespace :dev do
   end
 
   task fake_tweet: :environment do
-
+    Tweet.destroy_all
     User.all.each do |user|
-      user.tweets.destroy_all
-
       5.times do |i|
         user.tweets.create!(
             description: FFaker::Lorem::sentence(2),
@@ -49,11 +47,13 @@ namespace :dev do
 
   task fake_followship: :environment do 
     User.all.each do |user|
+      user.followships.destroy_all
       user.followships.create(
         following: User.all.sample
         )
     end
     puts "have create fake followships"  
+    puts "now you have #{Followship.count} followships"
   end
 
 end

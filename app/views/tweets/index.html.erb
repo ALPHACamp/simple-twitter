@@ -20,11 +20,11 @@
             <%= image_tag twee.user.avatar %>
           </div>  
           <div class="tweetInformation">
-            <%= twee.user.name %>,
+            <%= twee.user.name %><br>
+            <%= twee.id %><br>
             <%= twee.created_at.strftime(" %Y-%m-%d, %R") %> <br>
-            <%= twee.description %>  
-            <br>
-            <h5><%= link_to "Reply( #{twee.replies.count} )", tweet_replies_path(twee.user_id) %> </h5>
+            <%= twee.description %>  <br>
+            <h5><%= link_to "Reply( #{twee.replies.count} )", tweet_replies_path(twee.id) %> </h5>
             <h5> 
               <%= render partial: "shared/like", locals: {tweet: twee} %>
              </h5>  

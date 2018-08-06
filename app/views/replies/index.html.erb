@@ -15,14 +15,14 @@
         <h2>Tweets</h2>
         <div class="tweetContent panel panel-default clearfix">
           <div class="tweetAvatar ">
-            <%= image_tag @reply.user.avatar %>
+            <%= image_tag @tweet.user.avatar %>
           </div> 
           <div class="tweetRepliesContent">
-            <%= link_to @reply.user.name, tweets_user_path(@reply.user) %> 
-             ,<%= @reply.created_at.strftime(" %Y-%m-%d, %R") %> <br>
-            <%= @reply.comment %>
-            <h5><%= link_to "Reply( #{@reply.tweet.replies.count} )", tweet_replies_path(@reply) %> 
-              <%= render partial: "shared/like", locals: {tweet: @reply.tweet} %>
+            <%= link_to @tweet.user.name, tweets_user_path(@tweet.user) %> 
+             ,<%= @tweet.created_at.strftime(" %Y-%m-%d, %R") %> <br>
+            <%= @tweet.description %>
+            <h5><%= link_to "Reply( #{@tweet.replies.count} )", tweet_replies_path(@tweet) %> 
+              <%= render partial: "shared/like", locals: {tweet: @tweet} %>
              </h5> 
           </div>    
         </div> 
