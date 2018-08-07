@@ -32,6 +32,8 @@
                 <% end%>
                 <br>
                 <%= t.description %>
+                <br>
+                <%= link_to "Reply("+t.replies.count.to_s+")", tweet_replies_path(t) %>
               </div>
 
             </div>

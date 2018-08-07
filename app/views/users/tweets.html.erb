@@ -3,21 +3,7 @@
 
     <div class="col-sm-2">
       
-      <%= image_tag @user.avatar, size:"150"%>
-      <br>
-      <h2><%= @user.name%></h2>
-      <%= @user.introduction%>
-      <br>
-      <h3><%= link_to "Tweet " + @user.tweets.count.to_s, tweets_user_path(@user) %></h3>
-      <h3><%= link_to "Following " + @user.followings.count.to_s, followings_user_path(@user) %></h3>
-      <h3><%= link_to "Followers " + @user.followers.count.to_s, followers_user_path(@user) %></h3>
-      <h3><%= link_to "Likes " + @user.likes.count.to_s, likes_user_path(@user) %></h3>
-      <br>
-      <% if @user == current_user %>
-        <%= link_to "Edit Profile", edit_user_path(@user), class:"btn btn-primary"%>
-      <% else %>
-        <%= render partial: "/shared/follow" %>
-      <% end %>
+      <%= render partial: "shared/user_info"%>
 
     </div>
 
