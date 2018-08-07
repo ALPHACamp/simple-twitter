@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   mount_uploader :avatar, AvatarUploader
-  has_many :tweets
+  has_many :tweets,dependent: :destroy
 
   # 需要 app/views/devise 裡找到樣板，加上 name 屬性
   # 並參考 Devise 文件自訂表單後通過 Strong Parameters 的方法
@@ -16,14 +16,14 @@ class User < ApplicationRecord
   has_many :followships, dependent: :destroy
   has_many :followings, through: :followships
   #被誰追蹤
-  has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id" #主鍵指向following_id
+  has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id",dependent: :destroy #主鍵指向following_id
   has_many :followers, through: :inverse_followships, source: :user
   # 建立多對多的關係，回應
   has_many :replies, dependent: :restrict_with_error
-  # has_many :restaurants, through: :comments =>>已經擁有tweets
+  
   # 建立喜歡
   has_many :likes, dependent: :destroy
-  has_many :liked_tweets, through: :likes , source: :likes
+  has_many :liked_tweets, through: :likes, source: :tweet
   
   def admin?
     self.role == "admin"
@@ -31,4 +31,5 @@ class User < ApplicationRecord
   def following?(user)
     self.followings.include?(user)
   end
+  
 end

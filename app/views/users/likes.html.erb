@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= @likes.count %></strong> likes</h3>
+  </div>
+
+  <ul class="list-group">
+    <% @likes.each do |like| %>
+    <li class="list-group-item">
+      <%= link_to tweets_path(like) do %>
+      <%= like.description %>
+      <% end %>
+    </li>
+    <% end %>
+  </ul>
+</div>

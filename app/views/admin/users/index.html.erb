@@ -15,6 +15,7 @@
             <th>關注人數</th>
             <th>追蹤者人數</th>
             <th>喜歡的推特</th>
+            <th>#</th>
           </tr>
         </thead>
         <tbody>
@@ -26,6 +27,7 @@
             <td><%= user.followings.count%></td>
             <td><%= user.followers.count%></td>
             <td><%= user.likes.count%></td>
+            <td><%= user.followships.count%></td>
           </tr>
           <% end %>
         </tbody>

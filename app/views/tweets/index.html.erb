@@ -34,7 +34,7 @@
             <h3 class="panel-title">風雲榜</h3>
           </div>
           <div class="panel_body">
-            <% @rank_users.each do |user| %>
+            <% @users.each do |user| %>
               <h4><%= link_to user.name, tweets_user_path(user) %></h4>
               <p><%= user.introduction %></p>
               <p>追蹤數：<%= user.followers_count %></p>

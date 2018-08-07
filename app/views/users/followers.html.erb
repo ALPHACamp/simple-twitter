@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= @followers.count %></strong> followers</h3>
+  </div>
+
+  <ul class="list-group">
+    <% @followers.each do |follower| %>
+    <li class="list-group-item">
+      <%= link_to user_path(follower) do %>
+      <%= image_tag(follower.avatar, height: 30, width: 30, class: "img-circle") %>
+      <%= follower.name %>
+      <% end %>
+    </li>
+    <% end %>
+  </ul>
+</div>

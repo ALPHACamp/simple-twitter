@@ -14,21 +14,24 @@
           <h2><%= @user.name %></h2>
           <p><strong><%= @user.email %></strong></p>
           <div><%= simple_format @user.introduction %></div>
-          <% if @user.email == current_user.email %>
+          
+          <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
+          <% if @user == current_user %>
             <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
-          <% else %>
+          <%else%>
             <% if current_user.following?(@user) %>
               <%= link_to 'Unfollow', followship_path(@user), method: :delete,class: "btn btn-primary" %>
             <% else %>
               <%= link_to 'Follow', followships_path(following_id: @user), method: :post,class: "btn btn-info" %>
             <% end %>
-          <% end %>
+          <%end%>
+          
           
         </div>
 
         <div class="clearfix"></div>
         <h2>Tweet from <%= @user.name %></h2>
-        <% @user.tweets.each do |tweet| %>
+        <% @order_user_tweets.each do |tweet| %>
           <div>
             <h4>
               <%=  link_to tweet.user.name, tweets_user_path(tweet.user) %>
@@ -47,54 +50,10 @@
         <%end%>
         <div class="col-md-4">
           <!-- 顯示followings的清單，panel包一個list-group  -->
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title"><%= @followings.count %></strong> followings</h3>
-            </div>
-
-            <ul class="list-group">
-              <% @followings.each do |following| %>
-              <li class="list-group-item">
-                <%= link_to user_path(following) do %>
-                <%= image_tag(following.avatar, height: 30, width: 30, class: "img-circle") %>
-                <%= following.name %>
-                <% end %>
-              </li>
-              <% end %>
-            </ul>
-          </div>
+          
           <!-- 顯示followings的清單，panel包一個list-group  -->
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title"><%= @followers.count %></strong> followers</h3>
-            </div>
-
-            <ul class="list-group">
-              <% @followers.each do |follower| %>
-              <li class="list-group-item">
-                <%= link_to user_path(follower) do %>
-                <%= image_tag(follower.avatar, height: 30, width: 30, class: "img-circle") %>
-                <%= follower.name %>
-                <% end %>
-              </li>
-              <% end %>
-            </ul>
-          </div>
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title"><%= @likes.count %></strong> likes</h3>
-            </div>
-
-            <ul class="list-group">
-              <% @likes.each do |like| %>
-              <li class="list-group-item">
-                <%= link_to tweets_path(like) do %>
-                <%= like.tweet.description %>
-                <% end %>
-              </li>
-              <% end %>
-            </ul>
-          </div>
+          
+          
         </div>
       </div>
     </div>
