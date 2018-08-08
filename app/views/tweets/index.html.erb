@@ -68,6 +68,10 @@
                 <% end%>
                 <br>
                 <%= u.introduction %>
+                <br>
+                <div class="follow-button">
+                  <%= render partial: "shared/follow", locals: {user: u} %>
+                </div>
               </div>
             
             </div>
