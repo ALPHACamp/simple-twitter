@@ -7,7 +7,7 @@
       <% @followers.each do |follower| %>
       <div class="panel panel-default clearfix col-md-5 followingsColumn">
         <%= follower.name %> <br>
-        <%= follower.introduction.truncate(100) %> <br>
+        <%= follower.introduction %> <br>
         <div class="popularBtn ">
           <%= render partial: "shared/follow", locals: {user: follower} %>
         </div>      
