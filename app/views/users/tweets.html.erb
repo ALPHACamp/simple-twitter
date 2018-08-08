@@ -4,19 +4,19 @@
 
     <div class="col-md-8">
 
-      <% @user.tweets.each do |twee| %>
+      <% @tweets.each do |tweet| %>
       <div class="panel panel-default indexPost clearfix">
         <div class="tweetAvatar">
-         <%= image_tag twee.user.avatar %>
+         <%= image_tag tweet.user.avatar %>
         </div> 
         <div class="tweetInformation">
-          <%= twee.user.name %>,
-          <%= twee.created_at.strftime(" %Y-%m-%d, %R") %> <br>
-          <%= twee.description %>  
+          <%= tweet.user.name %>,
+          <%= tweet.created_at.strftime(" %Y-%m-%d, %R") %> <br>
+          <%= tweet.description %>  
           <br>
-          <h5><%= link_to "Reply( #{twee.replies.count} )", tweet_replies_path(twee.user_id) %> </h5>
+          <h5><%= link_to "Reply( #{tweet.replies.count} )", tweet_replies_path(tweet.user_id) %> </h5>
           <h5> 
-            <%= render partial: "shared/like", locals: {tweet: twee} %>
+            <%= render partial: "shared/like", locals: {tweet: tweet} %>
           </h5>     
         </div>     <!-- tweetInformation -->     
       </div>      <!-- indexPost --> 
