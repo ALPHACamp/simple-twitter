@@ -24,7 +24,11 @@
             <br>
             <%= @tweet.description %>
             <br>
-            <%= link_to "Reply("+@tweet.replies.count.to_s+")", tweet_replies_path(@tweet) %>
+            <%= link_to "Reply(#{@tweet.replies.count.to_s})", tweet_replies_path(@tweet) %>
+
+            <% if @tweet.user != current_user %>
+              <%= render partial: "shared/like", locals: {tweet: @tweet} %>
+            <% end %>
           </div>
           
         </div>
