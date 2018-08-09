@@ -6,7 +6,7 @@ namespace :dev do
 
     url = "https://uinames.com/api/?ext&region=england"
 
-      20.times do
+      50.times do
         response = RestClient.get(url)
         data = JSON.parse(response.body)
       
@@ -36,6 +36,51 @@ namespace :dev do
 
     puts "have created fake tweets"
     puts "now you have #{Tweet.count} tweets data"
+  end
+
+  task fake_reply: :environment do
+    Reply.destroy_all
+
+    Tweet.all.each do |t|
+      5.times do
+        t.replies.create!(comment: FFaker::Lorem.phrase,
+          user: User.all.sample)
+      end
+    end
+
+      puts "have created fake replies"
+      puts "now you have #{Reply.count} replies data"
+  end
+
+  task fake_followship: :environment do
+    Followship.destroy_all
+
+    User.all.each do |u|
+      @users = User.where.not(id: u.id).shuffle
+      20.times do
+        u.followships.create!(
+          following: @users.pop,
+        )
+      end
+    end
+
+    puts "have created fake followship"
+    puts "now you have #{Followship.count} folloings data"
+  end
+
+  task fake_like: :environment do
+    Like.destroy_all
+
+    User.all.each do |u|
+      20.times do
+        u.likes.create!(
+          tweet: Tweet.all.sample,
+          )
+      end
+    end
+
+    puts "have created fake like"
+    puts "now you have #{Like.count} fake like data"
   end
 
 end
