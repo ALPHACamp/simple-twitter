@@ -28,6 +28,9 @@
               <% if current_user.admin? %>
                 <li><%= link_to "Admin後台", admin_tweets_path %></li> 
               <% end %>
+              <li>
+                <%= link_to '',tweets_user_path(current_user), class: "glyphicon glyphicon-user" %>
+              </li>
               <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>  
             <% else %>
               <a class="navbar-brand glyphicon glyphicon-glass" href="#"></a>
