@@ -31,6 +31,11 @@ class UsersController < ApplicationController
     @followers = @user.followers.all
   end
 
+  def likes
+    @user = User.find(params[:id])
+    @likes = @user.liked_tweets
+  end
+
   private
 
     def user_params
