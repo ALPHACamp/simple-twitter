@@ -40,12 +40,15 @@
         <div class="popularAvatar align-middle">
           <%= image_tag user.avatar %>
         </div>
-        <div class="popularIntroduction ">
-        <h4>  <%= user.name %></h4>
-        <%= user.introduction %>
-        </div>
-        <div class="popularBtn">
-          <%= render partial: "shared/follow", locals: {user: user} %> 
+        <div class="popularRight">
+          <div class="popularIntroduction ">
+            <h4>  <%= user.name %></h4>
+           <%= user.introduction %>
+          </div>
+
+          <div class="popularBtn">
+            <%= render partial: "shared/follow", locals: {user: user} %> 
+          </div>
         </div>
       </div>
       <% end %>

@@ -28,19 +28,22 @@
 .popularAvatar > img {
   width: 80px;
   height: 100px;
-  display: inline-block;
-  float: left;
-  border: 50px;
+  float:left;
+  margin-top: 3.5%;
+  margin-left: 10px;
+
 }
 
-.popularIntroduction {
-  display: inline-block;
-  width: 65%;
+.popularRight {
+  width: 230px;
   float: right;
 }
 
 .panel {
   padding: 20px;
+}
+.popularPanel{
+  padding: 8px;
 }
 
 .popularBtn {
