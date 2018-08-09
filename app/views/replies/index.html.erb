@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="userColunm col-md-4">
-      <%= current_user.avatar %> <br>
+      <div class="leftAvatar">
+        <%= image_tag current_user.avatar %> <br>
+      </div> 
       <%= current_user.name %> <br>
       <%= current_user.introduction %> <br>
       Tweets <%= current_user.tweets.count %> <br>
