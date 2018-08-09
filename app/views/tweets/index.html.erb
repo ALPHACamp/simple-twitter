@@ -21,7 +21,6 @@
           </div>  
           <div class="tweetInformation">
             <%= tweet.user.name %><br>
-            <%= tweet.id %><br>
             <%= tweet.created_at.strftime(" %Y-%m-%d, %R") %> <br>
             <%= tweet.description %>  <br>
             <h5><%= link_to "Reply( #{tweet.replies.count} )", tweet_replies_path(tweet.id) %> </h5>
