@@ -2,7 +2,7 @@
   <div class="row">
 
     <div class="col-md-12">
-    <h1>tweet後台</h1>
+    <h1>Tweet後台</h1>
     <div>
       <%= link_to "All Tweets", admin_tweets_path %> |
       <%= link_to "All Users", admin_users_path %>
@@ -26,13 +26,14 @@
               <th scope="row"><%= u.id %></th>
               <td>
                 <div>
-                  <%= link_to "@"+u.name %>，
-                  <%= u.created_at%>
+                  <%= link_to "@"+u.name, tweets_user_path(u) %>，
+                  <%= u.created_at.strftime("%Y-%m-%d %H:%M")%>
                 </div>
                 <div>
                   <%= u.follower_count %>
                   <%= u.likes_count%>
                 </div>
+              </td>
             </tr>
             <% end %>
         </tbody>

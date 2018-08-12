@@ -2,7 +2,7 @@
   <div class="row">
 
     <div class="col-md-12">
-    <h1>tweet後台</h1>
+    <h1>Tweet後台</h1>
     <div>
       <%= link_to "All Tweets", admin_tweets_path %> |
       <%= link_to "All Users", admin_users_path %>
@@ -27,11 +27,13 @@
               <th scope="row"><%= t.id %></th>
               <td>
                 <div>
-                  <%= link_to "@"+t.user.name %>，
+                  <%= link_to "@#{t.user.name}", tweets_user_path(t.user) %>，
                   <%= t.created_at%>
                 </div>
                 <div>
                   <%= t.description %>
+                  <br>
+                  <%= link_to "Reply(#{t.replies.count})", tweet_replies_path(t) %>
                 </div>
               <td>
                 <%= link_to "Delete", admin_tweet_path(t), method: :delete, data: {confirm:"Are you sure?"} %>
