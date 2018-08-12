@@ -1,1 +1,30 @@
-<h1>Twitter 前台</h1>
+<h1>Twitter Index</h1>
+
+<div class="container">
+  <div class="col-sm-8">
+    <div>
+     <%= form_for @tweet do |f| %>
+        <div class="form-group">
+          <%= f.text_area :description, placeholder: "What's your mind?", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Tweet", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+
+    <div>
+      <% @tweets.each do |tweet| %>
+        <!-- 格式化日期時間 time.strftime("%Y-%m-%d %H:%M:%S") -->
+        <p><%= "@" + tweet.user.name + ", " %><%= tweet.updated_at.strftime("%Y-%m-%d, %H:%M") %></p>
+        <p><%= tweet.description %></p>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div class="col-sm-4">
+
+  </div>
+  
+</div>
