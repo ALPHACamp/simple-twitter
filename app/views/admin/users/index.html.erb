@@ -28,10 +28,11 @@
                 <div>
                   <%= link_to "@"+u.name, tweets_user_path(u) %>，
                   <%= u.created_at.strftime("%Y-%m-%d %H:%M")%>
-                </div>
-                <div>
-                  <%= u.follower_count %>
-                  <%= u.likes_count%>
+                  <br>
+                  <%= link_to " #{u.tweets_count}Tweets ", tweets_user_path(u) %> |
+                  <%= link_to " #{u.followings.count}followings ", followings_user_path(u) %>|
+                  <%= link_to " #{u.followers.count} followers ", followers_user_path(u) %> | 
+                  <%= link_to " #{u.likes_count} liked ", likes_user_path(u) %>
                 </div>
               </td>
             </tr>

@@ -29,7 +29,7 @@ namespace :dev do
     User.all.each do |u|
       25.times do
         u.tweets.create!(
-        description: FFaker::Lorem.paragraph
+        description: FFaker::Tweet.tweet,
         )
       end
     end
