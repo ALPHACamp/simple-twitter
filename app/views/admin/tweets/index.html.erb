@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-12">
+    <h1>Tweet後台</h1>
+    <div>
+      <%= link_to "All Tweets", admin_tweets_path %> |
+      <%= link_to "All Users", admin_users_path %>
+    </div>
+  
+  </div>
+</div>
+ 
+<div class="container">
+  <div class="row">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Tweet</th>
+            <th>#</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tweets.each do |t|%>
+            <tr>
+              <th scope="row"><%= t.id %></th>
+              <td>
+                <div>
+                  <%= link_to "@#{t.user.name}", tweets_user_path(t.user) %>，
+                  <%= t.created_at%>
+                </div>
+                <div>
+                  <%= t.description %>
+                  <br>
+                  <%= link_to "Reply(#{t.replies.count})", tweet_replies_path(t) %>
+                </div>
+              <td>
+                <%= link_to "Delete", admin_tweet_path(t), method: :delete, data: {confirm:"Are you sure?"} %>
+              </td>
+            </tr>
+            <% end %>
+        </tbody>
+      </talbe>
+
+      <div class="text-center">
+        <%= paginate @tweets %>
+      </div>
+
+    </div>
+  </div>
+</div>

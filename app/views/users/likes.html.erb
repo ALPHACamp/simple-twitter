@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-sm-2">
+
+      <%= render partial: "shared/user_info"%>
+
+    </div>
+
+    <div class="col-sm-10">
+      <h1>Likes</h1>
+      <% @likes.each do |l| %>
+        <div class="col-sm-12 tweet-item">
+          <div class="row">
+            <div class="col-sm-2">
+              <%= image_tag l.user.avatar, size: "80"%>
+            </div>
+            <div class="col-sm-10">
+              <%= link_to tweets_user_path(l.user) do%>
+                <%= "@#{l.user.name}" %>
+              <% end %>
+              <br>
+              <%= l.description %>
+              <br>
+              <%= link_to "Reply(#{l.replies.count})", tweet_replies_path(l)%>
+              <%= render partial: "shared/like", locals: {tweet: l} %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>
