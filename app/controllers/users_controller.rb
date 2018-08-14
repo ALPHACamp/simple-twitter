@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only:[:tweets, :edit, :update]
+  before_action :set_user, only:[:tweets, :edit, :update, :followings, :followers, :likes]
 
   def tweets
     @tweets = @user.tweets.all.order(created_at: :desc)
@@ -22,17 +22,14 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @user = User.find(params[:id])
     @followings = @user.followings.all
   end
 
   def followers
-    @user = User.find(params[:id])
     @followers = @user.followers.all
   end
 
   def likes
-    @user = User.find(params[:id])
     @likes = @user.liked_tweets
   end
 
