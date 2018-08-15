@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-sm-8">
+      <div class="col-sm-12">
+        <%= form_for [@user, @tweet] do |f| %>
+          <div class="form-group">
+            <%= f.text_area :description, 
+              placeholder: "What's on your mind?", 
+              class: "form-control", 
+              rows: "5", 
+              maxlength:"140" %>
+          </div>
+          <div class="form-group pull-right">
+            <%= f.submit "Tweet", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    
+
+      <br>
+    
+      <% @tweets.each do |t| %>
+
+        <div class="col-sm-12">
+          <div class="tweet-item">
+            <div class="row">
+              <div class="col-sm-2">
+                <%= image_tag t.user.avatar, size: 80%>
+              </div>
+
+              <div class="col-sm-10">
+                <%= link_to tweets_user_path(t.user) do%>
+                  <%= "@"+t.user.name+"，" %>
+                  <%= t.created_at.strftime("%Y-%m-%d %H:%M") %>
+                <% end%>
+                <br>
+                <%= t.description %>
+                <br>
+                <%= link_to "Reply(#{t.replies.count})", tweet_replies_path(t) %>
+                <% if t.user != current_user %>
+                  <%= render partial: "shared/like", locals: {tweet: t} %>
+                <% end%>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        
+      <% end%>
+    </div>
+
+    <div class="col-sm-4">
+      <h1>Popular</h1>
+      <br>
+      <% @users.each do |u| %>
+
+        <div class="col-sm-12">
+          <div class="popu-item">
+            <div class="row">
+              <div class="col-sm-4">
+                <%= image_tag u.avatar, size: 80%>
+              </div>
+
+              <div class="col-sm-8">
+                <%= link_to tweets_user_path(u) do%>
+                  <%= "@"+u.name %>
+                <% end%>
+                <br>
+                <%= u.introduction %>
+                <br>
+                <div class="follow-button">
+                  <%= render partial: "shared/follow", locals: {user: u} %>
+                </div>
+              </div>
+            
+            </div>
+          </div>
+        </div>
+        
+      <% end%>
+    </div>
+
+    <div class="claerfix"></div>
+
+  </div>
+</div>
