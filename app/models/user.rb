@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :followings, through: :followships
 
   has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
-  has_many :followers, through: :inverse_followships, source: :user, counter_cache: true
+  has_many :followers, through: :inverse_followships, source: :user
 
   has_many :likes, dependent: :destroy
   has_many :liked_tweets, through: :likes, source: :tweet
@@ -29,4 +29,10 @@ class User < ApplicationRecord
   def following?(user)
     self.followings.include?(user)
   end
+
+  def followers_count!
+    self.update(followers_count:
+      self.followers.count)
+  end
+  
 end
