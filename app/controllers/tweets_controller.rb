@@ -9,6 +9,7 @@ class TweetsController < ApplicationController
   end
 
   def create
+    # 新增關聯物件時，使用 buile 而不是 new，新增關聯物件後需要搭配 save 存入 DB 
     @tweet = current_user.tweets.build(tweet_params)
     if @tweet.save
       flash[:notice] = "tweet was successfully created"

@@ -4,4 +4,7 @@ class Tweet < ApplicationRecord
   # 一則 tweet 只屬於一個 user
   belongs_to :user
 
+  # 一則 tweet 會有多個 reply
+  has_many :replies, dependent: :destroy
+
 end
