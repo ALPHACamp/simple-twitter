@@ -1,0 +1,52 @@
+<h1>Replies index</h1>
+<div class="container">
+  <div class="col-sm-4">
+    <%= image_tag @tweet.user.avatar %>
+    <p><%= @tweet.user.name %></p>
+    <p><%= @tweet.user.introduction %></p>
+    <% if @tweet.user == current_user %>
+      <%= link_to "Edit Profile", edit_user_path(@tweet.user), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="col-sm-8">
+    <div>
+      <h3>Tweets</h3>
+      <div>
+        <%= image_tag @tweet.user.avatar %>
+        <!-- 格式化日期時間 time.strftime("%Y-%m-%d %H:%M:%S") -->
+        <p><%= "@" + @tweet.user.name + ", " %><%= @tweet.updated_at.strftime("%Y-%m-%d, %H:%M") %></p>
+        <p><%= @tweet.description %></p>
+        <%= link_to tweet_replies_path(@tweet) do %>
+          <div>
+            Reply(<%= @tweet.replies.size %>)
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div> 
+      <h3>Replies</h3>
+      <% @replies.each do |reply| %>
+        <%= image_tag reply.user.avatar %>
+        <p><%= "@" + reply.user.name + ", " %><%= reply.created_at.strftime("%Y-%m-%d, %H:%M") %></p>
+        <p><%= reply.comment %></p>
+      <% end %>
+    </div>
+
+    <div>
+      <%= form_for [@tweet, @reply] do |f| %>
+        <div class="from-group">
+          <%= f.text_area :comment, placeholder: "Plz, leave your reply.", class: "form-control" %>
+        </div>
+        <div class="from-group">
+          <%= f.submit "Reply", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>
