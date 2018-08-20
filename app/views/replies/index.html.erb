@@ -8,8 +8,8 @@
       <%= current_user.introduction %> <br>
       Tweets <%= current_user.tweets.count %> <br>
       Following <%= current_user.followships.count %> <br>
-      Follower <%= current_user.followers_count %> <br>
-      like <%=  current_user.likes_count %> <br>
+      Follower <%= current_user.followers.count %> <br>
+      like <%=  current_user.likes.count %> <br>
       <%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn btn-primary" %>
     </div>  <!-- userColunm -->
     <div class="tweetidleft col-md-8">
