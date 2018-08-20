@@ -1,6 +1,8 @@
 class TweetsController < ApplicationController
   before_action :authenticate_user!
 
+  before_action :set_tweet, only: [:like, :unlike]
+
   def index
     @tweet = Tweet.new
     # 每頁10則tweet，按時間排序
@@ -21,12 +23,25 @@ class TweetsController < ApplicationController
   end
 
   def like
+    # 先用 params[:id] 取出tweet物件, 新建一筆 Like 紀錄，並設定 tweet_id 和 user_id 的外鍵。
+    Like.create(tweet: @tweet, user: current_user)
+    # @tweet.likes.create!(user: current_user)
+    redirect_back(fallback_location: root_path)
   end
 
   def unlike
+    # 因為有多個條件所以使用 where 來操作
+    likes = Like.where(tweet: @tweet, user: current_user)
+    # 而刪除集合要搭配 destroy_all 來使用
+    likes.destroy_all
+    redirect_back(fallback_location: root_path)
   end
 
   private
+
+  def set_tweet
+    @tweet = Tweet.find(params[:id])
+  end
 
   def tweet_params
     params.require(:tweet).permit(:description)
