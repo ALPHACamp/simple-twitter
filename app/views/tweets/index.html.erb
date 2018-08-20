@@ -20,7 +20,7 @@
             <%= image_tag tweet.user.avatar %>
           </div>  
           <div class="tweetInformation">
-            <%= tweet.user.name %><br>
+            <%= link_to tweet.user.name, tweets_user_path(tweet.user) %><br>
             <%= tweet.created_at.strftime(" %Y-%m-%d, %R") %> <br>
             <%= tweet.description %>  <br>
             <h5><%= link_to "Reply( #{tweet.replies.count} )", tweet_replies_path(tweet.id) %> </h5>
@@ -42,7 +42,7 @@
         </div>
         <div class="popularRight">
           <div class="popularIntroduction ">
-            <h4>  <%= user.name %></h4>
+            <h4>  <%= link_to user.name, tweets_user_path(user)  %></h4>
            <%= user.introduction %>
           </div>
 

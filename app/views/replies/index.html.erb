@@ -37,7 +37,7 @@
               <%= image_tag reply.user.avatar %>
             </div>
             <div class="tweetRepliesContent">
-              <%= reply.user.name %>
+              <%= link_to reply.user.name, tweets_user_path(reply.user) %>
               <%= reply.created_at.strftime(" %Y-%m-%d, %R") %> <br>
               <%= reply.comment %>
             </div>
