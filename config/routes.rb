@@ -26,8 +26,8 @@ Rails.application.routes.draw do
     resources :replies, only: [:index, :create]
   
     member do
-      post :likes
-      post :unlikes
+      post :like
+      post :unlike
     end
   end
 
