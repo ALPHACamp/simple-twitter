@@ -22,6 +22,7 @@ namespace :dev do
 
   task fake_tweet: :environment do
     Tweet.destroy_all
+    puts "Now is creating fake tweets ..."
     200.times do |i|
       Tweet.create!(
         user_id: User.all.sample.id,
@@ -33,6 +34,7 @@ namespace :dev do
   end
 
   task fake_reply: :environment do
+    puts "Now is creating fake replies ..."
     Tweet.all.each do |tweet|
       2.times do |i|
         tweet.replies.create!(
@@ -43,6 +45,19 @@ namespace :dev do
     end
     puts "have create fake replies"
     puts "now you have #{Reply.count} replies data"
+  end
+
+  task fake_like: :environment do
+    Like.destroy_all
+    puts "Now is creating fake likes ..."
+    User.all.each do |user|
+      10.times do |i|
+        user.likes.create!(
+          tweet: Tweet.all.sample,
+        )
+      end
+    end
+    puts "now you have #{Like.count} liked tweets"
   end
 
 end
