@@ -9,7 +9,7 @@
     <% end %>
 
     <%= render partial: "shared/user_dashboard", locals: {user: current_user} %>
-    
+
   </div>
 </div>
 
@@ -21,7 +21,12 @@
       <div>
         <%= image_tag @tweet.user.avatar %>
         <!-- 格式化日期時間 time.strftime("%Y-%m-%d %H:%M:%S") -->
-        <p><%= "@" + @tweet.user.name + ", " %><%= @tweet.updated_at.strftime("%Y-%m-%d, %H:%M") %></p>
+        <p>
+          <%= link_to tweets_user_path(@tweet.user) do %>
+            <%= "@" + @tweet.user.name + ", " %>
+          <% end %>
+          <%= @tweet.updated_at.strftime("%Y-%m-%d, %H:%M") %>
+        </p>
         <p><%= @tweet.description %></p>
         <div>
           <%= link_to tweet_replies_path(@tweet) do %>
