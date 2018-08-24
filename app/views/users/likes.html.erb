@@ -1,24 +1,7 @@
 <div class="container">
   <div class="col-sm-4">
-    <%= image_tag @user.avatar %>
-    <p><%= @user.name %></p>
-    <p><%= @user.introduction %></p>
-    <% if @user == current_user %>
-      <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-primary" %>
-    <% end %>
-
-    <ul class="list-unstyled">
-      <li><strong>
-        <%= link_to tweets_user_path(current_user) do %>
-          Tweets <%= current_user.tweets.count %>
-        <% end %>
-      </strong></li>
-      <li><strong>
-        <%= link_to likes_user_path(current_user) do %>
-          like <%= current_user.likes.count %>
-        <% end %>
-      </strong></li>
-    </ul>
+    <%= render partial: "shared/user_profile", locals: {user: current_user} %>
+    <%= render partial: "shared/user_dashboard", locals: {user: current_user} %>
   </div>
 </div>
 
