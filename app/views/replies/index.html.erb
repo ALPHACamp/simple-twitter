@@ -7,6 +7,9 @@
     <% if @tweet.user == current_user %>
       <%= link_to "Edit Profile", edit_user_path(@tweet.user), class: "btn btn-primary" %>
     <% end %>
+
+    <%= render partial: "shared/user_dashboard", locals: {user: current_user} %>
+    
   </div>
 </div>
 
@@ -20,11 +23,12 @@
         <!-- 格式化日期時間 time.strftime("%Y-%m-%d %H:%M:%S") -->
         <p><%= "@" + @tweet.user.name + ", " %><%= @tweet.updated_at.strftime("%Y-%m-%d, %H:%M") %></p>
         <p><%= @tweet.description %></p>
-        <%= link_to tweet_replies_path(@tweet) do %>
-          <div>
+        <div>
+          <%= link_to tweet_replies_path(@tweet) do %>
             Reply(<%= @tweet.replies.size %>)
-          </div>
-        <% end %>
+          <% end %>
+          <%= render partial: "shared/like", locals: {tweet: @tweet} %>
+        </div>
       </div>
     </div>
 
