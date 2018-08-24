@@ -1,0 +1,6 @@
+<%= image_tag @user.avatar %>
+<p><%= @user.name %></p>
+<p><%= @user.introduction %></p>
+<% if user == current_user %>
+  <%= link_to "Edit Profile", edit_user_path(user), class: "btn btn-primary" %>
+<% end %>
