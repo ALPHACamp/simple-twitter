@@ -1,0 +1,12 @@
+<ul class="list-unstyled">
+  <li><strong>
+    <%= link_to tweets_user_path(user) do %>
+      Tweets <%= user.tweets.count %>
+    <% end %>
+  </strong></li>
+  <li><strong>
+    <%= link_to likes_user_path(user) do %>
+      like <%= user.likes.count %>
+    <% end %>
+  </strong></li>
+</ul>
