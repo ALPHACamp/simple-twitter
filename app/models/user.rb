@@ -31,4 +31,9 @@ class User < ApplicationRecord
     self.role == "admin"
   end
 
+  # 檢查 current_user與另一個user物件，在 followships table 上查詢，看看是否有已經存在的紀錄
+  def followship?(user)
+    self.followships.include?(user)
+  end
+
 end
