@@ -9,7 +9,7 @@ class FollowshipsController < ApplicationController
       redirect_back(fallback_location: root_path)
     else
       # 如果驗證失敗，也導回同一頁，並將錯誤訊息顯示給使用者
-      flash[:alart] = @followship.errors.full_messages.to_sentence
+      flash[:alert] = @followship.errors.full_messages.to_sentence
       redirect_back(fallback_location: root_path)
     end
   end
@@ -18,8 +18,8 @@ class FollowshipsController < ApplicationController
     # 在 followships table 上查詢出一筆資料，其外鍵符合 current_user 與前端傳進來的 params[:id]
     @followship = current_user.followships.where(following_id: params[:id])
     @followship.destroy_all
-    flash[:alart] = "Followship destroyed"
+    flash[:alert] = "Followship destroyed"
     redirect_back(fallback_location: root_path)
   end
-  
+
 end
