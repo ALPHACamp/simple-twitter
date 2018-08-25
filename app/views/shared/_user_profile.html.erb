@@ -3,4 +3,6 @@
 <p><%= @user.introduction %></p>
 <% if user == current_user %>
   <%= link_to "Edit Profile", edit_user_path(user), class: "btn btn-primary" %>
+<% else %>
+  <%= link_to "Follow", followings_user_path(user), class: "btn btn-primary" %>
 <% end %>
