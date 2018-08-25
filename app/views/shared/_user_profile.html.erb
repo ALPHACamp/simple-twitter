@@ -1,8 +1,12 @@
 <%= image_tag @user.avatar %>
 <p><%= @user.name %></p>
 <p><%= @user.introduction %></p>
-<% if user == current_user %>
-  <%= link_to "Edit Profile", edit_user_path(user), class: "btn btn-primary" %>
+<% if user != current_user %>
+  <% if current_user.following?(user) %>
+    <%= link_to "Unfollow", followship_path(user), method: :delete, class: "btn btn-warning" %>
+  <% else %>
+    <%= link_to "Follow", followships_path(following_id: user), method: :post, class: "btn btn-info" %>
+  <% end %>
 <% else %>
-  <%= link_to "Follow", followships_path(following_id: user), method: :post, class: "btn btn-primary" %>
+  <%= link_to "Edit Profile", edit_user_path(user), class: "btn btn-primary" %>
 <% end %>
