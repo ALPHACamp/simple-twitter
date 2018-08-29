@@ -23,7 +23,7 @@ namespace :dev do
   task fake_tweet: :environment do
     Tweet.destroy_all
     puts "Now is creating fake tweets ..."
-    200.times do |i|
+    200.times do
       Tweet.create!(
         user_id: User.all.sample.id,
         description: FFaker::Tweet::tweet
@@ -36,7 +36,7 @@ namespace :dev do
   task fake_reply: :environment do
     puts "Now is creating fake replies ..."
     Tweet.all.each do |tweet|
-      2.times do |i|
+      2.times do
         tweet.replies.create!(
           user_id: User.all.sample.id,
           comment: FFaker::Tweet::tweet
@@ -51,13 +51,29 @@ namespace :dev do
     Like.destroy_all
     puts "Now is creating fake likes ..."
     User.all.each do |user|
-      10.times do |i|
+      10.times do
         user.likes.create!(
           tweet: Tweet.all.sample,
         )
       end
     end
     puts "now you have #{Like.count} liked tweets"
+  end
+
+  task fake_following: :environment do
+    Followship.destroy_all
+    puts "Now is creating fake followings ..."
+    User.all.each do |user|
+      # 使用shuffle將陣列亂數排列，再使用pop將內容物取出，達到亂數不重複取樣的效果
+      # where.not確保不會自己加自己好友
+      @user = User.where.not(id: user.id).shuffle
+      5.times do
+        user.followships.create!(
+          following: @user.pop,
+        )
+      end
+    end
+    puts "now you have #{Followship.count} followings"
   end
 
 end
