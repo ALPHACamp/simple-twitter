@@ -5,13 +5,12 @@
   </div>
 </div>
 
-<h2>Like</h2>
-
 <div class="container">
   <div class="col-sm-8">
+  <h2>Like</h2>
     <div>
       <% @likes.each do |like| %>
-        <%= image_tag like.user.avatar %>
+        <%= image_tag(like.user.avatar, height: 80, width: 80, calss: "img-responsive img-rounded") %>
         <p><%= "@" + like.user.name + ", " %><%= like.updated_at.strftime("%Y-%m-%d, %H:%M") %></p>
         <p><%= like.description %></p>
         <div>
@@ -20,6 +19,8 @@
           <% end %>
           <%= render partial: "shared/like", locals: {tweet: like} %>
         </div>
+        <div class="clearfix"></div>
+        <br>
       <% end %>
     </div>
     
