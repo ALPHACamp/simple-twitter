@@ -24,7 +24,8 @@ class UsersController < ApplicationController
   end
 
   def followers
-    @followers # 基於測試規格，必須講定變數名稱
+    # 基於測試規格，必須講定變數名稱
+    @followers = @user.followers
   end
 
   def likes
