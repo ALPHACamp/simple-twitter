@@ -10,6 +10,11 @@
     <% end %>
   </strong></li>
   <li><strong>
+    <%= link_to followers_user_path(user) do %>
+      Follower <%= user.followers.count %>
+    <% end %>
+  </strong></li>
+  <li><strong>
     <%= link_to likes_user_path(user) do %>
       like <%= user.likes.count %>
     <% end %>
