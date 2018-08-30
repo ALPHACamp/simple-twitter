@@ -45,6 +45,7 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'sprockets-rails', '~> 3.1', '>= 3.1.1'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'pry', '~> 0.11.3'
+gem 'kaminari', '~> 1.1', '>= 1.1.1'
 
 
 

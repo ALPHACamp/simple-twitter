@@ -5,7 +5,7 @@
 	<%= link_to "Tweets #{@user.tweets_count}", tweets_user_path(@user), class: 'btn btn-outline-primary' %><br>
 
 	<div class="py-2">
-		<%= link_to "Followers #{@user.followers_count}", followers_user_path(@user), class: 'btn btn-outline-success' %>
+		<%= link_to "Followers #{@user.followers.size}", followers_user_path(@user), class: 'btn btn-outline-success' %>
 	</div>
 	<div class="py-2">
 		<%= link_to "Followings #{@user.followings.size}", followings_user_path(@user), class: 'btn btn-outline-danger' %>

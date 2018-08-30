@@ -13,6 +13,7 @@
 						<%= link_to follower.name, tweets_user_path(follower) %></br>
 						<%= follower.introduction %></br>
 						<%= render partial: 'share/follow-btn' , locals: {object: follower}%>
+						
 					</div>
 				</div>
 			<% end %>

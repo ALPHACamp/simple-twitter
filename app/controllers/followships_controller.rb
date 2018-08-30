@@ -1,11 +1,12 @@
 class FollowshipsController < ApplicationController
   def create
   	@followship = Followship.new(user_id: current_user.id, following_id: params[:following_id])
-  	if @followship.save
-  		redirect_back(fallback_location: root_path)
+  	if @followship.user_id == @followship.following_id
+      flash[:alert] = "Something went wrong here...you can not follow yourself..."
   	else
-  		flash[:alert] = "Something went wrong here...please try again"
+  		@followship.save
   	end
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy

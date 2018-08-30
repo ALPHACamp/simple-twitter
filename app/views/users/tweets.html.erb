@@ -12,6 +12,7 @@
 					<span class="text-primary"><%= tweet.user.name %><%= ", #{tweet.created_at}" %></span></br>
 					<%= tweet.description %></br>
 					<%= link_to "Reply (#{tweet.replies.count})", tweet_replies_path(tweet), class: 'btn btn-info'%>
+					<%= render partial: 'share/like-btn' , locals: {object: tweet}%>
 				</div>
 			</div>
 		<% end %>

@@ -67,17 +67,15 @@ namespace :dev do
 
   task fake_followship: :environment do
     Followship.destroy_all
-      30.times do |i|
-        user = User.all.sample
-        following = User.all.sample
-        unless user == following
-        followship = Followship.create!(
-          user: user,
-          following: following,
-          created_at: FFaker::Time::datetime
-        )
+    users = User.all
+    users.each do |user|
+      2.times do |i|
+        following = users.sample
+        if !user.is_following?(following)
+          followship = user.followships.create(following: following)
         end
       end
+    end
     puts "Total #{Followship.count}followships created !"
   end
 

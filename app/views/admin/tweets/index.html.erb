@@ -1,0 +1,34 @@
+<div class="container-fluid">
+  <div class="p-2">
+    <h2>Simple Twitter Admin Panel
+      <span><%= link_to 'Tweets', admin_tweets_path, class: 'btn btn-primary' %> | <%= link_to 'Users', admin_users_path,   class: 'btn btn-info' %></span> 
+    </h2>  
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Avatar</th>
+        <th>Tweets</th>
+        <th>Replies</th>
+      </tr>
+    </thead>
+    <% @tweets.each do |tweet| %>
+      <tbody>
+        <tr>
+          <td><%= tweet.user.name %></td>
+          <td><%= image_tag tweet.user.avatar, size:100 %></td>
+          <td><%= tweet.description %></br><%= link_to 'Delete', admin_tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"}, class: 'btn btn-danger' %></td>
+          <td><% tweet.replies.each do |reply| %>
+                <strong><%= reply.user.name %></strong><span>:</span><%=reply.comment %></br>
+              <% end %> 
+          </td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+</div>
+
+<div class="d-flex justify-content-center">
+  <%= paginate @tweets %>
+</div>

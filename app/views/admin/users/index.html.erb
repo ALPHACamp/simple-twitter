@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <h2>Simple Twitter Admin Panel
+    <span><%= link_to 'Tweets', admin_tweets_path, class: 'btn btn-primary' %> | <%= link_to 'Users', admin_users_path, class: 'btn btn-info' %></span> 
+  </h2>  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Avatar</th>
+        <th>Tweets Count</th>
+        <th>Followers Count</th>
+        <th>Followings Count</th>
+        <th>Likes Count</th>
+      </tr>
+    </thead>
+    <% @users.each do |user| %>
+      <tbody>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= image_tag user.avatar, size: 100 %></td>
+          <td><%= user.tweets_count ||= 0 %></td>
+          <td><%= user.followers_count ||= 0 %></td>
+          <td><%= user.followings.count ||= 0%></td>
+          <td><%= user.likes_count ||= 0%></td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+</div>
+
+<div class="d-flex justify-content-center">
+  <%= paginate @users %>
+</div>

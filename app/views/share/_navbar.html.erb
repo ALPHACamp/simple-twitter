@@ -7,6 +7,18 @@
   <div class="collapse navbar-collapse justify-content-sm-end" id="navbarSupportedContent">
     <% if user_signed_in? %>
       <ul class="navbar-nav right">
+      <% if current_user.role == 'admin' %>
+        <% if in_admin_panel? %>
+          <li class= 'nav-item' >
+            <%= link_to 'Front End', tweets_path, class: 'nav-link'%>
+          </li>
+        <% else %> 
+          <li class= 'nav-item' >
+            <%= link_to 'Admin Panel', admin_tweets_path, class: 'nav-link' %>
+          </li>
+        <% end %>
+      <% end %>
+        
         <li class="nav-item">
           <% if current_user.avatar? %>
             <%= link_to image_tag(current_user.avatar, size: 50), tweets_user_path(current_user), class: 'thumb'%>
