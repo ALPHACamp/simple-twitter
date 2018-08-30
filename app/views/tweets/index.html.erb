@@ -34,7 +34,7 @@
             <%= image_tag user.avatar , class: "tweet-avatar"%>
           </div>
           <div class="media-body">
-            <h4 class="media-heading"> @<%= user.name %>  
+            <h4 class="media-heading"> <%= link_to user.name, tweets_user_path(user) %>  
             </h4>
             <p><%= user.introduction %></p>
           </div>
