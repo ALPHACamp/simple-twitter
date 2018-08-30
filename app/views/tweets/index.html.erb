@@ -27,6 +27,19 @@
       <% end %>
     </div>
     <div class="col-xs-6 col-md-4">
+      <h3>Popular</h3>
+      <% @users.each do |user| %>
+        <div class="media tweet-item">
+          <div class="media-left">
+            <%= image_tag user.avatar , class: "tweet-avatar"%>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading"> @<%= user.name %>  
+            </h4>
+            <p><%= user.introduction %></p>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
