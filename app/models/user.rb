@@ -9,7 +9,9 @@ class User < ApplicationRecord
 
   has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
   has_many :followers, through: :inverse_followships, source: :user
-  
+
+  has_many :replies
+
   mount_uploader :avatar, AvatarUploader
 
   # 需要 app/views/devise 裡找到樣板，加上 name 屬性
