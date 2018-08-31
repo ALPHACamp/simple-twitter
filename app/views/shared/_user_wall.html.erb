@@ -1,0 +1,24 @@
+<!-- users list，有多寫user-item的class style -->
+<% followings.each do |following| %>
+  <div class="col-xs-6 col-md-6">
+    <div class="media tweet-item">
+      <div class="media-left">
+        <%= image_tag following.avatar , class: "tweet-avatar"%>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading"> <%= following.name %>
+        </h4>
+        <p><%= truncate(following.introduction, length: 140) %></p>
+        <% if user.following?(following) %>
+          <%= link_to 'Unfollow', followship_path(following), method: :delete, class: "btn btn-info" %>
+        <% end %>
+      </div> 
+    </div> 
+  </div>
+<% end %>
+
+
+
+
+
+

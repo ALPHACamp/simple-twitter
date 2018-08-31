@@ -18,7 +18,7 @@
               <%= image_tag tweet.user.avatar , class: "tweet-avatar"%>
             </div>
             <div class="media-body">
-              <h4 class="media-heading"> @<%= tweet.user.name %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %>
+              <h4 class="media-heading"> <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %>
               </h4>
               <p><%= tweet.description %></p>
             </div> 
