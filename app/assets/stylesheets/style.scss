@@ -1,0 +1,50 @@
+
+.form-style{
+border:2px grey solid;
+border-radius: 10px;
+margin: 10px;
+}
+
+.button-tweet{
+  border-radius: 5px;
+  padding: 5px 15px;
+  margin-right: 0px;
+  margin-bottom: 10px;
+}
+
+.tweet-item{
+  margin: 10px;
+  border: 1px solid #ddd;
+  padding: 10px 10px;
+}
+
+
+.tweet-avatar{
+  margin: 0px 0px 0px 0px;
+  width: 50px;
+}
+
+.nav-avatar{
+  padding: 0px 0px;
+  margin: 0px 0px;
+}
+
+.navbar-nav > li > a {
+  padding: 0px 0px;
+}
+
+.user-avatar{
+  margin: 0px 0px 0px 0px;
+  width: 200px
+}
+
+.user-item {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 4px;
+  margin-bottom: 20px;
+}
+
+.reply-area {
+  padding: 15px 15px;
+}

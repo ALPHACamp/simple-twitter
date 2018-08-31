@@ -1,0 +1,16 @@
+<% @users.each do |user| %>
+  <div class="media tweet-item">
+    <div class="media-left">
+      <%= image_tag user.avatar , class: "tweet-avatar"%>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading"> <%= link_to user.name, tweets_user_path(user) %>  
+      </h4>
+      <p><%= user.introduction %></p>
+      <strong>Tweets <%= user.tweets.count %></strong>
+      <strong>Following <%= user.followships.count %></strong>
+      <strong>Follower <%= user.followers_count %></strong>
+      <strong>like <%= user.likes_count %></strong>
+    </div>
+  </div>
+<% end %>

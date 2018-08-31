@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <%= render partial: "shared/user_info", locals: {user: @user} %>
+    <div class="col-xs-6 col-md-9">
+      <% @tweets.each do |tweet| %>
+          <div class="col-xs-12 col-md-12">
+            <div class="media tweet-item">
+              <div class="media-left">
+                <%= image_tag tweet.user.avatar , class: "tweet-avatar"%>
+              </div>
+              <div class="media-body">
+                <h4 class="media-heading"> <%= tweet.user.name %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %>
+                </h4>
+                <p><%= tweet.description %></p>
+                <%= render partial: "shared/reply_link", locals: {tweet: tweet} %>
+                <%= render partial: "shared/like_link", locals: {tweet: tweet} %>
+              </div> 
+            </div> 
+          </div>
+        <% end %>
+      </div>
+  </div>
+
+</div>

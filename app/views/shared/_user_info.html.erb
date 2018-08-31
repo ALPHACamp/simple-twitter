@@ -1,0 +1,33 @@
+<div class="col-xs-6 col-md-3">
+  <%= image_tag user.avatar, class: "img-responsive img-rounded user-avatar" if user.avatar? %>  
+  <h2><%= user.name %></h2>
+  <p><%= user.introduction %></p>
+  <%= link_to tweets_user_path(user) do %>
+    <h4><span>Tweets <%= user.tweets.count %></span></h4>
+  <% end %>
+
+  <%= link_to followings_user_path(user) do %>
+    <h4><span>Following <%= user.followships.count %></span></h4>
+  <% end %>
+
+  <%= link_to followers_user_path(user) do %>
+    <h4><span>Follower <%= user.followers_count %></span></h4>
+  <% end %>
+
+  <%= link_to likes_user_path(user) do %>
+    <h4><span>like <%= user.likes_count %></span></h4>
+  <% end %>
+
+  <% if user == current_user %>
+    <%= link_to 'Edit Profile', edit_user_path(user), class: "btn btn-primary"%>
+  <% else %>
+    <% if current_user.following?(user) %>
+      <%= link_to 'Unfollow', followship_path(user), method: :delete, class: "btn btn-info" %>
+    <% else %>
+      <%= link_to 'Follow', followships_path(following_id: user), method: :post, class: "btn btn-primary"%>
+    <% end %>
+  <% end %>
+</div>
+
+
+
