@@ -1,1 +1,25 @@
-<h1>tweets後台</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-8">
+      <% @tweets.each do |tweet| %>
+        <div class="col-xs-12 col-md-12">
+          <div class="media tweet-item">
+            <div class="media-left">
+              <%= image_tag tweet.user.avatar , class: "tweet-avatar"%>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading"> <%= link_to tweet.user.name, tweets_user_path(tweet.user) %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %>
+              </h4>
+              <p><%= tweet.description %></p>
+              <%= render partial: "shared/reply_link", locals: {tweet: tweet} %>
+              <%= render partial: "shared/like_link", locals: {tweet: tweet} %>
+              <%= render partial: "shared/delete_link", locals: {tweet: tweet} %>
+            </div> 
+          </div> 
+        </div>
+      <% end %>
+    </div>
+  
+  </div>
+</div>
+

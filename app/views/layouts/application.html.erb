@@ -28,7 +28,7 @@
           <ul class="pull-right text-right nav navbar-nav">
             <% if current_user %>
               <% if current_user.admin? %>
-                <li><%= link_to 'Admin Panel', admin_root_path %></li>
+                <li><%= link_to 'Admin Panel', admin_root_path, class:"navbar-text" %></li>
               <% end %>
               <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
               <li>
