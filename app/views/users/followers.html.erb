@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row">
+    <%= render partial: "shared/user_info", locals: {user: @user} %>
+    <div class="col-xs-6 col-md-9">
+      <h3>Follower</h3>
+      <%= render partial: "shared/user_following_wall", locals: {followings: @followers, user: @user} %>
+    </div>
+  </div>
+</div>
