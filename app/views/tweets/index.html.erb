@@ -37,6 +37,13 @@
             <h4 class="media-heading"> <%= link_to user.name, tweets_user_path(user) %>  
             </h4>
             <p><%= user.introduction %></p>
+            <% if current_user != user %>
+              <% if current_user.following?(user) %>
+                <%= link_to 'Unfollow', followship_path(user), method: :delete, class: "btn btn-info" %>
+              <% else %>
+                <%= link_to 'Follow', followships_path(following_id: user), method: :post, class: "btn btn-primary"%>
+              <% end %>
+            <% end %>
           </div>
         </div>
       <% end %>
