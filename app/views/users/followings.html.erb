@@ -3,7 +3,7 @@
     <%= render partial: "shared/user_info", locals: {user: @user} %>
     <div class="col-xs-6 col-md-9">
       <h3>Following</h3>
-      <%= render partial: "shared/user_wall", locals: {followings: @followings, user: @user} %>
+      <%= render partial: "shared/user_following_wall", locals: {followings: @followings, user: @user} %>
     </div>
   </div>
 </div>
