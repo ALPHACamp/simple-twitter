@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <%= render partial: "shared/user_info", locals: {user: @tweet.user} %>
+    <div class="col-xs-6 col-md-9">
+      <h3>Tweets</h3>
+        <div class="col-xs-12 col-md-12">
+          <div class="media tweet-item">
+            <div class="media-left">
+              <%= image_tag @tweet.user.avatar , class: "tweet-avatar"%>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading"> <%= @tweet.user.name %>, <%= @tweet.created_at.strftime("%Y-%m-%d, %H:%M") %>
+              </h4>
+              <p><%= @tweet.description %></p>
+              <%= render partial: "shared/reply_link", locals: {tweet: @tweet} %>
+            </div> 
+          </div> 
+        </div>
+      <h3>Replies</h3>
+      <% @replies.each do |reply| %>
+        <div class="col-xs-12 col-md-12">
+          <div class="media tweet-item">
+            <div class="media-left">
+              <%= image_tag reply.user.avatar , class: "tweet-avatar"%>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading"> <%= reply.user.name %>, <%= reply.created_at.strftime("%Y-%m-%d, %H:%M") %>
+              </h4>
+              <p><%= reply.comment %></p>
+            </div> 
+          </div> 
+        </div>
+      <% end %>
+
+      <%= form_for [@tweet, @reply] do |f| %>
+        <div class="form_group">
+          <%= f.text_area :comment, placeholder: "Any comment about this tweet?", class: "form-control", style: 'height: 90px' %>
+        </div>
+        <br>
+        <%= f.submit "Reply", class: "btn btn-primary"%>
+      <% end %>
+
+    </div>
+  </div>
+</div>

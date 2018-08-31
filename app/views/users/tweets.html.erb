@@ -12,6 +12,7 @@
                 <h4 class="media-heading"> <%= tweet.user.name %>, <%= tweet.created_at.strftime("%Y-%m-%d, %H:%M") %>
                 </h4>
                 <p><%= tweet.description %></p>
+                <%= render partial: "shared/reply_link", locals: {tweet: tweet} %>
               </div> 
             </div> 
           </div>
