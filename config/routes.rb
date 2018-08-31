@@ -8,15 +8,19 @@ Rails.application.routes.draw do
       get :tweets
       get :followings
       get :followers
-      get :likes
-      post :like   
+      get :likes  
     end
   end
 
   resources :followships, only: [:create, :destroy]
 
-  resources :tweets do
+  resources :tweets, only: [:index, :create] do
     resources :replies, only: [:index, :create]
+
+    member do
+      post :like
+      post :unlike 
+    end
   end
   root "tweets#index"
 

@@ -3,6 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  validates_presence_of :name
+  validates_uniqueness_of :name
   has_many :tweets, dependent: :destroy
   has_many :followships, dependent: :destroy 
   has_many :followings, through: :followships
@@ -12,6 +15,9 @@ class User < ApplicationRecord
 
   has_many :replies, dependent: :destroy
   has_many :replied_tweets, through: :replies, source: :tweet
+
+  has_many :likes, dependent: :destroy
+  has_many :liked_tweets, through: :likes, source: :tweet
 
   mount_uploader :avatar, AvatarUploader
 

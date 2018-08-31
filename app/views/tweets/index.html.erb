@@ -22,6 +22,7 @@
               </h4>
               <p><%= tweet.description %></p>
               <%= render partial: "shared/reply_link", locals: {tweet: tweet} %>
+              <%= render partial: "shared/like_link", locals: {tweet: tweet} %>
             </div> 
           </div> 
         </div>
