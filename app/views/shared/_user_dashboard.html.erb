@@ -1,22 +1,22 @@
 <ul class="list-unstyled">
   <li><strong>
     <%= link_to tweets_user_path(user) do %>
-      Tweets <%= user.tweets.count %>
+      Tweets <%= user.tweets.size %>
     <% end %>
   </strong></li>
   <li><strong>
     <%= link_to followings_user_path(user) do %>
-      Following <%= user.followings.count %>
+      Following <%= user.followings.size %>
     <% end %>
   </strong></li>
   <li><strong>
     <%= link_to followers_user_path(user) do %>
-      Follower <%= user.followers.count %>
+      Follower <%= user.followers.size %>
     <% end %>
   </strong></li>
   <li><strong>
     <%= link_to likes_user_path(user) do %>
-      like <%= user.likes.count %>
+      like <%= user.likes.size %>
     <% end %>
   </strong></li>
 </ul>

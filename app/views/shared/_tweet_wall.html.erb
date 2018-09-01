@@ -1,21 +1,17 @@
-<div>
-  <% @tweets.each do |tweet| %>
-    <%= image_tag(tweet.user.avatar, height: 80, width: 80, class: "img-responsive img-rounded") %>
-    <!-- 格式化日期時間 time.strftime("%Y-%m-%d %H:%M:%S") -->
-    <p>
+  <%= image_tag(tweet.user.avatar, height: 80, width: 80, class: "img-responsive img-rounded") %>
+  <!-- 格式化日期時間 time.strftime("%Y-%m-%d %H:%M:%S") -->
+  <p>
     <%= link_to tweets_user_path(tweet.user) do %>
       <%= "@" + tweet.user.name + ", " %>
     <% end %>
     <%= tweet.updated_at.strftime("%Y-%m-%d, %H:%M") %>
-    </p>
-    <p><%= tweet.description %></p>
-    <div>
-      <%= link_to tweet_replies_path(tweet) do %>
-        Reply(<%= tweet.replies.size %>)
-      <% end %>
-      <%= render partial: "shared/like", locals: {tweet: tweet} %>
-    </div>
-    <div class="clearfix"></div>
-    <br>
-  <% end %>
-</div>
+  </p>
+  <p><%= tweet.description %></p>
+  <div>
+    <%= link_to tweet_replies_path(tweet) do %>
+      Reply(<%= tweet.replies.size %>)
+    <% end %>
+    <%= render partial: "shared/like", locals: {tweet: tweet} %>
+  </div>
+  <div class="clearfix"></div>
+  <br>
