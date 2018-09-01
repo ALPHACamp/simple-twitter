@@ -1,7 +1,7 @@
 <h1>Replies index</h1>
 <div class="container">
   <div class="col-sm-4">
-    <%= image_tag @tweet.user.avatar %>
+    <%= image_tag(@tweet.user.avatar, hight: 160, width: 160, class: "img-responsive img-rounded") %>
     <p><%= @tweet.user.name %></p>
     <p><%= @tweet.user.introduction %></p>
     <% if @tweet.user == current_user %>
@@ -19,7 +19,7 @@
     <div>
       <h3>Tweets</h3>
       <div>
-        <%= image_tag @tweet.user.avatar %>
+        <%= image_tag(@tweet.user.avatar, hight: 80, width: 80, class: "img-responsive img-rounded") %>
         <!-- 格式化日期時間 time.strftime("%Y-%m-%d %H:%M:%S") -->
         <p>
           <%= link_to tweets_user_path(@tweet.user) do %>
@@ -40,7 +40,7 @@
     <div> 
       <h3>Replies</h3>
       <% @replies.each do |reply| %>
-        <%= image_tag reply.user.avatar %>
+        <%= image_tag(reply.user.avatar, hight: 80, width: 80, class: "img-responsive img-rounded") %>
         <p><%= "@" + reply.user.name + ", " %><%= reply.created_at.strftime("%Y-%m-%d, %H:%M") %></p>
         <p><%= reply.comment %></p>
       <% end %>
