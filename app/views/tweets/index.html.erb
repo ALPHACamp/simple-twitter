@@ -1,6 +1,5 @@
 <div class="container">
   <div class="col-sm-8">
-  <h1>Twitter Index</h1>
     <div>
      <%= form_for @tweet do |f| %>
         <div class="form-group">
@@ -12,15 +11,30 @@
       <% end %>
     </div>
 
-    <%= render partial: "shared/tweet_wall", locals: {tweet: @tweet} %>
+    <div>
+      <% @tweets.each do |tweet| %>
+        <%= render partial: "shared/tweet_wall", locals: {tweet: tweet} %>
+      <% end %>
+    </div>
+
+    <div class="text-center">
+      <%= paginate @tweets %>
+    </div>
 
   </div>
 
   <div class="col-sm-4">
-  </div>
-
-  <div class="text-center">
-    <%= paginate @tweets %>
+    <h2>Popular</h2>
+    <div class="clearfix">
+        <% @users.each do |user| %>
+          <%= image_tag(user.avatar, height: 80, width: 80, class: "img-responsive img-rounded") %>
+          <%= link_to tweets_user_path(user) do %>
+            <h4>@<%= user.name %></h4>
+          <% end %>
+          <p><%= user.introduction %></p>
+          <%= render partial: "shared/follow", locals: {user: user} %>
+        <% end %>
+    </div>
   </div>
   
 </div>
