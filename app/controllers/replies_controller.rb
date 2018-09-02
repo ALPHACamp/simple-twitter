@@ -1,6 +1,6 @@
 class RepliesController < ApplicationController
 
-  before_action :set_tweet, only: [:index, :create]
+  before_action :set_tweet, only: [:index, :create, :destroy]
 
   def index
     # 將 reply 最新的留言保持在最上面
@@ -15,6 +15,14 @@ class RepliesController < ApplicationController
     @reply.user = current_user
     @reply.save!
     redirect_to tweet_replies_path(@tweet)
+  end
+
+  def destroy
+    @reply = @tweet.replies.find(params[:id])
+    if current_user.admin? || current_user == @reply.user
+      @reply.destroy
+      redirect_to tweet_replies_path(@tweet)
+    end
   end
 
   private

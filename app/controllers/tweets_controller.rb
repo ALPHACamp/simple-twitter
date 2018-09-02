@@ -1,7 +1,7 @@
 class TweetsController < ApplicationController
   before_action :authenticate_user!
 
-  before_action :set_tweet, only: [:like, :unlike]
+  before_action :set_tweet, only: [:like, :unlike, :destroy]
 
   def index
     @tweet = Tweet.new
@@ -36,6 +36,13 @@ class TweetsController < ApplicationController
     # 而刪除集合要搭配 destroy_all 來使用
     likes.destroy_all
     redirect_back(fallback_location: root_path)
+  end
+
+  def destroy
+    if current_user.admin? || current_user == @tweet.user
+      @tweet.destroy
+      redirect_to root_path
+    end
   end
 
   private
