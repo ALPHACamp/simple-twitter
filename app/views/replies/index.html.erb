@@ -42,7 +42,12 @@
       <% @replies.each do |reply| %>
         <%= image_tag(reply.user.avatar, hight: 80, width: 80, class: "img-responsive img-rounded") %>
         <p><%= "@" + reply.user.name + ", " %><%= reply.created_at.strftime("%Y-%m-%d, %H:%M") %></p>
-        <p><%= reply.comment %></p>
+        <p class="text-meuted">
+          <%= reply.comment %>
+          <% if current_user.admin? || current_user == reply.user %>
+            <span class="label label-warning"><%= link_to " Delete", tweet_reply_path(@tweet, reply), method: :delete, data: {confirm: "Are you sure?"} %></span>
+          <% end %>
+        </p>
       <% end %>
     </div>
 
