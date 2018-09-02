@@ -34,6 +34,7 @@ namespace :dev do
   end
 
   task fake_reply: :environment do
+    Reply.destroy_all
     puts "Now is creating fake replies ..."
     Tweet.all.each do |tweet|
       2.times do

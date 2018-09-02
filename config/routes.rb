@@ -22,8 +22,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :tweets, only: [:index, :create] do
-    resources :replies, only: [:index, :create]
+  resources :tweets, only: [:index, :create, :destroy] do
+    resources :replies, only: [:index, :create, :destroy]
   
     member do
       post :like
