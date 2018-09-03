@@ -2,9 +2,9 @@
   <!-- 格式化日期時間 time.strftime("%Y-%m-%d %H:%M:%S") -->
   <p>
     <%= link_to tweets_user_path(tweet.user) do %>
-      <%= "@" + tweet.user.name + ", " %>
+      <%= "@" + tweet.user.name %>
     <% end %>
-    <%= tweet.updated_at.strftime("%Y-%m-%d, %H:%M") %>
+    <%= ", " + tweet.updated_at.strftime("%Y-%m-%d , %H:%M") %>
     <% if current_user.admin? || current_user == tweet.user %>
       <span class="label label-warning"><%= link_to "Delete", tweet_path(tweet), method: :delete, data: {confirm: "Are you sure?"} %></span>
     <% end %>
