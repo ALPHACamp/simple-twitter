@@ -1,1 +1,55 @@
-<h1>Twitter 後台</h1>
+<div class="container">
+  <h1>Admin Panel</h1>
+  <div class="row">
+    <!-- 使用 Bootstrap components 的 Nav Tabs -->
+    <!-- https://getbootstrap.com/docs/3.3/components/#nav-tabs -->
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active">
+        <%= link_to '推播管理', admin_tweets_path %>
+      </li>
+      <li role="presentation">
+        <%= link_to '使用者管理', admin_users_path %>
+      </li>
+    </ul>
+
+  </div>
+</div>
+
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+
+      <div>
+        <% @tweets.each do |tweet| %>
+          <%= image_tag(tweet.user.avatar, height: 80, width: 80, class: "img-responsive img-rounded") %>
+          <!-- 格式化日期時間 time.strftime("%Y-%m-%d %H:%M:%S") -->
+          <p>
+            <%= link_to tweets_user_path(tweet.user) do %>
+              <%= "@" + tweet.user.name %>
+            <% end %>
+            <%= ", " + tweet.updated_at.strftime("%Y-%m-%d , %H:%M") %>
+            <% if current_user.admin?  %>
+              <span class="label label-warning"><%= link_to "Delete", admin_tweet_path(tweet), method: :delete, data: {confirm: "Are you sure?"} %></span>
+            <% end %>
+          </p>
+          <p><%= simple_format tweet.description %></p>
+          <div>
+            <%= link_to tweet_replies_path(tweet) do %>
+              Reply(<%= tweet.replies.size %>)
+            <% end %>
+            <%= render partial: "shared/like", locals: {tweet: tweet} %>
+          </div>
+          <div class="clearfix"></div>
+          <br>
+        <% end %>
+      </div>
+
+      <div class="text-center">
+        <%= paginate @tweets %>
+      </div>
+
+    </div>
+  </div>
+</div>
