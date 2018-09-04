@@ -22,21 +22,22 @@
     <div class="content">
       <h2>Like</h2>
       <% @tweets.each do |tweet| %>
-        <div>
-          <h4>
-            <%=  link_to tweet.user.name, tweets_user_path(tweet.user) %>
-            <%=  tweet.created_at.strftime("%Y-%m-%d, %H:%M") %>
-          </h4>
-          <p><%= simple_format tweet.description %></p>
-          <p class="text-muted">
-            <em><%= time_ago_in_words(tweet.created_at)   %> </em>
-          </p>
-          <%= link_to "Reply" , tweet_replies_path(tweet)%>
-          <% if current_user.admin? %>
-          <%= link_to "Delete", admin_tweet_path(tweet), method: :delete %>
-          <%end%>
+        <div class="tweet">
+          <div class="tweet-avatar">
+            <img src="http://via.placeholder.com/100x100",class:= "img-responsive center-block>">
+          </div>
+          <div class="tweet-text">
+            <h4><%=  link_to "@#{tweet.user.name}, #{tweet.created_at.strftime("%B %e, %Y at %I:%M %p")}", tweets_user_path(tweet.user) %></h4>
+            <p><%= simple_format tweet.description %></p>
+            <p class="text-muted">
+              <em><%= time_ago_in_words(tweet.created_at)   %> </em>
+            </p>
+            <%= link_to "Reply" , tweet_replies_path(tweet),class: "btn btn-primary"%>
+            <% if current_user.admin? %>
+            <%= link_to "Delete", admin_tweet_path(tweet), method: :delete,class: "btn btn-info" %>
+            <%end%>
+          </div>
         </div>
-        <hr>
       <%end%>
     </div>
   </div>

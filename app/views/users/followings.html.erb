@@ -23,18 +23,25 @@
     <div class="panel_body">
       <% @followings.each do |following| %>
         <%= link_to user_path(following) do %>
-          <h4><%= link_to following.name, tweets_user_path(following) %></h4>
-          <p><%= simple_format following.introduction %></p>
-          <% if follower != current_user %>
-            <% if current_user.following?(follower) %>
-              <%= link_to 'Unfollow', followship_path(follower), method: :delete,class: "btn btn-primary" %>
-            <% else %>
-              <%= link_to 'Follow', followships_path(following_id: follower), method: :post,class: "btn btn-info" %>
-            <% end %>
-          <%end%>
+          <div class="tweet">
+            <div class="tweet-avatar">
+              <img src="http://via.placeholder.com/100x100",class:= "img-responsive center-block>">
+            </div>
+            <div class="tweet-text">
+              <h4><%= link_to following.name, tweets_user_path(following) %></h4>
+              <p><%= simple_format following.introduction %></p>
+              <% if following != current_user %>
+                <% if current_user.following?(following) %>
+                  <%= link_to 'Unfollow', followship_path(following), method: :delete,class: "btn btn-primary" %>
+                <% else %>
+                  <%= link_to 'Follow', followships_path(following_id: following), method: :post,class: "btn btn-info" %>
+                <% end %>
+              <%end%>
+            </div>
+          </div>
         <% end %>
       <% end %>
-      <hr>
+      
     </div>
   </ul>
 </div>
