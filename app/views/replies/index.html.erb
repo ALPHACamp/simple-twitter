@@ -1,29 +1,45 @@
-<h1>回覆</h1>
-
-<div>
-    <h4><%=  link_to @tweet.user.name, tweets_user_path(@tweet.user) %></h4>
-    <p><%= simple_format @tweet.description %></p>
-    <p class="text-muted">
-      <em><%= time_ago_in_words(@tweet.created_at)   %> </em>
-    </p>
-    <hr>
+<div class="container">
+  <div class="row">
+    <div class="about">
+      <img src="http://via.placeholder.com/150x150",class:= "img-responsive center-block>">
+      <h4><%= link_to @tweet.user.name, tweets_user_path(@tweet) %></h4>
+      <p><%= @tweet.user.introduction %></p>
+      <p>Following <%= @tweet.user.followings.count %></p>
+      <p>Follower <%= @tweet.user.followships.count %></p>
+      <p>Tweet <%= @tweet.user.tweets_count %></p>
+      <p>Like <%= @tweet.user.likes.count %></p>
+    </div>
+    <div class="content">
+      <div class="tweet-avatar">
+        <img src="http://via.placeholder.com/100x100",class:= "img-responsive center-block>">
+      </div>
+      <div class="tweet-text">
+        <h4><%=  link_to "@#{@tweet.user.name}, #{@tweet.created_at.strftime("%B %e, %Y at %I:%M %p")}", tweets_user_path(@tweet.user) %></h4>
+        <p><%= simple_format @tweet.description %></p>
+        <p class="text-muted">
+          <em><%= time_ago_in_words(@tweet.created_at)   %> </em>
+        </p>
+        <%= render partial: "shared/like", locals: {tweet: @tweet} %>
+      </div>
+      <%= form_for [@tweet, @reply] do |f| %>
+        <div class="form_group">
+          <%= f.text_area :comment, placeholder: "回應", class: "form-control" %>
+        </div>
+        <div class="form_group">
+          <%= f.submit class:"btn btn-primary" %>
+          <%= f.button "Cancel", type: :reset, class:"btn btn-info" %>
+        </div>
+      <%end%> 
+      <% @tweet.replies.each do |reply| %>
+        <div>
+          <h4><%=  reply.user.name %></h4>
+          <p><%= simple_format reply.comment %></p>
+          <p class="text-muted">
+            <em><%= time_ago_in_words(reply.created_at)   %> </em>
+          </p>
+        </div>
+        <hr>
+      <%end%>
+    </div>
+  </div>
 </div>
-<%= form_for [@tweet, @reply] do |f| %>
-  <div class="form_group">
-    <%= f.text_area :comment, placeholder: "回應", class: "form-control" %>
-  </div>
-  <div class="form_group">
-    <%= f.submit class:"btn btn-primary" %>
-    <%= f.button "Cancel", type: :reset, class:"btn-primary" %>
-  </div>
-<%end%> 
-<% @tweet.replies.each do |reply| %>
-  <div>
-    <h4><%=  reply.user.name %></h4>
-    <p><%= simple_format reply.comment %></p>
-    <p class="text-muted">
-      <em><%= time_ago_in_words(reply.created_at)   %> </em>
-    </p>
-  </div>
-  <hr>
-<%end%>

@@ -1,61 +1,41 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-10 col-md-offset-1">
+  <div class="about">
+    <img src="http://via.placeholder.com/150x150",class:= "img-responsive center-block>">
+    <h4><%=  @user.name %></h4>
+    <p><%= @user.introduction %></p>
+    <p><%= link_to "Following #{@user.followings.count}",followings_user_path(@user) %></p>
+    <p><%= link_to "Follower #{@user.followers.count}",followers_user_path(@user) %></p>
+    <p><%= link_to "Tweet #{@user.tweets.count}",tweets_user_path(@user) %></p>
+    <p><%= link_to "Like #{@user.likes.count}",likes_user_path(@user) %></p>
+    <% if @user == current_user %>
+      <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
+    <%else%>
+      <% if current_user.following?(@user) %>
+        <%= link_to 'Unfollow', followship_path(@user), method: :delete,class: "btn btn-primary" %>
+      <% else %>
+        <%= link_to 'Follow', followships_path(following_id: @user), method: :post,class: "btn btn-info" %>
+      <% end %>
+    <%end%>
+  </div>
 
-      <!-- page-header 裡面顯示個人檔案資料 -->
-      <div class="page-header">
-        <div class="col-md-3 col-sm-4">
-          <div class="text-center">
-            <%= image_tag @user.avatar, class: "img-responsive img-rounded" %>
-          </div>
-        </div>
-
-        <div class="col-md-9 col-sm-8">
-          <h2><%= @user.name %></h2>
-          <p><strong><%= @user.email %></strong></p>
-          <div><%= simple_format @user.introduction %></div>
-          
-          <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
-          <% if @user == current_user %>
-            <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
-          <%else%>
-            <% if current_user.following?(@user) %>
-              <%= link_to 'Unfollow', followship_path(@user), method: :delete,class: "btn btn-primary" %>
-            <% else %>
-              <%= link_to 'Follow', followships_path(following_id: @user), method: :post,class: "btn btn-info" %>
-            <% end %>
-          <%end%>
-          
-          
-        </div>
-
-        <div class="clearfix"></div>
-        <h2>Tweet from <%= @user.name %></h2>
-        <% @order_user_tweets.each do |tweet| %>
-          <div>
-            <h4>
-              <%=  link_to tweet.user.name, tweets_user_path(tweet.user) %>
-              <%=  tweet.created_at.strftime("%Y-%m-%d, %H:%M") %>
-            </h4>
-            <p><%= simple_format tweet.description %></p>
-            <p class="text-muted">
-              <em><%= time_ago_in_words(tweet.created_at)   %> </em>
-            </p>
-            <%= link_to "Reply" , tweet_replies_path(tweet)%>
-          </div>
-          <% if current_user.admin? %>
-            <%= link_to "Delete", admin_tweet_path(tweet), method: :delete %>
-          <%end%>
-          <hr>
+  <div class="content">
+    <h2>Tweet from <%= @user.name %></h2>
+    <% @order_user_tweets.each do |tweet| %>
+      <div>
+        <h4>
+          <%=  link_to tweet.user.name, tweets_user_path(tweet.user) %>
+          <%=  tweet.created_at.strftime("%Y-%m-%d, %H:%M") %>
+        </h4>
+        <p><%= simple_format tweet.description %></p>
+        <p class="text-muted">
+          <em><%= time_ago_in_words(tweet.created_at)   %> </em>
+        </p>
+        <%= link_to "Reply" , tweet_replies_path(tweet)%>
+        <% if current_user.admin? %>
+        <%= link_to "Delete", admin_tweet_path(tweet), method: :delete %>
         <%end%>
-        <div class="col-md-4">
-          <!-- 顯示followings的清單，panel包一個list-group  -->
-          
-          <!-- 顯示followings的清單，panel包一個list-group  -->
-          
-          
-        </div>
       </div>
-    </div>
+      <hr>
+    <%end%>
   </div>
 </div>

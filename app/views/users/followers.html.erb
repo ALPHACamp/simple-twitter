@@ -1,16 +1,40 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title"><%= @followers.count %></strong> followers</h3>
+<div class="container">
+  <div class="about">
+    <img src="http://via.placeholder.com/150x150",class:= "img-responsive center-block>">
+    <h4><%=  @user.name %></h4>
+    <p><%= @user.introduction %></p>
+    <p><%= link_to "Following #{@user.followings.count}",followings_user_path(@user) %></p>
+    <p><%= link_to "Follower #{@user.followers.count}",followers_user_path(@user) %></p>
+    <p><%= link_to "Tweet #{@user.tweets.count}",tweets_user_path(@user) %></p>
+    <p><%= link_to "Like #{@user.likes.count}",likes_user_path(@user) %></p>
+    <% if @user == current_user %>
+      <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
+    <%else%>
+      <% if current_user.following?(@user) %>
+        <%= link_to 'Unfollow', followship_path(@user), method: :delete,class: "btn btn-primary" %>
+      <% else %>
+        <%= link_to 'Follow', followships_path(following_id: @user), method: :post,class: "btn btn-info" %>
+      <% end %>
+    <%end%>
   </div>
 
-  <ul class="list-group">
-    <% @followers.each do |follower| %>
-    <li class="list-group-item">
-      <%= link_to user_path(follower) do %>
-      <%= image_tag(follower.avatar, height: 30, width: 30, class: "img-circle") %>
-      <%= follower.name %>
+  <div class="content">
+    <h2>Followers</h2>
+    <div class="panel_body">
+      <% @followers.each do |follower| %>
+        <%= link_to user_path(follower) do %>
+          <h4><%= link_to follower.name, tweets_user_path(follower) %></h4>
+          <p><%= simple_format follower.introduction %></p>
+          <% if follower != current_user %>
+            <% if current_user.following?(follower) %>
+              <%= link_to 'Unfollow', followship_path(follower), method: :delete,class: "btn btn-primary" %>
+            <% else %>
+              <%= link_to 'Follow', followships_path(following_id: follower), method: :post,class: "btn btn-info" %>
+            <% end %>
+          <%end%>
+        <% end %>
       <% end %>
-    </li>
-    <% end %>
+      <hr>
+    </div>
   </ul>
 </div>

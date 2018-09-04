@@ -7,46 +7,7 @@
   display: inline-block;
 }
 
-.restaurant-item {
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 4px;
-  margin-bottom: 20px;
-}
 
-.restaurant-item img {
-  max-height: 180px;
-  width: 100%;
-}
-
-.restaurant-item .caption {
-  padding: 10px;
-}
-
-.edit_user img {
-  width: 50px;
-  margin: 10px;
-}
-
-.my-restaurant {
-  display: inline-block;
-  text-align: center;
-  padding: 7px 7px 0 7px;
-}
-
-.my-restaurant > div {
-  height: 60px;
-}
-
-.my-restaurant img {
-  height: 59px;
-  width: 100px;
-
-}
-
-.panel a:hover .my-restaurant {
-  background-color: #eee;
-}
 .panel-body{
   text-align: center;
 }
@@ -54,6 +15,12 @@
 .avatar{
   height: 300px;
   float: left;
+  width: 28%;
+  margin-right: 20px;
+}
+.edit_form{
+  float: left;
+  width: 68%;
 }
 .avatar img{
   height: 200px;
@@ -74,4 +41,36 @@
 }
 .user-item {
   margin-bottom: 20px; 
+}
+.tweet {
+  border: 1px solid;
+  padding:10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.information {
+  width: 68%;
+  float: left;
+  margin-right: 20px;
+}
+.popular{
+  width: 28%;
+  float: left;
+}
+.tweet-avatar{
+  float: left;
+  margin: 0.5%;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+.form_group{
+  margin-top: 5px;
+}
+.about{
+  width: 28%;
+  float: left;
+}
+.content{
+  width: 68%;
+  float: left;
 }
