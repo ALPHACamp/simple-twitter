@@ -20,7 +20,7 @@
     <div class="col-md-10 col-md-offset-1">
 
       <div class="page-header">
-        <h1>推播王 <small>(推播數最高)</small></h1>
+        <h1>推播王 <small>(推播數排名)</small></h1>
       </div>
 
       <% @users.each do |user| %>
@@ -40,7 +40,30 @@
               <span class="label label-default">推播數：<%= user.tweets_count %></span>
             </h4>
             <div>
-              <%= render partial: "shared/user_dashboard", locals: {user: user} %>
+              <p><%= user.introduction %></p>
+              
+              <ul class="list-unstyled list-inline">
+                <li><strong>
+                  <%= link_to tweets_user_path(user) do %>
+                    Tweets： <%= user.tweets.size %>
+                  <% end %>
+                </strong></li>
+                <li><strong>
+                  <%= link_to followings_user_path(user) do %>
+                    Following： <%= user.followings.size %>
+                  <% end %>
+                </strong></li>
+                <li><strong>
+                  <%= link_to followers_user_path(user) do %>
+                    Follower： <%= user.followers.size %>
+                  <% end %>
+                </strong></li>
+                <li><strong>
+                  <%= link_to likes_user_path(user) do %>
+                    like： <%= user.likes.size %>
+                  <% end %>
+                </strong></li>
+              </ul>
             </div>
           </div>
           <div class="clearfix"></div>
