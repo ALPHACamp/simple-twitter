@@ -1,14 +1,8 @@
 <h1>Replies index</h1>
 <div class="container">
   <div class="col-sm-4">
-    <%= image_tag(@tweet.user.avatar, hight: 160, width: 160, class: "img-responsive img-rounded") %>
-    <p><%= @tweet.user.name %></p>
-    <p><%= simple_format @tweet.user.introduction %></p>
-    <% if @tweet.user == current_user %>
-      <%= link_to "Edit Profile", edit_user_path(@tweet.user), class: "btn btn-primary" %>
-    <% end %>
 
-    <%= render partial: "shared/user_dashboard", locals: {user: current_user} %>
+    <%= render partial: "shared/user_dashboard", locals: {user: @tweet.user} %>
 
   </div>
 </div>
