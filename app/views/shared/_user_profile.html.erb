@@ -1,4 +1,8 @@
 <%= image_tag(@user.avatar, height: 160, width: 160, class: "img-responsive img-rounded") %>
 <p><%= @user.name %></p>
 <p><%= @user.introduction %></p>
-<%= render partial: "shared/follow", locals: {user: user} %>
+<% if user == current_user %>
+  <%= link_to "Edit Profile", edit_user_path(user), class: "btn btn-primary" %>
+<% else %>
+  <%= render partial: "shared/follow", locals: {user: user} %>
+<% end %>
