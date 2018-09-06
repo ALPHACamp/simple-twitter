@@ -20,17 +20,20 @@ class UsersController < ApplicationController
 
   def followings
     # 基於測試規格，必須講定變數名稱
-    @followings = @user.followings
+    # 該使用者的關注清單，排序依照追蹤紀錄成立的時間，愈新的在愈前面
+    @followings = @user.followings.order('followships.created_at DESC')
   end
 
   def followers
     # 基於測試規格，必須講定變數名稱
-    @followers = @user.followers
+    # 該使用者的跟隨者清單，排序依照追蹤紀錄成立的時間，愈新的在愈前面
+    @followers = @user.followers.order('followships.created_at DESC')
   end
 
   def likes
     # 基於測試規格，必須講定變數名稱
-    @likes = @user.liked_tweets
+    # 該使用者 like 過的推播清單，排序依 like 紀錄成立的時間，愈新的在愈前面
+    @likes = @user.liked_tweets.order('likes.updated_at DESC')
   end
 
   private
