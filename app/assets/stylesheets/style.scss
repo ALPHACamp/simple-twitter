@@ -12,3 +12,48 @@
   display: block;
   position: relative;
 }
+
+.tweet-item {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 4px;
+  margin-bottom: 20px;
+}
+
+.tweet-item img {
+  display: inline-block;
+  padding: 20px 0px 0px 10px;
+  border-radius: 5px;
+}
+
+.tweet-item .content {
+  padding-top: 20px;
+  align-self: center;
+  display: block;
+  float: right;
+  width: 85%;
+}
+
+.popular-item {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 4px;
+  margin-bottom: 20px;
+}
+
+.popular-item img {
+  display: inline-block;
+  padding: 15px 0px 0px 10px;
+  border-radius: 5px;
+}
+
+.popular-item .content {
+  align-self: center;
+  display: block;
+  float: right;
+  width: 70%;
+}
+
+.popular-item .content .follow {
+  float: right;
+}
