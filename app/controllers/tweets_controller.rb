@@ -19,7 +19,7 @@ class TweetsController < ApplicationController
 
   def like
     @like = Like.new(user_id: current_user.id, tweet_id: @tweet.id)
-    if @like.save!
+    if @like.save
       redirect_to tweets_path
     else
       flash[:alert] = like.errors.messages

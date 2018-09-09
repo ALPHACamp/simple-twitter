@@ -8,5 +8,7 @@
 
 
 # Default admin
-User.create(email: "josh@twitter.com", password: "12345678", name: "josh")
+ApplicationRecord.reset_column_information
+admin_file = File.open("#{Rails.root}/public/avatar/user15.jpg")
+admin = User.create!(email: "josh@example.com", password: "12345678", name: "josh", :role=> "admin", avatar: admin_file)
 puts "Default admin created!"

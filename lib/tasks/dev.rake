@@ -10,15 +10,13 @@ namespace :dev do
       name = FFaker::Name::first_name
       file = File.open("#{Rails.root}/public/avatar/user#{i+1}.jpg")
 
-      user = User.new(
+      user = User.create!(
         name: name,
         email: "#{name}@twitter.com",
         password: "12345678",
         introduction: FFaker::Lorem::sentence(20),
-        avatar: file
+        avatar: file,
       )
-
-      user.save!
       puts user.name
     end
   end
@@ -71,7 +69,7 @@ namespace :dev do
     users.each do |user|
       2.times do |i|
         following = users.sample
-        if !user.is_following?(following)
+        if !user.is_following?(following) && following != user
           followship = user.followships.create(following: following)
         end
       end

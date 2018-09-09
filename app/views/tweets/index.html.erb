@@ -12,7 +12,7 @@
 				<div class="col-sm-8">
 				<div class="d-flex flex-column">
 					<div class="p-2">
-					<span class="text-primary"><%= tweet.user.name %><%= ", #{tweet.created_at}" %></span></br>
+					<%= link_to tweet.user.name + " #{tweet.created_at}", tweets_user_path(tweet.user), class: 'text-primary' %><br>
 					<%= tweet.description %>
 					</div>
 					<div class="p-2">
