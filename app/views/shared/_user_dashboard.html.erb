@@ -1,31 +1,32 @@
-<%= image_tag(user.avatar, height: 160, width: 160, class: "img-responsive img-rounded") %>
-<p><%= user.name %></p>
-<p><%= user.introduction %></p>
+<%= image_tag(user.avatar, height: 200, width: 200, class: "img-responsive img-rounded") %>
+<h2><%= user.name %></h2>
+<p><font color=3399FF><%= user.introduction %></font></p>
+
+<ul class="list-unstyled">
+  <li><strong>
+    <%= link_to tweets_user_path(user) do %>
+      推播數： <%= user.tweets.size %>
+    <% end %>
+  </strong></li>
+  <li><strong>
+    <%= link_to followings_user_path(user) do %>
+      追蹤中： <%= user.followings.size %>
+    <% end %>
+  </strong></li>
+  <li><strong>
+    <%= link_to followers_user_path(user) do %>
+      粉絲人數： <%= user.followers.size %>
+    <% end %>
+  </strong></li>
+  <li><strong>
+    <%= link_to likes_user_path(user) do %>
+      按讚數： <%= user.likes.size %>
+    <% end %>
+  </strong></li>
+</ul>
+
 <% if user == current_user %>
   <%= link_to "Edit Profile", edit_user_path(user), class: "btn btn-primary" %>
 <% else %>
   <%= render partial: "shared/follow", locals: {user: user} %>
 <% end %>
-
-<ul class="list-unstyled">
-  <li><strong>
-    <%= link_to tweets_user_path(user) do %>
-      Tweets <%= user.tweets.size %>
-    <% end %>
-  </strong></li>
-  <li><strong>
-    <%= link_to followings_user_path(user) do %>
-      Following <%= user.followings.size %>
-    <% end %>
-  </strong></li>
-  <li><strong>
-    <%= link_to followers_user_path(user) do %>
-      Follower <%= user.followers.size %>
-    <% end %>
-  </strong></li>
-  <li><strong>
-    <%= link_to likes_user_path(user) do %>
-      like <%= user.likes.size %>
-    <% end %>
-  </strong></li>
-</ul>
