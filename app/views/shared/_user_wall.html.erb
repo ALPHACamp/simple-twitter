@@ -1,0 +1,5 @@
+<% users.each do |user| %>
+  <div class="col-xs-6">
+    <%= render partial: "shared/user_infor", locals: {user: user} %>
+  </div>
+<% end %>
