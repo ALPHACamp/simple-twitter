@@ -54,6 +54,21 @@
   width: 70%;
 }
 
-.popular-item .content .follow {
+.btn-follow {
   float: right;
+}
+
+.btn.btn-size{
+  width: 90px;
+}
+
+.userinfor-item {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 4px;
+  margin-bottom: 20px;
+}
+
+.userinfor-item img {
+  margin-top: 10px;
 }

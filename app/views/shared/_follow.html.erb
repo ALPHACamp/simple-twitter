@@ -1,5 +1,9 @@
-<% if current_user.following?(user) %>
-  <%= link_to "Unfollow", followship_path(user), method: :delete, class: "btn btn-warning" %>
+<% if user == current_user %>
+  <%= link_to "Edit Profile", edit_user_path(user), class: "btn btn-primary btn-size" %>
 <% else %>
-  <%= link_to "Follow", followships_path(following_id: user), method: :post, class: "btn btn-info" %>
+  <% if current_user.following?(user) %>
+    <%= link_to "Unfollow", followship_path(user), method: :delete, class: "btn btn-warning btn-size" %>
+  <% else %>
+    <%= link_to "Follow", followships_path(following_id: user), method: :post, class: "btn btn-info btn-size" %>
+  <% end %>
 <% end %>
