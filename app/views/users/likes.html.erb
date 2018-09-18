@@ -1,27 +1,14 @@
 <div class="container">
-  <div class="col-sm-4">
-    <%= render partial: "shared/user_dashboard", locals: {user: @user} %>
-  </div>
-</div>
-
-<div class="container">
-  <div class="col-sm-8">
-  <h2>Like</h2>
-    <div>
-      <% @likes.each do |like| %>
-        <%= image_tag(like.user.avatar, height: 80, width: 80, calss: "img-responsive img-rounded") %>
-        <p><%= "@" + like.user.name + ", " %><%= like.updated_at.strftime("%Y-%m-%d, %H:%M") %></p>
-        <p><%= like.description %></p>
-        <div>
-          <%= link_to tweet_replies_path(like) do %>
-            Reply(<%= like.replies.size %>)
-          <% end %>
-          <%= render partial: "shared/like", locals: {tweet: like} %>
-        </div>
-        <div class="clearfix"></div>
-        <br>
-      <% end %>
+  <div class="row">
+    <div class="col-sm-3">
+      <%= render partial: "shared/user_dashboard", locals: {user: @user} %>
     </div>
-    
+
+    <div class="col-sm-9">
+    <h2>Like</h2>
+    <% @likes.each do |like| %>
+      <%= render partial: "shared/tweet_wall", locals: {tweet: like} %>
+    <% end %>
+    </div>
   </div>
 </div>

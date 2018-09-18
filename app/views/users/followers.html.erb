@@ -1,21 +1,14 @@
 <div class="container">
-  <div class="col-sm-4">
-    <%= render partial: "shared/user_dashboard", locals: {user: @user} %>
-  </div>
-</div>
+  <div class="row">
 
-<div class="container">
-  <div class="col-md-4">
+    <div class="col-sm-3">
+      <%= render partial: "shared/user_dashboard", locals: {user: @user} %>
+    </div>
+
+    <div class="col-sm-9">
     <h2>Follower</h2>
-
-    <% @followers.each do |follower| %>
-      <%= image_tag(follower.avatar, height: 80, width: 80, class: "img-responsive img-rounded") %>
-      <p><%= follower.name %></p>
-      <p><%= follower.introduction %></p>
-      <%= render partial: "shared/follow", locals: {user: follower} %>
-      <div class="clearfix"></div>
-      <br>
-    <% end %>
+      <%= render partial: "shared/user_wall", locals: {users: @followers} %>
+    </div>
 
   </div>
 </div>

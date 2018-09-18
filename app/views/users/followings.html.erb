@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-sm-3">
+    <div class="col-xs-3 col-sm-3">
       <%= render partial: "shared/user_dashboard", locals: {user: @user} %>
     </div>
 
-    <div class="col-sm-9">
+    <div class="col-xs-9 col-sm-9">
     <h2>Following</h2>
       <%= render partial: "shared/user_wall", locals: {users: @followings} %>
     </div>
