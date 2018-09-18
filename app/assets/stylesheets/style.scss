@@ -1,9 +1,9 @@
+//NAV
 .navpic {
   width: 40px;
   height: 40px;
   border-radius: 5px;
 }
-
 .navpic img {
   //inherit 繼承
   width: inherit;
@@ -13,62 +13,56 @@
   position: relative;
 }
 
+//tweet_wall
 .tweet-item {
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 4px;
   margin-bottom: 20px;
 }
-
 .tweet-item img {
   display: inline-block;
-  padding: 20px 0px 0px 10px;
-  border-radius: 5px;
+  margin: 10px 0 10px 0;
+  height: 100px;
+  width: 100px;
+  float: left;
 }
-
-.tweet-item .content {
-  padding-top: 20px;
+.tweet-item .tweet-content {
   align-self: center;
-  display: block;
-  float: right;
-  width: 85%;
-}
-
-.popular-item {
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 4px;
-  margin-bottom: 20px;
-}
-
-.popular-item img {
   display: inline-block;
-  padding: 15px 0px 0px 10px;
-  border-radius: 5px;
+  width: 100%;
 }
 
-.popular-item .content {
-  align-self: center;
-  display: block;
-  float: right;
-  width: 70%;
-}
-
-.btn-follow {
-  float: right;
-}
-
-.btn.btn-size{
-  width: 90px;
-}
-
+//user_wall
 .userinfor-item {
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 4px;
   margin-bottom: 20px;
 }
-
 .userinfor-item img {
+  display: inline-block;
   margin-top: 10px;
+  height: 100px;
+  width: 100px;
+  float: left;
+}
+.userinfor-item .user-content {
+  align-self: center;
+  display: inline-block;
+  width: 195px;
+}
+
+//follow and unfollow button
+.btn-follow {
+  float: right;
+  margin-bottom: 5px;
+}
+.btn.btn-size{
+  width: 90px;
+}
+
+//dashboard
+.dashboard-item {
+margin-top: 20px;
 }
