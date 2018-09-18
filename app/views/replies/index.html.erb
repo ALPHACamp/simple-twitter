@@ -6,48 +6,28 @@
 
     <div class="col-sm-9 col-md-9">
       <h3>Tweets</h3>
-      <div class="tweet-item">
-        <%= image_tag(@tweet.user.avatar, hight: 100, width: 100, class: "img-responsive img-rounded") %>
-        <!-- 格式化日期時間 time.strftime("%Y-%m-%d %H:%M:%S") -->
-        <div class="content">
-          <p>
-            <%= link_to tweets_user_path(@tweet.user) do %>
-              <%= "@" + @tweet.user.name %>
-            <% end %>
-            <%= ", " + @tweet.updated_at.strftime("%Y-%m-%d , %H:%M") %>
-          </p>
-          <p><%= simple_format @tweet.description %></p>
-          <div>
-            <%= link_to tweet_replies_path(@tweet) do %>
-              Reply(<%= @tweet.replies.size %>)
-            <% end %>
-            <%= render partial: "shared/like", locals: {tweet: @tweet} %>
-          </div>
-        </div>
-      </div>
+      <%= render partial: "shared/tweet_wall", locals: {tweet: @tweet} %>
 
-      <div> 
-        <h3>Replies</h3>
-        <% @replies.each do |reply| %>
-          <div class="tweet-item">
-            <%= image_tag(reply.user.avatar, hight: 100, width: 100, class: "img-responsive img-rounded") %>
-            <div class="content">
-              <p>
+      <h3>Replies</h3>
+      <% @replies.each do |reply| %>
+        <div class="tweet-item clearfix">
+          <%= image_tag reply.user.avatar, class: "img-responsive img-rounded" %>
+          <div class="col-xs-9 col-md-8">
+            <div class="tweet-content">
+              <h4>
                 <%= link_to tweets_user_path(reply.user) do %>
-                  <%= "@" + reply.user.name %>
+                  @<%= reply.user.name %>,
                 <% end %>
-                <%= ", " + reply.created_at.strftime("%Y-%m-%d, %H:%M") %>
+                <%= reply.created_at.strftime("%Y-%m-%d, %H:%M") %>
                 <% if current_user.admin? || current_user == reply.user %>
                   <span class="label label-warning"><%= link_to " Delete", tweet_reply_path(@tweet, reply), method: :delete, data: {confirm: "Are you sure?"} %></span>
                 <% end %>
-              </p>
-              <p class="text-meuted">
-                <%= simple_format reply.comment %>
-              </p>
+              </h4>
+              <p class="text-meuted"><%= simple_format reply.comment %></p>
             </div>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
 
       <div>
         <%= form_for [@tweet, @reply] do |f| %>
