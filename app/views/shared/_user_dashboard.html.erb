@@ -1,28 +1,31 @@
-<%= image_tag(user.avatar, height: 400, width: 400, class: "img-responsive img-rounded") %>
-<h2><%= user.name %></h2>
-<p><font color=3399FF><%= truncate(user.introduction, length: 140) %></font></p>
+<div class="dashboard-item">
+  <%= image_tag(user.avatar, height: 300, width: 250, class: "img-responsive img-rounded") %>
+  <h2><font color=#888888><%= user.name %></font></h2>
+  <p><font color=3399FF><%= simple_format user.introduction %></font></p>
 
-<ul class="list-unstyled">
-  <li><strong>
-    <%= link_to tweets_user_path(user) do %>
-      推播數： <%= user.tweets.size %>
-    <% end %>
-  </strong></li>
-  <li><strong>
-    <%= link_to followings_user_path(user) do %>
-      追蹤中： <%= user.followings.size %>
-    <% end %>
-  </strong></li>
-  <li><strong>
-    <%= link_to followers_user_path(user) do %>
-      粉絲人數： <%= user.followers.size %>
-    <% end %>
-  </strong></li>
-  <li><strong>
-    <%= link_to likes_user_path(user) do %>
-      按讚數： <%= user.likes.size %>
-    <% end %>
-  </strong></li>
-</ul>
+  <ul class="list-unstyled">
+    <li><strong>
+      <%= link_to tweets_user_path(user) do %>
+        <h4>推播數： <%= user.tweets.size %></h4>
+      <% end %>
+    </strong></li>
+    <li><strong>
+      <%= link_to followings_user_path(user) do %>
+        <h4>追蹤中： <%= user.followings.size %></h4>
+      <% end %>
+    </strong></li>
+    <li><strong>
+      <%= link_to followers_user_path(user) do %>
+        <h4>粉絲人數： <%= user.followers.size %></h4>
+      <% end %>
+    </strong></li>
+    <li><strong>
+      <%= link_to likes_user_path(user) do %>
+        <h4>按讚數： <%= user.likes.size %></h4>
+      <% end %>
+    </strong></li>
+  </ul>
 
-<%= render partial: "shared/follow", locals: {user: user} %>
+  <%= render partial: "shared/follow", locals: {user: user} %>
+</div>
+
