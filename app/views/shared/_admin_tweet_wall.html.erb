@@ -1,0 +1,23 @@
+<div class="tweet-item clearfix">
+  <!--<div class="col-xs-3 col-md-4"></div>-->
+  <div><%= image_tag tweet.user.avatar, class: "img-responsive img-rounded" %></div>
+  <div class="col-xs-9 col-md-8">
+    <div class="tweet-content">
+      <h4>
+        <%= link_to tweets_user_path(tweet.user) do %>
+          @<%= tweet.user.name %>,
+        <% end %>
+        <!-- 格式化日期時間 time.strftime("%Y-%m-%d %H:%M:%S") -->
+        <%= tweet.updated_at.strftime("%Y-%m-%d, %H:%M") %>
+        <% if current_user.admin? %>
+          <span class="label label-warning"><%= link_to "Delete", admin_tweet_path(tweet), method: :delete, data: {confirm: "Are you sure?"} %></span>
+        <% end %>
+      </h4>
+      <div><p><%= simple_format tweet.description %></p></div>
+      <div>
+        <%= link_to tweet_replies_path(tweet) do %>Reply<% end %>(<%= tweet.replies.size %>)
+        <%= render partial: "shared/like", locals: {tweet: tweet} %>
+      </div>
+    </div>
+  </div> 
+</div>
