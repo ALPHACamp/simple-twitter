@@ -5,7 +5,7 @@
     </div>
 
     <div class="col-sm-9">
-    <h2>Like</h2>
+    <h2>喜歡的推播清單</h2>
     <% @likes.each do |like| %>
       <%= render partial: "shared/tweet_wall", locals: {tweet: like} %>
     <% end %>
