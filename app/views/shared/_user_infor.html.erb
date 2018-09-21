@@ -3,9 +3,12 @@
   <div><%= image_tag user.avatar, class: "img-responsive img-rounded" %></div>
     <div class="col-xs-12 col-sm-8 col-md-8">
       <div class="user-content">
-        <%= link_to tweets_user_path(user) do %>
-          <h4>@<%= user.name %></h4>
-        <% end %>
+        <h4>
+          <%= link_to tweets_user_path(user) do %>
+            @<%= user.name %>
+          <% end %>
+          <span class="label label-success">粉絲數：<%= user.followers_count %></span>
+        </h4>
         <div><p><%= simple_format truncate(user.introduction, length: 80) %></p></div>
         <div class="btn-follow"><%= render partial: "shared/follow", locals: {user: user} %></div>
       </div>
