@@ -28,8 +28,8 @@ class User < ApplicationRecord
   # 需要 app/views/devise 裡找到樣板，加上 name 屬性
   # 並參考 Devise 文件自訂表單後通過 Strong Parameters 的方法
   validates_presence_of :name
-  # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
-  validates_uniqueness_of :name
+  # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness), case_sensitive 可驗証區不區分大小寫(預設為true：不區分)
+  validates_uniqueness_of :name, :email, case_sensitive: false
 
   # admin? 讓我們用來判斷單個user是否有 admin 角色，列如：current_user.admin?
   def admin?
