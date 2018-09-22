@@ -22,7 +22,7 @@
       <div class="page-header">
         <h1>推播王 <small>(推播數排名)</small></h1>
       </div>
-
+ 
       <% @users.each do |user| %>
          <!-- ranking-item的class style-->
         <div class="ranking-item">
@@ -38,6 +38,11 @@
                 <%= user.name %>
               <% end %>
               <span class="label label-default">推播數：<%= user.tweets_count %></span>
+              <% if user.admin? %>
+                <span class="label label-info"><%= Admin %></span>
+              <% else %>
+                <span class="label label-warning"><%= link_to "Delete", admin_user_path(user), method: :delete, data: {confirm: "Are you sure?"} %></span>
+              <% end %>
             </h4>
             <div>
               <p><%= user.introduction %></p>
