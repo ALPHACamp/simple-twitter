@@ -5,12 +5,12 @@
     </div>
     <br>
     <div class="col-sm-9">  
-      <% @tweet.each do |tweet| %>
+      <% @tweets.each do |tweet| %>
         <%= render partial: "shared/tweet_wall", locals: {tweet: tweet} %>
       <% end %>
 
       <div class="text-center">
-        <%= paginate @tweet %>
+        <%= paginate @tweets %>
       </div>
     </div>
 
