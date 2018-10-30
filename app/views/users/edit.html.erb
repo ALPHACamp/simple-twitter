@@ -20,6 +20,7 @@
     <div class="form-group">
       <%= f.label :avatar, "大頭照上傳" %>
       <%= image_tag @user.avatar, width: '150px' if @user.avatar? %>
+      <%= f.hidden_field(:avatar_cache) %>
       <%= f.file_field :avatar %>
     </div>
 

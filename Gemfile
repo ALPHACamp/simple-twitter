@@ -9,6 +9,7 @@ end
 gem 'devise'
 # file uploader
 gem 'carrierwave'
+gem 'cloudinary'
 # resize image size
 # gem 'mini_magick'
 
