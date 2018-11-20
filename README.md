@@ -5,7 +5,9 @@
 ## 目錄
 * [Getting Started](#getting-started)
 * [User Story](#user-story)
+* [Built With](#built-with)
 * [自動化測試](#自動化測試)
+* [Deploy](deploy)
 
 ## Getting Started
 #### Install project
@@ -62,6 +64,15 @@ production:
     * 該清單會列出他們的活躍程度（包括推播數量、關注人數、跟隨者人數、like 過的推播數）
     * 管理者可以瀏覽站內所有的使用者清單，該清單按推播文數排序
 
+## Built With
+* ruby 2.5.1
+* rails 5.1.4
+* Authentication: [Devise](https://github.com/plataformatec/devise)
+* Layout: [Bootstrap4](https://github.com/twbs/bootstrap-rubygem)
+* Image Uploader: [CarrierWave](https://github.com/carrierwaveuploader/carrierwave), [Cloudinary](https://cloudinary.com/)
+* Fake Data: [ffaker](https://github.com/ffaker/ffaker)
+* Pagination: [Kaminari](https://github.com/kaminari/kaminari)
+
 ## 自動化測試
 Created by [ALPHACamp](https://github.com/ALPHACamp)
 
@@ -75,3 +86,8 @@ Created by [ALPHACamp](https://github.com/ALPHACamp)
 ```
 $ bundle exec rspec
 ```
+
+## Deploy
+Deploy on [Heroku](https://www.heroku.com/)
+
+https://simple-twitter-w.herokuapp.com/
