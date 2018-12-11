@@ -15,6 +15,10 @@ $ bundle install
 ```
 $ rails db:migrate
 ```
+可選擇是否載入預設提供的資料
+```
+$ rails db:seed
+```
 
 ## 更新 Fork 的程式碼
 
