@@ -22,3 +22,5 @@
 
 .byebug_history
 /public/uploads/
+
+/config/fb.yml
