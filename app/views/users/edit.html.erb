@@ -1,0 +1,32 @@
+<!-- 使用者能編輯自己的名稱、介紹和大頭照 -->
+<div class="row">
+  <%= puts "get in edit.html.erb" %>
+  <%= puts "#{@user}" %>
+  <%= puts "current_user" %>
+  <%= form_for @user do |f| %>
+  <div class="col-md-3">
+    <div class = "box">
+      <%= image_tag @user.avatar, class: "img-responsive img-circle" %>
+      <br />
+      <%= f.file_field :avatar %>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+
+  <div class="col-md-offset-1 col-md-8">
+    <div class="box">
+      <div class="form-group">
+        <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.text_area :introduction, size: "60x12", placeholder: "Type anything about you here...", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Update", class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+

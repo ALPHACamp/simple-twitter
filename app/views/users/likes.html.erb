@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col-md-3">
+    <%= render partial: "shared/user_profile" %>
+  </div>
+
+  <div class="col-md-offset-1 col-md-8">
+    <h2>Like</h2>
+    <%= render "shared/tweets", :tweets => @likes %>
+  </div>
+</div>

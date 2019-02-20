@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-8">
+
+    <!-- 使用者能新增推播（限制在 140 字裡） -->
+    <div class="form-horizontal">
+      <%= form_for @tweet do |f| %>
+      <div class="form-group">
+        <%= f.text_area :description, size: "60x12", placeholder: "What's on your mind?", class: "radius form-control" %>
+      </div>
+      <div class="col-sm-6">
+        <% if @tweet.errors.any? %>
+          <%= @tweet.errors.full_messages.to_sentence %>
+        <% end %>
+      </div>
+        <div class="col-sm-offset-11 col-md-2">
+          <%= f.submit "Tweet", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <!-- 使用者能瀏覽所有的推播 (tweet) -->
+    <%= render partial: "shared/tweets" %>
+  </div>
+  
+  <!-- 使用者能在首頁看見跟隨者 (followers) 數量排列前 10 的使用者推薦名單 -->
+  <div class="col-md-4">
+    <h2>Popular</h2>
+    <% @users.each do |user| %>
+      <%= render "shared/user_follow", :user => user %>
+    <% end %>
+  </div>
+</div>
+
+

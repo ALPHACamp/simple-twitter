@@ -1,0 +1,12 @@
+<!-- 使用者可以追蹤/取消追蹤其他使用者（不能追蹤自己） -->
+
+<!-- Need user -->
+<% if user != current_user %>
+  <% if current_user.following?(user)%>
+    <%= link_to 'Unfollow', followship_path(user), method: :delete, class: "btn btn-default" %>
+  <% else %>
+    <%= link_to 'Follow', followships_path(following_id: user), method: :post, class: "btn btn-primary" %>
+  <% end %>
+  <% else %>
+  <%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-primary" %>
+<% end %>

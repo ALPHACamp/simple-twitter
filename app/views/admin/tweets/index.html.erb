@@ -1,0 +1,53 @@
+<div class="container">
+
+  <h1>推特後台</h1>
+  <div>
+    <!-- 管理者可以瀏覽所有的推播與推播回覆內容
+          管理者可以刪除使用者的推播 -->
+    <%= link_to 'Tweets', admin_tweets_path %><!-- restaurant -->
+    |<!-- 管理者可以瀏覽站內所有的使用者清單 -->
+    <%= link_to 'Users', admin_users_path %><!-- catogory -->
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <br>
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>User</th>
+            <th>tweet</th>
+            <th>replies</th>
+            <th>delete</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <% @tweets.each do |tweet| %>
+          <tr>
+            <th scope="row"><%= tweet.id %></th>
+            <td>[<%= tweet.user.name %>]</td>
+            <td><%= tweet.description %></td>
+            <td>
+              <% tweet.replies.each do |reply| %>
+                <li>[<%= reply.user.name %>]:<%= reply.comment %></li>
+              <% end %>
+            </td>
+            <td>
+              <span><%= link_to '   ', admin_tweet_path(tweet), method: :delete, data: { confirm: "Are you sure?"}, class: "glyphicon glyphicon-trash" %></span>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <div class="text-center">
+        <%= paginate @tweets %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,16 @@
+
+<div class="user-border">
+  <div class="col-md-4">
+    <br />
+    <%= image_tag user.avatar, class: "img-responsive img-circle" %>
+  </div>
+  <div class="col-md-8 user-intro">
+    <h3><%= link_to "@#{user.name}", tweets_user_path(user) %></h3>
+    <h4><%= truncate(user.introduction, length: 70) %></h4>
+    <div class="col-md-offset-7 col-md-2 user-button">
+      <%= render partial: "shared/follow_button", locals: {user: user} %>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<br />

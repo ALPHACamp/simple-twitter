@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-md-3">
+    <%= render partial: "shared/user_profile" %>
+  </div>
+
+  <div class="col-md-offset-1 col-md-8">
+    <h2>Following</h2>
+    <% @followings.each do |following| %>
+      <div class="col-md-6">
+        <%= render "shared/user_follow", :user => following %>
+      </div>
+
+    <% end %>
+
+  </div>
+</div>

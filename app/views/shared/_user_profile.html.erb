@@ -1,0 +1,16 @@
+<!-- Need @user -->
+<div class = "box">
+  <%= image_tag @user.avatar, class: "img-responsive img-circle" %>
+  <h1><%= @user.name %></h1>
+  <p><%= @user.introduction %></p>
+  <br />
+
+  <h4> <%= link_to "Tweets #{@user.tweets.count}", tweets_user_path(@user)%></h4>
+  <h4> <%= link_to "Following #{@user.followings.count}", followings_user_path(@user)  %></h4>
+  <h4> <%= link_to "Follower #{@user.followers.count}",followers_user_path(@user) %></h4>
+  <h4> <%= link_to "like #{@user.likes.count}",likes_user_path(@user) %></h4>
+  <br>
+  <%= render partial: "shared/follow_button", locals: {user: @user} %>
+
+</div>
+<div class="clearfix"></div>

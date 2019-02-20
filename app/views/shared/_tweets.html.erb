@@ -1,0 +1,21 @@
+<!-- Need @tweets -->
+<!-- <div class="panel panel-default">
+  <div class="panel-body"> -->
+    <% @tweets.each do |tweet| %>
+    <div class= "box-border">
+      <div class="avatar">
+        <%= image_tag tweet.user.avatar, class: "img-responsive img-circle" %>
+      </div>
+      <h4><%= link_to "@#{tweet.user.name}, #{tweet.created_at.strftime("%Y-%m-%d, %H:%M")}", tweets_user_path(tweet.user) %></h4>
+      <h4><%= tweet.description %></h4>
+      <!-- 使用者能回覆別人的推播 -->
+      <h4><%= link_to "Reply(#{tweet.replies.count})", tweet_replies_path(tweet) %>
+        <%= render "shared/like", :tweet => tweet %></h4>
+    </div>
+    <div class="clearfix"></div>
+    <br />
+
+    <% end %>
+ <!--  </div> 
+</div>
+ -->

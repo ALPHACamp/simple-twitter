@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-md-3">
+    <%= render partial: "shared/user_profile" %>
+  </div>
+
+  <div class="col-md-offset-1 col-md-8">
+    <h2>Tweets</h2>
+    <%#= render "shared/tweets", :@tweets => @replies, :description => @replies.comment @單複數%>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class = "box">
+          <div class="avatar">
+            <%= image_tag @tweet.user.avatar, class: "img-responsive img-circle" %>
+          </div>
+          <h4><%= link_to "@#{@tweet.user.name}, #{@tweet.created_at}", tweets_user_path(@user) %></h4>
+          <h4><%= @tweet.description %></h4>
+          <h4><%= link_to "Reply(#{@tweet.replies.count})", tweet_replies_path(id: @tweet.id)%>
+          <%= render "shared/like", :tweet => @tweet %></h4>
+        </div>
+        <div class="clearfix"></div>
+      </div> 
+    </div>
+
+    <br />  
+    
+    <h2>Replies</h2>
+    <%#= render "shared/tweets", :@tweets => @replies, :description => :comment %>
+        <div class = "box">
+          <% @replies.each do |reply| %>
+            <div class="box-border">
+              <div class="avatar">
+                <%= image_tag reply.user.avatar, class: "img-responsive img-circle" %>
+              </div>
+            <h4><%= link_to "@#{reply.user.name}, #{reply.created_at}", tweets_user_path(reply.user) %></h4>
+            <h4><%= reply.comment %></h4>
+            </div>
+            <br />
+          <% end %>
+        </div>
+        <div class="clearfix"></div>
+
+    <!-- 使用者能回覆別人的推播 -->
+    <%= form_for [@tweet,@reply] do |f| %>
+      <div class="form-group">
+        <%= f.text_area :comment, placeholder: "留個言吧", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Reply", class: "btn btn-primary col-sm-offset-11" %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
+
+

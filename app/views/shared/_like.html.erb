@@ -1,0 +1,8 @@
+<!-- 使用者能對別人的推播按 Like/Unlike -->
+
+<!-- Need tweet -->
+<% if tweet.is_liked?(current_user) %>
+  <%= link_to "Unlike(#{tweet.likes.count})", unlike_tweet_path(tweet), method: :post, style: "color: red;" %>
+<% else %>
+  <%= link_to " Like (#{tweet.likes.count})", like_tweet_path(tweet), method: :post, style: "color: red;" %>
+<% end %>
