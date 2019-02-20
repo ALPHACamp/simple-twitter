@@ -28,7 +28,7 @@
             <ul class="pull-right text-right nav navbar-nav">
               <% if current_user %>
                 <% if current_user.admin? %>
-                  <li><%= link_to 'Admin', admin_tweets_path %></li>
+                  <li><%= link_to 'Admin', admin_tweets_path, class: 'glyphicon glyphicon-log-out' %></li>
                 <% end %>
                 <!-- 使用者能創建帳號、登入、登出 -->
                 <li>

@@ -12,23 +12,21 @@ class User < ApplicationRecord
   validates_presence_of :name
   # 使用者的名稱不能重覆，若有重覆會跳出錯誤
   validates :name, uniqueness: { case_sensitive: true, message: "has already been taken"}
-  # 
+
   # validates :followings, uniqueness: {scope: :followee_id}
   # validate :cant_follow_yourself
 
-  #reply
+  # reply
   has_many :tweets, dependent: :destroy
   has_many :replies, dependent: :destroy
 
-  #Like unlike
+  # Like unlike
   has_many :likes, dependent: :destroy
   has_many :liked_tweets, through: :likes, source: :tweet
 
-  #Following Follower
+  # Following Follower
   has_many :followships, dependent: :destroy
   has_many :followings, through: :followships
-
-  
   has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
   has_many :followers, through: :inverse_followships, source: :user
 
@@ -53,7 +51,6 @@ class User < ApplicationRecord
     self.tweets.count + self.replies.count
   end
   #<%= @user.tweet_reply_count %>
-
 
   # private
 

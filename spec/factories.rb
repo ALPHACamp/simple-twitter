@@ -18,7 +18,7 @@ FactoryBot.define do
 
     factory :user_with_tweets do
       transient do
-        tweets_count 5
+        tweets_count 1
       end
 
       after(:create) do |user, evaluator|

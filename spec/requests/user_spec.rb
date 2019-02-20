@@ -1,6 +1,6 @@
 RSpec.describe 'User', type: :request do
   let(:user) { create(:user, email: FFaker::Internet.email, name: 'no_tweets') }
-  let(:user_with_tweets) { create(:user_with_tweets) }
+  let(:user_with_tweets) { create(:user_with_tweets, name: 'user_with_tweets') }
   let(:tweet) { create(:tweet, user: user) }
   let(:tweet2) { create(:tweet, user: user_with_tweets) }
   let(:tweet3) { create(:tweet, user: user) }
@@ -81,10 +81,11 @@ RSpec.describe 'User', type: :request do
 
     before do
       user_with_tweets
-      Followship.create(user_id: user_with_tweets.id, following_id: user.id)
-      Followship.create(user_id: user_with_tweets.id, following_id: user2.id)
-      Followship.create(user_id: user_with_tweets.id, following_id: user3.id)
-      Followship.create(user_id: user_with_tweets.id, following_id: user4.id)
+      Followship.create(user_id: user_with_tweets.id, following_id: user.id, updated_at: 1.days.ago, created_at: 1.days.ago)
+      Followship.create(user_id: user_with_tweets.id, following_id: user2.id, updated_at: 2.days.ago, created_at: 2.days.ago)
+      Followship.create(user_id: user_with_tweets.id, following_id: user3.id, updated_at: 3.days.ago, created_at: 3.days.ago)
+      Followship.create(user_id: user_with_tweets.id, following_id: user4.id, updated_at: 4.days.ago, created_at: 4.days.ago)
+      Followship.create(user_id: user2.id, following_id: user.id, updated_at: 10.days.ago, created_at: 10.days.ago)
       sign_in(user_with_tweets)
     end
 
@@ -92,13 +93,15 @@ RSpec.describe 'User', type: :request do
       it 'will show all following users' do
         get followings_user_path(user_with_tweets)
         expect(assigns(:followings).count).to eq 4
+        expect(assigns(:followings).first.id).to eq user.id
       end
     end
 
     describe 'go to follower page' do
       it 'can see follower on other user page' do
         get followers_user_path(user)
-        expect(assigns(:followers).count).to eq 1
+        expect(assigns(:followers).count).to eq 2
+        expect(assigns(:followers).first.id).to eq user_with_tweets.id
       end
     end
   end
@@ -107,11 +110,11 @@ RSpec.describe 'User', type: :request do
     before do
       user
       user_with_tweets
-      Like.create(user_id: user.id, tweet_id: tweet.id)
-      Like.create(user_id: user.id, tweet_id: tweet2.id)
-      Like.create(user_id: user.id, tweet_id: tweet3.id)
-      Like.create(user_id: user.id, tweet_id: tweet4.id)
-      Like.create(user_id: user.id, tweet_id: tweet5.id)
+      Like.create(user_id: user.id, tweet_id: tweet.id, updated_at: 1.days.ago, created_at: 1.days.ago)
+      Like.create(user_id: user.id, tweet_id: tweet2.id, updated_at: 2.days.ago, created_at: 2.days.ago)
+      Like.create(user_id: user.id, tweet_id: tweet3.id, updated_at: 3.days.ago, created_at: 3.days.ago)
+      Like.create(user_id: user.id, tweet_id: tweet4.id, updated_at: 4.days.ago, created_at: 4.days.ago)
+      Like.create(user_id: user.id, tweet_id: tweet5.id, updated_at: 5.days.ago, created_at: 5.days.ago)
       sign_in(user)
     end
 
@@ -119,6 +122,7 @@ RSpec.describe 'User', type: :request do
       it 'show users like tweets' do
         get likes_user_path(user)
         expect(assigns(:likes).count).to eq 5
+        expect(assigns(:likes).first.id).to eq tweet.id
       end
     end
   end

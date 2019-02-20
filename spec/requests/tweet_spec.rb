@@ -1,6 +1,8 @@
 RSpec.describe 'Tweet', type: :request do
+  include TweetsHelper
+
   let(:user) { create(:user, email: FFaker::Internet.email, name: 'no_tweets') }
-  let(:user_with_tweets) { create(:user_with_tweets) }
+  let(:user_with_tweets) { create(:user_with_tweets, name: 'user_with_tweets') }
 
   context '#index' do
     describe 'user not login' do
@@ -13,9 +15,11 @@ RSpec.describe 'Tweet', type: :request do
 
     context 'user log in' do
       before do
+        create_user_list
+        create_followship_table
+        create_tweets
         user
         user_with_tweets
-        Followship.create(user_id: user.id, following_id: user_with_tweets.id)
         sign_in(user)
         get tweets_path
       end
@@ -30,7 +34,8 @@ RSpec.describe 'Tweet', type: :request do
         end
 
         it 'can show all popular user' do
-          expect(assigns(:users).first).to eq(user_with_tweets)
+          expect(assigns(:users).first.name).to eq 'user15'
+          expect(assigns(:users).last.name).to eq 'user6'
         end
       end
 
@@ -40,7 +45,9 @@ RSpec.describe 'Tweet', type: :request do
         end
 
         it 'can see all tweets instance' do
-          expect(assigns(:tweets)).to eq(Tweet.all)
+          expect(assigns(:tweets).count).to eq 6
+          expect(assigns(:tweets).first.user).to eq(user_with_tweets)
+          expect(assigns(:tweets).second.description).to eq('fifth tweet')
         end
 
         it 'have tweet instance' do

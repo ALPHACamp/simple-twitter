@@ -1,7 +1,7 @@
 RSpec.describe 'Admin::User', type: :request do
   let(:user) { create(:user, email: FFaker::Internet.email, name: 'no_tweets') }
   let(:user_with_tweets) { create(:user_with_tweets) }
-  let(:admin_user) { create(:user, email: FFaker::Internet.email, name: 'no_tweets', role: 'admin')}
+  let(:admin_user) { create(:user, email: FFaker::Internet.email, name: 'no_tweets_admin', role: 'admin')}
 
   context 'go to admin user page' do
     describe 'if normal user log in' do
@@ -18,7 +18,16 @@ RSpec.describe 'Admin::User', type: :request do
         user_with_tweets
         get admin_users_path
         expect(response).to have_http_status 200
-        expect(assigns(:users)).to eq User.all
+        expect(assigns(:users).count).to eq User.count
+      end
+
+      it 'should order user list' do
+        user.tweets.create(description: '12345')
+        admin_user.tweets.create([{description: '123'},{description: '321'}])
+        sign_in(admin_user)
+        get admin_users_path
+        expect(response).to have_http_status 200
+        expect(assigns(:users).first).to eq admin_user
       end
     end
   end
