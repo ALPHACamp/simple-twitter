@@ -15,14 +15,14 @@ namespace :dev do
 
     20.times do |i|
       name = FFaker::Name::first_name
-      file = File.open("#{Rails.root}/public/avatar/user#{i+1}.jpg")
+      url = "https://s3-ap-northeast-1.amazonaws.com/du2-user-avatar/user#{i+1}.jpg"
 
       user = User.new(
         name: name,
         email: "#{name}@example.com",
         password: "123456",
         introduction: FFaker::Lorem::sentence(10),
-        avatar: file
+        remote_avatar_url: url
       )
 
       user.save!
