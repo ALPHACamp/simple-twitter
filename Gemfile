@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'mysql2', '~> 0.3.18'
 # user authentication
 gem 'devise'
 # file uploader
@@ -39,10 +40,7 @@ gem 'bootstrap-sass', '~> 3.3.7'
 gem 'jquery-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
-group :production do
-  gem 'pg', '~> 0.21'
-end
+gem 'sprockets-rails', :require => 'sprockets/railtie'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

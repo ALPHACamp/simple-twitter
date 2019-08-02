@@ -121,4 +121,18 @@ height:800px;
 .user_tweet_text_line_height{
 line-height: 30px;
 }
+
+@media screen and (min-width: 1024px) {
+  .cover_sign_in {
+    width:500px;
+    margin: 5% 30%
+  }
+}
+
+@media screen and (max-width:1023px) {
+  .cover_sign_in {
+    width:500px;
+    margin: 15% 35%
+  }
+}
 // 以上為user tweet樣式

@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20180201102838) do
 
-  create_table "followships", force: :cascade do |t|
+  create_table "followships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id"
     t.integer "following_id"
     t.datetime "created_at", null: false
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20180201102838) do
     t.index ["user_id", "following_id"], name: "index_followships_on_user_id_and_following_id"
   end
 
-  create_table "likes", force: :cascade do |t|
+  create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id"
     t.integer "tweet_id"
     t.datetime "created_at", null: false
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20180201102838) do
     t.index ["user_id", "tweet_id"], name: "index_likes_on_user_id_and_tweet_id"
   end
 
-  create_table "replies", force: :cascade do |t|
+  create_table "replies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "comment"
     t.integer "tweet_id"
     t.integer "user_id"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20180201102838) do
     t.index ["tweet_id", "user_id"], name: "index_replies_on_tweet_id_and_user_id"
   end
 
-  create_table "tweets", force: :cascade do |t|
+  create_table "tweets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "description"
     t.integer "user_id"
     t.datetime "created_at", null: false
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20180201102838) do
     t.index ["user_id"], name: "index_tweets_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
