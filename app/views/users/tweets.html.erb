@@ -1,0 +1,72 @@
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-3">
+			<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" class="img-thumbnail" /> 
+            
+			<p><a href="<%= tweets_user_url(@user) %>">
+				<%= @user.name %>
+			</a></p>
+			<ul>
+				<li>
+					<a href="<%= tweets_user_url(@user) %>">tweets(<%= @tweet_count %>)</a>
+				</li>
+				<li>
+					<a href="<%= followings_user_url(@user) %>">following(<%= @following_count %>)</a>
+				</li>
+                <li>
+					<a href="<%= followers_user_url(@user) %>">follower(<%= @follower_count %>)</a>
+				</li>
+                <li>
+					<a href="<%= followers_user_url(@user) %>">like(<%= @like_count %>)</a>
+				</li>
+				
+			</ul>
+			<% if @is_own_profile %>
+			 <a href=<%= edit_user_url %> class="btn" type="button">edit profile</a>
+			 <%else%>
+			 <% if current_user.following?(@user) %>
+    	 							<%= link_to 'Unfollow', followship_path(@user), method: :delete, class: "btn btn-default" %>
+									
+  									<% else %>
+   	 								<%= link_to 'Follow', followships_path(following_id: @user), method: :post, class: "btn btn-default" %>
+									
+  									<% end %>
+			 <%end%>
+		</div>
+ 
+		<div class="col-md-9" style="padding-top:50px">
+    <% @tweets.each do |tweet| %>
+			<div class="row">
+						<div class="col-md-12">
+							<div class="row" style="margin-top:15px">
+								<div class="col-md-2">
+									<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" class="img-thumbnail" />
+								</div>
+								<div class="col-md-10">
+								<a href="<%= tweets_user_url(tweet.user) %>">
+									<h3 class="text-primary">
+										<%= tweet.user.name %>
+									</h3>
+									</a>
+									<p>
+										<%= tweet.description %>
+									</p>
+									<div class="row">
+										<div class="col-md-4">
+											 <a href="<%= replies_tweet_url(tweet.id) %>" class="btn" type="button">Reply(<%= tweet.replies_count %>)</a>
+										</div>
+										<div class="col-md-4">
+                       <a href="#" class="btn" type="button">Like(<%= tweet.likes_count %>)</a>
+										</div>
+										<div class="col-md-4">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+			</div>
+      <% end %>
+		</div>
+	</div>
+</div>

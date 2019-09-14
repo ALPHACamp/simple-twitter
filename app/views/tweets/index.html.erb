@@ -1,0 +1,88 @@
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="row">
+						<div class="col-md-12">
+<%= form_for(@tweet) do |f| %>
+     <div class="form-group">
+       <%= f.text_area :description, placeholder: "發個推播 最長１４０字元", class: "form-control" %>
+     </div>
+     <div class="form-group">
+       <%= f.submit "Tweet" , class: "btn btn-primary" %>
+
+     </div>
+    <% end %>
+
+							
+						</div>
+					</div>
+          <% @allTweets.each do |tweet| %>
+					<div class="row" style="margin-top:50px">
+						<div class="col-md-12">
+							<div class="row" style="margin-top:15px">
+								<div class="col-md-2">
+									<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" class="img-thumbnail" />
+								</div>
+								<div class="col-md-10">
+							<a href="<%= tweets_user_url(tweet.user) %>">
+									<h3 class="text-primary">
+										<%= tweet.user.name %>
+									</h3>
+									</a>
+									<p>
+										<%= tweet.description %>
+									</p>
+									<div class="row">
+										<div class="col-md-4">
+											 <a href=<%= replies_tweet_url(tweet.id) %> class="btn" type="button">Reply(<%= tweet.replies_count %>)</a>
+										</div>
+										<div class="col-md-4">
+                       <a href="#" class="btn" type="button">Like(7)</a>
+										</div>
+										<div class="col-md-4">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+              <% end %>
+				</div>
+				<div class="col-md-4">
+        <% @users.each do |user| %>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-4">
+									<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" class="img-thumbnail" />
+								</div>
+								<div class="col-md-8">
+								<a href="<%= tweets_user_url(user) %>">
+									<h3>
+										<%= user.name %>
+									</h3></a>
+									<p>
+                    <%= user.introduction %>
+									</p>
+									<% if current_user.following?(user) %>
+    	 							<%= link_to 'Unfollow', followship_path(user), method: :delete, class: "btn btn-default" %>
+									
+  									<% else %>
+   	 								<%= link_to 'Follow', followships_path(following_id: user), method: :post, class: "btn btn-default" %>
+									
+  									<% end %>
+
+								</div>
+							</div>
+						</div>
+					</div>
+          <% end %>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

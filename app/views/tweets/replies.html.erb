@@ -1,0 +1,99 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-3">
+			<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" class="img-thumbnail" /> 
+            
+			<p><a href="<%= tweets_user_url(@user) %>">
+				<%= @user.name %>
+			</a></p>
+			<ul>
+				<li>
+					<a href="<%= tweets_user_url(@user) %>">tweets(<%= @tweet_count %>)</a>
+				</li>
+				<li>
+					<a href="<%= followings_user_url(@user) %>">following(<%= @following_count %>)</a>
+				</li>
+                <li>
+					<a href="<%= followers_user_url(@user) %>">follower(<%= @follower_count %>)</a>
+				</li>
+                <li>
+					<a href="<%= followers_user_url(@user) %>">like(<%= @like_count %>)</a>
+				</li>
+				
+			</ul> <a href="#" class="btn" type="button">edit profile</a>
+		</div>
+ 
+		<div class="col-md-9" style="padding-top:50px">
+        <h3>Tweets</h3>
+			<div class="row">
+						<div class="col-md-12">
+							<div class="row" style="margin-top:15px">
+								<div class="col-md-2">
+									<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" class="img-thumbnail" />
+								</div>
+								<div class="col-md-10">
+								<a href="<%= tweets_user_url(@user) %>">
+									<h3 class="text-primary">
+										<%= @user.name %>
+									</h3>
+									</a>
+									<p>
+										<%= @tweet.description %>
+									</p>
+									<div class="row">
+										<div class="col-md-4">
+											 <a href="#" class="btn" type="button">Reply(<%= @tweet.replies_count %>)</a>
+										</div>
+										<div class="col-md-4">
+                       <a href="#" class="btn" type="button">Like(<%= @tweet.likes_count %>)</a>
+										</div>
+										<div class="col-md-4">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+			</div>
+                    <h3>Replies</h3>
+					<% @replies.each do |reply| %>
+			<div class="row">
+						<div class="col-md-12">
+							<div class="row" style="margin-top:15px">
+								<div class="col-md-2">
+									<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" class="img-thumbnail" />
+								</div>
+								<div class="col-md-10">
+									<a href="<%= tweets_user_url(User.find(@tweet.user.id)) %>">
+									<h3 class="text-primary">
+									<%= User.find(@tweet.user.id).name %>   
+
+										
+									</h3></a>
+									<p>
+										<%= reply.comment %>
+									</p>
+									
+								</div>
+							</div>
+						</div>
+			</div>
+			<% end %>
+			<div class="row">
+						<div class="col-md-12">
+							<div class="row" style="margin-top:15px">
+								<%= form_for @newreplies, :url => url_for(:controller => "replies", :action => "create") do |f| %>
+     							<div class="form-group">
+     							  <%= f.text_area :comment, placeholder: "發個回覆", class: "form-control" %>
+								   <%= hidden_field_tag(:id, @tweet.id) %>
+     							</div>
+     							<div class="form-group">
+     							  <%= f.submit "Reply" , class: "btn btn-primary" %>
+							
+     							</div>
+    							<% end %>
+							</div>
+						</div>
+			</div>
+		</div>
+	</div>
+</div>
